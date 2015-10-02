@@ -14,7 +14,7 @@
     </th:block>
     <th:block th:if="${objectList} != null">
         <ul th:each="obj : ${objectList}">
-            <li type="disc" th:id="test" th:text="${obj}"></li>
+            <li type="disc" th:id="test" th:value="${obj.nameObject}"></li>
         </ul>
         <th:block th:if="${objectList.size() == 0}">
             <h2>Pas de résultat</h2>

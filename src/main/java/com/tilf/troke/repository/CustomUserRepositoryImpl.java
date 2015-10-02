@@ -132,12 +132,12 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
     }
 
     @Override
-    public List<String> getObjectsBySubCategory(String subCategoryName)
+    public List<ObjectsEntity> getObjectsBySubCategory(String subCategoryName)
     {
-        String query = "select NAME_OBJECT from objects where idsubcategory=:idcategory";
+        String query = "select * from objects where idsubcategory=:idcategory";
         Query queryObject = entityManager.createNativeQuery(query);
         queryObject.setParameter("idcategory", getSubCategoryIdBySubCategoryName(subCategoryName));
-        List<String> objects = queryObject.getResultList();
+        List<ObjectsEntity> objects = queryObject.getResultList();
 
         return objects;
     }
