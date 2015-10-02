@@ -3,5 +3,4 @@
 src/main/resources/application.properties
 .idea/dataSources.xml
 /src/main/java/com/tilf/troke/entity/UsersService.java
-src/main/java/com/tilf/troke/Entity/UsersEntity.java
 *.jar
