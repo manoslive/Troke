@@ -26,5 +26,5 @@ public interface CustomUserRepository {
     List<String> getLast10Objects();
 
     List<ObjectsEntity> getObjectsByCategory(String categoryName);
-    List<String> getObjectsBySubCategory(String subCategoryName);
+    List<ObjectsEntity> getObjectsBySubCategory(String subCategoryName);
 }
