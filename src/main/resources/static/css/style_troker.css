@@ -1,0 +1,392 @@
+#pageTroker{
+	width: inherit;
+	height: inherit;
+	margin: 0 6% 0 6%; 
+	overflow: auto;
+	cursor: default;
+}
+/* Zone inventaireUser */
+#inventaireUser { 
+	margin:0px;
+	padding:0px; 
+	background-color: gray;
+	float: left; 
+	height: 400px; 
+	list-style: none;
+	overflow-y: auto;
+}
+.inventaireUser-header{
+	color: #000;
+  	margin: 0;
+	border:2px #666666;
+	border-style: ridge;
+	border: 2px solid #666666;
+	background: #00ADEE;
+	text-align: center;
+}
+#inventaireUser.custom-state-active { 
+	background: #eee;
+}
+#inventaireUser li { 
+	float: left; 
+	width: 96px; 
+	height:125px; 
+	padding: 0.4em; 
+	margin: 0.4em 0.4em 0.4em 0.4em; 
+	text-align: center; 
+	cursor:move;
+	border-top-right-radius: 0px;
+}
+#inventaireUser li h5 {
+	color: #000;
+  	margin: 0;
+	border:2px #666666;
+	border-style: ridge;
+  	cursor: move; 
+	border: 2px solid #666666;
+	background: #00ADEE;
+}
+#inventaireUser li .icon-zoom  {
+	float: left; 
+	width: 20px; 
+	height:20px;
+	cursor: pointer;
+}
+#inventaireUser li .icon-echange {
+	float: right; 
+	width: 20px; 
+	height:20px;
+	cursor: pointer;
+}
+#inventaireUser li img { 
+	width: 100%; 
+	cursor: move;
+}
+.unItem{
+	border: 2px solid #666666;
+	background-color: #ccc;
+	border-style: ridge;
+	-webkit-box-shadow: inset 0 0 3px #000;
+	-ms-box-shadow: inset 0 0 3px #000;
+	box-shadow: inset 0 0 3px #000;
+}
+/* Zone inventaireOpposant */
+#inventaireOpposant { 
+	margin: 0px;
+	padding:0px; 
+	background-color: gray;
+	float: right; 
+	height: 400px; 
+	list-style: none;
+	overflow-y: auto;
+}
+.inventaireOpposant-header{
+	color: #000;
+  	margin: 0;
+	border:2px #666666;
+	border-style: ridge;
+	border: 2px solid #666666;
+	background: #00ADEE;
+	text-align: center;
+}
+#inventaireOpposant.custom-state-active { 
+	background: #eee;
+}
+#inventaireOpposant li { 
+	float: left; 
+	width: 96px; 
+	height:125px; 
+	padding: 0.4em; 
+	margin: 0.4em 0.4em 0.4em 0.4em; 
+	text-align: center; 
+	cursor:move;
+	border-top-right-radius: 0px;
+}
+#inventaireOpposant li h5 {
+	color: #000;
+  	margin: 0;
+	border:2px #666666;
+	border-style: ridge;
+  	cursor: move; 
+	border: 2px solid #666666;
+	background: #00ADEE;
+}
+#inventaireOpposant li .icon-zoom  {
+	float: left; 
+	width: 20px; 
+	height:20px;
+	cursor: pointer;
+}
+#inventaireOpposant li .icon-echange {
+	float: right; 
+	width: 20px; 
+	height:20px;
+	cursor: pointer;
+}
+#inventaireOpposant li img { 
+	width: 100%; 
+	cursor: move;
+}
+/* Div qui englobe les 2 zones d'échanges' */
+#lesEchanges{
+	width: 34%; 
+	height:400px;
+	display: inline-block;
+	margin:auto;
+}
+/* Zone Echange User */
+#zoneEchangeUser {
+	background-color: gray; 
+	width: 100%; 
+	display: inline-block;
+    margin: 0 20px 0 20px;
+    height: 200px;
+	list-style: none;
+	overflow-y: auto;
+}
+#zoneEchangeUser h4 { 
+	text-align: center;
+	color: #000;
+  	margin: 0;
+	border:2px #666666;
+	border: 2px solid #666666;
+	background: #00ADEE;
+	border-style: ridge;
+}
+#zoneEchangeUser h4 .ui-icon { 
+	float: left; 
+}
+#zoneEchangeUser .inventaireUser h5 { 
+	display: none; 
+}
+#zoneEchangeUser li { 
+	float: left; 
+	width: 96px; 
+	height:115px; 
+	padding: 0.4em; 
+	margin: 0.4em 0.4em 0.4em 0.4em; 
+	text-align: center; 
+	cursor:move;
+}
+#zoneEchangeUser li .icon-refresh{
+	float: right; 
+	width: 20px; 
+	height:20px;
+	cursor: pointer;
+}
+/* Zone Echange Opposant */
+#zoneEchangeOpposant {
+	background-color: gray; 
+	width: 100%; 
+	display: inline-block;
+    margin: 0 20px 0 20px;
+    height: 200px;
+	list-style: none;
+	overflow-y: auto;
+}
+#zoneEchangeOpposant h4 { 
+	text-align: center;
+	color: #000;
+  	margin: 0;
+	border:2px #666666;
+	border: 2px solid #666666;
+	background: #00ADEE;
+	border-style: ridge;
+}
+#zoneEchangeOpposant h4 .ui-icon { 
+	float: left; 
+}
+#zoneEchangeOpposant .inventaireOpposant h5 { 
+	display: none; 
+}
+#zoneEchangeOpposant li { 
+	float: left; 
+	width: 96px; 
+	height:115px; 
+	padding: 0.4em; 
+	margin: 0.4em 0.4em 0.4em 0.4em; 
+	text-align: center; 
+	cursor:move;
+}
+#zoneEchangeOpposant li .icon-refresh{
+	float: right; 
+	width: 20px; 
+	height:20px;
+	cursor: pointer;
+}
+/* Option Info Item Button */
+.icon-zoom  {
+	float: left; 
+	width: 20px; 
+	height:20px;
+	cursor: pointer;
+	text-indent:-9999px;
+	display: block;
+}
+.link-zoom{
+    width: inherit;
+    height: inherit;
+    cursor: pointer;
+    position: relative;
+    display: block;
+    z-index: 1;
+}
+.btn-zoom{
+	background-image:url('../images/zoom_icon.png');
+	float: left; 
+	width: 20px; 
+	height:20px;
+	cursor: pointer;
+	text-indent:-9999px;
+	display: block;
+}
+.follower{
+	width: inherit;
+	height: inherit;
+	position: inherit;
+}
+/* Les highlight des zones pour guider le user */
+.ui-state-highlight{
+	background: gray !important;
+	border: 4px dotted white !important;
+}
+.custom-state-active{
+	background: white !important;
+	border: 4px dotted black !important;
+}
+/*Open Modal Info Item Overlay*/
+.modal-box {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 99999;
+    opacity:0;
+    /*-webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;*/
+    pointer-events: none;
+}
+.modal-box-show {
+    opacity:1;
+    pointer-events: auto;
+}
+.modal-box > div {
+    width: 600px;
+	height: inherit;
+    position: relative;
+    margin: 1% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: #fff;
+    background: -moz-linear-gradient(#fff, #999);
+    background: -webkit-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);
+}
+
+.modal-overlay {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3) !important;
+}
+.close {
+    background: #ffffff;
+	color: #000000;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+	opacity:100 !important;
+}
+.close:hover {
+    background: #00ADEE;
+	color:#ffffff !important;
+	opacity:100 !important;
+	
+}
+/* Spacer */
+.or-spacer {
+  width: 450px;
+  position: relative;
+  margin: auto;
+}
+.or-spacer .mask {
+  overflow: hidden;
+  height: 10px;
+}
+.or-spacer .mask:after {
+  content: '';
+  display: block;
+  margin: -25px auto 0;
+  width: 100%;
+  height: 25px;
+  border-radius: 125px / 12px;
+  box-shadow: 0 0 8px black;
+}
+
+/* Éléments du Modal Info Item*/
+#mainImage{
+    width: 250px;
+    height: 250px;
+	border: 2px groove black;
+}
+#divSousImages { 
+	float:left;
+	border: 2px groove black;
+	background-color: darkgray !important;
+	border: 1px solid dimgray !important;
+	padding-top: 10px; 
+	overflow: hidden;
+    width: 99.5%;
+    height: 20%;
+}
+.sousImage{
+	width: 50px;
+	height: 50px;
+}
+#description{
+	float:right;
+	width:50%;
+	height: 348px;
+	margin: auto;
+	border: 1px solid dimgray;
+}
+
+/* Scroll image infoItem */
+
+#divSousImages img, #mainImage {
+   border: 1px solid gray;
+   padding: 4px;
+   background-color: white;
+   cursor: pointer;
+}
+#divSousImages img {
+   float: left;
+   margin: 2px;
+}
+#panel {
+    position: relative;
+}
+#gallery{
+	height: 370px;
+    display: inline-block;
+}

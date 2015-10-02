@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    </head>
+
+    <body>
+
+        <div th:fragment="connexion">
+
+            <div id="openModalConnexion" class="modalDialogConnexion" >
+
+                <div style="font-family:Amaranth">
+                    <a href="#close" title="Fermer" class="close">X</a>
+                    <h2 style="text-align:center">Authentification</h2>
+                    <div class="or-spacer">
+                        <div class="mask"></div>
+                    </div>
+                    <form th:action="@{/auth}" method="post" th:object="${post}">
+                        <div style="text-align:center">
+                            <input class="signup-full" type="text"  placeholder="Nom d'usager"  name="iduser"/>
+                            <input class="signup-full" type="password" placeholder="Mot de Passe" name="pass"/>
+                            <input style="float:left" type="checkbox" name="StayConnected" value="Stay">Rester Connecter</input>
+                            <a href = "mailto:ysteinthal@yahoo.com?Subject=Test Trok-E" target="_top" style="float:right">Mot de passe oublié</a>
+                        </div>
+
+
+                        <div class="or-spacer">
+                            <div class="mask"></div>
+                        </div>
+                        <div style="height:100%">
+                            <p th:if="${session.error}!= null"><p style="color:red" th:text="${session.error}"></p></p>
+                        </div>
+                        <div>
+                            <!--<a style="text-align:center;font-size:16px;" title="Valider" class="valid" type="submit">Valider</a> -->
+                            <input type="submit" class="valid" title="Valider" style="text-align: center; font-size:16px;"/>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div> <!-- fin fragment -->
+    </body>
+</html>

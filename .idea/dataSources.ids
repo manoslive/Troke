@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="localhost" uuid="b833a84c-a12c-4235-a1cd-83122195dbe1">
+    <database-info product="MySQL" version="5.6.26-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="troke"/>
+    <table name="category" schema="" catalog="troke" type="TABLE">
+      <column name="IDCATEGORY" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="NAME_CATEGORY" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="IDCATEGORY"/>
+      <exported-key name="IDCATEGORY_FK" table="subcategory" schema="" catalog="troke" columns="IDCATEGORY"/>
+    </table>
+    <table name="chat" schema="" catalog="troke" type="TABLE">
+      <column name="IDCHAT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="IDTRANSACTION" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="IDCHAT"/>
+      <foreign-key name="CHAT_TRANSACTION_FK" columns="IDTRANSACTION" ref-table="transactions" ref-schema="" ref-catalog="troke" ref-columns="IDTRANSACTION" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="CHATMESSAGE_CHAT_FK" table="chatmessage" schema="" catalog="troke" columns="IDCHAT"/>
+      <index name="CHAT_TRANSACTION_FK" unique="false" columns="IDTRANSACTION"/>
+    </table>
+    <table name="chatmessage" schema="" catalog="troke" type="TABLE">
+      <column name="IDCHATMESSAGE" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="MSG" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DATE_TIME" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="IDCHAT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="IDUSER" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ISREAD" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="IDCHATMESSAGE"/>
+      <foreign-key name="CHATMESSAGE_CHAT_FK" columns="IDCHAT" ref-table="chat" ref-schema="" ref-catalog="troke" ref-columns="IDCHAT" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="CHATMESSAGE_USERS_FK" columns="IDUSER" ref-table="users" ref-schema="" ref-catalog="troke" ref-columns="IDUSER" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="CHATMESSAGE_CHAT_FK" unique="false" columns="IDCHAT"/>
+      <index name="CHATMESSAGE_USERS_FK" unique="false" columns="IDUSER"/>
+    </table>
+    <table name="objectrating" schema="" catalog="troke" type="TABLE">
+      <column name="IDOBJECTRATING" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="IDOBJECT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ESTVALUE" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="IDOBJECTRATING"/>
+      <foreign-key name="OBJECTRATING_OBJECT_FK" columns="IDOBJECT" ref-table="objects" ref-schema="" ref-catalog="troke" ref-columns="IDOBJECT" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="OBJECTRATING_OBJECT_FK" unique="false" columns="IDOBJECT"/>
+    </table>
+    <table name="objects" schema="" catalog="troke" type="TABLE">
+      <column name="IDOBJECT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="NAME_OBJECT" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="DESC_OBJECT" sqlType="VARCHAR" precision="500" scale="0" nullable="false" jdbcType="12"/>
+      <column name="GUID" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="IDSUBCATEGORY" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="VALUE_OBJECT" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="QUALITY" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="IDUSER" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="RATEABLE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
+      <column name="ISSIGNALED" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
+      <column name="CREATIONDATE" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <primary-key name="PRIMARY" columns="IDOBJECT"/>
+      <foreign-key name="OBJECT_SUBCATEGORY" columns="IDSUBCATEGORY" ref-table="subcategory" ref-schema="" ref-catalog="troke" ref-columns="IDSUBCATEGORY" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="OBJECT_USERS_FK" columns="IDUSER" ref-table="users" ref-schema="" ref-catalog="troke" ref-columns="IDUSER" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="OBJECTRATING_OBJECT_FK" table="objectrating" schema="" catalog="troke" columns="IDOBJECT"/>
+      <exported-key name="OBJECTTRAN_OBJECT_FK" table="objecttransaction" schema="" catalog="troke" columns="IDOBJECT"/>
+      <index name="OBJECT_SUBCATEGORY" unique="false" columns="IDSUBCATEGORY"/>
+      <index name="OBJECT_USERS_FK" unique="false" columns="IDUSER"/>
+    </table>
+    <table name="objecttransaction" schema="" catalog="troke" type="TABLE">
+      <column name="IDOBJECT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="IDTRANSACTION" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="IDOBJECT,IDTRANSACTION"/>
+      <foreign-key name="OBJECTTRAN_OBJECT_FK" columns="IDOBJECT" ref-table="objects" ref-schema="" ref-catalog="troke" ref-columns="IDOBJECT" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="OBJECTTRA_TRAN_FK" columns="IDTRANSACTION" ref-table="transactions" ref-schema="" ref-catalog="troke" ref-columns="IDTRANSACTION" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="OBJECTTRA_TRAN_FK" unique="false" columns="IDTRANSACTION"/>
+    </table>
+    <table name="subcategory" schema="" catalog="troke" type="TABLE">
+      <column name="idSUBCATEGORY" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="NAME_SUBCATEGORY" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="IDCATEGORY" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idSUBCATEGORY"/>
+      <foreign-key name="IDCATEGORY_FK" columns="IDCATEGORY" ref-table="category" ref-schema="" ref-catalog="troke" ref-columns="IDCATEGORY" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="OBJECT_SUBCATEGORY" table="objects" schema="" catalog="troke" columns="IDSUBCATEGORY"/>
+      <index name="IDCATEGORY_FK_idx" unique="false" columns="IDCATEGORY"/>
+    </table>
+    <table name="transactions" schema="" catalog="troke" type="TABLE">
+      <column name="IDTRANSACTION" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="IDUSER1" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="IDUSER2" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="DATETRANSACTION" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="ISCOMPLETED" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="IDTRANSACTION"/>
+      <foreign-key name="TRANSACTION_USER1_FK" columns="IDUSER1" ref-table="users" ref-schema="" ref-catalog="troke" ref-columns="IDUSER" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="TRANSACTION_USER2_FK" columns="IDUSER2" ref-table="users" ref-schema="" ref-catalog="troke" ref-columns="IDUSER" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="CHAT_TRANSACTION_FK" table="chat" schema="" catalog="troke" columns="IDTRANSACTION"/>
+      <exported-key name="OBJECTTRA_TRAN_FK" table="objecttransaction" schema="" catalog="troke" columns="IDTRANSACTION"/>
+      <index name="TRANSACTION_USER1_FK" unique="false" columns="IDUSER1"/>
+      <index name="TRANSACTION_USER2_FK" unique="false" columns="IDUSER2"/>
+    </table>
+    <table name="userrating" schema="" catalog="troke" type="TABLE">
+      <column name="IDUSERRATING" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="IDUSER" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="RATING" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="POSITIVE" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="NEGATIVE" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="IDUSERRATING"/>
+      <foreign-key name="USERRATING_USERS_FK" columns="IDUSER" ref-table="users" ref-schema="" ref-catalog="troke" ref-columns="IDUSER" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="USERRATING_USERS_FK" unique="false" columns="IDUSER"/>
+    </table>
+    <table name="users" schema="" catalog="troke" type="TABLE">
+      <column name="IDUSER" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="LASTNAME" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FIRSTNAME" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PASS" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="AVATAR" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ISBANNED" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
+      <column name="ISONLINE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
+      <column name="CREATIONDATE" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="EMAIL" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TELEPHONE" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ZIPCODE" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PERMISSIONLEVEL" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="ISVIP" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="IDUSER"/>
+      <exported-key name="CHATMESSAGE_USERS_FK" table="chatmessage" schema="" catalog="troke" columns="IDUSER"/>
+      <exported-key name="OBJECT_USERS_FK" table="objects" schema="" catalog="troke" columns="IDUSER"/>
+      <exported-key name="TRANSACTION_USER1_FK" table="transactions" schema="" catalog="troke" columns="IDUSER1"/>
+      <exported-key name="TRANSACTION_USER2_FK" table="transactions" schema="" catalog="troke" columns="IDUSER2"/>
+      <exported-key name="USERRATING_USERS_FK" table="userrating" schema="" catalog="troke" columns="IDUSER"/>
+    </table>
+  </data-source>
+</component>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<th:block th:fragment="content">
+    <th:block th:if="${objectList} == null">
+        <h2>10 derniers items</h2>
+        <span th:utext="${last10objects}"></span>
+        <br/><br/>
+
+        <h2>Catégories/Sous-catégories</h2>
+        <span th:utext="${allCategories}"></span>
+    </th:block>
+    <th:block th:if="${objectList} != null">
+        <ul th:each="obj : ${objectList}">
+            <li type="disc" th:id="test" th:text="${obj}"></li>
+        </ul>
+        <th:block th:if="${objectList.size() == 0}">
+            <h2>Pas de résultat</h2>
+        </th:block>
+    </th:block>
+
+</th:block>
+</body>
+</html>

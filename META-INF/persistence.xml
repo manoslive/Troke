@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="persistenceUnit">
+        <class>com.tilf.troke.entity.UsersEntity</class>
+        <class>com.tilf.troke.entity.CategoryEntity</class>
+        <class>com.tilf.troke.entity.ChatEntity</class>
+        <class>com.tilf.troke.entity.ChatmessageEntity</class>
+        <class>com.tilf.troke.entity.ObjectratingEntity</class>
+        <class>com.tilf.troke.entity.ObjectsEntity</class>
+        <class>com.tilf.troke.entity.ObjecttransactionEntity</class>
+        <class>com.tilf.troke.entity.TransactionsEntity</class>
+        <class>com.tilf.troke.entity.UserratingEntity</class>
+        <class>com.tilf.troke.entity.SubcategoryEntity</class>
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/troke"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.connection.username"/>
+            <property name="hibernate.connection.password"/>
+        </properties>
+    </persistence-unit>
+</persistence>

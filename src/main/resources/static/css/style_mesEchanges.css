@@ -1,0 +1,68 @@
+#pageMesEchanges{
+	width: inherit;
+	height: inherit;
+	margin: auto; 
+	overflow: auto;
+}
+#mesEchangesSortable { 
+	list-style-type: none;
+	color: black;
+}
+#mesEchangesSortable li { 
+	margin: 0 3px 3px 5px; 
+	width: 80%; 
+	height: 80px; 
+}
+#mesEchangesSortable li header {
+  color: #fff;
+  text-shadow: #000 0 1px;
+  box-shadow: 5px;
+  padding: 5px;
+  background: -moz-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
+  background: -webkit-gradient(linear, left top, right top,
+                               color-stop(0, rgb(0,0,0)),
+                               color-stop(0.50, rgb(79,79,79)),
+                               color-stop(1, rgb(21,21,21)));
+  background: -webkit-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
+  background: -ms-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
+}
+.unEchange{
+	font-size: 1.4em;
+	display: table;
+	width:100%;
+	text-align: center;
+	border: 2px ridge #666666;
+	background-color: #ccc;
+	margin-right: 5px;
+	-webkit-box-shadow: inset 0 0 3px #000;
+	-ms-box-shadow: inset 0 0 3px #000;
+	box-shadow: inset 0 0 3px #000;
+	cursor: pointer;
+}
+.unEchange_placeholder{
+	height: 1.5em; 
+	line-height: 1.2em;
+	background-color: gray;
+	opacity: 0.4;
+	border: 2px dashed white;
+	-webkit-box-shadow: inset 0 0 3px #000;
+	-ms-box-shadow: inset 0 0 3px #000;
+	box-shadow: inset 0 0 3px #000;
+}
+.dragIcon{
+	position: relative;
+	top:2px;
+	left:-2px;
+	background: url(../images/move_icon.png) no-repeat center ;
+	background-size: contain !important;
+    background-color: rgba(0, 0, 0, 0);
+	width: 36px;
+	height: 36px;
+	float:right;
+	cursor: move;
+}
+.loadContent{
+  	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
