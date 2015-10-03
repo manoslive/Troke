@@ -23,7 +23,7 @@ public interface CustomUserRepository {
     List<String> getAllSubCategories(String categoryName);
 
     // Requêtes sur les objets
-    List<String> getLast10Objects();
+    List<ObjectsEntity> getTenMostRecentObjects();
 
     List<ObjectsEntity> getObjectsByCategory(String categoryName);
     List<ObjectsEntity> getObjectsBySubCategory(String subCategoryName);

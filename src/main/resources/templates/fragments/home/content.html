@@ -1,21 +1,45 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:width="http://www.w3.org/1999/xhtml">
 <head>
 </head>
 <body>
 <th:block th:fragment="content">
+    <!-- Affichage de toutes les catégories -->
     <th:block th:if="${objectList} == null">
-        <h2>10 derniers items</h2>
-        <span th:utext="${last10objects}"></span>
-        <br/><br/>
+        <h2> 10 dernières parutions</h2>
+
+        <div th:each="obj : ${last10objects}" style="display: inline-block; background-color: #22c8ff; margin: 1%"
+             width="100%">
+            <h2 th:id="objectName" th:text="${obj.getNameObject()}"></h2>
+
+            <h3 th:id="objectDesc" th:text="${obj.getDescObject()}"></h3>
+            <ul>
+                <li type="disc" th:id="value" th:text="'Valeur: ' + ${obj.getValueObject()}"></li>
+                <li type="disc" th:id="quality" th:text="'Qualité: ' + ${obj.getQuality()}"></li>
+                <li type="disc" th:id="seller" th:text="'Vendeur: ' + ${obj.getIduser()}"></li>
+                <li type="disc" th:id="date" th:text="'Date de parution: ' + ${obj.getCreationdate()}"></li>
+            </ul>
+        </div>
 
         <h2>Catégories/Sous-catégories</h2>
         <span th:utext="${allCategories}"></span>
     </th:block>
+
+    <!-- Après une recherche -->
     <th:block th:if="${objectList} != null">
-        <ul th:each="obj : ${objectList}">
-            <li type="disc" th:id="test" th:value="${obj.nameObject}"></li>
-        </ul>
+        <div th:each="obj : ${objectList}" style="display: inline-block; background-color: #22c8ff; margin: 1%"
+             width="100%">
+            <h2 th:id="objectName" th:text="${obj.getNameObject()}"></h2>
+
+            <h3 th:id="objectDesc" th:text="${obj.getDescObject()}"></h3>
+            <ul>
+                <li type="disc" th:id="value" th:text="'Valeur: ' + ${obj.getValueObject()}"></li>
+                <li type="disc" th:id="quality" th:text="'Qualité: ' + ${obj.getQuality()}"></li>
+                <li type="disc" th:id="seller" th:text="'Vendeur: ' + ${obj.getIduser()}"></li>
+                <li type="disc" th:id="date" th:text="'Date de parution: ' + ${obj.getCreationdate()}"></li>
+
+            </ul>
+        </div>
         <th:block th:if="${objectList.size() == 0}">
             <h2>Pas de résultat</h2>
         </th:block>

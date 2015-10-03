@@ -81,7 +81,7 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
 
         String query = "select NAME_SUBCATEGORY from subcategory where IDCATEGORY=:number1";
         Query queryObject = entityManager.createNativeQuery(query);
-        number = GetIdCategoryFromCategoryName(categoryName);
+        number = getIdCategoryFromCategoryName(categoryName);
         queryObject.setParameter("number1", number);
 
         List<String> subcategoryList = (List<String>)queryObject.getResultList();
@@ -89,33 +89,12 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
         return subcategoryList;
     }
 
-    public int GetIdCategoryFromCategoryName(String categoryName)
-    {
-        int idcategory = -1;
-        try {
-            String query = "select distinct c.idcategory from troke.category c " +
-                    "inner join troke.subcategory s on c.idcategory=s.idcategory " +
-                    "where name_category=:name";
-
-            Query queryObject = entityManager.createNativeQuery(query);
-            queryObject.setParameter("name", categoryName);
-            idcategory = (int) queryObject.getSingleResult();
-        }
-        catch(NoResultException iae)
-        {
-            System.out.println(iae.fillInStackTrace());
-            System.out.println(iae.getMessage());
-        }
-        return idcategory;
-    }
-
     // Requêtes sur les objects
     @Override
-    public List<String> getLast10Objects()
+    public List<ObjectsEntity> getTenMostRecentObjects()
     {
-        String query = "select NAME_OBJECT from objects order by creationdate desc limit 10";
-        Query queryObject = entityManager.createNativeQuery(query);
-        List<String> objects = (List<String>)queryObject.getResultList();
+        TypedQuery<ObjectsEntity> query = entityManager.createQuery("select o from ObjectsEntity o order by o.creationdate desc", ObjectsEntity.class);
+        List<ObjectsEntity> objects = query.setMaxResults(10).getResultList();
 
         return objects;
     }
@@ -123,32 +102,38 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
     @Override
     public List<ObjectsEntity> getObjectsByCategory(String categoryName)
     {
-        String query = "select * from objects where idcategory=:idcategory";
-        Query queryObject = entityManager.createNativeQuery(query);
-        queryObject.setParameter("idcategory", GetIdCategoryFromCategoryName(categoryName));
-        List<ObjectsEntity> objects = queryObject.getResultList();
+        TypedQuery<ObjectsEntity> query = entityManager.createQuery("select o from ObjectsEntity as o where exists (select s from SubcategoryEntity s where o.idsubcategory=s.idSubcategory and s.idcategory=:idcategory)", ObjectsEntity.class);
+        query.setParameter("idcategory", getIdCategoryFromCategoryName(categoryName));
+        List<ObjectsEntity> result = query.getResultList();
 
-        return objects;
+        return result;
     }
 
     @Override
     public List<ObjectsEntity> getObjectsBySubCategory(String subCategoryName)
     {
-        String query = "select * from objects where idsubcategory=:idcategory";
-        Query queryObject = entityManager.createNativeQuery(query);
-        queryObject.setParameter("idcategory", getSubCategoryIdBySubCategoryName(subCategoryName));
-        List<ObjectsEntity> objects = queryObject.getResultList();
+        TypedQuery<ObjectsEntity> query = entityManager.createQuery("select o from ObjectsEntity o where o.idsubcategory=:idsubcategory", ObjectsEntity.class);
+        query.setParameter("idsubcategory", getSubCategoryIdBySubCategoryName(subCategoryName));
+        List<ObjectsEntity> result = query.getResultList();
 
-        return objects;
+        return result;
     }
 
     public int getSubCategoryIdBySubCategoryName(String subCategoryName)
     {
-        String query = "select IDSUBCATEGORY from troke.subcategory s inner join troke.category c on s.idcategory=c.idcategory where NAME_SUBCATEGORY=:name";
+        String query = "select IDSUBCATEGORY from subcategory s inner join category c on s.idcategory=c.idcategory where NAME_SUBCATEGORY=:name";
         Query queryObject = entityManager.createNativeQuery(query);
         queryObject.setParameter("name", subCategoryName);
         int idsubcategory = (int)queryObject.getSingleResult();
 
         return idsubcategory;
+    }
+    public int getIdCategoryFromCategoryName(String categoryName)
+    {
+        String query = "select distinct c.idcategory from category c inner join subcategory s on c.idcategory=s.idcategory where name_category=:name";
+        Query queryObject = entityManager.createNativeQuery(query);
+        queryObject.setParameter("name", categoryName);
+        int idcategory = (int) queryObject.getSingleResult();
+        return idcategory;
     }
 }

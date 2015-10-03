@@ -65,7 +65,6 @@
           <element id="library" level="project" name="Maven: org.unbescape:unbescape:1.1.0.RELEASE" />
           <element id="library" level="project" name="Maven: nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:1.2.9" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.36" />
-          <element id="library" level="project" name="Thymeleaf-2.1.4" />
         </element>
       </element>
       <element id="directory" name="META-INF">

@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.thymeleaf.context.WebContext;
-import org.thymeleaf.expression.Objects;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -42,6 +40,13 @@ public class HomeController {
         List<String> categoryList = customUserRepository.getAllCategories();
 
         model.addAttribute("categoryList", categoryList);
+        model.addAttribute("address", "/category?categoryName=");
+        // TODO THYMELEAF HACK
+        if (false) {
+            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+            context.setVariable("categoryList", categoryList);
+            context.setVariable("address", "/category?categoryName=");
+        }
     }
 
     public String FillCategoryList(Model model) {
@@ -69,19 +74,13 @@ public class HomeController {
         }
         return "redirect:/";
     }
-
     public String GetTenNewestItems(Model model) {
-        String html = "";
-        List<String> objects = customUserRepository.getLast10Objects();
+        List<ObjectsEntity> objects = customUserRepository.getTenMostRecentObjects();
 
-        for (Iterator<String> i = objects.iterator(); i.hasNext(); ) {
-            html += "<div>" + i.next() + "</div>";
-        }
-        model.addAttribute("last10objects", html);
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("last10objects", html);
+            context.setVariable("last10objects", objects);
             // context.setVariable("smlStrany", smlStranaRepository.findBySmlouva(smlouva));
         }
         return "redirect:/";
@@ -90,49 +89,27 @@ public class HomeController {
     // Test de catégorie
     @RequestMapping(value = "/category", method = RequestMethod.GET)
     public String ListCategoryItems(@RequestParam("categoryName") String categoryName, Model model) {
-        String url = "";
-        /*
-        List<ObjectsEntity> objects = customUserRepository.getObjectsByCategory(categoryName);
 
-        for (ObjectsEntity obj : objects) {
-            url += "<div>" + obj.getNameObject() + "</div>";
+        model.addAttribute("objectList", customUserRepository.getObjectsByCategory(categoryName));
+        // TODO THYMELEAF HACK
+        if (false) {
+            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+            context.setVariable("objectList", customUserRepository.getObjectsByCategory(categoryName));
         }
-        */
-        model.addAttribute("recherche", "<div>" + categoryName + "</div>");
-        //model.addAttribute("recherche", url);
+
+        model.addAttribute("objectList", customUserRepository.getObjectsByCategory(categoryName));
 
         return "forward:/";
     }
 
     @RequestMapping(value = "/subcategory", method = RequestMethod.GET)
-    public String ListSubCategoryItems(@RequestParam("categoryName") String categoryName, @RequestParam("subCategoryName") String subCategoryName, Model model) {
-        String url = "";
-        // List<ObjectsEntity> objects = customUserRepository.getObjectsBySubCategory(subCategoryName);
+    public String ListSubCategoryItems(@RequestParam("subCategoryName") String subCategoryName, Model model) {
 
-        /*
-        for (Object[] obj : test) {
-            ObjectsEntity objects = test[0];
-            url += "<div>" + obj.getNameObject() + "</div>";
-        }
-
-
-        for (Iterator<Object[]> i = test.iterator(); i.hasNext();) {
-            ObjectsEntity oe = (ObjectsEntity)i.next();
-        }
-
-        for(Object u: objects) {
-            ObjectsEntity user = (ObjectsEntity) u;
-            url += "<div>" + user.getNameObject() + "</div>";
-        }
-        */
-        // model.addAttribute("recherche", "<div>" + subCategoryName + "</div>");
-        // model.addAttribute("recherche", url);
         model.addAttribute("objectList", customUserRepository.getObjectsBySubCategory(subCategoryName));
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("objectList", customUserRepository.getObjectsBySubCategory(subCategoryName));
-            // context.setVariable("smlStrany", smlStranaRepository.findBySmlouva(smlouva));
         }
         return "forward:/";
     }
