@@ -70,7 +70,6 @@ public class HomeController {
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("allCategories", html);
-            // context.setVariable("smlStrany", smlStranaRepository.findBySmlouva(smlouva));
         }
         return "redirect:/";
     }

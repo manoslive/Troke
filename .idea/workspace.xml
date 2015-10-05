@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f947bb62-d6ad-4da4-b5ae-73659883da55" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomUserRepositoryImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomUserRepositoryImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomUserRepositoryImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomUserRepositoryImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/HomeController.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/HomeController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/LoginController.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/LoginController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java" afterPath="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/content.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/content.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/home.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/home.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/inscription.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/inscription.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="troke_springboot.iws" />
@@ -51,8 +54,8 @@
       <file leaf-file-name="content.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/content.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.5384617">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state vertical-scroll-proportion="-7.1923075">
+              <caret line="29" column="33" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="33" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#th:block#0;n#th:block#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#th:block#1;n#th:block#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -71,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CustomUserRepositoryImpl.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CustomUserRepositoryImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomUserRepositoryImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.1264881">
-              <caret line="123" column="83" selection-start-line="123" selection-start-column="75" selection-end-line="123" selection-end-column="83" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="40" column="27" selection-start-line="40" selection-start-column="27" selection-end-line="40" selection-end-column="27" />
               <folding>
                 <marker date="1444065219324" expanded="true" signature="587:646" placeholder="select * fro..users..." />
                 <marker date="1444065219324" expanded="true" signature="1043:1085" placeholder="select * fro..users..." />
@@ -95,7 +98,42 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="78" column="53" selection-start-line="78" selection-start-column="53" selection-end-line="78" selection-end-column="53" />
+              <caret line="55" column="67" selection-start-line="55" selection-start-column="67" selection-end-line="55" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="inscription.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/inscription.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-22.576923">
+              <caret line="62" column="26" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h2#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h2#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h2#2;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#2;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#2;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/home.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.1904762">
+              <caret line="80" column="1" selection-start-line="80" selection-start-column="1" selection-end-line="80" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -167,11 +205,9 @@
         <option value="$PROJECT_DIR$/.idea/dataSources.local.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/site/listusers.html" />
         <option value="$PROJECT_DIR$/.idea/dataSources.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/inscription.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/connexion.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/header.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/home.js" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/footer.html" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/home.html" />
@@ -183,9 +219,11 @@
         <option value="/Thymeleaf Expressions Fragment (content.html:511).thymes" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomUserRepository.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/navbar.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomUserRepositoryImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/content.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/inscription.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/home.js" />
       </list>
     </option>
   </component>
@@ -461,6 +499,62 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="home" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="troke_springboot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="troke_springboot-master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="troke_springboot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="troke_springboot-master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -976,7 +1070,7 @@
       <workItem from="1443122608223" duration="11825000" />
       <workItem from="1443201528883" duration="32430000" />
       <workItem from="1443650017206" duration="52778000" />
-      <workItem from="1443815075938" duration="23366000" />
+      <workItem from="1443815075938" duration="26704000" />
     </task>
     <task id="LOCAL-00001" summary="hj,kjdyt">
       <created>1443153496350</created>
@@ -1116,11 +1210,17 @@
       <option name="project" value="LOCAL" />
       <updated>1444054538031</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="10 derniers objects">
+      <created>1444065551705</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1444065551705</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120399000" />
+    <option name="totallyTimeSpent" value="123737000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1203,7 +1303,8 @@
     <MESSAGE value="menu catégorie lien fonctionnel" />
     <MESSAGE value="les liens de catégories fonctionnent. le drop down menu aussi!" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="10 derniers objects" />
+    <option name="LAST_COMMIT_MESSAGE" value="10 derniers objects" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1320,6 +1421,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.81778425">
           <caret line="33" column="20" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1339,26 +1441,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/inscription.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.423077">
-          <caret line="38" column="41" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/authentification.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18030304">
           <caret line="7" column="146" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="146" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="76" column="1" selection-start-line="76" selection-start-column="1" selection-end-line="76" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -1563,25 +1650,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="78" column="53" selection-start-line="78" selection-start-column="53" selection-end-line="78" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/content.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#th:block#0;n#th:block#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#th:block#1;n#th:block#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/footer.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.8461537">
@@ -1592,8 +1660,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomUserRepositoryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1264881">
-          <caret line="123" column="83" selection-start-line="123" selection-start-column="75" selection-end-line="123" selection-end-column="83" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="27" selection-start-line="40" selection-start-column="27" selection-end-line="40" selection-end-column="27" />
           <folding>
             <marker date="1444065219324" expanded="true" signature="587:646" placeholder="select * fro..users..." />
             <marker date="1444065219324" expanded="true" signature="1043:1085" placeholder="select * fro..users..." />
@@ -1605,6 +1673,56 @@
             <marker date="1444065219324" expanded="true" signature="4361:4480" placeholder="select IDSUB..subcategory..." />
             <marker date="1444065219324" expanded="true" signature="4807:4931" placeholder="select disti..category..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/content.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.1923075">
+          <caret line="29" column="33" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="33" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#th:block#0;n#th:block#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#th:block#1;n#th:block#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="55" column="67" selection-start-line="55" selection-start-column="67" selection-end-line="55" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/inscription.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.576923">
+          <caret line="62" column="26" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h2#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h2#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h2#2;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#2;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#2;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1904762">
+          <caret line="80" column="1" selection-start-line="80" selection-start-column="1" selection-end-line="80" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>

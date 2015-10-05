@@ -49,10 +49,39 @@ $('#avatar').click(function(){
 	    e.stopPropagation();
 	}, false);
 }
-
-
+function generateCaptcha(){
+	var sym = Math.floor((Math.random() * 2) + 1);
+	if(sym === 1){
+		sym = "+";
+	}else{
+		sym = "-";
+	}
+	document.getElementById("num1").value= Math.floor((Math.random() * 50) + 10);
+	document.getElementById("num2").value= Math.floor((Math.random() * 10) + 1);
+	document.getElementById("sym").value= sym;
+}
+function checkCaptcha(){
+	var num1 = document.getElementById("num1").value;
+	var num2 = document.getElementById("num2").value;
+	var sym = document.getElementById("sym").value;
+	var resultat;
+	if(sym === "+"){
+		resultat = parseInt(num1) + parseInt(num2);
+	}else{
+		resultat = parseInt(num1) - parseInt(num2);
+	}
+	if(parseInt(document.getElementById("captcha").value) === resultat){
+		alert("Captcha est bon!");
+		//Post l'inscription ...
+	}else{
+		alert("Captcha est pas bon!");
+		document.getElementById("captcha").value= "";
+		generateCaptcha();
+	}
+}
 function Flip(){
 	document.querySelector('#openModalInscription').classList.toggle('flip');
+	generateCaptcha();
 }
 function HighlightEmail(){
 	document.querySelector( '#signup-confirmEmail' ).classList.add('highlightTextBox');  
