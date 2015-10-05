@@ -76,7 +76,7 @@ public class HomeController {
     }
     public String GetTenNewestItems(Model model) {
         List<ObjectsEntity> objects = customUserRepository.getTenMostRecentObjects();
-
+        model.addAttribute("last10objects", objects);
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);

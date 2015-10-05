@@ -93,7 +93,7 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
     @Override
     public List<ObjectsEntity> getTenMostRecentObjects()
     {
-        TypedQuery<ObjectsEntity> query = entityManager.createQuery("select o from ObjectsEntity o order by o.creationdate desc", ObjectsEntity.class);
+        TypedQuery<ObjectsEntity> query = entityManager.createQuery("select o from ObjectsEntity as o order by o.creationdate desc", ObjectsEntity.class);
         List<ObjectsEntity> objects = query.setMaxResults(10).getResultList();
 
         return objects;
