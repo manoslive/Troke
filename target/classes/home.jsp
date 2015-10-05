@@ -1,9 +1,0 @@
-<html>
-<head>
-</head>
-<body>
-    <div>
-    ${message}
-    </div>
-</body>
-</html>

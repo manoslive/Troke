@@ -40,28 +40,28 @@ public class HomeController {
         List<String> categoryList = customUserRepository.getAllCategories();
 
         model.addAttribute("categoryList", categoryList);
-        model.addAttribute("address", "/category?categoryName=");
+        model.addAttribute("address", "category?categoryName=");
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("categoryList", categoryList);
-            context.setVariable("address", "/category?categoryName=");
+            context.setVariable("address", "category?categoryName=");
         }
     }
 
-    public String FillCategoryList(Model model) {
+    public void FillCategoryList(Model model) {
         String html = "";
         List<String> cats = customUserRepository.getAllCategories();
 
         for (Iterator<String> i = cats.iterator(); i.hasNext(); ) {
             String currentCat = i.next();
-            html += "<div><a href=\"/category?categoryName=" + currentCat + "\">" + currentCat +
+            html += "<div><a href=\"category?categoryName=" + currentCat + "\">" + currentCat +
                     "</a><ul> ";
 
             List<String> subcats = customUserRepository.getAllSubCategories(currentCat);
             for (Iterator<String> j = subcats.iterator(); j.hasNext(); ) {
                 String currentSubCat = j.next();
-                html += "<li type='disc'><a href=\"/subcategory?subCategoryName=" + currentSubCat + "&categoryName=" + currentCat + "\">" + currentSubCat + "</a></li>";
+                html += "<li type='disc'><a href=\"subcategory?subCategoryName=" + currentSubCat + "&categoryName=" + currentCat + "\">" + currentSubCat + "</a></li>";
             }
             html += "</ul></div>";
         }
@@ -71,7 +71,6 @@ public class HomeController {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("allCategories", html);
         }
-        return "redirect:/";
     }
     public String GetTenNewestItems(Model model) {
         List<ObjectsEntity> objects = customUserRepository.getTenMostRecentObjects();

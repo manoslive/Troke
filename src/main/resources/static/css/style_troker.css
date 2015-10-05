@@ -1,220 +1,328 @@
 #pageTroker{
-	width: inherit;
-	height: inherit;
-	margin: 0 6% 0 6%; 
-	overflow: auto;
-	cursor: default;
+    height: 80%;
+    overflow: auto;
+    cursor: default;
+	position: static;
 }
-/* Zone inventaireUser */
-#inventaireUser { 
-	margin:0px;
-	padding:0px; 
-	background-color: gray;
-	float: left; 
-	height: 400px; 
-	list-style: none;
-	overflow-y: auto;
+/* Zone UserInventory */
+#UserInventory { 
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: normal;
+    background-color: #30697D;
+    float: left;
+    height: 100%;
+    min-height: 502px;
+    max-height: 502px;
+    list-style: none;
+	overflow-x: hidden;
+    overflow-y: auto;
+	position: static;
+	border: 2px solid #003042;
 }
-.inventaireUser-header{
-	color: #000;
-  	margin: 0;
-	border:2px #666666;
-	border-style: ridge;
-	border: 2px solid #666666;
-	background: #00ADEE;
-	text-align: center;
+.UserInventory-header{
+    text-align: center;
+    color: white;
+    margin: 0;
+    border: 2px solid #00374C;
+    background: #00374C;
 }
-#inventaireUser.custom-state-active { 
+#UserInventory.custom-state-active { 
 	background: #eee;
 }
-#inventaireUser li { 
+#UserInventory li { 
 	float: left; 
-	width: 96px; 
+	width: 44%;
+	max-width: 120px; 
 	height:125px; 
-	padding: 0.4em; 
 	margin: 0.4em 0.4em 0.4em 0.4em; 
 	text-align: center; 
 	cursor:move;
-	border-top-right-radius: 0px;
+	border-radius: 4px;
+	z-index: 1000;
+	display: list-item;
+    overflow: hidden;
+	border: 1px solid #00374C;
 }
-#inventaireUser li h5 {
-	color: #000;
-  	margin: 0;
-	border:2px #666666;
-	border-style: ridge;
-  	cursor: move; 
-	border: 2px solid #666666;
-	background: #00ADEE;
+#UserInventory li h5 {
+    text-align: center;
+    color: white;
+    margin: 0;
+    border: 2px solid #00374C;
+    background: #00374C;
 }
-#inventaireUser li .icon-zoom  {
+#UserInventory li .icon-zoom  {
 	float: left; 
 	width: 20px; 
 	height:20px;
 	cursor: pointer;
 }
-#inventaireUser li .icon-echange {
+#UserInventory li .icon-exchange {
 	float: right; 
 	width: 20px; 
 	height:20px;
 	cursor: pointer;
 }
-#inventaireUser li img { 
+#UserInventory li img { 
 	width: 100%; 
 	cursor: move;
+	height: 80px;
 }
-.unItem{
-	border: 2px solid #666666;
+.UserItem .OpponentItem{
+	border: 2px solid #19586F;
 	background-color: #ccc;
 	border-style: ridge;
 	-webkit-box-shadow: inset 0 0 3px #000;
 	-ms-box-shadow: inset 0 0 3px #000;
 	box-shadow: inset 0 0 3px #000;
 }
-/* Zone inventaireOpposant */
-#inventaireOpposant { 
-	margin: 0px;
-	padding:0px; 
-	background-color: gray;
-	float: right; 
-	height: 400px; 
-	list-style: none;
-	overflow-y: auto;
+.lb-money{
+	width:10%;
 }
-.inventaireOpposant-header{
-	color: #000;
-  	margin: 0;
-	border:2px #666666;
-	border-style: ridge;
-	border: 2px solid #666666;
-	background: #00ADEE;
-	text-align: center;
+.inputMoney{
+	width:80%;
 }
-#inventaireOpposant.custom-state-active { 
+.divInputMoney{
+    width: 96%;
+    margin: 30% 0 10% 0;
+}
+
+/* Zone OpponentInventory */
+#OpponentInventory { 
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: normal;
+    background-color: #30697D;
+    height: 100%;
+    min-height: 502px;
+    max-height: 502px;
+    list-style: none;
+	overflow-x: hidden;
+    overflow-y: auto;
+	position: static;
+	border: 2px solid #003042;
+}
+.OpponentInventory-header{
+    text-align: center;
+    color: white;
+    margin: 0;
+    border: 2px solid #00374C;
+    background: #00374C;
+}
+#OpponentInventory.custom-state-active { 
 	background: #eee;
 }
-#inventaireOpposant li { 
+#OpponentInventory li { 
 	float: left; 
-	width: 96px; 
+	width: 44%;
+	max-width: 120px; 
 	height:125px; 
-	padding: 0.4em; 
 	margin: 0.4em 0.4em 0.4em 0.4em; 
 	text-align: center; 
 	cursor:move;
-	border-top-right-radius: 0px;
+	z-index: 1000;
+	display: list-item;
+    overflow: hidden;
+	border-radius: 4px;
+	border: 1px solid #00374C;
 }
-#inventaireOpposant li h5 {
-	color: #000;
-  	margin: 0;
-	border:2px #666666;
-	border-style: ridge;
-  	cursor: move; 
-	border: 2px solid #666666;
-	background: #00ADEE;
+#OpponentInventory li h5 {
+    text-align: center;
+    color: white;
+    margin: 0;
+    border: 2px solid #00374C;
+    background: #00374C;
 }
-#inventaireOpposant li .icon-zoom  {
+#OpponentInventory li .icon-zoom  {
 	float: left; 
 	width: 20px; 
 	height:20px;
 	cursor: pointer;
 }
-#inventaireOpposant li .icon-echange {
+#OpponentInventory li .icon-exchange {
 	float: right; 
 	width: 20px; 
 	height:20px;
 	cursor: pointer;
 }
-#inventaireOpposant li img { 
+#OpponentInventory li img { 
 	width: 100%; 
+	max-width: 100px;
+    height: 80px;
 	cursor: move;
 }
-/* Div qui englobe les 2 zones d'échanges' */
-#lesEchanges{
-	width: 34%; 
-	height:400px;
-	display: inline-block;
-	margin:auto;
+/* éléments qui englobe les 2 zones d'échanges' */
+#exchangeZone{
+    height: 100%;
+	position: static;
+	overflow-x: hidden;
+    overflow-y: hidden;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: normal;
+}
+.btn-offre{
+	margin: 0 0 5px 0 !important;
+	width: 48%;
+	height: 52px;
+	color: white;
+	font-weight:normal !important;
+	text-transform: none !important;
+	font-size: 18px !important;
+	z-index: 1;
+}
+.exchangeZoneHeader{
+	text-align: center !important;
+    color: white !important;
+    margin: 0 !important;
+    border: 2px solid #00374C !important;
+    background: #00374C !important;
 }
 /* Zone Echange User */
-#zoneEchangeUser {
-	background-color: gray; 
-	width: 100%; 
-	display: inline-block;
-    margin: 0 20px 0 20px;
-    height: 200px;
-	list-style: none;
-	overflow-y: auto;
+#UserExchange {
+    background: #30697D;
+    width: 100%;
+    display: inline-block;
+    height: 100%;
+    max-height: 147px;
+    list-style: none;
+    overflow-y: hidden;
+	overflow-x: auto;
+    border: 2px solid #003042;
 }
-#zoneEchangeUser h4 { 
-	text-align: center;
-	color: #000;
-  	margin: 0;
-	border:2px #666666;
-	border: 2px solid #666666;
-	background: #00ADEE;
-	border-style: ridge;
-}
-#zoneEchangeUser h4 .ui-icon { 
+#UserExchange h4 .ui-icon { 
 	float: left; 
 }
-#zoneEchangeUser .inventaireUser h5 { 
+#UserExchange .UserInventory h5 { 
 	display: none; 
 }
-#zoneEchangeUser li { 
+#UserExchange li { 
 	float: left; 
 	width: 96px; 
 	height:115px; 
-	padding: 0.4em; 
-	margin: 0.4em 0.4em 0.4em 0.4em; 
+	max-height: 115px;
+	margin: 0.8em 0.4em 0.4em 0.4em; 
 	text-align: center; 
 	cursor:move;
+	display: list-item;
+    overflow: hidden;
+	border-radius: 4px;
+	border: 1px solid #00374C;
 }
-#zoneEchangeUser li .icon-refresh{
+#UserExchange li .icon-refresh{
+	float: right; 
+	width: 20px; 
+	height:20px;
+	cursor: pointer;
+}
+/* Zone Echange Opposant Pour la page démarer trok*/
+#opponentExchangeItemsStart{
+    background: #30697D;
+    width: 100%;
+    display: inline-block;
+    height: 210px;
+    list-style: none;
+    overflow-y: auto;
+	overflow-x: hidden;
+    border: 2px solid #003042;	
+}
+#opponentExchangeItemsStart h4 zoneEchangeHeader{ 
+    text-align: center;
+    color: white;
+    margin: 0;
+    border: 2px solid #00374C;
+    background: #00374C;
+}
+#opponentExchangeItemsStart h4 .ui-icon { 
+	float: left; 
+}
+#opponentExchangeItemsStart .OpponentInventory h5 { 
+	display: none; 
+}
+#opponentExchangeItemsStart li { 
+	float: left; 
+	width: 96px; 
+	height:115px; 
+	margin: 0.8em 0.4em 0.4em 0.4em; 
+	text-align: center; 
+	cursor:move;
+	display: list-item;
+    overflow: hidden;
+	border-radius: 4px;
+	border: 1px solid #00374C;
+}
+#opponentExchangeItemsStart li .icon-refresh{
 	float: right; 
 	width: 20px; 
 	height:20px;
 	cursor: pointer;
 }
 /* Zone Echange Opposant */
-#zoneEchangeOpposant {
-	background-color: gray; 
-	width: 100%; 
-	display: inline-block;
-    margin: 0 20px 0 20px;
-    height: 200px;
-	list-style: none;
-	overflow-y: auto;
+#OpponentExchange {
+    background: #30697D;
+    width: 100%;
+    display: inline-block;
+    height: 100%;
+    max-height: 147px;
+    list-style: none;
+    overflow-y: hidden;
+	overflow-x: auto;
+    border: 2px solid #003042;
 }
-#zoneEchangeOpposant h4 { 
-	text-align: center;
-	color: #000;
-  	margin: 0;
-	border:2px #666666;
-	border: 2px solid #666666;
-	background: #00ADEE;
-	border-style: ridge;
+#OpponentExchange h4 { 
+    text-align: center;
+    color: white;
+    margin: 0;
+    border: 2px solid #00374C;
+    background: #00374C;
 }
-#zoneEchangeOpposant h4 .ui-icon { 
+#OpponentExchange h4 .ui-icon { 
 	float: left; 
 }
-#zoneEchangeOpposant .inventaireOpposant h5 { 
+#OpponentExchange .OpponentInventory h5 { 
 	display: none; 
 }
-#zoneEchangeOpposant li { 
+#OpponentExchange li { 
 	float: left; 
 	width: 96px; 
 	height:115px; 
-	padding: 0.4em; 
-	margin: 0.4em 0.4em 0.4em 0.4em; 
+	margin: 0.8em 0.4em 0.4em 0.4em; 
 	text-align: center; 
 	cursor:move;
+	display: list-item;
+    overflow: hidden;
+	border-radius: 4px;
+	border: 1px solid #00374C;
 }
-#zoneEchangeOpposant li .icon-refresh{
+#OpponentExchange li .icon-refresh{
 	float: right; 
 	width: 20px; 
 	height:20px;
 	cursor: pointer;
 }
+/* Zone Clavardage */
+#zoneChat{
+	width: 100%;
+}
+#chatBoxStartExchange{
+	width: 100%;
+	height: 179px;
+	background-color: white;
+}
+#chatBox{
+	width: 100%;
+	height: 107px;
+	background-color: white;
+}
+#chatEnter{
+	width: 80%;
+}
+#btn-enter{
+	width: 20%;	
+	float: right;
+}
 /* Option Info Item Button */
+
+.montantArgent{
+	font-size: 14px;
+}
 .icon-zoom  {
 	float: left; 
 	width: 20px; 
@@ -247,17 +355,15 @@
 }
 /* Les highlight des zones pour guider le user */
 .ui-state-highlight{
-	background: gray !important;
-	border: 4px dotted white !important;
+	background: white !important;
 }
 .custom-state-active{
 	background: white !important;
-	border: 4px dotted black !important;
 }
 /*Open Modal Info Item Overlay*/
 .modal-box {
     position: fixed;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     top: 0;
     right: 0;
     bottom: 0;
@@ -349,17 +455,17 @@
     height: 250px;
 	border: 2px groove black;
 }
-#divSousImages { 
+#divSubImages { 
 	float:left;
 	border: 2px groove black;
 	background-color: darkgray !important;
 	border: 1px solid dimgray !important;
-	padding-top: 10px; 
+	padding-top: 5px; 
 	overflow: hidden;
-    width: 99.5%;
+    width: 100%;
     height: 20%;
 }
-.sousImage{
+.subImage{
 	width: 50px;
 	height: 50px;
 }
@@ -373,15 +479,15 @@
 
 /* Scroll image infoItem */
 
-#divSousImages img, #mainImage {
+#divSubImages img, #mainImage {
    border: 1px solid gray;
    padding: 4px;
    background-color: white;
    cursor: pointer;
 }
-#divSousImages img {
+#divSubImages img {
    float: left;
-   margin: 2px;
+   margin: 2.4%;
 }
 #panel {
     position: relative;
@@ -389,4 +495,25 @@
 #gallery{
 	height: 370px;
     display: inline-block;
+}
+
+.container{
+	    background-color: #00455F;
+}
+.ui-widget-header{
+	font-weight:normal !important;	
+}
+/* Container pour les divs échanges qui permet le scroll horizontal */
+.container-outer { 
+	overflow: hidden; 
+	width: 100%; 
+	max-height: 127px !important;
+	height: 150px; 
+}
+.container-inner { 
+	width: 1020px !important; 
+	height: 107px;
+	max-height: 120px !important; 
+	background: #30697D;
+	border:none !important;
 }

@@ -1,0 +1,28 @@
+<html>
+<head>
+<link href="css/style_myExchanges.css" type="text/css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+<link href="bootstrap/js/bootstrap.js" type="text/javascript" rel="stylesheet">
+<link href="bootstrap/js/bootstrap.min.js" type="text/javascript" rel="stylesheet">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+<script type="text/javascript">
+function openTrok(){
+	document.getElementById("myExchanges").innerHTML='<object class="loadContent" type="text/html" data="troker.html"></object>';
+}
+</script>
+</head>
+<div id="myExchanges" class="col-lg-12 container">
+	<ul id="mySortableExchanges">
+		<li class="exchange" onClick="openTrok()"><header>Echange</header></li>
+		<li class="exchange" onClick="openTrok()"><header>Echange2</header></li>
+		<li class="exchange" onClick="openTrok()"><header>Echange3</header></li>
+		<li class="exchange" onClick="openTrok()"><header>Echange4</header></li>
+		<li class="exchange" onClick="openTrok()"><header>Echange5</header></li>
+		<li class="exchange" onClick="openTrok()"><header>Echange6</header></li>
+		<li class="exchange" onClick="openTrok()"><header>Echange7</header></li>
+		<li class="exchange" onClick="openTrok()"><header>Echange8</header></li>
+	</ul>
+</div>
+</html>
