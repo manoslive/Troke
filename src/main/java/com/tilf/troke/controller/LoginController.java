@@ -46,9 +46,15 @@ public class LoginController {
     }
 
     @RequestMapping("/connexion")
-    public String connexion()
+    public String connexion(HttpSession session)
     {
-        return "redirect:/#openModalConnexion";
+        return "redirect:#openModalConnexion";
+    }
+    @RequestMapping("/openModalConnexion")
+    public String openModalConnexion(HttpSession session)
+    {
+        session.removeAttribute("error");
+        return "redirect:/connexion";
     }
 
     @RequestMapping(value="/auth", method= RequestMethod.POST)
