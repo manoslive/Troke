@@ -2,43 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f947bb62-d6ad-4da4-b5ae-73659883da55" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/myExchanges.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/startExchange.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/css/style_myExchanges.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/css/style_search.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/trade.html" />
-      <change type="DELETED" beforePath="C:\Users\Manu\Documents\GitHub\troke_springboot-master\troke_springboot-master\src\main\resources\static\css\style_demarerTrok.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Manu\Documents\GitHub\troke_springboot-master\troke_springboot-master\src\main\resources\static\css\style_mesEchanges.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Manu\Documents\GitHub\troke_springboot-master\troke_springboot-master\src\main\resources\templates\fragments\home\mesEchanges.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Manu\Documents\GitHub\troke_springboot-master\troke_springboot-master\target\classes\home.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Manu\Documents\GitHub\troke_springboot-master\troke_springboot-master\target\classes\templates\fragments\listusers.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Manu\Documents\GitHub\troke_springboot-master\troke_springboot-master\target\classes\templates\home_old.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Manu\Documents\GitHub\troke_springboot-master\troke_springboot-master\target\maven-archiver\pom.properties" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Manu\Documents\GitHub\troke_springboot-master\troke_springboot-master\target\maven-status\maven-compiler-plugin\compile\default-compile\createdFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Manu\Documents\GitHub\troke_springboot-master\troke_springboot-master\target\maven-status\maven-compiler-plugin\compile\default-compile\inputFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Manu\Documents\GitHub\troke_springboot-master\troke_springboot-master\target\maven-status\maven-compiler-plugin\testCompile\default-testCompile\createdFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Manu\Documents\GitHub\troke_springboot-master\troke_springboot-master\target\maven-status\maven-compiler-plugin\testCompile\default-testCompile\inputFiles.lst" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/entity/ChatEntity.class" afterPath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/entity/ChatEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/entity/ChatmessageEntity.class" afterPath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/entity/ChatmessageEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/repository/CustomUserRepository.class" afterPath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/repository/CustomUserRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/repository/CustomUserRepositoryImpl.class" afterPath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/repository/CustomUserRepositoryImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/HomeController.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/HomeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/controller/HomeController.class" afterPath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/controller/HomeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/controller/LoginController.class" afterPath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/controller/LoginController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/entity/ObjectratingEntity.class" afterPath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/entity/ObjectratingEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/entity/ObjectsEntity.class" afterPath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/entity/ObjectsEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/entity/TransactionsEntity.class" afterPath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/entity/TransactionsEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/TrokeApplication.class" afterPath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/TrokeApplication.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/entity/UserratingEntity.class" afterPath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT/WEB-INF/classes/com/tilf/troke/entity/UserratingEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT.war" afterPath="$PROJECT_DIR$/target/troke-0.0.1-SNAPSHOT.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java" afterPath="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/header.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/header.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/home.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/home.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/inscription.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/inscription.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/css/style_troker.css" afterPath="$PROJECT_DIR$/src/main/resources/static/css/style_troker.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/images/ui-bg_diagonals-thick_18_b81900_40x40.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/images/ui-bg_diagonals-thick_20_666666_40x40.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/images/ui-bg_flat_10_000000_40x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/images/ui-bg_glass_100_f6f6f6_1x400.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/images/ui-bg_glass_100_fdf5ce_1x400.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/images/ui-bg_glass_65_ffffff_1x400.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/images/ui-bg_gloss-wave_35_f6a828_500x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/images/ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/images/ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/images/ui-icons_222222_256x240.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/images/ui-icons_228ef1_256x240.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/images/ui-icons_ef8c08_256x240.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/images/ui-icons_ffd27a_256x240.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/images/ui-icons_ffffff_256x240.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/jquery-ui.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/jquery-ui.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/jquery-ui.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/jquery-ui.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/jquery-ui.structure.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/jquery-ui.structure.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/jquery-ui.theme.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/jquery-ui.theme.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/external/jquery/jquery.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="troke_springboot.iws" />
@@ -92,10 +79,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/LoginController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.7733333">
+              <caret line="66" column="16" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5183333">
+            <state vertical-scroll-proportion="0.0">
               <caret line="95" column="1" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="1" />
               <folding />
             </state>
@@ -1239,7 +1236,7 @@
       <workItem from="1443122608223" duration="11825000" />
       <workItem from="1443201528883" duration="32430000" />
       <workItem from="1443650017206" duration="52778000" />
-      <workItem from="1443815075938" duration="34690000" />
+      <workItem from="1443815075938" duration="36001000" />
     </task>
     <task id="LOCAL-00001" summary="hj,kjdyt">
       <created>1443153496350</created>
@@ -1391,11 +1388,17 @@
       <option name="project" value="LOCAL" />
       <updated>1444073918879</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Working inscription">
+      <created>1444082045039</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1444082045039</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131723000" />
+    <option name="totallyTimeSpent" value="133034000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1409,7 +1412,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="2" width="1932" height="1045" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2534319" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="2" y="714" width="1920" height="312" />
@@ -1425,7 +1428,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2045929" sideWeight="0.5135135" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2045929" sideWeight="0.4864865" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2045929" sideWeight="0.4864865" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29114583" sideWeight="0.5055118" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16179541" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1750,14 +1753,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="78" column="35" selection-start-line="78" selection-start-column="35" selection-end-line="78" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/CategoryEntity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1904,6 +1899,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/images/ui-icons_222222_256x240.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="95" column="1" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1912,15 +1920,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4/images/ui-icons_222222_256x240.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/home.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5183333">
-          <caret line="95" column="1" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.7733333">
+          <caret line="66" column="16" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
           <folding />
         </state>
       </provider>
