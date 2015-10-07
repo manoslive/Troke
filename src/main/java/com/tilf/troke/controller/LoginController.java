@@ -61,8 +61,18 @@ public class LoginController {
     public String login(@RequestParam("iduser") String idUser, @RequestParam("pass") String pass, Model model, HttpSession session) {
         UsersEntity user = userRepository.findUsersEntityByIduserAndPass(idUser, pass);
         session.setAttribute("user", user);
-        if (user == null) {
-            session.setAttribute("error"," *Le nom d'utilisateur ou le mot de passe est invalide !" );
+        if(idUser.isEmpty())
+        {
+            session.setAttribute("error", "* Veuillez entrer un nom d'utilisateur");
+            return "redirect:/connexion";
+        }
+        else if(pass.isEmpty())
+        {
+            session.setAttribute("error", "* Veuillez entrer un mot de passe");
+            return "redirect:/connexion";
+        }
+        else if (user == null) {
+            session.setAttribute("error"," * Le nom d'utilisateur ou le mot de passe est invalide !" );
             return "redirect:/connexion";
         } else {
             authContext.setUser(user);
