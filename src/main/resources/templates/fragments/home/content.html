@@ -21,7 +21,6 @@
                 <li type="disc" th:id="date" th:text="'Date de parution: ' + ${obj.getCreationdate()}"></li>
             </ul>
         </div>
-
         <h2>Catégories/Sous-catégories</h2>
         <span th:utext="${allCategories}"></span>
     </th:block>
@@ -38,7 +37,6 @@
                 <li type="disc" th:id="quality" th:text="'Qualité: ' + ${obj.getQuality()}"></li>
                 <li type="disc" th:id="seller" th:text="'Vendeur: ' + ${obj.getIduser()}"></li>
                 <li type="disc" th:id="date" th:text="'Date de parution: ' + ${obj.getCreationdate()}"></li>
-
             </ul>
         </div>
         <th:block th:if="${objectList.size() == 0}">

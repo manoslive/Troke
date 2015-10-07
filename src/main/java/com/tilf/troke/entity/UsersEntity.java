@@ -1,6 +1,7 @@
 package com.tilf.troke.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Date;
 
 /**
@@ -25,7 +26,7 @@ public class UsersEntity {
     private String zipcode;
     private Integer permissionlevel;
     private String isvip;
-
+    @NotNull
     @Id
     @Column(name = "IDUSER")
     public String getIduser() {
@@ -35,7 +36,7 @@ public class UsersEntity {
     public void setIduser(String iduser) {
         this.iduser = iduser;
     }
-
+    @NotNull
     @Basic
     @Column(name = "LASTNAME")
     public String getLastname() {
@@ -45,7 +46,7 @@ public class UsersEntity {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
-
+    @NotNull
     @Basic
     @Column(name = "FIRSTNAME")
     public String getFirstname() {
@@ -55,7 +56,7 @@ public class UsersEntity {
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
-
+    @NotNull
     @Basic
     @Column(name = "PASS")
     public String getPass() {
@@ -65,7 +66,6 @@ public class UsersEntity {
     public void setPass(String pass) {
         this.pass = pass;
     }
-
     @Basic
     @Column(name = "AVATAR")
     public String getAvatar() {
@@ -75,7 +75,7 @@ public class UsersEntity {
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
-
+    @NotNull
     @Basic
     @Column(name = "ISBANNED")
     public String getIsbanned() {
@@ -85,7 +85,7 @@ public class UsersEntity {
     public void setIsbanned(String isbanned) {
         this.isbanned = isbanned;
     }
-
+    @NotNull
     @Basic
     @Column(name = "ISONLINE")
     public String getIsonline() {
@@ -95,7 +95,7 @@ public class UsersEntity {
     public void setIsonline(String isonline) {
         this.isonline = isonline;
     }
-
+    @NotNull
     @Basic
     @Column(name = "CREATIONDATE")
     public Date getCreationdate() {
@@ -105,7 +105,7 @@ public class UsersEntity {
     public void setCreationdate(Date creationdate) {
         this.creationdate = creationdate;
     }
-
+    @NotNull
     @Basic
     @Column(name = "EMAIL")
     public String getEmail() {
@@ -115,7 +115,7 @@ public class UsersEntity {
     public void setEmail(String email) {
         this.email = email;
     }
-
+    @NotNull
     @Basic
     @Column(name = "TELEPHONE")
     public String getTelephone() {
@@ -125,7 +125,7 @@ public class UsersEntity {
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
-
+    @NotNull
     @Basic
     @Column(name = "ZIPCODE")
     public String getZipcode() {
@@ -135,7 +135,7 @@ public class UsersEntity {
     public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
-
+    @NotNull
     @Basic
     @Column(name = "PERMISSIONLEVEL")
     public Integer getPermissionlevel() {
@@ -145,7 +145,7 @@ public class UsersEntity {
     public void setPermissionlevel(Integer permissionlevel) {
         this.permissionlevel = permissionlevel;
     }
-
+    @NotNull
     @Basic
     @Column(name = "ISVIP")
     public String getIsvip() {

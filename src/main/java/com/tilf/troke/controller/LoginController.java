@@ -69,33 +69,4 @@ public class LoginController {
             return "redirect:/";
         }
     }
-
-    @RequestMapping("/adduser")
-    public String addUser(String iduser, String lastname, String firstname, String pass, String email, String telephone, String zipcode, Model model, HttpSession session) {
-        BigInteger zero = BigInteger.valueOf(0);
-        if (customUserRepository.checkUserExistance(iduser) == zero) {
-            java.sql.Date now = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-            UsersEntity user = new UsersEntity();
-            user.setIduser(iduser);
-            user.setFirstname(firstname);
-            user.setLastname(lastname);
-            user.setPass(pass);
-            user.setAvatar(null);
-            user.setIsbanned("N");
-            user.setIsonline("N");
-            user.setCreationdate(now);
-            user.setEmail(email);
-            user.setTelephone(telephone);
-            user.setZipcode(zipcode);
-            user.setPermissionlevel(0);
-            user.setIsvip("N");
-
-            userRepository.save(user);
-            return "home";
-
-        } else {
-            model.addAttribute("loginError", "Nom d'usager non disponible!");
-            return "inscription";
-        }
-    }
 }

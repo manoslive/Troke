@@ -31,9 +31,15 @@ public class HomeController {
         return "home";
     }
 
+    @RequestMapping("/inscriptionNew")
+    public String inscriptionNew(HttpSession session) {
+        session.removeAttribute("errorInscription");
+        return "redirect:#openModalInscription";
+    }
+
     @RequestMapping("/inscription")
-    public String inscription(Model model) {
-        return "inscription";
+    public String inscription() {
+        return "redirect:#openModalInscription";
     }
 
     public void FillCategoryMenu(Model model) {
@@ -72,6 +78,7 @@ public class HomeController {
             context.setVariable("allCategories", html);
         }
     }
+
     public String GetTenNewestItems(Model model) {
         List<ObjectsEntity> objects = customUserRepository.getTenMostRecentObjects();
         model.addAttribute("last10objects", objects);
