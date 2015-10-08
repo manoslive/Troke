@@ -1,23 +1,24 @@
 package com.tilf.troke.controller;
 
 import com.tilf.troke.entity.UsersEntity;
-import com.tilf.troke.auth.AuthUserContext;
 import com.tilf.troke.repository.CustomUserRepository;
 import com.tilf.troke.repository.UserRepository;
+import com.tilf.troke.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.support.SessionStatus;
 import org.thymeleaf.context.WebContext;
 
-import javax.servlet.http.HttpSession;
+import javax.naming.AuthenticationException;
 import javax.validation.Valid;
+import java.io.Console;
 import java.math.BigInteger;
 import java.util.Calendar;
-import java.util.List;
 
 /**
  * Created by Emmanuel on 2015-09-20.
@@ -30,6 +31,10 @@ public class UserController {
 
     @Autowired
     private CustomUserRepository customUserRepository;
+
+    @Autowired
+    private UserValidator userValidator;
+
     /*
     @RequestMapping("/get")
     public String getUser(@RequestParam("iduser") String idUser, Model model) {
@@ -44,7 +49,38 @@ public class UserController {
         return "site/listusers";
     }
     */
+    @RequestMapping(value = "/adduser",  params={"user"} ,method = RequestMethod.POST)
+    public String adduser(@ModelAttribute("user") @Valid UsersEntity user, BindingResult result) {
+            userValidator.validate(user, result);
 
+            java.sql.Date now = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+            /*
+            if (result.hasErrors()) {
+                model.addAttribute("errors", result.getFieldErrors());
+                // TODO THYMELEAF HACK
+                if (false) {
+                    WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+                    context.setVariable("errors", result.getFieldErrors());
+                }
+                return "redirect:/inscription";
+            } else {
+            */
+            if(!result.hasErrors()){
+                user.setAvatar(null);
+                user.setIsbanned("N");
+                user.setIsonline("N");
+                user.setCreationdate(now);
+                user.setPermissionlevel(0);
+                user.setIsvip("N");
+                userRepository.save(user);
+                return "redirect:/";
+            }
+        return "redirect:/inscription";
+    }
+
+
+
+    /*
     @RequestMapping(value = "/adduser", method = RequestMethod.POST)
     public String addUser(@RequestParam(value = "iduser", required = true) String iduser, @RequestParam(value = "lastname", required = true) String lastname, @RequestParam(value = "firstname", required = true) String firstname,
                           @RequestParam(value = "pass", required = true) String pass, @RequestParam(value = "pass_confirm", required = true) String pass_confirm, @RequestParam(value = "email", required = true) String email,
@@ -82,4 +118,5 @@ public class UserController {
             return "forward:/inscription";
         }
     }
+    */
 }

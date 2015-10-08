@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
 <head>
 </head>
 
 <body>
 <div th:fragment="inscription">
-    <form name="inscriptionForm" th:action="@{/adduser}" method="post">
+    <form action="#" name="inscriptionForm" th:action="@{/adduser}" method="post" th:object="${user}">
         <div id="openModalInscription" class="modalDialogInscription flipcard h ">
             <div class="front" style="font-family:Amaranth">
                 <a href="#close" title="Close" class="close">X</a>
@@ -17,9 +17,9 @@
                 </div>
                 <div style="height: 50%">
                     <div style="float: left; width: 48.5%">
-                        <input class="signup-full" name="iduser" placeholder="Nom d'usager" type="text" tabindex="1"/>
-                        <input class="signup-full" name="firstname" placeholder="Prénom" type="text" tabindex="2"/>
-                        <input class="signup-full" name="lastname" placeholder="Nom de famille" type="text"
+                        <input th:field="*{iduser}" class="signup-full" name="iduser" placeholder="Nom d'usager" type="text" tabindex="1"/>
+                        <input th:field="*{firstname}" class="signup-full" name="firstname" placeholder="Prénom" type="text" tabindex="2"/>
+                        <input th:field="*{lastname}" class="signup-full" name="lastname" placeholder="Nom de famille" type="text"
                                tabindex="3"/>
                     </div>
                     <div id="avatar" src="#" alt="avatar" class="avatar">
@@ -32,34 +32,38 @@
                     </div>
                 </div>
                 <div>
-                    <input class="signup-half zipcode" name="zipcode" placeholder="Code postal" type="text" tabindex="1"
+                    <input th:field="*{zipcode}" class="signup-half zipcode" name="zipcode" placeholder="Code postal" type="text" tabindex="1"
                            style="float: right"/>
-                    <input class="signup-half phone_ca" name="telephone" placeholder="Téléphone" type="text"
+                    <input th:field="*{telephone}" class="signup-half phone_ca" name="telephone" placeholder="Téléphone" type="text"
                            tabindex="1" style="float: left	"/>
                 </div>
-                <input class="signup-full" id="signup-email" name="email" placeholder="Adresse électronique"
+                <input th:field="*{email}" class="signup-full" id="signup-email" name="email" placeholder="Adresse électronique"
                        type="email" tabindex="3" onChange="checkEmail()"/>
-                <input class="signup-full" id="signup-confirmEmail" name="email_confirm"
+                <input th:field="*{email_confirm}" class="signup-full" id="signup-confirmEmail" name="email_confirm"
                        placeholder="Confirmer votre adresse électronique" type="email" tabindex="4"
                        onChange="checkConfirmEmail()"/>
-                <input class="signup-full" name="pass" placeholder="Mot de passe" type="password" tabindex="5"/>
-                <input class="signup-full" name="pass_confirm" placeholder="Confirmer votre mot de passe"
+                <input th:field="*{pass}" class="signup-full" name="pass" placeholder="Mot de passe" type="password" tabindex="5"/>
+                <input th:field="*{pass_confirm}" class="signup-full" name="pass_confirm" placeholder="Confirmer votre mot de passe"
                        type="password" tabindex="5"/>
-                <!--
-                <input th:field="${avatar}" name="avatar" id="avatar_input" type="hidden" value="null"/>
-                <input th:field="${isbanned}" name="isbanned" id="isbanned" type="hidden" value="N"/>
-                <input th:field="${isonline}" name="isonline" id="isonline" type="hidden" value="N"/>
-                <input th:field="${permissionlevel}" name="permission" id="permission" type="hidden" value="0"/>
-                <input th:field="${isvip}" name="isvip" id="isvip" type="hidden" value="N"/>
-                -->
+                <input th:field="*{avatar}" name="avatar" id="avatar_input" type="hidden" value="null"/>
+                <input th:field="*{isbanned}" name="isbanned" id="isbanned" type="hidden" value="N"/>
+                <input th:field="*{isonline}" name="isonline" id="isonline" type="hidden" value="N"/>
+                <input th:field="*{permissionlevel}" name="permission" id="permission" type="hidden" value="0"/>
+                <input th:field="*{isvip}" name="isvip" id="isvip" type="hidden" value="N"/>
+
 
                 <div class="or-spacer" style="margin-top: 18px;">
                     <div class="mask"></div>
                 </div>
                 <div style="height:100%">
-                    <th:block th:if="${session.errorInscription} != null"><p style="color:red"
-                                                                             th:text="${session.errorInscription}"></p>
+                    <!--
+                    <th:block th:if="${#fields.hasErrors('userInscription')}">
+                       <ul>
+                           <li type="disc" style="color:red" th:each="err : ${#fields.errors('userInscription')}" th:text="${err}"/>
+                       </ul>
                     </th:block>
+                    -->
+                    <ul th:if="${#fields.hasErrors('*')}"> <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li></ul>
                 </div>
                 <a style="text-align:center;font-size:16px; cursor: pointer;" title="Valid" class="valid"
                    onclick="Flip(); ConfirmEmail()">Valider</a>
