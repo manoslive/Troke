@@ -1,6 +1,7 @@
 package com.tilf.troke.controller;
 
 import com.tilf.troke.entity.ObjectsEntity;
+import com.tilf.troke.entity.UsersEntity;
 import com.tilf.troke.repository.CustomUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,14 +32,14 @@ public class HomeController {
         return "home";
     }
 
-    @RequestMapping("/inscriptionNew")
-    public String inscriptionNew(HttpSession session) {
+    @RequestMapping(value = "/inscriptionNew", method = RequestMethod.GET)
+    public String inscriptionNew(HttpSession session, UsersEntity user) {
         session.removeAttribute("errorInscription");
         return "redirect:#openModalInscription";
     }
 
-    @RequestMapping("/inscription")
-    public String inscription() {
+    @RequestMapping(value = "/inscription", method = RequestMethod.GET)
+    public String inscription(UsersEntity user) {
         return "redirect:#openModalInscription";
     }
 
