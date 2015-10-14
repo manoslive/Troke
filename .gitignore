@@ -1,3 +1,5 @@
 .idea/dataSources.ids
 .idea/dataSources.xml
 src/main/resources/application.properties
+.idea/dataSources.xml
+src/main/resources/application.properties
