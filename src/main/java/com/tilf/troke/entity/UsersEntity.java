@@ -1,7 +1,5 @@
 package com.tilf.troke.entity;
 
-import org.hibernate.validator.constraints.Email;
-
 import javax.persistence.*;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
@@ -10,45 +8,80 @@ import java.sql.Date;
 
 /**
  * Created by Manu on 2015-10-02.
- *
- *
- *
  */
 
 @Entity
 @Table(name = "users", schema = "", catalog = "troke")
 public class UsersEntity {
-    private String iduser;
-    private String lastname;
-    private String firstname;
-    private String pass;
-    private String pass_confirm;
-    private String avatar;
-    private String isbanned;
-    private String isonline;
-    private Date creationdate;
-    private String email;
-    private String email_confirm;
-    private String telephone;
-    private String zipcode;
-    private Integer permissionlevel;
-    private String isvip;
-
     @NotNull
     @Size(min=4, max=20)
     @Id
     @Column(name = "IDUSER")
+    private String iduser;
+    @NotNull
+    @Basic
+    @Column(name = "LASTNAME")
+    private String lastname;
+    @NotNull
+    @Basic
+    @Column(name = "FIRSTNAME")
+    private String firstname;
+    @NotNull
+    @Basic
+    @Column(name = "PASS")
+    private String pass;
+    @NotNull
+    private String pass_confirm;
+    @Basic
+    @Column(name = "AVATAR")
+    private String avatar;
+    @NotNull
+    @Basic
+    @Column(name = "ISBANNED")
+    private String isbanned;
+
+    @NotNull
+    @Basic
+    @Column(name = "ISONLINE")
+    private String isonline;
+
+    @NotNull
+    @Basic
+    @Column(name = "CREATIONDATE")
+    private Date creationdate;
+
+    @NotNull
+    @Basic
+    @Column(name = "EMAIL")
+    private String email;
+    @NotNull
+    private String email_confirm;
+    @NotNull
+    @Basic
+    @Column(name = "TELEPHONE")
+    private String telephone;
+    @NotNull
+    @Basic
+    @Column(name = "ZIPCODE")
+    private String zipcode;
+    @NotNull
+    @Basic
+    @Column(name = "PERMISSIONLEVEL")
+    private Integer permissionlevel;
+    @NotNull
+    @Basic
+    @Column(name = "ISVIP")
+    private String isvip;
+
+
     public String getIduser() {
         return iduser;
     }
-
     public void setIduser(String iduser) {
         this.iduser = iduser;
     }
 
-    @NotNull
-    @Basic
-    @Column(name = "LASTNAME")
+
     public String getLastname() {
         return lastname;
     }
@@ -57,9 +90,7 @@ public class UsersEntity {
         this.lastname = lastname;
     }
 
-    @NotNull
-    @Basic
-    @Column(name = "FIRSTNAME")
+
     public String getFirstname() {
         return firstname;
     }
@@ -68,9 +99,7 @@ public class UsersEntity {
         this.firstname = firstname;
     }
 
-    @NotNull
-    @Basic
-    @Column(name = "PASS")
+
     public String getPass() {
         return pass;
     }
@@ -78,13 +107,12 @@ public class UsersEntity {
         this.pass = pass;
     }
 
-    @NotNull
+
     public String getPass_confirm(){return pass_confirm;}
     public void setPass_confirm(String pass_confirm){this.pass_confirm = pass_confirm;}
 
 
-    @Basic
-    @Column(name = "AVATAR")
+
     public String getAvatar() {
         return avatar;
     }
@@ -92,9 +120,7 @@ public class UsersEntity {
         this.avatar = avatar;
     }
 
-    @NotNull
-    @Basic
-    @Column(name = "ISBANNED")
+
     public String getIsbanned() {
         return isbanned;
     }
@@ -103,9 +129,7 @@ public class UsersEntity {
         this.isbanned = isbanned;
     }
 
-    @NotNull
-    @Basic
-    @Column(name = "ISONLINE")
+
     public String getIsonline() {
         return isonline;
     }
@@ -114,9 +138,7 @@ public class UsersEntity {
         this.isonline = isonline;
     }
 
-    @NotNull
-    @Basic
-    @Column(name = "CREATIONDATE")
+
     public Date getCreationdate() {
         return creationdate;
     }
@@ -125,10 +147,7 @@ public class UsersEntity {
         this.creationdate = creationdate;
     }
 
-    @Email
-    @NotNull
-    @Basic
-    @Column(name = "EMAIL")
+
     public String getEmail() {
         return email;
     }
@@ -136,13 +155,11 @@ public class UsersEntity {
         this.email = email;
     }
 
-    @NotNull
+
     public String getEmail_confirm() {return email_confirm;}
     public void setEmail_confirm(String email_confirm) {this.email_confirm = email_confirm;}
 
-    @NotNull
-    @Basic
-    @Column(name = "TELEPHONE")
+
     public String getTelephone() {
         return telephone;
     }
@@ -151,9 +168,7 @@ public class UsersEntity {
         this.telephone = telephone;
     }
 
-    @NotNull
-    @Basic
-    @Column(name = "ZIPCODE")
+
     public String getZipcode() {
         return zipcode;
     }
@@ -162,9 +177,7 @@ public class UsersEntity {
         this.zipcode = zipcode;
     }
 
-    @NotNull
-    @Basic
-    @Column(name = "PERMISSIONLEVEL")
+
     public Integer getPermissionlevel() {
         return permissionlevel;
     }
@@ -173,9 +186,7 @@ public class UsersEntity {
         this.permissionlevel = permissionlevel;
     }
 
-    @NotNull
-    @Basic
-    @Column(name = "ISVIP")
+
     public String getIsvip() {
         return isvip;
     }
