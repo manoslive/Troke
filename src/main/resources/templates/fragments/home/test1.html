@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+<th:block th:fragment="test1">
+    <h2> 10 dernières parutions</h2>
+
+    <div th:each="obj : ${last10objects}" style="display: inline-block; background-color: #22c8ff; margin: 1%"
+         width="100%">
+        <h2 th:id="objectName" th:text="${obj.getNameObject()}"></h2>
+
+        <h3 th:id="objectDesc" th:text="${obj.getDescObject()}"></h3>
+        <ul>
+            <li type="disc" th:id="value" th:text="'Valeur: ' + ${obj.getValueObject()}"></li>
+            <li type="disc" th:id="quality" th:text="'Qualité: ' + ${obj.getQuality()}"></li>
+            <li type="disc" th:id="seller" th:text="'Vendeur: ' + ${obj.getIduser()}"></li>
+            <li type="disc" th:id="date" th:text="'Date de parution: ' + ${obj.getCreationdate()}"></li>
+        </ul>
+    </div>
+    <h2>Catégories/Sous-catégories</h2>
+
+    <span th:utext="${allCategories}"></span>
+
+</th:block>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="Trok-é"/>
+    <meta name="keywords" content="Trok, barter, troke, troc"/>
+    <meta name="author" content="Yvon Steinthal, Alexandre Dubé, Emmanuel Beloin, Shaun Cooper"/>
+    <title>
+        Trok-é
+    </title>
+    <link href="css/style.css" type="text/css" rel="stylesheet"/>
+    <link href="css/mainbuttons.css" type="text/css" rel="stylesheet"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/animatecss/2.1.0/animate.min.css"/>
+    <!-- load animate -->
+    <script src="js/jquery.mask.min.js" type="text/javascript"></script>
+    <script src="js/home.js" type="text/javascript"></script>
+
+
+    <th:block th:if="${currentpage == 'home'}" th:replace="fragments/head/home_head :: home_head"/>
+
+    <!--<th:block th:if="${currentpage == 'myexchanges'}" th:replace="fragments/head/myexchanges_head :: myexchanges_head"/>-->
+    <!--
+    <link href="css/demarerTrok.css" type="text/css" rel="stylesheet"/>
+    <link href="css/style_myExchanges.css" type="text/css" rel="stylesheet"/>
+    <link href="css/style_troker.css" type="text/css" rel="stylesheet"/>
+    -->
+
+</head>
+<body style="background-color:#060706;" id="goodlookin">
+
+<!-- Header -->
+<div th:replace="fragments/home/header :: header"></div>
+<!-- frag connexion -->
+<div th:replace="fragments/home/connexion :: connexion"></div>
+<div th:replace="fragments/home/signup :: signup"></div>
+
+<!-- NavBar -->
+<div th:replace="fragments/home/navbar :: navbar "></div>
+
+<!-- Contenu -->
+
+<th:block th:if="${objectList} == null">
+    <div th:replace="fragments/home/home :: home"/>
+    <!--<div th:replace="fragments/home/test1 :: test1"></div>-->
+</th:block>
+<th:block th:if="${objectList} != null">
+    <div th:replace="fragments/home/test2 :: test2"></div>
+</th:block>
+
+<!-- Footer -->
+<div th:replace="fragments/home/footer :: footer">
+
+</div>
+</body>
+</html>

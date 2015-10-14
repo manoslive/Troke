@@ -91,10 +91,10 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
 
     // Requêtes sur les objects
     @Override
-    public List<ObjectsEntity> getTenMostRecentObjects()
+    public List<ObjectsEntity> getRecentItems()
     {
         TypedQuery<ObjectsEntity> query = entityManager.createQuery("select o from ObjectsEntity as o order by o.creationdate desc", ObjectsEntity.class);
-        List<ObjectsEntity> objects = query.setMaxResults(10).getResultList();
+        List<ObjectsEntity> objects = query.setMaxResults(36).getResultList();
 
         return objects;
     }

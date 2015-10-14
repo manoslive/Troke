@@ -28,8 +28,15 @@ public class HomeController {
     public String home(Model model, HttpSession session) {
         FillCategoryMenu(model);
         FillCategoryList(model);
-        GetTenNewestItems(model);
-        return "home";
+        GetRecentItems(model);
+        model.addAttribute("currentpage", "home");
+        // TODO THYMELEAF HACK
+        if (false) {
+            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+            context.setVariable("currentpage", "home");
+
+        }
+        return "template";
     }
 
     @RequestMapping(value = "/inscriptionNew", method = RequestMethod.GET)
@@ -59,7 +66,10 @@ public class HomeController {
     public void FillCategoryList(Model model) {
         String html = "";
         List<String> cats = customUserRepository.getAllCategories();
+        model.addAttribute("catlist", cats);
+        model.addAttribute("adrcat", "/category?categoryName=");
 
+        /*
         for (Iterator<String> i = cats.iterator(); i.hasNext(); ) {
             String currentCat = i.next();
             html += "<div><a href=\"category?categoryName=" + currentCat + "\">" + currentCat +
@@ -72,22 +82,38 @@ public class HomeController {
             }
             html += "</ul></div>";
         }
-        model.addAttribute("allCategories", html);
+        */
+
+        for (Iterator<String> i = cats.iterator(); i.hasNext(); ) {
+            String currentCat = i.next();
+            html += "<div class=\"myCategory\"><header><a href=\"category?categoryName=" + currentCat + "\">" + currentCat +
+                    "</a></header><ul> ";
+
+            List<String> subcats = customUserRepository.getAllSubCategories(currentCat);
+            for (Iterator<String> j = subcats.iterator(); j.hasNext(); ) {
+                String currentSubCat = j.next();
+                html += "<li class=\"lienCategorie\"><a href=\"subcategory?subCategoryName=" + currentSubCat + "&categoryName=" + currentCat + "\">" + currentSubCat + "</a></li>";
+            }
+            html += "</ul></div>";
+        }
+
+        model.addAttribute("catsubcatlist", html);
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("allCategories", html);
+            context.setVariable("catsubcatlist", html);
+            context.setVariable("catlist", cats);
+            context.setVariable("adrcat", "/category?categoryName=");
         }
     }
 
-    public String GetTenNewestItems(Model model) {
-        List<ObjectsEntity> objects = customUserRepository.getTenMostRecentObjects();
-        model.addAttribute("last10objects", objects);
+    public String GetRecentItems(Model model) {
+        List<ObjectsEntity> objects = customUserRepository.getRecentItems();
+        model.addAttribute("recentobjects", objects);
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("last10objects", objects);
-            // context.setVariable("smlStrany", smlStranaRepository.findBySmlouva(smlouva));
+            context.setVariable("recentobjects", objects);
         }
         return "redirect:/";
     }
@@ -104,7 +130,7 @@ public class HomeController {
         }
 
         model.addAttribute("objectList", customUserRepository.getObjectsByCategory(categoryName));
-
+        model.addAttribute("currentpage", "search");
         return "forward:/";
     }
 
@@ -112,6 +138,7 @@ public class HomeController {
     public String ListSubCategoryItems(@RequestParam("subCategoryName") String subCategoryName, Model model) {
 
         model.addAttribute("objectList", customUserRepository.getObjectsBySubCategory(subCategoryName));
+        model.addAttribute("currentpage", "search");
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
