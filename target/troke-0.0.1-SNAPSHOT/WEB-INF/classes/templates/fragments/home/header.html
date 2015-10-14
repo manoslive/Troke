@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+
+    </head>
+
+    <body>
+
+        <div th:fragment="header">
+            <div class="page-header" style="display:inline" id="mainBanner">
+
+                <img src="images/Gradient2.png" class="img-responsive animated fadeIn" id="Banniere"/>
+                <a th:href="@{/}"><img  src="images/Logo2.png" class="img-responsive animated fadeIn Logo" id="Logo"/></a>
+
+		        <span class="dd animated fadeInDown">
+                    <div class="BTN_Creds">
+                        <span th:if="${authUser} == null">
+                            <a href="#openModalConnexion" class="btn btn-sm animated-button thar-two">Connexion</a>
+                            <a href="#openModalInscription" class="btn btn-sm animated-button thar-two">Inscription</a>
+                        </span>
+                        <span th:if="${authUser} != null">
+                            <a th:href="@{/logout}" th:text="'Bienvenue ' + ${authUser.firstname}" class="btn btn-sm animated-button thar-two"></a>
+                        </span>
+                    </div>
+                </span>
+
+            </div>
+
+        </div>
+
+    </body>
+</html>
