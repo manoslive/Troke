@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+        <body>
+        <div th:fragment="profilContent">
+            <div class="mainDiv" style="font-family:Amaranth"><!-- debut 1 -->
+                <div class="leftDiv"><!-- debut 2 -->
+                    <div class="profilDiv"><!-- debut 3 -->
+
+                        <div class = "profilPhotoDiv">
+                            <div id="avatarProfil" src="#" alt="avatar" class="avatarProfil">
+                                <div id="avatarOverlay" style="">
+                                    <div id="avatarPlus" >
+                                        <p id="textFileExplorer" style="left:4%; top:15%;">Changer votre <br/> image de profil</p>
+                                        <input id="fileExplorer" type="file" onchange="PreviewImage(this.value);" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class = "profilInfoDiv">
+
+                            <div class = "profilLeftDiv">
+                                <br/>
+                                <input class="signup-full" name="profile-username" placeholder="Nom d'usager" type="text" tabindex="1"/>
+                                <input class="signup-full" name="profile-prenom" placeholder="Prénom" type="text" tabindex="2"/>
+                                <input class="signup-full" name="profile-nomfamille" placeholder="Nom de famille" type="text" tabindex="3"/>
+
+                            </div>
+
+                            <div class = "profilRightDiv">
+                            <br/>
+                                <input class="signup-full phone_ca" name="profile-telephone" placeholder="Telephone" id="phone" type="text" tabindex="1"/>
+                                <input class="signup-full zipcode" name="profile-codepostal" placeholder="Code Postal" type="text" tabindex="3"/>
+                                <input class="signup-full" name="profile-email" placeholder="Email" type="text" tabindex="3"/>
+                            </div>
+
+                            <div class = "profilInfoButtons">
+                                <div class="BTN_Change">
+                                    <a href="#openModalPassword" class="btn btn-sm animated-button thar-four" style="font-weight:normal">Changement du mot de passe</a>
+                                    <a href="" class="btn btn-sm animated-button thar-four" onclick="ChangeInfo()" style="font-weight:normal">Enregistrer les modifications</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- fin 3 -->
+
+                </div><!-- fin 2 -->
+
+            </div> <!-- fin 1 -->
+
+            <!-- Bootstrap core JavaScript
+            ================================================== -->
+            <!-- Placed at the end of the document so the pages load faster -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <!-- Latest compiled and minified JavaScript -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+            <!-- Demo scripts -->
+            <script src="js/demo.js"></script>
+        </div>
+        </body>
+    </html>

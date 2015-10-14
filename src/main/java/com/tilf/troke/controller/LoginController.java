@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
-import java.math.BigInteger;
-import java.util.Calendar;
 
 /**
  * Created by Emmanuel on 2015-09-21.
@@ -31,7 +29,7 @@ public class LoginController {
 
     @RequestMapping("/login")
     public String login() {
-        return "login";
+        return "profilUser";
     }
 
     @RequestMapping("/test")
@@ -43,6 +41,10 @@ public class LoginController {
     public String logout() {
         authContext.setUser(null);
         return "redirect:/";
+    }
+    @RequestMapping("/profil")
+    public String profil(){
+        return "";
     }
 
     @RequestMapping("/connexion")
