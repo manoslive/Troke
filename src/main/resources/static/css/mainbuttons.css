@@ -362,7 +362,7 @@ a.animated-button.thar-three:before {
 	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1)0s;
 }
 a.animated-button.thar-four {
-	color: #000;
+	color: #fff;
 	margin:10px auto;
 	padding:5px 15px;
 	width:260px;
@@ -370,12 +370,12 @@ a.animated-button.thar-four {
 	display: block;
 	position: relative;
 	font-size:12px;
-	
+	background-color :transparent;
 	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1)0s;
 }
 a.animated-button.thar-four:hover {
 	color: #000 !important;
-	background-color: transparent;
+	background-color: #fff;
 	text-shadow: nfour;
 }
 a.animated-button.thar-four:hover:before {
@@ -401,13 +401,13 @@ a.animated-button.thar-four:before {
   padding: 10px 15px;
 }
 .skyblue {
-    background-color: #22c8ff;
+    background-color: #00455F;
 }
 .deepskyblue {
-    background-color: #00bfff;
+    background-color: #00455F;
 }
 .darkerskyblue {
-    background-color: #00a6dd;
+    background-color: #00455F;
 }
 .carousel-indicators {
     bottom: 0;
@@ -424,7 +424,7 @@ a.animated-button.thar-four:before {
 .carousel-caption h3,
 .carousel .icon-container,
 .carousel-caption button {
-    background-color: #09c;
+    background-color: transparent;
 }
 .carousel-caption h3 {
     padding: .5em;
@@ -467,4 +467,76 @@ h1 {
 
 .p a {
   text-decoration: underline;
+}
+
+.buttonAjout
+{
+	color:white;
+	width:20%;
+	height:40px;
+	background-color:#00455F;
+	border: none;
+	text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    letter-spacing: .08em;
+	font-size:12px;
+	
+	
+}
+
+.buttonAjout:hover
+{
+	color:black;
+	background-color:white;
+}
+
+.buttonModif
+{
+	color:white;
+	width:20%;
+	height:40px;
+	background-color:#00455F;
+	border: none;
+	text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    letter-spacing: .08em;
+	font-size:12px;
+}
+
+.buttonModif:hover
+{
+	color:black;
+	background-color:white;
+	
+}
+
+.buttonSupp
+{
+	color:white;
+	width:20%;
+	height:40px;
+	background-color:#00455F;
+	border: none;
+	text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    letter-spacing: .08em;
+	font-size:12px;
+	
+}
+
+.buttonSupp:hover
+{
+	color:black;
+	background-color:white;
+}
+
+.divAMS
+{
+	background-color:#00455F;
 }
