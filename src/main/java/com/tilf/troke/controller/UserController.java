@@ -3,7 +3,6 @@ package com.tilf.troke.controller;
 import com.tilf.troke.entity.UsersEntity;
 import com.tilf.troke.repository.CustomUserRepository;
 import com.tilf.troke.repository.UserRepository;
-import com.tilf.troke.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,9 +31,6 @@ public class UserController {
     @Autowired
     private CustomUserRepository customUserRepository;
 
-    @Autowired
-    private UserValidator userValidator;
-
     /*
     @RequestMapping("/get")
     public String getUser(@RequestParam("iduser") String idUser, Model model) {
@@ -49,34 +45,26 @@ public class UserController {
         return "site/listusers";
     }
     */
-    @RequestMapping(value = "/adduser",  params={"user"} ,method = RequestMethod.POST)
-    public String adduser(@ModelAttribute("user") @Valid UsersEntity user, BindingResult result) {
-            userValidator.validate(user, result);
 
-            java.sql.Date now = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-            /*
-            if (result.hasErrors()) {
-                model.addAttribute("errors", result.getFieldErrors());
-                // TODO THYMELEAF HACK
-                if (false) {
-                    WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-                    context.setVariable("errors", result.getFieldErrors());
-                }
-                return "redirect:/inscription";
-            } else {
-            */
-            if(!result.hasErrors()){
-                user.setAvatar(null);
-                user.setIsbanned("N");
-                user.setIsonline("N");
-                user.setCreationdate(now);
-                user.setPermissionlevel(0);
-                user.setIsvip("N");
-                userRepository.save(user);
-                return "redirect:/";
-            }
-        return "redirect:/inscription";
-    }
+
+
+    @RequestMapping(value = "/adduser", method = RequestMethod.POST)
+    public String adduser(@Valid UsersEntity user, BindingResult result) {
+
+        java.sql.Date now = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+
+        if (result.hasErrors()) {
+            return "/inscription";
+        } else {
+            user.setAvatar(null);
+            user.setIsbanned("N");
+            user.setIsonline("N");
+            user.setCreationdate(now);
+            user.setPermissionlevel(0);
+            user.setIsvip("N");
+            userRepository.save(user);
+            return "redirect:/";
+        }
 
 
 
@@ -119,4 +107,5 @@ public class UserController {
         }
     }
     */
+    }
 }
