@@ -101,5 +101,5 @@ function PreviewImage(value) {
 	document.getElementById("avatar").style.background = "url(images/"+imgValue+")no-repeat center";
 }
 function openMesEchanges(){
-	document.getElementById("content").innerHTML='<object class="loadContent" type="text/html" data="myExchanges.html"></object>';
+	document.getElementById("content").innerHTML='<object class="loadContent" type="text/html" data="myTrades.html"></object>';
 }

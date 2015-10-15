@@ -84,7 +84,8 @@
       <column name="IDUSER1" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
       <column name="IDUSER2" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
       <column name="DATETRANSACTION" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
-      <column name="ISCOMPLETED" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
+      <column name="ISCOMPLETED" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
+      <column name="STATE" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
       <primary-key name="PRIMARY" columns="IDTRANSACTION"/>
       <foreign-key name="TRANSACTION_USER1_FK" columns="IDUSER1" ref-table="users" ref-schema="" ref-catalog="troke" ref-columns="IDUSER" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="TRANSACTION_USER2_FK" columns="IDUSER2" ref-table="users" ref-schema="" ref-catalog="troke" ref-columns="IDUSER" update-rule="3" delete-rule="3" deferrability="2"/>
