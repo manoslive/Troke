@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-        <body>
-            <div th:fragment="openModalAjouter">
-            <form>
-                <div id="openModalAjouter" class="modalDialogAjouter">
-                    <div style="font-family:Amaranth">
+<body>
+<div th:fragment="openModalAjouter">
+    <form>
+        <div id="openModalAjouter" class="modalDialogAjouter">
+            <div style="font-family:Amaranth">
 
-                        <a href="#close" title="Fermer" class="close">X</a>
-                        <h2 style="text-align:center">Ajout d'un Item / Service</h2>
-                        <div class="or-spacer2">  <div class="mask"></div></div>
+                <a href="#close" title="Fermer" class="close">X</a>
 
-                        <div class = "divModalAjoutTop">
-                            <input class="signup-full" type="text" placeholder="Nom de l'item / service" name="Name" id="name"/>
-                            <input class="signup-full" type="number" placeholder="Valeur $$$" name="Valeur" id="valeur"/>
+                <h2 style="text-align:center">Ajout d'un Item / Service</h2>
 
-                            <div class = "divModalAjoutQualite">
-                                <label style="font-weight:normal">Etat de l'item</label>
+                <div class="or-spacer2">
+                    <div class="mask"></div>
+                </div>
+
+                <div class="divModalAjoutTop">
+                    <input class="signup-full" type="text" placeholder="Nom de l'item / service" name="Name" id="name"/>
+                    <input class="signup-full" type="number" placeholder="Valeur $$$" name="Valeur" id="valeur"/>
+
+                    <div class="divModalAjoutQualite">
+                        <label style="font-weight:normal">Etat de l'item</label>
                         <span class="starRating">
                         <input id="rating5" type="radio" name="rating" value="5"/>
                         <label style="cursor:pointer;" for="rating5">5</label>
@@ -29,88 +33,92 @@
                         <input id="rating1" type="radio" name="rating" value="1"/>
                         <label style="cursor:pointer;" for="rating1">1</label>
                         </span>
-                            </div>
-                        </div>
-
-                        <div class = "divModalAjoutDescriptionPhoto">
-                            <div class ="divModalAjoutDescription">
-                                <textarea class="signup-full" type="text" rows="13" placeholder="Description"
-                                          name="Description" id="description" style="resize:none"></textarea>
-                            </div>
-
-
-                            <div class = "divModalAjoutPhotos">
-                                <div class = "divModalAjoutPhotosTOP">
-                                    <div id="Photo1" src="#" alt="Photo1" class="Photo1">
-                                        <div style="" class="avatarOverlay">
-                                            <div  class="avatarPlus">
-
-                                                <input class="fileExplorer" type="file" onchange="PreviewImage(this.value);" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div id="Photo2" src="#" alt="Photo1" class="Photo1">
-                                        <div class="avatarOverlay" style="">
-                                            <div class="avatarPlus">
-
-                                                <input class="fileExplorer" type="file" onchange="PreviewImage(this.value);" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class = "divModalAjoutPhotosDOWN">
-                                    <div id="Photo3" src="#" alt="Photo1" class="Photo1">
-                                        <div class="avatarOverlay" style="">
-                                            <div class="avatarPlus">
-
-                                                <input  class="fileExplorer" type="file" onchange="PreviewImage(this.value);" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div id="Photo4" src="#" alt="Photo1" class="Photo1">
-                                        <div id="avatarOverlay" style="">
-                                            <div id="avatarPlus">
-
-                                                <input id="fileExplorer" type="file" onchange="PreviewImage(this.value);" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="basdeModal">
-                            <label class="buttonbob" for="Item">
-                                <input style="text-align:center;font-size:16px;margin-top:10px" type="checkbox" name="Evaluable"
-                                       value="Evaluable" checked="checked"/>Faire evaluer le prix de cet item / service par d'autre utilisateur
-                            </label>
-                            <br/>
-
-                            <div class="basdeModalButtons">
-                                <label class="buttonbob">
-                                    <input  id="Item" name="flat" type="radio" checked ="checked"/>Item
-                                    </label>
-                                <label class="buttonbob" for="Service">
-                                    <input  id="Service" name="flat" type="radio"/>Service
-                                </label>
-                            </div>
-
-                        </div>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <div class="or-spacer2">  <div class="mask"></div></div>
-
-                        <div>
-                            <a href="#valid" style="text-align:center;font-size:16px" title="Ajout" class="valid">Ajouter</a>
-                        </div>
-
                     </div>
                 </div>
-            </form>
+
+                <div class="divModalAjoutDescriptionPhoto">
+                    <div class="divModalAjoutDescription">
+                                <textarea class="signup-full" type="text" rows="13" placeholder="Description"
+                                          name="Description" id="description" style="resize:none"></textarea>
+                    </div>
+
+
+                    <div class="divModalAjoutPhotos">
+                        <div class="divModalAjoutPhotosTOP">
+                            <div id="Photo1" src="#" alt="Photo1" class="Photo1">
+                                <div style="" class="avatarOverlay">
+                                    <div class="avatarPlus">
+
+                                        <input class="fileExplorer" type="file" onchange="PreviewImage(this.value);"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="Photo2" src="#" alt="Photo1" class="Photo1">
+                                <div class="avatarOverlay" style="">
+                                    <div class="avatarPlus">
+
+                                        <input class="fileExplorer" type="file" onchange="PreviewImage(this.value);"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="divModalAjoutPhotosDOWN">
+                            <div id="Photo3" src="#" alt="Photo1" class="Photo1">
+                                <div class="avatarOverlay" style="">
+                                    <div class="avatarPlus">
+
+                                        <input class="fileExplorer" type="file" onchange="PreviewImage(this.value);"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="Photo4" src="#" alt="Photo1" class="Photo1">
+                                <div id="avatarOverlay" style="">
+                                    <div id="avatarPlus">
+
+                                        <input id="fileExplorer" type="file" onchange="PreviewImage(this.value);"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="basdeModal">
+                    <label class="buttonbob" for="Item">
+                        <input style="text-align:center;font-size:16px;margin-top:10px" type="checkbox" name="Evaluable"
+                               value="Evaluable" checked="checked"/>Faire evaluer le prix de cet item / service par
+                        d'autre utilisateur
+                    </label>
+                    <br/>
+
+                    <div class="basdeModalButtons">
+                        <label class="buttonbob">
+                            <input id="Item" name="flat" type="radio" checked="checked"/>Item
+                        </label>
+                        <label class="buttonbob" for="Service">
+                            <input id="Service" name="flat" type="radio"/>Service
+                        </label>
+                    </div>
+
+                </div>
+                <br/>
+                <br/>
+                <br/>
+
+                <div class="or-spacer2">
+                    <div class="mask"></div>
+                </div>
+
+                <div>
+                    <a href="#valid" style="text-align:center;font-size:16px" title="Ajout" class="valid">Ajouter</a>
+                </div>
+
             </div>
-        </body>
-    </html>
+        </div>
+    </form>
+</div>
+</body>
+</html>

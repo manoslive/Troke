@@ -16,9 +16,8 @@
                         <div class="row text-center">
                             <!-- ITEM-->
                             <div class="span3" th:each="obj,iter : ${recentobjects}" th:if="${iter.index} lt 8">
-                                <div class="thumbnail product-item" th:href="@{'#'}">
-                                    <a th:href="${adrObject} + ${obj.getIdobject()}"><img class="image-carousel-item" src="images/Logo-transparent.png"/></a>
-
+                                <div class="thumbnail product-item">
+                                    <a th:href="${adrItem} + ${obj.getIdobject()}"><img class="image-carousel-item" src="images/Logo-transparent.png"/></a>
                                     <p th:text="${obj.getNameObject()}"></p>
                                 </div>
                             </div>
@@ -35,9 +34,9 @@
                             <div class="span3" th:each="obj,iter : ${recentobjects}"
                                  th:if="${iter.index &gt; 7 and iter.index &lt; 16}">
                                 <div class="thumbnail product-item">
-                                    <a href="#"><img class="image-carousel-item" src="images/Logo-transparent.png"/></a>
+                                    <a th:href="${adrItem} + ${obj.getIdobject()}"><img class="image-carousel-item" src="images/Logo-transparent.png"/></a>
+                                    <p th:text="${obj.getNameObject()}"></p>
                                 </div>
-                                <h3 th:text="${obj.getNameObject()}"></h3>
                             </div>
                             <!-- ITEM-->
                         </div>

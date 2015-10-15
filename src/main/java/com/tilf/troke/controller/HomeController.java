@@ -25,11 +25,20 @@ public class HomeController {
     private CustomUserRepository customUserRepository;
 
     @RequestMapping("/")
-    public String home(Model model, HttpSession session) {
+    public String root(Model model) {
         FillCategoryMenu(model);
         FillCategoryList(model);
         GetRecentItems(model);
         model.addAttribute("currentpage", "home");
+        return "template";
+    }
+
+    @RequestMapping("/home")
+    public String redirectHome(Model model) {
+        FillCategoryMenu(model);
+        FillCategoryList(model);
+        GetRecentItems(model);
+
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
@@ -42,12 +51,12 @@ public class HomeController {
     @RequestMapping(value = "/inscriptionNew", method = RequestMethod.GET)
     public String inscriptionNew(HttpSession session, UsersEntity user) {
         session.removeAttribute("errorInscription");
-        return "redirect:#openModalInscription";
+        return "#openModalInscription";
     }
 
     @RequestMapping(value = "/inscription", method = RequestMethod.GET)
     public String inscription(UsersEntity user) {
-        return "redirect:#openModalInscription";
+        return "#openModalInscription";
     }
 
     public void FillCategoryMenu(Model model) {
@@ -110,18 +119,22 @@ public class HomeController {
     public String GetRecentItems(Model model) {
         List<ObjectsEntity> objects = customUserRepository.getRecentItems();
         model.addAttribute("recentobjects", objects);
+        model.addAttribute("adrItem", "/item?idObject=");
+
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("recentobjects", objects);
+            context.setVariable("adrItem", "/item?idObject=");
+
         }
-        return "redirect:/";
+        return "forward:/home";
     }
 
     // Test de catégorie
     @RequestMapping(value = "/category", method = RequestMethod.GET)
     public String ListCategoryItems(@RequestParam("categoryName") String categoryName, Model model) {
-
+        model.addAttribute("currentpage", "search");
         model.addAttribute("objectList", customUserRepository.getObjectsByCategory(categoryName));
         // TODO THYMELEAF HACK
         if (false) {
@@ -130,38 +143,38 @@ public class HomeController {
         }
 
         model.addAttribute("objectList", customUserRepository.getObjectsByCategory(categoryName));
-        model.addAttribute("currentpage", "search");
-        return "forward:/";
+
+        return "forward:/home";
     }
 
     @RequestMapping(value = "/subcategory", method = RequestMethod.GET)
     public String ListSubCategoryItems(@RequestParam("subCategoryName") String subCategoryName, Model model) {
-
-        model.addAttribute("objectList", customUserRepository.getObjectsBySubCategory(subCategoryName));
         model.addAttribute("currentpage", "search");
+        model.addAttribute("objectList", customUserRepository.getObjectsBySubCategory(subCategoryName));
+
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("objectList", customUserRepository.getObjectsBySubCategory(subCategoryName));
         }
-        return "forward:/";
+        return "forward:/home";
     }
 
     // Test de catégorie
     @RequestMapping(value = "/item", method = RequestMethod.GET)
-    public String getItem(@RequestParam("idObject") int idobject, Model model) {
-        model.addAttribute("object", customUserRepository.getObjectEntityByIdObject(idobject));
-        model.addAttribute("adrObject", "/item?idObject=");
+    public String getItemByIdObject(@RequestParam("idObject") int idobject, Model model) {
         model.addAttribute("currentpage", "search");
+        model.addAttribute("singleobject", customUserRepository.getObjectEntityByIdObject(idobject));
+        model.addAttribute("adrItem", "/item?idObject=");
 
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("object", customUserRepository.getObjectEntityByIdObject(idobject));
-            context.setVariable("adrObject", "/item?objectName=");
+            context.setVariable("singleobject", customUserRepository.getObjectEntityByIdObject(idobject));
+            context.setVariable("adrItem", "/item?objectName=");
         }
 
-        return "forward:/";
+        return "forward:/home";
     }
 }
 

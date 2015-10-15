@@ -40,13 +40,13 @@
     border:none;
     pointer-events: none;
 }
-.btn{
+.btnBootPerso{
     width: 100%;
     text-align: left !important;
     background:#00374C !important;
     border-color: #003042 !important;
 }
-.btn-info:focus{
+.btnBootPerso:focus{
     border-color: #003042 !important;
     outline-color: #003042 !important;
 }
@@ -66,6 +66,14 @@
     height: 100%;
     border: 1px solid black;
     display: inline-block;
+    overflow: hidden;
+}
+.searchItemImage img{
+    height: 100%;
+    width: 100%;
+}
+.seachItemName{
+    font-weight: bolder;
 }
 .searchItemDescription{
     width:50%;

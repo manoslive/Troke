@@ -52,11 +52,12 @@ public class LoginController {
     {
         return "redirect:#openModalConnexion";
     }
+
     @RequestMapping("/openModalConnexion")
     public String openModalConnexion(HttpSession session)
     {
         session.removeAttribute("error");
-        return "redirect:/connexion";
+        return "redirect:#openModalConnexion"; // FIXME la page refresh au moment du click !!!!!!!!!!
     }
 
     @RequestMapping(value="/auth", method= RequestMethod.POST)

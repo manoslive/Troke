@@ -58,9 +58,10 @@
     background-position: 0% 0%;
     position: fixed;
     left: 0pt;
-		
-		
 	}
+    .footerSpacer{
+        height: 40px;
+    }
 	
 .BTN_Inscription
 {
