@@ -51,6 +51,9 @@
 <th:block th:if="${objectList} != null">
     <div th:replace="fragments/home/test2 :: test2"></div>
 </th:block>
+<th:block th:if="${currentpage.equals('search')}">
+    <div th:replace="fragments/home/search :: search"></div>
+</th:block>
 
 <!-- Footer -->
 <div th:replace="fragments/home/footer :: footer">

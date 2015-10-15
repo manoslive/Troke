@@ -27,4 +27,5 @@ public interface CustomUserRepository {
 
     List<ObjectsEntity> getObjectsByCategory(String categoryName);
     List<ObjectsEntity> getObjectsBySubCategory(String subCategoryName);
+    ObjectsEntity getObjectEntityByIdObject(int id_object);
 }

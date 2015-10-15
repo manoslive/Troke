@@ -4,6 +4,7 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources/static/css/mainbuttons.css" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/resources/static/css/style.css" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/static/css/style_home.css" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/resources/static/css/style_myExchanges.css" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/resources/static/css/style_search.css" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/resources/static/css/style_troker.css" charset="windows-1252" />
@@ -21,9 +22,14 @@
     <file url="file://$PROJECT_DIR$/src/main/resources/static/jquery-ui-1.11.4" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/resources/static/js/home.js" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/resources/static/js/jquery.mask.min.js" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/templates/fragments/head/home_head.html" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/templates/fragments/head/search_head.html" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/home.html" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/myExchanges.html" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/startExchange.html" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/test1.html" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/test2.html" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/trade.html" charset="windows-1252" />
   </component>
 </project>

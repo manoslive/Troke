@@ -146,5 +146,22 @@ public class HomeController {
         }
         return "forward:/";
     }
+
+    // Test de catégorie
+    @RequestMapping(value = "/item", method = RequestMethod.GET)
+    public String getItem(@RequestParam("idObject") int idobject, Model model) {
+        model.addAttribute("object", customUserRepository.getObjectEntityByIdObject(idobject));
+        model.addAttribute("adrObject", "/item?idObject=");
+        model.addAttribute("currentpage", "search");
+
+        // TODO THYMELEAF HACK
+        if (false) {
+            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+            context.setVariable("object", customUserRepository.getObjectEntityByIdObject(idobject));
+            context.setVariable("adrObject", "/item?objectName=");
+        }
+
+        return "forward:/";
+    }
 }
 

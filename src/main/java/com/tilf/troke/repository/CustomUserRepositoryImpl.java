@@ -136,4 +136,15 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
         int idcategory = (int) queryObject.getSingleResult();
         return idcategory;
     }
+
+    @Override
+    public ObjectsEntity getObjectEntityByIdObject(int id_object)
+    {
+        String query = "select o from ObjectsEntity o where o.idobject=:idobject";
+        Query queryObject = entityManager.createQuery(query);
+        queryObject.setParameter("idobject", id_object);
+        ObjectsEntity obj = (ObjectsEntity) queryObject.getSingleResult();
+
+        return obj;
+    }
 }
