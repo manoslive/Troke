@@ -30,8 +30,8 @@ public class UsersEntity {
     @Basic
     @Column(name = "PASS")
     private String pass;
-    @NotNull
-    private String pass_confirm;
+/*    @NotNull
+    private String pass_confirm;*/
     @Basic
     @Column(name = "AVATAR")
     private String avatar;
@@ -54,8 +54,8 @@ public class UsersEntity {
     @Basic
     @Column(name = "EMAIL")
     private String email;
-    @NotNull
-    private String email_confirm;
+/*    @NotNull
+    private String email_confirm;*/
     @NotNull
     @Basic
     @Column(name = "TELEPHONE")
@@ -108,8 +108,8 @@ public class UsersEntity {
     }
 
 
-    public String getPass_confirm(){return pass_confirm;}
-    public void setPass_confirm(String pass_confirm){this.pass_confirm = pass_confirm;}
+/*    public String getPass_confirm(){return pass_confirm;}
+    public void setPass_confirm(String pass_confirm){this.pass_confirm = pass_confirm;}*/
 
 
 
@@ -156,8 +156,8 @@ public class UsersEntity {
     }
 
 
-    public String getEmail_confirm() {return email_confirm;}
-    public void setEmail_confirm(String email_confirm) {this.email_confirm = email_confirm;}
+/*    public String getEmail_confirm() {return email_confirm;}
+    public void setEmail_confirm(String email_confirm) {this.email_confirm = email_confirm;}*/
 
 
     public String getTelephone() {
@@ -195,7 +195,7 @@ public class UsersEntity {
         this.isvip = isvip;
     }
 
-    @AssertTrue(message="Les 2 champs de mot de passe doivent être identiques.")
+/*    @AssertTrue(message="Les 2 champs de mot de passe doivent être identiques.")
     private boolean IsValid()
     {
         return this.pass.equals(this.pass_confirm);
@@ -205,7 +205,7 @@ public class UsersEntity {
     private boolean emailIsValid()
     {
         return this.email.equals(this.email_confirm);
-    }
+    }*/
 
     @Override
     public boolean equals(Object o) {
