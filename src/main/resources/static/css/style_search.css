@@ -8,7 +8,6 @@
 }
 
 #searchResults {
-    min-height: 500px;
     background: #30697D;
     border: 2px solid #003042;
     padding-bottom: 1em;
@@ -140,7 +139,7 @@
 
 .btn-troke {
     width: 84%;
-    margin-top: 20%;
+    margin-top: 10px;
     padding-left: 8px !important;
 }
 
