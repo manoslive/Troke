@@ -1,0 +1,117 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+<th:block th:fragment="about">
+<div style="background-color:#00455f">
+    <div class="aboutDiv">
+
+        <h3 style="margin-top:50px;font-size:18px;color:white; background-color:transparent; text-transform:uppercase;letter-spacing:.2em">
+            TROK-é
+        </h3>
+        <h3 style="margin-top:50px;font-size:18px;color:white; background-color:transparent; text-transform:uppercase;letter-spacing:.2em">
+            A propos de l'equipe:
+        </h3>
+
+        <h3 style="margin-top:5px;font-size:10px;color:white; background-color:transparent; text-transform:uppercase;letter-spacing:.08em; font-weight:normal">
+            Cegep Lionel-Groulx - Automne 2015<br/>
+            100 Rue Duquet, Sainte-Thérèse, QC J7E 3G6
+        </h3>
+
+
+        <div class="main-container" style="margin-top:50px">
+            <div class="item active deepskyblue">
+
+                <div class="carousel-caption" style="position:relative; left:0px;right:0px">
+
+                    <h3 class="icon-container">
+
+                        <div class="circular">
+                            <img src="images/PhotoY.jpg" alt="" class="circularimage" id="ImgYvon" onclick="ImageClick('Y')"/>
+                            <a href="https://ca.linkedin.com/pub/yvon-steinthal/75/665/614" ><img src="images/linkedin.png" class = "LinkedinLogo"/></a>
+
+                        </div>
+
+                        <div id="InfoYvon">
+                            <label style="font-size:18px;color:white; background-color:transparent; text-transform:uppercase;
+					letter-spacing:.2em">Yvon Steinthal</label><br/>
+                            <label style="font-size:14px;color:white; background-color:transparent; text-transform:uppercase;
+					letter-spacing:.08em; font-weight:normal">HTML5 / CSS / Javascript / Jquery</label><br/>
+
+                        </div>
+                    </h3>
+
+                    <h3 class="icon-container">
+                        <div class="circular">
+                            <img src="images/PhotoA.jpg" alt="" class="circularimage" id="ImgAlex" onclick="ImageClick('A')"/>
+                            <a href="https://ca.linkedin.com/pub/alexandre-dubé/a8/45b/a1b" ><img src="images/linkedin.png" class = "LinkedinLogo"/></a>
+                        </div>
+
+                        <div id="InfoAlex">
+                            <label style="font-size:18px;color:white; background-color:transparent; text-transform:uppercase;
+					letter-spacing:.2em">Alexandre Dubé</label><br/>
+                            <label style="font-size:14px;color:white; background-color:transparent; text-transform:uppercase;
+					letter-spacing:.08em; font-weight:normal">Java / Spring / ThymeLeaf / JPA / MySQL</label><br/>
+
+                        </div>
+
+                    </h3>
+
+                    <h3 class="icon-container">
+                        <div class="circular">
+                            <img src="images/PhotoE.jpg" alt="" class="circularimage" id="ImgManu" onclick="ImageClick('M')"/>
+                            <a href="https://ca.linkedin.com/pub/emmanuel-beloin/99/907/ba0"><img src="images/linkedin.png" class = "LinkedinLogo"/></a>
+                        </div>
+
+                        <div id="InfoManu">
+                            <label style="font-size:18px;color:white; background-color:transparent; text-transform:uppercase;
+					letter-spacing:.2em">Emmanuel Beloin</label><br/>
+                            <label style="font-size:14px;color:white; background-color:transparent; text-transform:uppercase;
+					letter-spacing:.08em; font-weight:normal">Java / Spring / ThymeLeaf / JPA / MySQL</label><br/>
+
+                        </div>
+
+                    </h3>
+
+                    <h3 class="icon-container">
+                        <div class="circular">
+                            <img src="images/PhotoS.jpg" alt="" class="circularimage" id="ImgShaun" onclick="ImageClick('S')"/>
+                            <a href="https://ca.linkedin.com/pub/shaun-cooper/104/989/a4" ><img src="images/linkedin.png" class = "LinkedinLogo"/></a>
+                        </div>
+                        <div id="InfoShaun">
+                            <label style="font-size:18px;color:white; background-color:transparent; text-transform:uppercase;
+					letter-spacing:.2em">Shaun Cooper</label><br/>
+                            <label style="font-size:14px;color:white; background-color:transparent; text-transform:uppercase;
+					letter-spacing:.08em; font-weight:normal">HTML5 / CSS / Javascript / Jquery / Jquery UI</label><br/>
+
+                        </div>
+                    </h3>
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div> <!-- /.item -->
+
+    <div class="LowBanner">
+        <div class="InfoProjet">
+            <h3 style="font-size:14px;color:white; background-color:transparent; text-transform:uppercase;letter-spacing:.08em; font-weight:normal">
+                Notre projet consiste en un site web transactionnelle. Dans ce site nous allons pouvoir faire la recherche de biens ou de services pour ensuite les échanger. Le but est vraiment de favoriser l'échange et non l'achat d'ou Trok-é pour troc électronique. Nous allons coder le tout en JAVA utilisant la philosophie MVC. L'IDE choisi est STS spring qui est une version modifier de éclipse et la base de données est MYSQL. De plus, nous aimerions avoir une version android de l'application web.
+            </h3>
+        </div>
+
+    </div>
+
+
+</div>
+</th:block>
+
+</body>
+</html>
