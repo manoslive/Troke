@@ -132,6 +132,13 @@ public class HomeController {
 
         return "forward:/home";
     }
+    // appel de profil
+    @RequestMapping(value="/profil", method = RequestMethod.GET)
+    public String Profil(Model model)
+    {
+        model.addAttribute("currentpage", "profil");
+        return "forward:/home";
+    }
 
     @RequestMapping(value = "/subcategory", method = RequestMethod.GET)
     public String ListSubCategoryItems(@RequestParam("subCategoryName") String subCategoryName, Model model) {
@@ -145,6 +152,13 @@ public class HomeController {
             context.setVariable("objectList", customUserRepository.getObjectsBySubCategory(subCategoryName));
             context.setVariable("leftMenu", fillLeftCatMenu());
         }
+        return "forward:/home";
+    }
+    // model pour appeler la page about et changer le current page a about ..
+    @RequestMapping(value="/about", method = RequestMethod.GET)
+    public String about(Model model)
+    {
+        model.addAttribute("currentpage", "about");
         return "forward:/home";
     }
 
