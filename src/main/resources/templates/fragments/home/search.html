@@ -90,8 +90,7 @@
 
                         <!-- Bouton lancer une Ã©change -->
                         <button type="button" class="btn btn-info btn-troke btnBootPerso">
-                            <img class="searchItem-img-troke" src="images/UnknownUser.png"/>
-                            <span>Troké !</span>
+                            <img class="searchItem-img-troke" src="images/Logo-transparent.png"/>
                         </button>
                     </div>
                 </div>
@@ -109,7 +108,7 @@
                 <!-- L'image de l'item -->
                 <div  class="searchItemImage">
                     <img th:if="${obj.getGuid()} ne null"/>
-                    <img th:if="${obj.getGuid()} eq null" src="images/Logo-transparent.png"/>
+                    <img th:if="${obj.getGuid()} eq null" src="images/UnknownUser.png"/>
                 </div>
                 <!-- Description de l'item -->
                 <div class="searchItemDescription">
@@ -140,7 +139,6 @@
                     <!-- Bouton lancer une Ã©change -->
                     <button type="button" class="btn btn-info btn-troke btnBootPerso">
                         <img class="searchItem-img-troke" src="images/Logo-transparent.png"/>
-                        <span>Troké !</span>
                     </button>
                 </div>
                 <!-- Ligne/Spacer -->
@@ -188,7 +186,6 @@
                         <!-- Bouton lancer une Ã©change -->
                         <button type="button" class="btn btn-info btn-troke btnBootPerso">
                             <img class="searchItem-img-troke" src="images/Logo-transparent.png"/>
-                            <span>Troké !</span>
                         </button>
                     </div>
                     <!-- Ligne/Spacer -->
@@ -199,26 +196,27 @@
                 <!-- /Div un item -->
             </th:block>
 
-            <th:block th:if="${searchObjectList} eq null or ${objectList} eq null">
-                <!-- Div un item -->
+
+<!--            <th:block th:if="(${searchObjectList} eq null and ${objectList} eq null and ${singleobject} eq null) or ${objectList.size()} eq 0 or ${searchObjectList.size()} eq 0">
+                &lt;!&ndash; Div un item &ndash;&gt;
                 <div  class="searchItem">
-                    <!-- L'image de l'item -->
-<!--                    <div  class="searchItemImage">
-                    </div>-->
-                    <!-- Description de l'item -->
+                    &lt;!&ndash; L'image de l'item &ndash;&gt;
+&lt;!&ndash;                    <div  class="searchItemImage">
+                    </div>&ndash;&gt;
+                    &lt;!&ndash; Description de l'item &ndash;&gt;
                     <div class="searchItemDescription">
                         <h1>Aucun résultat...</h1>
                         <h1 style="font-size: medium">Veuiller choisir une autre option</h1>
                     </div>
-                    <!-- Bar vertical de séparation -->
-<!--                    <div class="searchVerticalBar right">
+                    &lt;!&ndash; Bar vertical de séparation &ndash;&gt;
+&lt;!&ndash;                    <div class="searchVerticalBar right">
                         <div class="barMask"></div>
-                    </div>-->
-                    <!-- Section côte de l'item -->
+                    </div>&ndash;&gt;
+                    &lt;!&ndash; Section côte de l'item &ndash;&gt;
                     <div class="searchItemQuality">
-                        <!-- QualitÃ© en Ã©toiles -->
+                        &lt;!&ndash; QualitÃ© en Ã©toiles &ndash;&gt;
 
-                        <!--                <span class="starRating">
+                        &lt;!&ndash;                <span class="starRating">
                                         <input type="radio" name="rating" value="5">
                                         <label style="cursor:pointer;" for="rating5">5</label>
                                         <input type="radio" name="rating" value="4">
@@ -229,21 +227,21 @@
                                         <label style="cursor:pointer;" for="rating2">2</label>
                                         <input type="radio" name="rating" value="1">
                                         <label style="cursor:pointer;" for="rating1">1</label>
-                                        </span>-->
+                                        </span>&ndash;&gt;
 
-                        <!-- Bouton lancer une Ã©change -->
-<!--                        <button type="button" class="btn btn-info btn-troke btnBootPerso">
+                        &lt;!&ndash; Bouton lancer une Ã©change &ndash;&gt;
+&lt;!&ndash;                        <button type="button" class="btn btn-info btn-troke btnBootPerso">
                             <img class="searchItem-img-troke" src="images/Logo-transparent.png"/>
                             <span>Troké !</span>
-                        </button>-->
+                        </button>&ndash;&gt;
                     </div>
-                    <!-- Ligne/Spacer -->
+                    &lt;!&ndash; Ligne/Spacer &ndash;&gt;
                     <div class="or-spacer">
                         <div class="mask"></div>
                     </div>
                 </div>
-                <!-- /Div un item -->
-            </th:block>
+                &lt;!&ndash; /Div un item &ndash;&gt;
+            </th:block>-->
 
             <!-- Section control de page (#, previous/next) -->
             <div class="paginationControl">

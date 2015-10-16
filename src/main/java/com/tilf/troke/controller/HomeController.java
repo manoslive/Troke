@@ -38,7 +38,7 @@ public class HomeController {
         FillCategoryMenu(model);
         FillCategoryList(model);
         GetRecentItems(model);
-        model.addAttribute("currentpage", "search"); // FIXME Petit problème ici currentpage semble être nul lors d'une recherche
+        // model.addAttribute("currentpage", "search"); // FIXME Petit problème ici currentpage semble être nul lors d'une recherche
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
