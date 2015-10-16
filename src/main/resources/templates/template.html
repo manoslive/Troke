@@ -56,6 +56,10 @@
     <div th:replace="fragments/home/profil :: profil"></div>
 </th:block>
 
+<th:block th:if="${currentpage.equals('about')}">
+    <div th:replace="fragments/home/about :: about"></div>
+</th:block>
+
 <!-- Footer -->
 <div class="footerSpacer"/>
 <footer class="footer" th:replace="fragments/home/footer :: footer"/>

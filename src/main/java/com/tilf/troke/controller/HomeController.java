@@ -140,6 +140,7 @@ public class HomeController {
         return "forward:/home";
     }
 
+
     @RequestMapping(value = "/subcategory", method = RequestMethod.GET)
     public String ListSubCategoryItems(@RequestParam("subCategoryName") String subCategoryName, Model model) {
         model.addAttribute("currentpage", "search");

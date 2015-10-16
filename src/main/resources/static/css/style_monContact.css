@@ -66,7 +66,7 @@
     background-color: #000;
 }
 .deepskyblue {
-    background-color: #000;
+    background-color: #00455f;
 }
 .darkerskyblue {
     background-color: #000;
@@ -86,7 +86,7 @@
 }
 .carousel-caption h3,
 .carousel .icon-container{
-    background-color: #09c;
+    background-color: #00455f;
 }
 .carousel-caption h3 {
     padding: .5em;
@@ -143,7 +143,7 @@
     margin-top:35%;
     width:500px;
     left:-50%;
-    height:400px;
+    height:100px;
     visibility: hidden;
 
 
@@ -155,7 +155,7 @@
     margin-top:35%;
     width:500px;
     left:-25%;
-    height:400px;
+    height:100px;
     visibility: hidden;
 
 
@@ -167,7 +167,7 @@
     margin-top:35%;
     width:500px;
     left:25%;
-    height:400px;
+    height:100px;
     visibility: hidden;
 
 }
@@ -178,7 +178,7 @@
     margin-top:35%;
     width:500px;
     left:-1%;
-    height:400px;
+    height:100px;
     visibility: hidden;
 
 }
