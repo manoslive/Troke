@@ -20,6 +20,13 @@
         </head>
     </th:block>
 
+    <th:block th:if="${currentpage.equals('about')}">
+        <head>
+            <th:block th:replace="fragments/head/template_head :: template_head"/>
+            <th:block th:replace="fragments/head/about_head :: about_head"/>
+        </head>
+    </th:block>
+
 </th:block>
 <body style="background-color:#00455f;" id="goodlookin">
 
