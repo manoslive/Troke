@@ -138,18 +138,33 @@
                     <div class="searchItemQuality">
                         <!-- QualitÃ© en Ã©toiles -->
 
-                        <!--                <span class="starRating">
-                                        <input type="radio" name="rating" value="5">
-                                        <label style="cursor:pointer;" for="rating5">5</label>
-                                        <input type="radio" name="rating" value="4">
-                                        <label style="cursor:pointer;" for="rating4">4</label>
-                                        <input type="radio" name="rating" value="3">
-                                        <label style="cursor:pointer;" for="rating3">3</label>
-                                        <input type="radio" name="rating" value="2">
-                                        <label style="cursor:pointer;" for="rating2">2</label>
-                                        <input type="radio" name="rating" value="1">
-                                        <label style="cursor:pointer;" for="rating1">1</label>
-                                        </span>-->
+                                           <span class="starRating">
+                                            <input th:if="${obj.getQuality()} eq 5" type="checkbox"
+                                                   name="rating" value="5" checked="checked"/>
+                                            <input th:unless="${obj.getQuality()}" type="checkbox"
+                                                   name="rating" value="5"/>
+                                            <label style="cursor:pointer;">5</label>
+                                            <input th:if="${obj.getQuality()} eq 4" type="checkbox"
+                                                   name="rating" value="4" checked="checked"/>
+                                               <input th:unless="${obj.getQuality()}" type="checkbox"
+                                                      name="rating" value="4"/>
+                                            <label style="cursor:pointer;">4</label>
+                                            <input th:if="${obj.getQuality()} eq 3" type="checkbox"
+                                                   name="rating" value="3" checked="checked"/>
+                                               <input th:unless="${obj.getQuality()}" type="checkbox"
+                                                      name="rating" value="3"/>
+                                            <label style="cursor:pointer;">3</label>
+                                            <input th:if="${obj.getQuality()} eq 2" type="checkbox"
+                                                   name="rating" value="2" checked="checked"/>
+                                                <input th:unless="${obj.getQuality()}" type="checkbox"
+                                                       name="rating" value="2"/>
+                                            <label style="cursor:pointer;">2</label>
+                                            <input th:if="${obj.getQuality()} eq 1" type="checkbox"
+                                                   name="rating" value="1" checked="checked"/>
+                                               <input th:unless="${obj.getQuality()}" type="checkbox"
+                                                      name="rating" value="1"/>
+                                            <label style="cursor:pointer;">1</label>
+                                            </span>
 
                         <!-- Bouton lancer une Ã©change -->
                         <button type="button" class="btn btn-info btn-troke btnBootPerso">
@@ -186,18 +201,33 @@
                     <div class="searchItemQuality">
                         <!-- QualitÃ© en Ã©toiles -->
 
-                        <!--                <span class="starRating">
-                                        <input type="radio" name="rating" value="5">
-                                        <label style="cursor:pointer;" for="rating5">5</label>
-                                        <input type="radio" name="rating" value="4">
-                                        <label style="cursor:pointer;" for="rating4">4</label>
-                                        <input type="radio" name="rating" value="3">
-                                        <label style="cursor:pointer;" for="rating3">3</label>
-                                        <input type="radio" name="rating" value="2">
-                                        <label style="cursor:pointer;" for="rating2">2</label>
-                                        <input type="radio" name="rating" value="1">
-                                        <label style="cursor:pointer;" for="rating1">1</label>
-                                        </span>-->
+                                           <span class="starRating">
+                                            <input th:if="${obj.getQuality()} eq 5" type="checkbox"
+                                                   name="rating" value="5" checked="checked"/>
+                                            <input th:unless="${obj.getQuality()}" type="checkbox"
+                                                   name="rating" value="5"/>
+                                            <label style="cursor:pointer;">5</label>
+                                            <input th:if="${obj.getQuality()} eq 4" type="checkbox"
+                                                   name="rating" value="4" checked="checked"/>
+                                               <input th:unless="${obj.getQuality()}" type="checkbox"
+                                                      name="rating" value="4"/>
+                                            <label style="cursor:pointer;">4</label>
+                                            <input th:if="${obj.getQuality()} eq 3" type="checkbox"
+                                                   name="rating" value="3" checked="checked"/>
+                                               <input th:unless="${obj.getQuality()}" type="checkbox"
+                                                      name="rating" value="3"/>
+                                            <label style="cursor:pointer;">3</label>
+                                            <input th:if="${obj.getQuality()} eq 2" type="checkbox"
+                                                   name="rating" value="2" checked="checked"/>
+                                                <input th:unless="${obj.getQuality()}" type="checkbox"
+                                                       name="rating" value="2"/>
+                                            <label style="cursor:pointer;">2</label>
+                                            <input th:if="${obj.getQuality()} eq 1" type="checkbox"
+                                                   name="rating" value="1" checked="checked"/>
+                                               <input th:unless="${obj.getQuality()}" type="checkbox"
+                                                      name="rating" value="1"/>
+                                            <label style="cursor:pointer;">1</label>
+                                            </span>
 
                         <!-- Bouton lancer une Ã©change -->
                         <button type="button" class="btn btn-info btn-troke btnBootPerso">
@@ -212,91 +242,18 @@
                 <!-- /Div un item -->
             </th:block>
 
-            <!--            <th:block th:if="${objectList} ne null ${searchObjectList} ne null">
-                                &lt;!&ndash; Div un item &ndash;&gt;
-                                <div class="searchItem">
-                                    &lt;!&ndash; L'image de l'item &ndash;&gt;
-                                    &lt;!&ndash;                    <div  class="searchItemImage">
-                                                        </div>&ndash;&gt;
-                                    &lt;!&ndash; Description de l'item &ndash;&gt;
-                                    <div class="searchItemDescription">
-                                        <h1>Aucun résultat...</h1>
-
-                                        <h1 style="font-size: medium">Veuiller choisir une autre option</h1>
-                                    </div>
-                                    &lt;!&ndash; Bar vertical de séparation &ndash;&gt;
-                                    &lt;!&ndash;                    <div class="searchVerticalBar right">
-                                                            <div class="barMask"></div>
-                                                        </div>&ndash;&gt;
-                                    &lt;!&ndash; Section côte de l'item &ndash;&gt;
-                                    <div class="searchItemQuality">
-                                        &lt;!&ndash; QualitÃ© en Ã©toiles &ndash;&gt;
-
-                                        &lt;!&ndash;                <span class="starRating">
-                                                        <input type="radio" name="rating" value="5">
-                                                        <label style="cursor:pointer;" for="rating5">5</label>
-                                                        <input type="radio" name="rating" value="4">
-                                                        <label style="cursor:pointer;" for="rating4">4</label>
-                                                        <input type="radio" name="rating" value="3">
-                                                        <label style="cursor:pointer;" for="rating3">3</label>
-                                                        <input type="radio" name="rating" value="2">
-                                                        <label style="cursor:pointer;" for="rating2">2</label>
-                                                        <input type="radio" name="rating" value="1">
-                                                        <label style="cursor:pointer;" for="rating1">1</label>
-                                                        </span>&ndash;&gt;
-
-                                        &lt;!&ndash; Bouton lancer une Ã©change &ndash;&gt;
-                                        &lt;!&ndash;                        <button type="button" class="btn btn-info btn-troke btnBootPerso">
-                                                                    <img class="searchItem-img-troke" src="images/Logo-transparent.png"/>
-                                                                    <span>Troké !</span>
-                                                                </button>&ndash;&gt;
-                                    </div>
-                                    &lt;!&ndash; Ligne/Spacer &ndash;&gt;
-                                    <div class="or-spacer">
-                                        <div class="mask"></div>
-                                    </div>
-                                </div>
-                                &lt;!&ndash; /Div un item &ndash;&gt;
-                            </th:block>-->
-
             <th:block th:if="(${searchObjectList} eq null and ${objectList} eq null and ${singleobject} eq null)">
                 <!-- Div un item -->
                 <div class="searchItem">
-                    <!-- L'image de l'item -->
-                    <!--                    <div  class="searchItemImage">
-                                        </div>-->
                     <!-- Description de l'item -->
                     <div class="searchItemDescription">
                         <h1>Aucun résultat...</h1>
 
                         <h1 style="font-size: medium">Veuiller choisir une autre option</h1>
                     </div>
-                    <!-- Bar vertical de séparation -->
-                    <!--                    <div class="searchVerticalBar right">
-                                            <div class="barMask"></div>
-                                        </div>-->
                     <!-- Section côte de l'item -->
                     <div class="searchItemQuality">
                         <!-- QualitÃ© en Ã©toiles -->
-
-                        <!--                <span class="starRating">
-                                        <input type="radio" name="rating" value="5">
-                                        <label style="cursor:pointer;" for="rating5">5</label>
-                                        <input type="radio" name="rating" value="4">
-                                        <label style="cursor:pointer;" for="rating4">4</label>
-                                        <input type="radio" name="rating" value="3">
-                                        <label style="cursor:pointer;" for="rating3">3</label>
-                                        <input type="radio" name="rating" value="2">
-                                        <label style="cursor:pointer;" for="rating2">2</label>
-                                        <input type="radio" name="rating" value="1">
-                                        <label style="cursor:pointer;" for="rating1">1</label>
-                                        </span>-->
-
-                        <!-- Bouton lancer une Ã©change -->
-                        <!--                        <button type="button" class="btn btn-info btn-troke btnBootPerso">
-                                                    <img class="searchItem-img-troke" src="images/Logo-transparent.png"/>
-                                                    <span>Troké !</span>
-                                                </button>-->
                     </div>
                     <!-- Ligne/Spacer -->
                     <div class="or-spacer">
@@ -311,8 +268,6 @@
                     <!-- Div un item -->
                     <div class="searchItem">
                         <!-- L'image de l'item -->
-                        <!--                    <div  class="searchItemImage">
-                                            </div>-->
                         <!-- Description de l'item -->
                         <div class="searchItemDescription">
                             <h1>Aucun résultat...</h1>
@@ -320,31 +275,9 @@
                             <h1 style="font-size: medium">Veuiller choisir une autre option</h1>
                         </div>
                         <!-- Bar vertical de séparation -->
-                        <!--                    <div class="searchVerticalBar right">
-                                                <div class="barMask"></div>
-                                            </div>-->
                         <!-- Section côte de l'item -->
                         <div class="searchItemQuality">
                             <!-- QualitÃ© en Ã©toiles -->
-
-                            <!--                <span class="starRating">
-                                            <input type="radio" name="rating" value="5">
-                                            <label style="cursor:pointer;" for="rating5">5</label>
-                                            <input type="radio" name="rating" value="4">
-                                            <label style="cursor:pointer;" for="rating4">4</label>
-                                            <input type="radio" name="rating" value="3">
-                                            <label style="cursor:pointer;" for="rating3">3</label>
-                                            <input type="radio" name="rating" value="2">
-                                            <label style="cursor:pointer;" for="rating2">2</label>
-                                            <input type="radio" name="rating" value="1">
-                                            <label style="cursor:pointer;" for="rating1">1</label>
-                                            </span>-->
-
-                            <!-- Bouton lancer une Ã©change -->
-                            <!--                        <button type="button" class="btn btn-info btn-troke btnBootPerso">
-                                                        <img class="searchItem-img-troke" src="images/Logo-transparent.png"/>
-                                                        <span>Troké !</span>
-                                                    </button>-->
                         </div>
                         <!-- Ligne/Spacer -->
                         <div class="or-spacer">
@@ -360,28 +293,14 @@
                     <!-- Div un item -->
                     <div class="searchItem">
                         <!-- L'image de l'item -->
-                        <!--                    <div  class="searchItemImage">
-                                            </div>-->
                         <!-- Description de l'item -->
                         <div class="searchItemDescription">
                             <h1>Aucun résultat...</h1>
-
                             <h1 style="font-size: medium">Veuiller choisir une autre option</h1>
                         </div>
-                        <!-- Bar vertical de séparation -->
-                        <!--                    <div class="searchVerticalBar right">
-                                                <div class="barMask"></div>
-                                            </div>-->
                         <!-- Section côte de l'item -->
                         <div class="searchItemQuality">
                             <!-- QualitÃ© en Ã©toiles -->
-
-
-                            <!-- Bouton lancer une Ã©change -->
-                            <!--                        <button type="button" class="btn btn-info btn-troke btnBootPerso">
-                                                        <img class="searchItem-img-troke" src="images/Logo-transparent.png"/>
-                                                        <span>Troké !</span>
-                                                    </button>-->
                         </div>
                         <!-- Ligne/Spacer -->
                         <div class="or-spacer">

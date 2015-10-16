@@ -3,7 +3,7 @@
   <component name="dataSourceStorageLocal">
     <data-source name="localhost" uuid="b833a84c-a12c-4235-a1cd-83122195dbe1">
       <secret-storage>master_key</secret-storage>
-      <user-name>AdminAlex</user-name>
+      <user-name>Website</user-name>
       <schema-pattern>troke.*</schema-pattern>
       <default-schemas>troke.*</default-schemas>
     </data-source>

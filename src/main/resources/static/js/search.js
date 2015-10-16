@@ -8,3 +8,9 @@ function checkCB(mainCat) {
         document.getElementById(mainCat + 'Category').className = "category-Selection collapse in";
     }
 }
+
+function getCheckCBValue(checkBoxId){
+    if($("#" + checkBoxId).prop('checked', true)){
+        location.href="/category?categoryName=" + checkBoxId;
+    }
+}

@@ -205,9 +205,8 @@ public class HomeController {
 
         for (Iterator<String> i = cats.iterator(); i.hasNext(); ) {
             String currentCat = i.next();
-            html += "<button type=\"button\" class=\"btn btn-info btnBootPerso\" data-toggle=\"collapse\" data-target=\"#" + currentCat.toLowerCase() + "Category\"\n" +
-                    "onclick=\"checkCB('" + currentCat.toLowerCase() + "')\">\n" +
-                    "<input id=\"" + currentCat.toLowerCase() +  "\" class=\"mainCategory\" style=\"float:left;\" type=\"checkbox\">" + currentCat + "</input>\n" +
+            html += "<button type=\"button\" class=\"btn btn-info btnBootPerso\" data-toggle=\"collapse\" data-target=\"#" + currentCat.toLowerCase() + "Category\" onclick=\"checkCB('" + currentCat.toLowerCase() + "')\">\n" +
+                    "<input onchange=\"getCheckCBValue('" + currentCat + "');\" id=\"" + currentCat.toLowerCase() +  "\" class=\"mainCategory\" style=\"float:left;\" type=\"checkbox\"><a href=\"/category?categoryName=" + currentCat + "\"></a>" + currentCat + "</input>\n" +
                     "<select style=\"float:right;\" class=\"disappear\" disabled=\"disabled\"></select>\n" +
                     "</button>\n" +
                     "<div id=\"" + currentCat.toLowerCase() + "Category\" class=\"category-Selection collapse\">\n" +
@@ -216,7 +215,11 @@ public class HomeController {
             List<String> subcats = customUserRepository.getAllSubCategories(currentCat);
             for (Iterator<String> j = subcats.iterator(); j.hasNext(); ) {
                 String currentSubCat = j.next();
-                html += "<li><input class=\"" + currentCat.toLowerCase() + "\" type=\"checkbox\">" + currentSubCat + "</input></li>\n";
+                html += "<li>"+
+                        "<input class=\"" + currentCat.toLowerCase() + "\" type=\"checkbox\">"+
+                        "<a href=\"/subcategory?subCategoryName=" + currentSubCat + "\">" + currentSubCat + "</a>" +
+                        "</input>" +
+                        "</li>\n";
             }
             html += "</ul></div>\n";
         }
