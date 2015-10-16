@@ -5,7 +5,7 @@
 
     <body>
 
-        <div th:fragment="connexion">
+        <div th:fragment="login">
 
             <div id="openModalConnexion" class="modalDialogConnexion" >
 
@@ -28,7 +28,7 @@
                             <div class="mask"></div>
                         </div>
                         <div style="height:100%">
-                            <p th:if="${session.error}!= null"><p style="color:red" th:text="${session.error}"></p></p>
+                            <p th:if="${session.error} ne null"><p style="color:red" th:text="${session.error}"></p></p>
                         </div>
                         <div>
                             <!--<a style="text-align:center;font-size:16px;" title="Valider" class="valid" type="submit">Valider</a> -->

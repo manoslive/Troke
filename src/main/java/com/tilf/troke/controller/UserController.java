@@ -31,23 +31,6 @@ public class UserController {
     @Autowired
     private CustomUserRepository customUserRepository;
 
-    /*
-    @RequestMapping("/get")
-    public String getUser(@RequestParam("iduser") String idUser, Model model) {
-        UsersEntity user = customUserRepository.findUserById(idUser);
-        model.addAttribute("user", user);
-        return "user";
-    }
-    @RequestMapping("/listusers")
-    public String getAllUsers(Model model) {
-        List<UsersEntity> usersList = customUserRepository.getAllUsers();
-        model.addAttribute("userList", usersList);
-        return "site/listusers";
-    }
-    */
-
-
-
     @RequestMapping(value = "/adduser", method = RequestMethod.POST)
     public String adduser(@Valid UsersEntity user, BindingResult result) {
 
@@ -65,9 +48,6 @@ public class UserController {
             userRepository.save(user);
             return "redirect:/";
         }
-
-
-
     /*
     @RequestMapping(value = "/adduser", method = RequestMethod.POST)
     public String addUser(@RequestParam(value = "iduser", required = true) String iduser, @RequestParam(value = "lastname", required = true) String lastname, @RequestParam(value = "firstname", required = true) String firstname,

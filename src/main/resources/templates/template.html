@@ -1,31 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<th:block th:if="${currentpage.equals('home')}">
-    <head>
-        <th:block th:replace="fragments/head/template_head :: template_head"/>
-        <th:block th:replace="fragments/head/home_head :: home_head"/>
-    </head>
+<th:block th:if="${currentpage} ne null">
+    <th:block th:if="${currentpage.equals('home')}">
+        <head>
+            <th:block th:replace="fragments/head/template_head :: template_head"/>
+            <th:block th:replace="fragments/head/home_head :: home_head"/>
+        </head>
+    </th:block>
+    <th:block th:if="${currentpage.equals('search')}">
+        <head>
+            <th:block th:replace="fragments/head/template_head :: template_head"/>
+            <th:block th:replace="fragments/head/search_head :: search_head"/>
+        </head>
+    </th:block>
 </th:block>
-<th:block th:if="${currentpage.equals('search')}">
-    <head>
-        <th:block th:replace="fragments/head/template_head :: template_head"/>
-        <th:block th:replace="fragments/head/search_head :: search_head"/>
-    </head>
-</th:block>
-
-
-<!--<th:block th:if="${currentpage == 'myexchanges'}" th:replace="fragments/head/myexchanges_head :: myexchanges_head"/>-->
-<!--
-<link href="css/demarerTrok.css" type="text/css" rel="stylesheet"/>
-<link href="css/style_myExchanges.css" type="text/css" rel="stylesheet"/>
-<link href="css/style_troker.css" type="text/css" rel="stylesheet"/>
--->
 <body style="background-color:#060706;" id="goodlookin">
 
 <!-- Header -->
 <div th:replace="fragments/home/header :: header"></div>
 <!-- frag connexion -->
-<div th:replace="fragments/home/connexion :: connexion"></div>
+<div th:replace="fragments/home/login :: login"></div>
 <div th:replace="fragments/home/signup :: signup"></div>
 
 <!-- NavBar -->

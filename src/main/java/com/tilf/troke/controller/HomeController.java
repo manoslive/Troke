@@ -38,12 +38,11 @@ public class HomeController {
         FillCategoryMenu(model);
         FillCategoryList(model);
         GetRecentItems(model);
-
+        model.addAttribute("currentpage", "search"); // FIXME Petit problème ici currentpage semble être nul lors d'une recherche
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("currentpage", "home");
-
         }
         return "template";
     }
@@ -77,21 +76,6 @@ public class HomeController {
         List<String> cats = customUserRepository.getAllCategories();
         model.addAttribute("catlist", cats);
         model.addAttribute("adrcat", "/category?categoryName=");
-
-        /*
-        for (Iterator<String> i = cats.iterator(); i.hasNext(); ) {
-            String currentCat = i.next();
-            html += "<div><a href=\"category?categoryName=" + currentCat + "\">" + currentCat +
-                    "</a><ul> ";
-
-            List<String> subcats = customUserRepository.getAllSubCategories(currentCat);
-            for (Iterator<String> j = subcats.iterator(); j.hasNext(); ) {
-                String currentSubCat = j.next();
-                html += "<li type='disc'><a href=\"subcategory?subCategoryName=" + currentSubCat + "&categoryName=" + currentCat + "\">" + currentSubCat + "</a></li>";
-            }
-            html += "</ul></div>";
-        }
-        */
 
         for (Iterator<String> i = cats.iterator(); i.hasNext(); ) {
             String currentCat = i.next();
@@ -136,10 +120,12 @@ public class HomeController {
     public String ListCategoryItems(@RequestParam("categoryName") String categoryName, Model model) {
         model.addAttribute("currentpage", "search");
         model.addAttribute("objectList", customUserRepository.getObjectsByCategory(categoryName));
+        model.addAttribute("leftMenu", fillLeftCatMenu());
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("objectList", customUserRepository.getObjectsByCategory(categoryName));
+            context.setVariable("leftMenu", fillLeftCatMenu());
         }
 
         model.addAttribute("objectList", customUserRepository.getObjectsByCategory(categoryName));
@@ -151,11 +137,13 @@ public class HomeController {
     public String ListSubCategoryItems(@RequestParam("subCategoryName") String subCategoryName, Model model) {
         model.addAttribute("currentpage", "search");
         model.addAttribute("objectList", customUserRepository.getObjectsBySubCategory(subCategoryName));
+        model.addAttribute("leftMenu", fillLeftCatMenu());
 
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("objectList", customUserRepository.getObjectsBySubCategory(subCategoryName));
+            context.setVariable("leftMenu", fillLeftCatMenu());
         }
         return "forward:/home";
     }
@@ -166,15 +154,58 @@ public class HomeController {
         model.addAttribute("currentpage", "search");
         model.addAttribute("singleobject", customUserRepository.getObjectEntityByIdObject(idobject));
         model.addAttribute("adrItem", "/item?idObject=");
+        model.addAttribute("leftMenu", fillLeftCatMenu());
 
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("singleobject", customUserRepository.getObjectEntityByIdObject(idobject));
             context.setVariable("adrItem", "/item?objectName=");
+            context.setVariable("leftMenu", fillLeftCatMenu());
         }
 
         return "forward:/home";
+    }
+
+    @RequestMapping(value = "/searchDB", method = RequestMethod.GET)
+    public String searchDB(@RequestParam("keyword") String keyword, Model model) {
+        model.addAttribute("searchObjectList", customUserRepository.getObjectListByKeyword(keyword));
+        model.addAttribute("currentpage", "search");
+        model.addAttribute("adrSearch", "/searchDB?keyword=");
+        model.addAttribute("leftMenu", fillLeftCatMenu());
+        // TODO THYMELEAF HACK
+        if (false) {
+            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+            context.setVariable("searchObjectList", customUserRepository.getObjectListByKeyword(keyword));
+            context.setVariable("currentpage", "search");
+            context.setVariable("adrSearch", "/searchDB?keyword=");
+            context.setVariable("leftMenu", fillLeftCatMenu());
+        }
+        return "forward:/home";
+    }
+
+    public String fillLeftCatMenu() {
+        String html = new String();
+        List<String> cats = customUserRepository.getAllCategories();
+
+        for (Iterator<String> i = cats.iterator(); i.hasNext(); ) {
+            String currentCat = i.next();
+            html += "<button type=\"button\" class=\"btn btn-info btnBootPerso\" data-toggle=\"collapse\" data-target=\"#" + currentCat.toLowerCase() + "Category\"\n" +
+                    "onclick=\"checkCB('" + currentCat.toLowerCase() + "')\">\n" +
+                    "<input id=\"" + currentCat.toLowerCase() +  "\" class=\"mainCategory\" style=\"float:left;\" type=\"checkbox\">" + currentCat + "</input>\n" +
+                    "<select style=\"float:right;\" class=\"disappear\" disabled=\"disabled\"></select>\n" +
+                    "</button>\n" +
+                    "<div id=\"" + currentCat.toLowerCase() + "Category\" class=\"category-Selection collapse\">\n" +
+                    "<ul>\n";
+
+            List<String> subcats = customUserRepository.getAllSubCategories(currentCat);
+            for (Iterator<String> j = subcats.iterator(); j.hasNext(); ) {
+                String currentSubCat = j.next();
+                html += "<li><input class=\"" + currentCat.toLowerCase() + "\" type=\"checkbox\">" + currentSubCat + "</input></li>\n";
+            }
+            html += "</ul></div>\n";
+        }
+        return html;
     }
 }
 

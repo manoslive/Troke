@@ -147,4 +147,16 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
 
         return obj;
     }
+
+    // Recherches
+    @Override
+    public List<ObjectsEntity> getObjectListByKeyword(String keyword)
+    {
+        String query = "select o from ObjectsEntity o where UPPER(o.nameObject) like UPPER(:keyword)";
+        Query queryObject = entityManager.createQuery(query);
+        queryObject.setParameter("keyword", "%" + keyword + "%");
+        List<ObjectsEntity> objList = (List<ObjectsEntity>) queryObject.getResultList();
+
+        return objList;
+    }
 }

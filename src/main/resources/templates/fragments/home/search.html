@@ -5,7 +5,7 @@
 
 <body>
 <th:block th:fragment="search">
-    <div class="container" style="font-family:'Amaranth'; background:#00455F;">
+    <div class="container" style="font-family:'Amaranth'; background:#00455F; z-index:1;">
         <!-- Div(gauche) qui contient touts les options de recherches -->
         <div id="searchOptions" class="col-md-3">
             <!-- Titre SÃ©lectionnÃ©s - Touts les optionns sÃ©lectionÃ©s (BTN pour le style) -->
@@ -24,93 +24,8 @@
                     <li class="selectedSubCategories"><input type="checkbox" checked="checked"> That</input></li>
                 </ul>
             </div>
-
-            <!-- Titre CatÃ©gorie - BTN(pour le style) - Input CheckBox pour sÃ©lectionner la main CatÃ©gorie - Select pour la petite flÃ¨che dropdown -->
-            <button  type="button" class="btn btn-info btnBootPerso" data-toggle="collapse" data-target="#sportsCategory"
-                    onclick="checkCB('sports')">
-                <input id="sports" class="mainCategory" style="float:left;" type="checkbox">Sports</input>
-                <select style="float:right;" class="disappear" disabled="disabled"></select>
-            </button>
-            <!-- Div rÃ©tractable qui contient la liste des sous-catÃ©gories -->
-            <div id="sportsCategory" class="category-Selection collapse">
-                <ul>
-                    <li><input class="sports" type="checkbox"> This is checkbox d </input></li>
-                    <li><input class="sports" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="sports" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="sports" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="sports" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="sports" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="sports" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="sports" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="sports" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="sports" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="sports" type="checkbox"> This is checkbox </input></li>
-                </ul>
-            </div>
-            <!-- /Fin de la catÃ©gorie -->
-
-            <button type="button" class="btn btn-info btnBootPerso" data-toggle="collapse" data-target="#animalsCategory"
-                    onclick="checkCB('animals')">
-                <input id="animals" class="mainCategory" style="float:left;" type="checkbox">Animaux</input>
-                <select style="float:right;" class="disappear" disabled="disabled"></select>
-            </button>
-            <div id="animalsCategory" class="category-Selection collapse">
-                <ul>
-                    <li><input class="animals" type="checkbox"> This is checkbox d </input></li>
-                    <li><input class="animals" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="animals" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="animals" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="animals" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="animals" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="animals" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="animals" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="animals" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="animals" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="animals" type="checkbox"> This is checkbox </input></li>
-                </ul>
-            </div>
-            <button type="button" class="btn btn-info btnBootPerso" data-toggle="collapse" data-target="#vehiculesCategory"
-                    onclick="checkCB('vehicules')">
-                <input id="vehicules" class="mainCategory" style="float:left;" type="checkbox">Voitures</input>
-                <select style="float:right;" class="disappear" disabled="disabled"></select>
-            </button>
-            <div id="vehiculesCategory" class="category-Selection collapse">
-                <ul>
-                    <li><input class="vehicules" type="checkbox"> This is checkbox d </input></li>
-                    <li><input class="vehicules" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="vehicules" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="vehicules" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="vehicules" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="vehicules" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="vehicules" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="vehicules" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="vehicules" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="vehicules" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="vehicules" type="checkbox"> This is checkbox </input></li>
-                </ul>
-            </div>
-            <button type="button" class="btn btn-info btnBootPerso" data-toggle="collapse" data-target="#servicesCategory"
-                    onclick="checkCB('services')">
-                <input id="services" class="mainCategory" style="float:left;" type="checkbox">Services</input>
-                <select style="float:right;" class="disappear" disabled="disabled"></select>
-            </button>
-            <div id="servicesCategory" class="category-Selection collapse">
-                <ul>
-                    <li><input class="services" type="checkbox"> This is checkbox d </input></li>
-                    <li><input class="services" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="services" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="services" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="services" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="services" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="services" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="services" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="services" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="services" type="checkbox"> This is checkbox </input></li>
-                    <li><input class="services" type="checkbox"> This is checkbox </input></li>
-                </ul>
-            </div>
+            <span th:utext="${leftMenu}"/>
         </div>
-
 
         <!-- Div(droite) qui contient les rÃ©sultats de recherche -->
         <div id="searchResults" class="col-md-9">
@@ -145,6 +60,7 @@
                     <!-- L'image de l'item -->
                     <div  class="searchItemImage">
                         <img th:if="${singleobject.getGuid()} ne null"/>
+                        <img th:if="${singleobject.getGuid()} eq null" src="images/UnknownUser.png"/>
                     </div>
                     <!-- Description de l'item -->
                     <div class="searchItemDescription">
@@ -174,13 +90,13 @@
 
                         <!-- Bouton lancer une Ã©change -->
                         <button type="button" class="btn btn-info btn-troke btnBootPerso">
-                            <img class="searchItem-img-troke" src="images/Logo-transparent.png"/>
+                            <img class="searchItem-img-troke" src="images/UnknownUser.png"/>
                             <span>Troké !</span>
                         </button>
                     </div>
                 </div>
-                <!-- /Div un item -->
 
+                <!-- /Div un item -->
                 <!-- Ligne/Spacer -->
                 <div class="or-spacer">
                     <div class="mask"></div>
@@ -188,8 +104,56 @@
             </th:block>
 
             <th:block th:if="${objectList} ne null">
+            <!-- Div un item -->
+            <div th:each="obj : ${objectList}" class="searchItem">
+                <!-- L'image de l'item -->
+                <div  class="searchItemImage">
+                    <img th:if="${obj.getGuid()} ne null"/>
+                    <img th:if="${obj.getGuid()} eq null" src="images/Logo-transparent.png"/>
+                </div>
+                <!-- Description de l'item -->
+                <div class="searchItemDescription">
+                    <h4 th:text="${obj.getNameObject()}"/>
+                    <p th:text="${obj.getDescObject()}"/>
+                </div>
+                <!-- Bar vertical de séparation -->
+                <div class="searchVerticalBar right">
+                    <div class="barMask"></div>
+                </div>
+                <!-- Section côte de l'item -->
+                <div class="searchItemQuality">
+                    <!-- QualitÃ© en Ã©toiles -->
+
+                    <!--                <span class="starRating">
+                                    <input type="radio" name="rating" value="5">
+                                    <label style="cursor:pointer;" for="rating5">5</label>
+                                    <input type="radio" name="rating" value="4">
+                                    <label style="cursor:pointer;" for="rating4">4</label>
+                                    <input type="radio" name="rating" value="3">
+                                    <label style="cursor:pointer;" for="rating3">3</label>
+                                    <input type="radio" name="rating" value="2">
+                                    <label style="cursor:pointer;" for="rating2">2</label>
+                                    <input type="radio" name="rating" value="1">
+                                    <label style="cursor:pointer;" for="rating1">1</label>
+                                    </span>-->
+
+                    <!-- Bouton lancer une Ã©change -->
+                    <button type="button" class="btn btn-info btn-troke btnBootPerso">
+                        <img class="searchItem-img-troke" src="images/Logo-transparent.png"/>
+                        <span>Troké !</span>
+                    </button>
+                </div>
+                <!-- Ligne/Spacer -->
+                <div class="or-spacer">
+                    <div class="mask"></div>
+                </div>
+            </div>
+            <!-- /Div un item -->
+        </th:block>
+
+            <th:block th:if="${searchObjectList} ne null">
                 <!-- Div un item -->
-                <div th:each="obj : ${objectList}" class="searchItem">
+                <div th:each="obj : ${searchObjectList}" class="searchItem">
                     <!-- L'image de l'item -->
                     <div  class="searchItemImage">
                         <img th:if="${obj.getGuid()} ne null"/>
@@ -226,6 +190,52 @@
                             <img class="searchItem-img-troke" src="images/Logo-transparent.png"/>
                             <span>Troké !</span>
                         </button>
+                    </div>
+                    <!-- Ligne/Spacer -->
+                    <div class="or-spacer">
+                        <div class="mask"></div>
+                    </div>
+                </div>
+                <!-- /Div un item -->
+            </th:block>
+
+            <th:block th:if="${searchObjectList} eq null or ${objectList} eq null">
+                <!-- Div un item -->
+                <div  class="searchItem">
+                    <!-- L'image de l'item -->
+<!--                    <div  class="searchItemImage">
+                    </div>-->
+                    <!-- Description de l'item -->
+                    <div class="searchItemDescription">
+                        <h1>Aucun résultat...</h1>
+                        <h1 style="font-size: medium">Veuiller choisir une autre option</h1>
+                    </div>
+                    <!-- Bar vertical de séparation -->
+<!--                    <div class="searchVerticalBar right">
+                        <div class="barMask"></div>
+                    </div>-->
+                    <!-- Section côte de l'item -->
+                    <div class="searchItemQuality">
+                        <!-- QualitÃ© en Ã©toiles -->
+
+                        <!--                <span class="starRating">
+                                        <input type="radio" name="rating" value="5">
+                                        <label style="cursor:pointer;" for="rating5">5</label>
+                                        <input type="radio" name="rating" value="4">
+                                        <label style="cursor:pointer;" for="rating4">4</label>
+                                        <input type="radio" name="rating" value="3">
+                                        <label style="cursor:pointer;" for="rating3">3</label>
+                                        <input type="radio" name="rating" value="2">
+                                        <label style="cursor:pointer;" for="rating2">2</label>
+                                        <input type="radio" name="rating" value="1">
+                                        <label style="cursor:pointer;" for="rating1">1</label>
+                                        </span>-->
+
+                        <!-- Bouton lancer une Ã©change -->
+<!--                        <button type="button" class="btn btn-info btn-troke btnBootPerso">
+                            <img class="searchItem-img-troke" src="images/Logo-transparent.png"/>
+                            <span>Troké !</span>
+                        </button>-->
                     </div>
                     <!-- Ligne/Spacer -->
                     <div class="or-spacer">
