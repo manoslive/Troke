@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.thymeleaf.context.WebContext;
 
 import javax.naming.AuthenticationException;
@@ -32,13 +33,11 @@ public class UserController {
     private CustomUserRepository customUserRepository;
 
     @RequestMapping(value = "/adduser", method = RequestMethod.POST)
-    public String adduser(@Valid UsersEntity user, BindingResult result) {
+    public String adduser(@ModelAttribute("user") @Valid UsersEntity user, BindingResult result, RedirectAttributes redirectAttributes) {
 
         java.sql.Date now = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 
-        if (result.hasErrors()) {
-            return "/inscription";
-        } else {
+        if (!result.hasErrors()) {
             user.setAvatar(null);
             user.setIsbanned("N");
             user.setIsonline("N");
@@ -48,44 +47,17 @@ public class UserController {
             userRepository.save(user);
             return "redirect:/";
         }
-    /*
-    @RequestMapping(value = "/adduser", method = RequestMethod.POST)
-    public String addUser(@RequestParam(value = "iduser", required = true) String iduser, @RequestParam(value = "lastname", required = true) String lastname, @RequestParam(value = "firstname", required = true) String firstname,
-                          @RequestParam(value = "pass", required = true) String pass, @RequestParam(value = "pass_confirm", required = true) String pass_confirm, @RequestParam(value = "email", required = true) String email,
-                          @RequestParam(value = "email_confirm", required = true) String email_confirm, @RequestParam(value = "telephone", required = true) String telephone, @RequestParam(value = "zipcode", required = true) String zipcode, Model model, HttpSession session) {
-        BigInteger zero = BigInteger.valueOf(0);
-        BigInteger userExistance = customUserRepository.checkUserExistance(iduser);
-        if (!email.equals(email_confirm)) {
-            session.setAttribute("errorInscription", "Les 2 champ de courriel doivent être identiques");
-            return "forward:/inscription";
-        } else if (!pass.equals(pass_confirm)) {
-            session.setAttribute("errorInscription", "Les 2 champ de de mots de passes doivent être identiques");
-            return "forward:/inscription";
-        } else if (userExistance == zero) {
-            UsersEntity user = new UsersEntity();
-            java.sql.Date now = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-            user.setIduser(iduser);
-            user.setFirstname(firstname);
-            user.setLastname(lastname);
-            user.setPass(pass);
-            user.setAvatar(null);
-            user.setIsbanned("N");
-            user.setIsonline("N");
-            user.setCreationdate(now);
-            user.setEmail(email);
-            user.setTelephone(telephone);
-            user.setZipcode(zipcode);
-            user.setPermissionlevel(0);
-            user.setIsvip("N");
 
-            userRepository.save(user);
+        redirectAttributes.addFlashAttribute("user", user);
+        redirectAttributes.addFlashAttribute("fields", result);
+        // TODO THYMELEAF HACK
+        if (false) {
+            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+            context.setVariable("fields", result);
+            context.setVariable("user", user);
 
-            return "redirect:/";
-        } else {
-            session.setAttribute("errorInscription", "Nom d'usager non disponible!");
-            return "forward:/inscription";
         }
-    }
-    */
+
+        return "redirect:/#openModalInscription";
     }
 }

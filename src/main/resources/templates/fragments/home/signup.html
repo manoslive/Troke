@@ -62,9 +62,8 @@
                            <li type="disc" style="color:red" th:each="err : ${#fields.errors('userInscription')}" th:text="${err}"/>
                        </ul>
                     </th:block>
-
-                    <ul th:if="${#fields.hasErrors('*')}"> <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li></ul>
-                     -->
+                    -->
+                    <ul th:if="${fields != null and fields.hasErrors()}"> <li th:each="err : ${fields.getAllErrors()}" th:text="${err}">Input is incorrect</li></ul>
                 </div>
                 <a style="text-align:center;font-size:16px; cursor: pointer;" title="Valid" class="valid"
                    onclick="Flip(); ConfirmEmail()">Valider</a>

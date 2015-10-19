@@ -9,8 +9,29 @@ function checkCB(mainCat) {
     }
 }
 
-function getCheckCBValue(checkBoxId){
+function getCheckBoxCatValue(checkBoxId){
     if($("#" + checkBoxId).prop('checked', true)){
-        location.href="/category?categoryName=" + checkBoxId;
+        var catCheckedCb = $('.catCb:checked').map(function(){
+            return this.value;
+        });
+        location.href="/category?categoryName=" + checkBoxId + "&checkedCatList=" + catCheckedCb;
     }
+}
+
+function getCheckBoxSubCatValue(checkBoxId){
+    if($("#" + checkBoxId).prop('checked',true)){
+        var subCatCheckedCb = $('.subCatCb:checked').map(function(){
+            return this.value;
+        });
+        location.href="/subcategory?subCategoryName=" + checkBoxId + "&checkedSubCatList=" + subCatCheckedCb;
+    }
+}
+
+function setCheckBoxState(checkedCatList, checkedSubCatList){
+    checkedCatList.forEach(function(cat){
+        $("#" + cat).prop('checked', true);
+    })
+    checkedSubCatList.forEach(function(subCat){
+        $("#" + subCat).prop('checked', true);
+    })
 }

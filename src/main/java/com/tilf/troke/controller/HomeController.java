@@ -6,12 +6,18 @@ import com.tilf.troke.repository.CustomUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.CookieGenerator;
 import org.thymeleaf.context.WebContext;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.net.HttpCookie;
 import java.util.Iterator;
 import java.util.List;
 
@@ -26,6 +32,7 @@ public class HomeController {
 
     @RequestMapping("/")
     public String root(Model model) {
+        model.addAttribute("user", new UsersEntity());
         FillCategoryMenu(model);
         FillCategoryList(model);
         GetRecentItems(model);
@@ -39,11 +46,6 @@ public class HomeController {
         FillCategoryList(model);
         GetRecentItems(model);
         // model.addAttribute("currentpage", "search"); // FIXME Petit problème ici currentpage semble être nul lors d'une recherche
-        // TODO THYMELEAF HACK
-        if (false) {
-            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("currentpage", "home");
-        }
         return "template";
     }
 
@@ -117,10 +119,12 @@ public class HomeController {
 
     // Test de catégorie
     @RequestMapping(value = "/category", method = RequestMethod.GET)
-    public String ListCategoryItems(@RequestParam("categoryName") String categoryName, Model model) {
+    public String ListCategoryItems(@RequestParam("categoryName") String categoryName, Model model, HttpSession session, @RequestParam(value = "checkedCatList", required = false) List<String> checkedCatList, @RequestParam(value = "checkedSubCatList" , required = false) List<String> checkedSubCatList) {
         model.addAttribute("currentpage", "search");
         model.addAttribute("objectList", customUserRepository.getObjectsByCategory(categoryName));
         model.addAttribute("leftMenu", fillLeftCatMenu());
+        session.setAttribute("checkedCatList", checkedCatList);
+        session.setAttribute("checkedSubCatList", checkedSubCatList);
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
@@ -140,11 +144,12 @@ public class HomeController {
         return "forward:/home";
     }
 
-
     @RequestMapping(value = "/subcategory", method = RequestMethod.GET)
-    public String ListSubCategoryItems(@RequestParam("subCategoryName") String subCategoryName, Model model) {
+    public String ListSubCategoryItems(@RequestParam("subCategoryName") String subCategoryName, @RequestParam(value = "checkedCatList", required = false) List<String> checkedCatList, @RequestParam(value = "checkedSubCatList" , required = false) List<String> checkedSubCatList, HttpSession session, Model model) {
         model.addAttribute("currentpage", "search");
         model.addAttribute("objectList", customUserRepository.getObjectsBySubCategory(subCategoryName));
+        session.setAttribute("checkedCatList", checkedCatList);
+        session.setAttribute("checkedSubCatList", checkedSubCatList);
         model.addAttribute("leftMenu", fillLeftCatMenu());
 
         // TODO THYMELEAF HACK
@@ -152,6 +157,8 @@ public class HomeController {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("objectList", customUserRepository.getObjectsBySubCategory(subCategoryName));
             context.setVariable("leftMenu", fillLeftCatMenu());
+            context.setVariable("checkedCatList",checkedCatList);
+            context.setVariable("checkedSubCatList", checkedSubCatList);
         }
         return "forward:/home";
     }
@@ -206,7 +213,7 @@ public class HomeController {
         for (Iterator<String> i = cats.iterator(); i.hasNext(); ) {
             String currentCat = i.next();
             html += "<button type=\"button\" class=\"btn btn-info btnBootPerso\" data-toggle=\"collapse\" data-target=\"#" + currentCat.toLowerCase() + "Category\" onclick=\"checkCB('" + currentCat.toLowerCase() + "')\">\n" +
-                    "<input onchange=\"getCheckCBValue('" + currentCat + "');\" id=\"" + currentCat.toLowerCase() +  "\" class=\"mainCategory\" style=\"float:left;\" type=\"checkbox\"><a href=\"/category?categoryName=" + currentCat + "\"></a>" + currentCat + "</input>\n" +
+                    "<input onchange=\"getCheckBoxCatValue('" + currentCat.toLowerCase() + "');\" id=\"" + currentCat.toLowerCase() +  "\" class=\"mainCategory catCb\" style=\"float:left;\" type=\"checkbox\"><a href=\"/category?categoryName=" + currentCat + "\"></a>" + currentCat + "</input>\n" +
                     "<select style=\"float:right;\" class=\"disappear\" disabled=\"disabled\"></select>\n" +
                     "</button>\n" +
                     "<div id=\"" + currentCat.toLowerCase() + "Category\" class=\"category-Selection collapse\">\n" +
@@ -216,7 +223,7 @@ public class HomeController {
             for (Iterator<String> j = subcats.iterator(); j.hasNext(); ) {
                 String currentSubCat = j.next();
                 html += "<li>"+
-                        "<input class=\"" + currentCat.toLowerCase() + "\" type=\"checkbox\">"+
+                        "<input onchange=\"getCheckBoxSubCatValue('" + currentSubCat.toLowerCase() + "');\" id=\"" + currentSubCat +  "\" class=\"mainCategory" + currentSubCat.toLowerCase() + "subCatCb\" type=\"checkbox\">"+
                         "<a href=\"/subcategory?subCategoryName=" + currentSubCat + "\">" + currentSubCat + "</a>" +
                         "</input>" +
                         "</li>\n";

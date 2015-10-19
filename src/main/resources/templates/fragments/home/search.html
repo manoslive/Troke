@@ -55,6 +55,10 @@
             </div>
 
             <th:block th:if="${singleobject} ne null">
+                <th:block th:if="${checkedCatList ne null and checkedSubCatList ne null}">
+                    <input type="hidden"
+                           th:onload="'javascript:setCheckBoxState('${checkedCatList} + ${checkedSubCatList}');'"/>
+                </th:block>
                 <!-- Div un item -->
                 <div class="searchItem">
                     <!-- L'image de l'item -->
@@ -65,6 +69,7 @@
                     <!-- Description de l'item -->
                     <div class="searchItemDescription">
                         <h4 class="searchItemName" th:text="${singleobject.getNameObject()}"/>
+
                         <p th:text="${singleobject.getDescObject()}"/>
                     </div>
                     <!-- Bar vertical de séparation -->
@@ -117,6 +122,10 @@
             </th:block>
 
             <th:block th:if="${objectList} ne null">
+                <th:block th:if="${checkedCatList ne null and checkedSubCatList ne null}">
+                    <input type="hidden"
+                           th:onload="'javascript:setCheckBoxState('${checkedCatList} + ${checkedSubCatList}');'"/>
+                </th:block>
                 <!-- Div un item -->
                 <div th:each="obj : ${objectList}" class="searchItem">
                     <!-- L'image de l'item -->
@@ -180,6 +189,10 @@
             </th:block>
 
             <th:block th:if="${searchObjectList} ne null">
+                <th:block th:if="${checkedCatList ne null and checkedSubCatList ne null}">
+                    <input type="hidden"
+                           th:onload="'javascript:setCheckBoxState('${checkedCatList} + ${checkedSubCatList}');'"/>
+                </th:block>
                 <!-- Div un item -->
                 <div th:each="obj : ${searchObjectList}" class="searchItem">
                     <!-- L'image de l'item -->
@@ -243,6 +256,10 @@
             </th:block>
 
             <th:block th:if="(${searchObjectList} eq null and ${objectList} eq null and ${singleobject} eq null)">
+                <th:block th:if="${checkedCatList ne null and checkedSubCatList ne null}">
+                    <input type="hidden"
+                           th:onload="'javascript:setCheckBoxState('${checkedCatList} + ${checkedSubCatList}');'"/>
+                </th:block>
                 <!-- Div un item -->
                 <div class="searchItem">
                     <!-- Description de l'item -->
@@ -265,6 +282,10 @@
 
             <th:block th:if="${objectList} ne null">
                 <th:block th:if="${objectList.size()} lt 1">
+                    <th:block th:if="${checkedCatList ne null and checkedSubCatList ne null}">
+                        <input type="hidden"
+                               th:onload="'javascript:setCheckBoxState('${checkedCatList} + ${checkedSubCatList}');'"/>
+                    </th:block>
                     <!-- Div un item -->
                     <div class="searchItem">
                         <!-- L'image de l'item -->
@@ -284,18 +305,23 @@
                             <div class="mask"></div>
                         </div>
                     </div>
-                    <!-- /Div un item -->
+                    <!-- /Div un item   ${checkedCatList}  ',' ${checkedSubCatList} + -->
                 </th:block>
             </th:block>
 
             <th:block th:if="${searchObjectList} ne null">
                 <th:block th:if="${searchObjectList.size()} lt 1">
+                    <th:block th:if="${checkedCatList ne null and checkedSubCatList ne null}">
+                        <input type="hidden"
+                               th:attr="onload='javascript:setCheckBoxState(\'' +  ${checkedCatList} + ',' + ${checkedSubCatList} + '\');'"/>
+                    </th:block>
                     <!-- Div un item -->
                     <div class="searchItem">
                         <!-- L'image de l'item -->
                         <!-- Description de l'item -->
                         <div class="searchItemDescription">
                             <h1>Aucun résultat...</h1>
+
                             <h1 style="font-size: medium">Veuiller choisir une autre option</h1>
                         </div>
                         <!-- Section côte de l'item -->
