@@ -1,23 +1,18 @@
 package com.tilf.troke.controller;
 
+import com.tilf.troke.auth.AuthUserContext;
 import com.tilf.troke.entity.ObjectsEntity;
 import com.tilf.troke.entity.UsersEntity;
 import com.tilf.troke.repository.CustomUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.util.CookieGenerator;
 import org.thymeleaf.context.WebContext;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.net.HttpCookie;
 import java.util.Iterator;
 import java.util.List;
 
@@ -29,6 +24,8 @@ public class HomeController {
 
     @Autowired
     private CustomUserRepository customUserRepository;
+    @Autowired
+    private AuthUserContext authContext;
 
     @RequestMapping("/")
     public String root(Model model) {
@@ -53,6 +50,11 @@ public class HomeController {
     public String inscriptionNew(HttpSession session, UsersEntity user) {
         session.removeAttribute("errorInscription");
         return "#openModalInscription";
+    }
+    @RequestMapping(value="/connexionNew", method = RequestMethod.GET)
+    public String connexionNew()
+    {
+        return "/#openModalConnexion";
     }
 
     @RequestMapping(value = "/inscription", method = RequestMethod.GET)
@@ -140,8 +142,23 @@ public class HomeController {
     @RequestMapping(value="/profil", method = RequestMethod.GET)
     public String Profil(Model model)
     {
-        model.addAttribute("currentpage", "profil");
-        return "forward:/home";
+        if(authContext.getUser() != null)
+        {
+            UsersEntity user = authContext.getUser();
+            model.addAttribute("userActif", user);
+            model.addAttribute("currentpage", "profil");
+            // TODO THYMELEAF HACK
+            if (false) {
+                WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+                context.setVariable("userActif", user);
+
+            }
+            return "forward:/home";
+        }else
+        {
+            return "forward:/connexionNew";
+        }
+
     }
 
     @RequestMapping(value = "/subcategory", method = RequestMethod.GET)
