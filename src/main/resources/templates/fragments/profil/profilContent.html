@@ -22,17 +22,17 @@
 
                             <div class = "profilLeftDiv">
                                 <!--</br>-->
-                                <input class="signup-full" name="profile-username" placeholder="Nom d'usager" type="text" tabindex="1"/>
-                                <input class="signup-full" name="profile-prenom" placeholder="Prénom" type="text" tabindex="2"/>
-                                <input class="signup-full" name="profile-nomfamille" placeholder="Nom de famille" type="text" tabindex="3"/>
+                                <input class="signup-full" name="profile-username" placeholder="Nom d'usager" type="text" tabindex="1" th:value="${userActif.getIduser()}"/>
+                                <input class="signup-full" name="profile-prenom" placeholder="Prénom" type="text" tabindex="2" th:value="${userActif.getFirstname()}"/>
+                                <input class="signup-full" name="profile-nomfamille" placeholder="Nom de famille" type="text" tabindex="3" th:value="${userActif.getLastname()}"/>
 
                             </div>
 
                             <div class = "profilRightDiv">
                                <!-- </br>-->
-                                <input class="signup-full phone_ca" name="profile-telephone" placeholder="Telephone" id="phone" type="text" tabindex="1"/>
-                                <input class="signup-full zipcode" name="profile-codepostal" placeholder="Code Postal" type="text" tabindex="3"/>
-                                <input class="signup-full" name="profile-email" placeholder="Email" type="text" tabindex="3"/>
+                                <input class="signup-full phone_ca" name="profile-telephone" placeholder="Telephone" id="phone" type="text" tabindex="1" th:value="${userActif.getTelephone()}"/>
+                                <input class="signup-full zipcode" name="profile-codepostal" placeholder="Code Postal" type="text" tabindex="3" th:value="${userActif.getZipcode()}"/>
+                                <input class="signup-full" name="profile-email" placeholder="Email" type="text" tabindex="3" th:value="${userActif.getEmail()}"/>
                             </div>
 
                             <div class = "profilInfoButtons">
