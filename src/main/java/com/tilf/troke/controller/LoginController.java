@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.thymeleaf.context.WebContext;
 
 import javax.servlet.http.HttpSession;
 
@@ -20,9 +21,6 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private CustomUserRepository customUserRepository;
 
     @Autowired
     private AuthUserContext authContext;
@@ -40,8 +38,14 @@ public class LoginController {
     @RequestMapping("/logout")
     public String logout() {
         authContext.setUser(null);
+        // TODO THYMELEAF HACK
+        if (false) {
+            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+            context.setVariable("authUser", authContext.getUser());
+        }
         return "redirect:/";
     }
+
     @RequestMapping("/profil")
     public String profil(){
         return "";
@@ -67,6 +71,12 @@ public class LoginController {
         if(idUser.isEmpty())
         {
             session.setAttribute("error", "* Veuillez entrer un nom d'utilisateur");
+            // TODO THYMELEAF HACK
+            if (false) {
+                WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+                context.setVariable("user", user);
+                context.setVariable("error", "* Veuillez entrer un nom d'utilisateur");
+            }
             return "redirect:/connexion";
         }
         else if(pass.isEmpty())
@@ -81,5 +91,6 @@ public class LoginController {
             authContext.setUser(user);
             return "redirect:/";
         }
+
     }
 }

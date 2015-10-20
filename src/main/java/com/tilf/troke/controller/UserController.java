@@ -1,6 +1,7 @@
 package com.tilf.troke.controller;
 
 import com.tilf.troke.entity.UsersEntity;
+import com.tilf.troke.repository.CustomObjectRepository;
 import com.tilf.troke.repository.CustomUserRepository;
 import com.tilf.troke.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,15 +11,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.thymeleaf.context.WebContext;
 
-import javax.naming.AuthenticationException;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.io.Console;
-import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by Emmanuel on 2015-09-20.
@@ -30,7 +29,7 @@ public class UserController {
     private UserRepository userRepository;
 
     @Autowired
-    private CustomUserRepository customUserRepository;
+    private CustomObjectRepository customObjectRepository;
 
     @RequestMapping(value = "/adduser", method = RequestMethod.POST)
     public String adduser(@ModelAttribute("user") @Valid UsersEntity user, BindingResult result, RedirectAttributes redirectAttributes) {
@@ -45,7 +44,7 @@ public class UserController {
             user.setPermissionlevel(0);
             user.setIsvip("N");
             userRepository.save(user);
-            return "redirect:/";
+            return "forward:/";
         }
 
         redirectAttributes.addFlashAttribute("user", user);
@@ -55,9 +54,18 @@ public class UserController {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("fields", result);
             context.setVariable("user", user);
-
         }
-
         return "redirect:/#openModalInscription";
+    }
+
+    @RequestMapping(value = "/inscription", method = RequestMethod.GET)
+    public String inscription() {
+        return "#openModalInscription";
+    }
+
+    @RequestMapping(value = "/inscriptionNew", method = RequestMethod.GET)
+    public String inscriptionNew(HttpSession session) {
+        session.removeAttribute("errorInscription");
+        return "#openModalInscription";
     }
 }

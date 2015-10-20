@@ -1,10 +1,11 @@
-<html xmlns:th="http://www.thymeleaf.org">
-
-<head>
+<html xmlns:th="http://www.thymeleaf.org" th:include="main_template :: page">
+<head th:fragment="head">
+    <meta charset="utf-8"/>
+    <link href="css/style_search.css" type="text/css" rel="stylesheet"/>
+    <script src="js/search.js" type="text/javascript"></script>
 </head>
-
 <body>
-<th:block th:fragment="search">
+<th:block th:fragment="content">
     <div class="container" style="font-family:'Amaranth'; background:#00455F; z-index:1;">
         <!-- Div(gauche) qui contient touts les options de recherches -->
         <div id="searchOptions" class="col-md-3">
@@ -55,10 +56,6 @@
             </div>
 
             <th:block th:if="${singleobject} ne null">
-                <th:block th:if="${checkedCatList ne null and checkedSubCatList ne null}">
-                    <input type="hidden"
-                           th:onload="'javascript:setCheckBoxState('${checkedCatList} + ${checkedSubCatList}');'"/>
-                </th:block>
                 <!-- Div un item -->
                 <div class="searchItem">
                     <!-- L'image de l'item -->
@@ -122,10 +119,6 @@
             </th:block>
 
             <th:block th:if="${objectList} ne null">
-                <th:block th:if="${checkedCatList ne null and checkedSubCatList ne null}">
-                    <input type="hidden"
-                           th:onload="'javascript:setCheckBoxState('${checkedCatList} + ${checkedSubCatList}');'"/>
-                </th:block>
                 <!-- Div un item -->
                 <div th:each="obj : ${objectList}" class="searchItem">
                     <!-- L'image de l'item -->
@@ -189,10 +182,6 @@
             </th:block>
 
             <th:block th:if="${searchObjectList} ne null">
-                <th:block th:if="${checkedCatList ne null and checkedSubCatList ne null}">
-                    <input type="hidden"
-                           th:onload="'javascript:setCheckBoxState('${checkedCatList} + ${checkedSubCatList}');'"/>
-                </th:block>
                 <!-- Div un item -->
                 <div th:each="obj : ${searchObjectList}" class="searchItem">
                     <!-- L'image de l'item -->
@@ -256,10 +245,6 @@
             </th:block>
 
             <th:block th:if="(${searchObjectList} eq null and ${objectList} eq null and ${singleobject} eq null)">
-                <th:block th:if="${checkedCatList ne null and checkedSubCatList ne null}">
-                    <input type="hidden"
-                           th:onload="'javascript:setCheckBoxState('${checkedCatList} + ${checkedSubCatList}');'"/>
-                </th:block>
                 <!-- Div un item -->
                 <div class="searchItem">
                     <!-- Description de l'item -->
@@ -282,10 +267,6 @@
 
             <th:block th:if="${objectList} ne null">
                 <th:block th:if="${objectList.size()} lt 1">
-                    <th:block th:if="${checkedCatList ne null and checkedSubCatList ne null}">
-                        <input type="hidden"
-                               th:onload="'javascript:setCheckBoxState('${checkedCatList} + ${checkedSubCatList}');'"/>
-                    </th:block>
                     <!-- Div un item -->
                     <div class="searchItem">
                         <!-- L'image de l'item -->
@@ -311,10 +292,6 @@
 
             <th:block th:if="${searchObjectList} ne null">
                 <th:block th:if="${searchObjectList.size()} lt 1">
-                    <th:block th:if="${checkedCatList ne null and checkedSubCatList ne null}">
-                        <input type="hidden"
-                               th:attr="onload='javascript:setCheckBoxState(\'' +  ${checkedCatList} + ',' + ${checkedSubCatList} + '\');'"/>
-                    </th:block>
                     <!-- Div un item -->
                     <div class="searchItem">
                         <!-- L'image de l'item -->

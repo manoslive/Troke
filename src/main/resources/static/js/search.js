@@ -9,29 +9,21 @@ function checkCB(mainCat) {
     }
 }
 
-function getCheckBoxCatValue(checkBoxId){
-    if($("#" + checkBoxId).prop('checked', true)){
-        var catCheckedCb = $('.catCb:checked').map(function(){
-            return this.value;
-        });
-        location.href="/category?categoryName=" + checkBoxId + "&checkedCatList=" + catCheckedCb;
+function getCheckBoxCatValue(checkBoxId) {
+    if ($("#" + checkBoxId).prop('checked', true)) {
+        location.href = "/category?categoryName=" + checkBoxId + "&catIsChecked=" + true;
+    }
+    else {
+        location.href = "/category?categoryName=" + checkBoxId + "&catIsChecked=" + false;
     }
 }
 
-function getCheckBoxSubCatValue(checkBoxId){
-    if($("#" + checkBoxId).prop('checked',true)){
-        var subCatCheckedCb = $('.subCatCb:checked').map(function(){
-            return this.value;
-        });
-        location.href="/subcategory?subCategoryName=" + checkBoxId + "&checkedSubCatList=" + subCatCheckedCb;
-    }
-}
+function getCheckBoxSubCatValue(checkBoxId) {
+    if ($("#" + checkBoxId).prop('checked', true)) {
 
-function setCheckBoxState(checkedCatList, checkedSubCatList){
-    checkedCatList.forEach(function(cat){
-        $("#" + cat).prop('checked', true);
-    })
-    checkedSubCatList.forEach(function(subCat){
-        $("#" + subCat).prop('checked', true);
-    })
+        location.href = "/subcategory?subCategoryName=" + checkBoxId + "&subCatIsChecked=" + true;
+    }
+    else {
+        location.href = "/subcategory?subCategoryName=" + checkBoxId + "&subCatIsChecked=" + false;
+    }
 }

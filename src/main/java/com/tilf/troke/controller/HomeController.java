@@ -1,7 +1,9 @@
 package com.tilf.troke.controller;
 
+import com.tilf.troke.domain.SearchFilter;
 import com.tilf.troke.entity.ObjectsEntity;
 import com.tilf.troke.entity.UsersEntity;
+import com.tilf.troke.repository.CustomObjectRepository;
 import com.tilf.troke.repository.CustomUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,14 +32,19 @@ public class HomeController {
     @Autowired
     private CustomUserRepository customUserRepository;
 
+    @Autowired
+    private CustomObjectRepository customObjectRepository;
+
+    @Autowired
+    private SearchFilter searchFilter;
+
     @RequestMapping("/")
     public String root(Model model) {
         model.addAttribute("user", new UsersEntity());
         FillCategoryMenu(model);
         FillCategoryList(model);
         GetRecentItems(model);
-        model.addAttribute("currentpage", "home");
-        return "template";
+        return "fragments/home/home";
     }
 
     @RequestMapping("/home")
@@ -45,23 +52,11 @@ public class HomeController {
         FillCategoryMenu(model);
         FillCategoryList(model);
         GetRecentItems(model);
-        // model.addAttribute("currentpage", "search"); // FIXME Petit problème ici currentpage semble être nul lors d'une recherche
-        return "template";
-    }
-
-    @RequestMapping(value = "/inscriptionNew", method = RequestMethod.GET)
-    public String inscriptionNew(HttpSession session, UsersEntity user) {
-        session.removeAttribute("errorInscription");
-        return "#openModalInscription";
-    }
-
-    @RequestMapping(value = "/inscription", method = RequestMethod.GET)
-    public String inscription(UsersEntity user) {
-        return "#openModalInscription";
+        return "fragments/home/home";
     }
 
     public void FillCategoryMenu(Model model) {
-        List<String> categoryList = customUserRepository.getAllCategories();
+        List<String> categoryList = customObjectRepository.getAllCategories();
 
         model.addAttribute("categoryList", categoryList);
         model.addAttribute("address", "category?categoryName=");
@@ -75,19 +70,18 @@ public class HomeController {
 
     public void FillCategoryList(Model model) {
         String html = "";
-        List<String> cats = customUserRepository.getAllCategories();
+        List<String> cats = customObjectRepository.getAllCategories();
         model.addAttribute("catlist", cats);
         model.addAttribute("adrcat", "/category?categoryName=");
 
         for (Iterator<String> i = cats.iterator(); i.hasNext(); ) {
             String currentCat = i.next();
-            html += "<div class=\"myCategory\"><header><a href=\"category?categoryName=" + currentCat + "\">" + currentCat +
-                    "</a></header><ul> ";
+            html += "<div class=\"myCategory\"><header><a href=\"category?categoryName=" + currentCat + "&catIsChecked=true" +  "\">" + currentCat + "</a></header><ul> ";
 
-            List<String> subcats = customUserRepository.getAllSubCategories(currentCat);
+            List<String> subcats = customObjectRepository.getAllSubCategories(currentCat);
             for (Iterator<String> j = subcats.iterator(); j.hasNext(); ) {
                 String currentSubCat = j.next();
-                html += "<li class=\"lienCategorie\"><a href=\"subcategory?subCategoryName=" + currentSubCat + "&categoryName=" + currentCat + "\">" + currentSubCat + "</a></li>";
+                html += "<li class=\"lienCategorie\"><a href=\"subcategory?subCategoryName=" + currentSubCat + "&subCatIsChecked=true" + "\">" + currentSubCat + "</a></li>";
             }
             html += "</ul></div>";
         }
@@ -103,7 +97,7 @@ public class HomeController {
     }
 
     public String GetRecentItems(Model model) {
-        List<ObjectsEntity> objects = customUserRepository.getRecentItems();
+        List<ObjectsEntity> objects = customObjectRepository.getRecentItems();
         model.addAttribute("recentobjects", objects);
         model.addAttribute("adrItem", "/item?idObject=");
 
@@ -114,123 +108,20 @@ public class HomeController {
             context.setVariable("adrItem", "/item?idObject=");
 
         }
-        return "forward:/home";
+        return "fragments/home/home";
     }
 
-    // Test de catégorie
-    @RequestMapping(value = "/category", method = RequestMethod.GET)
-    public String ListCategoryItems(@RequestParam("categoryName") String categoryName, Model model, HttpSession session, @RequestParam(value = "checkedCatList", required = false) List<String> checkedCatList, @RequestParam(value = "checkedSubCatList" , required = false) List<String> checkedSubCatList) {
-        model.addAttribute("currentpage", "search");
-        model.addAttribute("objectList", customUserRepository.getObjectsByCategory(categoryName));
-        model.addAttribute("leftMenu", fillLeftCatMenu());
-        session.setAttribute("checkedCatList", checkedCatList);
-        session.setAttribute("checkedSubCatList", checkedSubCatList);
-        // TODO THYMELEAF HACK
-        if (false) {
-            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("objectList", customUserRepository.getObjectsByCategory(categoryName));
-            context.setVariable("leftMenu", fillLeftCatMenu());
-        }
-
-        model.addAttribute("objectList", customUserRepository.getObjectsByCategory(categoryName));
-
-        return "forward:/home";
-    }
-    // appel de profil
-    @RequestMapping(value="/profil", method = RequestMethod.GET)
-    public String Profil(Model model)
-    {
-        model.addAttribute("currentpage", "profil");
-        return "forward:/home";
-    }
-
-    @RequestMapping(value = "/subcategory", method = RequestMethod.GET)
-    public String ListSubCategoryItems(@RequestParam("subCategoryName") String subCategoryName, @RequestParam(value = "checkedCatList", required = false) List<String> checkedCatList, @RequestParam(value = "checkedSubCatList" , required = false) List<String> checkedSubCatList, HttpSession session, Model model) {
-        model.addAttribute("currentpage", "search");
-        model.addAttribute("objectList", customUserRepository.getObjectsBySubCategory(subCategoryName));
-        session.setAttribute("checkedCatList", checkedCatList);
-        session.setAttribute("checkedSubCatList", checkedSubCatList);
-        model.addAttribute("leftMenu", fillLeftCatMenu());
-
-        // TODO THYMELEAF HACK
-        if (false) {
-            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("objectList", customUserRepository.getObjectsBySubCategory(subCategoryName));
-            context.setVariable("leftMenu", fillLeftCatMenu());
-            context.setVariable("checkedCatList",checkedCatList);
-            context.setVariable("checkedSubCatList", checkedSubCatList);
-        }
-        return "forward:/home";
-    }
     // model pour appeler la page about et changer le current page a about ..
-    @RequestMapping(value="/about", method = RequestMethod.GET)
-    public String about(Model model)
-    {
+    @RequestMapping(value = "/about", method = RequestMethod.GET)
+    public String about(Model model) {
         model.addAttribute("currentpage", "about");
-        return "forward:/home";
+        return "fragments/home/about";
     }
 
-    // Test de catégorie
-    @RequestMapping(value = "/item", method = RequestMethod.GET)
-    public String getItemByIdObject(@RequestParam("idObject") int idobject, Model model) {
-        model.addAttribute("currentpage", "search");
-        model.addAttribute("singleobject", customUserRepository.getObjectEntityByIdObject(idobject));
-        model.addAttribute("adrItem", "/item?idObject=");
-        model.addAttribute("leftMenu", fillLeftCatMenu());
-
-        // TODO THYMELEAF HACK
-        if (false) {
-            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("singleobject", customUserRepository.getObjectEntityByIdObject(idobject));
-            context.setVariable("adrItem", "/item?objectName=");
-            context.setVariable("leftMenu", fillLeftCatMenu());
-        }
-
-        return "forward:/home";
-    }
-
-    @RequestMapping(value = "/searchDB", method = RequestMethod.GET)
-    public String searchDB(@RequestParam("keyword") String keyword, Model model) {
-        model.addAttribute("searchObjectList", customUserRepository.getObjectListByKeyword(keyword));
-        model.addAttribute("currentpage", "search");
-        model.addAttribute("adrSearch", "/searchDB?keyword=");
-        model.addAttribute("leftMenu", fillLeftCatMenu());
-        // TODO THYMELEAF HACK
-        if (false) {
-            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("searchObjectList", customUserRepository.getObjectListByKeyword(keyword));
-            context.setVariable("currentpage", "search");
-            context.setVariable("adrSearch", "/searchDB?keyword=");
-            context.setVariable("leftMenu", fillLeftCatMenu());
-        }
-        return "forward:/home";
-    }
-
-    public String fillLeftCatMenu() {
-        String html = new String();
-        List<String> cats = customUserRepository.getAllCategories();
-
-        for (Iterator<String> i = cats.iterator(); i.hasNext(); ) {
-            String currentCat = i.next();
-            html += "<button type=\"button\" class=\"btn btn-info btnBootPerso\" data-toggle=\"collapse\" data-target=\"#" + currentCat.toLowerCase() + "Category\" onclick=\"checkCB('" + currentCat.toLowerCase() + "')\">\n" +
-                    "<input onchange=\"getCheckBoxCatValue('" + currentCat.toLowerCase() + "');\" id=\"" + currentCat.toLowerCase() +  "\" class=\"mainCategory catCb\" style=\"float:left;\" type=\"checkbox\"><a href=\"/category?categoryName=" + currentCat + "\"></a>" + currentCat + "</input>\n" +
-                    "<select style=\"float:right;\" class=\"disappear\" disabled=\"disabled\"></select>\n" +
-                    "</button>\n" +
-                    "<div id=\"" + currentCat.toLowerCase() + "Category\" class=\"category-Selection collapse\">\n" +
-                    "<ul>\n";
-
-            List<String> subcats = customUserRepository.getAllSubCategories(currentCat);
-            for (Iterator<String> j = subcats.iterator(); j.hasNext(); ) {
-                String currentSubCat = j.next();
-                html += "<li>"+
-                        "<input onchange=\"getCheckBoxSubCatValue('" + currentSubCat.toLowerCase() + "');\" id=\"" + currentSubCat +  "\" class=\"mainCategory" + currentSubCat.toLowerCase() + "subCatCb\" type=\"checkbox\">"+
-                        "<a href=\"/subcategory?subCategoryName=" + currentSubCat + "\">" + currentSubCat + "</a>" +
-                        "</input>" +
-                        "</li>\n";
-            }
-            html += "</ul></div>\n";
-        }
-        return html;
+    // appel de profil
+    @RequestMapping(value = "/profil", method = RequestMethod.GET)
+    public String Profil(Model model) {
+        model.addAttribute("currentpage", "profil");
+        return "fragments/home/profil";
     }
 }
-

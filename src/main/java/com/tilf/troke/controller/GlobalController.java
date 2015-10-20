@@ -1,6 +1,7 @@
 package com.tilf.troke.controller;
 
 import com.tilf.troke.auth.AuthUserContext;
+import com.tilf.troke.domain.SearchFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -14,9 +15,14 @@ public class GlobalController {
     @Autowired
     private AuthUserContext authUserContext;
 
+    @Autowired
+    private SearchFilter searchFilter;
+
     @ModelAttribute
     public void authAttributes(Model model)
     {
         model.addAttribute("authUser", authUserContext.getUser());
+        model.addAttribute("searchFilter", searchFilter.getFilters());
     }
+
 }
