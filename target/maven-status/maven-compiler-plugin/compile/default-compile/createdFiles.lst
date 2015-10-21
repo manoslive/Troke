@@ -1,4 +1,5 @@
 com\tilf\troke\entity\TransactionsEntity.class
+com\tilf\troke\entity\ImageobjectEntity.class
 com\tilf\troke\controller\HomeController.class
 com\tilf\troke\entity\UserratingEntity.class
 com\tilf\troke\entity\SubcategoryEntity.class
@@ -8,7 +9,6 @@ com\tilf\troke\filter\AuthFilter.class
 com\tilf\troke\controller\GlobalController.class
 com\tilf\troke\validator\UserValidator.class
 com\tilf\troke\entity\ChatEntity.class
-com\tilf\troke\form\post.class
 com\tilf\troke\repository\CustomObjectRepositoryImpl.class
 com\tilf\troke\service\SearchService.class
 com\tilf\troke\controller\UserController.class
@@ -17,6 +17,7 @@ com\tilf\troke\repository\UserRepository.class
 com\tilf\troke\controller\SearchController.class
 com\tilf\troke\entity\ObjecttransactionEntityPK.class
 com\tilf\troke\auth\AuthUserContext.class
+com\tilf\troke\controller\TransactionController.class
 com\tilf\troke\entity\UsersEntity.class
 com\tilf\troke\conf\FilterConfiguration.class
 com\tilf\troke\domain\SearchFilter.class

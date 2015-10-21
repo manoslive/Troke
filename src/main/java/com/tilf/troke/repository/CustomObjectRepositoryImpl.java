@@ -114,4 +114,27 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository{
 
         return objList;
     }
+
+    //GetItemNameByID
+    @Override
+    public String getObjectNameByItemID(int itemID)
+    {
+        String query = "select o.nameObject from ObjectsEntity o where o.idobject = :itemID";
+        Query queryObject = entityManager.createQuery(query);
+        queryObject.setParameter("itemID", itemID);
+        String itemName = (String) queryObject.getSingleResult();
+        return itemName;
+    }
+
+    //GetLesItems d'un inventaire selon le UserId
+    @Override
+    public List<ObjectsEntity> getObjectsByUserID(int currentItemID, String userID)
+    {
+        String query = "select o from ObjectsEntity o where o.iduser = :userID and o.idobject != :currentItemID";
+        Query queryObject = entityManager.createQuery(query);
+        queryObject.setParameter("currentItemID", currentItemID);
+        queryObject.setParameter("userID", userID);
+        List<ObjectsEntity> inventory = (List<ObjectsEntity>) queryObject.getResultList();
+        return inventory;
+    }
 }

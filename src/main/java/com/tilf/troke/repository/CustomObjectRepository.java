@@ -21,4 +21,9 @@ public interface CustomObjectRepository {
 
     // Recherches
     List<ObjectsEntity> getObjectListByKeyword(String keyword);
+
+    //GetItemNameByID
+    String getObjectNameByItemID(int itemID);
+    //GetLesItems d'un inventaire selon le UserId
+    List<ObjectsEntity> getObjectsByUserID(int currentItemID, String userID);
 }

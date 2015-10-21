@@ -1,6 +1,5 @@
 package com.tilf.troke.repository;
 
-import com.tilf.troke.entity.ObjectsEntity;
 import com.tilf.troke.entity.UsersEntity;
 import org.springframework.stereotype.Repository;
 
@@ -58,5 +57,16 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
         BigInteger count = (BigInteger)queryObject.getSingleResult();
 
         return count;
+    }
+
+    // StartTrade
+    @Override
+    public UsersEntity getUserFromItem(int itemID)
+    {
+        String query = "select u from UsersEntity u where u.iduser = (select o.iduser from ObjectsEntity o where o.idobject =:itemID)";
+        Query queryObject = entityManager.createQuery(query);
+        queryObject.setParameter("itemID",itemID);
+        UsersEntity user = (UsersEntity) queryObject.getSingleResult();
+        return user;
     }
 }

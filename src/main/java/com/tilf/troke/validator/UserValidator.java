@@ -12,7 +12,6 @@ import org.springframework.validation.Validator;
 @Component("userValidator")
 public class UserValidator implements Validator {
 
-
     @Override
     public boolean supports(Class<?> aClass) {
         return UsersEntity.class.equals(aClass);

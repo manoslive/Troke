@@ -17,7 +17,8 @@ C:\Users\Emmanuel\Documents\GitHub\troke\src\main\java\com\tilf\troke\entity\Cha
 C:\Users\Emmanuel\Documents\GitHub\troke\src\main\java\com\tilf\troke\validator\UserValidator.java
 C:\Users\Emmanuel\Documents\GitHub\troke\src\main\java\com\tilf\troke\filter\AuthFilter.java
 C:\Users\Emmanuel\Documents\GitHub\troke\src\main\java\com\tilf\troke\controller\UserController.java
-C:\Users\Emmanuel\Documents\GitHub\troke\src\main\java\com\tilf\troke\form\post.java
+C:\Users\Emmanuel\Documents\GitHub\troke\src\main\java\com\tilf\troke\entity\ImageobjectEntity.java
+C:\Users\Emmanuel\Documents\GitHub\troke\src\main\java\com\tilf\troke\controller\TransactionController.java
 C:\Users\Emmanuel\Documents\GitHub\troke\src\main\java\com\tilf\troke\TrokeApplication.java
 C:\Users\Emmanuel\Documents\GitHub\troke\src\main\java\com\tilf\troke\auth\AuthUserContext.java
 C:\Users\Emmanuel\Documents\GitHub\troke\src\main\java\com\tilf\troke\entity\ObjectsEntity.java

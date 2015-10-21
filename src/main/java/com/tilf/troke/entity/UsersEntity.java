@@ -20,7 +20,7 @@ public class UsersEntity {
     private String firstname;
     private String pass;
     private String avatar;
-    private String isbanned;
+    private String state;
     private String isonline;
     private Date creationdate;
     private String email;
@@ -85,13 +85,13 @@ public class UsersEntity {
     }
 
     @Basic
-    @Column(name = "ISBANNED")
-    public String getIsbanned() {
-        return isbanned;
+    @Column(name = "STATE")
+    public String getState() {
+        return state;
     }
 
-    public void setIsbanned(String isbanned) {
-        this.isbanned = isbanned;
+    public void setState(String state) {
+        this.state = state;
     }
 
     @Basic
@@ -180,7 +180,7 @@ public class UsersEntity {
         if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
         if (pass != null ? !pass.equals(that.pass) : that.pass != null) return false;
         if (avatar != null ? !avatar.equals(that.avatar) : that.avatar != null) return false;
-        if (isbanned != null ? !isbanned.equals(that.isbanned) : that.isbanned != null) return false;
+        if (state != null ? !state.equals(that.state) : that.state != null) return false;
         if (isonline != null ? !isonline.equals(that.isonline) : that.isonline != null) return false;
         if (creationdate != null ? !creationdate.equals(that.creationdate) : that.creationdate != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
@@ -200,7 +200,7 @@ public class UsersEntity {
         result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
         result = 31 * result + (pass != null ? pass.hashCode() : 0);
         result = 31 * result + (avatar != null ? avatar.hashCode() : 0);
-        result = 31 * result + (isbanned != null ? isbanned.hashCode() : 0);
+        result = 31 * result + (state != null ? state.hashCode() : 0);
         result = 31 * result + (isonline != null ? isonline.hashCode() : 0);
         result = 31 * result + (creationdate != null ? creationdate.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);

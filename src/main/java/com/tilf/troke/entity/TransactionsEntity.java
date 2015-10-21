@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by Manu on 2015-10-15.
+ * Created by Emmanuel on 2015-10-21.
  */
 @Entity
 @Table(name = "transactions", schema = "", catalog = "troke")
@@ -14,7 +14,7 @@ public class TransactionsEntity {
     private String iduser2;
     private Date datetransaction;
     private String iscompleted;
-    private String state;
+    private String turn;
 
     @Id
     @Column(name = "IDTRANSACTION")
@@ -67,13 +67,13 @@ public class TransactionsEntity {
     }
 
     @Basic
-    @Column(name = "STATE")
-    public String getState() {
-        return state;
+    @Column(name = "TURN")
+    public String getTurn() {
+        return turn;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setTurn(String turn) {
+        this.turn = turn;
     }
 
     @Override
@@ -89,7 +89,7 @@ public class TransactionsEntity {
         if (datetransaction != null ? !datetransaction.equals(that.datetransaction) : that.datetransaction != null)
             return false;
         if (iscompleted != null ? !iscompleted.equals(that.iscompleted) : that.iscompleted != null) return false;
-        if (state != null ? !state.equals(that.state) : that.state != null) return false;
+        if (turn != null ? !turn.equals(that.turn) : that.turn != null) return false;
 
         return true;
     }
@@ -101,7 +101,7 @@ public class TransactionsEntity {
         result = 31 * result + (iduser2 != null ? iduser2.hashCode() : 0);
         result = 31 * result + (datetransaction != null ? datetransaction.hashCode() : 0);
         result = 31 * result + (iscompleted != null ? iscompleted.hashCode() : 0);
-        result = 31 * result + (state != null ? state.hashCode() : 0);
+        result = 31 * result + (turn != null ? turn.hashCode() : 0);
         return result;
     }
 }

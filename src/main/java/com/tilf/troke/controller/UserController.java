@@ -2,12 +2,10 @@ package com.tilf.troke.controller;
 
 import com.tilf.troke.entity.UsersEntity;
 import com.tilf.troke.repository.CustomObjectRepository;
-import com.tilf.troke.repository.CustomUserRepository;
 import com.tilf.troke.repository.UserRepository;
 import com.tilf.troke.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +16,6 @@ import org.thymeleaf.context.WebContext;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Calendar;
-import java.util.List;
 
 /**
  * Created by Emmanuel on 2015-09-20.
@@ -42,7 +39,7 @@ public class UserController {
 
         if (!result.hasErrors()) {
             user.setAvatar(null);
-            user.setIsbanned("N");
+            user.setState("N");
             user.setIsonline("N");
             user.setCreationdate(now);
             user.setPermissionlevel(0);

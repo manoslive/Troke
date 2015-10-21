@@ -1,7 +1,6 @@
 package com.tilf.troke.controller;
 
 import com.tilf.troke.domain.SearchFilter;
-import com.tilf.troke.entity.UsersEntity;
 import com.tilf.troke.repository.CustomObjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -67,6 +66,7 @@ public class SearchController {
     public String getItemByIdObject(@RequestParam("idObject") int idobject, Model model) {
         model.addAttribute("singleobject", customObjectRepository.getObjectEntityByIdObject(idobject));
         model.addAttribute("adrItem", "/item?idObject=");
+        model.addAttribute("adrStartTrade", "/startTrade?itemID=");
         model.addAttribute("leftMenu", fillLeftCatMenu());
 
         // TODO THYMELEAF HACK
@@ -75,6 +75,7 @@ public class SearchController {
             context.setVariable("singleobject", customObjectRepository.getObjectEntityByIdObject(idobject));
             context.setVariable("adrItem", "/item?objectName=");
             context.setVariable("leftMenu", fillLeftCatMenu());
+            context.setVariable("adrStartTrade", "/startTrade?itemID=");
         }
 
         return "fragments/home/search";

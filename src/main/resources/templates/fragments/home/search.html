@@ -106,7 +106,9 @@
 
                         <!-- Bouton lancer une Ã©change -->
                         <button type="button" class="btn btn-info btn-troke btnBootPerso">
-                            <img class="searchItem-img-troke" src="images/Logo-transparent.png"/>
+                            <a th:href="${adrStartTrade + singleobject.getIdobject()}">
+                                <img class="searchItem-img-troke" src="images/Logo-transparent.png"/>
+                            </a>
                         </button>
                     </div>
                 </div>

@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
- * Created by Manu on 2015-10-02.
+ * Created by Emmanuel on 2015-10-21.
  */
 public class ObjecttransactionEntityPK implements Serializable {
     private int idobject;
