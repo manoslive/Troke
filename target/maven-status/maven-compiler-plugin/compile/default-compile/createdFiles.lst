@@ -16,7 +16,6 @@ com\tilf\troke\entity\CategoryEntity.class
 com\tilf\troke\repository\UserRepository.class
 com\tilf\troke\controller\SearchController.class
 com\tilf\troke\entity\ObjecttransactionEntityPK.class
-com\tilf\troke\interceptor\MenuListInterceptor.class
 com\tilf\troke\auth\AuthUserContext.class
 com\tilf\troke\entity\UsersEntity.class
 com\tilf\troke\conf\FilterConfiguration.class

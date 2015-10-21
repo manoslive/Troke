@@ -36,7 +36,6 @@ public class HomeController {
 
     @RequestMapping("/")
     public String root(Model model, HttpSession session) {
-        model.addAttribute("user", new UsersEntity());
         FillCategoryMenu(model, session);
         FillCategoryList(model);
         GetRecentItems(model);
@@ -50,6 +49,7 @@ public class HomeController {
         GetRecentItems(model);
         return "fragments/home/home";
     }
+
     @ModelAttribute("categoryList")
     public void FillCategoryMenu(Model model, HttpSession session) {
         List<String> categoryList = customObjectRepository.getAllCategories();
@@ -74,7 +74,7 @@ public class HomeController {
 
         for (Iterator<String> i = cats.iterator(); i.hasNext(); ) {
             String currentCat = i.next();
-            html += "<div class=\"myCategory\"><header><a href=\"category?categoryName=" + currentCat + "&catIsChecked=true" +  "\">" + currentCat + "</a></header><ul> ";
+            html += "<div class=\"myCategory\"><header><a href=\"category?categoryName=" + currentCat + "&catIsChecked=true" + "\">" + currentCat + "</a></header><ul> ";
 
             List<String> subcats = customObjectRepository.getAllSubCategories(currentCat);
             for (Iterator<String> j = subcats.iterator(); j.hasNext(); ) {
@@ -115,24 +115,15 @@ public class HomeController {
     }
 
     // appel de profil
-    @RequestMapping(value="/profil", method = RequestMethod.GET)
-    public String Profil(Model model)
-    {
-        if(authContext.getUser() != null)
-        {
-            UsersEntity user = authContext.getUser();
-            model.addAttribute("userActif", user);
-            model.addAttribute("currentpage", "profil");
-            // TODO THYMELEAF HACK
-            if (false) {
-                WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-                context.setVariable("userActif", user);
-            }
-            return "fragments/home/home";
-        }else
-        {
-            return "forward:/connexionNew";
+    @RequestMapping(value = "/profil", method = RequestMethod.GET)
+    public String Profil(Model model) {
+        UsersEntity user = authContext.getUser();
+        model.addAttribute("userActif", user);
+        // TODO THYMELEAF HACK
+        if (false) {
+            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+            context.setVariable("userActif", user);
         }
-
+        return "fragments/site/profilUser";
     }
 }
