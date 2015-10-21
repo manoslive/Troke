@@ -1,5 +1,7 @@
 package com.tilf.troke.entity;
 
+import org.hibernate.validator.constraints.Email;
+
 import javax.persistence.*;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
@@ -13,75 +15,35 @@ import java.sql.Date;
 @Entity
 @Table(name = "users", schema = "", catalog = "troke")
 public class UsersEntity {
-    @NotNull
-    @Size(min=4, max=20)
-    @Id
-    @Column(name = "IDUSER")
     private String iduser;
-    @NotNull
-    @Basic
-    @Column(name = "LASTNAME")
     private String lastname;
-    @NotNull
-    @Basic
-    @Column(name = "FIRSTNAME")
     private String firstname;
-    @NotNull
-    @Basic
-    @Column(name = "PASS")
     private String pass;
-/*    @NotNull
-    private String pass_confirm;*/
-    @Basic
-    @Column(name = "AVATAR")
     private String avatar;
-    @NotNull
-    @Basic
-    @Column(name = "ISBANNED")
     private String isbanned;
-
-    @NotNull
-    @Basic
-    @Column(name = "ISONLINE")
     private String isonline;
-
-    @NotNull
-    @Basic
-    @Column(name = "CREATIONDATE")
     private Date creationdate;
-
-    @NotNull
-    @Basic
-    @Column(name = "EMAIL")
     private String email;
-/*    @NotNull
-    private String email_confirm;*/
-    @NotNull
-    @Basic
-    @Column(name = "TELEPHONE")
     private String telephone;
-    @NotNull
-    @Basic
-    @Column(name = "ZIPCODE")
     private String zipcode;
-    @NotNull
-    @Basic
-    @Column(name = "PERMISSIONLEVEL")
     private Integer permissionlevel;
-    @NotNull
-    @Basic
-    @Column(name = "ISVIP")
     private String isvip;
 
-
+    @NotNull
+    @Size(min = 4, max = 20)
+    @Id
+    @Column(name = "IDUSER")
     public String getIduser() {
         return iduser;
     }
+
     public void setIduser(String iduser) {
         this.iduser = iduser;
     }
 
-
+    @NotNull
+    @Basic
+    @Column(name = "LASTNAME")
     public String getLastname() {
         return lastname;
     }
@@ -90,7 +52,9 @@ public class UsersEntity {
         this.lastname = lastname;
     }
 
-
+    @NotNull
+    @Basic
+    @Column(name = "FIRSTNAME")
     public String getFirstname() {
         return firstname;
     }
@@ -99,28 +63,29 @@ public class UsersEntity {
         this.firstname = firstname;
     }
 
-
+    @NotNull
+    @Basic
+    @Column(name = "PASS")
     public String getPass() {
         return pass;
     }
+
     public void setPass(String pass) {
         this.pass = pass;
     }
 
-
-/*    public String getPass_confirm(){return pass_confirm;}
-    public void setPass_confirm(String pass_confirm){this.pass_confirm = pass_confirm;}*/
-
-
-
+    @Basic
+    @Column(name = "AVATAR")
     public String getAvatar() {
         return avatar;
     }
+
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
 
-
+    @Basic
+    @Column(name = "ISBANNED")
     public String getIsbanned() {
         return isbanned;
     }
@@ -129,7 +94,8 @@ public class UsersEntity {
         this.isbanned = isbanned;
     }
 
-
+    @Basic
+    @Column(name = "ISONLINE")
     public String getIsonline() {
         return isonline;
     }
@@ -138,7 +104,8 @@ public class UsersEntity {
         this.isonline = isonline;
     }
 
-
+    @Basic
+    @Column(name = "CREATIONDATE")
     public Date getCreationdate() {
         return creationdate;
     }
@@ -147,19 +114,21 @@ public class UsersEntity {
         this.creationdate = creationdate;
     }
 
-
+    @Email
+    @NotNull
+    @Basic
+    @Column(name = "EMAIL")
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
-
-/*    public String getEmail_confirm() {return email_confirm;}
-    public void setEmail_confirm(String email_confirm) {this.email_confirm = email_confirm;}*/
-
-
+    @NotNull
+    @Basic
+    @Column(name = "TELEPHONE")
     public String getTelephone() {
         return telephone;
     }
@@ -168,7 +137,9 @@ public class UsersEntity {
         this.telephone = telephone;
     }
 
-
+    @NotNull
+    @Basic
+    @Column(name = "ZIPCODE")
     public String getZipcode() {
         return zipcode;
     }
@@ -177,7 +148,8 @@ public class UsersEntity {
         this.zipcode = zipcode;
     }
 
-
+    @Basic
+    @Column(name = "PERMISSIONLEVEL")
     public Integer getPermissionlevel() {
         return permissionlevel;
     }
@@ -186,7 +158,8 @@ public class UsersEntity {
         this.permissionlevel = permissionlevel;
     }
 
-
+    @Basic
+    @Column(name = "ISVIP")
     public String getIsvip() {
         return isvip;
     }
@@ -194,18 +167,6 @@ public class UsersEntity {
     public void setIsvip(String isvip) {
         this.isvip = isvip;
     }
-
-/*    @AssertTrue(message="Les 2 champs de mot de passe doivent être identiques.")
-    private boolean IsValid()
-    {
-        return this.pass.equals(this.pass_confirm);
-    }
-
-    @AssertTrue(message="Les 2 champs de courriel doivent être identiques.")
-    private boolean emailIsValid()
-    {
-        return this.email.equals(this.email_confirm);
-    }*/
 
     @Override
     public boolean equals(Object o) {

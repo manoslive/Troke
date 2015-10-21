@@ -1,17 +1,16 @@
 package com.tilf.troke.controller;
 
+import com.tilf.troke.auth.AuthUserContext;
 import com.tilf.troke.domain.SearchFilter;
 import com.tilf.troke.entity.ObjectsEntity;
 import com.tilf.troke.entity.UsersEntity;
+import com.tilf.troke.filter.AuthFilter;
 import com.tilf.troke.repository.CustomObjectRepository;
 import com.tilf.troke.repository.CustomUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.CookieGenerator;
 import org.thymeleaf.context.WebContext;
 
@@ -30,41 +29,40 @@ import java.util.List;
 public class HomeController {
 
     @Autowired
-    private CustomUserRepository customUserRepository;
+    private AuthUserContext authContext;
 
     @Autowired
     private CustomObjectRepository customObjectRepository;
 
-    @Autowired
-    private SearchFilter searchFilter;
-
     @RequestMapping("/")
-    public String root(Model model) {
+    public String root(Model model, HttpSession session) {
         model.addAttribute("user", new UsersEntity());
-        FillCategoryMenu(model);
+        FillCategoryMenu(model, session);
         FillCategoryList(model);
         GetRecentItems(model);
         return "fragments/home/home";
     }
 
     @RequestMapping("/home")
-    public String redirectHome(Model model) {
-        FillCategoryMenu(model);
+    public String redirectHome(Model model, HttpSession session) {
+        FillCategoryMenu(model, session);
         FillCategoryList(model);
         GetRecentItems(model);
         return "fragments/home/home";
     }
-
-    public void FillCategoryMenu(Model model) {
+    @ModelAttribute("categoryList")
+    public void FillCategoryMenu(Model model, HttpSession session) {
         List<String> categoryList = customObjectRepository.getAllCategories();
 
-        model.addAttribute("categoryList", categoryList);
-        model.addAttribute("address", "category?categoryName=");
+        session.setAttribute("categoryList", categoryList);
+        session.setAttribute("addressCatName", "category?categoryName=");
+        session.setAttribute("addressChecked", "&catIsChecked=true");
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("categoryList", categoryList);
-            context.setVariable("address", "category?categoryName=");
+            context.setVariable("addressCatName", "category?categoryName=");
+            context.setVariable("addressChecked", "&catIsChecked=true");
         }
     }
 
@@ -106,7 +104,6 @@ public class HomeController {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("recentobjects", objects);
             context.setVariable("adrItem", "/item?idObject=");
-
         }
         return "fragments/home/home";
     }
@@ -114,14 +111,28 @@ public class HomeController {
     // model pour appeler la page about et changer le current page a about ..
     @RequestMapping(value = "/about", method = RequestMethod.GET)
     public String about(Model model) {
-        model.addAttribute("currentpage", "about");
         return "fragments/home/about";
     }
 
     // appel de profil
-    @RequestMapping(value = "/profil", method = RequestMethod.GET)
-    public String Profil(Model model) {
-        model.addAttribute("currentpage", "profil");
-        return "fragments/home/profil";
+    @RequestMapping(value="/profil", method = RequestMethod.GET)
+    public String Profil(Model model)
+    {
+        if(authContext.getUser() != null)
+        {
+            UsersEntity user = authContext.getUser();
+            model.addAttribute("userActif", user);
+            model.addAttribute("currentpage", "profil");
+            // TODO THYMELEAF HACK
+            if (false) {
+                WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+                context.setVariable("userActif", user);
+            }
+            return "fragments/home/home";
+        }else
+        {
+            return "forward:/connexionNew";
+        }
+
     }
 }

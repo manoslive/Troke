@@ -6,6 +6,7 @@ com\tilf\troke\entity\ChatmessageEntity.class
 com\tilf\troke\TrokeApplication.class
 com\tilf\troke\filter\AuthFilter.class
 com\tilf\troke\controller\GlobalController.class
+com\tilf\troke\validator\UserValidator.class
 com\tilf\troke\entity\ChatEntity.class
 com\tilf\troke\form\post.class
 com\tilf\troke\repository\CustomObjectRepositoryImpl.class
@@ -15,6 +16,7 @@ com\tilf\troke\entity\CategoryEntity.class
 com\tilf\troke\repository\UserRepository.class
 com\tilf\troke\controller\SearchController.class
 com\tilf\troke\entity\ObjecttransactionEntityPK.class
+com\tilf\troke\interceptor\MenuListInterceptor.class
 com\tilf\troke\auth\AuthUserContext.class
 com\tilf\troke\entity\UsersEntity.class
 com\tilf\troke\conf\FilterConfiguration.class

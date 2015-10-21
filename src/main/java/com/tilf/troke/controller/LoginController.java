@@ -46,22 +46,23 @@ public class LoginController {
         return "redirect:/";
     }
 
-    @RequestMapping("/profil")
-    public String profil(){
-        return "";
-    }
-
     @RequestMapping("/connexion")
     public String connexion(HttpSession session)
     {
         return "redirect:#openModalConnexion";
     }
 
+    @RequestMapping(value="/connexionNew", method = RequestMethod.GET)
+    public String connexionNew()
+    {
+        return "/#openModalConnexion";
+    }
+
     @RequestMapping("/openModalConnexion")
     public String openModalConnexion(HttpSession session)
     {
         session.removeAttribute("error");
-        return "redirect:#openModalConnexion"; // FIXME la page refresh au moment du click !!!!!!!!!!
+        return "redirect:#openModalConnexion"; // FIXME la page refresh au moment du click
     }
 
     @RequestMapping(value="/auth", method= RequestMethod.POST)

@@ -27,8 +27,6 @@
     <file url="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/myTrades.html" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/startTrade.html" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/test1.html" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/test2.html" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/trade.html" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/troker.html" charset="windows-1252" />
   </component>

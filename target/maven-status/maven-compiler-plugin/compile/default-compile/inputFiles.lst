@@ -5,10 +5,12 @@ C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\repository\Use
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\entity\SubcategoryEntity.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\repository\CustomObjectRepositoryImpl.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\controller\HomeController.java
+C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\validator\UserValidator.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\entity\ObjectsEntity.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\repository\CustomUserRepository.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\entity\ObjectratingEntity.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\repository\CustomObjectRepository.java
+C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\interceptor\MenuListInterceptor.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\auth\AuthUserContext.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\domain\SearchFilter.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\repository\CustomUserRepositoryImpl.java
