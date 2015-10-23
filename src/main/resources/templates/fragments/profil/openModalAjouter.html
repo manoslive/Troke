@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
+<head>
+    <script>
+        function Ajout(){
+            document.getElementsByName("AjoutItem").submit();
+        }
+    </script>
+</head>
 <body>
 <div th:fragment="openModalAjouter">
-    <form>
+    <form th:action="@{/addObject}" method="post" name="AjoutItem">
         <div id="openModalAjouter" class="modalDialogAjouter">
             <div style="font-family:Amaranth">
 
@@ -17,7 +23,7 @@
 
                 <div class="divModalAjoutTop">
                     <input class="signup-full" type="text" placeholder="Nom de l'item / service" name="Name" id="name"/>
-                    <input class="signup-full" type="number" placeholder="Valeur $$$" name="Valeur" id="valeur"/>
+                    <input class="signup-full" type="number" placeholder="Valeur $$$" name="Valeur" id="valeur" value="0" min="0"/>
 
                     <div class="divModalAjoutQualite">
                         <label style="font-weight:normal">Etat de l'item</label>
@@ -112,7 +118,8 @@
                 </div>
 
                 <div>
-                    <a href="#valid" style="text-align:center;font-size:16px" title="Ajout" class="valid">Ajouter</a>
+                    <!--<a href="#valid" style="text-align:center;font-size:16px" title="Ajout" class="valid" onclick="Ajout()">Ajouter</a>-->
+                    <input type="submit" class="valid" title="Valider" style="text-align: center; font-size:16px;"/>
                 </div>
 
             </div>

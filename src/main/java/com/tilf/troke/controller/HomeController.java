@@ -111,10 +111,13 @@ public class HomeController {
     public String Profil(Model model) {
         UsersEntity user = authContext.getUser();
         model.addAttribute("userActif", user);
+        List<ObjectsEntity> list = customObjectRepository.getListObjectByUserId(authContext.getUser().getIduser());
+        model.addAttribute("userInventory", list);
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("userActif", user);
+            context.setVariable("userInventory", list);
         }
         return "fragments/site/profilUser";
     }

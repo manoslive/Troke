@@ -106,21 +106,14 @@
                                             <div class="circular"><img src="images/UnknownUserJPG.jpg" alt="" class="circularimage" /></div>
 
                                         </h3>
+                                        <!-- nom de l'objet -->
                                         <h3 data-animation="animated flipInX" style="font-size:18px; background-color:transparent; text-transform:uppercase;
-										letter-spacing:.08em">
-                                            Unknown Object For Sale
-                                        </h3>
+										letter-spacing:.08em" th:text="${userInventory[0].getNameObject()}">
 
-                                        <h3 data-animation="animated flipInX" style="font-size:14px;">
-                                            Description de l'objet parcequ'il y a beaucoup de choses a dire sur le sujet.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
+                                        </h3>
+                                        <!-- text de l'objet -->
+                                        <h3 data-animation="animated flipInX" style="font-size:14px;" th:text="${userInventory[0].getDescObject()}">
+
 
                                         </h3>
                                         <div class="divAMS">

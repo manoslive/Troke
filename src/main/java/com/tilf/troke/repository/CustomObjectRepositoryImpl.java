@@ -17,6 +17,7 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository{
     @PersistenceContext
     private EntityManager entityManager;
 
+
     // Requêtes sur les catégories
     @Override
     public List<String> getAllCategories()
@@ -136,5 +137,14 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository{
         queryObject.setParameter("userID", userID);
         List<ObjectsEntity> inventory = (List<ObjectsEntity>) queryObject.getResultList();
         return inventory;
+    }
+    @Override
+    public List<ObjectsEntity> getListObjectByUserId(String userId)
+    {
+        String query = "select o from ObjectsEntity o where o.iduser = :userID";
+        Query queryObject = entityManager.createQuery(query);
+        queryObject.setParameter("userID", userId);
+        List<ObjectsEntity> LObject = (List<ObjectsEntity>) queryObject.getResultList();
+        return LObject;
     }
 }
