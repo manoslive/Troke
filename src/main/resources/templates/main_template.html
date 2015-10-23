@@ -25,14 +25,52 @@
     <!-- load animate -->
     <script src="js/jquery.mask.min.js" type="text/javascript"></script>
     <script src="js/home.js" type="text/javascript"></script>
+    <script th:inline="javascript">
+        //Pour la navbar dans le scroll...
+        /*<![CDATA[*/
+        $(document).ready(function() {
+
+            var imagebanner = document.getElementById("Banniere");
+
+
+            $(window).scroll(function () {
+                //if you hard code, then use console
+                //.log to determine when you want the
+                //nav bar to stick.
+                console.log($(window).scrollTop())
+                var height = imagebanner.clientHeight;
+
+
+                if ($(window).scrollTop() > imagebanner.clientHeight) {
+                    $('#nav_bar').addClass('navbar-fixed');
+                    $('#nav_bar').removeClass('navbar');
+
+                    $('#cont').addClass('padbot');
+                    //$('#nav_bar').css('top', 0);
+                    //$('#nav_bar').toggleClass('navbar navbar-fixed');
+                }
+
+
+                if ($(window).scrollTop() < imagebanner.clientHeight) {
+
+                    $('#nav_bar').removeClass('navbar-fixed');
+                    $('#nav_bar').addClass('navbar');
+                    //$('#nav_bar').toggleClass('navbar-fixed navbar');
+                    $('#cont').removeClass('padbot');
+                    //$('#nav_bar').addClass('navbar-fixed');
+                }
+            });
+        });
+        /*]]>*/
+    </script>
     <th:block th:replace="this :: head"/>
 </head>
 <body style="background-color:#00455f;" id="goodlookin">
 
 <!-- START Header -->
 <div class="page-header" style="display:inline" id="mainBanner">
-    <img src="images/Gradient2.png" class="img-responsive animated fadeIn" id="Banniere"/>
-    <a th:href="@{/}"><img src="images/Logo2.png" class="img-responsive animated fadeIn Logo" id="Logo"/></a>
+    <img src="images/WorldBanner2.jpg" class="img-responsive animated fadeIn" id="Banniere"/>
+    <a th:href="@{/}"><img src="images/LogoWorld_Transparence.png" class="img-responsive animated Logo" id="Logo"/></a>
 		        <span class="dd animated fadeInDown">
                     <div class="BTN_Creds">
                         <span th:if="${authUser} eq null">
@@ -148,13 +186,13 @@
                     <div style="float: left; width: 48.5%">
                         <!-- START iduser -->
                         <th:block th:if="${fields.getFieldError('iduser') ne null}">
-                            <input th:id="*{iduser}" th:name="*{iduser}"
+                            <input th:id="iduser" th:name="iduser"
                                    th:value="${session.userInformation.getIduser()}"
                                    class="signup-full highlightTextBox" placeholder="Nom d'usager"
                                    type="text" tabindex="1"/>
                         </th:block>
                         <th:block th:if="${fields.getFieldError('iduser') eq null}">
-                            <input th:id="*{iduser}" th:name="*{iduser}"
+                            <input th:id="iduser" th:name="iduser"
                                    th:value="${session.userInformation.getIduser()}"
                                    class="signup-full" placeholder="Nom d'usager"
                                    type="text" tabindex="1"/>
@@ -163,13 +201,13 @@
 
                         <!-- START firstname -->
                         <th:block th:if="${fields.getFieldError('firstname') ne null}">
-                            <input th:id="*{firstname}" th:name="*{firstname}"
+                            <input th:id="firstname" th:name="firstname"
                                    th:value="${session.userInformation.getFirstname()}"
                                    class="signup-full highlightTextBox" placeholder="Prénom"
                                    type="text" tabindex="2"/>
                         </th:block>
                         <th:block th:if="${fields.getFieldError('firstname') eq null}">
-                            <input th:id="*{firstname}" th:name="*{firstname}"
+                            <input th:id="firstname" th:name="firstname"
                                    th:value="${session.userInformation.getFirstname()}"
                                    class="signup-full" placeholder="Prénom"
                                    type="text" tabindex="2"/>
@@ -178,13 +216,13 @@
 
                         <!-- START lastname -->
                         <th:block th:if="${fields.getFieldError('lastname') eq null}">
-                            <input th:id="*{lastname}" th:name="*{lastname}"
+                            <input th:id="lastname" th:name="lastname"
                                    th:value="${session.userInformation.getLastname()}"
                                    class="signup-full" placeholder="Nom de famille"
                                    type="text" tabindex="3"/>
                         </th:block>
                         <th:block th:if="${fields.getFieldError('lastname') ne null}">
-                            <input th:id="*{lastname}" th:name="*{lastname}"
+                            <input th:id="lastname" th:name="lastname"
                                    th:value="${session.userInformation.getLastname()}"
                                    class="signup-full highlightTextBox" placeholder="Nom de famille"
                                    type="text" tabindex="3"/>
@@ -204,14 +242,14 @@
                 <div>
                     <!-- START zipcode -->
                     <th:block th:if="${fields.getFieldError('zipcode') eq null}">
-                        <input th:id="*{zipcode}" th:name="*{zipcode}"
+                        <input th:id="zipcode" th:name="zipcode"
                                th:value="${session.userInformation.getZipcode()}"
                                class="signup-half zipcode" placeholder="Code postal"
                                type="text" tabindex="5"
                                style="float: right"/>
                     </th:block>
                     <th:block th:if="${fields.getFieldError('zipcode') ne null}">
-                        <input th:id="*{zipcode}" th:name="*{zipcode}"
+                        <input th:id="zipcode" th:name="zipcode"
                                th:value="${session.userInformation.getZipcode()}"
                                class="signup-half zipcode highlightTextBox" placeholder="Code postal"
                                type="text" tabindex="5"
@@ -221,14 +259,14 @@
 
                     <!-- START telephone -->
                     <th:block th:if="${fields.getFieldError('telephone') eq null}">
-                        <input th:id="*{telephone}" th:name="*{telephone}"
+                        <input th:id="telephone" th:name="telephone"
                                th:value="${session.userInformation.getTelephone()}"
                                class="signup-half phone_ca" placeholder="Téléphone"
                                type="text"
                                tabindex="4" style="float: left	"/>
                     </th:block>
                     <th:block th:if="${fields.getFieldError('telephone') ne null}">
-                        <input th:id="*{telephone}" th:name="*{telephone}"
+                        <input th:id="telephone" th:name="telephone"
                                th:value="${session.userInformation.getTelephone()}"
                                class="signup-half phone_ca highlightTextBox" placeholder="Téléphone"
                                type="text"
@@ -238,13 +276,13 @@
                 </div>
                 <!-- START email -->
                 <th:block th:if="${fields.getFieldError('email') eq null}">
-                    <input th:id="*{email}" th:name="*{email}" th:value="${session.userInformation.getEmail()}"
+                    <input id="email" th:name="email" th:value="${session.userInformation.getEmail()}"
                            class="signup-full"
                            placeholder="Adresse électronique"
                            type="email" tabindex="6" onChange="checkEmail()"/>
                 </th:block>
                 <th:block th:if="${fields.getFieldError('email') ne null}">
-                    <input th:id="*{email}" th:name="*{email}" th:value="${session.userInformation.getEmail()}"
+                    <input id="email" th:name="email" th:value="${session.userInformation.getEmail()}"
                            class="signup-full highlightTextBox" placeholder="Adresse électronique"
                            type="email" tabindex="6" onChange="checkEmail()"/>
                 </th:block>
@@ -252,14 +290,14 @@
 
                 <!-- START email_confirm -->
                 <th:block th:if="${fields.getFieldError('email_confirm') eq null}">
-                    <input th:id="*{email_confirm}" th:name="*{email_confirm}"
+                    <input id="email_confirm" th:name="email_confirm"
                            th:value="${session.userInformation.getEmail_confirm()}"
                            class="signup-full" placeholder="Confirmer votre adresse électronique" type="email"
                            tabindex="7"
                            onChange="checkConfirmEmail()"/>
                 </th:block>
                 <th:block th:if="${fields.getFieldError('email_confirm') ne null}">
-                    <input th:id="*{email_confirm}" th:name="*{email_confirm}"
+                    <input id="email_confirm" th:name="email_confirm"
                            th:value="${session.userInformation.getEmail_confirm()}"
                            class="signup-full highlightTextBox" placeholder="Confirmer votre adresse électronique"
                            type="email" tabindex="7"
@@ -269,12 +307,12 @@
 
                 <!-- START pass -->
                 <th:block th:if="${fields.getFieldError('pass') eq null}">
-                    <input th:id="*{pass}" th:name="*{pass}" class="signup-full" placeholder="Mot de passe"
+                    <input th:id="pass" th:name="pass" class="signup-full" placeholder="Mot de passe"
                            type="password"
                            tabindex="8"/>
                 </th:block>
                 <th:block th:if="${fields.getFieldError('pass') ne null}">
-                    <input th:id="*{pass}" th:name="*{pass}" class="signup-full highlightTextBox"
+                    <input th:id="pass" th:name="pass" class="signup-full highlightTextBox"
                            placeholder="Mot de passe"
                            type="password"
                            tabindex="8"/>
@@ -283,12 +321,12 @@
 
                 <!-- START pass_confirm -->
                 <th:block th:if="${fields.getFieldError('pass_confirm') eq null}">
-                    <input th:id="*{pass_confirm}" th:name="*{pass_confirm}" class="signup-full"
+                    <input th:id="pass_confirm" th:name="pass_confirm" class="signup-full"
                            placeholder="Confirmer votre mot de passe"
                            type="password" tabindex="9"/>
                 </th:block>
                 <th:block th:if="${fields.getFieldError('pass_confirm') ne null}">
-                    <input th:id="*{pass_confirm}" th:name="*{pass_confirm}" class="signup-full highlightTextBox"
+                    <input th:id="pass_confirm" th:name="pass_confirm" class="signup-full highlightTextBox"
                            placeholder="Confirmer votre mot de passe"
                            type="password" tabindex="9"/>
                 </th:block>
@@ -347,13 +385,12 @@
 <!-- END Signup -->
 
 <!-- START Navbar -->
-<nav class="navbar navbar-inverse animated fadeIn" style="font-family:'Amaranth'; z-index: 9999; font-size:20px"
-     id="menubar">
+<nav id="nav_bar" class="navbar navbar-default" style="font-family:'Amaranth'; z-index: 9999; font-size:20px">
     <img id="menu-logo" class="menuLogoHide" src="images/Logo-transparent.png" onclick="Refresh()"/>
     <!-- div container -->
-    <div class="container">
+    <div class="container" >
         <!-- div navbar-header -->
-        <div class="navbar-header navbar-left">
+        <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
                     aria-expanded="false" aria-controls="navbar" onclick="Choix()">
                 <span class="sr-only">Toggle navigation</span>
@@ -366,7 +403,7 @@
         <div id="navbar" class="navbar-collapse collapse pull-left">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color:black">
                         Catégories<span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
@@ -388,9 +425,9 @@
                     </form>
                 </li>
                 <!-- end Search bar + button -->
-                <li><a onclick="openMesEchanges()" href="#mesEchanges">Mes Échanges</a></li>
+                <li><a onclick="openMesEchanges()" href="#mesEchanges" style="color:black">Mes Échanges</a></li>
                 <!-- <li><a href="#contact">Contact</a></li> -->
-                <li class="pull-right"><a href="/profil">Mon profil</a></li>
+                <li class="pull-right"><a href="/profil" style="color:black">Mon profil</a></li>
             </ul>
             <!-- nav navbar-nav -->
         </div>
@@ -401,7 +438,7 @@
 <!-- END Navbar -->
 
 <!-- START Contenu -->
-<div th:include="this :: content"/>
+<div th:include="this :: content" id="cont"/>
 <!-- END Contenu -->
 
 <!-- START Spacer -->

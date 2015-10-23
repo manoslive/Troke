@@ -72,14 +72,39 @@
     margin-bottom: 25px;
     margin-top: 25px;
 }
+.navbar-fixed {
+    top: 0;
+    z-index: 100;
+    position: fixed;
+    width: 100%;
+}
 
+.padbot
+{
+    padding-top:50px;
+}
+
+#nav_bar {
+
+    border: 0;
+    border-radius: 0px;
+    margin-bottom: 0px;
+    width:100%;
+
+    background: -moz-linear-gradient(#fff, #999);
+    background: -webkit-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);
+
+
+
+}
 .Logo {
     position: absolute;
-    top: 1%;
-    left: 4%;
+    top: 4%;
+    left: 6%;
     z-index: 11;
-    width: 10%;
-    height: 10%;
+    width: 5%;
+    height: 5%;
 
 }
 
@@ -105,7 +130,7 @@
     width: 100%;
     text-align: center;
     line-height: 50%;
-    background-color: #666;
+
     color: #FFF;
     padding-top: 1%;
     padding-bottom: 1%;
@@ -114,6 +139,9 @@
     position: fixed;
     left: 0pt;
     z-index: 100;
+    background: -moz-linear-gradient(#fff, #999);
+    background: -webkit-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);
 }
 
 .footerSpacer {
