@@ -2,6 +2,7 @@ package com.tilf.troke.controller;
 
 import com.tilf.troke.auth.AuthUserContext;
 import com.tilf.troke.domain.SearchFilter;
+import com.tilf.troke.domain.UserSignupForm;
 import com.tilf.troke.entity.UsersEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -24,7 +25,7 @@ public class GlobalController {
     {
         model.addAttribute("authUser", authUserContext.getUser());
         model.addAttribute("searchFilter", searchFilter.getFilters());
-        model.addAttribute("user", new UsersEntity());
+        model.addAttribute("userSignupForm", new UserSignupForm());
     }
 
 }

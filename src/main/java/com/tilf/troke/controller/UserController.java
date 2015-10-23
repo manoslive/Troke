@@ -1,6 +1,7 @@
 package com.tilf.troke.controller;
 
 import com.tilf.troke.entity.UsersEntity;
+import com.tilf.troke.repository.CustomObjectRepository;
 import com.tilf.troke.repository.UserRepository;
 import com.tilf.troke.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +27,13 @@ public class UserController {
     private UserRepository userRepository;
 
     @Autowired
+    private CustomObjectRepository customObjectRepository;
+
+    @Autowired
     private UserValidator userValidator;
 
     @RequestMapping(value = "/adduser", method = RequestMethod.POST)
-    public String adduser(@ModelAttribute("user") @Valid UsersEntity user,
-                          BindingResult result, RedirectAttributes redirectAttributes) {
+    public String adduser(@ModelAttribute("user") @Valid UsersEntity user, BindingResult result, RedirectAttributes redirectAttributes) {
         userValidator.validate(user, result);
         java.sql.Date now = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 
