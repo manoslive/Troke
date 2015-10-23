@@ -1,6 +1,23 @@
 /**
  * Created by Shaun Cooper on 2015-10-16.
  */
+function getEachItemID(){
+    var listTradeItems = [];
+    alert("Get ID DES ITEMS");
+    var x = document.getElementsByClassName("itemID");
+    var i;
+    for (i = 0; i < x.length; i++) {
+        alert(x[i].innerHTML);
+        listTradeItems.push(x[i].innerHTML);
+    }
+
+    var j;
+    for(j=0; j<listTradeItems.length ; j++){
+        alert('list: '+listTradeItems[j]);
+        document.getElementById("mainDiv").innerHTML += '<input type="hidden" style="position:absolute" value="'+ listTradeItems[j] +'" name="objects['+ j +']"/>';
+    }
+    //document.forms["startTradeForm"].submit();
+}
 var inspectItemID;
 function setInspectItemID(itemID){
     alert(itemID);
@@ -72,7 +89,7 @@ function init() {
                 $item.find( ".icon-exchange" ).remove();
                 $item.append( recycle_icon ).appendTo( $list).fadeIn(function() {
                     $item
-                        .animate({ width: "80px" , height: "80px" , maxWidth: "80px", maxHeight: "80px" })
+                        .animate({ width: "80px" , height: "80px"})
                         .find( ".item-image" )
                         .animate({  width: "80px", height: "60px" , maxWidth: "80px", maxHeight: "60px" });
                 });
@@ -80,11 +97,12 @@ function init() {
                 $item.find( ".icon-exchange" ).remove();
                 $item.append( recycle_icon ).appendTo( $list).fadeIn(function() {
                     $item
-                        .animate({ width: "80px" , height: "80px" , maxWidth: "80px", maxHeight: "80px" })
+                        .animate({ width: "80px" , height: "80px"})
                         .find( ".item-image" )
                         .animate({  width: "80px", height: "60px" , maxWidth: "80px", maxHeight: "60px" });
                 });
             }
+            $item.find("span").addClass("itemID");
         });
     }
     // item recycle Opposant function
@@ -93,6 +111,8 @@ function init() {
         $item.fadeOut(function() {
             $item.find(".divInputMoney").replaceWith("<img class='item-image' src='images/item-dollar-sign.png' alt=''>");
             $item
+                .find(".itemID")
+                .remove()
                 .find( ".icon-refresh" )
                 .remove()
                 .end()
