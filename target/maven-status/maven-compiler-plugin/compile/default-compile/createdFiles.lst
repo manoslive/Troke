@@ -16,6 +16,7 @@ com\tilf\troke\entity\CategoryEntity.class
 com\tilf\troke\repository\UserRepository.class
 com\tilf\troke\controller\SearchController.class
 com\tilf\troke\entity\ObjecttransactionEntityPK.class
+com\tilf\troke\domain\UserSignupForm.class
 com\tilf\troke\auth\AuthUserContext.class
 com\tilf\troke\controller\TransactionController.class
 com\tilf\troke\entity\UsersEntity.class

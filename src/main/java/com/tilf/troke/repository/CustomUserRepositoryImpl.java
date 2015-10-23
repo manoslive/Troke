@@ -59,6 +59,14 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
         return count;
     }
 
+    @Override
+    public BigInteger checkEmailExistance(String email){
+        String query = "select count(1) from users where email = :email";
+        Query queryObject = entityManager.createNativeQuery(query);
+        queryObject.setParameter("email", email);
+        return (BigInteger)queryObject.getSingleResult();
+    }
+
     // StartTrade
     @Override
     public UsersEntity getUserFromItem(int itemID)

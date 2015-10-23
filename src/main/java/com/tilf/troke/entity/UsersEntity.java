@@ -12,158 +12,172 @@ import java.sql.Date;
  * Created by Manu on 2015-10-02.
  */
 
+
+
 @Entity
 @Table(name = "users", schema = "", catalog = "troke")
 public class UsersEntity {
-    private String iduser;
-    private String lastname;
-    private String firstname;
-    private String pass;
-    private String avatar;
-    private String state;
-    private String isonline;
-    private Date creationdate;
-    private String email;
-    private String telephone;
-    private String zipcode;
-    private Integer permissionlevel;
-    private String isvip;
-
-    @NotNull
-    @Size(min = 4, max = 20)
+    @NotNull(message = "Le nom d'usager ne doit pas être nul")
+    @Size(min = 4, max = 20, message = "Le nom d'usager doit comporter de 4 à 20 caractères")
     @Id
     @Column(name = "IDUSER")
+    private String iduser;
+
+    @NotNull(message = "Le nom de famille ne doit pas être nul")
+    @Basic
+    @Column(name = "LASTNAME")
+    private String lastname;
+
+    @NotNull(message = "Le prénom ne doit pas être nul!")
+    @Basic
+    @Column(name = "FIRSTNAME")
+    private String firstname;
+
+    @NotNull(message = "Le mot de passe ne doit pas être nul")
+    @Basic
+    @Column(name = "PASS")
+    private String pass;
+
+    @Basic
+    @Column(name = "AVATAR")
+    private String avatar;
+
+    @Basic
+    @Column(name = "STATE")
+    private String state;
+
+    @Basic
+    @Column(name = "ISONLINE")
+    private String isonline;
+
+    @Basic
+    @Column(name = "CREATIONDATE")
+    private Date creationdate;
+
+    @Email(message = "Le courriel doit être sous la forme : a@b.c")
+    @NotNull(message = "Le courriel ne doit pas être nul")
+    @Basic
+    @Column(name = "EMAIL")
+    private String email;
+
+    @NotNull(message = "Le numéro de téléphone ne doit pas être nul")
+    @Basic
+    @Column(name = "TELEPHONE")
+    private String telephone;
+
+    @NotNull(message = "Le code postal ne doit pas être nul")
+    @Basic
+    @Column(name = "ZIPCODE")
+    private String zipcode;
+
+    @Basic
+    @Column(name = "PERMISSIONLEVEL")
+    private Integer permissionlevel;
+
+    @Basic
+    @Column(name = "ISVIP")
+    private String isvip;
+
+
     public String getIduser() {
         return iduser;
     }
-
     public void setIduser(String iduser) {
         this.iduser = iduser;
     }
 
-    @NotNull
-    @Basic
-    @Column(name = "LASTNAME")
+
     public String getLastname() {
         return lastname;
     }
-
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
 
-    @NotNull
-    @Basic
-    @Column(name = "FIRSTNAME")
+
     public String getFirstname() {
         return firstname;
     }
-
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
 
-    @NotNull
-    @Basic
-    @Column(name = "PASS")
+
     public String getPass() {
         return pass;
     }
-
     public void setPass(String pass) {
         this.pass = pass;
     }
 
-    @Basic
-    @Column(name = "AVATAR")
+
     public String getAvatar() {
         return avatar;
     }
-
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
 
-    @Basic
-    @Column(name = "STATE")
+
     public String getState() {
         return state;
     }
-
     public void setState(String state) {
         this.state = state;
     }
 
-    @Basic
-    @Column(name = "ISONLINE")
+
     public String getIsonline() {
         return isonline;
     }
-
     public void setIsonline(String isonline) {
         this.isonline = isonline;
     }
 
-    @Basic
-    @Column(name = "CREATIONDATE")
+
     public Date getCreationdate() {
         return creationdate;
     }
-
     public void setCreationdate(Date creationdate) {
         this.creationdate = creationdate;
     }
 
-    @Email
-    @NotNull
-    @Basic
-    @Column(name = "EMAIL")
+
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
 
-    @NotNull
-    @Basic
-    @Column(name = "TELEPHONE")
+
     public String getTelephone() {
         return telephone;
     }
-
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 
-    @NotNull
-    @Basic
-    @Column(name = "ZIPCODE")
+
     public String getZipcode() {
         return zipcode;
     }
-
     public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
 
-    @Basic
-    @Column(name = "PERMISSIONLEVEL")
+
     public Integer getPermissionlevel() {
         return permissionlevel;
     }
-
     public void setPermissionlevel(Integer permissionlevel) {
         this.permissionlevel = permissionlevel;
     }
 
-    @Basic
-    @Column(name = "ISVIP")
+
     public String getIsvip() {
         return isvip;
     }
-
     public void setIsvip(String isvip) {
         this.isvip = isvip;
     }
