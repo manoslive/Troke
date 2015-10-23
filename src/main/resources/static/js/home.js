@@ -78,15 +78,19 @@ function checkCaptcha() {
     }
 }
 function Flip() {
-    var email = document.getElementById('email').value;
+    var email = document.getElementById('email').value;  //////////////////////////////////////////icitteee
     var email_confirm = document.getElementById('email_confirm').value;
     var pass = document.getElementById('pass').value;
     var pass_confirm = document.getElementById('pass_confirm').value;
 
     if (String(email) != '') {
+        alert("email est pas vide");
         if (String(pass) != '') {
+            alert("pass est pas vide");
             if (String(email) == String(email_confirm)) {
+                alert("email sont pareil");
                 if (String(pass) == String(pass_confirm)) {
+                    alert("pass sont pareil");
                     document.querySelector('#openModalInscription').classList.toggle('flip');
                     ResetHighlight();
                     generateCaptcha();
@@ -122,10 +126,10 @@ function ConfirmEmail() {
     document.getElementById('confirmEmail').value = emailConfirm;
 }
 function checkEmail() {
-    document.querySelector('#email').classList.remove('highlightTextBox');
+    document.querySelector('#email').classList.remove('highlightTextBox');   ////////////////////icittee
 }
 function checkConfirmEmail() {
-    document.querySelector('#email_confirm').classList.remove('highlightTextBox');
+    document.querySelector('#email_confirm').classList.remove('highlightTextBox');  ////////////////////icittteee
 }
 function PreviewImage(value) {
     var imgValue = value.slice(value.lastIndexOf('\\'), value.length);
