@@ -34,6 +34,15 @@
       <index name="CHATMESSAGE_CHAT_FK" unique="false" columns="IDCHAT"/>
       <index name="CHATMESSAGE_USERS_FK" unique="false" columns="IDUSER"/>
     </table>
+    <table name="imageobject" schema="" catalog="troke" type="TABLE">
+      <column name="IDIMAGESOBJECT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="IDOBJECT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="IMAGEPATH" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ISMAINIMAGE" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="IDIMAGESOBJECT"/>
+      <foreign-key name="IDOBJECT_FK" columns="IDOBJECT" ref-table="objects" ref-schema="" ref-catalog="troke" ref-columns="IDOBJECT" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="IDOBJECT_FK_idx" unique="false" columns="IDOBJECT"/>
+    </table>
     <table name="objectrating" schema="" catalog="troke" type="TABLE">
       <column name="IDOBJECTRATING" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="IDOBJECT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
@@ -57,6 +66,7 @@
       <primary-key name="PRIMARY" columns="IDOBJECT"/>
       <foreign-key name="OBJECT_SUBCATEGORY" columns="IDSUBCATEGORY" ref-table="subcategory" ref-schema="" ref-catalog="troke" ref-columns="IDSUBCATEGORY" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="OBJECT_USERS_FK" columns="IDUSER" ref-table="users" ref-schema="" ref-catalog="troke" ref-columns="IDUSER" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="IDOBJECT_FK" table="imageobject" schema="" catalog="troke" columns="IDOBJECT"/>
       <exported-key name="OBJECTRATING_OBJECT_FK" table="objectrating" schema="" catalog="troke" columns="IDOBJECT"/>
       <exported-key name="OBJECTTRAN_OBJECT_FK" table="objecttransaction" schema="" catalog="troke" columns="IDOBJECT"/>
       <index name="OBJECT_SUBCATEGORY" unique="false" columns="IDSUBCATEGORY"/>
@@ -85,7 +95,7 @@
       <column name="IDUSER2" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
       <column name="DATETRANSACTION" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
       <column name="ISCOMPLETED" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
-      <column name="STATE" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
+      <column name="TURN" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="IDTRANSACTION"/>
       <foreign-key name="TRANSACTION_USER1_FK" columns="IDUSER1" ref-table="users" ref-schema="" ref-catalog="troke" ref-columns="IDUSER" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="TRANSACTION_USER2_FK" columns="IDUSER2" ref-table="users" ref-schema="" ref-catalog="troke" ref-columns="IDUSER" update-rule="3" delete-rule="3" deferrability="2"/>
@@ -110,7 +120,7 @@
       <column name="FIRSTNAME" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
       <column name="PASS" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
       <column name="AVATAR" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
-      <column name="ISBANNED" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
+      <column name="STATE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
       <column name="ISONLINE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
       <column name="CREATIONDATE" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
       <column name="EMAIL" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
