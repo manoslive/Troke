@@ -11,15 +11,16 @@
 <th:block th:fragment="content">
 <div style="background-color:#00455f">
     <div class="aboutDiv">
-
-        <h3 style="margin-top:50px;font-size:18px;color:white; background-color:transparent; text-transform:uppercase;letter-spacing:.2em">
+        <div class="HighBanner" style="font-family:'Amaranth'">
+        <h3 style=" padding-top:20px; font-size:18px; color:black; background-color:transparent; text-transform:uppercase;letter-spacing:.2em">
             TROK-é
         </h3>
-        <h3 style="margin-top:50px;font-size:18px;color:white; background-color:transparent; text-transform:uppercase;letter-spacing:.2em">
+        </div>
+        <h3 style=" margin-top:50px;font-size:18px;color:white; background-color:transparent; text-transform:uppercase;letter-spacing:.2em">
             A propos de l'equipe:
         </h3>
 
-        <h3 style="margin-top:5px;font-size:10px;color:white; background-color:transparent; text-transform:uppercase;letter-spacing:.08em; font-weight:normal">
+        <h3 style=" margin-top:5px; font-size:10px; color:white; background-color:transparent; text-transform:uppercase; letter-spacing:.08em; font-weight:normal">
             Cegep Lionel-Groulx - Automne 2015<br/>
             100 Rue Duquet, Sainte-Thérèse, QC J7E 3G6<br/>
             Superviseur Nicolas Chourot
@@ -32,7 +33,7 @@
 
                     <h3 class="icon-container">
 
-                        <div class="circular">
+                        <div class="circular bigEntrance">
                             <img src="images/PhotoY.jpg" alt="" class="circularimage" id="ImgYvon" onclick="ImageClick('Y')"/>
                             <a href="https://ca.linkedin.com/pub/yvon-steinthal/75/665/614" ><img src="images/linkedin.png" class = "LinkedinLogo"/></a>
 
@@ -48,7 +49,7 @@
                     </h3>
 
                     <h3 class="icon-container">
-                        <div class="circular">
+                        <div class="circular bigEntrance">
                             <img src="images/PhotoA.jpg" alt="" class="circularimage" id="ImgAlex" onclick="ImageClick('A')"/>
                             <a href="https://ca.linkedin.com/pub/alexandre-dubé/a8/45b/a1b" ><img src="images/linkedin.png" class = "LinkedinLogo"/></a>
                         </div>
@@ -64,7 +65,7 @@
                     </h3>
 
                     <h3 class="icon-container">
-                        <div class="circular">
+                        <div class="circular bigEntrance">
                             <img src="images/PhotoE2.jpg" alt="" class="circularimage" id="ImgManu" onclick="ImageClick('M')"/>
                             <a href="https://ca.linkedin.com/pub/emmanuel-beloin/99/907/ba0"><img src="images/linkedin.png" class = "LinkedinLogo"/></a>
                         </div>
@@ -80,7 +81,7 @@
                     </h3>
 
                     <h3 class="icon-container">
-                        <div class="circular">
+                        <div class="circular bigEntrance">
                             <img src="images/PhotoS.jpg" alt="" class="circularimage" id="ImgShaun" onclick="ImageClick('S')"/>
                             <a href="https://ca.linkedin.com/pub/shaun-cooper/104/989/a4" ><img src="images/linkedin.png" class = "LinkedinLogo"/></a>
                         </div>
@@ -106,8 +107,10 @@
     </div> <!-- /.item -->
 
     <div class="LowBanner">
-        <div class="InfoProjet">
-            <h3 style="font-size:14px;color:white; background-color:transparent; text-transform:uppercase;letter-spacing:.08em; font-weight:normal">
+        <div id="InfoProjet">
+            <h3 style="font-size:12px; color:black; text-transform:uppercase;
+						background-color:transparent; letter-spacing:.2em; font-weight:bold;
+						line-height:14px; font-family:'Amaranth'">
 
                 Notre projet consiste en un site web de troc fait dans le cadre de la technique d'informatique de gestion au Cegep Lionel-Groulx.
                 Dans ce site, l'usager peut remplir un inventaire d'objets ou de services qu'il pourra éventuellement échanger.
@@ -118,6 +121,7 @@
                 Nous avons coder le tout en JAVA SpringBoot / HTML / CSS / Javascript / Jquery UI / JPA / JPQL utilisant la philosophie MVC.
                 L'IDE choisi est Intellij IDEA, et la base de données est MYSQL avec l'IDE WorkBench.
 
+                <!--De plus, nous aimerions avoir une version android de l'application web.-->
             </h3>
         </div>
 
