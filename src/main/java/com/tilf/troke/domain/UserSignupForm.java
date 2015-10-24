@@ -1,6 +1,7 @@
 package com.tilf.troke.domain;
 
 import org.hibernate.validator.constraints.Email;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
@@ -40,6 +41,9 @@ public class UserSignupForm {
     @Size(max = 7, min = 7, message = "Le code postal doit être composé de 3 chiffres et 3 lettres.")
     @NotNull(message = "Le code postal ne doit pas être nul.")
     private String zipcode;
+
+    private MultipartFile avatar;
+
 
     public String getZipcode() {
         return zipcode;
@@ -111,6 +115,14 @@ public class UserSignupForm {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public MultipartFile getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(MultipartFile avatar) {
+        this.avatar = avatar;
     }
 
     @AssertTrue(message = "Les deux champs doivent être identiques.")

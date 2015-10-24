@@ -28,7 +28,7 @@
     <script th:inline="javascript">
         //Pour la navbar dans le scroll...
         /*<![CDATA[*/
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             var imagebanner = document.getElementById("Banniere");
 
@@ -61,6 +61,60 @@
                 }
             });
         });
+
+        document.getElementById('fileExplorer').addEventListener('change', readURL, true);
+        function readURL() {
+            var file = document.getElementById("fileExplorer").files[0];
+            var reader = new FileReader();
+            reader.onloadend = function () {
+                document.getElementById('avatar').style.backgroundImage = "url(" + reader.result + ")";
+            }
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+            }
+        }
+        function checkImage() {
+            var x = document.getElementById('fileExplorer'); // get the file input element in your form
+            var f = x.files.item(0); // get only the first file from the list of files
+            var filesize = f.size;
+            var maxFileSize = 131072;
+            var maxFileSizeInMB = 131072 / (1024 * 1024);
+            var filesizeInMB = filesize / (1024 * 1024);
+            alert(filesize);
+
+            if (filesize < maxFileSize) {
+                document.getElementById('errorDiv').innerHTML ='';
+                readURL();
+                document.getElementById("image-form").submit();
+            }
+            else {
+                document.getElementById('errorDiv').innerHTML = '<span style="color:red" id="image-error">File size (' + filesizeInMB + 'MB) is too large.<br/> Choose a file under ' + maxFileSizeInMB + 'MB!</span>';
+                //document.getElementById("image-error").textContent = "File size (" + filesizeInMB + " MB) is too large. Choose a file under " + maxFileSizeInMB + "MB!"
+            }
+        }
+        function TestFileType() {
+            var fileName = document.getElementById('fileExplorer').value;
+            var fileTypes = /(.jpg|.jpeg|.gif|.png)$/i;
+            var extensionNames = ".jpg / .jpeg / .gif / .png";
+            alert(fileName);
+            if (fileName != '') {
+                if (fileTypes.test(fileName)) {
+                    document.getElementById('errorDiv').innerHTML ='';
+                    checkImage();
+                }
+                else {
+                    document.getElementById('avatar').style.backgroundImage = "/uploaded-images/no_avatar.jpg";
+                    document.getElementById('errorDiv').innerHTML = '<span style="color:red" id="image-error">Wrong extension name.<br/> Should be ' + extensionNames + ' ! </span>';
+                    //document.getElementById("image-error").textContent = "Wrong extension name. Should be " + extensionNames + " !";
+                }
+            }
+            else {
+                document.getElementById('avatar').style.backgroundImage = "/uploaded-images/no_avatar.jpg";
+                document.getElementById('errorDiv').innerHTML = '<span style="color:red" id="image-error">Filename is empty!</span>';
+                //document.getElementById("image-error").textContent = "Filename is empty!"
+            }
+        }
         /*]]>*/
     </script>
     <th:block th:replace="this :: head"/>
@@ -148,14 +202,16 @@
                                type="text"
                                tabindex="3"/>
                     </div>
-                    <div id="avatar" src="#" alt="avatar" class="avatar">
-                        <div id="avatarOverlay">
-                            <div id="avatarPlus">
-                                <p id="textFileExplorer">Changer votre image de profil</p>
-                                <input id="fileExplorer" type="file" onchange="PreviewImage(this.value);"/>
+                    <form id="image-form" method="post" enctype="multipart/form-data" action="/uploadimage">
+                        <div id="avatar" src="#" alt="avatar" class="avatar">
+                            <div id="avatarOverlay">
+                                <div id="avatarPlus">
+                                    <p id="textFileExplorer">Changer votre image de profil</p>
+                                    <input id="fileExplorer" type="file" name="avatar" onchange="TestFileType()"/>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div>
                     <input th:field="*{zipcode}" class="signup-half zipcode" name="zipcode" placeholder="Code postal"
@@ -336,7 +392,7 @@
                     <div class="mask"></div>
                 </div>
             </th:block>
-            <div>
+            <div id="errorDiv">
                 <ul th:if="${fields != null and fields.hasErrors()}">
                     <li th:each="err : ${fields.getAllErrors()}" th:text="${err.getDefaultMessage()}">Input is
                         incorrect
@@ -388,7 +444,7 @@
 <nav id="nav_bar" class="navbar navbar-default" style="font-family:'Amaranth'; z-index: 9999; font-size:20px">
     <img id="menu-logo" class="menuLogoHide" src="images/Logo-transparent.png" onclick="Refresh()"/>
     <!-- div container -->
-    <div class="container" >
+    <div class="container">
         <!-- div navbar-header -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -403,7 +459,8 @@
         <div id="navbar" class="navbar-collapse collapse pull-left">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color:black">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
+                       style="color:black">
                         Catégories<span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
