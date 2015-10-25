@@ -81,11 +81,11 @@
             var maxFileSize = 131072;
             var maxFileSizeInMB = 131072 / (1024 * 1024);
             var filesizeInMB = filesize / (1024 * 1024);
-            alert(filesize);
 
             if (filesize < maxFileSize) {
                 document.getElementById('errorDiv').innerHTML ='';
                 readURL();
+                document.getElementById("image-form").appendChild(document.getElementById('fileExplorer'));
                 document.getElementById("image-form").submit();
             }
             else {
@@ -97,11 +97,12 @@
             var fileName = document.getElementById('fileExplorer').value;
             var fileTypes = /(.jpg|.jpeg|.gif|.png)$/i;
             var extensionNames = ".jpg / .jpeg / .gif / .png";
-            alert(fileName);
             if (fileName != '') {
                 if (fileTypes.test(fileName)) {
                     document.getElementById('errorDiv').innerHTML ='';
-                    checkImage();
+                    readURL();
+                   // checkImage(); Vérification de la taille de l'image
+                    document.getElementById("image-form").submit();
                 }
                 else {
                     document.getElementById('avatar').style.backgroundImage = "/uploaded-images/no_avatar.jpg";
@@ -177,8 +178,7 @@
 <!-- END Login -->
 
 <!-- START Signup -->
-<form style="margin:0px" action="#" name="inscriptionForm" th:action="@{/adduser}" method="post"
-      th:object="${userSignupForm}">
+<form style="margin:0px" action="#" name="inscriptionForm" th:action="@{/adduser}" method="post" th:object="${userSignupForm}" enctype="multipart/form-data">
     <div id="openModalInscription" class="modalDialogInscription flipcard h ">
         <div class="front" style="font-family:Amaranth">
             <a href="#close" title="Close" class="close">X</a>
@@ -202,16 +202,14 @@
                                type="text"
                                tabindex="3"/>
                     </div>
-                    <form id="image-form" method="post" enctype="multipart/form-data" action="/uploadimage">
                         <div id="avatar" src="#" alt="avatar" class="avatar">
                             <div id="avatarOverlay">
                                 <div id="avatarPlus">
                                     <p id="textFileExplorer">Changer votre image de profil</p>
-                                    <input id="fileExplorer" type="file" name="avatar" onchange="TestFileType()"/>
+                                    <input id="fileExplorer" type="file" name="avatar" onchange="TestFileType()" value="null"/>
                                 </div>
                             </div>
                         </div>
-                    </form>
                 </div>
                 <div>
                     <input th:field="*{zipcode}" class="signup-half zipcode" name="zipcode" placeholder="Code postal"
@@ -286,11 +284,11 @@
                         <!-- END lastname -->
 
                     </div>
-                    <div id="avatar" src="#" alt="avatar" class="avatar">
+                    <div id="avatar" class="avatar" th:style="'background-image:uploaded-images/' + ${session.avatarpath}">
                         <div id="avatarOverlay">
                             <div id="avatarPlus">
                                 <p id="textFileExplorer">Changer votre image de profil</p>
-                                <input id="fileExplorer" type="file" onchange="PreviewImage(this.value);"/>
+                                <input id="fileExplorer" type="file" onchange="TestFileType()" th:value="${session.avatarpath}"/>
                             </div>
                         </div>
                     </div>

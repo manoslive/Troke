@@ -5,6 +5,7 @@ import com.tilf.troke.entity.UsersEntity;
 import com.tilf.troke.repository.CustomObjectRepository;
 import com.tilf.troke.repository.CustomUserRepository;
 import com.tilf.troke.repository.UserRepository;
+import com.tilf.troke.service.ImageService;
 import com.tilf.troke.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ import javax.validation.Valid;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -40,35 +42,48 @@ public class UserController {
     private CustomUserRepository customUserRepository;
 
     @Autowired
-    private CustomObjectRepository customObjectRepository;
-
-    @Autowired
     private UserValidator userValidator;
 
+    @Autowired
+    private ImageService imageService;
+
+    @ExceptionHandler(Throwable.class)
     @RequestMapping(value = "/adduser", method = RequestMethod.POST)
-    public String adduser(@ModelAttribute("userSignupForm") @Valid UserSignupForm userSignupForm, BindingResult result, RedirectAttributes redirectAttributes, Model model, HttpSession session) {
+    public String adduser(@ModelAttribute("userSignupForm") @Valid UserSignupForm userSignupForm, BindingResult result, @RequestParam(value = "avatar", required = false) @Valid MultipartFile avatar, BindingResult result2, RedirectAttributes redirectAttributes, Model model, HttpSession session) {
         userValidator.validate(userSignupForm, result);
         java.sql.Date now = new java.sql.Date(Calendar.getInstance().getTime().getTime());
         BigInteger checkUserExistance = customUserRepository.checkUserExistance(userSignupForm.getIduser());
         BigInteger checkEmailExistance = customUserRepository.checkEmailExistance(userSignupForm.getEmail());
-        String imageName = UUID.randomUUID().toString().replaceAll("-", "");
+        String imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
+        String imagePath = "src/main/resources/static/uploaded-images/";
+        String defaultImage = "no_avatar.jpg";
 
         if (!result.hasErrors() && checkUserExistance == BigInteger.ZERO && checkEmailExistance == BigInteger.ZERO) {
             UsersEntity user = new UsersEntity();
-            if (!userSignupForm.getAvatar().isEmpty()) {
-                try {
-                    byte[] bytes = userSignupForm.getAvatar().getBytes();
-                    BufferedOutputStream stream =
-                            new BufferedOutputStream(new FileOutputStream(new File("uploaded-images/", userSignupForm.getAvatar().getOriginalFilename())));
-                    stream.write(bytes);
-                    stream.close();
-                    session.setAttribute("imagename", imageName);
-                } catch (Exception e) {
 
+            if (avatar != null) {
+                if (!avatar.isEmpty()) {
+                    try {
+                        byte[] bytes = avatar.getBytes();
+
+                        // Resize byte
+                        byte[] resizedBytes = imageService.scale(bytes, 800, 600);
+
+                        BufferedOutputStream stream =
+                                new BufferedOutputStream(new FileOutputStream(new File(imagePath + imageName)));
+                        stream.write(resizedBytes);
+                        stream.close();
+                        user.setAvatar(imageName);
+                        session.setAttribute("avatarpath", imageName);
+                    } catch (IOException ioe) {
+                        System.out.println(ioe.getMessage());
+                        System.out.println(ioe.fillInStackTrace());
+                    }
                 }
-            }
-            else{
-                user.setAvatar("uploaded-images/no_avatar.png");
+            } else {
+                user.setAvatar(defaultImage);
+                session.setAttribute("avatarpath", defaultImage);
+
             }
             user.setIduser(userSignupForm.getIduser());
             user.setFirstname(userSignupForm.getFirstname());
@@ -77,7 +92,6 @@ public class UserController {
             user.setEmail(userSignupForm.getEmail());
             user.setTelephone(userSignupForm.getTelephone());
             user.setZipcode(userSignupForm.getZipcode());
-            user.setAvatar("uploaded-images/" + imageName + ".jpg");
             user.setState("N");
             user.setIsonline("N");
             user.setCreationdate(now);
@@ -97,12 +111,19 @@ public class UserController {
         redirectAttributes.addFlashAttribute("userSignupForm", userSignupForm);
         redirectAttributes.addFlashAttribute("fields", result);
         session.setAttribute("userInformation", userSignupForm);
+        if (avatar != null) {
+            session.setAttribute("avatarpath", imageName);
+        } else {
+            session.setAttribute("avatarpath", defaultImage);
+        }
+
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("fields", result);
             context.setVariable("userSignupForm", userSignupForm);
             context.setVariable("userInformation", userSignupForm);
+            context.setVariable("avatarpath", defaultImage);
         }
         return "redirect:/#openModalInscription";
     }
@@ -115,26 +136,6 @@ public class UserController {
     @RequestMapping(value = "/inscriptionNew", method = RequestMethod.GET)
     public String inscriptionNew(HttpSession session) {
         session.removeAttribute("errorInscription");
-        return "#openModalInscription";
-    }
-
-    @RequestMapping(value = "/uploadimage", method = RequestMethod.POST)
-    public String handleFileUpload(@RequestParam("file") MultipartFile file, HttpSession session) {
-        // Random String generator
-        String imageName = UUID.randomUUID().toString().replaceAll("-", "");
-        if (!file.isEmpty()) {
-            try {
-                byte[] bytes = file.getBytes();
-                BufferedOutputStream stream =
-                        new BufferedOutputStream(new FileOutputStream(new File(imageName)));
-                stream.write(bytes);
-                stream.close();
-                session.setAttribute("imagename", imageName);
-            } catch (Exception e) {
-
-            }
-
-        }
         return "#openModalInscription";
     }
 }

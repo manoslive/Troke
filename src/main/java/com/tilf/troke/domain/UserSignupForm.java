@@ -42,9 +42,6 @@ public class UserSignupForm {
     @NotNull(message = "Le code postal ne doit pas être nul.")
     private String zipcode;
 
-    private MultipartFile avatar;
-
-
     public String getZipcode() {
         return zipcode;
     }
@@ -115,14 +112,6 @@ public class UserSignupForm {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
-    }
-
-    public MultipartFile getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(MultipartFile avatar) {
-        this.avatar = avatar;
     }
 
     @AssertTrue(message = "Les deux champs doivent être identiques.")
