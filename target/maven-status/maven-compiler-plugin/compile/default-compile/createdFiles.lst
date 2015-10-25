@@ -4,6 +4,7 @@ com\tilf\troke\controller\HomeController.class
 com\tilf\troke\entity\UserratingEntity.class
 com\tilf\troke\entity\SubcategoryEntity.class
 com\tilf\troke\entity\ChatmessageEntity.class
+com\tilf\troke\dao\TradeForm.class
 com\tilf\troke\TrokeApplication.class
 com\tilf\troke\filter\AuthFilter.class
 com\tilf\troke\controller\GlobalController.class
@@ -15,11 +16,13 @@ com\tilf\troke\controller\UserController.class
 com\tilf\troke\entity\CategoryEntity.class
 com\tilf\troke\repository\UserRepository.class
 com\tilf\troke\controller\SearchController.class
+com\tilf\troke\repository\CustomTradeRepositoryImpl.class
 com\tilf\troke\entity\ObjecttransactionEntityPK.class
 com\tilf\troke\domain\UserSignupForm.class
 com\tilf\troke\auth\AuthUserContext.class
 com\tilf\troke\controller\TransactionController.class
 com\tilf\troke\entity\UsersEntity.class
+com\tilf\troke\repository\CustomTradeRepository.class
 com\tilf\troke\conf\FilterConfiguration.class
 com\tilf\troke\domain\SearchFilter.class
 com\tilf\troke\repository\CustomObjectRepository.class

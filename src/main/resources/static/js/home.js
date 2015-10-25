@@ -84,13 +84,9 @@ function Flip() {
     var pass_confirm = document.getElementById('pass_confirm').value;
 
     if (String(email) != '') {
-        alert("email est pas vide");
         if (String(pass) != '') {
-            alert("pass est pas vide");
             if (String(email) == String(email_confirm)) {
-                alert("email sont pareil");
                 if (String(pass) == String(pass_confirm)) {
-                    alert("pass sont pareil");
                     document.querySelector('#openModalInscription').classList.toggle('flip');
                     ResetHighlight();
                     generateCaptcha();
@@ -132,8 +128,12 @@ function checkConfirmEmail() {
     document.querySelector('#email_confirm').classList.remove('highlightTextBox');  ////////////////////icittteee
 }
 function PreviewImage(value) {
+    alert(value);
     var imgValue = value.slice(value.lastIndexOf('\\'), value.length);
-    document.getElementById("avatar").style.background = "url(images/" + imgValue + ")no-repeat center";
+    document.getElementById("avatar").style.background = "url(uploaded-images/" + imgValue + ")no-repeat center";
+}
+function SubmitImage(){
+    $('#imageform').submit();
 }
 function openMesEchanges() {
     document.getElementById("content").innerHTML = '<object class="loadContent" type="text/html" data="myTrades.html"></object>';
