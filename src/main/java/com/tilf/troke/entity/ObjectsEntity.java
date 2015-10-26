@@ -22,6 +22,7 @@ public class ObjectsEntity {
     private Date creationdate;
 
     @Id
+    @GeneratedValue
     @Column(name = "IDOBJECT")
     public int getIdobject() {
         return idobject;

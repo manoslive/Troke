@@ -2,7 +2,9 @@ package com.tilf.troke.controller;
 
 import com.tilf.troke.auth.AuthUserContext;
 import com.tilf.troke.entity.ObjectsEntity;
+import com.tilf.troke.entity.UsersEntity;
 import com.tilf.troke.repository.ObjectRepository;
+import com.tilf.troke.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.Calendar;
 
 /**
@@ -22,6 +25,8 @@ public class ProfilController {
     @Autowired
     private ObjectRepository objectRepository;
     @Autowired
+    private UserRepository userRepository;
+    @Autowired
     private AuthUserContext authContext;
 
     @RequestMapping(value="/addObject", method= RequestMethod.POST)
@@ -32,21 +37,57 @@ public class ProfilController {
                                      @RequestParam("rating") int rating)
     {
         java.sql.Date now = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+
+        // donnée qui vien du formulaire ...
         object.setNameObject(Name);
         object.setDescObject(Description);
-        object.setGuid("12345qwerty");
-        object.setIdsubcategory(1);
         object.setValueObject(valeur);
         object.setQuality(rating);
         object.setIduser(authContext.getUser().getIduser());
-        object.setRateable("N");
-        object.setIssignaled("N");
         object.setCreationdate(now);
 
-        objectRepository.save(object);
+        // donnée rentrer a la main pour des valeur par defaut ...
+        object.setGuid("12345qwerty");
+        object.setIdsubcategory(1);
+        object.setRateable("N");
+        object.setIssignaled("N");
 
+        objectRepository.save(object);
+        int numObject = object.getIdobject();
 
         return "forward:/";
+    }
+
+    @RequestMapping(value="/passwordChange", method=RequestMethod.POST)
+    public String changePassword(@RequestParam ("old_password") String old,
+                                 @RequestParam("new_password") String passnew,
+                                 @RequestParam("confirm_password") String confirmpass,
+                                 HttpSession session )
+    {
+        UsersEntity userToChange = authContext.getUser();
+        if(passnew.equals(confirmpass) && old.equals(userToChange.getPass()))
+        {
+            userToChange.setPass(passnew);
+            userRepository.save(userToChange);
+
+            authContext.setUser(userToChange);
+            return "redirect:/profil";
+        }
+        else
+        {
+            session.setAttribute("errorPassword", "*Les mot de passe ne concorde pas ou l'ancien mot de passe n'est pas bon");
+            return "redirect:/profil#openModalPassword";
+        }
+
+
+
+    }
+
+    @RequestMapping(value="/openModalPassword", method=RequestMethod.GET)
+    public String changePasswordNew(HttpSession session)
+    {
+        session.removeAttribute("errorPassword");
+        return "redirect:/profil#openModalPassword";
     }
 
 
