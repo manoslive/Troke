@@ -82,7 +82,7 @@ public class UserController {
                         } else {
                             // Resize byte
                             resizedBytes = imageService.scale(bytes, 800, 800);
-                        }
+                         }
 
                         BufferedOutputStream stream =
                                 new BufferedOutputStream(new FileOutputStream(new File(imagePath + imageName)));
