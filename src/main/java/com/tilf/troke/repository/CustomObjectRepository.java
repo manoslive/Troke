@@ -17,6 +17,7 @@ public interface CustomObjectRepository {
 
     List<ObjectsEntity> getObjectsByCategory(String categoryName);
     List<ObjectsEntity> getObjectsBySubCategory(String subCategoryName);
+    List<ObjectsEntity> getListObjectByUserId(String userId);
     ObjectsEntity getObjectEntityByIdObject(int id_object);
 
     // Recherches

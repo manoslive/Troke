@@ -37,7 +37,7 @@
 
                             <div class = "profilInfoButtons">
                                 <div class="BTN_Change">
-                                    <a href="#openModalPassword" class="btn btn-sm animated-button thar-four" style="font-weight:normal">Changement du mot de passe
+                                    <a href="/openModalPassword" class="btn btn-sm animated-button thar-four" style="font-weight:normal">Changement du mot de passe
                                     </a>
                                     <a href="" class="btn btn-sm animated-button thar-four" onclick="ChangeInfo()" style="font-weight:normal">Enregistrer les modifications</a>
                                 </div>
@@ -73,67 +73,27 @@
 
                         <div id="carousel-example-generic" style="height:100%" class="carousel slide">
                             <!-- Indicators -->
+
+
                             <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                <th:block th:each="invent : ${userInventory}">
+                                    <li data-target="#carousel-example-generic"
+                                        th:data-slide-to="${inventStat.index}"  th:class="*{inventStat.index eq 0} ? 'active' : ''"></li>
+                                </th:block>
                             </ol>
+
 
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner" style="height:100%" role="listbox">
 
-                                <!-- First slide -->
-                                <div class="item active deepskyblue">
 
-                                    <div class="carousel-caption">
-                                        <h3 class="icon-container">
-                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
-                                            <div class="circular"><img src="images/UnknownUserJPG.jpg" alt="" class="circularimage" /></div>
 
-                                        </h3>
-                                        <h3 class="icon-container" >
-                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
-                                            <div class="circular"><img src="images/UnknownUserJPG.jpg" alt="" class="circularimage" /></div>
-
-                                        </h3>
-                                        <h3 class="icon-container" >
-                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
-                                            <div class="circular"><img src="images/UnknownUserJPG.jpg" alt="" class="circularimage" /></div>
-
-                                        </h3>
-                                        <h3 class="icon-container" >
-                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
-                                            <div class="circular"><img src="images/UnknownUserJPG.jpg" alt="" class="circularimage" /></div>
-
-                                        </h3>
-                                        <h3 data-animation="animated flipInX" style="font-size:18px; background-color:transparent; text-transform:uppercase;
-										letter-spacing:.08em">
-                                            Unknown Object For Sale
-                                        </h3>
-
-                                        <h3 data-animation="animated flipInX" style="font-size:14px;">
-                                            Description de l'objet parcequ'il y a beaucoup de choses a dire sur le sujet.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-
-                                        </h3>
-                                        <div class="divAMS">
-                                            <a href="#openModalAjouter"><button class="buttonAjout">Ajouter</button></a>
-                                            <button class="buttonModif">Modifier</button>
-                                            <button class="buttonSupp">Supprimer</button>
-                                        </div>
-                                    </div>
-                                </div> <!-- /.item -->
-
+                                <th:block th:each="invent : ${userInventory}" th:for="${'invent' + inventStat.index }">
                                 <!-- Second slide -->
-                                <div class="item skyblue">
-                                    <div class="carousel-caption">
+
+
+                                <div  th:class="*{inventStat.index eq 0} ? 'item active skyblue' : 'item skyblue'">
+                                    <div class="carousel-caption" style="top:5%">
                                         <h3 class="icon-container">
                                             <!--<span class="glyphicon glyphicon-glass"></span>-->
                                             <div class="circular"><img src="images/UnknownUserJPG.jpg" alt="" class="circularimage" /></div>
@@ -154,80 +114,26 @@
                                             <div class="circular"><img src="images/UnknownUserJPG.jpg" alt="" class="circularimage" /></div>
 
                                         </h3>
+
+                                        <!-- nom de l'objet -->
                                         <h3 data-animation="animated flipInX" style="font-size:18px; background-color:transparent; text-transform:uppercase;
-							letter-spacing:.08em">
-                                            Unknown Object For Sale
+							                letter-spacing:.08em" th:text="${invent.getNameObject()}">
                                         </h3>
 
-                                        <h3 data-animation="animated flipInX" style="font-size:14px;">
-                                            Description de l'objet parcequ'il y a beaucoup de choses a dire sur le sujet.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
+                                        <!-- text de l'objet -->
+                                        <h3 data-animation="animated flipInX" style="font-size:14px;" th:text="${invent.getDescObject()}"></h3>
 
-                                        </h3>
+
                                         <div class="divAMS">
-                                            <button class="buttonAjout">Ajouter</button>
+                                            <a href="#openModalAjouter"><button class="buttonAjout" >Ajouter</button></a>
                                             <button class="buttonModif">Modifier</button>
                                             <button class="buttonSupp">Supprimer</button>
                                         </div>
                                     </div>
                                 </div><!-- /.item -->
 
-                                <!-- Third slide -->
-                                <div class="item darkerskyblue">
-                                    <div class="carousel-caption">
-                                        <h3 class="icon-container">
-                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
-                                            <div class="circular"><img src="images/UnknownUserJPG.jpg" alt="" class="circularimage" /></div>
 
-                                        </h3>
-                                        <h3 class="icon-container" >
-                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
-                                            <div class="circular"><img src="images/UnknownUserJPG.jpg" alt="" class="circularimage" /></div>
-
-                                        </h3>
-                                        <h3 class="icon-container" >
-                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
-                                            <div class="circular"><img src="images/UnknownUserJPG.jpg" alt="" class="circularimage" /></div>
-
-                                        </h3>
-                                        <h3 class="icon-container" >
-                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
-                                            <div class="circular"><img src="images/UnknownUserJPG.jpg" alt="" class="circularimage" /></div>
-
-                                        </h3>
-                                        <h3 data-animation="animated flipInX" style="font-size:18px; background-color:transparent; text-transform:uppercase;
-							letter-spacing:.08em">
-                                            Unknown Object For Sale
-                                        </h3>
-
-                                        <h3 data-animation="animated flipInX" style="font-size:14px;">
-                                            Description de l'objet parcequ'il y a beaucoup de choses a dire sur le sujet.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-                                            Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
-
-                                        </h3>
-                                        <div class="divAMS">
-                                            <button class="buttonAjout">Ajouter</button>
-                                            <button class="buttonModif">Modifier</button>
-                                            <button class="buttonSupp">Supprimer</button>
-                                        </div>
-                                    </div>
-
-                                </div><!-- /.item -->
-
+                                </th:block>
                             </div><!-- /.carousel-inner -->
 
                             <!-- Controls -->
