@@ -13,7 +13,6 @@ public class ChatmessageEntity {
     private String msg;
     private Date dateTime;
     private int idchat;
-    private String iduser;
     private String isread;
 
     @Id
@@ -57,16 +56,6 @@ public class ChatmessageEntity {
     }
 
     @Basic
-    @Column(name = "IDUSER")
-    public String getIduser() {
-        return iduser;
-    }
-
-    public void setIduser(String iduser) {
-        this.iduser = iduser;
-    }
-
-    @Basic
     @Column(name = "ISREAD")
     public String getIsread() {
         return isread;
@@ -87,7 +76,6 @@ public class ChatmessageEntity {
         if (idchat != that.idchat) return false;
         if (msg != null ? !msg.equals(that.msg) : that.msg != null) return false;
         if (dateTime != null ? !dateTime.equals(that.dateTime) : that.dateTime != null) return false;
-        if (iduser != null ? !iduser.equals(that.iduser) : that.iduser != null) return false;
         if (isread != null ? !isread.equals(that.isread) : that.isread != null) return false;
 
         return true;
@@ -99,7 +87,6 @@ public class ChatmessageEntity {
         result = 31 * result + (msg != null ? msg.hashCode() : 0);
         result = 31 * result + (dateTime != null ? dateTime.hashCode() : 0);
         result = 31 * result + idchat;
-        result = 31 * result + (iduser != null ? iduser.hashCode() : 0);
         result = 31 * result + (isread != null ? isread.hashCode() : 0);
         return result;
     }

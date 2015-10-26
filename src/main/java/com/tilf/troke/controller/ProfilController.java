@@ -34,8 +34,7 @@ public class ProfilController {
                                      @RequestParam("Name") String Name,
                                      @RequestParam("Description") String Description,
                                      @RequestParam("Valeur") int valeur,
-                                     @RequestParam("rating") int rating)
-    {
+                                     @RequestParam("rating") int rating) {
         java.sql.Date now = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 
         // donnée qui vien du formulaire ...
@@ -51,44 +50,58 @@ public class ProfilController {
         object.setIdsubcategory(1);
         object.setRateable("N");
         object.setIssignaled("N");
-
         objectRepository.save(object);
+        // id du dernier object créer pour pouvoir créer des objectImages ..
         int numObject = object.getIdobject();
 
         return "forward:/";
     }
 
+    // pour changer le password
     @RequestMapping(value="/passwordChange", method=RequestMethod.POST)
     public String changePassword(@RequestParam ("old_password") String old,
                                  @RequestParam("new_password") String passnew,
                                  @RequestParam("confirm_password") String confirmpass,
-                                 HttpSession session )
-    {
+                                 HttpSession session ) {
         UsersEntity userToChange = authContext.getUser();
-        if(passnew.equals(confirmpass) && old.equals(userToChange.getPass()))
-        {
+        if(passnew.equals(confirmpass) && old.equals(userToChange.getPass())) {
+            // si le password est bon ou update le user courrant dans la method
+            // , on save la BD, ensuite on update le context
             userToChange.setPass(passnew);
             userRepository.save(userToChange);
-
             authContext.setUser(userToChange);
             return "redirect:/profil";
         }
-        else
-        {
+        else {
+            // s'il y a des erreur au niveau de l'ancien password ou des confirmation ..
             session.setAttribute("errorPassword", "*Les mot de passe ne concorde pas ou l'ancien mot de passe n'est pas bon");
-            return "redirect:/profil#openModalPassword";
-        }
-
-
-
+            return "redirect:/profil#openModalPassword";}
     }
 
     @RequestMapping(value="/openModalPassword", method=RequestMethod.GET)
-    public String changePasswordNew(HttpSession session)
-    {
+    public String changePasswordNew(HttpSession session) {
         session.removeAttribute("errorPassword");
         return "redirect:/profil#openModalPassword";
     }
 
+    @RequestMapping(value="/UpdateUser" ,method = RequestMethod.POST)
+    public String UserUpdate(@RequestParam("profile-prenom") String username,
+                             @RequestParam("profile-nomfamille") String lastname,
+                             @RequestParam("profile-telephone") String telephone,
+                             @RequestParam("profile-codepostal") String codepostal,
+                             @RequestParam("profile-email") String email)
+    {
+        UsersEntity userActif = authContext.getUser();
 
+        userActif.setFirstname(username);
+        userActif.setLastname(lastname);
+        userActif.setEmail(email);
+        userActif.setTelephone(telephone);
+        userActif.setZipcode(codepostal);
+
+        userRepository.save(userActif);
+
+        authContext.setUser(userActif);
+        return "redirect:/profil";
+    }
 }

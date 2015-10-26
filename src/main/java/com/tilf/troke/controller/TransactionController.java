@@ -1,24 +1,20 @@
 package com.tilf.troke.controller;
 
 import com.tilf.troke.auth.AuthUserContext;
-import com.tilf.troke.dao.TradeForm;
-import com.tilf.troke.entity.TransactionsEntity;
-import com.tilf.troke.entity.UsersEntity;
-import com.tilf.troke.repository.CustomObjectRepository;
-import com.tilf.troke.repository.CustomTradeRepository;
-import com.tilf.troke.repository.CustomUserRepository;
+import com.tilf.troke.entity.*;
+import com.tilf.troke.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.thymeleaf.context.WebContext;
 
-import javax.validation.Valid;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import java.util.Calendar;
 
 /**
  * Created by Emmanuel on 2015-10-21.
@@ -36,11 +32,22 @@ public class TransactionController {
     private AuthUserContext authUserContext;
 
     @Autowired
-    private CustomTradeRepository customTradeRepository;
+    private TransactionRepository transactionRepository;
+
+    @Autowired
+    private ChatRepository chatRepository;
+
+    @Autowired
+    private ChatmessageRepository chatmessageRepository;
+
+    @Autowired
+    private ObjectsTransactionRepository objectsTransactionRepository;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @RequestMapping(value = "/startTrade", method = RequestMethod.GET)
     public String getUserFromItem(@RequestParam("itemID") int itemID, Model model) {
-        model.addAttribute("trade", new TradeForm());
         model.addAttribute("startTradeOpponent", customUserRepository.getUserFromItem(itemID));
         model.addAttribute("currentItem", customObjectRepository.getObjectNameByItemID(itemID));
         model.addAttribute("currentItemID", itemID);
@@ -59,11 +66,49 @@ public class TransactionController {
         return "fragments/home/startTrade";
     }
 
-    @RequestMapping(value = "/addTrade", method = RequestMethod.GET)
-    public String addNewTrade(@ModelAttribute("trade") @Valid TradeForm trade,  BindingResult result, Model model) {
-        if(!result.hasErrors()){
-            customTradeRepository.addNewTrade(trade.getIduser1(), trade.getIduser2(), trade.getObjects(), trade.getChatMsg());
+    @RequestMapping(value = "/addTrade", method = RequestMethod.POST)
+    public String addNewTrade(@RequestParam("iduser1")String idUser1,
+                              @RequestParam("iduser2")String idUser2,
+                              @RequestParam("chatLog")String chatLog,
+                              @RequestParam("tradeObjects")String tradeObjects)
+    {
+        TransactionsEntity newTransaction = new TransactionsEntity();
+        newTransaction.setIduser1(idUser1);
+        newTransaction.setIduser2(idUser2);
+        newTransaction.setDatetransaction(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+        newTransaction.setTurn(idUser2);
+        newTransaction.setIscompleted("N");
+        transactionRepository.save(newTransaction);
+
+        String queryIdTransaction = "select t.idtransaction from TransactionsEntity t ORDER  BY t.idtransaction Desc";
+        Query queryObject = entityManager.createQuery(queryIdTransaction).setMaxResults(1);
+        int idTransaction = (Integer)queryObject.getSingleResult();
+
+        ChatEntity newChat = new ChatEntity();
+        newChat.setIdtransaction(idTransaction);
+        chatRepository.save(newChat);
+
+        String queryIdChat = "select c.idchat from ChatEntity c ORDER  BY c.idchat Desc";
+        Query queryObject2 = entityManager.createQuery(queryIdChat).setMaxResults(1);
+        int idChat = (Integer)queryObject2.getSingleResult();
+
+        ChatmessageEntity newChatMessage = new ChatmessageEntity();
+        newChatMessage.setIdchat(idChat);
+        newChatMessage.setDateTime(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+        newChatMessage.setMsg(chatLog);
+        newChatMessage.setIsread("T");
+        chatmessageRepository.save(newChatMessage);
+
+        ObjecttransactionEntity addTransactionsObjects = new ObjecttransactionEntity();
+        String[] objectIDs = tradeObjects.split(";");
+
+        for(int i = 0; i < objectIDs.length; i++)
+        {
+            addTransactionsObjects.setIdobject(Integer.parseInt(objectIDs[i]));
+            addTransactionsObjects.setIdtransaction(idTransaction);
+            objectsTransactionRepository.save(addTransactionsObjects);
         }
+
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);

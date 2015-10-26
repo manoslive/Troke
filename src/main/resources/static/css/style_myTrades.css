@@ -1,10 +1,10 @@
-#myTrades{
+.myTrades{
 	height: 100%;
 	margin: auto; 
 	overflow: auto;
 	background:#00455F;
 }
-#myTrades {
+.myTrades {
 	font-weight: normal;
     background-color: #30697D;
     height: 98%;
@@ -13,7 +13,7 @@
 	overflow-y: auto;
 	padding-top: 20px;
 }
-#myTrades li { 
+.myTrades li {
 	margin: 6px;
 	padding: 0px;
 	height: 85%;
@@ -26,7 +26,7 @@
 	background-color: white;
 	display: inline-block;
 }
-#myTrades li header {
+.myTrades li header {
     text-align: center;
     color: white;
     margin: 0;

@@ -2,7 +2,6 @@ package com.tilf.troke.controller;
 
 import com.tilf.troke.domain.UserSignupForm;
 import com.tilf.troke.entity.UsersEntity;
-import com.tilf.troke.repository.CustomObjectRepository;
 import com.tilf.troke.repository.CustomUserRepository;
 import com.tilf.troke.repository.UserRepository;
 import com.tilf.troke.service.ImageService;
@@ -21,12 +20,9 @@ import javax.imageio.ImageIO;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
 import java.io.*;
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.UUID;
 
 /**

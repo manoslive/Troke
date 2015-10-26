@@ -5,6 +5,7 @@
             <div class="mainDiv" style="font-family:Amaranth">
 
                 <div class="leftDiv">
+                    <form th:action="@{/UpdateUser}" method="post" id="formUser">
                     <div class="profilDiv">
 
                         <div class = "profilPhotoDiv">
@@ -39,13 +40,14 @@
                                 <div class="BTN_Change">
                                     <a href="/openModalPassword" class="btn btn-sm animated-button thar-four" style="font-weight:normal">Changement du mot de passe
                                     </a>
-                                    <a href="" class="btn btn-sm animated-button thar-four" onclick="ChangeInfo()" style="font-weight:normal">Enregistrer les modifications</a>
+                                    <a class="btn btn-sm animated-button thar-four" onclick="formsubmit()" style="font-weight:normal">Enregistrer les modifications</a>
                                 </div>
 
                             </div>
 
                         </div>
                     </div>
+                    </form>
                     <div class="coteDiv">
 
                         <div style="margin: auto; width: 200px; height:60%; padding-top:10%; text-align:center;">
@@ -131,6 +133,7 @@
                                         </div>
                                     </div>
                                 </div><!-- /.item -->
+
 
 
                                 </th:block>

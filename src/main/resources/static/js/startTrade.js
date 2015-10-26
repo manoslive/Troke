@@ -1,22 +1,13 @@
 /**
  * Created by Shaun Cooper on 2015-10-16.
  */
-function getEachItemID(){
-    var listTradeItems = [];
-    alert("Get ID DES ITEMS");
+function makeIDList(){
     var x = document.getElementsByClassName("itemID");
     var i;
     for (i = 0; i < x.length; i++) {
-        alert(x[i].innerHTML);
-        listTradeItems.push(x[i].innerHTML);
+        document.getElementById("tradeObjectsID").value += x[i].innerHTML + ";";
     }
-
-    var j;
-    for(j=0; j<listTradeItems.length ; j++){
-        alert('list: '+listTradeItems[j]);
-        document.getElementById("mainDiv").innerHTML += '<input type="hidden" style="position:absolute" value="'+ listTradeItems[j] +'" name="objects['+ j +']"/>';
-    }
-    //document.forms["startTradeForm"].submit();
+    document.getElementById("startTradeForm").submit();
 }
 var inspectItemID;
 function setInspectItemID(itemID){
@@ -34,7 +25,7 @@ function goBack(){
     window.history.back();
 }
 function sendChat(userName){
-    if(document.getElementById('chatEnter').value !== "")
+    if(document.getElementById('chatEnter').value.trim() != "")
     {
         var text = document.getElementById('chatEnter').value;
         document.getElementById('chatEnter').value = "";
