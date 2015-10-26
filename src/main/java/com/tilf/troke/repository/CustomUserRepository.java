@@ -19,4 +19,7 @@ public interface CustomUserRepository{
 
     //StartTrade
     UsersEntity getUserFromItem(int itemID);
+
+    // Vérification du nom d'avatar dans la BD
+    BigInteger checkAvatarName(String avatarName);
 }
