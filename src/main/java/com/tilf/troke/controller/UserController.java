@@ -16,13 +16,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.thymeleaf.context.WebContext;
+import static org.imgscalr.Scalr.*;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
+import java.io.*;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -65,9 +66,22 @@ public class UserController {
                 if (!avatar.isEmpty()) {
                     try {
                         byte[] bytes = avatar.getBytes();
+                        byte[] resizedBytes;
+                        // Vérification de la taille de l'image
+                        InputStream in = new ByteArrayInputStream(bytes);
 
-                        // Resize byte
-                        byte[] resizedBytes = imageService.scale(bytes, 800, 600);
+                        BufferedImage buf = ImageIO.read(in);
+                        float width = (float)buf.getWidth();
+                        float height = (float)buf.getHeight();
+                        float calculHeight = 800 / (width / height);
+                        int heightModifier = (int)Math.ceil(calculHeight);
+                        if (width / height != 1) {
+                            // Resize byte
+                            resizedBytes = imageService.scale(bytes, 800 , heightModifier);
+                        } else {
+                            // Resize byte
+                            resizedBytes = imageService.scale(bytes, 800, 800);
+                        }
 
                         BufferedOutputStream stream =
                                 new BufferedOutputStream(new FileOutputStream(new File(imagePath + imageName)));
