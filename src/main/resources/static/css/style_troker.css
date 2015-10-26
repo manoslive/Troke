@@ -305,6 +305,7 @@
 	height: 179px;
 	resize: none;
 	background-color: white;
+	pointer-events: none;
 }
 #chatBox{
 	width: 100%;
