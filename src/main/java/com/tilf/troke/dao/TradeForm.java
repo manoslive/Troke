@@ -10,14 +10,14 @@ public class TradeForm {
     private String iduser1;
     private String iduser2;
     private List<Integer> objects;
-    private String chatMsg;
+    private String chatLog;
 
-    public String getChatMsg() {
-        return chatMsg;
+    public String getChatLog() {
+        return chatLog;
     }
 
-    public void setChatMsg(String chatMsg) {
-        this.chatMsg = chatMsg;
+    public void setChatLog(String chatLog) {
+        this.chatLog = chatLog;
     }
 
     public String getIduser1() {

@@ -15,7 +15,8 @@
 </head>
 <body style="font-family:'Amaranth'; background:#00455F;">
 <th:block th:fragment="content">
-    <form style="margin:0px" action="#" name="startTradeForm" th:action="@{/addTrade}" method="post" th:object="${trade}">
+    <form id="startTradeForm" style="margin:0px" name="startTradeForm" th:action="@{/addTrade}" method="post">
+    <input id="tradeObjectsID" type="hidden" style="position:absolute" name="tradeObjects"/>
     <!-- Div container est une class boottrap qui met la page centré -->
     <div class="container" id="mainDiv">
         <!-- Page qui conteint tous le modules d'échanges' -->
@@ -53,14 +54,13 @@
                     </ul>
                 </div>
         <span class="dd animated fadeInDown">
-              <a style="float:left;" class="btn-offre btn btn-sm animated-button thar-two" onclick="getEachItemID()">Envoyer
-                  l'offre!</a>
+              <a style="float:left;" class="btn-offre btn btn-sm animated-button thar-two" onclick="makeIDList()">Envoyer l'offre!</a>
               <a style="float:right;" class="btn-offre btn btn-sm animated-button thar-two" onclick="goBack()">Annuler
                   l'offre</a>
         </span>
 
                 <div id="zoneChat" class="row-md-3">
-                    <textarea id="chatBoxStartExchange" disabled="disabled"></textarea>
+                    <textarea name="chatLog" id="chatBoxStartExchange"></textarea>
                     <input id="chatEnter" type="text"/>
                     <input id="btn-enter" type="button" value="Envoyer"
                            th:onclick="'javascript:sendChat(\''+${userActif.getIduser()}+'\')'"/>
