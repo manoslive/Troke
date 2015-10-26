@@ -136,5 +136,6 @@
     <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.1.1.GA" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml:classmate:0.8.0" level="project" />
     <orderEntry type="library" name="Maven: javax.validation:validation-api:1.1.0.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.imgscalr:imgscalr-lib:4.2" level="project" />
   </component>
 </module>
