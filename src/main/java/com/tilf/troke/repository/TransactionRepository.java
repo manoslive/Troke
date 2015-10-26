@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
  * Created by Shaun Cooper on 2015-10-26.
  */
 @Repository
-public interface TradeRepository extends JpaRepository<TransactionsEntity, String> {
+public interface TransactionRepository extends JpaRepository<TransactionsEntity, String> {
     TransactionsEntity save(TransactionsEntity tradeEntity);
 }

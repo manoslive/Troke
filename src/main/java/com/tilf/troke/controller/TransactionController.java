@@ -1,14 +1,11 @@
 package com.tilf.troke.controller;
 
 import com.tilf.troke.auth.AuthUserContext;
-import com.tilf.troke.dao.TradeForm;
 import com.tilf.troke.entity.*;
 import com.tilf.troke.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,10 +14,7 @@ import org.thymeleaf.context.WebContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.validation.Valid;
 import java.util.Calendar;
-import java.util.Iterator;
-import java.util.List;
 
 /**
  * Created by Emmanuel on 2015-10-21.
@@ -38,7 +32,7 @@ public class TransactionController {
     private AuthUserContext authUserContext;
 
     @Autowired
-    private TradeRepository tradeRepository;
+    private TransactionRepository transactionRepository;
 
     @Autowired
     private ChatRepository chatRepository;
@@ -54,7 +48,6 @@ public class TransactionController {
 
     @RequestMapping(value = "/startTrade", method = RequestMethod.GET)
     public String getUserFromItem(@RequestParam("itemID") int itemID, Model model) {
-        model.addAttribute("trade", new TradeForm());
         model.addAttribute("startTradeOpponent", customUserRepository.getUserFromItem(itemID));
         model.addAttribute("currentItem", customObjectRepository.getObjectNameByItemID(itemID));
         model.addAttribute("currentItemID", itemID);
@@ -85,7 +78,7 @@ public class TransactionController {
         newTransaction.setDatetransaction(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
         newTransaction.setTurn(idUser2);
         newTransaction.setIscompleted("N");
-        tradeRepository.save(newTransaction);
+        transactionRepository.save(newTransaction);
 
         String queryIdTransaction = "select t.idtransaction from TransactionsEntity t ORDER  BY t.idtransaction Desc";
         Query queryObject = entityManager.createQuery(queryIdTransaction).setMaxResults(1);
