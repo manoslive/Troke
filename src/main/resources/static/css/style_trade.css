@@ -4,6 +4,10 @@
 	cursor: default;
 	position: static;
 }
+.tradePage{
+	margin-top: 1%;
+	height: 84.5%;
+}
 /* Zone UserInventory */
 #UserInventory {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -217,13 +221,6 @@
 	overflow-y: auto;
 	overflow-x: hidden;
 	border: 2px solid #003042;
-}
-#opponentExchangeItemsStart h4 zoneEchangeHeader{
-	text-align: center;
-	color: white;
-	margin: 0;
-	border: 2px solid #00374C;
-	background: #00374C;
 }
 #opponentExchangeItemsStart h4 .ui-icon {
 	float: left;

@@ -10,7 +10,7 @@
 <body style="font-family:'Amaranth'; background:#00455F;">
 <th:block th:fragment="content">
   <!-- Div container est une class boottrap qui met la page centré -->
-  <div class="container">
+  <div class="container tradePage">
     <!-- Page qui conteint tous le modules d'échanges' -->
     <div id="pageTroker" class="ui-widget ui-helper-clearfix col-md-12" data-mcs-theme="3d-thick">
       <!-- Liste qui crée une zone inventaire (User) et contient les items-->
@@ -89,8 +89,8 @@
           </div>
         </div>
         <span class="dd animated fadeInDown">
-              <a style="float:left;" class="btn-offre btn btn-sm animated-button thar-two" onclick="makeIDList()">Envoyer l'offre!</a>
-              <a style="float:right;" class="btn-offre btn btn-sm animated-button thar-two">Accepter l'offre!</a>
+              <a style="float:left; margin-bottom: 7.5% !important;" class="btn-offre btn btn-sm animated-button thar-two" onclick="makeIDList()">Envoyer la contre-offre!</a>
+              <a style="float:right;margin-bottom: 7.5% !important;" class="btn-offre btn btn-sm animated-button thar-two">Accepter l'offre!</a>
         </span>
         <div id="zoneChat" class="row-md-3">
           <textarea th:text="${ChatLog.toString()}" name="chatLog" id="chatBoxStartExchange"></textarea>
