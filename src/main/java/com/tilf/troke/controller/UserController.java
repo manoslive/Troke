@@ -2,7 +2,6 @@ package com.tilf.troke.controller;
 
 import com.tilf.troke.domain.UserSignupForm;
 import com.tilf.troke.entity.UsersEntity;
-import com.tilf.troke.repository.CustomObjectRepository;
 import com.tilf.troke.repository.CustomUserRepository;
 import com.tilf.troke.repository.UserRepository;
 import com.tilf.troke.service.ImageService;
@@ -16,18 +15,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.thymeleaf.context.WebContext;
-import static org.imgscalr.Scalr.*;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
 import java.io.*;
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.UUID;
 
 /**
@@ -50,12 +45,18 @@ public class UserController {
 
     @ExceptionHandler(Throwable.class)
     @RequestMapping(value = "/adduser", method = RequestMethod.POST)
-    public String adduser(@ModelAttribute("userSignupForm") @Valid UserSignupForm userSignupForm, BindingResult result, @RequestParam(value = "avatar", required = false) @Valid MultipartFile avatar, BindingResult result2, RedirectAttributes redirectAttributes, Model model, HttpSession session) {
+    public String adduser(@ModelAttribute("userSignupForm") @Valid UserSignupForm userSignupForm, BindingResult result, @RequestParam(value = "avatar", required = false) @Valid MultipartFile avatar, BindingResult result2, @RequestParam(value = "fileData", required = false) String fileData, RedirectAttributes redirectAttributes, Model model, HttpSession session) {
         userValidator.validate(userSignupForm, result);
         java.sql.Date now = new java.sql.Date(Calendar.getInstance().getTime().getTime());
         BigInteger checkUserExistance = customUserRepository.checkUserExistance(userSignupForm.getIduser());
         BigInteger checkEmailExistance = customUserRepository.checkEmailExistance(userSignupForm.getEmail());
         String imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
+        while (customUserRepository.checkAvatarName(imageName) == BigInteger.ONE) {
+            imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
+        }
+        if(fileData != null){
+            session.setAttribute("previewdata", fileData);
+        }
         String imagePath = "src/main/resources/static/uploaded-images/";
         String defaultImage = "no_avatar.jpg";
 
@@ -71,17 +72,17 @@ public class UserController {
                         InputStream in = new ByteArrayInputStream(bytes);
 
                         BufferedImage buf = ImageIO.read(in);
-                        float width = (float)buf.getWidth();
-                        float height = (float)buf.getHeight();
+                        float width = (float) buf.getWidth();
+                        float height = (float) buf.getHeight();
                         float calculHeight = 800 / (width / height);
-                        int heightModifier = (int)Math.ceil(calculHeight);
+                        int heightModifier = (int) Math.ceil(calculHeight);
                         if (width / height != 1) {
                             // Resize byte
-                            resizedBytes = imageService.scale(bytes, 800 , heightModifier);
+                            resizedBytes = imageService.scale(bytes, 800, heightModifier);
                         } else {
                             // Resize byte
                             resizedBytes = imageService.scale(bytes, 800, 800);
-                        }
+                         }
 
                         BufferedOutputStream stream =
                                 new BufferedOutputStream(new FileOutputStream(new File(imagePath + imageName)));
@@ -122,14 +123,12 @@ public class UserController {
             ObjectError error = new ObjectError("error.email", "Le courriel est déjà utilisé.");
             result.addError(error);
         }
+
         redirectAttributes.addFlashAttribute("userSignupForm", userSignupForm);
         redirectAttributes.addFlashAttribute("fields", result);
         session.setAttribute("userInformation", userSignupForm);
-        if (avatar != null) {
-            session.setAttribute("avatarpath", imageName);
-        } else {
-            session.setAttribute("avatarpath", defaultImage);
-        }
+
+        session.setAttribute("avatarpath", avatar);
 
         // TODO THYMELEAF HACK
         if (false) {
@@ -137,7 +136,8 @@ public class UserController {
             context.setVariable("fields", result);
             context.setVariable("userSignupForm", userSignupForm);
             context.setVariable("userInformation", userSignupForm);
-            context.setVariable("avatarpath", defaultImage);
+            context.setVariable("previewdata", fileData);
+            //context.setVariable("avatarpath", defaultImage);
         }
         return "redirect:/#openModalInscription";
     }

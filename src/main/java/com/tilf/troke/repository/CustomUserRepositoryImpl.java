@@ -77,4 +77,13 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
         UsersEntity user = (UsersEntity) queryObject.getSingleResult();
         return user;
     }
+
+    // Vérification de l'existance de la photo dans la BD
+    @Override
+    public BigInteger checkAvatarName(String avatarName){
+        String query = "select count(1) from users where avatar = :avatarName";
+        Query queryObject = entityManager.createNativeQuery(query);
+        queryObject.setParameter("avatarName", avatarName);
+        return (BigInteger)queryObject.getSingleResult();
+    }
 }

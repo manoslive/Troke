@@ -108,17 +108,29 @@ public class HomeController {
 
     // appel de profil
     @RequestMapping(value = "/profil", method = RequestMethod.GET)
-    public String Profil(Model model) {
+    public String Profil(Model model,
+                         HttpSession session) {
         UsersEntity user = authContext.getUser();
-        model.addAttribute("userActif", user);
-        List<ObjectsEntity> list = customObjectRepository.getListObjectByUserId(authContext.getUser().getIduser());
-        model.addAttribute("userInventory", list);
-        // TODO THYMELEAF HACK
-        if (false) {
-            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("userActif", user);
-            context.setVariable("userInventory", list);
+
+        if(user != null) {
+
+            model.addAttribute("userActif", user);
+            List<ObjectsEntity> list = customObjectRepository.getListObjectByUserId(authContext.getUser().getIduser());
+            model.addAttribute("userInventory", list);
+
+            // TODO THYMELEAF HACK
+            if (false) {
+                WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+                context.setVariable("userActif", user);
+                context.setVariable("userInventory", list);
+
+            }
+            return "fragments/site/profilUser";
+
+        }else
+        {
+            session.removeAttribute("error");
+            return "redirect:#openModalConnexion";
         }
-        return "fragments/site/profilUser";
     }
 }
