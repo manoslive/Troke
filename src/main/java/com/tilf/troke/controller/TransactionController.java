@@ -74,12 +74,13 @@ public class TransactionController {
     @RequestMapping(value = "/openTrade", method = RequestMethod.GET)
     public String openTrade(@RequestParam("transactionID") int tradeID, Model model) {
         UsersEntity currentUser = authUserContext.getUser();
+        String opponentID = customUserRepository.findOpponentUserID(tradeID, currentUser.getIduser());
         model.addAttribute("userActif", currentUser);
+        model.addAttribute("opponentID", opponentID);
 
         //Get les inventaires des 2 users
-        model.addAttribute("UserInventory", customObjectRepository.getListObjectByUserId(currentUser.getIduser()));
-        String opponentID = customUserRepository.findOpponentUserID(tradeID, currentUser.getIduser());
-        model.addAttribute("OpponentInventory", customObjectRepository.getListObjectByUserId(opponentID));
+        model.addAttribute("UserInventory", customObjectRepository.getListObjectTradeInventory(tradeID,currentUser.getIduser()));
+        model.addAttribute("OpponentInventory", customObjectRepository.getListObjectTradeInventory(tradeID, opponentID));
 
         //Get les 2 zones d'échanges
         model.addAttribute("UserTradeItems", customObjectRepository.getTradeObjects(tradeID, currentUser.getIduser()));
@@ -91,11 +92,12 @@ public class TransactionController {
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("userActif", currentUser);
-            context.setVariable("UserInventory", customObjectRepository.getListObjectByUserId(currentUser.getIduser()));
-            context.setVariable("OpponentInventory", customObjectRepository.getListObjectByUserId(opponentID));
+            context.setVariable("UserInventory", customObjectRepository.getListObjectTradeInventory(tradeID, currentUser.getIduser()));
+            context.setVariable("OpponentInventory", customObjectRepository.getListObjectTradeInventory(tradeID, opponentID));
             context.setVariable("UserTradeItems", customObjectRepository.getTradeObjects(tradeID, currentUser.getIduser()));
             context.setVariable("OpponentTradeItems", customObjectRepository.getTradeObjects(tradeID, opponentID));
             context.setVariable("ChatLog", customChatMessageRepository.getChatLogByTransactionID(tradeID));
+            context.setVariable("opponentID", opponentID);
         }
         return "fragments/home/trade";
     }

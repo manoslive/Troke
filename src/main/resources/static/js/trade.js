@@ -1,6 +1,23 @@
 /**
  * Created by Shaun Cooper on 2015-10-27.
  */
+function makeIDList(){
+    var x = document.getElementsByClassName("itemID");
+    var i;
+    for (i = 0; i < x.length; i++) {
+        alert("id: "+x[i].value);
+        document.getElementById("tradeObjectsID").value += x[i].value + ";";
+    }
+    //document.getElementById("startTradeForm").submit();
+}
+function sendChat(userName){
+    if(document.getElementById('chatEnter').value.trim() != "")
+    {
+        var text = document.getElementById('chatEnter').value;
+        document.getElementById('chatEnter').value = "";
+        document.getElementById('chatBoxStartExchange').value += (userName + ": " + text + "\n");
+    }
+}
 $( init );
 function init() {
     // mettre les items non selectable (selection de text, highlight bleu ...)
@@ -95,6 +112,7 @@ function init() {
                         .animate({  width: "80px", height: "60px" ,maxWidth: "80px", maxHeight: "60px"});
                 });
             }
+            $item.find("input").addClass("userItemID");
         });
     }
     // item mis en echangeOpposant function
@@ -121,6 +139,7 @@ function init() {
                         .animate({  width: "80px", height: "60px" , maxWidth: "80px", maxHeight: "60px" });
                 });
             }
+            $item.find("input").addClass("opponentItemID");
         });
     }
 
@@ -130,6 +149,9 @@ function init() {
         $item.fadeOut(function() {
             $item.find(".divInputMoney").replaceWith("<img class='item-image' src='images/item-dollar-sign.png' alt=''>");
             $item
+                .find("input")
+                .removeClass("userItemID")
+                .end()
                 .find( ".icon-refresh" )
                 .remove()
                 .end()
@@ -147,6 +169,9 @@ function init() {
         $item.fadeOut(function() {
             $item.find(".divInputMoney").replaceWith("<img class='item-image' src='images/item-dollar-sign.png' alt=''>");
             $item
+                .find("input")
+                .removeClass("opponentItemID")
+                .end()
                 .find( ".icon-refresh" )
                 .remove()
                 .end()

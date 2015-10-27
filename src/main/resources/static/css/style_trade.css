@@ -11,8 +11,6 @@
 	background-color: #30697D;
 	float: left;
 	height: 100%;
-	min-height: 502px;
-	max-height: 502px;
 	list-style: none;
 	overflow-x: hidden;
 	overflow-y: auto;
@@ -91,8 +89,6 @@
 	font-weight: normal;
 	background-color: #30697D;
 	height: 100%;
-	min-height: 502px;
-	max-height: 502px;
 	list-style: none;
 	overflow-x: hidden;
 	overflow-y: auto;

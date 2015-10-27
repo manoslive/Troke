@@ -101,8 +101,8 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
         String userID2 = (String)queryObject2.getSingleResult();
 
         if(currentUserID.equals(userID1))
-            return userID1;
-        else
             return userID2;
+        else
+            return userID1;
     }
 }

@@ -1,7 +1,6 @@
 <html xmlns:th="http://www.thymeleaf.org" th:include="main_template :: page">
 <head th:fragment="head">
   <link href="css/style_trade.css" type="text/css" rel="stylesheet"/>
-  <link href="css/mainbuttons.css" type="text/css" rel="stylesheet"/>
   <link href="jquery-ui-1.11.4/jquery-ui.css" type="text/javascript" rel="stylesheet"/>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
@@ -16,9 +15,9 @@
     <div id="pageTroker" class="ui-widget ui-helper-clearfix col-md-12" data-mcs-theme="3d-thick">
       <!-- Liste qui crée une zone inventaire (User) et contient les items-->
       <ul id="UserInventory" class="UserInventory ui-helper-reset ui-helper-clearfix col-md-3">
-        <h5 class="UserInventory-header">UserInventory</h5>
-        <li class="UserItem ui-widget-content ui-corner-tr">
-          <h5 class="ui-widget-header">Item</h5>
+        <h5 th:text="'Inventaire à '+${userActif.getIduser()}" class="UserInventory-header"></h5>
+        <li th:each="invUser : ${userInventory}" class="UserItem ui-widget-content ui-corner-tr">
+          <h5 th:text="${invUser.getNameObject()}" class="ui-widget-header"></h5>
           <img class="item-image" src="images/move_icon.png" alt=""/>
           <div class="optionsItem">
             <div class="btn-zoom">
@@ -29,84 +28,7 @@
             </div>
             <img src="images/Logo-transparent.png" class="info-icon ui-icon icon-exchange" />
           </div>
-        </li>
-        <li class="UserItem ui-widget-content ui-corner-tr">
-          <h5 class="ui-widget-header">Item</h5>
-          <img class="item-image" src="images/move_icon.png" alt=""/>
-          <div class="optionsItem">
-            <div class="btn-zoom">
-              <img src="images/zoom_icon.png" class="ui-icon icon-zoom" />
-              <div class="follower">
-                <a class="js-open-modal link-zoom info-icon" href="#" data-modal-id="modal-InfoItem" onclick="showModalInfoItem()">Info Item</a>
-              </div>
-            </div>
-            <img src="images/Logo-transparent.png" class="info-icon ui-icon icon-exchange" />
-          </div>
-        </li>
-        <li class="UserItem ui-widget-content ui-corner-tr">
-          <h5 class="ui-widget-header">Item</h5>
-          <img class="item-image" src="images/move_icon.png" alt=""/>
-          <div class="optionsItem">
-            <div class="btn-zoom">
-              <img src="images/zoom_icon.png" class="ui-icon icon-zoom" />
-              <div class="follower">
-                <a class="js-open-modal link-zoom info-icon" href="#" data-modal-id="modal-InfoItem" onclick="showModalInfoItem()">Info Item</a>
-              </div>
-            </div>
-            <img src="images/Logo-transparent.png" class="info-icon ui-icon icon-exchange" />
-          </div>
-        </li>
-        <li class="UserItem ui-widget-content ui-corner-tr">
-          <h5 class="ui-widget-header">Item</h5>
-          <img class="item-image" src="images/move_icon.png" alt=""/>
-          <div class="optionsItem">
-            <div class="btn-zoom">
-              <img src="images/zoom_icon.png" class="ui-icon icon-zoom" />
-              <div class="follower">
-                <a class="js-open-modal link-zoom info-icon" href="#" data-modal-id="modal-InfoItem" onclick="showModalInfoItem()">Info Item</a>
-              </div>
-            </div>
-            <img src="images/Logo-transparent.png" class="info-icon ui-icon icon-exchange" />
-          </div>
-        </li>
-        <li class="UserItem ui-widget-content ui-corner-tr">
-          <h5 class="ui-widget-header">Item</h5>
-          <img class="item-image" src="images/move_icon.png" alt=""/>
-          <div class="optionsItem">
-            <div class="btn-zoom">
-              <img src="images/zoom_icon.png" class="ui-icon icon-zoom" />
-              <div class="follower">
-                <a class="js-open-modal link-zoom info-icon" href="#" data-modal-id="modal-InfoItem" onclick="showModalInfoItem()">Info Item</a>
-              </div>
-            </div>
-            <img src="images/Logo-transparent.png" class="info-icon ui-icon icon-exchange" />
-          </div>
-        </li>
-        <li class="UserItem ui-widget-content ui-corner-tr">
-          <h5 class="ui-widget-header">Item</h5>
-          <img class="item-image" src="images/move_icon.png" alt=""/>
-          <div class="optionsItem">
-            <div class="btn-zoom">
-              <img src="images/zoom_icon.png" class="ui-icon icon-zoom" />
-              <div class="follower">
-                <a class="js-open-modal link-zoom info-icon" href="#" data-modal-id="modal-InfoItem" onclick="showModalInfoItem()">Info Item</a>
-              </div>
-            </div>
-            <img src="images/Logo-transparent.png" class="info-icon ui-icon icon-exchange" />
-          </div>
-        </li>
-        <li class="UserItem ui-widget-content ui-corner-tr">
-          <h5 class="ui-widget-header">Item</h5>
-          <img class="item-image" src="images/move_icon.png" alt=""/>
-          <div class="optionsItem">
-            <div class="btn-zoom">
-              <img src="images/zoom_icon.png" class="ui-icon icon-zoom" />
-              <div class="follower">
-                <a class="js-open-modal link-zoom info-icon" href="#" data-modal-id="modal-InfoItem" onclick="showModalInfoItem()">Info Item</a>
-              </div>
-            </div>
-            <img src="images/Logo-transparent.png" class="info-icon ui-icon icon-exchange" />
-          </div>
+          <input type="hidden" th:value="${invUser.getIdobject()}" class=""/>
         </li>
         <!-- Item Argent -->
         <li class="money UserItem ui-widget-content ui-corner-tr">
@@ -118,40 +40,71 @@
             <img src="images/Logo-transparent.png" class="info-icon ui-icon icon-exchange" />
           </div>
         </li>
-
       </ul>
 
       <!-- Div contenant les modules de zone d'échange et le chat (milieu de la page) -->
       <div id="exchangeZone" class="col-md-6">
-        <h4 class="exchangeZoneHeader ui-widget-header">Trade User</h4>
+        <h4 th:text="'Zone d\'échange à ' + ${userActif.getIduser()}" class="exchangeZoneHeader ui-widget-header"></h4>
         <div id="UserExchange" class="container-outer">
           <div id="userExchangeItems" class="container-inner ui-state-default">
+            <th:block th:if="${UserTradeItems} ne null">
+            <ul class="UserInventory ui-helper-reset">
+              <li th:each="userTradeItem : ${UserTradeItems}" class="UserItem ui-widget-content ui-corner-tr" style="display: block; overflow: hidden; width: 80px; height: 80px;">
+                <h5 th:text="${userTradeItem.getNameObject()}" class="ui-widget-header"></h5>
+                <img class="item-image" src="images/move_icon.png" alt="" style="display: inline-block; overflow: hidden; width: 80px; height: 60px; max-width: 80px; max-height: 60px;"/>
+                <div class="optionsItem">
+                  <div class="btn-zoom">
+                    <img src="images/zoom_icon.png" class="ui-icon icon-zoom"/>
+                    <div class="follower">
+                      <a class="js-open-modal link-zoom info-icon" href="#" data-modal-id="modal-InfoItem" onclick="showModalInfoItem()">Info Item</a>
+                    </div>
+                  </div>
+                </div>
+                <img src="images/recycle_icon.png" class="ui-icon icon-refresh"/>
+                <input type="hidden" th:value="${userTradeItem.getIdobject()}" class="userItemID"/>
+              </li>
+            </ul>
+            </th:block>
           </div>
         </div>
-        <h4 class="exchangeZoneHeader ui-widget-header">Trade Opposant</h4>
+        <h4 th:text="'Zone d\'échange à ' + ${opponentID}" class="exchangeZoneHeader ui-widget-header"></h4>
         <div id="OpponentExchange" class="container-outer">
           <div id="opponentExchangeItems" class="container-inner ui-state-default">
+            <ul class="OpponentInventory ui-helper-reset">
+              <li th:each="opponentTradeItem : ${OpponentTradeItems}" class="OpponentItem ui-widget-content ui-corner-tr ui-draggable" style="display: block; overflow: hidden; width: 80px; height: 80px;">
+                <h5 th:text="${opponentTradeItem.getNameObject()}" class="ui-widget-header"></h5>
+                <img class="item-image" src="images/move_icon.png" alt="" style="display: inline-block; overflow: hidden; width: 80px; height: 60px; max-width: 80px; max-height: 60px;"/>
+                <div class="optionsItem">
+                  <div class="btn-zoom">
+                    <img src="images/zoom_icon.png" class="ui-icon icon-zoom"/>
+                    <div class="follower">
+                      <a class="js-open-modal link-zoom info-icon " href="#" data-modal-id="modal-InfoItem" onclick="showModalInfoItem()">Info Item</a>
+                    </div>
+                  </div>
+                </div>
+                <img src="images/recycle_icon.png" class="ui-icon icon-refresh"/>
+                <input type="hidden" th:value="${opponentTradeItem.getIdobject()}" class="userItemID"/>
+              </li>
+            </ul>
           </div>
         </div>
         <span class="dd animated fadeInDown">
-          <div class="BTN_Creds"> 
-            <a href="" style="float:left;" class="btn-offre btn btn-sm animated-button thar-two" onclick="">Envoyer l'offre</a>
-            <a href="" style="float:right;" class="btn-offre btn btn-sm animated-button thar-two" onclick="">Accepter l'offre!</a> 
-          </div>
+              <a style="float:left;" class="btn-offre btn btn-sm animated-button thar-two" onclick="makeIDList()">Envoyer l'offre!</a>
+              <a style="float:right;" class="btn-offre btn btn-sm animated-button thar-two">Accepter l'offre!</a>
         </span>
         <div id="zoneChat" class="row-md-3">
-          <input id="chatBox" type="text" disabled="disabled"/>
+          <textarea th:text="${ChatLog.toString()}" name="chatLog" id="chatBoxStartExchange"></textarea>
           <input id="chatEnter" type="text"/>
-          <input id="btn-enter" type="button" value="Envoyer" />
+          <input th:onclick="'javascript:sendChat(\''+${userActif.getIduser()}+'\')'" id="btn-enter" type="button" value="Envoyer" />
         </div>
       </div>
 
 
       <!-- Liste qui crée une zone inventaire (Opposant) et contient les items-->
       <ul id="OpponentInventory" class="OpponentInventory ui-helper-reset ui-helper-clearfix col-md-3">
-        <h5 class="OpponentInventory-header">OpponentInventory</h5>
-        <li class="OpponentItem ui-widget-content ui-corner-tr">
-          <h5 class="ui-widget-header">Item</h5>
+        <h5 th:text="'Inventaire à '+ ${opponentID}" class="OpponentInventory-header"></h5>
+        <li th:each="invOpponent : ${OpponentInventory}" class="OpponentItem ui-widget-content ui-corner-tr">
+          <h5 th:text="${invOpponent.getNameObject()}"  class="ui-widget-header"></h5>
           <img class="item-image" src="images/move_icon.png" alt=""/>
           <div class="optionsItem">
             <div class="btn-zoom">
@@ -162,71 +115,7 @@
             </div>
             <img src="images/Logo-transparent.png" class="info-icon ui-icon icon-exchange" />
           </div>
-        </li>
-        <li class="OpponentItem ui-widget-content ui-corner-tr">
-          <h5 class="ui-widget-header">Item</h5>
-          <img class="item-image" src="images/move_icon.png" alt=""/>
-          <div class="optionsItem">
-            <div class="btn-zoom">
-              <img src="images/zoom_icon.png" class="ui-icon icon-zoom" />
-              <div class="follower">
-                <a class="js-open-modal link-zoom info-icon " href="#" data-modal-id="modal-InfoItem" onclick="showModalInfoItem()">Info Item</a>
-              </div>
-            </div>
-            <img src="images/Logo-transparent.png" class="info-icon ui-icon icon-exchange" />
-          </div>
-        </li>
-        <li class="OpponentItem ui-widget-content ui-corner-tr">
-          <h5 class="ui-widget-header">Item</h5>
-          <img class="item-image" src="images/move_icon.png" alt=""/>
-          <div class="optionsItem">
-            <div class="btn-zoom">
-              <img src="images/zoom_icon.png" class="ui-icon icon-zoom" />
-              <div class="follower">
-                <a class="js-open-modal link-zoom info-icon " href="#" data-modal-id="modal-InfoItem" onclick="showModalInfoItem()">Info Item</a>
-              </div>
-            </div>
-            <img src="images/Logo-transparent.png" class="info-icon ui-icon icon-exchange" />
-          </div>
-        </li>
-        <li class="OpponentItem ui-widget-content ui-corner-tr">
-          <h5 class="ui-widget-header">Item</h5>
-          <img class="item-image" src="images/move_icon.png" alt=""/>
-          <div class="optionsItem">
-            <div class="btn-zoom">
-              <img src="images/zoom_icon.png" class="ui-icon icon-zoom" />
-              <div class="follower">
-                <a class="js-open-modal link-zoom info-icon " href="#" data-modal-id="modal-InfoItem" onclick="showModalInfoItem()">Info Item</a>
-              </div>
-            </div>
-            <img src="images/Logo-transparent.png" class="info-icon ui-icon icon-exchange" />
-          </div>
-        </li>
-        <li class="OpponentItem ui-widget-content ui-corner-tr">
-          <h5 class="ui-widget-header">Item</h5>
-          <img class="item-image" src="images/move_icon.png" alt=""/>
-          <div class="optionsItem">
-            <div class="btn-zoom">
-              <img src="images/zoom_icon.png" class="ui-icon icon-zoom" />
-              <div class="follower">
-                <a class="js-open-modal link-zoom info-icon " href="#" data-modal-id="modal-InfoItem" onclick="showModalInfoItem()">Info Item</a>
-              </div>
-            </div>
-            <img src="images/Logo-transparent.png" class="info-icon ui-icon icon-exchange" />
-          </div>
-        </li>
-        <li class="OpponentItem ui-widget-content ui-corner-tr">
-          <h5 class="ui-widget-header">Item</h5>
-          <img class="item-image" src="images/move_icon.png" alt=""/>
-          <div class="optionsItem">
-            <div class="btn-zoom">
-              <img src="images/zoom_icon.png" class="ui-icon icon-zoom" />
-              <div class="follower">
-                <a class="js-open-modal link-zoom info-icon " href="#" data-modal-id="modal-InfoItem" onclick="showModalInfoItem()">Info Item</a>
-              </div>
-            </div>
-            <img src="images/Logo-transparent.png" class="info-icon ui-icon icon-exchange" />
-          </div>
+          <input type="hidden" th:value="${invOpponent.getIdobject()}" class=""/>
         </li>
         <!-- Item Argent -->
         <li class="money OpponentItem ui-widget-content ui-corner-tr">
