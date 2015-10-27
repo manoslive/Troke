@@ -54,7 +54,7 @@ public class ProfilController {
         // id du dernier object créer pour pouvoir créer des objectImages ..
         int numObject = object.getIdobject();
 
-        return "forward:/";
+        return "redirect:/profil";
     }
 
     // pour changer le password
