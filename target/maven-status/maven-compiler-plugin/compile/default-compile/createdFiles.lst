@@ -9,6 +9,7 @@ com\tilf\troke\TrokeApplication.class
 com\tilf\troke\filter\AuthFilter.class
 com\tilf\troke\controller\GlobalController.class
 com\tilf\troke\validator\UserValidator.class
+com\tilf\troke\controller\ProfilController.class
 com\tilf\troke\entity\ChatEntity.class
 com\tilf\troke\repository\CustomObjectRepositoryImpl.class
 com\tilf\troke\service\SearchService.class
@@ -26,6 +27,7 @@ com\tilf\troke\entity\UsersEntity.class
 com\tilf\troke\repository\CustomTradeRepository.class
 com\tilf\troke\conf\FilterConfiguration.class
 com\tilf\troke\domain\SearchFilter.class
+com\tilf\troke\repository\ObjectRepository.class
 com\tilf\troke\repository\CustomObjectRepository.class
 com\tilf\troke\repository\CustomUserRepository.class
 com\tilf\troke\controller\LoginController.class

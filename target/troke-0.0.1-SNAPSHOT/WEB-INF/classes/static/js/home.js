@@ -71,8 +71,7 @@ function checkCaptcha(){
 		resultat = parseInt(num1) - parseInt(num2);
 	}
 	if(parseInt(document.getElementById("captcha").value) === resultat){
-		alert("Captcha est bon!");
-		//Post l'inscription ...
+		document.forms["inscriptionForm"].submit();
 	}else{
 		alert("Captcha est pas bon!");
 		document.getElementById("captcha").value= "";
@@ -102,5 +101,5 @@ function PreviewImage(value) {
 	document.getElementById("avatar").style.background = "url(images/"+imgValue+")no-repeat center";
 }
 function openMesEchanges(){
-	document.getElementById("content").innerHTML='<object class="loadContent" type="text/html" data="myExchanges.html"></object>';
+	document.getElementById("content").innerHTML='<object class="loadContent" type="text/html" data="myTrades.html"></object>';
 }
