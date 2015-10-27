@@ -77,7 +77,7 @@ public class TransactionController {
         newTransaction.setIduser2(idUser2);
         newTransaction.setDatetransaction(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
         newTransaction.setTurn(idUser2);
-        newTransaction.setIscompleted("N");
+        newTransaction.setIscompleted("F");
         transactionRepository.save(newTransaction);
 
         String queryIdTransaction = "select t.idtransaction from TransactionsEntity t ORDER  BY t.idtransaction Desc";
@@ -113,7 +113,7 @@ public class TransactionController {
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
         }
-        return "fragments/home/myTrades";
+        return "redirect:/myTrades";
     }
 
     // Boutton envoyer l'offre

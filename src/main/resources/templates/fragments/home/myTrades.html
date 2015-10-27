@@ -5,33 +5,39 @@
 <th:block th:fragment="content">
 	<div id="myExchanges" class="col-lg-12 container">
 		<div class="titre-Trades">
-			<p>Échanges en attente</p>
+			<p th:text="'Échanges en attente :'+ ${pendingTransactions.size()}"></p>
 		</div>
 		<div id="pendingTrades" class="section-Trades">
 			<ul class="myTrades">
-				<li class="exchange" onClick=""><header>Echange</header></li>
-				<li class="exchange" onClick=""><header>Echange2</header></li>
-				<li class="exchange" onClick=""><header>Echange3</header></li>
+				<li th:each="trade : ${pendingTransactions}" class="exchange" onClick="">
+					<header th:text="'ID: '+${trade.getIdtransaction()}"></header>
+					<span class="descriptionTrade-myTrades" th:text="'Échange entre '+${trade.iduser1}+ ' et '+${trade.iduser2}"/>
+					<span class="descriptionTrade-myTrades" th:text="'Date créée: '+${trade.getDatetransaction()}"/>
+				</li>
 			</ul>
 		</div>
 		<div class="titre-Trades">
-			<p>Échanges envoyés</p>
+			<p th:text="'Échanges envoyés :'+ ${sentTransactions.size()}"></p>
 		</div>
 		<div id="sentTrades" class="section-Trades">
 			<ul class="myTrades">
-				<li class="exchange" onClick=""><header>Echange</header></li>
-				<li class="exchange" onClick=""><header>Echange2</header></li>
-				<li class="exchange" onClick=""><header>Echange3</header></li>
+				<li th:each="trade : ${sentTransactions}" class="exchange" onClick="">
+					<header th:text="'ID: '+${trade.getIdtransaction()}"></header>
+					<span class="descriptionTrade-myTrades" th:text="'Échange entre '+${trade.iduser1}+ ' et '+${trade.iduser2}"/>
+					<span class="descriptionTrade-myTrades" th:text="'Date créée: '+${trade.getDatetransaction()}"/>
+				</li>
 			</ul>
 		</div>
 		<div class="titre-Trades">
-			<p>Échanges complétés</p>
+			<p th:text="'Échanges complétés :'+ ${completedTransactions.size()}"></p>
 		</div>
 		<div id="completedTrades" class="section-Trades">
 			<ul class="myTrades">
-				<li class="exchange" onClick=""><header>Echange</header></li>
-				<li class="exchange" onClick=""><header>Echange2</header></li>
-				<li class="exchange" onClick=""><header>Echange3</header></li>
+				<li th:each="trade : ${completedTransactions}" class="exchange" onClick="">
+					<header th:text="'ID: '+${trade.getIdtransaction()}"></header>
+					<span class="descriptionTrade-myTrades" th:text="'Échange entre '+${trade.iduser1}+ ' et '+${trade.iduser2}"/>
+					<span class="descriptionTrade-myTrades" th:text="'Date créée: '+${trade.getDatetransaction()}"/>
+				</li>
 			</ul>
 		</div>
 	</div>
