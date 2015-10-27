@@ -33,6 +33,9 @@
     border: 2px solid #00374C;
     background: #00374C;
 }
+.myTrades li a {
+	cursor: pointer;
+}
 .loadContent{
   	overflow: hidden;
 	width: 100%;

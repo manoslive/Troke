@@ -25,6 +25,10 @@ public interface CustomObjectRepository {
 
     //GetItemNameByID
     String getObjectNameByItemID(int itemID);
+
     //GetLesItems d'un inventaire selon le UserId
     List<ObjectsEntity> getObjectsByUserID(int currentItemID, String userID);
+
+    //GetLesItems d'un user qui sont en échange selon le userID(proprio des items) et le ID du trade
+    List<ObjectsEntity> getTradeObjects(int transactionID, String userID);
 }

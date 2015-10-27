@@ -39,6 +39,7 @@ public class myTradesController {
         //Get les transactions qui ont été complétés
         List<TransactionsEntity> completedTrades = customMyTradeRepository.getCompletedTransactionsByUserID(currentUser.getIduser());
         model.addAttribute("completedTransactions", completedTrades);
+        model.addAttribute("adrOpenTrade", "/openTrade?transactionID=");
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
@@ -46,6 +47,7 @@ public class myTradesController {
             context.setVariable("pendingTransactions", pendingTrades);
             context.setVariable("sentTransactions", sentTrades);
             context.setVariable("completedTransactions", completedTrades);
+            context.setVariable("adrOpenTrade", "/openTrade?transactionID=");
         }
         return "fragments/home/myTrades";
     }

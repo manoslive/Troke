@@ -147,4 +147,15 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository{
         List<ObjectsEntity> LObject = (List<ObjectsEntity>) queryObject.getResultList();
         return LObject;
     }
+
+    //GetLesItems d'un user qui sont en échange selon le userID(proprio des items) et le ID du trade
+    @Override
+    public List<ObjectsEntity> getTradeObjects(int transactionID, String userID){
+        String query = "select ot.idobject from ObjecttransactionEntity ot where ot.idtransaction = :idTransaction and ot.idobject = (select o.idobject from ObjectsEntity o where o.iduser = :idUser)";
+        Query queryObject = entityManager.createQuery(query);
+        queryObject.setParameter("idTransaction", transactionID);
+        queryObject.setParameter("idUser", userID);
+        List<ObjectsEntity> LObject = (List<ObjectsEntity>) queryObject.getResultList();
+        return LObject;
+    }
 }

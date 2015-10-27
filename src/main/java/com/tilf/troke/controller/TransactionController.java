@@ -43,9 +43,13 @@ public class TransactionController {
     @Autowired
     private ObjectsTransactionRepository objectsTransactionRepository;
 
+    @Autowired
+    private CustomChatMessageRepository customChatMessageRepository;
+
     @PersistenceContext
     private EntityManager entityManager;
 
+    //StartTrade - lorsqu'on click sur un item de la recherche et on veut commencer une transaction
     @RequestMapping(value = "/startTrade", method = RequestMethod.GET)
     public String getUserFromItem(@RequestParam("itemID") int itemID, Model model) {
         model.addAttribute("startTradeOpponent", customUserRepository.getUserFromItem(itemID));
@@ -66,6 +70,41 @@ public class TransactionController {
         return "fragments/home/startTrade";
     }
 
+    //OpenTrade - Lorsqu'on click sur un échange de la page myTrades pour y répondre
+    @RequestMapping(value = "/openTrade", method = RequestMethod.GET)
+    public String openTrade(@RequestParam("transactionID") int tradeID, Model model) {
+        UsersEntity currentUser = authUserContext.getUser();
+        model.addAttribute("userActif", currentUser);
+
+        //Get les inventaires des 2 users
+        model.addAttribute("UserInventory", customObjectRepository.getListObjectByUserId(currentUser.getIduser()));
+        String opponentID = customUserRepository.findOpponentUserID(tradeID, currentUser.getIduser());
+        model.addAttribute("OpponentInventory", customObjectRepository.getListObjectByUserId(opponentID));
+
+        //Get les 2 zones d'échanges
+        model.addAttribute("UserTradeItems", customObjectRepository.getTradeObjects(tradeID, currentUser.getIduser()));
+        model.addAttribute("OpponentTradeItems", customObjectRepository.getTradeObjects(tradeID, opponentID));
+
+        //Get les message du Chat
+        model.addAttribute("ChatLog", customChatMessageRepository.getChatLogByTransactionID(tradeID));
+        // TODO THYMELEAF HACK
+        if (false) {
+            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+            context.setVariable("userActif", currentUser);
+            context.setVariable("UserInventory", customObjectRepository.getListObjectByUserId(currentUser.getIduser()));
+            context.setVariable("OpponentInventory", customObjectRepository.getListObjectByUserId(opponentID));
+            context.setVariable("UserTradeItems", customObjectRepository.getTradeObjects(tradeID, currentUser.getIduser()));
+            context.setVariable("OpponentTradeItems", customObjectRepository.getTradeObjects(tradeID, opponentID));
+            context.setVariable("ChatLog", customChatMessageRepository.getChatLogByTransactionID(tradeID));
+        }
+        return "fragments/home/trade";
+    }
+
+    //addTrade - Ajout d'un trade lorsqu'on envoie un échange de la page startTrade
+    //Ajout à Transaction
+    //Ajout à Chat
+    //Ajout à ChatMessage
+    //Ajout à ObjectTransaction
     @RequestMapping(value = "/addTrade", method = RequestMethod.POST)
     public String addNewTrade(@RequestParam("iduser1")String idUser1,
                               @RequestParam("iduser2")String idUser2,
@@ -116,23 +155,4 @@ public class TransactionController {
         return "redirect:/myTrades";
     }
 
-    // Boutton envoyer l'offre
-    /*@RequestMapping(value = "/sendTrade", method = RequestMethod.GET)
-    public String getItemByIdObject(@RequestParam("idObject") int idobject, Model model) {
-        model.addAttribute("singleobject", customObjectRepository.getObjectEntityByIdObject(idobject));
-        model.addAttribute("adrItem", "/item?idObject=");
-        model.addAttribute("adrStartTrade", "/startTrade?itemID=");
-        model.addAttribute("leftMenu", fillLeftCatMenu());
-
-        // TODO THYMELEAF HACK
-        if (false) {
-            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("singleobject", customObjectRepository.getObjectEntityByIdObject(idobject));
-            context.setVariable("adrItem", "/item?objectName=");
-            context.setVariable("leftMenu", fillLeftCatMenu());
-            context.setVariable("adrStartTrade", "/startTrade?itemID=");
-        }
-
-        return "fragments/home/search";
-    }*/
 }

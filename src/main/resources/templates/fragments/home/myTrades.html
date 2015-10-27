@@ -10,9 +10,11 @@
 		<div id="pendingTrades" class="section-Trades">
 			<ul class="myTrades">
 				<li th:each="trade : ${pendingTransactions}" class="exchange" onClick="">
-					<header th:text="'ID: '+${trade.getIdtransaction()}"></header>
-					<span class="descriptionTrade-myTrades" th:text="'Échange entre '+${trade.iduser1}+ ' et '+${trade.iduser2}"/>
-					<span class="descriptionTrade-myTrades" th:text="'Date créée: '+${trade.getDatetransaction()}"/>
+					<a th:href="${adrOpenTrade}+${trade.getIdtransaction()}">
+						<header th:text="'ID: '+${trade.getIdtransaction()}"></header>
+						<span class="descriptionTrade-myTrades" th:text="'Échange entre '+${trade.iduser1}+ ' et '+${trade.iduser2}"/>
+						<span class="descriptionTrade-myTrades" th:text="'Date créée: '+${trade.getDatetransaction()}"/>
+					</a>
 				</li>
 			</ul>
 		</div>
