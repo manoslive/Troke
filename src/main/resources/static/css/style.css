@@ -69,8 +69,7 @@
     color: #FFF;
     font-family: 'Offside';
     font-size: 25px;
-    margin-bottom: 25px;
-    margin-top: 25px;
+    height:auto;
 }
 .navbar-fixed {
     top: 0;
