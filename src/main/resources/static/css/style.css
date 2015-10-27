@@ -250,7 +250,7 @@
 }
 
 .BTN_Change {
-    display: block;
+    display:inline-flex;
 
 }
 

@@ -1,166 +1,215 @@
 .mainDiv
 {
-	display:inline-flex;
-	
-	width:100%;
-	height:500px;
+    display:inline-flex;
+    width:100%;
+    height:600px;
 }
 
 .leftDiv
 {
-	display:inline-block;
-	width:40%;
-	height: 98%;
-	margin-top:1px;
-	margin-left:2px;
-	background-color: #00455F;
-  
-	
-	
+    display:inline-block;
+    width:45%;
+    height: 98%;
+    margin-top:1px;
+    margin-left:2px;
+    background-color: #00455F;
+
+
+
 }
 
 .rightDiv
 {
-	display:inline-block;
-	width:59%;
-	margin-top:1px;
-	margin-left:2px;
-	height:98%;
-	
-	
+    display:inline-block;
+    width:54%;
+    margin-top:1px;
+    margin-left:2px;
+    height:98%;
+
+
 }
 
 .profilDiv
 {
-	display:inline-flex;
-	height:60%;
-	width:100%;
-  background-color: #00455F;
-  border: 1px solid #fff;
-	
+    display:inline-flex;
+    height:40%;
+    width:100%;
+    background:#00455f;
+
 }
 
 .coteDiv
 {
 
-  color: #fff;
-	height:40%;
-	width:100%;
-	border: 1px solid #fff;
+    color: #fff;
+    margin-top:5%;
+    height:25%;
+    width:100%;
 
-	
+
+
+
+
 }
 
+.innerCote
+{
+    padding-top:10px;
+    padding-bottom:10px;
+    background: -moz-linear-gradient(#fff, #999);
+    background: -webkit-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);
+    border : 1px solid black;
+    color:#000;
+}
 .profilPhotoDiv
 {
-	display:inline-block;
-	height:100%;
-	width:40%;
-	
+
+    height:250px;
+    width:40%;
+    margin-top:5px;
+
+
 }
+
+.categorieCombo
+{
+    height:46px;
+    margin-top:8px;
+    border: 1px solid black;
+    cursor: pointer;
+
+}
+
 
 .profilInfoDiv
 {
-	display:inline-table;
-	height:100%;
-	width:60%;
-	
-	
-}
+    display:inline-table;
+    height:100%;
+    width:60%;
+    color:white;
 
+
+}
+.profilWelcome
+{
+    width:100%;
+    height:6%;
+    color:black;
+    margin-top:2%;
+    margin-bottom:2%;
+    background: #fff;
+    background: -moz-linear-gradient(#fff, #999);
+    background: -webkit-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);
+
+}
 .profilLeftDiv
 {
-	display:inline-table;
-	width:48%;
+
+    display:inline-table;
+    width:48%;
+    color:white;
+
+
 }
 
 .profilRightDiv
 {
-	display:inline-table;
-	width:48%;
-	
+    display:inline-table;
+    width:48%;
+    height:50px;
+
+}
+
+.emailDiv
+{
+    width:95%;
 }
 
 .profilInfoButtons
 {
-	height:20%;
-	width:100%;
-	
+    display:inline-block;
+    height:10%;
+    text-align:center;
+    width:100%;
+    margin-top:5%;
+
 }
 
 .starRating:not(old){
-  display        : inline-block;
-  width          : 7.5em;
-  height         : 1.5em;
-  overflow       : hidden;
-  vertical-align : bottom;
+    display        : inline-block;
+    width          : 7.5em;
+    height         : 1.5em;
+    overflow       : hidden;
+    vertical-align : bottom;
 }
 
 .starRating:not(old) > input{
-  margin-right : -100%;
-  opacity      : 0;
+    margin-right : -100%;
+    opacity      : 0;
 }
 
 .starRating:not(old) > label{
-  display         : block;
-  float           : right;
-  position        : relative;
-  background      : url('star-off.svg');
-  background-size : contain;
+    display         : block;
+    float           : right;
+    position        : relative;
+    background      : url('star-off.svg');
+    background-size : contain;
 }
 
 .starRating:not(old) > label:before{
-  content         : '';
-  display         : block;
-  width           : 1.5em;
-  height          : 1.5em;
-  background      : url('star-on.svg');
-  background-size : contain;
-  opacity         : 0;
-  transition      : opacity 0.2s linear;
+    content         : '';
+    display         : block;
+    width           : 1.5em;
+    height          : 1.5em;
+    background      : url('star-on.svg');
+    background-size : contain;
+    opacity         : 0;
+    transition      : opacity 0.2s linear;
 }
 
 .starRating:not(old) > label:hover:before,
 .starRating:not(old) > label:hover ~ label:before,
 .starRating:not(:hover) > :checked ~ label:before{
-  opacity : 1;
+    opacity : 1;
 }
 
 .circular {
-	width: 75px;
-	height: 75px;
-	border-radius: 40px;
-	-webkit-border-radius: 40px;
-	-moz-border-radius: 40px;
-	box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-	-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-	-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-	}
-	
+    width: 75px;
+    height: 75px;
+    border-radius: 40px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+
 .circularimage
 {
-	width: 75px;
-	height: 75px;
-	border-radius: 40px;
-	-webkit-border-radius: 40px;
-	-moz-border-radius: 40px;
-	-webkit-transition: all 1s ease; /* Safari and Chrome */
-    -moz-transition: all 1s ease; /* Firefox */
-    -ms-transition: all 1s ease; /* IE 9 */
-    -o-transition: all 1s ease; /* Opera */
-    transition: all 1s ease;
+    width: 75px;
+    height: 75px;
+    border-radius: 40px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    -webkit-transition: all 500ms ease; /* Safari and Chrome */
+    -moz-transition: all 500ms ease; /* Firefox */
+    -ms-transition: all 500ms ease; /* IE 9 */
+    -o-transition: all 500ms ease; /* Opera */
+    transition: all 500ms ease;
 
 }
 
 .circularimage:hover
 {
-	-webkit-transform:scale(1.5); /* Safari and Chrome */
+    -webkit-transform:scale(1.5); /* Safari and Chrome */
     -moz-transform:scale(1.5); /* Firefox */
     -ms-transform:scale(1.5); /* IE 9 */
     -o-transform:scale(1.5); /* Opera */
-     transform:scale(1.5);
-	
-	
+    transform:scale(1.5);
+
+
 }
 
 /* Modal connexion */
@@ -217,9 +266,9 @@
 .modalDialogAjouter > div {
     width: 600px;
     position: absolute;
-   margin-top:5%;
-   margin-left:30%;
-    
+    margin-top:5%;
+    margin-left:30%;
+
     padding: 5px 20px 13px 20px;
     border-radius: 10px;
     background: #fff;
@@ -230,54 +279,54 @@
 
 .divModalAjoutTop
 {
-  
-  display:inline-flex;
-   
+
+    display:inline-flex;
+
 }
 
 .divModalAjoutPhotosTOP
 {
-  display:inline-flex;
-  margin-top:5px;
+    display:inline-flex;
+    margin-top:5px;
 }
 
 .divModalAjoutPhotosDOWN
 {
-  display:inline-flex;
+    display:inline-flex;
 }
 .divModalAjoutQualite
 {
-  vertical-align: center;
-  padding-left:20px;
-  padding-top:5px;
-  height:50px;
+    vertical-align: center;
+    padding-left:20px;
+    padding-top:5px;
+    height:50px;
 }
 
 .divModalAjoutDescriptionPhoto
 {
-  width:100%;
-  height:70%;
-  display:inline-flex;
+    width:100%;
+    height:70%;
+    display:inline-flex;
 }
 .divModalAjoutDescription
 {
-  width:50%;
+    width:50%;
 }
 .divModalAjoutPhotos
 {
-  width:45%;
+    width:45%;
 }
 
 .basdeModal
 {
-  display:inline-flex;
-  width:100%
+    display:inline-flex;
+    width:100%
 }
 
 .basdeModalButtons
 {
-  margin-left:100px;
-  margin-top:15px;
-  display:inline-block;
-  
+    margin-left:100px;
+    margin-top:15px;
+    display:inline-block;
+
 }
