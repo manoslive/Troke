@@ -9,6 +9,14 @@
 
 <body style="font-family:'Amaranth'; background:#00455F;">
 <th:block th:fragment="content">
+  <form id="tradeForm" style="margin:0px" name="tradeForm" th:action="@{/updateTrade}" method="post">
+  <!-- Le User qui créer le trade est le user1 -->
+  <input id="tradeState" type="hidden" style="position:absolute" name="tradeState"/>
+  <input th:value="${transactionID}" id="TransactionID" type="hidden" style="position:absolute" name="idTransaction"/>
+  <input th:value="${userActif.getIduser()}" name="currentUser" type="hidden" style="position:absolute" />
+  <input th:value="${opponentID}" name="iduser2" type="hidden" style="position:absolute" />
+  <input th:value="${ChatLog.getIdchat()}" name="chatID" type="hidden" style="position:absolute" />
+  <input id="tradeObjectsID" type="hidden" style="position:absolute" name="tradeObjects"/>
   <!-- Div container est une class boottrap qui met la page centré -->
   <div class="container tradePage">
     <!-- Page qui conteint tous le modules d'échanges' -->
@@ -61,7 +69,7 @@
                   </div>
                 </div>
                 <img src="images/recycle_icon.png" class="ui-icon icon-refresh"/>
-                <input type="hidden" th:value="${userTradeItem.getIdobject()}" class="userItemID"/>
+                <input type="hidden" th:value="${userTradeItem.getIdobject()}" class="itemID"/>
               </li>
             </ul>
             </th:block>
@@ -83,17 +91,17 @@
                   </div>
                 </div>
                 <img src="images/recycle_icon.png" class="ui-icon icon-refresh"/>
-                <input type="hidden" th:value="${opponentTradeItem.getIdobject()}" class="userItemID"/>
+                <input type="hidden" th:value="${opponentTradeItem.getIdobject()}" class="itemID"/>
               </li>
             </ul>
           </div>
         </div>
         <span class="dd animated fadeInDown">
-              <a style="float:left; margin-bottom: 7.5% !important;" class="btn-offre btn btn-sm animated-button thar-two" onclick="makeIDList()">Envoyer la contre-offre!</a>
-              <a style="float:right;margin-bottom: 7.5% !important;" class="btn-offre btn btn-sm animated-button thar-two">Accepter l'offre!</a>
+              <a style="float:left;" class="btn-offre btn btn-sm animated-button thar-two" onclick="makeIDList()">Envoyer la contre-offre!</a>
+              <a style="float:right;" class="btn-offre btn btn-sm animated-button thar-two" onclick="CompleteTransaction()">Accepter l'offre!</a>
         </span>
         <div id="zoneChat" class="row-md-3">
-          <textarea th:text="${ChatLog.toString()}" name="chatLog" id="chatBoxStartExchange"></textarea>
+          <textarea th:text="${ChatLog.getMsg()}" name="chatLog" id="chatBoxStartExchange"></textarea>
           <input id="chatEnter" type="text"/>
           <input th:onclick="'javascript:sendChat(\''+${userActif.getIduser()}+'\')'" id="btn-enter" type="button" value="Envoyer" />
         </div>
@@ -157,6 +165,7 @@
       </div>
     </div>
   </div>
+  </form>
 </th:block>
 </body>
 

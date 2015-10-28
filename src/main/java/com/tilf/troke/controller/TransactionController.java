@@ -77,6 +77,7 @@ public class TransactionController {
         String opponentID = customUserRepository.findOpponentUserID(tradeID, currentUser.getIduser());
         model.addAttribute("userActif", currentUser);
         model.addAttribute("opponentID", opponentID);
+        model.addAttribute("transactionID", tradeID);
 
         //Get les inventaires des 2 users
         model.addAttribute("UserInventory", customObjectRepository.getListObjectTradeInventory(tradeID,currentUser.getIduser()));
@@ -98,6 +99,7 @@ public class TransactionController {
             context.setVariable("OpponentTradeItems", customObjectRepository.getTradeObjects(tradeID, opponentID));
             context.setVariable("ChatLog", customChatMessageRepository.getChatLogByTransactionID(tradeID));
             context.setVariable("opponentID", opponentID);
+            context.setVariable("transactionID", tradeID);
         }
         return "fragments/home/trade";
     }
@@ -148,6 +150,62 @@ public class TransactionController {
             addTransactionsObjects.setIdobject(Integer.parseInt(objectIDs[i]));
             addTransactionsObjects.setIdtransaction(idTransaction);
             objectsTransactionRepository.save(addTransactionsObjects);
+        }
+
+        // TODO THYMELEAF HACK
+        if (false) {
+            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+        }
+        return "redirect:/myTrades";
+    }
+
+    //update - update d'un trade lorsqu'on envoie une contre-offre
+    //update à Transaction
+    //update à ChatMessage
+    //update à ObjectTransaction
+    @RequestMapping(value = "/updateTrade", method = RequestMethod.POST)
+    public String updateTrade(@RequestParam("idTransaction")int transactionID,
+                                @RequestParam("currentUser")String currentUser,
+                                @RequestParam("iduser2")String idUser2,
+                                @RequestParam("chatID")int chatID,
+                                @RequestParam("chatLog")String chatLog,
+                                @RequestParam("tradeObjects")String tradeObjects,
+                                @RequestParam("tradeState")String tradeState)
+    {
+        TransactionsEntity updateTransaction = new TransactionsEntity();
+        updateTransaction.setIdtransaction(transactionID);
+        updateTransaction.setIduser1(currentUser);
+        updateTransaction.setIduser2(idUser2);
+        updateTransaction.setDatetransaction(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+        updateTransaction.setTurn(idUser2);
+        updateTransaction.setIscompleted(tradeState);
+        transactionRepository.save(updateTransaction);
+
+        String queryIdChat = "select c.idchatmessage from ChatmessageEntity c where c.idchat = :idChat";
+        Query queryObject = entityManager.createQuery(queryIdChat);
+        queryObject.setParameter("idChat", chatID);
+        int idChatMessage = (Integer)queryObject.getSingleResult();
+
+        ChatmessageEntity updateChatMessage = new ChatmessageEntity();
+        updateChatMessage.setIdchatmessage(idChatMessage);
+        updateChatMessage.setIdchat(chatID);
+        updateChatMessage.setDateTime(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+        updateChatMessage.setMsg(chatLog);
+        updateChatMessage.setIsread("T");
+        chatmessageRepository.save(updateChatMessage);
+
+        /*Query queryObject2 = entityManager.createQuery("delete from ObjecttransactionEntity o where o.idtransaction = :idTransaction");
+        queryObject2.setParameter("idTransaction",transactionID);
+        queryObject2.executeUpdate();*/
+
+        ObjecttransactionEntity updateTransactionsObjects = new ObjecttransactionEntity();
+        String[] objectIDs = tradeObjects.split(";");
+
+        for(int i = 0; i < objectIDs.length; i++)
+        {
+            updateTransactionsObjects.setIdobject(Integer.parseInt(objectIDs[i]));
+            updateTransactionsObjects.setIdtransaction(transactionID);
+            objectsTransactionRepository.save(updateTransactionsObjects);
         }
 
         // TODO THYMELEAF HACK

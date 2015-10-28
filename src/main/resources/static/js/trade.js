@@ -2,13 +2,24 @@
  * Created by Shaun Cooper on 2015-10-27.
  */
 function makeIDList(){
+    document.getElementById("tradeState").value = "F";
     var x = document.getElementsByClassName("itemID");
     var i;
     for (i = 0; i < x.length; i++) {
         alert("id: "+x[i].value);
         document.getElementById("tradeObjectsID").value += x[i].value + ";";
     }
-    //document.getElementById("startTradeForm").submit();
+    document.getElementById("tradeForm").submit();
+}
+function CompleteTransaction(){
+    document.getElementById("tradeState").value = "T";
+    var x = document.getElementsByClassName("itemID");
+    var i;
+    for (i = 0; i < x.length; i++) {
+        alert("id: "+x[i].value);
+        document.getElementById("tradeObjectsID").value += x[i].value + ";";
+    }
+    document.getElementById("tradeForm").submit();
 }
 function sendChat(userName){
     if(document.getElementById('chatEnter').value.trim() != "")
@@ -112,7 +123,7 @@ function init() {
                         .animate({  width: "80px", height: "60px" ,maxWidth: "80px", maxHeight: "60px"});
                 });
             }
-            $item.find("input").addClass("userItemID");
+            $item.find("input").addClass("itemID");
         });
     }
     // item mis en echangeOpposant function
@@ -139,7 +150,7 @@ function init() {
                         .animate({  width: "80px", height: "60px" , maxWidth: "80px", maxHeight: "60px" });
                 });
             }
-            $item.find("input").addClass("opponentItemID");
+            $item.find("input").addClass("itemID");
         });
     }
 
@@ -150,7 +161,7 @@ function init() {
             $item.find(".divInputMoney").replaceWith("<img class='item-image' src='images/item-dollar-sign.png' alt=''>");
             $item
                 .find("input")
-                .removeClass("userItemID")
+                .removeClass("itemID")
                 .end()
                 .find( ".icon-refresh" )
                 .remove()
@@ -170,7 +181,7 @@ function init() {
             $item.find(".divInputMoney").replaceWith("<img class='item-image' src='images/item-dollar-sign.png' alt=''>");
             $item
                 .find("input")
-                .removeClass("opponentItemID")
+                .removeClass("itemID")
                 .end()
                 .find( ".icon-refresh" )
                 .remove()

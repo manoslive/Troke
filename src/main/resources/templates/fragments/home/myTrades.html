@@ -13,7 +13,7 @@
 					<a th:href="${adrOpenTrade}+${trade.getIdtransaction()}">
 						<header th:text="'ID: '+${trade.getIdtransaction()}"></header>
 						<span class="descriptionTrade-myTrades" th:text="'Échange entre '+${trade.iduser1}+ ' et '+${trade.iduser2}"/>
-						<span class="descriptionTrade-myTrades" th:text="'Date créée: '+${trade.getDatetransaction()}"/>
+						<span class="descriptionTrade-myTrades" th:text="'Dernière modification: '+${trade.getDatetransaction()}"/>
 					</a>
 				</li>
 			</ul>
@@ -26,7 +26,7 @@
 				<li th:each="trade : ${sentTransactions}" class="exchange" onClick="">
 					<header th:text="'ID: '+${trade.getIdtransaction()}"></header>
 					<span class="descriptionTrade-myTrades" th:text="'Échange entre '+${trade.iduser1}+ ' et '+${trade.iduser2}"/>
-					<span class="descriptionTrade-myTrades" th:text="'Date créée: '+${trade.getDatetransaction()}"/>
+					<span class="descriptionTrade-myTrades" th:text="'Dernière modification: '+${trade.getDatetransaction()}"/>
 				</li>
 			</ul>
 		</div>
@@ -38,7 +38,7 @@
 				<li th:each="trade : ${completedTransactions}" class="exchange" onClick="">
 					<header th:text="'ID: '+${trade.getIdtransaction()}"></header>
 					<span class="descriptionTrade-myTrades" th:text="'Échange entre '+${trade.iduser1}+ ' et '+${trade.iduser2}"/>
-					<span class="descriptionTrade-myTrades" th:text="'Date créée: '+${trade.getDatetransaction()}"/>
+					<span class="descriptionTrade-myTrades" th:text="'Dernière modification: '+${trade.getDatetransaction()}"/>
 				</li>
 			</ul>
 		</div>

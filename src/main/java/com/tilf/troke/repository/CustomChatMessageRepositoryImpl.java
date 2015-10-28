@@ -17,11 +17,11 @@ public class CustomChatMessageRepositoryImpl implements CustomChatMessageReposit
     @PersistenceContext
     private EntityManager entityManager;
 
-    public String getChatLogByTransactionID(int tradeID){
-        String query = "select cm.msg from ChatmessageEntity cm where cm.idchat = (select c.idchat from ChatEntity c where c.idtransaction = :idTransaction)";
+    public ChatmessageEntity getChatLogByTransactionID(int tradeID){
+        String query = "select cm from ChatmessageEntity cm where cm.idchat = (select c.idchat from ChatEntity c where c.idtransaction = :idTransaction)";
         Query queryObject = entityManager.createQuery(query);
         queryObject.setParameter("idTransaction", tradeID);
-        String chatLog = (String) queryObject.getSingleResult();
+        ChatmessageEntity chatLog = (ChatmessageEntity) queryObject.getSingleResult();
         return chatLog;
     }
 }
