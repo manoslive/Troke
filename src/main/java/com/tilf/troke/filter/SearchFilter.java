@@ -1,4 +1,4 @@
-package com.tilf.troke.domain;
+package com.tilf.troke.filter;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;

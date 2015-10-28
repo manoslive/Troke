@@ -172,7 +172,9 @@
 
                         <!-- Bouton lancer une Ã©change -->
                         <button type="button" class="btn btn-info btn-troke btnBootPerso">
-                            <img class="searchItem-img-troke" src="images/Logo-transparent.png"/>
+                            <a th:href="${adrStartTrade + obj.getIdobject()}">
+                                <img class="searchItem-img-troke" src="images/Logo-transparent.png"/>
+                            </a>
                         </button>
                     </div>
                     <!-- Ligne/Spacer -->
@@ -235,7 +237,9 @@
 
                         <!-- Bouton lancer une Ã©change -->
                         <button type="button" class="btn btn-info btn-troke btnBootPerso">
-                            <img class="searchItem-img-troke" src="images/Logo-transparent.png"/>
+                            <a th:href="${adrStartTrade + obj.getIdobject()}">
+                                <img class="searchItem-img-troke" src="images/Logo-transparent.png"/>
+                            </a>
                         </button>
                     </div>
                     <!-- Ligne/Spacer -->

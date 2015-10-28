@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.thymeleaf.context.WebContext;
 
 import javax.imageio.ImageIO;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.awt.image.BufferedImage;
@@ -45,61 +46,45 @@ public class UserController {
 
     @ExceptionHandler(Throwable.class)
     @RequestMapping(value = "/adduser", method = RequestMethod.POST)
-    public String adduser(@ModelAttribute("userSignupForm") @Valid UserSignupForm userSignupForm, BindingResult result, @RequestParam(value = "avatar", required = false) @Valid MultipartFile avatar, BindingResult result2, @RequestParam(value = "fileData", required = false) String fileData, RedirectAttributes redirectAttributes, Model model, HttpSession session) {
+    public String adduser(@ModelAttribute("userSignupForm") @Valid UserSignupForm userSignupForm, BindingResult result,
+                          @RequestParam(value = "avatar", required = false) @Valid MultipartFile avatar, BindingResult result2,
+                          RedirectAttributes redirectAttributes,
+                          Model model, HttpSession session) {
+        // On valide le model userSignupForm
         userValidator.validate(userSignupForm, result);
+        // La date d'aujourd'hui pour la création de l'utilisateur
         java.sql.Date now = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        // Vérification du username (1 si existe, 0 sinon)
         BigInteger checkUserExistance = customUserRepository.checkUserExistance(userSignupForm.getIduser());
+        // Vérification du courriel (1 si existe, 0 sinon)
         BigInteger checkEmailExistance = customUserRepository.checkEmailExistance(userSignupForm.getEmail());
+        // Image par défaut
+        String defaultImage = "no_avatar.jpg";
+        // On génère le nom unique de l'image et on vérifie qu'il
+        // n'existe pas déjà.
         String imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
         while (customUserRepository.checkAvatarName(imageName) == BigInteger.ONE) {
             imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
         }
-        if(fileData != null){
-            session.setAttribute("previewdata", fileData);
-        }
-        String imagePath = "src/main/resources/static/uploaded-images/";
-        String defaultImage = "no_avatar.jpg";
 
+        // On vérifie qu'il n'y a pas d'erreur, que l'utilisateur est unique ainsi que le courriel
         if (!result.hasErrors() && checkUserExistance == BigInteger.ZERO && checkEmailExistance == BigInteger.ZERO) {
+            // On se déclare un nouveau UsersEntity pour l'ajout à la BD
             UsersEntity user = new UsersEntity();
 
-            if (avatar != null) {
-                if (!avatar.isEmpty()) {
-                    try {
-                        byte[] bytes = avatar.getBytes();
-                        byte[] resizedBytes;
-                        // Vérification de la taille de l'image
-                        InputStream in = new ByteArrayInputStream(bytes);
+            // Gestion de l'upload de l'image non temporaire
+            boolean imageIsUploaded = imageService.uploadImage(avatar, imageName, true, session);
 
-                        BufferedImage buf = ImageIO.read(in);
-                        float width = (float) buf.getWidth();
-                        float height = (float) buf.getHeight();
-                        float calculHeight = 800 / (width / height);
-                        int heightModifier = (int) Math.ceil(calculHeight);
-                        if (width / height != 1) {
-                            // Resize byte
-                            resizedBytes = imageService.scale(bytes, 800, heightModifier);
-                        } else {
-                            // Resize byte
-                            resizedBytes = imageService.scale(bytes, 800, 800);
-                         }
-
-                        BufferedOutputStream stream =
-                                new BufferedOutputStream(new FileOutputStream(new File(imagePath + imageName)));
-                        stream.write(resizedBytes);
-                        stream.close();
-                        user.setAvatar(imageName);
-                        session.setAttribute("avatarpath", imageName);
-                    } catch (IOException ioe) {
-                        System.out.println(ioe.getMessage());
-                        System.out.println(ioe.fillInStackTrace());
-                    }
-                }
+            if (imageIsUploaded) {
+                user.setAvatar(imageName);
+                session.setAttribute("avatarpath", imageName);
             } else {
+
                 user.setAvatar(defaultImage);
                 session.setAttribute("avatarpath", defaultImage);
-
             }
+
+            // On affecte chacun des champs
             user.setIduser(userSignupForm.getIduser());
             user.setFirstname(userSignupForm.getFirstname());
             user.setLastname(userSignupForm.getLastname());
@@ -112,23 +97,39 @@ public class UserController {
             user.setCreationdate(now);
             user.setPermissionlevel(0);
             user.setIsvip("N");
+            // On insert dans la BD
             userRepository.save(user);
+            // On retour à la page home
             return "forward:/";
         }
+        // Ajout d'une image temporaire pour permettre le réaffichage
+        if (imageService.uploadImage(avatar, imageName, false, session)) {
+            session.setAttribute("tempimage", imageName);
+        }
+
+        // Ajout manuel de l'erreur de l'utilisateur déjà utilisé
         if (checkUserExistance == BigInteger.ONE) {
             ObjectError error = new ObjectError("error.iduser", "Le nom d'usager est déjà utilisé.");
             result.addError(error);
         }
+        // Ajout manuel de l'erreur du courriel déjà utilisé
         if (checkEmailExistance == BigInteger.ONE) {
             ObjectError error = new ObjectError("error.email", "Le courriel est déjà utilisé.");
             result.addError(error);
         }
 
+        // Les flash attributes servent à permettre l'obtention de la
+        // liste d'erreurs
         redirectAttributes.addFlashAttribute("userSignupForm", userSignupForm);
         redirectAttributes.addFlashAttribute("fields", result);
-        session.setAttribute("userInformation", userSignupForm);
 
-        session.setAttribute("avatarpath", avatar);
+        // On envoit le data pour que l'image choisie reste choisie
+        session.setAttribute("avatarfile", avatar);
+
+        // On met les infos du formulaire dans une variable de session
+        // pour permettre de garder les informations du formulaire
+        // lors d'une erreur
+        session.setAttribute("userInformation", userSignupForm);
 
         // TODO THYMELEAF HACK
         if (false) {
@@ -136,9 +137,10 @@ public class UserController {
             context.setVariable("fields", result);
             context.setVariable("userSignupForm", userSignupForm);
             context.setVariable("userInformation", userSignupForm);
-            context.setVariable("previewdata", fileData);
-            //context.setVariable("avatarpath", defaultImage);
+            context.setVariable("tempimage", userSignupForm);
+            context.setVariable("avatarfile", avatar);
         }
+        // On retourne au formulaire pcq il y a des erreurs
         return "redirect:/#openModalInscription";
     }
 

@@ -12,6 +12,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.context.embedded.ErrorPage;
+import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -36,6 +37,24 @@ public class TrokeApplication extends SpringBootServletInitializer{
         return application;
     }
 
+    @Bean
+    EmbeddedServletContainerCustomizer containerCustomizer(
+    ) throws Exception {
+
+
+        return (ConfigurableEmbeddedServletContainer container) -> {
+
+            if (container instanceof TomcatEmbeddedServletContainerFactory) {
+
+                TomcatEmbeddedServletContainerFactory tomcat = (TomcatEmbeddedServletContainerFactory) container;
+                tomcat.addConnectorCustomizers(
+                        (connector) -> {
+                            connector.setMaxPostSize(20000000);//20MB
+                        }
+                );
+            }
+        };
+    }
     /*
     @Bean
     public EmbeddedServletContainerCustomizer containerCustomizer() {
