@@ -22,4 +22,8 @@ public interface CustomUserRepository{
 
     // Vérification du nom d'avatar dans la BD
     BigInteger checkAvatarName(String avatarName);
+
+    // Get Opponent User d'un transaction
+    //Recoit le ID de transaction et le current user pour déterminer le user Opposé
+    String findOpponentUserID(int transactionID, String currentUserID);
 }

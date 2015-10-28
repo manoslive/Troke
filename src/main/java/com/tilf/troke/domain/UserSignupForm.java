@@ -42,6 +42,8 @@ public class UserSignupForm {
     @NotNull(message = "Le code postal ne doit pas être nul.")
     private String zipcode;
 
+    private String path;
+
     public String getZipcode() {
         return zipcode;
     }
@@ -112,6 +114,14 @@ public class UserSignupForm {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     @AssertTrue(message = "Les deux champs doivent être identiques.")

@@ -1,8 +1,12 @@
 #pageTroker{
-	height: 80%;
+	height: 100%;
 	overflow: auto;
 	cursor: default;
 	position: static;
+}
+.tradePage{
+	margin-top: 1%;
+	height: 84.5%;
 }
 /* Zone UserInventory */
 #UserInventory {
@@ -11,8 +15,6 @@
 	background-color: #30697D;
 	float: left;
 	height: 100%;
-	min-height: 502px;
-	max-height: 502px;
 	list-style: none;
 	overflow-x: hidden;
 	overflow-y: auto;
@@ -91,8 +93,6 @@
 	font-weight: normal;
 	background-color: #30697D;
 	height: 100%;
-	min-height: 502px;
-	max-height: 502px;
 	list-style: none;
 	overflow-x: hidden;
 	overflow-y: auto;
@@ -221,13 +221,6 @@
 	overflow-y: auto;
 	overflow-x: hidden;
 	border: 2px solid #003042;
-}
-#opponentExchangeItemsStart h4 zoneEchangeHeader{
-	text-align: center;
-	color: white;
-	margin: 0;
-	border: 2px solid #00374C;
-	background: #00374C;
 }
 #opponentExchangeItemsStart h4 .ui-icon {
 	float: left;

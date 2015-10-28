@@ -24,7 +24,7 @@
 	z-index: 1000;
 	border: 1px solid #00374C;
 	background-color: white;
-	display: inline-block;
+	display: inline-table;
 }
 .myTrades li header {
     text-align: center;
@@ -32,6 +32,9 @@
     margin: 0;
     border: 2px solid #00374C;
     background: #00374C;
+}
+.myTrades li a {
+	cursor: pointer;
 }
 .loadContent{
   	overflow: hidden;
@@ -50,4 +53,7 @@
 	overflow-y: auto;
 	padding-top: 8px;
 	overflow: hidden;
+}
+.descriptionTrade-myTrades{
+	display: block;
 }

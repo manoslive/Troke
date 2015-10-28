@@ -6,3 +6,7 @@
            version="3.0">
 
 </web-app>
+<context-param>
+<param-name>maxPostSize</param-name>
+<param-value>20000000</param-value>
+</context-param>

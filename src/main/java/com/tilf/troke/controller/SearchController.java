@@ -1,6 +1,6 @@
 package com.tilf.troke.controller;
 
-import com.tilf.troke.domain.SearchFilter;
+import com.tilf.troke.filter.SearchFilter;
 import com.tilf.troke.repository.CustomObjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -43,9 +43,13 @@ public class TransactionController {
     @Autowired
     private ObjectsTransactionRepository objectsTransactionRepository;
 
+    @Autowired
+    private CustomChatMessageRepository customChatMessageRepository;
+
     @PersistenceContext
     private EntityManager entityManager;
 
+    //StartTrade - lorsqu'on click sur un item de la recherche et on veut commencer une transaction
     @RequestMapping(value = "/startTrade", method = RequestMethod.GET)
     public String getUserFromItem(@RequestParam("itemID") int itemID, Model model) {
         model.addAttribute("startTradeOpponent", customUserRepository.getUserFromItem(itemID));
@@ -66,6 +70,45 @@ public class TransactionController {
         return "fragments/home/startTrade";
     }
 
+    //OpenTrade - Lorsqu'on click sur un échange de la page myTrades pour y répondre
+    @RequestMapping(value = "/openTrade", method = RequestMethod.GET)
+    public String openTrade(@RequestParam("transactionID") int tradeID, Model model) {
+        UsersEntity currentUser = authUserContext.getUser();
+        String opponentID = customUserRepository.findOpponentUserID(tradeID, currentUser.getIduser());
+        model.addAttribute("userActif", currentUser);
+        model.addAttribute("opponentID", opponentID);
+        model.addAttribute("transactionID", tradeID);
+
+        //Get les inventaires des 2 users
+        model.addAttribute("UserInventory", customObjectRepository.getListObjectTradeInventory(tradeID,currentUser.getIduser()));
+        model.addAttribute("OpponentInventory", customObjectRepository.getListObjectTradeInventory(tradeID, opponentID));
+
+        //Get les 2 zones d'échanges
+        model.addAttribute("UserTradeItems", customObjectRepository.getTradeObjects(tradeID, currentUser.getIduser()));
+        model.addAttribute("OpponentTradeItems", customObjectRepository.getTradeObjects(tradeID, opponentID));
+
+        //Get les message du Chat
+        model.addAttribute("ChatLog", customChatMessageRepository.getChatLogByTransactionID(tradeID));
+        // TODO THYMELEAF HACK
+        if (false) {
+            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+            context.setVariable("userActif", currentUser);
+            context.setVariable("UserInventory", customObjectRepository.getListObjectTradeInventory(tradeID, currentUser.getIduser()));
+            context.setVariable("OpponentInventory", customObjectRepository.getListObjectTradeInventory(tradeID, opponentID));
+            context.setVariable("UserTradeItems", customObjectRepository.getTradeObjects(tradeID, currentUser.getIduser()));
+            context.setVariable("OpponentTradeItems", customObjectRepository.getTradeObjects(tradeID, opponentID));
+            context.setVariable("ChatLog", customChatMessageRepository.getChatLogByTransactionID(tradeID));
+            context.setVariable("opponentID", opponentID);
+            context.setVariable("transactionID", tradeID);
+        }
+        return "fragments/home/trade";
+    }
+
+    //addTrade - Ajout d'un trade lorsqu'on envoie un échange de la page startTrade
+    //Ajout à Transaction
+    //Ajout à Chat
+    //Ajout à ChatMessage
+    //Ajout à ObjectTransaction
     @RequestMapping(value = "/addTrade", method = RequestMethod.POST)
     public String addNewTrade(@RequestParam("iduser1")String idUser1,
                               @RequestParam("iduser2")String idUser2,
@@ -77,7 +120,7 @@ public class TransactionController {
         newTransaction.setIduser2(idUser2);
         newTransaction.setDatetransaction(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
         newTransaction.setTurn(idUser2);
-        newTransaction.setIscompleted("N");
+        newTransaction.setIscompleted("F");
         transactionRepository.save(newTransaction);
 
         String queryIdTransaction = "select t.idtransaction from TransactionsEntity t ORDER  BY t.idtransaction Desc";
@@ -113,26 +156,63 @@ public class TransactionController {
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
         }
-        return "fragments/home/myTrades";
+        return "redirect:/myTrades";
     }
 
-    // Boutton envoyer l'offre
-    /*@RequestMapping(value = "/sendTrade", method = RequestMethod.GET)
-    public String getItemByIdObject(@RequestParam("idObject") int idobject, Model model) {
-        model.addAttribute("singleobject", customObjectRepository.getObjectEntityByIdObject(idobject));
-        model.addAttribute("adrItem", "/item?idObject=");
-        model.addAttribute("adrStartTrade", "/startTrade?itemID=");
-        model.addAttribute("leftMenu", fillLeftCatMenu());
+    //update - update d'un trade lorsqu'on envoie une contre-offre
+    //update à Transaction
+    //update à ChatMessage
+    //update à ObjectTransaction
+    @RequestMapping(value = "/updateTrade", method = RequestMethod.POST)
+    public String updateTrade(@RequestParam("idTransaction")int transactionID,
+                                @RequestParam("currentUser")String currentUser,
+                                @RequestParam("iduser2")String idUser2,
+                                @RequestParam("chatID")int chatID,
+                                @RequestParam("chatLog")String chatLog,
+                                @RequestParam("tradeObjects")String tradeObjects,
+                                @RequestParam("tradeState")String tradeState)
+    {
+        TransactionsEntity updateTransaction = new TransactionsEntity();
+        updateTransaction.setIdtransaction(transactionID);
+        updateTransaction.setIduser1(currentUser);
+        updateTransaction.setIduser2(idUser2);
+        updateTransaction.setDatetransaction(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+        updateTransaction.setTurn(idUser2);
+        updateTransaction.setIscompleted(tradeState);
+        transactionRepository.save(updateTransaction);
+
+        String queryIdChat = "select c.idchatmessage from ChatmessageEntity c where c.idchat = :idChat";
+        Query queryObject = entityManager.createQuery(queryIdChat);
+        queryObject.setParameter("idChat", chatID);
+        int idChatMessage = (Integer)queryObject.getSingleResult();
+
+        ChatmessageEntity updateChatMessage = new ChatmessageEntity();
+        updateChatMessage.setIdchatmessage(idChatMessage);
+        updateChatMessage.setIdchat(chatID);
+        updateChatMessage.setDateTime(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+        updateChatMessage.setMsg(chatLog);
+        updateChatMessage.setIsread("T");
+        chatmessageRepository.save(updateChatMessage);
+
+        /*Query queryObject2 = entityManager.createQuery("delete from ObjecttransactionEntity o where o.idtransaction = :idTransaction");
+        queryObject2.setParameter("idTransaction",transactionID);
+        queryObject2.executeUpdate();*/
+
+        ObjecttransactionEntity updateTransactionsObjects = new ObjecttransactionEntity();
+        String[] objectIDs = tradeObjects.split(";");
+
+        for(int i = 0; i < objectIDs.length; i++)
+        {
+            updateTransactionsObjects.setIdobject(Integer.parseInt(objectIDs[i]));
+            updateTransactionsObjects.setIdtransaction(transactionID);
+            objectsTransactionRepository.save(updateTransactionsObjects);
+        }
 
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("singleobject", customObjectRepository.getObjectEntityByIdObject(idobject));
-            context.setVariable("adrItem", "/item?objectName=");
-            context.setVariable("leftMenu", fillLeftCatMenu());
-            context.setVariable("adrStartTrade", "/startTrade?itemID=");
         }
+        return "redirect:/myTrades";
+    }
 
-        return "fragments/home/search";
-    }*/
 }

@@ -1,9 +1,8 @@
 package com.tilf.troke.controller;
 
 import com.tilf.troke.auth.AuthUserContext;
-import com.tilf.troke.domain.SearchFilter;
+import com.tilf.troke.filter.SearchFilter;
 import com.tilf.troke.domain.UserSignupForm;
-import com.tilf.troke.entity.UsersEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
