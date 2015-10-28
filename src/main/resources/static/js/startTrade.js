@@ -5,7 +5,8 @@ function makeIDList(){
     var x = document.getElementsByClassName("itemID");
     var i;
     for (i = 0; i < x.length; i++) {
-        document.getElementById("tradeObjectsID").value += x[i].innerHTML + ";";
+        alert("id: "+x[i].value);
+        document.getElementById("tradeObjectsID").value += x[i].value + ";";
     }
     document.getElementById("startTradeForm").submit();
 }
@@ -93,7 +94,7 @@ function init() {
                         .animate({  width: "80px", height: "60px" , maxWidth: "80px", maxHeight: "60px" });
                 });
             }
-            $item.find("span").addClass("itemID");
+            $item.find("input").addClass("itemID");
         });
     }
     // item recycle Opposant function
@@ -102,8 +103,9 @@ function init() {
         $item.fadeOut(function() {
             $item.find(".divInputMoney").replaceWith("<img class='item-image' src='images/item-dollar-sign.png' alt=''>");
             $item
-                .find(".itemID")
-                .remove()
+                .find("input")
+                .removeClass("itemID")
+                .end()
                 .find( ".icon-refresh" )
                 .remove()
                 .end()

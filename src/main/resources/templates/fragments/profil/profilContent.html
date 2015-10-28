@@ -1,58 +1,95 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <body>
-        <div th:fragment="profilContent">
-            <div class="mainDiv" style="font-family:Amaranth">
+<body>
+<div th:fragment="profilContent">
+    <div class="mainDiv" style="font-family:Amaranth">
 
-                <div class="leftDiv">
-                    <form th:action="@{/UpdateUser}" method="post" id="formUser">
-                    <div class="profilDiv">
+        <div class="leftDiv">
+            <form th:action="@{/UpdateUser}" method="post" id="formUser">
+                <div class= "profilWelcome">
+                    <h3 style="text-align:center;padding-top:1%;" th:text="${userActif.getIduser()}"/>
+                </div>
 
-                        <div class = "profilPhotoDiv">
-                            <div id="avatarProfil" src="#" alt="avatar" class="avatarProfil">
-                                <div id="avatarOverlay" style="">
-                                    <div id="avatarPlus" disabled="disabled">
-                                        <!--<p id="textFileExplorer" style="left:4%; top:15%;">Changer votre <br> image de profil<p>-->
-                                        <input id="fileExplorer" type="file" onchange="PreviewImage(this.value);" />
-                                    </div>
+
+                <div class="profilDiv">
+
+
+                    <div class = "profilPhotoDiv">
+                        <div id="avatarProfil" src="#" alt="avatar" class="avatarProfil">
+                            <div id="avatarOverlay" style="height:100%">
+                                <div id="avatarPlus" disabled="disabled">
+                                    <!--<p id="textFileExplorer" style="left: 4%;top:25%;text-align:center;">Changer votre <br> image de profil<p>-->
+                                    <input id="fileExplorer" type="file" onchange="PreviewImage(this.value);" />
                                 </div>
                             </div>
-                        </div>
-
-                        <div class = "profilInfoDiv">
-
-                            <div class = "profilLeftDiv">
-                                <!--</br>-->
-                                <input class="signup-full" name="profile-username" placeholder="Nom d'usager" type="text" tabindex="1" th:value="${userActif.getIduser()}"/>
-                                <input class="signup-full" name="profile-prenom" placeholder="Prénom" type="text" tabindex="2" th:value="${userActif.getFirstname()}"/>
-                                <input class="signup-full" name="profile-nomfamille" placeholder="Nom de famille" type="text" tabindex="3" th:value="${userActif.getLastname()}"/>
-
-                            </div>
-
-                            <div class = "profilRightDiv">
-                               <!-- </br>-->
-                                <input class="signup-full phone_ca" name="profile-telephone" placeholder="Telephone" id="phone" type="text" tabindex="1" th:value="${userActif.getTelephone()}"/>
-                                <input class="signup-full zipcode" name="profile-codepostal" placeholder="Code Postal" type="text" tabindex="3" th:value="${userActif.getZipcode()}"/>
-                                <input class="signup-full" name="profile-email" placeholder="Email" type="text" tabindex="3" th:value="${userActif.getEmail()}"/>
-                            </div>
-
-                            <div class = "profilInfoButtons">
-                                <div class="BTN_Change">
-                                    <a href="/openModalPassword" class="btn btn-sm animated-button thar-four" style="font-weight:normal">Changement du mot de passe
-                                    </a>
-                                    <a class="btn btn-sm animated-button thar-four" onclick="formsubmit()" style="font-weight:normal">Enregistrer les modifications</a>
-                                </div>
-
-                            </div>
-
                         </div>
                     </div>
-                    </form>
-                    <div class="coteDiv">
 
-                        <div style="margin: auto; width: 200px; height:60%; padding-top:10%; text-align:center;">
-                            <label style="font-weight:normal">Transaction # 23</label>
-                            <label style="font-weight:normal">2015-09-22 10:22:00 PM</label>
+                    <!--<div class = "profilPhotoDiv">
+                        <div id="avatarProfil" src="#" alt="avatar" class="avatarProfil">
+                            <div id="avatarOverlay" style="height:100%">
+                                <div id="avatarPlus" disabled="disabled">
+                                   <p id="textFileExplorer" style="left:4%; top:15%;">Changer votre <br> image de profil<p>
+                                    <input id="fileExplorer" type="file" onchange="PreviewImage(this.value);" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+
+                    <div class = "profilInfoDiv">
+
+
+
+                        <div class = "profilLeftDiv">
+                            <!--</br>-->
+                            <span name="label-prenom" style="font-weight:normal" th:text="Prénom"/>
+                            <input class="signup-full" name="profile-prenom" placeholder="Prénom" type="text" tabindex="2" style="color:black" th:value="${userActif.getFirstname()}"/>
+                            <span name="label-codepostal" style="font-weight:normal" th:text="Code-Postal"/>
+                            <input class="signup-full zipcode" name="profile-codepostal" placeholder="Code Postal" type="text" tabindex="3" style="color:black" th:value="${userActif.getZipcode()}"/>
+
+
+
+                        </div>
+
+                        <div class = "profilRightDiv">
+                            <!-- </br>-->
+                            <span name="label-codepostal" style="font-weight:normal" th:text="Nom-de-famille"/>
+                            <input class="signup-full" name="profile-nomfamille" placeholder="Nom de famille" type="text" tabindex="3" style="color:black" th:value="${userActif.getLastname()}"/>
+                            <span name="label-codepostal" style="font-weight:normal" th:text="Telephone"/>
+                            <input class="signup-full phone_ca" name="profile-telephone" placeholder="Telephone" id="phone" type="text" tabindex="1" style="color:black" th:value="${userActif.getTelephone()}"/>
+
+
+                        </div>
+
+                        <div class="emailDiv">
+                            <span name="label-email" style="font-weight:normal" th:text="Email"/>
+                            <input class="signup-full" name="profile-email" placeholder="Email" type="text" tabindex="3" style="color:black" th:value="${userActif.getEmail()}"/>
+                        </div>
+
+
+
+                    </div>
+
+
+                </div>
+                <div class = "profilInfoButtons">
+                    <div class="BTN_Change">
+                        <a href="/openModalPassword" class="btn btn-sm animated-button thar-four" style="font-weight:normal; width:50%">Changement du mot de passe</a>
+                        <a class="btn btn-sm animated-button thar-four" onclick="formsubmit()" style="font-weight:normal; width:50%;
+                        text-transform:uppercase; letter-spacing:0.1em; border-radius:0px">Enregistrer les modifications</a><br/>
+                        <a href="#openModalAjouter" class="btn btn-sm animated-button thar-four" style="width:50%; font-weight:normal;" >Ajouter Un Item / Service </a>
+
+                    </div>
+
+
+                </div>
+            </form>
+            <div class="coteDiv">
+
+                <div style="margin: auto; width: 200px; height:60%; text-align:center;">
+                    <div class="innerCote">
+                    <label style="font-weight:normal">Transaction # 23</label>
+                    <label style="font-weight:normal">2015-09-22 10:22:00 PM</label>
                             <span class="starRating">
                             <input id="rating5" type="radio" name="rating" value="5"/>
                             <label style="cursor:pointer;">5</label>
@@ -65,96 +102,97 @@
                             <input id="rating1" type="radio" name="rating" value="1"/>
                             <label style="cursor:pointer;">1</label>
                             </span>
-                        </div>
                     </div>
-                </div><!-- fin LeftDiv -->
+                </div>
+            </div>
+        </div><!-- fin LeftDiv -->
 
-                <div class="rightDiv">
+        <div class="rightDiv">
 
-                    <div class="container main-container" style="height:100%;">
+            <div class="container main-container" style="height:100%;">
 
-                        <div id="carousel-example-generic" style="height:100%" class="carousel slide">
-                            <!-- Indicators -->
-
-
-                            <ol class="carousel-indicators">
-                                <th:block th:each="invent : ${userInventory}">
-                                    <li data-target="#carousel-example-generic"
-                                        th:data-slide-to="${inventStat.index}"  th:class="*{inventStat.index eq 0} ? 'active' : ''"></li>
-                                </th:block>
-                            </ol>
+                <div id="carousel-example-generic" style="height:100%" class="carousel slide">
+                    <!-- Indicators -->
 
 
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner" style="height:100%" role="listbox">
+                    <ol class="carousel-indicators">
+                        <th:block th:each="invent : ${userInventory}">
+                            <li data-target="#carousel-example-generic"
+                                th:data-slide-to="${inventStat.index}"  th:class="*{inventStat.index eq 0} ? 'active' : ''"></li>
+                        </th:block>
+                    </ol>
+
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" style="height:100%" role="listbox">
 
 
 
-                                <th:block th:each="invent : ${userInventory}" th:for="${'invent' + inventStat.index }">
-                                <!-- Second slide -->
+                        <th:block th:each="invent : ${userInventory}" th:for="${'invent' + inventStat.index }">
+                            <!-- Second slide -->
 
 
-                                <div  th:class="*{inventStat.index eq 0} ? 'item active skyblue' : 'item skyblue'">
-                                    <div class="carousel-caption" style="top:5%">
-                                        <h3 class="icon-container">
-                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
-                                            <div class="circular"><img src="images/UnknownUserJPG.jpg" alt="" class="circularimage" /></div>
+                            <div  th:class="*{inventStat.index eq 0} ? 'item active skyblue' : 'item skyblue'">
+                                <div class="carousel-caption" style="top:5%">
+                                    <h3 class="icon-container">
+                                        <!--<span class="glyphicon glyphicon-glass"></span>-->
+                                        <div class="circular"><img src="images/LogoWorld_Transparence.png" alt="" class="circularimage" /></div>
 
-                                        </h3>
-                                        <h3 class="icon-container" >
-                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
-                                            <div class="circular"><img src="images/UnknownUserJPG.jpg" alt="" class="circularimage" /></div>
+                                    </h3>
+                                    <h3 class="icon-container" >
+                                        <!--<span class="glyphicon glyphicon-glass"></span>-->
+                                        <div class="circular"><img src="images/LogoWorld_Transparence.png" alt="" class="circularimage" /></div>
 
-                                        </h3>
-                                        <h3 class="icon-container" >
-                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
-                                            <div class="circular"><img src="images/UnknownUserJPG.jpg" alt="" class="circularimage" /></div>
+                                    </h3>
+                                    <h3 class="icon-container" >
+                                        <!--<span class="glyphicon glyphicon-glass"></span>-->
+                                        <div class="circular"><img src="images/LogoWorld_Transparence.png" alt="" class="circularimage" /></div>
 
-                                        </h3>
-                                        <h3 class="icon-container" >
-                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
-                                            <div class="circular"><img src="images/UnknownUserJPG.jpg" alt="" class="circularimage" /></div>
+                                    </h3>
+                                    <h3 class="icon-container" >
+                                        <!--<span class="glyphicon glyphicon-glass"></span>-->
+                                        <div class="circular"><img src="images/LogoWorld_Transparence.png" alt="" class="circularimage" /></div>
 
-                                        </h3>
+                                    </h3>
 
-                                        <!-- nom de l'objet -->
-                                        <h3 data-animation="animated flipInX" style="font-size:18px; background-color:transparent; text-transform:uppercase;
+                                    <!-- nom de l'objet -->
+                                    <h3 data-animation="animated flipInX" style="font-size:18px; background-color:transparent; text-transform:uppercase;
 							                letter-spacing:.08em" th:text="${invent.getNameObject()}">
-                                        </h3>
+                                    </h3>
 
-                                        <!-- text de l'objet -->
-                                        <h3 data-animation="animated flipInX" style="font-size:14px;" th:text="${invent.getDescObject()}"></h3>
+                                    <!-- text de l'objet -->
+                                    <h3 data-animation="animated flipInX" style="font-size:14px;" th:text="${invent.getDescObject()}"></h3>
 
 
-                                        <div class="divAMS">
-                                            <a href="#openModalAjouter"><button class="buttonAjout" >Ajouter</button></a>
-                                            <button class="buttonModif">Modifier</button>
-                                            <button class="buttonSupp">Supprimer</button>
-                                        </div>
+                                    <div class="divAMS">
+                                        <a href="#openModalAjouter"><button class="buttonAjout" >Ajouter</button></a>
+                                        <button class="buttonModif">Modifier</button>
+                                        <button class="buttonSupp">Supprimer</button>
                                     </div>
-                                </div><!-- /.item -->
+                                </div>
+                            </div><!-- /.item -->
 
 
 
-                                </th:block>
-                            </div><!-- /.carousel-inner -->
+                        </th:block>
+                    </div><!-- /.carousel-inner -->
 
-                            <!-- Controls -->
-                            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div><!-- /.carousel -->
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div><!-- /.carousel -->
 
-                    </div><!-- /.container main-container -->
+            </div><!-- /.container main-container -->
 
-                </div> <!-- fin RightDiv -->
+        </div> <!-- fin RightDiv -->
 
-            </div><!-- fin mainDiv -->
-        </div> <!-- fin Fragment -->
-    </body>
+    </div><!-- fin mainDiv -->
+</div> <!-- fin Fragment -->
+</body>
 </html>

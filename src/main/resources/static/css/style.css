@@ -69,8 +69,7 @@
     color: #FFF;
     font-family: 'Offside';
     font-size: 25px;
-    margin-bottom: 25px;
-    margin-top: 25px;
+    height:auto;
 }
 .navbar-fixed {
     top: 0;
@@ -250,7 +249,7 @@
 }
 
 .BTN_Change {
-    display: block;
+    display:inline-flex;
 
 }
 
@@ -397,6 +396,31 @@
     color: #ffffff !important;
     opacity: 100 !important;
     text-decoration: none;
+}
+.cancel {
+    background: #ffffff;
+    color: #000000;
+    line-height: 25px;
+    position: absolute;
+    left: -12px;
+    text-align: center;
+    top: 96%;
+    width: 60px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+    opacity:100 !important;
+}
+.cancel:hover {
+    background: #00ADEE;
+    color:#ffffff !important;
+    opacity:100 !important;
+
 }
 
 /* Modal connexion */
