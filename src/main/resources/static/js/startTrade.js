@@ -5,6 +5,7 @@ function makeIDList(){
     var x = document.getElementsByClassName("itemID");
     var i;
     for (i = 0; i < x.length; i++) {
+        alert("id: "+x[i].value);
         document.getElementById("tradeObjectsID").value += x[i].value + ";";
     }
     document.getElementById("startTradeForm").submit();
