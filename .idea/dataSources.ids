@@ -26,13 +26,10 @@
       <column name="MSG" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
       <column name="DATE_TIME" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
       <column name="IDCHAT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="IDUSER" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
       <column name="ISREAD" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
       <primary-key name="PRIMARY" columns="IDCHATMESSAGE"/>
       <foreign-key name="CHATMESSAGE_CHAT_FK" columns="IDCHAT" ref-table="chat" ref-schema="" ref-catalog="troke" ref-columns="IDCHAT" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="CHATMESSAGE_USERS_FK" columns="IDUSER" ref-table="users" ref-schema="" ref-catalog="troke" ref-columns="IDUSER" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="CHATMESSAGE_CHAT_FK" unique="false" columns="IDCHAT"/>
-      <index name="CHATMESSAGE_USERS_FK" unique="false" columns="IDUSER"/>
     </table>
     <table name="imageobject" schema="" catalog="troke" type="TABLE">
       <column name="IDIMAGESOBJECT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -48,7 +45,7 @@
       <column name="IDOBJECT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="ESTVALUE" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="IDOBJECTRATING"/>
-      <foreign-key name="OBJECTRATING_OBJECT_FK" columns="IDOBJECT" ref-table="objects" ref-schema="" ref-catalog="troke" ref-columns="IDOBJECT" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="OBJECTRATING_OBJECT_FK" columns="IDOBJECT" ref-table="objects" ref-schema="" ref-catalog="troke" ref-columns="IDOBJECT" update-rule="3" delete-rule="0" deferrability="2"/>
       <index name="OBJECTRATING_OBJECT_FK" unique="false" columns="IDOBJECT"/>
     </table>
     <table name="objects" schema="" catalog="troke" type="TABLE">
@@ -73,7 +70,7 @@
       <index name="OBJECT_USERS_FK" unique="false" columns="IDUSER"/>
     </table>
     <table name="objecttransaction" schema="" catalog="troke" type="TABLE">
-      <column name="IDOBJECT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="IDOBJECT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="IDTRANSACTION" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="IDOBJECT,IDTRANSACTION"/>
       <foreign-key name="OBJECTTRAN_OBJECT_FK" columns="IDOBJECT" ref-table="objects" ref-schema="" ref-catalog="troke" ref-columns="IDOBJECT" update-rule="3" delete-rule="3" deferrability="2"/>
@@ -129,7 +126,6 @@
       <column name="PERMISSIONLEVEL" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="ISVIP" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
       <primary-key name="PRIMARY" columns="IDUSER"/>
-      <exported-key name="CHATMESSAGE_USERS_FK" table="chatmessage" schema="" catalog="troke" columns="IDUSER"/>
       <exported-key name="OBJECT_USERS_FK" table="objects" schema="" catalog="troke" columns="IDUSER"/>
       <exported-key name="TRANSACTION_USER1_FK" table="transactions" schema="" catalog="troke" columns="IDUSER1"/>
       <exported-key name="TRANSACTION_USER2_FK" table="transactions" schema="" catalog="troke" columns="IDUSER2"/>

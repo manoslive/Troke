@@ -1,0 +1,504 @@
+#pageTroker{
+	height: 100%;
+	overflow: auto;
+	cursor: default;
+	position: static;
+}
+.tradePage{
+	margin-top: 1%;
+	height: 84.5%;
+}
+/* Zone UserInventory */
+#UserInventory {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: normal;
+	background-color: #30697D;
+	float: left;
+	height: 100%;
+	list-style: none;
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: static;
+	border: 2px solid #003042;
+}
+.UserInventory-header{
+	text-align: center;
+	color: white;
+	margin: 0;
+	border: 2px solid #00374C;
+	background: #00374C;
+}
+#UserInventory.custom-state-active {
+	background: #eee;
+}
+#UserInventory li {
+	float: left;
+	width: 44%;
+	max-width: 120px;
+	height:125px;
+	margin: 0.4em 0.4em 0.4em 0.4em;
+	text-align: center;
+	cursor:move;
+	border-radius: 4px;
+	z-index: 1000;
+	display: list-item;
+	overflow: hidden;
+	border: 1px solid #00374C;
+}
+#UserInventory li h5 {
+	text-align: center;
+	color: white;
+	margin: 0;
+	border: 2px solid #00374C;
+	background: #00374C;
+}
+#UserInventory li .icon-zoom  {
+	float: left;
+	width: 20px;
+	height:20px;
+	cursor: pointer;
+}
+#UserInventory li .icon-exchange {
+	float: right;
+	width: 20px;
+	height:20px;
+	cursor: pointer;
+}
+#UserInventory li img {
+	width: 100%;
+	cursor: move;
+	height: 80px;
+}
+.UserItem .OpponentItem{
+	border: 2px solid #19586F;
+	background-color: #ccc;
+	border-style: ridge;
+	-webkit-box-shadow: inset 0 0 3px #000;
+	-ms-box-shadow: inset 0 0 3px #000;
+	box-shadow: inset 0 0 3px #000;
+}
+.lb-money{
+	width:10%;
+}
+.inputMoney{
+	width:80%;
+}
+.divInputMoney{
+	width: 96%;
+	margin: 30% 0 10% 0;
+}
+/* Zone OpponentInventory */
+#OpponentInventory {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: normal;
+	background-color: #30697D;
+	height: 100%;
+	list-style: none;
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: static;
+	border: 2px solid #003042;
+}
+.OpponentInventory-header{
+	text-align: center;
+	color: white;
+	margin: 0;
+	border: 2px solid #00374C;
+	background: #00374C;
+}
+#OpponentInventory.custom-state-active {
+	background: #eee;
+}
+#OpponentInventory li {
+	float: left;
+	width: 44%;
+	max-width: 120px;
+	height:125px;
+	margin: 0.4em 0.4em 0.4em 0.4em;
+	text-align: center;
+	cursor:move;
+	z-index: 1000;
+	display: list-item;
+	overflow: hidden;
+	border-radius: 4px;
+	border: 1px solid #00374C;
+}
+#OpponentInventory li h5 {
+	text-align: center;
+	color: white;
+	margin: 0;
+	border: 2px solid #00374C;
+	background: #00374C;
+}
+#OpponentInventory li .icon-zoom  {
+	float: left;
+	width: 20px;
+	height:20px;
+	cursor: pointer;
+}
+#OpponentInventory li .icon-exchange {
+	float: right;
+	width: 20px;
+	height:20px;
+	cursor: pointer;
+}
+#OpponentInventory li img {
+	width: 100%;
+	max-width: 100px;
+	height: 80px;
+	cursor: move;
+}
+/* éléments qui englobe les 2 zones d'échanges' */
+#exchangeZone{
+	height: 100%;
+	position: static;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: normal;
+}
+.btn-offre{
+	margin: 0 0 5px 0 !important;
+	width: 48%;
+	height: 52px;
+	color: white;
+	font-weight:normal !important;
+	text-transform: none !important;
+	font-size: 18px !important;
+	z-index: 1;
+}
+.exchangeZoneHeader{
+	text-align: center !important;
+	color: white !important;
+	margin: 0 !important;
+	border: 2px solid #00374C !important;
+	background: #00374C !important;
+}
+/* Zone Echange User */
+#UserExchange {
+	background: #30697D;
+	width: 100%;
+	display: inline-block;
+	height: 100%;
+	max-height: 147px;
+	list-style: none;
+	overflow-y: hidden;
+	overflow-x: auto;
+	border: 2px solid #003042;
+}
+#UserExchange h4 .ui-icon {
+	float: left;
+}
+#UserExchange .UserInventory h5 {
+	display: none;
+}
+#UserExchange li {
+	float: left;
+	width: 96px;
+	height:115px;
+	max-height: 115px;
+	margin: 0.8em 0.4em 0.4em 0.4em;
+	text-align: center;
+	cursor:move;
+	display: list-item;
+	overflow: hidden;
+	border-radius: 4px;
+	border: 1px solid #00374C;
+}
+#UserExchange li .icon-refresh{
+	float: right;
+	width: 20px;
+	height:20px;
+	cursor: pointer;
+}
+/* Zone Echange Opposant Pour la page démarer trok*/
+#opponentExchangeItemsStart{
+	background: #30697D;
+	width: 100%;
+	display: inline-block;
+	height: 210px;
+	list-style: none;
+	overflow-y: auto;
+	overflow-x: hidden;
+	border: 2px solid #003042;
+}
+#opponentExchangeItemsStart h4 .ui-icon {
+	float: left;
+}
+#opponentExchangeItemsStart .OpponentInventory h5 {
+	display: none;
+}
+#opponentExchangeItemsStart li {
+	float: left;
+	width: 96px;
+	height:115px;
+	margin: 0.8em 0.4em 0.4em 0.4em;
+	text-align: center;
+	cursor:move;
+	display: list-item;
+	overflow: hidden;
+	border-radius: 4px;
+	border: 1px solid #00374C;
+}
+#opponentExchangeItemsStart li .icon-refresh{
+	float: right;
+	width: 20px;
+	height:20px;
+	cursor: pointer;
+}
+/* Zone Echange Opposant */
+#OpponentExchange {
+	background: #30697D;
+	width: 100%;
+	display: inline-block;
+	height: 100%;
+	max-height: 147px;
+	list-style: none;
+	overflow-y: hidden;
+	overflow-x: auto;
+	border: 2px solid #003042;
+}
+#OpponentExchange h4 {
+	text-align: center;
+	color: white;
+	margin: 0;
+	border: 2px solid #00374C;
+	background: #00374C;
+}
+#OpponentExchange h4 .ui-icon {
+	float: left;
+}
+#OpponentExchange .OpponentInventory h5 {
+	display: none;
+}
+#OpponentExchange li {
+	float: left;
+	width: 96px;
+	height:115px;
+	margin: 0.8em 0.4em 0.4em 0.4em;
+	text-align: center;
+	cursor:move;
+	display: list-item;
+	overflow: hidden;
+	border-radius: 4px;
+	border: 1px solid #00374C;
+}
+#OpponentExchange li .icon-refresh{
+	float: right;
+	width: 20px;
+	height:20px;
+	cursor: pointer;
+}
+/* Zone Clavardage */
+#zoneChat{
+	width: 100%;
+}
+#chatBoxStartExchange{
+	width: 100%;
+	height: 179px;
+	resize: none;
+	background-color: white;
+	pointer-events: none;
+}
+#chatBox{
+	width: 100%;
+	height: 107px;
+	background-color: white;
+}
+#chatEnter{
+	width: 80%;
+}
+#btn-enter{
+	width: 20%;
+	float: right;
+}
+/* Option Info Item Button */
+.montantArgent{
+	font-size: 14px;
+}
+.icon-zoom  {
+	float: left;
+	width: 20px;
+	height:20px;
+	cursor: pointer;
+	text-indent:-9999px;
+	display: block;
+}
+.link-zoom{
+	width: inherit;
+	height: inherit;
+	cursor: pointer;
+	position: relative;
+	display: block;
+	z-index: 1;
+}
+.btn-zoom{
+	background-image:url('../images/zoom_icon.png');
+	float: left;
+	width: 20px;
+	height:20px;
+	cursor: pointer;
+	text-indent:-9999px;
+	display: block;
+}
+.follower{
+	width: inherit;
+	height: inherit;
+	position: inherit;
+}
+/* Les highlight des zones pour guider le user */
+.ui-state-highlight{
+	background: white !important;
+}
+.custom-state-active{
+	background: white !important;
+}
+/*Open Modal Info Item Overlay*/
+.modal-box {
+	position: fixed;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.3);
+	z-index: 99999;
+	opacity:0;
+	/*-webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;*/
+	pointer-events: none;
+}
+.modal-box-show {
+	opacity:1;
+	pointer-events: auto;
+}
+.modal-box > div {
+	width: 600px;
+	height: inherit;
+	position: relative;
+	margin: 1% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #999);
+	background: -webkit-linear-gradient(#fff, #999);
+	background: -o-linear-gradient(#fff, #999);
+}
+.modal-overlay {
+	opacity: 0;
+	filter: alpha(opacity=0);
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 900;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.3) !important;
+}
+.close {
+	background: #ffffff;
+	color: #000000;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+	opacity:100 !important;
+}
+.close:hover {
+	background: #00ADEE;
+	color:#ffffff !important;
+	opacity:100 !important;
+
+}
+/* Spacer */
+.or-spacer {
+	width: 450px;
+	position: relative;
+	margin: auto;
+}
+.or-spacer .mask {
+	overflow: hidden;
+	height: 10px;
+}
+.or-spacer .mask:after {
+	content: '';
+	display: block;
+	margin: -25px auto 0;
+	width: 100%;
+	height: 25px;
+	border-radius: 125px / 12px;
+	box-shadow: 0 0 8px black;
+}
+/* Éléments du Modal Info Item*/
+#mainImage{
+	width: 250px;
+	height: 250px;
+	border: 2px groove black;
+}
+#divSubImages {
+	float:left;
+	border: 2px groove black;
+	background-color: darkgray !important;
+	border: 1px solid dimgray !important;
+	padding-top: 5px;
+	overflow: hidden;
+	width: 100%;
+	height: 20%;
+}
+.subImage{
+	width: 50px;
+	height: 50px;
+}
+#description{
+	float:right;
+	width:50%;
+	height: 348px;
+	margin: auto;
+	border: 1px solid dimgray;
+}
+/* Scroll image infoItem */
+#divSubImages img, #mainImage {
+	border: 1px solid gray;
+	padding: 4px;
+	background-color: white;
+	cursor: pointer;
+}
+#divSubImages img {
+	float: left;
+	margin: 2.4%;
+}
+#panel {
+	position: relative;
+}
+#gallery{
+	height: 370px;
+	display: inline-block;
+}
+.ui-widget-header{
+	font-weight:normal !important;
+}
+/* Container pour les divs échanges qui permet le scroll horizontal */
+.container-outer {
+	overflow: hidden;
+	width: 100%;
+	max-height: 127px !important;
+	height: 150px;
+}
+.container-inner {
+	width: 1020px !important;
+	height: 107px;
+	max-height: 120px !important;
+	background: #30697D;
+	border:none !important;
+}

@@ -117,6 +117,7 @@ public class HomeController {
             model.addAttribute("userActif", user);
             List<ObjectsEntity> list = customObjectRepository.getListObjectByUserId(authContext.getUser().getIduser());
             model.addAttribute("userInventory", list);
+            model.addAttribute("idObjectDelete", null);
 
             // TODO THYMELEAF HACK
             if (false) {

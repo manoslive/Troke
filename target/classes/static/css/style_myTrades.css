@@ -1,0 +1,59 @@
+.myTrades{
+	height: 100%;
+	margin: auto; 
+	overflow: auto;
+	background:#00455F;
+}
+.myTrades {
+	font-weight: normal;
+    background-color: #30697D;
+    height: 98%;
+    list-style: none;
+	border: 2px solid #003042;
+	overflow-y: auto;
+	padding-top: 20px;
+}
+.myTrades li {
+	margin: 6px;
+	padding: 0px;
+	height: 85%;
+	width: 22%;
+	text-align: center; 
+	cursor:pointer;
+	border-radius: 4px;
+	z-index: 1000;
+	border: 1px solid #00374C;
+	background-color: white;
+	display: inline-table;
+}
+.myTrades li header {
+    text-align: center;
+    color: white;
+    margin: 0;
+    border: 2px solid #00374C;
+    background: #00374C;
+}
+.myTrades li a {
+	cursor: pointer;
+}
+.loadContent{
+  	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+.section-Trades{
+	height:33%;
+}
+.titre-Trades{
+	font-weight: normal;
+    background-color: #30697D;
+    height: 40px;
+    list-style: none;
+	border: 2px solid #003042;
+	overflow-y: auto;
+	padding-top: 8px;
+	overflow: hidden;
+}
+.descriptionTrade-myTrades{
+	display: block;
+}

@@ -149,26 +149,8 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository{
     }
 
     @Override
-    public List<ObjectsEntity> getListObjectTradeInventory(int transactionID,String userId)
+    public void deleteObjectEntityByIdObject(int id_object)
     {
-        String query = "select o from ObjectsEntity o where o.iduser = :userID and o.idobject not in " +
-                        "(select o from ObjectsEntity o where o.iduser = :userID and o.idobject in " +
-                        "(select ot.idobject from ObjecttransactionEntity ot where ot.idtransaction = :idTransaction))";
-        Query queryObject = entityManager.createQuery(query);
-        queryObject.setParameter("userID", userId);
-        queryObject.setParameter("idTransaction", transactionID);
-        List<ObjectsEntity> LObject = (List<ObjectsEntity>) queryObject.getResultList();
-        return LObject;
-    }
 
-    //GetLesItems d'un user qui sont en échange selon le userID(proprio des items) et le ID du trade
-    @Override
-    public List<ObjectsEntity> getTradeObjects(int transactionID, String userID){
-        String query = "select o from ObjectsEntity o where o.iduser = :idUser and o.idobject in (select ot.idobject from ObjecttransactionEntity ot where ot.idtransaction = :idTransaction)";
-        Query queryObject = entityManager.createQuery(query);
-        queryObject.setParameter("idTransaction", transactionID);
-        queryObject.setParameter("idUser", userID);
-        List<ObjectsEntity> LObject = (List<ObjectsEntity>) queryObject.getResultList();
-        return LObject;
     }
 }

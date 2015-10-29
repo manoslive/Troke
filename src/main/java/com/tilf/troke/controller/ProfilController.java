@@ -3,14 +3,17 @@ package com.tilf.troke.controller;
 import com.tilf.troke.auth.AuthUserContext;
 import com.tilf.troke.entity.ObjectsEntity;
 import com.tilf.troke.entity.UsersEntity;
+import com.tilf.troke.repository.CustomObjectRepository;
 import com.tilf.troke.repository.ObjectRepository;
 import com.tilf.troke.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.thymeleaf.context.WebContext;
 
 import javax.servlet.http.HttpSession;
 import java.util.Calendar;
@@ -28,6 +31,10 @@ public class ProfilController {
     private UserRepository userRepository;
     @Autowired
     private AuthUserContext authContext;
+
+    @Autowired
+    private CustomObjectRepository customObjectRepository;
+
 
     @RequestMapping(value="/addObject", method= RequestMethod.POST)
     public String addObjectInventory(@ModelAttribute("object")ObjectsEntity object,
@@ -103,5 +110,36 @@ public class ProfilController {
 
         authContext.setUser(userActif);
         return "redirect:/profil";
+    }
+
+    @RequestMapping(value="/deleteObject", method = RequestMethod.POST)
+    public String Objectdelete(HttpSession session)
+    {
+        String id = (String)session.getAttribute("idObjectDelete");
+
+        ObjectsEntity objectToDelete = customObjectRepository.getObjectEntityByIdObject(Integer.parseInt(id));
+        objectRepository.delete(objectToDelete);
+
+
+        return "redirect:/profil";
+    }
+
+    @RequestMapping(value="/openModalDelete", method = RequestMethod.POST)
+    public String modalDeleteOpen(Model model,
+                                  @RequestParam("idobject")String id_object,
+                                  HttpSession session)
+    {
+        ObjectsEntity object = customObjectRepository.getObjectEntityByIdObject(Integer.parseInt(id_object));
+        //model.addAttribute("idObjectDelete", id_object);
+        session.setAttribute("idObjectDelete", id_object);
+
+
+        // TODO THYMELEAF HACK
+        if (false) {
+            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+            context.setVariable("idObjectDelete", id_object);
+
+        }
+            return "redirect:/profil#openModalDelete";
     }
 }
