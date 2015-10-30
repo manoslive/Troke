@@ -51,12 +51,14 @@ public class SearchController {
         model.addAttribute("objectList", customObjectRepository.getObjectsBySubCategory(subCategoryName));
         searchFilter.put(subCategoryName, subCatIsChecked);
         model.addAttribute("leftMenu", fillLeftCatMenu());
+        model.addAttribute("adrStartTrade", "/startTrade?itemID=");
 
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("objectList", customObjectRepository.getObjectsBySubCategory(subCategoryName));
             context.setVariable("leftMenu", fillLeftCatMenu());
+            context.setVariable("adrStartTrade","/startTrade?itemID=" );
         }
         return "fragments/home/search";
     }
@@ -85,6 +87,7 @@ public class SearchController {
     public String searchDB(@RequestParam("keyword") String keyword, Model model) {
         model.addAttribute("searchObjectList", customObjectRepository.getObjectListByKeyword(keyword));
         model.addAttribute("adrSearch", "/searchDB?keyword=");
+        model.addAttribute("adrStartTrade", "/startTrade?itemID=");
         model.addAttribute("leftMenu", fillLeftCatMenu());
         // On vide les checkbox
         searchFilter.getFilters().clear();
@@ -95,6 +98,7 @@ public class SearchController {
             context.setVariable("searchObjectList", customObjectRepository.getObjectListByKeyword(keyword));
             context.setVariable("adrSearch", "/searchDB?keyword=");
             context.setVariable("leftMenu", fillLeftCatMenu());
+            context.setVariable("adrStartTrade","/startTrade?itemID=" );
         }
         return "fragments/home/search";
     }
