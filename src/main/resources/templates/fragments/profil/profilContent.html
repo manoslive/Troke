@@ -163,19 +163,24 @@
                                     <!-- text de l'objet -->
                                     <h3 data-animation="animated flipInX" style="font-size:14px;" th:text="${invent.getDescObject()}"></h3>
 
-                                    <form th:action="@{/openModalDelete}" method="post" id="delete">
+
                                     <div class="divAMS">
                                         <a href="#openModalAjouter" class="btn btn-sm animated-button thar-four" style="width:50%; font-weight:normal;" >Modifier</a>
-                                        <a class="btn btn-sm animated-button thar-four" style="width:50%; font-weight:normal;" onclick="modalSubmit()" >Supprimer</a>
-                                        <input type="hidden" th:value="${invent.getIdobject()}" name="idobject"/>
+
+                                            <a class="btn btn-sm animated-button thar-four" style="width:50%; font-weight:normal;" th:onclick="'javascript:modalSubmit(\''+${invent.getIdobject()}+'\')'" >Supprimer</a>
+
                                     </div>
-                                </form>
+
                                 </div>
                             </div><!-- /.item -->
 
 
 
                         </th:block>
+                        <form th:action="@{/openModalDelete}" method="post" id="delete">
+                            <input type="hidden" name="idobject" id="idobject"/>
+                        </form>
+
                     </div><!-- /.carousel-inner -->
 
                     <!-- Controls -->
