@@ -119,8 +119,7 @@ public class ProfilController {
 
         ObjectsEntity objectToDelete = customObjectRepository.getObjectEntityByIdObject(Integer.parseInt(id));
         objectRepository.delete(objectToDelete);
-
-
+        session.removeAttribute("idObjectDelete");
         return "redirect:/profil";
     }
 
@@ -129,10 +128,7 @@ public class ProfilController {
                                   @RequestParam("idobject")String id_object,
                                   HttpSession session)
     {
-        ObjectsEntity object = customObjectRepository.getObjectEntityByIdObject(Integer.parseInt(id_object));
-        //model.addAttribute("idObjectDelete", id_object);
         session.setAttribute("idObjectDelete", id_object);
-
 
         // TODO THYMELEAF HACK
         if (false) {
