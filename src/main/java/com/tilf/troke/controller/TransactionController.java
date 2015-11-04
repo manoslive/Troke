@@ -15,6 +15,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.Calendar;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by Emmanuel on 2015-10-21.
@@ -194,9 +196,13 @@ public class TransactionController {
         updateChatMessage.setIsread("T");
         chatmessageRepository.save(updateChatMessage);
 
-        /*Query queryObject2 = entityManager.createQuery("delete from ObjecttransactionEntity o where o.idtransaction = :idTransaction");
+        Query queryObject2 = entityManager.createQuery("select o from ObjecttransactionEntity o where o.idtransaction = :idTransaction");
         queryObject2.setParameter("idTransaction",transactionID);
-        queryObject2.executeUpdate();*/
+        List<ObjecttransactionEntity> listObjets = queryObject2.getResultList();
+
+        for(Iterator<ObjecttransactionEntity> i = listObjets.iterator(); i.hasNext(); ) {
+            objectsTransactionRepository.delete(i.next());
+        }
 
         ObjecttransactionEntity updateTransactionsObjects = new ObjecttransactionEntity();
         String[] objectIDs = tradeObjects.split(";");
@@ -214,5 +220,7 @@ public class TransactionController {
         }
         return "redirect:/myTrades";
     }
+
+
 
 }

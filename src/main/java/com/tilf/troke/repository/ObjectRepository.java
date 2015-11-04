@@ -11,4 +11,7 @@ import org.springframework.stereotype.Repository;
 public interface ObjectRepository extends JpaRepository<ObjectsEntity, String> {
 
     ObjectsEntity save(ObjectsEntity object) ;
+
+
+
 }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<!-- Open modal pour l'info d'un item avec les photos (gallery)-->
+<div th:fragment="objectInfo" id="modal-InfoItem" class="modal-box">
+    <div>
+        <a href="#" title="Fermer" class="js-modal-close close">X</a>
+        <h2 th:each="inv : ${inventory}" style="text-align:center">
+            <th:block th:if="${inv.getIdobject() eq 'javascript:getInspectItemID();'}">
+            </th:block>
+        </h2>
+        <div class="or-spacer">
+            <div class="mask"></div>
+        </div>
+        <div id="gallery">
+            <div id="panel">
+                <img id="mainImage" src="images/UnknownUser.png"/>
+            </div>
+            <div id="divSubImages" class="">
+                <img class="subImage" src="images/UnknownUser.png" alt="Image 1"/>
+                <img class="subImage" src="images/zoom_icon.png" alt="Image 2"/>
+                <img class="subImage" src="images/move_icon.png" alt="Image 3"/>
+                <img class="subImage" src="images/UnknownUser.png" alt="Image 4"/>
+            </div>
+        </div>
+        <div id="description">
+            <!--<h5 th:text="'Propriétaire: ' + ${inspectedItem.getIduser()}"></h5>
+            <h5 th:text="'Date de création: ' + ${inspectedItem.getCreationdate()}"></h5>
+            <span th:text="${inspectedItem.getDescObject()}" >
+            </span>
+            <h5 th:text="'Adresse Couriel'+ ${startTradeOpponent.getEmail()}" ></h5>-->
+        </div>
+        <br/>
+        <div class="or-spacer">
+            <div class="mask"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

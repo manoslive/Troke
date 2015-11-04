@@ -10,6 +10,22 @@
         {
             $('#formUser').submit();
         }
+        function deleteSubmit()
+        {
+            $('#formDelete').submit();
+        }
+
+        function modalSubmitDelete(id)
+        {
+            document.getElementById('idObjectDelete').value = id;
+            $('#delete').submit();
+        }
+
+        function modalSubmitModifier(id)
+        {
+            document.getElementById('idObjectModifier').value = id;
+            $('#modifier').submit();
+        }
     </script>
 </head>
 <body>

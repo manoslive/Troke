@@ -22,8 +22,11 @@
                 </div>
 
                 <div class="divModalAjoutTop">
-                    <input class="signup-full" type="text" placeholder="Nom de l'item / service" name="Name" id="name"/>
-                    <input class="signup-full" type="number" placeholder="Valeur $$$" name="Valeur" id="valeur" value="0" min="0"/>
+                    <input class="signup-full" type="text" placeholder="Nom de l'item / service" name="Name" id="name"
+                           th:value="*{session.ObjectToModify ne null}? ${session.ObjectToModify.getNameObject()} : ''"/>
+
+                    <input class="signup-full" type="number" placeholder="Valeur $$$" name="Valeur" id="valeur" value="0" min="0"
+                            th:value="*{session.ObjectToModify ne null}? ${session.ObjectToModify.getValueObject()} : ''"/>
 
                     <div class="divModalAjoutQualite">
                         <label style="font-weight:normal">Etat de l'item</label>
@@ -45,7 +48,9 @@
                 <div class="divModalAjoutDescriptionPhoto">
                     <div class="divModalAjoutDescription">
                                 <textarea class="signup-full" type="text" rows="13" placeholder="Description"
-                                          name="Description" id="description" style="resize:none"></textarea>
+                                          name="Description" id="description" style="resize:none"
+                                          th:text="*{session.ObjectToModify ne null}? ${session.ObjectToModify.getDescObject()} : ''">
+                                    </textarea>
                     </div>
 
 
@@ -83,7 +88,6 @@
                             <div id="Photo4" src="#" alt="Photo1" class="Photo1">
                                 <div id="avatarOverlay" style="">
                                     <div id="avatarPlus">
-
                                         <input id="fileExplorer" type="file" onchange="PreviewImage(this.value);"/>
                                     </div>
                                 </div>
