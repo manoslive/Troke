@@ -30,6 +30,7 @@ public class SearchController {
     @RequestMapping(value = "/category", method = RequestMethod.GET)
     public String ListCategoryItems(@RequestParam("categoryName") String categoryName, @RequestParam(value = "catIsChecked", required = false) Boolean catIsChecked, Model model, HttpSession session) {
         model.addAttribute("objectList", customObjectRepository.getObjectsByCategory(categoryName));
+        model.addAttribute("adrStartTrade", "/startTrade?itemID=");
         if (catIsChecked.equals(null))
             searchFilter.put(categoryName, true);
         else
@@ -51,6 +52,7 @@ public class SearchController {
         model.addAttribute("objectList", customObjectRepository.getObjectsBySubCategory(subCategoryName));
         searchFilter.put(subCategoryName, subCatIsChecked);
         model.addAttribute("leftMenu", fillLeftCatMenu());
+        model.addAttribute("adrStartTrade", "/startTrade?itemID=");
 
         // TODO THYMELEAF HACK
         if (false) {
@@ -86,6 +88,7 @@ public class SearchController {
         model.addAttribute("searchObjectList", customObjectRepository.getObjectListByKeyword(keyword));
         model.addAttribute("adrSearch", "/searchDB?keyword=");
         model.addAttribute("leftMenu", fillLeftCatMenu());
+        model.addAttribute("adrStartTrade", "/startTrade?itemID=");
         // On vide les checkbox
         searchFilter.getFilters().clear();
 
