@@ -360,8 +360,16 @@
 
 .basdeModalButtons
 {
-    margin-left:100px;
-    margin-top:15px;
-    display:inline-block;
+    margin-left:110px;
+    display:inline-flex;
+
+}
+
+.categorieCombo
+{
+    height:46px;
+    margin-top:8px;
+    border: 1px solid black;
+    cursor: pointer;
 
 }
