@@ -168,4 +168,11 @@ public class ProfilController {
         }
         return "redirect:/profil#openModalAjouter";
     }
+
+    @RequestMapping(value="/closeAjouter", method = RequestMethod.GET)
+    public String closeModalAjouter(HttpSession session)
+    {
+        session.removeAttribute("ObjectToModify");
+        return "redirect:/profil";
+    }
 }
