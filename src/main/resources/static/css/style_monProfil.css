@@ -364,3 +364,12 @@
     display:inline-flex;
 
 }
+
+.categorieCombo
+{
+    height:46px;
+    margin-top:8px;
+    border: 1px solid black;
+    cursor: pointer;
+
+}

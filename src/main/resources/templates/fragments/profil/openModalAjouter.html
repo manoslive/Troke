@@ -28,6 +28,17 @@
                     <input class="signup-full" type="number" placeholder="Valeur $$$" name="Valeur" id="valeur" value="0" min="0"
                             th:value="*{session.ObjectToModify ne null}? ${session.ObjectToModify.getValueObject()} : ''"/>
 
+                    <select class="categorieCombo">
+                        <option selected="true" style="display:none;">Selection Categorie</option>
+                        <option disabled="disabled">Electronique</option>
+                        <option disabled="disabled">-------------</option>
+                        <option>Memoire RAM</option>
+                        <option disabled="disabled">Animaux</option>
+                        <option>Elephant</option>
+                        <option>Chien</option>
+                        <option>Manu</option>
+                    </select>
+
                     <div class="divModalAjoutQualite">
                         <label style="font-weight:normal">Etat de l'item</label>
                         <span class="starRating">
