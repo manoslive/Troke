@@ -90,6 +90,7 @@ public class SearchController {
         model.addAttribute("adrSearch", "/searchDB?keyword=");
         model.addAttribute("adrStartTrade", "/startTrade?itemID=");
         model.addAttribute("leftMenu", fillLeftCatMenu());
+        model.addAttribute("adrStartTrade", "/startTrade?itemID=");
         // On vide les checkbox
         searchFilter.getFilters().clear();
 
