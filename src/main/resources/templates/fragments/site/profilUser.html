@@ -15,10 +15,16 @@
             $('#formDelete').submit();
         }
 
-        function modalSubmit(id)
+        function modalSubmitDelete(id)
         {
-            document.getElementById('idobject').value = id;
+            document.getElementById('idObjectDelete').value = id;
             $('#delete').submit();
+        }
+
+        function modalSubmitModifier(id)
+        {
+            document.getElementById('idObjectModifier').value = id;
+            $('#modifier').submit();
         }
     </script>
 </head>

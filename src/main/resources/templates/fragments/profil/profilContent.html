@@ -165,9 +165,11 @@
 
 
                                     <div class="divAMS">
-                                        <a href="#openModalAjouter" class="btn btn-sm animated-button thar-four" style="width:50%; font-weight:normal;" >Modifier</a>
+                                        <a class="btn btn-sm animated-button thar-four" style="width:50%; font-weight:normal;"
+                                           th:onclick="'javascript:modalSubmitModifier(\''+${invent.getIdobject()}+'\')'">Modifier</a>
 
-                                            <a class="btn btn-sm animated-button thar-four" style="width:50%; font-weight:normal;" th:onclick="'javascript:modalSubmit(\''+${invent.getIdobject()}+'\')'" >Supprimer</a>
+                                        <a class="btn btn-sm animated-button thar-four" style="width:50%; font-weight:normal;"
+                                           th:onclick="'javascript:modalSubmitDelete(\''+${invent.getIdobject()}+'\')'" >Supprimer</a>
 
                                     </div>
 
@@ -177,8 +179,14 @@
 
 
                         </th:block>
+                        <!-- form qui call le controller pour deleter l'object en postant le id par javascript -->
                         <form th:action="@{/openModalDelete}" method="post" id="delete">
-                            <input type="hidden" name="idobject" id="idobject"/>
+                            <input type="hidden" name="idObjectDelete" id="idObjectDelete"/>
+                        </form>
+
+                        <!-- form qui call le controller pour modifier un object en postant le id par javascript -->
+                        <form th:action="@{/openModalModifier}" method="post" id="modifier" >
+                            <input type="hidden" name="idObjectModifier" id="idObjectModifier"/>
                         </form>
 
                     </div><!-- /.carousel-inner -->

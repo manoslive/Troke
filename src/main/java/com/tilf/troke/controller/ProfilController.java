@@ -8,7 +8,6 @@ import com.tilf.troke.repository.ObjectRepository;
 import com.tilf.troke.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -124,8 +123,7 @@ public class ProfilController {
     }
 
     @RequestMapping(value="/openModalDelete", method = RequestMethod.POST)
-    public String modalDeleteOpen(Model model,
-                                  @RequestParam("idobject")String id_object,
+    public String modalDeleteOpen(@RequestParam("idObjectDelete")String id_object,
                                   HttpSession session)
     {
         session.setAttribute("idObjectDelete", id_object);
@@ -137,5 +135,24 @@ public class ProfilController {
 
         }
             return "redirect:/profil#openModalDelete";
+    }
+
+    @RequestMapping(value="/openModalModifier", method = RequestMethod.POST)
+    public String modalModifierOpen(@RequestParam("idObjectModifier") String id_object,
+                                    HttpSession session)
+    {
+        // je catch l'id de l'object a modifier par le Request param et ensuite je récupere l'object au complet
+        ObjectsEntity objectToModify = customObjectRepository.getObjectEntityByIdObject(Integer.parseInt(id_object));
+
+        // j'ajoute un objet de session pour le récuperer dans le modal d'ajout et remplir les bon champs.
+        session.setAttribute("ObjectToModify", objectToModify);
+
+        // TODO THYMELEAF HACK
+        if (false) {
+            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+            context.setVariable("ObhectToModify", id_object);
+
+        }
+        return "redirect:/profil#openModalAjouter";
     }
 }
