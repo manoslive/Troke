@@ -55,7 +55,7 @@ public class TransactionController {
     @RequestMapping(value = "/startTrade", method = RequestMethod.GET)
     public String getUserFromItem(@RequestParam("itemID") int itemID, Model model) {
         model.addAttribute("startTradeOpponent", customUserRepository.getUserFromItem(itemID));
-        model.addAttribute("currentItem", customObjectRepository.getObjectNameByItemID(itemID));
+        model.addAttribute("currentItem", customObjectRepository.getObjectEntityByIdObject(itemID));
         model.addAttribute("currentItemID", itemID);
         model.addAttribute("inventory", customObjectRepository.getObjectsByUserID(itemID, customUserRepository.getUserFromItem(itemID).getIduser()));
         UsersEntity currentUser = authUserContext.getUser();
@@ -65,7 +65,7 @@ public class TransactionController {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("currentItemID", itemID);
             context.setVariable("startTradeOpponent", customUserRepository.getUserFromItem(itemID));
-            context.setVariable("currentItem", customObjectRepository.getObjectNameByItemID(itemID));
+            context.setVariable("currentItem", customObjectRepository.getObjectEntityByIdObject(itemID));
             context.setVariable("inventory", customObjectRepository.getObjectsByUserID(itemID, customUserRepository.getUserFromItem(itemID).getIduser()));
             context.setVariable("userActif", currentUser);
         }

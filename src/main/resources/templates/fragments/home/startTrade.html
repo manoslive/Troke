@@ -32,7 +32,7 @@
                     <ul class="OpponentInventory ui-helper-reset">
                         <li class="OpponentItem ui-widget-content ui-corner-tr ui-draggable TradeItems"
                             style="display: list-item; overflow: hidden; width: 80px; height: 80px;">
-                            <h5 th:text="${currentItem}" class="ui-widget-header"></h5>
+                            <h5 th:text="${currentItem.getNameObject()}" class="ui-widget-header"></h5>
                             <img class="item-image" src="images/move_icon.png" alt=""
                                  style="display: inline-block; overflow: hidden; width: 80px; height: 60px; max-width: 80px; max-height: 60px;"/>
 
@@ -43,7 +43,7 @@
                                     <div class="follower">
                                         <a class="js-open-modal link-zoom info-icon " href="#"
                                            data-modal-id="modal-InfoItem"
-                                           th:onclick="'javascript:showModalInfoItem(); setInspectItemID(\''+${currentItemID}+'\')'">Info
+                                           th:onclick="'javascript:showModalInfoItem(\''+ ${currentItem.getIdobject()} +'\')'">Info
                                             Item</a>
                                     </div>
                                 </div>
@@ -79,8 +79,7 @@
 
                             <div class="follower">
                                 <a class="js-open-modal link-zoom info-icon " href="#" data-modal-id="modal-InfoItem"
-                                   th:onclick="'javascript:showModalInfoItem(); setInspectItemID(\''+${inv.getIdobject()}+'\')'">Info
-                                    Item</a>
+                                   th:onclick="'javascript:showModalInfoItem(\''+ ${inv.getIdobject()} +'\')'">Info Item</a>
                             </div>
                         </div>
                         <img src="images/Logo-transparent.png" class="info-icon ui-icon icon-exchange"/>
@@ -102,7 +101,70 @@
         </div>
     </div>
     <!-- Modal ObjectInfo -->
-    <div th:replace="fragments/home/objectInfo :: objectInfo"/>
+        <!-- Modal Inventaire -->
+    <th:block th:each="inv : ${inventory}">
+        <div th:id="'modal-InfoItem'+${inv.getIdobject()}" class="modal-box modal-InfoItem-class">
+            <div>
+                <a href="#" title="Fermer" class="js-modal-close close">X</a>
+                <h2 th:text="${inv.getNameObject()}" style="text-align:center"></h2>
+                <div class="or-spacer">
+                    <div class="mask"></div>
+                </div>
+                <div class="gallery">
+                    <div class="panel">
+                        <img th:id="'mainImage'+${inv.getIdobject()}" class="mainImage" src="images/UnknownUser.png"/>
+                    </div>
+                    <div th:id="'divSubImages'+${inv.getIdobject()}" class="divSubImages">
+                        <img class="subImage" src="images/UnknownUser.png" alt="Image 1" onmouseover="hover(this);"/>
+                        <img class="subImage" src="images/zoom_icon.png" alt="Image 2" onmouseover="hover(this);"/>
+                        <img class="subImage" src="images/move_icon.png" alt="Image 3" onmouseover="hover(this);"/>
+                        <img class="subImage" src="images/UnknownUser.png" alt="Image 4" onmouseover="hover(this);"/>
+                    </div>
+                </div>
+                <div class="description">
+                    <h5 th:text="'Propriétaire: ' + ${inv.getIduser()}"></h5>
+                    <h5 th:text="'Date de création: ' + ${inv.getCreationdate()}"></h5>
+                    <span th:text="${inv.getDescObject()}"></span>
+                    <h5 th:text="'Adresse Couriel'+ ${startTradeOpponent.getEmail()}" ></h5>
+                </div>
+                <br/>
+                <div class="or-spacer">
+                    <div class="mask"></div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+        <!-- modal current item -->
+        <div th:id="'modal-InfoItem'+${currentItemID}" class="modal-box modal-InfoItem-class">
+            <div>
+                <a href="#" title="Fermer" class="js-modal-close close">X</a>
+                <h2 th:text="${currentItem.getNameObject()}" style="text-align:center"></h2>
+                <div class="or-spacer">
+                    <div class="mask"></div>
+                </div>
+                <div class="gallery">
+                    <div class="panel">
+                        <img th:id="'mainImage'+${currentItem.getIdobject()}" class="mainImage" src="images/UnknownUser.png"/>
+                    </div>
+                    <div th:id="'divSubImages'+${currentItem.getIdobject()}" class="divSubImages">
+                        <img class="subImage" src="images/UnknownUser.png" alt="Image 1" onmouseover="hover(this);"/>
+                        <img class="subImage" src="images/zoom_icon.png" alt="Image 2" onmouseover="hover(this);"/>
+                        <img class="subImage" src="images/move_icon.png" alt="Image 3" onmouseover="hover(this);"/>
+                        <img class="subImage" src="images/UnknownUser.png" alt="Image 4" onmouseover="hover(this);"/>
+                    </div>
+                </div>
+                <div class="description">
+                    <h5 th:text="'Propriétaire: ' + ${currentItem.getIduser()}"></h5>
+                    <h5 th:text="'Date de création: ' + ${currentItem.getCreationdate()}"></h5>
+                    <span th:text="${currentItem.getDescObject()}"></span>
+                    <h5 th:text="'Adresse Couriel'+ ${startTradeOpponent.getEmail()}" ></h5>
+                </div>
+                <br/>
+                <div class="or-spacer">
+                    <div class="mask"></div>
+                </div>
+            </div>
+        </div>
     </form>
 </th:block>
 </body>
