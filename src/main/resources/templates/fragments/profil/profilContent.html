@@ -12,14 +12,12 @@
 
 
                 <div class="profilDiv">
-
-
                     <div class = "profilPhotoDiv">
                         <div id="avatarProfil" src="#" alt="avatar" class="avatarProfil">
                             <div id="avatarOverlay" style="height:100%">
                                 <div id="avatarPlus" disabled="disabled">
-                                    <!--<p id="textFileExplorer" style="left: 4%;top:25%;text-align:center;">Changer votre <br> image de profil<p>-->
-                                    <input id="fileExplorer" type="file" onchange="PreviewImage(this.value);" />
+                                    <!--<p id="textFileExplorer2">Changer votre image de profil</p>-->
+                                    <input id="fileExplorer2" type="file" onchange="TestFileType('fileExplorer2','avatarProfil')" value=""/>
                                 </div>
                             </div>
                         </div>
@@ -38,17 +36,12 @@
 
                     <div class = "profilInfoDiv">
 
-
-
                         <div class = "profilLeftDiv">
                             <!--</br>-->
                             <span name="label-prenom" style="font-weight:normal" th:text="Prénom"/>
                             <input class="signup-full" name="profile-prenom" placeholder="Prénom" type="text" tabindex="2" style="color:black" th:value="${userActif.getFirstname()}"/>
                             <span name="label-codepostal" style="font-weight:normal" th:text="Code-Postal"/>
                             <input class="signup-full zipcode" name="profile-codepostal" placeholder="Code Postal" type="text" tabindex="3" style="color:black" th:value="${userActif.getZipcode()}"/>
-
-
-
                         </div>
 
                         <div class = "profilRightDiv">
@@ -57,16 +50,12 @@
                             <input class="signup-full" name="profile-nomfamille" placeholder="Nom de famille" type="text" tabindex="3" style="color:black" th:value="${userActif.getLastname()}"/>
                             <span name="label-codepostal" style="font-weight:normal" th:text="Telephone"/>
                             <input class="signup-full phone_ca" name="profile-telephone" placeholder="Telephone" id="phone" type="text" tabindex="1" style="color:black" th:value="${userActif.getTelephone()}"/>
-
-
                         </div>
 
                         <div class="emailDiv">
                             <span name="label-email" style="font-weight:normal" th:text="Email"/>
                             <input class="signup-full" name="profile-email" placeholder="Email" type="text" tabindex="3" style="color:black" th:value="${userActif.getEmail()}"/>
                         </div>
-
-
 
                     </div>
 
@@ -126,11 +115,8 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" style="height:100%" role="listbox">
 
-
-
                         <th:block th:each="invent : ${userInventory}" th:for="${'invent' + inventStat.index }">
                             <!-- Second slide -->
-
 
                             <div  th:class="*{inventStat.index eq 0} ? 'item active skyblue' : 'item skyblue'">
                                 <div class="carousel-caption" style="top:5%">

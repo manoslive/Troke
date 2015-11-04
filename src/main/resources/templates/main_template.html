@@ -91,9 +91,11 @@
             var fileName = document.getElementById('fileExplorer').value;
             var fileTypes = /(.jpg|.jpeg|.gif|.png)$/i;
             var extensionNames = ".jpg / .jpeg / .gif / .png";
+            alert(document.getElementById('fileExplorer').value);
             if (fileName != '') {
                 if (fileTypes.test(fileName)) {
                     document.getElementById('errorDiv').innerHTML = '';
+                    alert("chu dedans");
                     checkImage(); // Vérification de la taille de l'image
 
                 }
@@ -194,6 +196,7 @@
                                type="text"
                                tabindex="3"/>
                     </div>
+
                     <div id="avatar" src="#" alt="avatar" class="avatar">
                         <div id="avatarOverlay">
                             <div id="avatarPlus">
@@ -204,6 +207,8 @@
                         </div>
                     </div>
                 </div>
+
+
                 <div>
                     <input th:field="*{zipcode}" class="signup-half zipcode" name="zipcode" placeholder="Code postal"
                            type="text" tabindex="5"

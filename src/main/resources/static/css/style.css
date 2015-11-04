@@ -721,6 +721,13 @@
     height: 154px;
     cursor: pointer;
 }
+#fileExplorer2 {
+    display: inline;
+    opacity: 0;
+    width: 171px;
+    height: 154px;
+    cursor: pointer;
+}
 
 .avatarOverlay {
     background: rgba(0, 0, 0, .75);
@@ -763,6 +770,15 @@
     top: 140px;
     left: 221px;
     position: absolute;
+    background-color: transparent;
+    border-color: transparent;
+    width: 140px;
+    height: 85px;
+}
+#textFileExplorer2 {
+    top: 120%;
+    left: 15%;
+    position: relative;
     background-color: transparent;
     border-color: transparent;
     width: 140px;

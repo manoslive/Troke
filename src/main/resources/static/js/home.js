@@ -128,7 +128,6 @@ function checkConfirmEmail() {
     document.querySelector('#email_confirm').classList.remove('highlightTextBox');  ////////////////////icittteee
 }
 function PreviewImage(value) {
-    alert(value);
     var imgValue = value.slice(value.lastIndexOf('\\'), value.length);
     document.getElementById("avatar").style.background = "url(uploaded-images/" + imgValue + ")no-repeat center";
 }
@@ -138,3 +137,4 @@ function SubmitImage(){
 function openMesEchanges() {
     document.getElementById("content").innerHTML = '<object class="loadContent" type="text/html" data="myTrades.html"></object>';
 }
+
