@@ -5,22 +5,16 @@ function makeIDList(){
     var x = document.getElementsByClassName("itemID");
     var i;
     for (i = 0; i < x.length; i++) {
-        alert("id: "+x[i].value);
         document.getElementById("tradeObjectsID").value += x[i].value + ";";
     }
     document.getElementById("startTradeForm").submit();
 }
-var inspectItemID;
-function setInspectItemID(itemID){
-    alert(itemID);
-    inspectItemID = itemID;
-}
-function getInspectItemID(){
-    alert("set" + inspectItemIDp);
-    return inspectItemID;
-}
-function showModalInfoItem(){
-    document.querySelector( '#modal-InfoItem' ).classList.add('modal-box-show');
+var currentModalID;
+var currentInfoID;
+function showModalInfoItem(ObjectID){
+    currentInfoID = ObjectID;
+    currentModalID = '#modal-InfoItem' + ObjectID;
+    document.querySelector(currentModalID).classList.add('modal-box-show');
 }
 function goBack(){
     window.history.back();
@@ -151,7 +145,7 @@ function init() {
                 cursor: "move"
             })
         });
-    /* Open Modal Info Item */
+    /* Open Modal Info Item
     var appendthis = ("<div class='modal-overlay js-modal-close'></div>");
     $('a[data-modal-id]').click(function (e) {
         e.preventDefault();
@@ -160,10 +154,10 @@ function init() {
         $(".js-modalbox").fadeIn(500);
         var modalBox = $(this).attr('data-modal-id');
         $('#' + modalBox).fadeIn($(this).data());
-    });
+    });*/
     $(".js-modal-close, .modal-overlay").click(function () {
         $(".modal-box, .modal-overlay").fadeOut(500, function () {
-            $(".modal-overlay").remove();
+            modalClose();
         });
     });
     $(window).resize(function () {
@@ -176,7 +170,7 @@ function init() {
     /* modal close et click exterieure du modal */
     function modalClose() {
         $(".modal-box, .modal-overlay").fadeOut(500, function () {
-            $(".modal-overlay").remove();
+            $(".modal-box, .modal-overlay").removeClass("modal-box-show");
         });
     }
     // Handle ESC key (key code 27)
@@ -184,8 +178,15 @@ function init() {
         if (e.keyCode == 27) {
             modalClose();
         }
+        if (e.keyCode == 13) {
+            alert("allo");
+            $("#btn-enter").click();
+        }
     });
-    var modalInfoItem = document.getElementById("modal-InfoItem");
+    $('form #chatEnter').on('keypress', function(e) {
+        return e.which !== 13;
+    });
+    var modalInfoItem = document.getElementById(currentModalID);
     modalInfoItem.addEventListener('click', function (e) {
         modalClose();
     }, false);
@@ -193,16 +194,14 @@ function init() {
     modalInfoItem.children[0].addEventListener('click', function (e) {
         e.stopPropagation();
     }, false);
-    /* Delegate Scroll images InfoItem */
-    $('#divSubImages').delegate('img', 'click', function () {
-        $('#mainImage').attr('src', $(this).attr('src').replace('sub', 'main'));
-    });
-    $('#divSubImages').delegate('img', 'hover', function () {
-        $('#mainImage').attr('src', $(this).attr('src').replace('sub', 'main'));
-    });
     /* Width ajustable du div échange qui est horizontaly scrollable */
     $(document).ready(function () {
         var container_width = 0 * $(".container-inner").length;
         $(".container-inner").css("width", container_width + "!important");
     });
+}
+//Hover des petites images du modal InfoItem
+function hover(element) {
+    $('.mainImage').attr('src', element.getAttribute('src'));
+    //element.setAttribute('src', 'http://dummyimage.com/100x100/eb00eb/fff');
 }
