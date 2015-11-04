@@ -30,6 +30,7 @@ public class SearchController {
     @RequestMapping(value = "/category", method = RequestMethod.GET)
     public String ListCategoryItems(@RequestParam("categoryName") String categoryName, @RequestParam(value = "catIsChecked", required = false) Boolean catIsChecked, Model model, HttpSession session) {
         model.addAttribute("objectList", customObjectRepository.getObjectsByCategory(categoryName));
+        model.addAttribute("adrStartTrade", "/startTrade?itemID=");
         if (catIsChecked.equals(null))
             searchFilter.put(categoryName, true);
         else
@@ -58,7 +59,7 @@ public class SearchController {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("objectList", customObjectRepository.getObjectsBySubCategory(subCategoryName));
             context.setVariable("leftMenu", fillLeftCatMenu());
-            context.setVariable("adrStartTrade","/startTrade?itemID=" );
+            context.setVariable("adrStartTrade","/startTrade?itemID=");
         }
         return "fragments/home/search";
     }
@@ -89,6 +90,7 @@ public class SearchController {
         model.addAttribute("adrSearch", "/searchDB?keyword=");
         model.addAttribute("adrStartTrade", "/startTrade?itemID=");
         model.addAttribute("leftMenu", fillLeftCatMenu());
+        model.addAttribute("adrStartTrade", "/startTrade?itemID=");
         // On vide les checkbox
         searchFilter.getFilters().clear();
 
@@ -109,33 +111,11 @@ public class SearchController {
         String isSubCatChecked = "";
         String isCatChecked = "";
 
-/*        for (Iterator<String> i = cats.iterator(); i.hasNext(); ) {
-            String currentCat = i.next();
-            isCatChecked = searchFilter.get(currentCat) == Boolean.TRUE ? "checked" : "";
-            html += "<button type=\"button\" class=\"btn btn-info btnBootPerso\" data-toggle=\"collapse\" data-target=\"#" + currentCat.toLowerCase() + "Category\" onclick=\"checkCB('" + currentCat.toLowerCase() + "')\">\n" +
-                    "<input onchange=\"getCheckBoxCatValue('" + currentCat.toLowerCase() + "');\" id=\"" + currentCat.toLowerCase() + "\" class=\"mainCategory catCb\" style=\"float:left;\" type=\"checkbox\"><a href=\"/category?categoryName=" + currentCat + "&catIsChecked=" + isCatChecked + "\"" + isCatChecked + "></a>" + currentCat + "</input>\n" +
-                    "<select style=\"float:right;\" class=\"disappear\" disabled=\"disabled\"></select>\n" +
-                    "</button>\n" +
-                    "<div id=\"" + currentCat.toLowerCase() + "Category\" class=\"category-Selection collapse\">\n" +
-                    "<ul>\n";
-
-            List<String> subcats = customObjectRepository.getAllSubCategories(currentCat);
-            for (Iterator<String> j = subcats.iterator(); j.hasNext(); ) {
-                String currentSubCat = j.next();
-                isSubCatChecked = searchFilter.get(currentSubCat) == Boolean.TRUE ? "checked" : "";
-                html += "<li>" +
-                        "<input onchange=\"getCheckBoxSubCatValue('" + currentSubCat.toLowerCase() + "');\" id=\"" + currentSubCat + "\" class=\"mainCategory" + currentSubCat.toLowerCase() + "subCatCb\" type=\"checkbox\"" + isSubCatChecked + ">" +
-                        "<a href=\"/subcategory?subCategoryName=" + currentSubCat + "&subCatIsChecked=" + isSubCatChecked + "\">" + currentSubCat + "</a>" +
-                        "</input>" +
-                        "</li>\n";
-            }
-            html += "</ul></div>\n";*/
-
         for (Iterator<String> i = cats.iterator(); i.hasNext(); ) {
             String currentCat = i.next();
             isCatChecked = searchFilter.get(currentCat) == Boolean.TRUE ? "checked" : "";
             html += "<button type=\"button\" class=\"btn btn-info btnBootPerso\" data-toggle=\"collapse\" data-target=\"#" + currentCat.toLowerCase() + "Category\" onclick=\"checkCB('" + currentCat.toLowerCase() + "')\">\n" +
-                    "<input onchange=\"getCheckBoxCatValue('" + currentCat.toLowerCase() + "');\" id=\"" + currentCat.toLowerCase() + "\" class=\"mainCategory catCb\" style=\"float:left;\" type=\"checkbox\"><a onclick=\"getCheckBoxSubCatValue('\" + currentSubCat.toLowerCase() + \"');\"" + isCatChecked + "></a>" + currentCat + "</input>\n" +
+                    "<input onchange=\"getCheckBoxCatValue('" + currentCat.toLowerCase() + "');\" id=\"" + currentCat.toLowerCase() + "\" class=\"mainCategory catCb\" style=\"float:left;\" type=\"checkbox\"><a onclick=\"getCheckBoxSubCatValue('" + currentCat.toLowerCase() + "');\"" + isCatChecked + "></a>" + currentCat + "</input>\n" +
                     "<select style=\"float:right;\" class=\"disappear\" disabled=\"disabled\"></select>\n" +
                     "</button>\n" +
                     "<div id=\"" + currentCat.toLowerCase() + "Category\" class=\"category-Selection collapse\">\n" +
@@ -146,8 +126,8 @@ public class SearchController {
                 String currentSubCat = j.next();
                 isSubCatChecked = searchFilter.get(currentSubCat) == Boolean.TRUE ? "checked" : "";
                 html += "<li>" +
-                        "<input onchange=\"getCheckBoxSubCatValue('" + currentSubCat.toLowerCase() + "');\" id=\"" + currentSubCat + "\" class=\"mainCategory" + currentSubCat.toLowerCase() + "subCatCb\" type=\"checkbox\"" + isSubCatChecked + ">" +
-                        "<a onclick=\"getCheckBoxSubCatValue('" + currentSubCat.toLowerCase() + "');\">" + currentSubCat + "</a>" +
+                        "<input onchange=\"getCheckBoxSubCatValue('" + currentSubCat.toLowerCase() + "');\" id=\"" + currentSubCat.toLowerCase() + "\" class=\"mainCategory" + currentSubCat.toLowerCase() + "subCatCb\" type=\"checkbox\"" + isSubCatChecked + ">" +
+                        "<a onclick=\"getCheckBoxSubCatValue('" + currentSubCat.toLowerCase() + "');\">" + currentSubCat.toLowerCase() + "</a>" +
                         "</input>" +
                         "</li>\n";
             }

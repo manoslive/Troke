@@ -40,25 +40,38 @@ public class ProfilController {
                                      @RequestParam("Name") String Name,
                                      @RequestParam("Description") String Description,
                                      @RequestParam("Valeur") int valeur,
-                                     @RequestParam("rating") int rating) {
+                                     @RequestParam("rating") int rating,
+                                     HttpSession session) {
         java.sql.Date now = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        if(session.getAttribute("ObjectToModify") == null)
+        {
+            // donnée qui vien du formulaire ...
+            object.setNameObject(Name);
+            object.setDescObject(Description);
+            object.setValueObject(valeur);
+            object.setQuality(rating);
+            object.setIduser(authContext.getUser().getIduser());
+            object.setCreationdate(now);
 
-        // donnée qui vien du formulaire ...
-        object.setNameObject(Name);
-        object.setDescObject(Description);
-        object.setValueObject(valeur);
-        object.setQuality(rating);
-        object.setIduser(authContext.getUser().getIduser());
-        object.setCreationdate(now);
+            // donnée rentrer a la main pour des valeur par defaut ...
+            object.setGuid("12345qwerty");
+            object.setIdsubcategory(1);
+            object.setRateable("N");
+            object.setIssignaled("N");
+            objectRepository.save(object);
+            // id du dernier object créer pour pouvoir créer des objectImages ..
+            int numObject = object.getIdobject();}
+        else
+        {
+            ObjectsEntity objects = (ObjectsEntity)session.getAttribute("ObjectToModify");
 
-        // donnée rentrer a la main pour des valeur par defaut ...
-        object.setGuid("12345qwerty");
-        object.setIdsubcategory(1);
-        object.setRateable("N");
-        object.setIssignaled("N");
-        objectRepository.save(object);
-        // id du dernier object créer pour pouvoir créer des objectImages ..
-        int numObject = object.getIdobject();
+            objects.setNameObject(Name);
+            objects.setDescObject(Description);
+            objects.setValueObject(valeur);
+            objects.setQuality(rating);
+            objectRepository.save(objects);
+            session.removeAttribute("ObjectToModify");
+        }
 
         return "redirect:/profil";
     }
@@ -154,5 +167,12 @@ public class ProfilController {
 
         }
         return "redirect:/profil#openModalAjouter";
+    }
+
+    @RequestMapping(value="/closeAjouter", method = RequestMethod.GET)
+    public String closeModalAjouter(HttpSession session)
+    {
+        session.removeAttribute("ObjectToModify");
+        return "redirect:/profil";
     }
 }
