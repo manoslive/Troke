@@ -360,8 +360,7 @@
 
 .basdeModalButtons
 {
-    margin-left:100px;
-    margin-top:15px;
-    display:inline-block;
+    margin-left:110px;
+    display:inline-flex;
 
 }
