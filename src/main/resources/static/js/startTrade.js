@@ -31,16 +31,13 @@ function sendChat(userName){
 //Hover des petites images du modal InfoItem
 function hover(element) {
     $('.mainImage').attr('src', element.getAttribute('src'));
-    //element.setAttribute('src', 'http://dummyimage.com/100x100/eb00eb/fff');
 }
 //Function qui vérifi si le trade est valid
 function checkValidTrade(){
     if($('#opponentExchangeItemsStart ul li').length < 1) {
-        alert("rien dedans");
         document.getElementById("btn-send-trade").style.pointerEvents = "none";
         document.getElementById("btn-send-trade").innerText = "Sélectionnez un item \n pour l'échange"
     }else {
-        alert("qqchose dedans");
         document.getElementById("btn-send-trade").style.pointerEvents = "auto";
         document.getElementById("btn-send-trade").innerText = "Envoyer l'offre!";
     }
@@ -107,10 +104,11 @@ function init() {
                 });
             }
             $item.find("input").addClass("itemID");
+            checkValidTrade();
         });
     }
     // item recycle Opposant function
-    var zoneEchange_icon = "<img src='images/Logo-transparent.png' class='ui-icon icon-exchange'/>";
+    var zoneEchange_icon = "<img src='images/add-button-icon.png' class='ui-icon icon-exchange'/>";
     function recycleOpponentItem( $item ) {
         $item.fadeOut(function() {
             $item.find(".divInputMoney").replaceWith("<img class='item-image' src='images/item-dollar-sign.png' alt=''>");
@@ -128,6 +126,7 @@ function init() {
                 .end()
                 .appendTo( $OpponentInventory )
                 .fadeIn();
+            checkValidTrade();
         });
     }
     //Délégation de click et de moveover sur certains objets
@@ -163,16 +162,6 @@ function init() {
                 cursor: "move"
             })
         });
-    /* Open Modal Info Item
-    var appendthis = ("<div class='modal-overlay js-modal-close'></div>");
-    $('a[data-modal-id]').click(function (e) {
-        e.preventDefault();
-        $("body").append(appendthis);
-        $(".modal-overlay").fadeTo(500, 0.7);
-        $(".js-modalbox").fadeIn(500);
-        var modalBox = $(this).attr('data-modal-id');
-        $('#' + modalBox).fadeIn($(this).data());
-    });*/
     $(".js-modal-close, .modal-overlay").click(function () {
         $(".modal-box, .modal-overlay").fadeOut(500, function () {
             modalClose();
@@ -191,22 +180,17 @@ function init() {
             $(".modal-box, .modal-overlay").removeClass("modal-box-show");
         });
     }
-    var formCancel = true;
     // Handle ESC key (key code 27)
     document.addEventListener('keyup', function (e) {
         if (e.keyCode == 27) {
             modalClose();
         }
         if (e.keyCode == 13) {
-            formCancel = true;
-            alert("allo");
             $("#btn-enter").click();
         }
     });
     document.getElementById('startTradeForm').onsubmit = function() {
-        if(formCancel == true){
             return false;
-        }
     }
     var modal, modalInfoItem = document.getElementsByName("modal-Item-Info");
     for(modal in modalInfoItem){
