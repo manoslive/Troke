@@ -1,5 +1,7 @@
 package com.tilf.troke.controller;
 
+import com.tilf.troke.auth.AuthUserContext;
+import com.tilf.troke.entity.UsersEntity;
 import com.tilf.troke.filter.SearchFilter;
 import com.tilf.troke.repository.CustomObjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ import java.util.List;
 
 @Controller
 public class SearchController {
+    @Autowired
+    private AuthUserContext authUserContext;
+
     @Autowired
     private CustomObjectRepository customObjectRepository;
 

@@ -24,7 +24,7 @@
       <!-- Liste qui crée une zone inventaire (User) et contient les items-->
       <ul id="UserInventory" class="UserInventory ui-helper-reset ui-helper-clearfix col-md-3">
         <h5 th:text="'Inventaire à '+${userActif.getIduser()}" class="UserInventory-header"></h5>
-        <li th:each="invUser : ${userInventory}" class="UserItem ui-widget-content ui-corner-tr">
+        <li th:each="invUser : ${UserInventory}" class="UserItem ui-widget-content ui-corner-tr">
           <h5 th:text="${invUser.getNameObject()}" class="ui-widget-header"></h5>
           <img class="item-image" src="images/move_icon.png" alt=""/>
           <div class="optionsItem">

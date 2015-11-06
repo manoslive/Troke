@@ -67,7 +67,7 @@
                 </div>
             </div>
             <!-- Liste qui crée une zone inventaire (Opposant) et contient les items-->
-            <ul id="OpponentInventory" class="OpponentInventory ui-helper-reset ui-helper-clearfix col-md-6">
+            <ul id="OpponentInventory" class="OpponentInventory OpponentInventoryStartTrade ui-helper-reset ui-helper-clearfix col-md-6">
                 <h5 th:text="'Inventaire à ' + ${startTradeOpponent.getIduser()}" class="OpponentInventory-header"></h5>
                 <li th:each="inv : ${inventory}" class="OpponentItem ui-widget-content ui-corner-tr">
                     <h5 th:text="${inv.getNameObject()}" class="ui-widget-header"></h5>
