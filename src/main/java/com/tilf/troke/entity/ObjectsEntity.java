@@ -2,9 +2,10 @@ package com.tilf.troke.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
- * Created by Emmanuel on 2015-10-21.
+ * Created by Emmanuel on 2015-11-11.
  */
 @Entity
 @Table(name = "objects", schema = "", catalog = "troke")
@@ -22,7 +23,6 @@ public class ObjectsEntity {
     private Date creationdate;
 
     @Id
-    @GeneratedValue
     @Column(name = "IDOBJECT")
     public int getIdobject() {
         return idobject;
@@ -62,7 +62,6 @@ public class ObjectsEntity {
         this.guid = guid;
     }
 
-
     @Basic
     @Column(name = "IDSUBCATEGORY")
     public int getIdsubcategory() {
@@ -72,7 +71,6 @@ public class ObjectsEntity {
     public void setIdsubcategory(int idsubcategory) {
         this.idsubcategory = idsubcategory;
     }
-
 
     @Basic
     @Column(name = "VALUE_OBJECT")

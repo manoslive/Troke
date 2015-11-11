@@ -2,9 +2,10 @@ package com.tilf.troke.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
- * Created by Emmanuel on 2015-10-21.
+ * Created by Emmanuel on 2015-11-11.
  */
 @Entity
 @Table(name = "chatmessage", schema = "", catalog = "troke")
@@ -14,6 +15,7 @@ public class ChatmessageEntity {
     private Date dateTime;
     private int idchat;
     private String isread;
+
 
     @Id
     @Column(name = "IDCHATMESSAGE")

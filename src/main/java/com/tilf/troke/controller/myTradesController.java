@@ -4,13 +4,11 @@ import com.tilf.troke.auth.AuthUserContext;
 import com.tilf.troke.entity.TransactionsEntity;
 import com.tilf.troke.entity.UsersEntity;
 import com.tilf.troke.repository.CustomMyTradeRepository;
-import com.tilf.troke.repository.CustomMyTradeRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.thymeleaf.context.WebContext;
 
 import javax.servlet.http.HttpSession;

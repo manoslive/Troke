@@ -16,12 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.thymeleaf.context.WebContext;
 
-import javax.imageio.ImageIO;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.awt.image.BufferedImage;
-import java.io.*;
 import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.UUID;

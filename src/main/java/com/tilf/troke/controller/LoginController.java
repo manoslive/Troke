@@ -2,7 +2,6 @@ package com.tilf.troke.controller;
 
 import com.tilf.troke.auth.AuthUserContext;
 import com.tilf.troke.entity.UsersEntity;
-import com.tilf.troke.repository.CustomUserRepository;
 import com.tilf.troke.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

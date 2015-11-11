@@ -3,7 +3,7 @@ package com.tilf.troke.entity;
 import javax.persistence.*;
 
 /**
- * Created by Emmanuel on 2015-10-21.
+ * Created by Emmanuel on 2015-11-11.
  */
 @Entity
 @Table(name = "objectrating", schema = "", catalog = "troke")

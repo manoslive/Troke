@@ -1,7 +1,6 @@
 package com.tilf.troke.validator;
 
 import com.tilf.troke.domain.UserSignupForm;
-import com.tilf.troke.entity.UsersEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
