@@ -5,37 +5,29 @@
     <div class="mainDiv" style="font-family:Amaranth">
 
         <div class="leftDiv">
-            <form th:action="@{/UpdateUser}" method="post" id="formUser">
+            <!-- il faut mettre le enctype pour resquester le param dans le controller -->
+            <!-- form pout modifier le user dans le profil -->
+            <form th:action="@{/UpdateUser}" method="post" id="formUser" enctype="multipart/form-data">
                 <div class= "profilWelcome">
                     <h3 style="text-align:center;padding-top:1%;" th:text="${userActif.getIduser()}"/>
                 </div>
 
-
+                <!-- portion de la photo du profil -->
                 <div class="profilDiv">
                     <div class = "profilPhotoDiv">
-                        <div id="avatarProfil" src="#" alt="avatar" class="avatarProfil">
+                        <div id="avatarProfil" src="#" alt="avatar" class="avatarProfil"
+                             th:style="*{userActif.getAvatar() ne 'no_avatar.jpg'}? 'background-image:url(/uploaded-images/' + ${userActif.getAvatar()} + ')'">
                             <div id="avatarOverlay" style="height:100%">
                                 <div id="avatarPlus" disabled="disabled">
                                     <!--<p id="textFileExplorer2">Changer votre image de profil</p>-->
-                                    <input id="fileExplorer2" type="file" onchange="TestFileType('fileExplorer2','avatarProfil')" value=""/>
+                                    <input id="fileExplorer2" type="file" name="avatarProfil" onchange="TestFileType('fileExplorer2','avatarProfil')" value="null"/>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!--<div class = "profilPhotoDiv">
-                        <div id="avatarProfil" src="#" alt="avatar" class="avatarProfil">
-                            <div id="avatarOverlay" style="height:100%">
-                                <div id="avatarPlus" disabled="disabled">
-                                   <p id="textFileExplorer" style="left:4%; top:15%;">Changer votre <br> image de profil<p>
-                                    <input id="fileExplorer" type="file" onchange="PreviewImage(this.value);" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>-->
-
+                    <!-- input du profil -->
                     <div class = "profilInfoDiv">
-
                         <div class = "profilLeftDiv">
                             <!--</br>-->
                             <p name="label-prenom" style="font-weight:normal">Prénom</p>
@@ -73,8 +65,10 @@
 
                 </div>
             </form>
-            <div class="coteDiv">
+            <!-- fin du profil input -->
 
+
+            <div class="coteDiv">
                 <div style="margin: auto; width: 200px; height:60%; text-align:center;">
                     <div class="innerCote">
                     <label style="font-weight:normal">Transaction # 23</label>
@@ -96,14 +90,12 @@
             </div>
         </div><!-- fin LeftDiv -->
 
+        <!-- profil section de droite avec photo -->
         <div class="rightDiv">
-
             <div class="container main-container" style="height:100%;">
 
                 <div id="carousel-example-generic" style="height:100%" class="carousel slide">
                     <!-- Indicators -->
-
-
                     <ol class="carousel-indicators">
                         <th:block th:each="invent : ${userInventory}">
                             <li data-target="#carousel-example-generic"
@@ -187,10 +179,10 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div><!-- /.carousel -->
-
             </div><!-- /.container main-container -->
-
         </div> <!-- fin RightDiv -->
+
+
 
     </div><!-- fin mainDiv -->
 </div> <!-- fin Fragment -->

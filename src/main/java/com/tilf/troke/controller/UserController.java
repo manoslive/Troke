@@ -16,12 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.thymeleaf.context.WebContext;
 
-import javax.imageio.ImageIO;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.awt.image.BufferedImage;
-import java.io.*;
 import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.UUID;
@@ -46,8 +42,10 @@ public class UserController {
 
     @ExceptionHandler(Throwable.class)
     @RequestMapping(value = "/adduser", method = RequestMethod.POST)
-    public String adduser(@ModelAttribute("userSignupForm") @Valid UserSignupForm userSignupForm, BindingResult result,
-                          @RequestParam(value = "avatar", required = false) @Valid MultipartFile avatar, BindingResult result2,
+    public String adduser(@ModelAttribute("userSignupForm") @Valid UserSignupForm userSignupForm,
+                          BindingResult result,
+                          @RequestParam(value = "avatar", required = false) @Valid MultipartFile avatar,
+                          BindingResult result2,
                           RedirectAttributes redirectAttributes,
                           Model model, HttpSession session) {
         // On valide le model userSignupForm
@@ -71,6 +69,7 @@ public class UserController {
         if (!result.hasErrors() && checkUserExistance == BigInteger.ZERO && checkEmailExistance == BigInteger.ZERO) {
             // On se déclare un nouveau UsersEntity pour l'ajout à la BD
             UsersEntity user = new UsersEntity();
+
 
             // Gestion de l'upload de l'image non temporaire
             boolean imageIsUploaded = imageService.uploadImage(avatar, imageName, true, session);

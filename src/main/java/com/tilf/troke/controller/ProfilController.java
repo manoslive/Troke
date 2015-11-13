@@ -1,21 +1,24 @@
 package com.tilf.troke.controller;
 
 import com.tilf.troke.auth.AuthUserContext;
+import com.tilf.troke.entity.ImageobjectEntity;
 import com.tilf.troke.entity.ObjectsEntity;
 import com.tilf.troke.entity.UsersEntity;
-import com.tilf.troke.repository.CustomObjectRepository;
-import com.tilf.troke.repository.ObjectRepository;
-import com.tilf.troke.repository.UserRepository;
+import com.tilf.troke.repository.*;
+import com.tilf.troke.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.thymeleaf.context.WebContext;
 
 import javax.servlet.http.HttpSession;
+import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.UUID;
 
 /**
  * Created by Alex on 2015-10-23.
@@ -32,7 +35,16 @@ public class ProfilController {
     private AuthUserContext authContext;
 
     @Autowired
+    private CustomUserRepository customUserRepository;
+
+    @Autowired
     private CustomObjectRepository customObjectRepository;
+
+    @Autowired
+    private ImageService imageService;
+
+    @Autowired
+    private ImageObjectRepository imageObjectRepository;
 
 
     @RequestMapping(value="/addObject", method= RequestMethod.POST)
@@ -41,8 +53,22 @@ public class ProfilController {
                                      @RequestParam("Description") String Description,
                                      @RequestParam("Valeur") int valeur,
                                      @RequestParam("rating") int rating,
-                                     HttpSession session) {
+                                     @RequestParam(value= "photoMain", required=false) MultipartFile mainPhoto,
+                                     @RequestParam(value= "photo1", required=false) MultipartFile photo1,
+                                     @RequestParam(value= "photo2", required=false) MultipartFile photo2,
+                                     @RequestParam(value= "photo3", required=false) MultipartFile photo3,
+                                     HttpSession session)
+    {
         java.sql.Date now = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        MultipartFile[] images = {mainPhoto, photo1, photo2, photo3};
+        ImageobjectEntity image1 = new ImageobjectEntity();
+        ImageobjectEntity image2 = new ImageobjectEntity();
+        ImageobjectEntity image3 = new ImageobjectEntity();
+        ImageobjectEntity image4 = new ImageobjectEntity();
+        ImageobjectEntity[] objects = {image1, image2, image3, image4};
+        // valeur par defaut d'une image vide ..
+        String defaultImage = "no_avatar.jpg";
+
         if(session.getAttribute("ObjectToModify") == null)
         {
             // donnée qui vien du formulaire ...
@@ -58,19 +84,60 @@ public class ProfilController {
             object.setIdsubcategory(1);
             object.setRateable("N");
             object.setIssignaled("N");
+            // ajout a la BD
             objectRepository.save(object);
             // id du dernier object créer pour pouvoir créer des objectImages ..
-            int numObject = object.getIdobject();}
+            int numObject = object.getIdobject();
+
+            // ici on ajoute les 4 photos de l'objet ..
+
+            for(int i = 0; i < 4; i++) {
+
+                // photo Main -----------------------------//
+
+                // On génère le nom unique de l'image et on vérifie qu'il
+                // n'existe pas déjà.
+                String imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
+                while (customUserRepository.checkAvatarName(imageName) == BigInteger.ONE) {
+                    imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
+                }
+                objects[i].setIdobject(numObject);
+
+                // ici on upload l'image sur le serveur avec le bon nom ..
+                boolean imageIsUploaded = imageService.uploadImage(images[i], imageName, true, session);
+
+                if (imageIsUploaded) {
+                    objects[i].setImagepath(imageName);
+                } else {
+                    objects[i].setImagepath(defaultImage);
+                }
+                if(i == 0)
+                {
+                    objects[i].setIsmainimage("1");
+                }
+                else
+                {
+                    objects[i].setIsmainimage("0");
+                }
+                // ensuite on save l'image dans la BD
+                imageObjectRepository.save(objects[i]);
+
+            }
+
+        }
         else
         {
-            ObjectsEntity objects = (ObjectsEntity)session.getAttribute("ObjectToModify");
+            ObjectsEntity objectss = (ObjectsEntity)session.getAttribute("ObjectToModify");
 
-            objects.setNameObject(Name);
-            objects.setDescObject(Description);
-            objects.setValueObject(valeur);
-            objects.setQuality(rating);
-            objectRepository.save(objects);
+            objectss.setNameObject(Name);
+            objectss.setDescObject(Description);
+            objectss.setValueObject(valeur);
+            objectss.setQuality(rating);
+            objectRepository.save(objectss);
             session.removeAttribute("ObjectToModify");
+
+            // TODO
+            // aller chercher les 4 images objects par rapport a l'object et les saver aussi avec les nouveaux parametres ..
         }
 
         return "redirect:/profil";
@@ -104,22 +171,51 @@ public class ProfilController {
     }
 
     @RequestMapping(value="/UpdateUser" ,method = RequestMethod.POST)
-    public String UserUpdate(@RequestParam("profile-prenom") String username,
+    public String UserUpdate(HttpSession session,
+                             @RequestParam("profile-prenom") String username,
                              @RequestParam("profile-nomfamille") String lastname,
                              @RequestParam("profile-telephone") String telephone,
                              @RequestParam("profile-codepostal") String codepostal,
-                             @RequestParam("profile-email") String email)
+                             @RequestParam("profile-email") String email,
+                             @RequestParam(value= "avatarProfil", required=false) MultipartFile avatar)
     {
+        // valeur par defaut d'une image vide ..
+        String defaultImage = "no_avatar.jpg";
+
+        // On génère le nom unique de l'image et on vérifie qu'il
+        // n'existe pas déjà.
+        String imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
+        while (customUserRepository.checkAvatarName(imageName) == BigInteger.ONE) {
+            imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
+        }
+
+        // instantiation du user avec le user loggé..
         UsersEntity userActif = authContext.getUser();
 
-        userActif.setFirstname(username);
-        userActif.setLastname(lastname);
-        userActif.setEmail(email);
-        userActif.setTelephone(telephone);
-        userActif.setZipcode(codepostal);
+        // Vérification du courriel (1 si existe, 0 sinon)
+        if(email.equals(authContext.getUser().getEmail()) || customUserRepository.checkEmailExistance(email) == BigInteger.ZERO ) {
+            userActif.setEmail(email);
+            // on set les nouveaux parametre modifier dans le profil ..
+            userActif.setFirstname(username);
+            userActif.setLastname(lastname);
+            userActif.setTelephone(telephone);
+            userActif.setZipcode(codepostal);
 
-        userRepository.save(userActif);
+            // ici on upload l'image sur le serveur avec le bon nom ..
+            boolean imageIsUploaded = imageService.uploadImage(avatar, imageName, true, session);
 
+            if (imageIsUploaded) {
+                userActif.setAvatar(imageName);
+                session.setAttribute("avatarpathProfil", imageName);
+            } else {
+                userActif.setAvatar(defaultImage);
+                session.setAttribute("avatarpathProfil", defaultImage);
+            }
+            // on save le user dans la BD..
+            userRepository.save(userActif);
+        }
+
+        // on re set le user loggé avec celui modifié ..
         authContext.setUser(userActif);
         return "redirect:/profil";
     }

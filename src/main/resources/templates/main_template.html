@@ -171,6 +171,7 @@
 <!-- END Login -->
 
 <!-- START Signup -->
+<!-- il faut mettre le enctype pour resquester le param dans le controller -->
 <form style="margin:0px" action="#" name="inscriptionForm" th:action="@{/adduser}" method="post"
       th:object="${userSignupForm}" enctype="multipart/form-data">
     <div id="openModalInscription" class="modalDialogInscription flipcard h ">
