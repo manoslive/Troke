@@ -3,14 +3,21 @@
 	height: 500px;
 }
 #carouselConatiner{
-	margin: 6px;
-	width:99%;
-	height:140px;
-	background-color: #30697D;
+	margin: 10px auto 10px auto;
+	width:90%;
+	height:200px;
+	background-image:url("../images/WorldBanner6.jpg") ;
+	background-repeat: no-repeat;
+	background-size:cover;
+
 	border: 2px solid #003042;
 	box-shadow: 0 0 2em #002042;
 	overflow: hidden;
 	padding: 0px;
+
+	moz-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	-webkit-border-radius: 10px;
 }
 #categories{
 	padding: 60px;
