@@ -1,13 +1,11 @@
 package com.tilf.troke.repository;
 
-import com.tilf.troke.entity.ObjectsEntity;
 import com.tilf.troke.entity.TransactionsEntity;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 import java.util.List;
 
 /**

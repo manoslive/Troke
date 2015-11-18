@@ -1,14 +1,15 @@
 package com.tilf.troke.controller;
 
 import com.tilf.troke.auth.AuthUserContext;
-import com.tilf.troke.entity.ImageobjectEntity;
 import com.tilf.troke.entity.ObjectsEntity;
 import com.tilf.troke.entity.UsersEntity;
-import com.tilf.troke.repository.*;
+import com.tilf.troke.repository.CustomObjectRepository;
+import com.tilf.troke.repository.CustomUserRepository;
+import com.tilf.troke.repository.ObjectRepository;
+import com.tilf.troke.repository.UserRepository;
 import com.tilf.troke.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,13 +44,12 @@ public class ProfilController {
     @Autowired
     private ImageService imageService;
 
-    @Autowired
-    private ImageObjectRepository imageObjectRepository;
+
+
 
 
     @RequestMapping(value="/addObject", method= RequestMethod.POST)
-    public String addObjectInventory(@ModelAttribute("object")ObjectsEntity object,
-                                     @RequestParam("Name") String Name,
+    public String addObjectInventory(@RequestParam("Name") String Name,
                                      @RequestParam("Description") String Description,
                                      @RequestParam("Valeur") int valeur,
                                      @RequestParam("rating") int rating,
@@ -61,13 +61,9 @@ public class ProfilController {
     {
         java.sql.Date now = new java.sql.Date(Calendar.getInstance().getTime().getTime());
         MultipartFile[] images = {mainPhoto, photo1, photo2, photo3};
-        ImageobjectEntity image1 = new ImageobjectEntity();
-        ImageobjectEntity image2 = new ImageobjectEntity();
-        ImageobjectEntity image3 = new ImageobjectEntity();
-        ImageobjectEntity image4 = new ImageobjectEntity();
-        ImageobjectEntity[] objects = {image1, image2, image3, image4};
-        // valeur par defaut d'une image vide ..
-        String defaultImage = "no_avatar.jpg";
+        boolean imageIsUploaded;
+        ObjectsEntity object = new ObjectsEntity();
+
 
         if(session.getAttribute("ObjectToModify") == null)
         {
@@ -80,60 +76,85 @@ public class ProfilController {
             object.setCreationdate(now);
 
             // donnée rentrer a la main pour des valeur par defaut ...
-            object.setGuid("12345qwerty");
             object.setIdsubcategory(1);
             object.setRateable("N");
             object.setIssignaled("N");
-            // ajout a la BD
-            objectRepository.save(object);
-            // id du dernier object créer pour pouvoir créer des objectImages ..
-            int numObject = object.getIdobject();
 
-            // ici on ajoute les 4 photos de l'objet ..
+            // Ajout des 4 photos
 
-            for(int i = 0; i < 4; i++) {
+            //------------------ Photo Main ------------------------
+            // On génère le nom unique de l'image et on vérifie qu'il
+            // n'existe pas déjà.
+            String imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
+            while (customUserRepository.checkAvatarName(imageName) == BigInteger.ONE) {
+                imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
+            }
+            if(images[0] != null){
+            // ici on upload l'image sur le serveur avec le bon nom ..
+            imageIsUploaded = imageService.uploadImage(images[0], imageName, true, session);
 
-                // photo Main -----------------------------//
+            if (imageIsUploaded) {
+                object.setGuid(imageName);
+            } }
 
-                // On génère le nom unique de l'image et on vérifie qu'il
-                // n'existe pas déjà.
-                String imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
-                while (customUserRepository.checkAvatarName(imageName) == BigInteger.ONE) {
-                    imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
-                }
-                objects[i].setIdobject(numObject);
+            // ----------------- Photo 1 -------------------------
+            // On génère le nom unique de l'image et on vérifie qu'il
+            // n'existe pas déjà.
+            imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
+            while (customUserRepository.checkAvatarName(imageName) == BigInteger.ONE) {
+                imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
+            }
+            if(images[1] != null){
+            // ici on upload l'image sur le serveur avec le bon nom ..
+            imageIsUploaded = imageService.uploadImage(images[1], imageName, true, session);
 
+            if (imageIsUploaded) {
+                object.setPhoto1(imageName);
+            } }
+
+            // ----------------- Photo 2 -------------------------
+            // On génère le nom unique de l'image et on vérifie qu'il
+            // n'existe pas déjà.
+            imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
+            while (customUserRepository.checkAvatarName(imageName) == BigInteger.ONE) {
+                imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
+            }
+            if(images[2] != null){
                 // ici on upload l'image sur le serveur avec le bon nom ..
-                boolean imageIsUploaded = imageService.uploadImage(images[i], imageName, true, session);
+                imageIsUploaded = imageService.uploadImage(images[2], imageName, true, session);
 
                 if (imageIsUploaded) {
-                    objects[i].setImagepath(imageName);
-                } else {
-                    objects[i].setImagepath(defaultImage);
-                }
-                if(i == 0)
-                {
-                    objects[i].setIsmainimage("1");
-                }
-                else
-                {
-                    objects[i].setIsmainimage("0");
-                }
-                // ensuite on save l'image dans la BD
-                imageObjectRepository.save(objects[i]);
+                    object.setPhoto2(imageName);
+                } }
 
+            // ----------------- Photo 3 -------------------------
+            // On génère le nom unique de l'image et on vérifie qu'il
+            // n'existe pas déjà.
+            imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
+            while (customUserRepository.checkAvatarName(imageName) == BigInteger.ONE) {
+                imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
             }
+            if(images[2] != null){
+                // ici on upload l'image sur le serveur avec le bon nom ..
+                imageIsUploaded = imageService.uploadImage(images[3], imageName, true, session);
+
+                if (imageIsUploaded) {
+                    object.setPhoto3(imageName);
+                } }
+
+            // ajout a la BD
+            objectRepository.save(object);
 
         }
         else
         {
-            ObjectsEntity objectss = (ObjectsEntity)session.getAttribute("ObjectToModify");
+            object = (ObjectsEntity)session.getAttribute("ObjectToModify");
 
-            objectss.setNameObject(Name);
-            objectss.setDescObject(Description);
-            objectss.setValueObject(valeur);
-            objectss.setQuality(rating);
-            objectRepository.save(objectss);
+            object.setNameObject(Name);
+            object.setDescObject(Description);
+            object.setValueObject(valeur);
+            object.setQuality(rating);
+            objectRepository.save(object);
             session.removeAttribute("ObjectToModify");
 
             // TODO
