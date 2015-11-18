@@ -5,37 +5,29 @@
     <div class="mainDiv" style="font-family:Amaranth">
 
         <div class="leftDiv">
-            <form th:action="@{/UpdateUser}" method="post" id="formUser">
+            <!-- il faut mettre le enctype pour resquester le param dans le controller -->
+            <!-- form pout modifier le user dans le profil -->
+            <form th:action="@{/UpdateUser}" method="post" id="formUser" enctype="multipart/form-data">
                 <div class= "profilWelcome">
                     <h3 style="text-align:center;padding-top:1%;" th:text="${userActif.getIduser()}"/>
                 </div>
 
-
+                <!-- portion de la photo du profil -->
                 <div class="profilDiv">
                     <div class = "profilPhotoDiv">
-                        <div id="avatarProfil" src="#" alt="avatar" class="avatarProfil">
+                        <div id="avatarProfil" src="#" alt="avatar" class="avatarProfil"
+                             th:style="*{userActif.getAvatar() ne 'no_avatar.jpg'}? 'background-image:url(/uploaded-images/' + ${userActif.getAvatar()} + ')'">
                             <div id="avatarOverlay" style="height:100%">
                                 <div id="avatarPlus" disabled="disabled">
                                     <!--<p id="textFileExplorer2">Changer votre image de profil</p>-->
-                                    <input id="fileExplorer2" type="file" onchange="TestFileType('fileExplorer2','avatarProfil')" value=""/>
+                                    <input id="fileExplorer2" type="file" name="avatarProfil" onchange="TestFileType('fileExplorer2','avatarProfil')" value="null"/>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!--<div class = "profilPhotoDiv">
-                        <div id="avatarProfil" src="#" alt="avatar" class="avatarProfil">
-                            <div id="avatarOverlay" style="height:100%">
-                                <div id="avatarPlus" disabled="disabled">
-                                   <p id="textFileExplorer" style="left:4%; top:15%;">Changer votre <br> image de profil<p>
-                                    <input id="fileExplorer" type="file" onchange="PreviewImage(this.value);" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>-->
-
+                    <!-- input du profil -->
                     <div class = "profilInfoDiv">
-
                         <div class = "profilLeftDiv">
                             <!--</br>-->
                             <p name="label-prenom" style="font-weight:normal">Prénom</p>
@@ -73,8 +65,10 @@
 
                 </div>
             </form>
-            <div class="coteDiv">
+            <!-- fin du profil input -->
 
+
+            <div class="coteDiv">
                 <div style="margin: auto; width: 200px; height:60%; text-align:center;">
                     <div class="innerCote">
                     <label style="font-weight:normal">Transaction # 23</label>
@@ -96,18 +90,17 @@
             </div>
         </div><!-- fin LeftDiv -->
 
+        <!-- profil section de droite avec photo -->
         <div class="rightDiv">
-
             <div class="container main-container" style="height:100%;">
 
                 <div id="carousel-example-generic" style="height:100%" class="carousel slide">
                     <!-- Indicators -->
-
-
                     <ol class="carousel-indicators">
                         <th:block th:each="invent : ${userInventory}">
                             <li data-target="#carousel-example-generic"
-                                th:data-slide-to="${inventStat.index}"  th:class="*{inventStat.index eq 0} ? 'active' : ''"
+                                th:data-slide-to="${inventStat.index}"
+                                th:class="*{inventStat.index eq 0} ? 'active' : ''"
                                 th:onclick
                                 style="width:60px;height:60px;border-radius:100%;
 					            background-image:url('images/WorldBanner2.jpg');
@@ -126,28 +119,40 @@
                                 <div class="carousel-caption" style="top:5%">
                                     <h3 class="icon-container">
                                         <!--<span class="glyphicon glyphicon-glass"></span>-->
-                                        <div class="circular"><img src="images/LogoWorld_Transparence.png" alt="" class="circularimage" /></div>
+                                        <div class="circular"><img
+                                                th:src="'/uploaded-images/' + ${invent.getGuid()}"
+                                                alt="" class="circularimage" /></div>
 
                                     </h3>
-                                    <h3 class="icon-container" >
-                                        <!--<span class="glyphicon glyphicon-glass"></span>-->
-                                        <div class="circular"><img src="images/LogoWorld_Transparence.png" alt="" class="circularimage" /></div>
+                                    <th:block th:if="${invent.getPhoto1() ne null}">
+                                        <h3 class="icon-container" >
+                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
+                                            <div class="circular">
+                                                <img th:src="'/uploaded-images/' + ${invent.getPhoto1()}" alt="" class="circularimage" />
+                                            </div>
 
-                                    </h3>
-                                    <h3 class="icon-container" >
-                                        <!--<span class="glyphicon glyphicon-glass"></span>-->
-                                        <div class="circular"><img src="images/LogoWorld_Transparence.png" alt="" class="circularimage" /></div>
+                                        </h3>
+                                    </th:block>
 
-                                    </h3>
-                                    <h3 class="icon-container" >
-                                        <!--<span class="glyphicon glyphicon-glass"></span>-->
-                                        <div class="circular"><img src="images/LogoWorld_Transparence.png" alt="" class="circularimage" /></div>
+                                    <th:block th:if="${invent.getPhoto2() ne null}">
+                                        <h3 class="icon-container" >
+                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
+                                            <div class="circular"><img th:src="'/uploaded-images/' +${invent.getPhoto2()}" alt="" class="circularimage" /></div>
 
-                                    </h3>
+                                        </h3>
+                                    </th:block>
+
+                                    <th:block th:if="${invent.getPhoto3() ne null}">
+                                        <h3 class="icon-container" >
+                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
+                                            <div class="circular"><img th:src="'/uploaded-images/' +${invent.getPhoto3()}" alt="" class="circularimage" /></div>
+
+                                        </h3>
+                                    </th:block>
 
                                     <!-- nom de l'objet -->
                                     <h3 data-animation="animated flipInX" style="font-size:18px; background-color:transparent; text-transform:uppercase;
-							                letter-spacing:.08em" th:text="${invent.getNameObject()}">
+							                letter-spacing:.08em" th:text="'/uploaded-images/' + ${invent.getNameObject()}">
                                     </h3>
 
                                     <!-- text de l'objet -->
@@ -155,10 +160,12 @@
 
 
                                     <div class="divAMS">
-                                        <a class="btn btn-sm animated-button thar-four" style="width:50%; font-weight:normal; text-transform:uppercase;"
+                                        <a class="btn btn-sm animated-button thar-four"
+                                           style="width:50%; font-weight:normal; text-transform:uppercase;"
                                            th:onclick="'javascript:modalSubmitModifier(\''+${invent.getIdobject()}+'\')'">Modifier</a>
 
-                                        <a class="btn btn-sm animated-button thar-four" style="width:50%; font-weight:normal; text-transform:uppercase;"
+                                        <a class="btn btn-sm animated-button thar-four"
+                                           style="width:50%; font-weight:normal; text-transform:uppercase;"
                                            th:onclick="'javascript:modalSubmitDelete(\''+${invent.getIdobject()}+'\')'" >Supprimer</a>
 
                                     </div>
@@ -191,10 +198,10 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div><!-- /.carousel -->
-
             </div><!-- /.container main-container -->
-
         </div> <!-- fin RightDiv -->
+
+
 
     </div><!-- fin mainDiv -->
 </div> <!-- fin Fragment -->

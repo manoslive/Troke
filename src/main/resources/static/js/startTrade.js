@@ -33,11 +33,11 @@ function hover(element) {
     $('.mainImage').attr('src', element.getAttribute('src'));
 }
 //Function qui vérifi si le trade est valid
-function checkValidTrade(){
-    if($('#opponentExchangeItemsStart ul li').length < 1) {
+function checkValidTrade() {
+    if ($('#opponentExchangeItemsStart ul li').length < 1) {
         document.getElementById("btn-send-trade").style.pointerEvents = "none";
         document.getElementById("btn-send-trade").innerText = "Sélectionnez un item \n pour l'échange"
-    }else {
+    } else {
         document.getElementById("btn-send-trade").style.pointerEvents = "auto";
         document.getElementById("btn-send-trade").innerText = "Envoyer l'offre!";
     }
@@ -189,11 +189,11 @@ function init() {
             $("#btn-enter").click();
         }
     });
-    document.getElementById('startTradeForm').onsubmit = function() {
-            return false;
+    document.getElementById('startTradeForm').onsubmit = function () {
+        return false;
     }
     var modal, modalInfoItem = document.getElementsByName("modal-Item-Info");
-    for(modal in modalInfoItem){
+    for (modal in modalInfoItem) {
         modalInfoItem[modal].addEventListener('click', function (e) {
             modalClose();
         }, false);

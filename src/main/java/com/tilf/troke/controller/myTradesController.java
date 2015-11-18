@@ -29,7 +29,7 @@ public class myTradesController {
     public String getMyTrades(Model model,
                               HttpSession session) {
         UsersEntity currentUser = authUserContext.getUser();
-        if(currentUser != null) {
+        if (currentUser != null) {
             model.addAttribute("userActif", currentUser);
             //Get les transactions qui sont prêts à êtres répondues
             List<TransactionsEntity> pendingTrades = customMyTradeRepository.getPendingTransactionsByUserID(currentUser.getIduser());
@@ -51,7 +51,7 @@ public class myTradesController {
                 context.setVariable("adrOpenTrade", "/openTrade?transactionID=");
             }
             return "fragments/home/myTrades";
-        }else{
+        } else {
             session.removeAttribute("error");
             return "redirect:#openModalConnexion";
         }

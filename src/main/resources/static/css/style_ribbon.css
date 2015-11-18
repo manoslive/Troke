@@ -1,12 +1,10 @@
 /* Reset */
 
-
 :focus {
     outline: 0;
 }
+
 /* // Reset */
-
-
 
 h2 {
     font-style: bold;
@@ -20,24 +18,20 @@ div#container {
     width: 90%;
 }
 
-
-
-
-
 .bubble {
     clear: both;
     margin: 0px auto;
     width: 100%;
     background: #fff;
-    background-image:url("../images/WorldBanner6.jpg") ;
+    background-image: url("../images/WorldBanner6.jpg");
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: cover;
     -moz-border-radius: 10px;
     -khtml-border-radius: 10px;
     -webkit-border-radius: 10px;
-    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
-    -khtml-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
-    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    -khtml-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
     position: relative;
     z-index: 90; /* the stack order: displayed under ribbon rectangle (100) */
 }
@@ -45,16 +39,16 @@ div#container {
 .rectangle {
     background: #00374C;
     height: 50px;
-    width:  calc(100% + 30px);
+    width: calc(100% + 30px);
 
     position: relative;
-    left:-15px;
-    right:15px;
+    left: -15px;
+    right: 15px;
     top: 30px;
     float: left;
-    -moz-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
-    -khtml-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
-    -webkit-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+    -moz-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.55);
+    -khtml-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.55);
+    -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.55);
     z-index: 100; /* the stack order: foreground */
 }
 
@@ -62,16 +56,16 @@ div#container {
     font-size: 30px;
     color: #fff;
 
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
 .triangle-l {
     border-color: transparent #00374C transparent transparent;
-    border-style:solid;
-    border-width:15px;
-    height:0px;
-    width:0px;
+    border-style: solid;
+    border-width: 15px;
+    height: 0px;
+    width: 0px;
     position: relative;
     left: -30px;
     top: 65px;
@@ -80,10 +74,10 @@ div#container {
 
 .triangle-r {
     border-color: transparent transparent transparent #00374C;
-    border-style:solid;
-    border-width:15px;
-    height:0px;
-    width:0px;
+    border-style: solid;
+    border-width: 15px;
+    height: 0px;
+    width: 0px;
     position: relative;
     left: 100%;
     top: 35px;
@@ -92,7 +86,7 @@ div#container {
 
 .info {
     padding: 60px 25px 35px 25px;
-    text-align:center;
+    text-align: center;
 }
 
 .info h2 {
@@ -114,15 +108,14 @@ div#container {
     text-decoration: underline;
 }
 
-.categoriess
-{
-    list-style-type:none;
-    font-family:'Amaranth';
-    display:inline-block;
-    line-height:3em;
+.categoriess {
+    list-style-type: none;
+    font-family: 'Amaranth';
+    display: inline-block;
+    line-height: 3em;
     letter-spacing: .2em;
-    text-transform:uppercase;
-    color:white;
+    text-transform: uppercase;
+    color: white;
     vertical-align: top;
 }
 

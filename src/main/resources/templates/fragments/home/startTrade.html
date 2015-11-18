@@ -30,7 +30,8 @@
                     class="exchangeZoneHeader ui-widget-header"></h4>
                 <div id="opponentExchangeItemsStart">
                     <ul class="OpponentInventory ui-helper-reset">
-                        <li name="Trade-Items" class="OpponentItem ui-widget-content ui-corner-tr ui-draggable TradeItems"
+                        <li name="Trade-Items"
+                            class="OpponentItem ui-widget-content ui-corner-tr ui-draggable TradeItems"
                             style="display: list-item; overflow: hidden; width: 80px; height: 80px;">
                             <h5 th:text="${currentItem.getNameObject()}" class="ui-widget-header"></h5>
                             <img class="item-image" src="images/move_icon.png" alt=""
@@ -54,7 +55,8 @@
                     </ul>
                 </div>
         <span class="dd animated fadeInDown">
-              <a id="btn-send-trade" style="float:left;" class="btn-offre btn btn-sm animated-button thar-two" onclick="makeIDList()">Envoyer l'offre!</a>
+              <a id="btn-send-trade" style="float:left;" class="btn-offre btn btn-sm animated-button thar-two"
+                 onclick="makeIDList()">Envoyer l'offre!</a>
               <a style="float:right;" class="btn-offre btn btn-sm animated-button thar-two" onclick="goBack()">Annuler
                   l'offre</a>
         </span>
@@ -67,7 +69,8 @@
                 </div>
             </div>
             <!-- Liste qui crée une zone inventaire (Opposant) et contient les items-->
-            <ul id="OpponentInventory" class="OpponentInventory OpponentInventoryStartTrade ui-helper-reset ui-helper-clearfix col-md-6">
+            <ul id="OpponentInventory"
+                class="OpponentInventory OpponentInventoryStartTrade ui-helper-reset ui-helper-clearfix col-md-6">
                 <h5 th:text="'Inventaire à ' + ${startTradeOpponent.getIduser()}" class="OpponentInventory-header"></h5>
                 <li th:each="inv : ${inventory}" class="OpponentItem ui-widget-content ui-corner-tr">
                     <h5 th:text="${inv.getNameObject()}" class="ui-widget-header"></h5>
@@ -103,7 +106,8 @@
     <!-- Modal ObjectInfo -->
         <!-- Modal Inventaire -->
     <th:block th:each="inv : ${inventory}">
-        <div th:id="'modal-InfoItem'+${inv.getIdobject()}" name="modal-Item-Info" class="modal-box modal-InfoItem-class">
+        <div th:id="'modal-InfoItem'+${inv.getIdobject()}" name="modal-Item-Info"
+             class="modal-box modal-InfoItem-class">
             <div>
                 <a href="#" title="Fermer" class="js-modal-close close">X</a>
                 <h2 th:text="${inv.getNameObject()}" style="text-align:center"></h2>

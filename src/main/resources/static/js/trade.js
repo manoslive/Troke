@@ -25,7 +25,7 @@ function CompleteTransaction(){
 }
 var currentModalID;
 var currentInfoID;
-function showModalInfoItem(ObjectID){
+function showModalInfoItem(ObjectID) {
     currentInfoID = ObjectID;
     currentModalID = '#modal-InfoItem' + ObjectID;
     document.querySelector(currentModalID).classList.add('modal-box-show');
@@ -39,26 +39,26 @@ function sendChat(userName){
     }
 }
 //Function qui vérifi si le trade est valid
-function checkValidTrade(){
+function checkValidTrade() {
     var isValid = false;
-    if($('#userExchangeItems ul li').length < 1) {
+    if ($('#userExchangeItems ul li').length < 1) {
         isValid = false;
-    }else {
+    } else {
         isValid = true;
     }
-    if($('#opponentExchangeItems ul li').length < 1) {
+    if ($('#opponentExchangeItems ul li').length < 1) {
         isValid = false;
-    }else {
-        if(!isValid)
+    } else {
+        if (!isValid)
             isValid = false;
         else
             isValid = true;
     }
-    if(isValid){
+    if (isValid) {
         document.getElementById("btn-send-trade").style.pointerEvents = "auto";
         document.getElementById("btn-send-trade").innerText = "Envoyer l'offre!";
     }
-    else{
+    else {
         document.getElementById("btn-send-trade").style.pointerEvents = "none";
         document.getElementById("btn-send-trade").innerText = "Sélectionnez un item \n pour l'échange"
     }
@@ -66,8 +66,10 @@ function checkValidTrade(){
     document.getElementById("btn-accept-trade").innerText = "Réinitialiser l'offre";
     changeAcceptButton();
 }
-function changeAcceptButton(){
-    document.getElementById('btn-accept-trade').onclick = function () { location.reload() };
+function changeAcceptButton() {
+    document.getElementById('btn-accept-trade').onclick = function () {
+        location.reload()
+    };
 }
 $( init );
 function init() {
@@ -152,7 +154,7 @@ function init() {
                     $item
                         .animate({ width: "80px" , height: "80px" })
                         .find( ".item-image" )
-                        .animate({  width: "80px", height: "60px" , maxWidth: "80px", maxHeight: "60px" });
+                        .animate({width: "80px", height: "60px", maxWidth: "80px", maxHeight: "60px"});
                 });
             }else{
                 $item.find( ".icon-exchange" ).remove();
@@ -180,7 +182,7 @@ function init() {
                     $item
                         .animate({ width: "80px" , height: "80px" })
                         .find( ".item-image" )
-                        .animate({  width: "80px", height: "60px" , maxWidth: "80px", maxHeight: "60px" });
+                        .animate({width: "80px", height: "60px", maxWidth: "80px", maxHeight: "60px"});
                 });
             }else{
                 $item.find( ".icon-exchange" ).remove();
@@ -208,7 +210,7 @@ function init() {
                 .find( ".icon-refresh" )
                 .remove()
                 .end()
-                .css( "width", "44%").css("height", "125px").css("max-width", "120px").css("max-height", "125px")
+                .css("width", "44%").css("height", "125px").css("max-width", "120px").css("max-height", "125px")
                 .append( exchange_Icon )
                 .find( ".item-image")
                 .css( "width", "100%").css("height", "80px").css("max-width", "100%").css("max-height", "80px")
@@ -229,7 +231,7 @@ function init() {
                 .find( ".icon-refresh" )
                 .remove()
                 .end()
-                .css( "width", "44%").css("height", "125px").css("max-width", "120px").css("max-height", "125px")
+                .css("width", "44%").css("height", "125px").css("max-width", "120px").css("max-height", "125px")
                 .append( exchange_Icon )
                 .find( ".item-image")
                 .css( "width", "100%").css("height", "80px").css("max-width", "100%").css("max-height", "80px")
@@ -339,11 +341,11 @@ function init() {
             $("#btn-enter").click();
         }
     });
-    document.getElementById('tradeForm').onsubmit = function() {
+    document.getElementById('tradeForm').onsubmit = function () {
         return false;
     }
     var modal, modalInfoItem = document.getElementsByName("modal-Item-Info");
-    for(modal in modalInfoItem){
+    for (modal in modalInfoItem) {
         modalInfoItem[modal].addEventListener('click', function (e) {
             modalClose();
         }, false);

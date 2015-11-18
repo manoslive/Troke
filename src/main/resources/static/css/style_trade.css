@@ -101,7 +101,8 @@
 	position: static;
 	border: 2px solid #003042;
 }
-.OpponentInventoryStartTrade{
+
+.OpponentInventoryStartTrade {
 	max-height: 83.5% !important;
 }
 .OpponentInventory-header{

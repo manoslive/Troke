@@ -36,7 +36,7 @@
                    th:onclick="'javascript:showModalInfoItem(\''+ ${invUser.getIdobject()} +'\')'">Info Item</a>
               </div>
             </div>
-            <img src="images/add-button-icon.png" class="info-icon ui-icon icon-exchange" />
+            <img src="images/add-button-icon.png" class="info-icon ui-icon icon-exchange"/>
           </div>
           <input type="hidden" th:value="${invUser.getIdobject()}" class=""/>
         </li>
@@ -47,7 +47,7 @@
           <div class="optionsItem">
             <div class="btn-zoom">
             </div>
-            <img src="images/add-button-icon.png" class="info-icon ui-icon icon-exchange" />
+            <img src="images/add-button-icon.png" class="info-icon ui-icon icon-exchange"/>
           </div>
         </li>
       </ul>
@@ -68,7 +68,8 @@
                     <div class="follower">
                       <a class="js-open-modal link-zoom info-icon"
                          href="#" data-modal-id="modal-InfoItem"
-                         th:onclick="'javascript:showModalInfoItem(\''+ ${userTradeItem.getIdobject()} +'\')'">Info Item</a>
+                         th:onclick="'javascript:showModalInfoItem(\''+ ${userTradeItem.getIdobject()} +'\')'">Info
+                        Item</a>
                     </div>
                   </div>
                 </div>
@@ -92,7 +93,8 @@
                     <div class="follower">
                       <a class="js-open-modal link-zoom info-icon "
                          href="#" data-modal-id="modal-InfoItem"
-                         th:onclick="'javascript:showModalInfoItem(\''+ ${opponentTradeItem.getIdobject()} +'\')'">Info Item</a>
+                         th:onclick="'javascript:showModalInfoItem(\''+ ${opponentTradeItem.getIdobject()} +'\')'">Info
+                        Item</a>
                     </div>
                   </div>
                 </div>
@@ -103,8 +105,10 @@
           </div>
         </div>
         <span class="dd animated fadeInDown">
-              <a id="btn-send-trade" style="float:left;" class="btn-offre btn btn-sm animated-button thar-two" onclick="makeIDList()">Envoyer la contre-offre!</a>
-              <a id="btn-accept-trade" style="float:right;" class="btn-offre btn btn-sm animated-button thar-two" onclick="CompleteTransaction()">Accepter l'offre!</a>
+              <a id="btn-send-trade" style="float:left;" class="btn-offre btn btn-sm animated-button thar-two"
+                 onclick="makeIDList()">Envoyer la contre-offre!</a>
+              <a id="btn-accept-trade" style="float:right;" class="btn-offre btn btn-sm animated-button thar-two"
+                 onclick="CompleteTransaction()">Accepter l'offre!</a>
         </span>
         <div id="zoneChat" class="row-md-3">
           <textarea th:text="${ChatLog.getMsg()}" name="chatLog" id="chatBoxStartExchange"></textarea>
@@ -129,7 +133,7 @@
                    th:onclick="'javascript:showModalInfoItem(\''+ ${invOpponent.getIdobject()} +'\')'">Info Item</a>
               </div>
             </div>
-            <img src="images/add-button-icon.png" class="info-icon ui-icon icon-exchange" />
+            <img src="images/add-button-icon.png" class="info-icon ui-icon icon-exchange"/>
           </div>
           <input type="hidden" th:value="${invOpponent.getIdobject()}" class=""/>
         </li>
@@ -140,7 +144,7 @@
           <div class="optionsItem">
             <div class="btn-zoom">
             </div>
-            <img src="images/add-button-icon.png" class="info-icon ui-icon icon-exchange" />
+            <img src="images/add-button-icon.png" class="info-icon ui-icon icon-exchange"/>
           </div>
         </li>
       </ul>
@@ -152,7 +156,9 @@
       <div th:id="'modal-InfoItem'+${inv.getIdobject()}" name="modal-Item-Info" class="modal-box modal-InfoItem-class">
         <div>
           <a href="#" title="Fermer" class="js-modal-close close">X</a>
+
           <h2 th:text="${inv.getNameObject()}" style="text-align:center"></h2>
+
           <div class="or-spacer">
             <div class="mask"></div>
           </div>
@@ -173,6 +179,7 @@
             <span th:text="${inv.getDescObject()}"></span>
           </div>
           <br/>
+
           <div class="or-spacer">
             <div class="mask"></div>
           </div>
@@ -184,7 +191,9 @@
       <div th:id="'modal-InfoItem'+${inv.getIdobject()}" name="modal-Item-Info" class="modal-box modal-InfoItem-class">
         <div>
           <a href="#" title="Fermer" class="js-modal-close close">X</a>
+
           <h2 th:text="${inv.getNameObject()}" style="text-align:center"></h2>
+
           <div class="or-spacer">
             <div class="mask"></div>
           </div>
@@ -205,6 +214,7 @@
             <span th:text="${inv.getDescObject()}"></span>
           </div>
           <br/>
+
           <div class="or-spacer">
             <div class="mask"></div>
           </div>
@@ -213,10 +223,13 @@
     </th:block>
     <!-- Modal ObjectInfo - Opponent Exchange -->
     <th:block th:each="tradeItem : ${OpponentTradeItems}">
-      <div th:id="'modal-InfoItem'+${tradeItem.getIdobject()}" name="modal-Item-Info" class="modal-box modal-InfoItem-class">
+      <div th:id="'modal-InfoItem'+${tradeItem.getIdobject()}" name="modal-Item-Info"
+           class="modal-box modal-InfoItem-class">
         <div>
           <a href="#" title="Fermer" class="js-modal-close close">X</a>
+
           <h2 th:text="${tradeItem.getNameObject()}" style="text-align:center"></h2>
+
           <div class="or-spacer">
             <div class="mask"></div>
           </div>
@@ -237,6 +250,7 @@
             <span th:text="${tradeItem.getDescObject()}"></span>
           </div>
           <br/>
+
           <div class="or-spacer">
             <div class="mask"></div>
           </div>
@@ -245,10 +259,13 @@
     </th:block>
     <!-- Modal ObjectInfo - User Exchange -->
     <th:block th:each="tradeItem : ${UserTradeItems}">
-      <div th:id="'modal-InfoItem'+${tradeItem.getIdobject()}" name="modal-Item-Info" class="modal-box modal-InfoItem-class">
+      <div th:id="'modal-InfoItem'+${tradeItem.getIdobject()}" name="modal-Item-Info"
+           class="modal-box modal-InfoItem-class">
         <div>
           <a href="#" title="Fermer" class="js-modal-close close">X</a>
+
           <h2 th:text="${tradeItem.getNameObject()}" style="text-align:center"></h2>
+
           <div class="or-spacer">
             <div class="mask"></div>
           </div>
@@ -269,6 +286,7 @@
             <span th:text="${tradeItem.getDescObject()}"></span>
           </div>
           <br/>
+
           <div class="or-spacer">
             <div class="mask"></div>
           </div>

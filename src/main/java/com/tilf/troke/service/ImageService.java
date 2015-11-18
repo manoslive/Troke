@@ -1,5 +1,6 @@
 package com.tilf.troke.service;
 
+import com.tilf.troke.auth.AuthUserContext;
 import com.tilf.troke.repository.CustomUserRepository;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class ImageService {
 
     @Autowired
     private CustomUserRepository customUserRepository;
+    @Autowired
+    private AuthUserContext authContext;
 
     public static byte[] scale(byte[] fileData, int width, int height) {
         ByteArrayInputStream in = new ByteArrayInputStream(fileData);
@@ -50,7 +53,7 @@ public class ImageService {
     public boolean uploadImage(MultipartFile avatar, String imageName, boolean isPermanentImage, HttpSession session) {
         String imagePath;
         if (isPermanentImage) {
-            imagePath = "src/main/resources/static/uploaded-images/";
+            imagePath = "src/main/resources/static/uploaded-images/" ;
         } else {
             imagePath = "src/main/resources/static/uploaded-images/temp/";
         }
@@ -70,7 +73,7 @@ public class ImageService {
                 // Resize byte if ration isn't 1:1
                 if (width / height != 1) {
                     if ((width / height) < 1) {
-                        resizedBytes = scale(bytes, modifier, 800);
+                        resizedBytes = scale(bytes, modifier, modifier);
                     } else if ((width / height) > 1) {
                         resizedBytes = scale(bytes, 800, modifier);
                     }

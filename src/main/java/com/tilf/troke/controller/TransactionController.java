@@ -56,7 +56,7 @@ public class TransactionController {
     @RequestMapping(value = "/startTrade", method = RequestMethod.GET)
     public String getUserFromItem(@RequestParam("itemID") int itemID, Model model, HttpSession session) {
         UsersEntity currentUser = authUserContext.getUser();
-        if(currentUser != null) {
+        if (currentUser != null) {
             UsersEntity opponentID = customUserRepository.getUserFromItem(itemID);
             model.addAttribute("startTradeOpponent", opponentID);
             model.addAttribute("currentItem", customObjectRepository.getObjectEntityByIdObject(itemID));
@@ -73,7 +73,7 @@ public class TransactionController {
                 context.setVariable("userActif", currentUser);
             }
             return "fragments/home/startTrade";
-        }else{
+        } else {
             session.removeAttribute("error");
             return "redirect:#openModalConnexion";
         }
