@@ -2,9 +2,14 @@ package com.tilf.troke.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
+ <<<<<<< HEAD
  * Created by Alex on 2015-11-18.
+ =======
+ * Created by Emmanuel on 2015-11-11.
+ >>>>>>> origin/master
  */
 @Entity
 @Table(name = "objects", schema = "", catalog = "troke")

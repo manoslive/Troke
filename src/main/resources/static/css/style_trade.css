@@ -15,6 +15,7 @@
 	background-color: #30697D;
 	float: left;
 	height: 100%;
+	max-height: 95%;
 	list-style: none;
 	overflow-x: hidden;
 	overflow-y: auto;
@@ -93,11 +94,16 @@
 	font-weight: normal;
 	background-color: #30697D;
 	height: 100%;
+	max-height: 95%;
 	list-style: none;
 	overflow-x: hidden;
 	overflow-y: auto;
 	position: static;
 	border: 2px solid #003042;
+}
+
+.OpponentInventoryStartTrade {
+	max-height: 83.5% !important;
 }
 .OpponentInventory-header{
 	text-align: center;

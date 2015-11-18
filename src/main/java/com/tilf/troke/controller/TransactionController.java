@@ -14,6 +14,7 @@ import org.thymeleaf.context.WebContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.servlet.http.HttpSession;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
@@ -53,23 +54,29 @@ public class TransactionController {
 
     //StartTrade - lorsqu'on click sur un item de la recherche et on veut commencer une transaction
     @RequestMapping(value = "/startTrade", method = RequestMethod.GET)
-    public String getUserFromItem(@RequestParam("itemID") int itemID, Model model) {
-        model.addAttribute("startTradeOpponent", customUserRepository.getUserFromItem(itemID));
-        model.addAttribute("currentItem", customObjectRepository.getObjectEntityByIdObject(itemID));
-        model.addAttribute("currentItemID", itemID);
-        model.addAttribute("inventory", customObjectRepository.getObjectsByUserID(itemID, customUserRepository.getUserFromItem(itemID).getIduser()));
+    public String getUserFromItem(@RequestParam("itemID") int itemID, Model model, HttpSession session) {
         UsersEntity currentUser = authUserContext.getUser();
-        model.addAttribute("userActif", currentUser);
-        // TODO THYMELEAF HACK
-        if (false) {
-            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("currentItemID", itemID);
-            context.setVariable("startTradeOpponent", customUserRepository.getUserFromItem(itemID));
-            context.setVariable("currentItem", customObjectRepository.getObjectEntityByIdObject(itemID));
-            context.setVariable("inventory", customObjectRepository.getObjectsByUserID(itemID, customUserRepository.getUserFromItem(itemID).getIduser()));
-            context.setVariable("userActif", currentUser);
+        if (currentUser != null) {
+            UsersEntity opponentID = customUserRepository.getUserFromItem(itemID);
+            model.addAttribute("startTradeOpponent", opponentID);
+            model.addAttribute("currentItem", customObjectRepository.getObjectEntityByIdObject(itemID));
+            model.addAttribute("currentItemID", itemID);
+            model.addAttribute("inventory", customObjectRepository.getObjectsByUserID(itemID, customUserRepository.getUserFromItem(itemID).getIduser()));
+            model.addAttribute("userActif", currentUser);
+            // TODO THYMELEAF HACK
+            if (false) {
+                WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+                context.setVariable("currentItemID", itemID);
+                context.setVariable("startTradeOpponent", customUserRepository.getUserFromItem(itemID));
+                context.setVariable("currentItem", customObjectRepository.getObjectEntityByIdObject(itemID));
+                context.setVariable("inventory", customObjectRepository.getObjectsByUserID(itemID, customUserRepository.getUserFromItem(itemID).getIduser()));
+                context.setVariable("userActif", currentUser);
+            }
+            return "fragments/home/startTrade";
+        } else {
+            session.removeAttribute("error");
+            return "redirect:#openModalConnexion";
         }
-        return "fragments/home/startTrade";
     }
 
     //OpenTrade - Lorsqu'on click sur un échange de la page myTrades pour y répondre

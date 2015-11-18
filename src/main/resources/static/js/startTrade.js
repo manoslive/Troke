@@ -1,6 +1,7 @@
 /**
  * Created by Shaun Cooper on 2015-10-16.
  */
+//Créer la liste des objets dans la zone d'échange
 function makeIDList(){
     var x = document.getElementsByClassName("itemID");
     var i;
@@ -25,6 +26,20 @@ function sendChat(userName){
         var text = document.getElementById('chatEnter').value;
         document.getElementById('chatEnter').value = "";
         document.getElementById('chatBoxStartExchange').value += (userName + ": " + text + "\n");
+    }
+}
+//Hover des petites images du modal InfoItem
+function hover(element) {
+    $('.mainImage').attr('src', element.getAttribute('src'));
+}
+//Function qui vérifi si le trade est valid
+function checkValidTrade() {
+    if ($('#opponentExchangeItemsStart ul li').length < 1) {
+        document.getElementById("btn-send-trade").style.pointerEvents = "none";
+        document.getElementById("btn-send-trade").innerText = "Sélectionnez un item \n pour l'échange"
+    } else {
+        document.getElementById("btn-send-trade").style.pointerEvents = "auto";
+        document.getElementById("btn-send-trade").innerText = "Envoyer l'offre!";
     }
 }
 $(init);
@@ -89,10 +104,11 @@ function init() {
                 });
             }
             $item.find("input").addClass("itemID");
+            checkValidTrade();
         });
     }
     // item recycle Opposant function
-    var zoneEchange_icon = "<img src='images/Logo-transparent.png' class='ui-icon icon-exchange'/>";
+    var zoneEchange_icon = "<img src='images/add-button-icon.png' class='ui-icon icon-exchange'/>";
     function recycleOpponentItem( $item ) {
         $item.fadeOut(function() {
             $item.find(".divInputMoney").replaceWith("<img class='item-image' src='images/item-dollar-sign.png' alt=''>");
@@ -110,6 +126,7 @@ function init() {
                 .end()
                 .appendTo( $OpponentInventory )
                 .fadeIn();
+            checkValidTrade();
         });
     }
     //Délégation de click et de moveover sur certains objets
@@ -145,16 +162,6 @@ function init() {
                 cursor: "move"
             })
         });
-    /* Open Modal Info Item
-    var appendthis = ("<div class='modal-overlay js-modal-close'></div>");
-    $('a[data-modal-id]').click(function (e) {
-        e.preventDefault();
-        $("body").append(appendthis);
-        $(".modal-overlay").fadeTo(500, 0.7);
-        $(".js-modalbox").fadeIn(500);
-        var modalBox = $(this).attr('data-modal-id');
-        $('#' + modalBox).fadeIn($(this).data());
-    });*/
     $(".js-modal-close, .modal-overlay").click(function () {
         $(".modal-box, .modal-overlay").fadeOut(500, function () {
             modalClose();
@@ -179,29 +186,25 @@ function init() {
             modalClose();
         }
         if (e.keyCode == 13) {
-            alert("allo");
             $("#btn-enter").click();
         }
     });
-    $('form #chatEnter').on('keypress', function(e) {
-        return e.which !== 13;
-    });
-    var modalInfoItem = document.getElementById(currentModalID);
-    modalInfoItem.addEventListener('click', function (e) {
-        modalClose();
-    }, false);
-    //Prevent event bubbling if click occurred within modal content body
-    modalInfoItem.children[0].addEventListener('click', function (e) {
-        e.stopPropagation();
-    }, false);
+    document.getElementById('startTradeForm').onsubmit = function () {
+        return false;
+    }
+    var modal, modalInfoItem = document.getElementsByName("modal-Item-Info");
+    for (modal in modalInfoItem) {
+        modalInfoItem[modal].addEventListener('click', function (e) {
+            modalClose();
+        }, false);
+        //Prevent event bubbling if click occurred within modal content body
+        modalInfoItem[modal].children[0].addEventListener('click', function (e) {
+            e.stopPropagation();
+        }, false);
+    }
     /* Width ajustable du div échange qui est horizontaly scrollable */
     $(document).ready(function () {
         var container_width = 0 * $(".container-inner").length;
         $(".container-inner").css("width", container_width + "!important");
     });
-}
-//Hover des petites images du modal InfoItem
-function hover(element) {
-    $('.mainImage').attr('src', element.getAttribute('src'));
-    //element.setAttribute('src', 'http://dummyimage.com/100x100/eb00eb/fff');
 }

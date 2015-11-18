@@ -13,6 +13,7 @@
         <class>com.tilf.troke.entity.UserratingEntity</class>
         <class>com.tilf.troke.entity.SubcategoryEntity</class>
         <class>com.tilf.troke.entity.ImageobjectEntity</class>
+        <class>com.tilf.troke.entity.TransactionmoneyEntity</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://troke.duckdns.org:3306/troke"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>

@@ -792,3 +792,16 @@
 
 }
 
+.Logobanner {
+    position: absolute;
+    top: 20px;
+    left: 5%;
+    z-index: 11;
+    width: 70px;
+    height: 70px;
+    z-index: 1000;
+
+}
+
+
+

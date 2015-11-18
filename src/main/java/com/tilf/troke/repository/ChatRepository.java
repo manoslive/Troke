@@ -1,7 +1,6 @@
 package com.tilf.troke.repository;
 
 import com.tilf.troke.entity.ChatEntity;
-import com.tilf.troke.entity.TransactionsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
