@@ -1,6 +1,29 @@
 /**
  * Created by Ysteinthal on 2015-10-16.
  */
+$(document).ready(function() {
+
+    var fontSize = 12;//$(window).width()/120;
+    $('#InfoH').css('font-size', fontSize);
+
+
+    $(window).resize(function() {
+        var size = $('#InfoH').css('font-size').split('px')[0];
+
+        //alert(size);
+
+        if((size > 8 )&&(size <= 12))
+        {
+
+            var fontSize = $(window).width() / 120;
+            if(fontSize <= 12 && fontSize >= 8) {
+                $('#InfoH').css('font-size', fontSize);
+            }
+
+        }
+    });
+
+});
 
 function ImageClick(lettre)
 {

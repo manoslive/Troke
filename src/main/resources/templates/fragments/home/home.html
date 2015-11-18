@@ -4,13 +4,22 @@
 </head>
 <body>
 <th:block th:fragment="content">
+
     <div id="home" class="container">
+
         <!-- Container du carousel -->
+
         <div id="carouselConatiner" class="container">
+            <!--<img src="images/LogoWorld_Transparence2.png" class="Logobanner" id="Logo"/>-->
+            <div class="rectangle">
+                <h2 style="margin-top:10px;font-family:'Amaranth'; font-size:24px;">DERNIERS AJOUTS</h2></div>
+            <div class="triangle-l"></div>
+            <div class="triangle-r"></div>
+
             <!-- Le Carousel -->
             <div id="myCarousel2" class="carousel slide">
                 <!-- Carousel items -->
-                <div class="carousel-inner">
+                <div class="carousel-inner" style="padding-top:15px">
                     <!-- Premier div d'items(8) qui est active -->
                     <div class="item active">
                         <div class="row text-center" style="margin-top: 15px;">
@@ -18,7 +27,8 @@
                             <!-- ITEM-->
                             <div class="span3" th:each="obj,iter : ${recentobjects}" th:if="${iter.index} lt 8">
                                 <div class="thumbnail product-item">
-                                    <a th:href="${adrItem} + ${obj.getIdobject()}"><img class="image-carousel-item" src="images/LogoWorld_Transparence.png"/></a>
+                                    <a th:href="${adrItem} + ${obj.getIdobject()}">
+                                        <img class="image-carousel-item" th:src="*{obj.getGuid() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${obj.getGuid()}:'images/LogoWorld_Transparence.png'"/></a>
                                     <p th:text="${obj.getNameObject()}" style="color:white;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;text-transform:uppercase;font-weight:normal;"></p>
                                 </div>
 

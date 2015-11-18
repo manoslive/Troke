@@ -8,6 +8,15 @@ function makeIDList(){
     for (i = 0; i < x.length; i++) {
         document.getElementById("tradeObjectsID").value += x[i].value + ";";
     }
+    if(document.getElementById("newTradeMoneyInput") !== null) {
+        if(document.getElementById("newTradeMoneyInput").value > 0) {
+            document.getElementById("newTradeMoneyValue").value = document.getElementById("newTradeMoneyInput").value;
+        }else{
+            document.getElementById("newTradeMoneyValue").value = 0;
+        }
+    }else {
+        document.getElementById("newTradeMoneyValue").value = 0;
+    }
     document.getElementById("startTradeForm").submit();
 }
 var currentModalID;
@@ -33,11 +42,11 @@ function hover(element) {
     $('.mainImage').attr('src', element.getAttribute('src'));
 }
 //Function qui vérifi si le trade est valid
-function checkValidTrade() {
-    if ($('#opponentExchangeItemsStart ul li').length < 1) {
+function checkValidTrade(){
+    if($('#opponentExchangeItemsStart ul li').length < 1) {
         document.getElementById("btn-send-trade").style.pointerEvents = "none";
         document.getElementById("btn-send-trade").innerText = "Sélectionnez un item \n pour l'échange"
-    } else {
+    }else {
         document.getElementById("btn-send-trade").style.pointerEvents = "auto";
         document.getElementById("btn-send-trade").innerText = "Envoyer l'offre!";
     }
@@ -86,7 +95,7 @@ function init() {
                 $( "ul", $OpponentExchange ) :
                 $( "<ul class='OpponentInventory ui-helper-reset'/>" ).appendTo( $OpponentExchange );
             if($item.hasClass("money")){
-                $item.find( ".item-image" ).replaceWith("<div class='divInputMoney'<label class='lb-money'>$</label><input  class='inputMoney' style='z-index:1000;' type='number'/></div>");
+                $item.find( ".item-image" ).replaceWith("<div class='divInputMoney'><label class='lb-money'>$</label><input id='newTradeMoneyInput' name='newTradeMoneyInput'  class='inputMoney' style='z-index:1000;' type='number'/></div>");
                 $item.find( ".icon-exchange" ).remove();
                 $item.append( recycle_icon ).appendTo( $list).fadeIn(function() {
                     $item
@@ -102,8 +111,8 @@ function init() {
                         .find( ".item-image" )
                         .animate({  width: "80px", height: "60px" , maxWidth: "80px", maxHeight: "60px" });
                 });
+                $item.find("input").addClass("itemID");
             }
-            $item.find("input").addClass("itemID");
             checkValidTrade();
         });
     }
@@ -189,11 +198,11 @@ function init() {
             $("#btn-enter").click();
         }
     });
-    document.getElementById('startTradeForm').onsubmit = function () {
-        return false;
+    document.getElementById('startTradeForm').onsubmit = function() {
+            return false;
     }
     var modal, modalInfoItem = document.getElementsByName("modal-Item-Info");
-    for (modal in modalInfoItem) {
+    for(modal in modalInfoItem){
         modalInfoItem[modal].addEventListener('click', function (e) {
             modalClose();
         }, false);
