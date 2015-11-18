@@ -67,7 +67,8 @@
                 <!-- photo1 MAIN -->
                     <div class="divModalAjoutPhotos">
                         <div class="divModalAjoutPhotosTOP">
-                            <div id="Photo1" src="#" alt="Photo1" class="Photo1">
+                            <div id="Photo1" src="#" alt="Photo1" class="Photo1"
+                                 th:style="*{session.ObjectToModify ne null}? 'background-image:url(/uploaded-images/' + ${session.ObjectToModify.getGuid()} + ')'">
                                 <div style="" class="avatarOverlay">
                                     <div class="avatarPlus">
                                         <input class="fileExplorer" id="fileExplorerP1" name="photoMain" type="file" onchange="TestFileType('fileExplorerP1', 'Photo1')"/>
@@ -75,7 +76,8 @@
                                 </div>
                             </div>
                  <!-- photo 2 -->
-                            <div id="Photo2" src="#" alt="Photo1" class="Photo1">
+                            <div id="Photo2" src="#" alt="Photo1" class="Photo1"
+                                 th:style="*{session.ObjectToModify ne null and session.ObjectToModify.getPhoto1() ne null} ? 'background-image:url(/uploaded-images/' + ${session.ObjectToModify.getPhoto1()} + ')'">
                                 <div class="avatarOverlay" style="">
                                     <div class="avatarPlus">
                                         <input class="fileExplorer" id="fileExplorerP2" name="photo1" type="file" onchange="TestFileType('fileExplorerP2', 'Photo2')"/>
@@ -85,7 +87,8 @@
                         </div>
                 <!-- photo 3 -->
                         <div class="divModalAjoutPhotosDOWN">
-                            <div id="Photo3" src="#" alt="Photo1" class="Photo1">
+                            <div id="Photo3" src="#" alt="Photo1" class="Photo1"
+                                 th:style="*{session.ObjectToModify ne null and session.ObjectToModify.getPhoto2() ne null} ? 'background-image:url(/uploaded-images/' + ${session.ObjectToModify.getPhoto2()} + ')'">
                                 <div class="avatarOverlay" style="">
                                     <div class="avatarPlus">
 
@@ -94,7 +97,8 @@
                                 </div>
                             </div>
                 <!-- photo 4 -->
-                            <div id="Photo4" src="#" alt="Photo1" class="Photo1">
+                            <div id="Photo4" src="#" alt="Photo1" class="Photo1"
+                                 th:style="*{session.ObjectToModify ne null and session.ObjectToModify.getPhoto3() ne null} ? 'background-image:url(/uploaded-images/' + ${session.ObjectToModify.getPhoto3()} + ')'">
                                 <div id="avatarOverlay" style="">
                                     <div id="avatarPlus">
                                         <input id="fileExplorerP4" class="fileExplorer" name="photo3" type="file" onchange="TestFileType('fileExplorerP4', 'Photo4')"/>
