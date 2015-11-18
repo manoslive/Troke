@@ -8,7 +8,29 @@ function makeIDList(){
     for (i = 0; i < x.length; i++) {
         document.getElementById("tradeObjectsID").value += x[i].value + ";";
     }
+    makeMoneyObjects();
     document.getElementById("tradeForm").submit();
+}
+//Transmet les valeurs d'argent à des inputs pour post au controlleur
+function makeMoneyObjects(){
+    if(document.getElementById("userMoneyInput") !== null) {
+        if(document.getElementById("userMoneyInput").value > 0) {
+            document.getElementById("userMoneyValue").value = document.getElementById("userMoneyInput").value;
+        }else{
+            document.getElementById("userMoneyValue").value = 0;
+        }
+    }else {
+        document.getElementById("userMoneyValue").value = 0;
+    }
+    if(document.getElementById("opponentMoneyInput") !== null) {
+        if(document.getElementById("opponentMoneyInput").value > 0) {
+            document.getElementById("opponentMoneyValue").value = document.getElementById("opponentMoneyInput").value;
+        }else{
+            document.getElementById("opponentMoneyValue").value = 0;
+        }
+    }else {
+        document.getElementById("opponentMoneyValue").value = 0;
+    }
 }
 //Hover des petites images du modal InfoItem
 function hover(element) {
@@ -25,7 +47,7 @@ function CompleteTransaction(){
 }
 var currentModalID;
 var currentInfoID;
-function showModalInfoItem(ObjectID) {
+function showModalInfoItem(ObjectID){
     currentInfoID = ObjectID;
     currentModalID = '#modal-InfoItem' + ObjectID;
     document.querySelector(currentModalID).classList.add('modal-box-show');
@@ -39,26 +61,26 @@ function sendChat(userName){
     }
 }
 //Function qui vérifi si le trade est valid
-function checkValidTrade() {
+function checkValidTrade(){
     var isValid = false;
-    if ($('#userExchangeItems ul li').length < 1) {
+    if($('#userExchangeItems ul li').length < 1) {
         isValid = false;
-    } else {
+    }else {
         isValid = true;
     }
-    if ($('#opponentExchangeItems ul li').length < 1) {
+    if($('#opponentExchangeItems ul li').length < 1) {
         isValid = false;
-    } else {
-        if (!isValid)
+    }else {
+        if(!isValid)
             isValid = false;
         else
             isValid = true;
     }
-    if (isValid) {
+    if(isValid){
         document.getElementById("btn-send-trade").style.pointerEvents = "auto";
         document.getElementById("btn-send-trade").innerText = "Envoyer l'offre!";
     }
-    else {
+    else{
         document.getElementById("btn-send-trade").style.pointerEvents = "none";
         document.getElementById("btn-send-trade").innerText = "Sélectionnez un item \n pour l'échange"
     }
@@ -66,10 +88,8 @@ function checkValidTrade() {
     document.getElementById("btn-accept-trade").innerText = "Réinitialiser l'offre";
     changeAcceptButton();
 }
-function changeAcceptButton() {
-    document.getElementById('btn-accept-trade').onclick = function () {
-        location.reload()
-    };
+function changeAcceptButton(){
+    document.getElementById('btn-accept-trade').onclick = function () { location.reload() };
 }
 $( init );
 function init() {
@@ -148,13 +168,13 @@ function init() {
                 $( "ul", $UserExchange ) :
                 $( "<ul class='UserInventory ui-helper-reset'/>" ).appendTo( $UserExchange );
             if($item.hasClass("money")){
-                $item.find( ".item-image" ).replaceWith("<div class='divInputMoney'<label class='lb-money'>$</label><input  class='inputMoney' style='z-index:1000;' type='number'/></div>");
+                $item.find( ".item-image" ).replaceWith("<div class='divInputMoney'><label class='lb-money'>$</label><input id='userMoneyInput' name='userMoneyInput'  class='inputMoney' style='z-index:1000;' type='number'/></div>");
                 $item.find( ".icon-exchange" ).remove();
                 $item.append( recycle_icon ).appendTo( $list).fadeIn(function() {
                     $item
                         .animate({ width: "80px" , height: "80px" })
                         .find( ".item-image" )
-                        .animate({width: "80px", height: "60px", maxWidth: "80px", maxHeight: "60px"});
+                        .animate({  width: "80px", height: "60px" , maxWidth: "80px", maxHeight: "60px" });
                 });
             }else{
                 $item.find( ".icon-exchange" ).remove();
@@ -164,8 +184,8 @@ function init() {
                         .find( ".item-image" )
                         .animate({  width: "80px", height: "60px" ,maxWidth: "80px", maxHeight: "60px"});
                 });
+                $item.find("input").addClass("itemID");
             }
-            $item.find("input").addClass("itemID");
             checkValidTrade();
         });
     }
@@ -176,13 +196,13 @@ function init() {
                 $( "ul", $OpponentExchange ) :
                 $( "<ul class='OpponentInventory ui-helper-reset'/>" ).appendTo( $OpponentExchange );
             if($item.hasClass("money")){
-                $item.find( ".item-image" ).replaceWith("<div class='divInputMoney'<label class='lb-money'>$</label><input  class='inputMoney' style='z-index:1000;' type='number'/></div>");
+                $item.find( ".item-image" ).replaceWith("<div class='divInputMoney'><label class='lb-money'>$</label><input id='opponentMoneyInput' name='opponentMoneyInput' class='inputMoney' style='z-index:1000;' type='number'/></div>");
                 $item.find( ".icon-exchange" ).remove();
                 $item.append( recycle_icon ).appendTo( $list).fadeIn(function() {
                     $item
                         .animate({ width: "80px" , height: "80px" })
                         .find( ".item-image" )
-                        .animate({width: "80px", height: "60px", maxWidth: "80px", maxHeight: "60px"});
+                        .animate({  width: "80px", height: "60px" , maxWidth: "80px", maxHeight: "60px" });
                 });
             }else{
                 $item.find( ".icon-exchange" ).remove();
@@ -192,8 +212,8 @@ function init() {
                         .find( ".item-image" )
                         .animate({  width: "80px", height: "60px" , maxWidth: "80px", maxHeight: "60px" });
                 });
+                $item.find("input").addClass("itemID");
             }
-            $item.find("input").addClass("itemID");
             checkValidTrade();
         });
     }
@@ -202,7 +222,7 @@ function init() {
     var exchange_Icon = "<img src='images/add-button-icon.png' class='ui-icon icon-exchange'/>";
     function recycleUserItem( $item ) {
         $item.fadeOut(function() {
-            $item.find(".divInputMoney").replaceWith("<img class='item-image' src='images/item-dollar-sign.png' alt=''>");
+            $item.find(".divInputMoney").replaceWith("<img class='item-image' src='images/item-dollar-sign.png' alt=''/>");
             $item
                 .find("input")
                 .removeClass("itemID")
@@ -210,7 +230,7 @@ function init() {
                 .find( ".icon-refresh" )
                 .remove()
                 .end()
-                .css("width", "44%").css("height", "125px").css("max-width", "120px").css("max-height", "125px")
+                .css( "width", "44%").css("height", "125px").css("max-width", "120px").css("max-height", "125px")
                 .append( exchange_Icon )
                 .find( ".item-image")
                 .css( "width", "100%").css("height", "80px").css("max-width", "100%").css("max-height", "80px")
@@ -223,7 +243,7 @@ function init() {
     // item recycle Opposant function
     function recycleOpponentItem( $item ) {
         $item.fadeOut(function() {
-            $item.find(".divInputMoney").replaceWith("<img class='item-image' src='images/item-dollar-sign.png' alt=''>");
+            $item.find(".divInputMoney").replaceWith("<img class='item-image' src='images/item-dollar-sign.png' alt=''/>");
             $item
                 .find("input")
                 .removeClass("itemID")
@@ -231,7 +251,7 @@ function init() {
                 .find( ".icon-refresh" )
                 .remove()
                 .end()
-                .css("width", "44%").css("height", "125px").css("max-width", "120px").css("max-height", "125px")
+                .css( "width", "44%").css("height", "125px").css("max-width", "120px").css("max-height", "125px")
                 .append( exchange_Icon )
                 .find( ".item-image")
                 .css( "width", "100%").css("height", "80px").css("max-width", "100%").css("max-height", "80px")
@@ -341,11 +361,11 @@ function init() {
             $("#btn-enter").click();
         }
     });
-    document.getElementById('tradeForm').onsubmit = function () {
+    document.getElementById('tradeForm').onsubmit = function() {
         return false;
     }
     var modal, modalInfoItem = document.getElementsByName("modal-Item-Info");
-    for (modal in modalInfoItem) {
+    for(modal in modalInfoItem){
         modalInfoItem[modal].addEventListener('click', function (e) {
             modalClose();
         }, false);

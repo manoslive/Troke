@@ -11,10 +11,12 @@ com\tilf\troke\controller\GlobalController.class
 com\tilf\troke\validator\UserValidator.class
 com\tilf\troke\entity\TransactionmoneyEntity.class
 com\tilf\troke\controller\ProfilController.class
+com\tilf\troke\repository\TransactionMoneyRepository.class
 com\tilf\troke\controller\myTradesController.class
 com\tilf\troke\entity\ChatEntity.class
 com\tilf\troke\repository\CustomObjectRepositoryImpl.class
 com\tilf\troke\repository\CustomChatMessageRepository.class
+com\tilf\troke\repository\CustomTransactionMoneyRepositoryImpl.class
 com\tilf\troke\service\SearchService.class
 com\tilf\troke\controller\UserController.class
 com\tilf\troke\entity\CategoryEntity.class
@@ -24,8 +26,10 @@ com\tilf\troke\controller\SearchController.class
 com\tilf\troke\repository\TransactionRepository.class
 com\tilf\troke\entity\ObjecttransactionEntityPK.class
 com\tilf\troke\domain\UserSignupForm.class
+com\tilf\troke\entity\TransactionmoneyEntityPK.class
 com\tilf\troke\service\ImageService.class
 com\tilf\troke\filter\SearchFilter.class
+com\tilf\troke\repository\CustomTransactionMoneyRepository.class
 com\tilf\troke\auth\AuthUserContext.class
 com\tilf\troke\repository\CustomChatMessageRepositoryImpl.class
 com\tilf\troke\repository\ChatRepository.class

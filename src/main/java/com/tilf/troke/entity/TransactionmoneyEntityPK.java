@@ -1,20 +1,18 @@
 package com.tilf.troke.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * Created by Shaun Cooper on 2015-11-18.
  */
-@Entity
-@Table(name = "transactionmoney", schema = "", catalog = "troke")
-@IdClass(TransactionmoneyEntityPK.class)
-public class TransactionmoneyEntity {
+public class TransactionmoneyEntityPK implements Serializable {
     private int idtransaction;
-    private int value;
     private String iduser;
 
-    @Id
     @Column(name = "idtransaction")
+    @Id
     public int getIdtransaction() {
         return idtransaction;
     }
@@ -23,18 +21,8 @@ public class TransactionmoneyEntity {
         this.idtransaction = idtransaction;
     }
 
-    @Basic
-    @Column(name = "value")
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int value) {
-        this.value = value;
-    }
-
-    @Id
     @Column(name = "IDUSER")
+    @Id
     public String getIduser() {
         return iduser;
     }
@@ -48,10 +36,9 @@ public class TransactionmoneyEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TransactionmoneyEntity that = (TransactionmoneyEntity) o;
+        TransactionmoneyEntityPK that = (TransactionmoneyEntityPK) o;
 
         if (idtransaction != that.idtransaction) return false;
-        if (value != that.value) return false;
         if (iduser != null ? !iduser.equals(that.iduser) : that.iduser != null) return false;
 
         return true;
@@ -60,7 +47,6 @@ public class TransactionmoneyEntity {
     @Override
     public int hashCode() {
         int result = idtransaction;
-        result = 31 * result + value;
         result = 31 * result + (iduser != null ? iduser.hashCode() : 0);
         return result;
     }

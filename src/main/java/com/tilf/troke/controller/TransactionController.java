@@ -49,6 +49,13 @@ public class TransactionController {
     @Autowired
     private CustomChatMessageRepository customChatMessageRepository;
 
+    @Autowired
+    private TransactionMoneyRepository transactionMoneyRepository;
+
+    @Autowired
+    private CustomTransactionMoneyRepository customTransactionMoneyRepository;
+
+
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -56,7 +63,7 @@ public class TransactionController {
     @RequestMapping(value = "/startTrade", method = RequestMethod.GET)
     public String getUserFromItem(@RequestParam("itemID") int itemID, Model model, HttpSession session) {
         UsersEntity currentUser = authUserContext.getUser();
-        if (currentUser != null) {
+        if(currentUser != null) {
             UsersEntity opponentID = customUserRepository.getUserFromItem(itemID);
             model.addAttribute("startTradeOpponent", opponentID);
             model.addAttribute("currentItem", customObjectRepository.getObjectEntityByIdObject(itemID));
@@ -73,7 +80,7 @@ public class TransactionController {
                 context.setVariable("userActif", currentUser);
             }
             return "fragments/home/startTrade";
-        } else {
+        }else{
             session.removeAttribute("error");
             return "redirect:#openModalConnexion";
         }
@@ -96,6 +103,10 @@ public class TransactionController {
         model.addAttribute("UserTradeItems", customObjectRepository.getTradeObjects(tradeID, currentUser.getIduser()));
         model.addAttribute("OpponentTradeItems", customObjectRepository.getTradeObjects(tradeID, opponentID));
 
+        //Get les 2 items d'argent
+        model.addAttribute("UserMoneyItem", customTransactionMoneyRepository.getTransactionMoney(tradeID, currentUser.getIduser()));
+        model.addAttribute("OpponentMoneyItem", customTransactionMoneyRepository.getTransactionMoney(tradeID, opponentID));
+
         //Get les message du Chat
         model.addAttribute("ChatLog", customChatMessageRepository.getChatLogByTransactionID(tradeID));
         // TODO THYMELEAF HACK
@@ -107,6 +118,8 @@ public class TransactionController {
             context.setVariable("UserTradeItems", customObjectRepository.getTradeObjects(tradeID, currentUser.getIduser()));
             context.setVariable("OpponentTradeItems", customObjectRepository.getTradeObjects(tradeID, opponentID));
             context.setVariable("ChatLog", customChatMessageRepository.getChatLogByTransactionID(tradeID));
+            context.setVariable("UserMoneyItem", customTransactionMoneyRepository.getTransactionMoney(tradeID, currentUser.getIduser()));
+            context.setVariable("OpponentMoneyItem", customTransactionMoneyRepository.getTransactionMoney(tradeID, opponentID));
             context.setVariable("opponentID", opponentID);
             context.setVariable("transactionID", tradeID);
         }
@@ -118,12 +131,15 @@ public class TransactionController {
     //Ajout à Chat
     //Ajout à ChatMessage
     //Ajout à ObjectTransaction
+    //Ajout à transactionMoney
     @RequestMapping(value = "/addTrade", method = RequestMethod.POST)
     public String addNewTrade(@RequestParam("iduser1")String idUser1,
                               @RequestParam("iduser2")String idUser2,
                               @RequestParam("chatLog")String chatLog,
-                              @RequestParam("tradeObjects")String tradeObjects)
+                              @RequestParam("tradeObjects")String tradeObjects,
+                              @RequestParam("newTradeMoneyValue")String opponentMoney)
     {
+        //Set une nouvelle transaction avec ses informations
         TransactionsEntity newTransaction = new TransactionsEntity();
         newTransaction.setIduser1(idUser1);
         newTransaction.setIduser2(idUser2);
@@ -132,18 +148,22 @@ public class TransactionController {
         newTransaction.setIscompleted("F");
         transactionRepository.save(newTransaction);
 
+        //Get le id de la transaction créée ^^
         String queryIdTransaction = "select t.idtransaction from TransactionsEntity t ORDER  BY t.idtransaction Desc";
         Query queryObject = entityManager.createQuery(queryIdTransaction).setMaxResults(1);
         int idTransaction = (Integer)queryObject.getSingleResult();
 
+        //Nouveau chat
         ChatEntity newChat = new ChatEntity();
         newChat.setIdtransaction(idTransaction);
         chatRepository.save(newChat);
 
+        //Get le id du chat créée ^^
         String queryIdChat = "select c.idchat from ChatEntity c ORDER  BY c.idchat Desc";
         Query queryObject2 = entityManager.createQuery(queryIdChat).setMaxResults(1);
         int idChat = (Integer)queryObject2.getSingleResult();
 
+        //Set les messages du Chat dans le chat créée^^
         ChatmessageEntity newChatMessage = new ChatmessageEntity();
         newChatMessage.setIdchat(idChat);
         newChatMessage.setDateTime(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
@@ -151,15 +171,31 @@ public class TransactionController {
         newChatMessage.setIsread("T");
         chatmessageRepository.save(newChatMessage);
 
+        //Met les objets recu dans une liste, les objets sont reçu concaténé séparé pas des ';'
         ObjecttransactionEntity addTransactionsObjects = new ObjecttransactionEntity();
         String[] objectIDs = tradeObjects.split(";");
 
+        //Ajout de chacun des items dans la bd
         for(int i = 0; i < objectIDs.length; i++)
         {
             addTransactionsObjects.setIdobject(Integer.parseInt(objectIDs[i]));
             addTransactionsObjects.setIdtransaction(idTransaction);
             objectsTransactionRepository.save(addTransactionsObjects);
         }
+
+        //Ajout de l'item d'Argent de l'opposant
+        TransactionmoneyEntity addTransactionMoney = new TransactionmoneyEntity();
+        addTransactionMoney.setIdtransaction(idTransaction);
+        addTransactionMoney.setIduser(idUser2);
+        addTransactionMoney.setValue(Integer.parseInt(opponentMoney));
+        transactionMoneyRepository.save(addTransactionMoney);
+
+        //Ajout de l'item d'Argent du User à 0
+        TransactionmoneyEntity addUserTransactionMoney = new TransactionmoneyEntity();
+        addUserTransactionMoney.setIdtransaction(idTransaction);
+        addUserTransactionMoney.setIduser(idUser1);
+        addUserTransactionMoney.setValue(0);
+        transactionMoneyRepository.save(addUserTransactionMoney);
 
         // TODO THYMELEAF HACK
         if (false) {
@@ -172,6 +208,7 @@ public class TransactionController {
     //update à Transaction
     //update à ChatMessage
     //update à ObjectTransaction
+    //update à transactionMoney
     @RequestMapping(value = "/updateTrade", method = RequestMethod.POST)
     public String updateTrade(@RequestParam("idTransaction")int transactionID,
                                 @RequestParam("currentUser")String currentUser,
@@ -179,7 +216,9 @@ public class TransactionController {
                                 @RequestParam("chatID")int chatID,
                                 @RequestParam("chatLog")String chatLog,
                                 @RequestParam("tradeObjects")String tradeObjects,
-                                @RequestParam("tradeState")String tradeState)
+                                @RequestParam("tradeState")String tradeState,
+                                @RequestParam("userMoneyValue")String userMoney,
+                                @RequestParam("opponentMoneyValue")String opponentMoney)
     {
         TransactionsEntity updateTransaction = new TransactionsEntity();
         updateTransaction.setIdtransaction(transactionID);
@@ -220,6 +259,20 @@ public class TransactionController {
             updateTransactionsObjects.setIdtransaction(transactionID);
             objectsTransactionRepository.save(updateTransactionsObjects);
         }
+
+        //Ajout de l'item d'Argent du User
+        TransactionmoneyEntity updateTransactionMoneyUser = new TransactionmoneyEntity();
+        updateTransactionMoneyUser.setIdtransaction(transactionID);
+        updateTransactionMoneyUser.setIduser(currentUser);
+        updateTransactionMoneyUser.setValue(Integer.parseInt(opponentMoney));
+        transactionMoneyRepository.save(updateTransactionMoneyUser);
+
+        //Ajout de l'item d'Argent de l'Opposant
+        TransactionmoneyEntity updateTransactionMoneyOpposant = new TransactionmoneyEntity();
+        updateTransactionMoneyOpposant.setIdtransaction(transactionID);
+        updateTransactionMoneyOpposant.setIduser(idUser2);
+        updateTransactionMoneyOpposant.setValue(Integer.parseInt(opponentMoney));
+        transactionMoneyRepository.save(updateTransactionMoneyOpposant);
 
         // TODO THYMELEAF HACK
         if (false) {
