@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f947bb62-d6ad-4da4-b5ae-73659883da55" name="Default" comment="Changement de mot de passe Fonctionnel">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="f947bb62-d6ad-4da4-b5ae-73659883da55" name="Default" comment="" />
     <ignored path="troke_springboot.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -1184,7 +1181,7 @@
       <workItem from="1445883795627" duration="5972000" />
       <workItem from="1445952195693" duration="15665000" />
       <workItem from="1445974773195" duration="5268000" />
-      <workItem from="1447868080974" duration="1279000" />
+      <workItem from="1447868080974" duration="1979000" />
     </task>
     <task id="LOCAL-00001" summary="hj,kjdyt">
       <created>1443153496350</created>
@@ -1468,11 +1465,17 @@
       <option name="project" value="LOCAL" />
       <updated>1445952899853</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Changement de mot de passe Fonctionnel">
+      <created>1447869364283</created>
+      <option name="number" value="00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1447869364283</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="303640000" />
+    <option name="totallyTimeSpent" value="304340000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1485,7 +1488,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
