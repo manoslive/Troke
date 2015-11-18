@@ -26,7 +26,6 @@ com\tilf\troke\entity\ObjecttransactionEntityPK.class
 com\tilf\troke\domain\UserSignupForm.class
 com\tilf\troke\service\ImageService.class
 com\tilf\troke\filter\SearchFilter.class
-com\tilf\troke\repository\ImageObjectRepository.class
 com\tilf\troke\auth\AuthUserContext.class
 com\tilf\troke\repository\CustomChatMessageRepositoryImpl.class
 com\tilf\troke\repository\ChatRepository.class
