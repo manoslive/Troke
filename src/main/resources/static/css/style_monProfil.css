@@ -373,3 +373,14 @@
     cursor: pointer;
 
 }
+
+.carousel-indicators > li:hover
+{
+    transition: 100ms ease-in-out;
+    border:5px solid white;
+}
+
+.carousel-indicators > li.active
+{
+    border:2px solid black;
+}

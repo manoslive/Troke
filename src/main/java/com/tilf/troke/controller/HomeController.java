@@ -64,17 +64,43 @@ public class HomeController {
         model.addAttribute("catlist", cats);
         model.addAttribute("adrcat", "/category?categoryName=");
 
+//        for (Iterator<String> i = cats.iterator(); i.hasNext(); ) {
+//            String currentCat = i.next();
+//            html += "<div class=\"myCategory\"><header><a href=\"category?categoryName=" + currentCat + "&catIsChecked=true" + "\">" + currentCat + "</a></header><ul> ";
+//
+//            List<String> subcats = customObjectRepository.getAllSubCategories(currentCat);
+//            for (Iterator<String> j = subcats.iterator(); j.hasNext(); ) {
+//                String currentSubCat = j.next();
+//                html += "<li class=\"lienCategorie\"><a href=\"subcategory?subCategoryName=" + currentSubCat + "&subCatIsChecked=true" + "\">" + currentSubCat + "</a></li>";
+//            }
+//            html += "</ul></div>";
+//        }
+
+        html += "<div class=\"bubble\">\n" +
+                "\t\t<img src=\"images/LogoWorld_Transparence2.png\" class=\"Logobanner\" id=\"Logo\">\n" +
+                "\t<div class=\"rectangle\">\n" +
+                "\t\t\n" +
+                "\t\t<h2 style=\"margin-top:10px;font-family:'Amaranth'\">CATÉGORIES</h2></div>\n" +
+                "\t<div class=\"triangle-l\"></div>\n" +
+                "\t<div class=\"triangle-r\"></div>\n" +
+                "\t<div class=\"info\" style=\"inline-flex\">\n" +
+                "\t<div>";
+
         for (Iterator<String> i = cats.iterator(); i.hasNext(); ) {
             String currentCat = i.next();
-            html += "<div class=\"myCategory\"><header><a href=\"category?categoryName=" + currentCat + "&catIsChecked=true" + "\">" + currentCat + "</a></header><ul> ";
+            html += "<ul class=\"categoriess\">\n" +
+                    "\t\t<h2 style=\"float:left; text-transform:uppercase\"><a href=\"category?categoryName=" + currentCat + "&catIsChecked=true\"" + "style=\"text-decoration:none;color:white\"+ \">" + currentCat + "</a></h2> ";
 
             List<String> subcats = customObjectRepository.getAllSubCategories(currentCat);
             for (Iterator<String> j = subcats.iterator(); j.hasNext(); ) {
                 String currentSubCat = j.next();
-                html += "<li class=\"lienCategorie\"><a href=\"subcategory?subCategoryName=" + currentSubCat + "&subCatIsChecked=true" + "\">" + currentSubCat + "</a></li>";
+                html += "<li><a href=\"subcategory?subCategoryName=" + currentSubCat + "&subCatIsChecked=true\"" + "style=\"text-decoration:none;color:white\"+ \">" + currentSubCat + "</a></li>";
             }
-            html += "</ul></div>";
+            html += "</ul>";
         }
+
+
+        html += "</div></div></div>";
 
         model.addAttribute("catsubcatlist", html);
         // TODO THYMELEAF HACK
@@ -84,6 +110,8 @@ public class HomeController {
             context.setVariable("catlist", cats);
             context.setVariable("adrcat", "/category?categoryName=");
         }
+
+
     }
 
     public String GetRecentItems(Model model) {
