@@ -12,12 +12,13 @@
 
 	border: 2px solid #003042;
 	box-shadow: 0 0 2em #002042;
-	overflow: hidden;
+
 	padding: 0px;
 
 	moz-border-radius: 10px;
 	-khtml-border-radius: 10px;
 	-webkit-border-radius: 10px;
+	z-index:90;
 }
 #categories{
 	padding: 60px;
