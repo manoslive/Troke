@@ -100,7 +100,6 @@ box-sizing: border-box;
 .image-carousel-item{
 	height: 50px !important;
 	width: 50px !important;
-	border-radius: 50px;
 }
 .product-item{
 	width: 60%;
