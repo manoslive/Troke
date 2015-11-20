@@ -181,7 +181,7 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
             customObjet.setValueObject(LObject.get(i).getValueObject());
 
             //Get tous les images
-            String query2 = "select o from ImageobjectEntity o where o.idobject = :idObject";
+            String query2 = "select o from ImageobjectEntity o where o.idobject = :idObject order by ismain, guidimage desc";
             Query queryObject2 = entityManager.createQuery(query2);
             queryObject2.setParameter("idObject", LObject.get(i).getIdobject());
             List<ImageobjectEntity> LImages = (List<ImageobjectEntity>) queryObject2.getResultList();
@@ -223,7 +223,7 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
             customObjet.setValueObject(LObject.get(i).getValueObject());
 
             //Get tous les images
-            String query2 = "select o from ImageobjectEntity o where o.idobject = :idObject";
+            String query2 = "select o from ImageobjectEntity o where o.idobject = :idObject order by ismain, guidimage desc";
             Query queryObject2 = entityManager.createQuery(query2);
             queryObject2.setParameter("idObject", LObject.get(i).getIdobject());
             List<ImageobjectEntity> LImages = (List<ImageobjectEntity>) queryObject2.getResultList();
