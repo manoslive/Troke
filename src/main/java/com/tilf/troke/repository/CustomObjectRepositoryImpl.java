@@ -7,7 +7,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Manu on 2015-10-19.
@@ -53,9 +56,20 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
     }
 
     @Override
-    public List<ObjectsEntity> getObjectsByCategory(String categoryName) {
-        TypedQuery<ObjectsEntity> query = entityManager.createQuery("select o from ObjectsEntity as o where exists (select s from SubcategoryEntity s where o.idsubcategory=s.idSubcategory and s.idcategory=:idcategory)", ObjectsEntity.class);
-        query.setParameter("idcategory", getIdCategoryFromCategoryName(categoryName));
+    public List<Integer> getCatIdListFromCatNameSet(Set<String> catNameList) {
+        List<Integer> catIdList = new ArrayList<>();
+        for (String catName : catNameList) {
+            catIdList.add(getIdCategoryFromCategoryName(catName));
+        }
+        return catIdList;
+    }
+
+    @Override
+    public List<ObjectsEntity> getObjectsByCategory(Set<String> categoryName) {
+        // TypedQuery<ObjectsEntity> query = entityManager.createQuery("select o from ObjectsEntity as o where exists (select s.idSubcategory from SubcategoryEntity s where o.idsubcategory=s.idSubcategory and s.idcategory in :idlist)", ObjectsEntity.class);
+        Query query = entityManager.createNativeQuery("select IDOBJECT, NAME_OBJECT, DESC_OBJECT, guid, s.idSUBCATEGORY, VALUE_OBJECT, QUALITY, IDUSER, RATEABLE, ISSIGNALED, CREATIONDATE from objects o inner join subcategory s on s.IDSUBCATEGORY = o.IDSUBCATEGORY inner join category c on c.IDCATEGORY = s.IDCATEGORY where c.IDCATEGORY in :idlist", ObjectsEntity.class);
+        // query.setParameter("idcategory", getIdCategoryFromCategoryName("à changer"));
+        query.setParameter("idlist", getCatIdListFromCatNameSet(categoryName));
         List<ObjectsEntity> result = query.getResultList();
 
         return result;
