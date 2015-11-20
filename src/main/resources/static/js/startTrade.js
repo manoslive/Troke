@@ -175,9 +175,7 @@ function init() {
             })
         });
     $(".js-modal-close, .modal-overlay").click(function () {
-        $(".modal-box, .modal-overlay").fadeOut(500, function () {
             modalClose();
-        });
     });
     $(window).resize(function () {
         $(".modal-box").css({

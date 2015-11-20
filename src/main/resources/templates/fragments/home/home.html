@@ -21,9 +21,8 @@
                 <!-- Carousel items -->
                 <div class="carousel-inner" style="padding-top:15px">
                     <!-- Premier div d'items(8) qui est active -->
-                    <div class="item active">
+                    <div class="item active" style="top: initial !important;">
                         <div class="row text-center" style="margin-top: 15px;">
-
                             <!-- ITEM-->
                             <div class="span3" th:each="obj,iter : ${recentobjects}" th:if="${iter.index} lt 8">
                                 <div class="thumbnail product-item">
@@ -31,18 +30,14 @@
                                         <img class="image-carousel-item img-circle img-responsive" th:src="*{obj.getGuid() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${obj.getGuid()}:'images/LogoWorld_Transparence.png'"/></a>
                                     <p th:text="${obj.getNameObject()}" style="color:white;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;text-transform:uppercase;font-weight:normal;"></p>
                                 </div>
-
                             </div>
-                            <!-- /ITEM-->
-
                         </div>
                     </div>
                     <!-- /Premier div d'items(8) -->
 
                     <!-- DeuxiÃ¨me div d'items(8) -->
-                    <div class="item ">
+                    <div class="item " style="top: initial !important;">
                         <div class="row text-center" style="margin-top: 15px;">
-
                             <!-- ITEM-->
                             <div class="span3" th:each="obj,iter : ${recentobjects}"
                                  th:if="${iter.index &gt; 7 and iter.index &lt; 16}">
@@ -50,10 +45,7 @@
                                     <a th:href="${adrItem} + ${obj.getIdobject()}"><img class="image-carousel-item img-circle img-responsive" src="images/LogoWorld_Transparence.png"/></a>
                                     <p th:text="${obj.getNameObject()}" style="color:white;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;text-transform:uppercase;font-weight:normal;"></p>
                                 </div>
-
                             </div>
-                            <!-- ITEM-->
-                            <div style="border-left:1px solid #000;height:150px"></div>
                         </div>
                     </div>
                     <!-- /DeuxiÃ¨me div d'items(8) -->
