@@ -10,11 +10,12 @@ function checkCB(mainCat) {
 
 function getCheckBoxCatValue(checkBoxId) {
     if ($("#" + checkBoxId).prop('checked', true)) {
-        location.href = "/category?categoryName=" + checkBoxId + "&catIsChecked=" + false;
+
+        location.href = "/category?categoryName=" + checkBoxId + "&catIsChecked=" + true;
     }
     else {
         $('#' + checkBoxId).prop('checked', false);
-        location.href = "/category?categoryName=" + checkBoxId + "&catIsChecked=" + true;
+        location.href = "/category?categoryName=" + checkBoxId + "&catIsChecked=" + false;
     }
 }
 
