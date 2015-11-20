@@ -1,8 +1,10 @@
 package com.tilf.troke.controller;
 
 import com.tilf.troke.auth.AuthUserContext;
+import com.tilf.troke.entity.ImageobjectEntity;
 import com.tilf.troke.entity.ObjectsEntity;
 import com.tilf.troke.entity.UsersEntity;
+import com.tilf.troke.repository.CustomImageObjectRepository;
 import com.tilf.troke.repository.CustomObjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,9 @@ public class HomeController {
 
     @Autowired
     private CustomObjectRepository customObjectRepository;
+
+    @Autowired
+    private CustomImageObjectRepository customImageObjectRepository;
 
     @RequestMapping("/")
     public String root(Model model, HttpSession session) {
@@ -148,6 +153,13 @@ public class HomeController {
             List<ObjectsEntity> list = customObjectRepository.getListObjectByUserId(authContext.getUser().getIduser());
             model.addAttribute("userInventory", list);
             model.addAttribute("idObjectDelete", null);
+            List<List<ImageobjectEntity>> listImage;
+            List<ImageobjectEntity> listInterne;
+
+            for(int i = 0; i < list.size(); i++)
+            {
+                listInterne = customImageObjectRepository.getImageObjectbyObjectId(list.get(i).getIdobject());
+            }
 
             // TODO THYMELEAF HACK
             if (false) {
