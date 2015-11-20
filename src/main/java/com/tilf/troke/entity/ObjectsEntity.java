@@ -4,11 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- <<<<<<< HEAD
- * Created by Alex on 2015-11-18.
- =======
- * Created by Emmanuel on 2015-11-11.
- >>>>>>> origin/master
+ * Created by Alex on 2015-11-19.
  */
 @Entity
 @Table(name = "objects", schema = "", catalog = "troke")
@@ -24,11 +20,7 @@ public class ObjectsEntity {
     private String rateable;
     private String issignaled;
     private Date creationdate;
-    private String photo1;
-    private String photo2;
-    private String photo3;
 
-    @GeneratedValue
     @Id
     @Column(name = "IDOBJECT")
     public int getIdobject() {
@@ -139,36 +131,6 @@ public class ObjectsEntity {
         this.creationdate = creationdate;
     }
 
-    @Basic
-    @Column(name = "PHOTO_1")
-    public String getPhoto1() {
-        return photo1;
-    }
-
-    public void setPhoto1(String photo1) {
-        this.photo1 = photo1;
-    }
-
-    @Basic
-    @Column(name = "PHOTO_2")
-    public String getPhoto2() {
-        return photo2;
-    }
-
-    public void setPhoto2(String photo2) {
-        this.photo2 = photo2;
-    }
-
-    @Basic
-    @Column(name = "PHOTO_3")
-    public String getPhoto3() {
-        return photo3;
-    }
-
-    public void setPhoto3(String photo3) {
-        this.photo3 = photo3;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -187,9 +149,6 @@ public class ObjectsEntity {
         if (rateable != null ? !rateable.equals(that.rateable) : that.rateable != null) return false;
         if (issignaled != null ? !issignaled.equals(that.issignaled) : that.issignaled != null) return false;
         if (creationdate != null ? !creationdate.equals(that.creationdate) : that.creationdate != null) return false;
-        if (photo1 != null ? !photo1.equals(that.photo1) : that.photo1 != null) return false;
-        if (photo2 != null ? !photo2.equals(that.photo2) : that.photo2 != null) return false;
-        if (photo3 != null ? !photo3.equals(that.photo3) : that.photo3 != null) return false;
 
         return true;
     }
@@ -207,9 +166,6 @@ public class ObjectsEntity {
         result = 31 * result + (rateable != null ? rateable.hashCode() : 0);
         result = 31 * result + (issignaled != null ? issignaled.hashCode() : 0);
         result = 31 * result + (creationdate != null ? creationdate.hashCode() : 0);
-        result = 31 * result + (photo1 != null ? photo1.hashCode() : 0);
-        result = 31 * result + (photo2 != null ? photo2.hashCode() : 0);
-        result = 31 * result + (photo3 != null ? photo3.hashCode() : 0);
         return result;
     }
 }
