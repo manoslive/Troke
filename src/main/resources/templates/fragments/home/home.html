@@ -9,10 +9,10 @@
 
         <!-- Container du carousel -->
 
-        <div id="carouselConatiner" class="container">
+        <div id="carouselConatiner" class="bubble">
             <!--<img src="images/LogoWorld_Transparence2.png" class="Logobanner" id="Logo"/>-->
             <div class="rectangle">
-                <h2 style="margin-top:10px;font-family:'Amaranth'; font-size:24px;">DERNIERS AJOUTS</h2></div>
+                <h2 style="margin-top:10px;font-family:'Amaranth'; font-size:20px; letter-spacing:.2em;">DERNIERS AJOUTS</h2></div>
             <div class="triangle-l"></div>
             <div class="triangle-r"></div>
 
@@ -28,7 +28,7 @@
                             <div class="span3" th:each="obj,iter : ${recentobjects}" th:if="${iter.index} lt 8">
                                 <div class="thumbnail product-item">
                                     <a th:href="${adrItem} + ${obj.getIdobject()}">
-                                        <img class="image-carousel-item" th:src="*{obj.getGuid() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${obj.getGuid()}:'images/LogoWorld_Transparence.png'"/></a>
+                                        <img class="image-carousel-item img-circle img-responsive" th:src="*{obj.getGuid() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${obj.getGuid()}:'images/LogoWorld_Transparence.png'"/></a>
                                     <p th:text="${obj.getNameObject()}" style="color:white;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;text-transform:uppercase;font-weight:normal;"></p>
                                 </div>
 
@@ -47,7 +47,7 @@
                             <div class="span3" th:each="obj,iter : ${recentobjects}"
                                  th:if="${iter.index &gt; 7 and iter.index &lt; 16}">
                                 <div class="thumbnail product-item">
-                                    <a th:href="${adrItem} + ${obj.getIdobject()}"><img class="image-carousel-item" src="images/LogoWorld_Transparence.png"/></a>
+                                    <a th:href="${adrItem} + ${obj.getIdobject()}"><img class="image-carousel-item img-circle img-responsive" src="images/LogoWorld_Transparence.png"/></a>
                                     <p th:text="${obj.getNameObject()}" style="color:white;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;text-transform:uppercase;font-weight:normal;"></p>
                                 </div>
 

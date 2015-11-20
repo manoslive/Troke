@@ -465,7 +465,7 @@
                     <ul class="dropdown-menu" role="menu">
                         <li th:each="cat : ${session.categoryList}">
                             <a th:text="${cat}"
-                               th:href="${session.addressCatName} + ${cat} + ${session.addressChecked}"></a>
+                               th:href="${session.addressCatName} + ${cat} + ${session.addressChecked}" style="font-size:13px"></a>
                         </li>
                     </ul>
                     <!-- end dropdown-menu -->

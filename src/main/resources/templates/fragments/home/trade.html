@@ -28,17 +28,17 @@
         <h5 th:text="'Inventaire à '+${userActif.getIduser()}" class="UserInventory-header"></h5>
         <li th:each="invUser : ${UserInventory}" class="UserItem ui-widget-content ui-corner-tr">
           <h5 th:text="${invUser.getNameObject()}" class="ui-widget-header"></h5>
-          <img class="item-image" src="images/move_icon.png" alt=""/>
+          <img class="item-image" th:src="*{invUser.getGuid() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${invUser.getGuid()}:'images/LogoWorld_Transparence.png'" alt=""/>
           <div class="optionsItem">
             <div class="btn-zoom">
-              <img src="images/zoom_icon.png" class="ui-icon icon-zoom" />
+              <img src="images/zoom_icon.png" class="icon-zoom" />
               <div class="follower">
                 <a class="js-open-modal link-zoom info-icon "
                    href="#" data-modal-id="modal-InfoItem"
                    th:onclick="'javascript:showModalInfoItem(\''+ ${invUser.getIdobject()} +'\')'">Info Item</a>
               </div>
             </div>
-            <img src="images/add-button-icon.png" class="info-icon ui-icon icon-exchange" />
+            <img src="images/add-button-icon.png" class="ui-icon icon-exchange" />
           </div>
           <input type="hidden" th:value="${invUser.getIdobject()}" class=""/>
         </li>
@@ -50,7 +50,7 @@
           <div class="optionsItem">
             <div class="btn-zoom">
             </div>
-            <img src="images/add-button-icon.png" class="info-icon ui-icon icon-exchange" />
+            <img src="images/add-button-icon.png" class="info-icon icon-exchange" />
           </div>
         </li>
         </th:block>
@@ -65,10 +65,10 @@
             <ul class="UserInventory ui-helper-reset">
               <li th:each="userTradeItem : ${UserTradeItems}" class="UserItem ui-widget-content ui-corner-tr" style="display: block; overflow: hidden; width: 80px; height: 80px;">
                 <h5 th:text="${userTradeItem.getNameObject()}" class="ui-widget-header"></h5>
-                <img class="item-image" src="images/move_icon.png" alt="" style="display: inline-block; overflow: hidden; width: 80px; height: 60px; max-width: 80px; max-height: 60px;"/>
+                <img class="item-image" th:src="*{userTradeItem.getGuid() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${userTradeItem.getGuid()}:'images/LogoWorld_Transparence.png'" alt="" style="display: inline-block; overflow: hidden; width: 80px; height: 60px; max-width: 80px; max-height: 60px;"/>
                 <div class="optionsItem">
                   <div class="btn-zoom">
-                    <img src="images/zoom_icon.png" class="ui-icon icon-zoom"/>
+                    <img src="images/zoom_icon.png" class="icon-zoom"/>
                     <div class="follower">
                       <a class="js-open-modal link-zoom info-icon"
                          href="#" data-modal-id="modal-InfoItem"
@@ -76,7 +76,7 @@
                     </div>
                   </div>
                 </div>
-                <img src="images/recycle_icon.png" class="ui-icon icon-refresh"/>
+                <img src="images/recycle_icon.png" class="icon-refresh"/>
                 <input type="hidden" th:value="${userTradeItem.getIdobject()}" class="itemID"/>
               </li>
               <!--Objet argent s'il a de l'argent plus que 0-->
@@ -90,7 +90,7 @@
                   <div class="optionsItem">
                     <div class="btn-zoom">
                     </div>
-                    <img src="images/recycle_icon.png" class="ui-icon icon-refresh"/>
+                    <img src="images/recycle_icon.png" class="icon-refresh"/>
                   </div>
                 </li>
               </th:block>
@@ -104,10 +104,10 @@
             <ul class="OpponentInventory ui-helper-reset">
               <li th:each="opponentTradeItem : ${OpponentTradeItems}" class="OpponentItem ui-widget-content ui-corner-tr ui-draggable" style="display: block; overflow: hidden; width: 80px; height: 80px;">
                 <h5 th:text="${opponentTradeItem.getNameObject()}" class="ui-widget-header"></h5>
-                <img class="item-image" src="images/move_icon.png" alt="" style="display: inline-block; overflow: hidden; width: 80px; height: 60px; max-width: 80px; max-height: 60px;"/>
+                <img class="item-image" th:src="*{opponentTradeItem.getGuid() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${opponentTradeItem.getGuid()}:'images/LogoWorld_Transparence.png'" alt="" style="display: inline-block; overflow: hidden; width: 80px; height: 60px; max-width: 80px; max-height: 60px;"/>
                 <div class="optionsItem">
                   <div class="btn-zoom">
-                    <img src="images/zoom_icon.png" class="ui-icon icon-zoom"/>
+                    <img src="images/zoom_icon.png" class="icon-zoom"/>
                     <div class="follower">
                       <a class="js-open-modal link-zoom info-icon "
                          href="#" data-modal-id="modal-InfoItem"
@@ -115,7 +115,7 @@
                     </div>
                   </div>
                 </div>
-                <img src="images/recycle_icon.png" class="ui-icon icon-refresh"/>
+                <img src="images/recycle_icon.png" class="icon-refresh"/>
                 <input type="hidden" th:value="${opponentTradeItem.getIdobject()}" class="itemID"/>
               </li>
               <!--Objet argent s'il a de l'argent plus que 0-->
@@ -130,7 +130,7 @@
                     <div class="btn-zoom">
                     </div>
                   </div>
-                  <img src="images/recycle_icon.png" class="ui-icon icon-refresh"/>
+                  <img src="images/recycle_icon.png" class="icon-refresh"/>
                 </li>
               </th:block>
             </ul>
@@ -153,17 +153,17 @@
         <h5 th:text="'Inventaire à '+ ${opponentID}" class="OpponentInventory-header"></h5>
         <li th:each="invOpponent : ${OpponentInventory}" class="OpponentItem ui-widget-content ui-corner-tr">
           <h5 th:text="${invOpponent.getNameObject()}"  class="ui-widget-header"></h5>
-          <img class="item-image" src="images/move_icon.png" alt=""/>
+          <img class="item-image" th:src="*{invOpponent.getGuid() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${invOpponent.getGuid()}:'images/LogoWorld_Transparence.png'" alt=""/>
           <div class="optionsItem">
             <div class="btn-zoom">
-              <img src="images/zoom_icon.png" class="ui-icon icon-zoom" />
+              <img src="images/zoom_icon.png" class="icon-zoom" />
               <div class="follower">
                 <a class="js-open-modal link-zoom info-icon "
                    href="#" data-modal-id="modal-InfoItem"
                    th:onclick="'javascript:showModalInfoItem(\''+ ${invOpponent.getIdobject()} +'\')'">Info Item</a>
               </div>
             </div>
-            <img src="images/add-button-icon.png" class="info-icon ui-icon icon-exchange" />
+            <img src="images/add-button-icon.png" class="info-icon icon-exchange" />
           </div>
           <input type="hidden" th:value="${invOpponent.getIdobject()}" class=""/>
         </li>
@@ -175,7 +175,7 @@
           <div class="optionsItem">
             <div class="btn-zoom">
             </div>
-            <img src="images/add-button-icon.png" class="info-icon ui-icon icon-exchange" />
+            <img src="images/add-button-icon.png" class="info-icon icon-exchange" />
           </div>
         </li>
         </th:block>
@@ -184,7 +184,7 @@
 
     <!-- Open modal pour l'info d'un item avec les photos (gallery)-->
     <!-- Modal ObjectInfo - User Inventory -->
-    <th:block th:each="inv : ${userInventory}">
+    <th:block th:each="inv : ${UserInventory}">
       <div th:id="'modal-InfoItem'+${inv.getIdobject()}" name="modal-Item-Info" class="modal-box modal-InfoItem-class">
         <div>
           <a href="#" title="Fermer" class="js-modal-close close">X</a>
@@ -194,10 +194,10 @@
           </div>
           <div class="gallery">
             <div class="panel">
-              <img th:id="'mainImage'+${inv.getIdobject()}" class="mainImage" src="images/UnknownUser.png"/>
+              <img th:id="'mainImage'+${inv.getIdobject()}" class="mainImage" th:src="*{inv.getGuid() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${inv.getGuid()}:'images/LogoWorld_Transparence.png'"/>
             </div>
             <div th:id="'divSubImages'+${inv.getIdobject()}" class="divSubImages">
-              <img class="subImage" src="images/UnknownUser.png" alt="Image 1" onmouseover="hover(this);"/>
+              <img class="subImage" th:src="*{inv.getGuid() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${inv.getGuid()}:'images/LogoWorld_Transparence.png'" alt="Image 1" onmouseover="hover(this);"/>
               <img class="subImage" src="images/zoom_icon.png" alt="Image 2" onmouseover="hover(this);"/>
               <img class="subImage" src="images/move_icon.png" alt="Image 3" onmouseover="hover(this);"/>
               <img class="subImage" src="images/UnknownUser.png" alt="Image 4" onmouseover="hover(this);"/>
@@ -226,10 +226,10 @@
           </div>
           <div class="gallery">
             <div class="panel">
-              <img th:id="'mainImage'+${inv.getIdobject()}" class="mainImage" src="images/UnknownUser.png"/>
+              <img th:id="'mainImage'+${inv.getIdobject()}" class="mainImage" th:src="*{inv.getGuid() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${inv.getGuid()}:'images/LogoWorld_Transparence.png'"/>
             </div>
             <div th:id="'divSubImages'+${inv.getIdobject()}" class="divSubImages">
-              <img class="subImage" src="images/UnknownUser.png" alt="Image 1" onmouseover="hover(this);"/>
+              <img class="subImage" th:src="*{inv.getGuid() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${inv.getGuid()}:'images/LogoWorld_Transparence.png'" alt="Image 1" onmouseover="hover(this);"/>
               <img class="subImage" src="images/zoom_icon.png" alt="Image 2" onmouseover="hover(this);"/>
               <img class="subImage" src="images/move_icon.png" alt="Image 3" onmouseover="hover(this);"/>
               <img class="subImage" src="images/UnknownUser.png" alt="Image 4" onmouseover="hover(this);"/>
@@ -258,10 +258,10 @@
           </div>
           <div class="gallery">
             <div class="panel">
-              <img th:id="'mainImage'+${tradeItem.getIdobject()}" class="mainImage" src="images/UnknownUser.png"/>
+              <img th:id="'mainImage'+${tradeItem.getIdobject()}" class="mainImage" th:src="*{tradeItem.getGuid() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${tradeItem.getGuid()}:'images/LogoWorld_Transparence.png'"/>
             </div>
             <div th:id="'divSubImages'+${tradeItem.getIdobject()}" class="divSubImages">
-              <img class="subImage" src="images/UnknownUser.png" alt="Image 1" onmouseover="hover(this);"/>
+              <img class="subImage" th:src="*{tradeItem.getGuid() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${tradeItem.getGuid()}:'images/LogoWorld_Transparence.png'" alt="Image 1" onmouseover="hover(this);"/>
               <img class="subImage" src="images/zoom_icon.png" alt="Image 2" onmouseover="hover(this);"/>
               <img class="subImage" src="images/move_icon.png" alt="Image 3" onmouseover="hover(this);"/>
               <img class="subImage" src="images/UnknownUser.png" alt="Image 4" onmouseover="hover(this);"/>
@@ -290,10 +290,10 @@
           </div>
           <div class="gallery">
             <div class="panel">
-              <img th:id="'mainImage'+${tradeItem.getIdobject()}" class="mainImage" src="images/UnknownUser.png"/>
+              <img th:id="'mainImage'+${tradeItem.getIdobject()}" class="mainImage" th:src="*{tradeItem.getGuid() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${tradeItem.getGuid()}:'images/LogoWorld_Transparence.png'"/>
             </div>
             <div th:id="'divSubImages'+${tradeItem.getIdobject()}" class="divSubImages">
-              <img class="subImage" src="images/UnknownUser.png" alt="Image 1" onmouseover="hover(this);"/>
+              <img class="subImage" th:src="*{tradeItem.getGuid() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${tradeItem.getGuid()}:'images/LogoWorld_Transparence.png'" alt="Image 1" onmouseover="hover(this);"/>
               <img class="subImage" src="images/zoom_icon.png" alt="Image 2" onmouseover="hover(this);"/>
               <img class="subImage" src="images/move_icon.png" alt="Image 3" onmouseover="hover(this);"/>
               <img class="subImage" src="images/UnknownUser.png" alt="Image 4" onmouseover="hover(this);"/>

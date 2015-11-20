@@ -25,6 +25,9 @@ function showModalInfoItem(ObjectID){
     currentInfoID = ObjectID;
     currentModalID = '#modal-InfoItem' + ObjectID;
     document.querySelector(currentModalID).classList.add('modal-box-show');
+    var modal = document.getElementById('modal-InfoItem'+ObjectID);
+    var images = modal.getElementsByClassName("subImage");
+    hover(images[0]);
 }
 function goBack(){
     window.history.back();
@@ -88,7 +91,7 @@ function init() {
         }
     });
     // item mis en echangeOpposant function
-    var recycle_icon = "<img src='images/recycle_icon.png' class='ui-icon icon-refresh'/>";
+    var recycle_icon = "<img src='images/recycle_icon.png' class='icon-refresh'/>";
     function insertExchangeOpponent( $item ) {
         $item.fadeOut(function() {
             var $list = $( "ul", $OpponentExchange).length ?
@@ -117,7 +120,7 @@ function init() {
         });
     }
     // item recycle Opposant function
-    var zoneEchange_icon = "<img src='images/add-button-icon.png' class='ui-icon icon-exchange'/>";
+    var zoneEchange_icon = "<img src='images/add-button-icon.png' class='icon-exchange'/>";
     function recycleOpponentItem( $item ) {
         $item.fadeOut(function() {
             $item.find(".divInputMoney").replaceWith("<img class='item-image' src='images/item-dollar-sign.png' alt=''>");
