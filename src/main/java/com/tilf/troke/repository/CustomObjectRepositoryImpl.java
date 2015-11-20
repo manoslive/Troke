@@ -1,5 +1,7 @@
 package com.tilf.troke.repository;
 
+import com.tilf.troke.entity.CustomObjetImageEntity;
+import com.tilf.troke.entity.ImageobjectEntity;
 import com.tilf.troke.entity.ObjectsEntity;
 import org.springframework.stereotype.Repository;
 
@@ -151,8 +153,11 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
         return LObject;
     }
 
+    //GetLesItems d'un user qui sont dans sont inventaire selon le userID(proprio des items) et le ID du trade
     @Override
-    public List<ObjectsEntity> getListObjectTradeInventory(int transactionID, String userId) {
+    public List<CustomObjetImageEntity> getListObjectTradeInventory(int transactionID, String userId) {
+        List<CustomObjetImageEntity> objets = new ArrayList<>();
+        //Get tous les objets
         String query = "select o from ObjectsEntity o where o.iduser = :userID and o.idobject not in " +
                 "(select o from ObjectsEntity o where o.iduser = :userID and o.idobject in " +
                 "(select ot.idobject from ObjecttransactionEntity ot where ot.idtransaction = :idTransaction))";
@@ -160,17 +165,76 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
         queryObject.setParameter("userID", userId);
         queryObject.setParameter("idTransaction", transactionID);
         List<ObjectsEntity> LObject = (List<ObjectsEntity>) queryObject.getResultList();
-        return LObject;
+
+        //Ajout des objets + images dans un custom Entity
+        for(int i=0; i< LObject.size(); i++){
+            CustomObjetImageEntity customObjet = new CustomObjetImageEntity();
+            customObjet.setIduser(LObject.get(i).getIduser());
+            customObjet.setCreationdate(LObject.get(i).getCreationdate());
+            customObjet.setDescObject(LObject.get(i).getDescObject());
+            customObjet.setIdobject(LObject.get(i).getIdobject());
+            customObjet.setIdsubcategory(LObject.get(i).getIdsubcategory());
+            customObjet.setIssignaled(LObject.get(i).getIssignaled());
+            customObjet.setNameObject(LObject.get(i).getNameObject());
+            customObjet.setQuality(LObject.get(i).getQuality());
+            customObjet.setRateable(LObject.get(i).getRateable());
+            customObjet.setValueObject(LObject.get(i).getValueObject());
+
+            //Get tous les images
+            String query2 = "select o from ImageobjectEntity o where o.idobject = :idObject order by ismain, guidimage desc";
+            Query queryObject2 = entityManager.createQuery(query2);
+            queryObject2.setParameter("idObject", LObject.get(i).getIdobject());
+            List<ImageobjectEntity> LImages = (List<ImageobjectEntity>) queryObject2.getResultList();
+
+            customObjet.setImage1(LImages.get(0).getGuidimage());
+            customObjet.setImage2(LImages.get(1).getGuidimage());
+            customObjet.setImage3(LImages.get(2).getGuidimage());
+            customObjet.setImage4(LImages.get(3).getGuidimage());
+
+            objets.add(customObjet);
+        }
+
+        return objets;
     }
 
     //GetLesItems d'un user qui sont en échange selon le userID(proprio des items) et le ID du trade
     @Override
-    public List<ObjectsEntity> getTradeObjects(int transactionID, String userID) {
+    public List<CustomObjetImageEntity> getTradeObjects(int transactionID, String userID) {
+        List<CustomObjetImageEntity> objets = new ArrayList<>();
+
         String query = "select o from ObjectsEntity o where o.iduser = :idUser and o.idobject in (select ot.idobject from ObjecttransactionEntity ot where ot.idtransaction = :idTransaction)";
         Query queryObject = entityManager.createQuery(query);
         queryObject.setParameter("idTransaction", transactionID);
         queryObject.setParameter("idUser", userID);
         List<ObjectsEntity> LObject = (List<ObjectsEntity>) queryObject.getResultList();
-        return LObject;
+
+        //Ajout des objets + images dans un custom Entity
+        for(int i=0; i< LObject.size(); i++){
+            CustomObjetImageEntity customObjet = new CustomObjetImageEntity();
+            customObjet.setIduser(LObject.get(i).getIduser());
+            customObjet.setCreationdate(LObject.get(i).getCreationdate());
+            customObjet.setDescObject(LObject.get(i).getDescObject());
+            customObjet.setIdobject(LObject.get(i).getIdobject());
+            customObjet.setIdsubcategory(LObject.get(i).getIdsubcategory());
+            customObjet.setIssignaled(LObject.get(i).getIssignaled());
+            customObjet.setNameObject(LObject.get(i).getNameObject());
+            customObjet.setQuality(LObject.get(i).getQuality());
+            customObjet.setRateable(LObject.get(i).getRateable());
+            customObjet.setValueObject(LObject.get(i).getValueObject());
+
+            //Get tous les images
+            String query2 = "select o from ImageobjectEntity o where o.idobject = :idObject order by ismain, guidimage desc";
+            Query queryObject2 = entityManager.createQuery(query2);
+            queryObject2.setParameter("idObject", LObject.get(i).getIdobject());
+            List<ImageobjectEntity> LImages = (List<ImageobjectEntity>) queryObject2.getResultList();
+
+            customObjet.setImage1(LImages.get(0).getGuidimage());
+            customObjet.setImage2(LImages.get(1).getGuidimage());
+            customObjet.setImage3(LImages.get(2).getGuidimage());
+            customObjet.setImage4(LImages.get(3).getGuidimage());
+
+            objets.add(customObjet);
+        }
+        return objets;
     }
 }
