@@ -82,7 +82,7 @@ public class HomeController {
                 "\t\t<!--<img src=\"images/LogoWorld_Transparence2.png\" class=\"Logobanner\" id=\"Logo\">-->\n" +
                 "\t<div class=\"rectangle\">\n" +
                 "\t\t\n" +
-                "\t\t<h2 style=\"margin-top:10px;font-family:'Amaranth';font-size:24px;\">CATÉGORIES</h2></div>\n" +
+                "\t\t<h2 style=\"margin-top:10px;font-family:'Amaranth';font-size:20px; letter-spacing:.2em;\">CATÉGORIES</h2></div>\n" +
                 "\t<div class=\"triangle-l\"></div>\n" +
                 "\t<div class=\"triangle-r\"></div>\n" +
                 "\t<div class=\"info\" style=\"inline-flex\">\n" +
