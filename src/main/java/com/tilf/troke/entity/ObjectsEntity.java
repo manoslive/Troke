@@ -2,7 +2,6 @@ package com.tilf.troke.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.sql.Timestamp;
 
 /**
  <<<<<<< HEAD
@@ -29,6 +28,7 @@ public class ObjectsEntity {
     private String photo2;
     private String photo3;
 
+    @GeneratedValue
     @Id
     @Column(name = "IDOBJECT")
     public int getIdobject() {

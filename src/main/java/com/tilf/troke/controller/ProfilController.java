@@ -1,12 +1,10 @@
 package com.tilf.troke.controller;
 
 import com.tilf.troke.auth.AuthUserContext;
+import com.tilf.troke.entity.ImageobjectEntity;
 import com.tilf.troke.entity.ObjectsEntity;
 import com.tilf.troke.entity.UsersEntity;
-import com.tilf.troke.repository.CustomObjectRepository;
-import com.tilf.troke.repository.CustomUserRepository;
-import com.tilf.troke.repository.ObjectRepository;
-import com.tilf.troke.repository.UserRepository;
+import com.tilf.troke.repository.*;
 import com.tilf.troke.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,6 +42,9 @@ public class ProfilController {
     @Autowired
     private ImageService imageService;
 
+    @Autowired
+    private ImageObjectRepository imageObjectRepository;
+
 
 
 
@@ -61,7 +62,10 @@ public class ProfilController {
     {
         java.sql.Date now = new java.sql.Date(Calendar.getInstance().getTime().getTime());
         MultipartFile[] images = {mainPhoto, photo1, photo2, photo3};
+
         boolean imageIsUploaded;
+        ImageobjectEntity photo = new ImageobjectEntity();
+        int lastID;
         ObjectsEntity object = new ObjectsEntity();
 
 
@@ -76,74 +80,45 @@ public class ProfilController {
             object.setCreationdate(now);
 
             // donnée rentrer a la main pour des valeur par defaut ...
+            object.setGuid("no_avatar.png");
             object.setIdsubcategory(1);
             object.setRateable("N");
             object.setIssignaled("N");
-
-            // Ajout des 4 photos
-
-            //------------------ Photo Main ------------------------
-            // On génère le nom unique de l'image et on vérifie qu'il
-            // n'existe pas déjà.
-            String imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
-            while (customUserRepository.checkAvatarName(imageName) == BigInteger.ONE) {
-                imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
-            }
-            if(images[0] != null){
-            // ici on upload l'image sur le serveur avec le bon nom ..
-            imageIsUploaded = imageService.uploadImage(images[0], imageName, true, session);
-
-            if (imageIsUploaded) {
-                object.setGuid(imageName);
-            } }
-
-            // ----------------- Photo 1 -------------------------
-            // On génère le nom unique de l'image et on vérifie qu'il
-            // n'existe pas déjà.
-            imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
-            while (customUserRepository.checkAvatarName(imageName) == BigInteger.ONE) {
-                imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
-            }
-            if(images[1] != null){
-            // ici on upload l'image sur le serveur avec le bon nom ..
-            imageIsUploaded = imageService.uploadImage(images[1], imageName, true, session);
-
-            if (imageIsUploaded) {
-                object.setPhoto1(imageName);
-            } }
-
-            // ----------------- Photo 2 -------------------------
-            // On génère le nom unique de l'image et on vérifie qu'il
-            // n'existe pas déjà.
-            imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
-            while (customUserRepository.checkAvatarName(imageName) == BigInteger.ONE) {
-                imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
-            }
-            if(images[2] != null){
-                // ici on upload l'image sur le serveur avec le bon nom ..
-                imageIsUploaded = imageService.uploadImage(images[2], imageName, true, session);
-
-                if (imageIsUploaded) {
-                    object.setPhoto2(imageName);
-                } }
-
-            // ----------------- Photo 3 -------------------------
-            // On génère le nom unique de l'image et on vérifie qu'il
-            // n'existe pas déjà.
-            imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
-            while (customUserRepository.checkAvatarName(imageName) == BigInteger.ONE) {
-                imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
-            }
-            if(images[2] != null){
-                // ici on upload l'image sur le serveur avec le bon nom ..
-                imageIsUploaded = imageService.uploadImage(images[3], imageName, true, session);
-
-                if (imageIsUploaded) {
-                    object.setPhoto3(imageName);
-                } }
+            
 
             // ajout a la BD
             objectRepository.save(object);
+            // on va chercher le dernier ID ...
+            lastID = object.getIdobject();
+
+            // on ajoute ensuite les 4 photo dans la table ImageObject
+            for(int i = 0; i < 4; i++) {
+                // on set le idObject du dernier object ajouter ...
+                photo.setIdobject(lastID);
+
+                // On génère le nom unique de l'image et on vérifie qu'il
+                // n'existe pas déjà.
+                String imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
+                while (customUserRepository.checkAvatarName(imageName) == BigInteger.ONE) {
+                    imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
+                }
+                if(images[i] != null){
+                    // ici on upload l'image sur le serveur avec le bon nom ..
+                    imageIsUploaded = imageService.uploadImage(images[0], imageName, true, session);
+                    if (imageIsUploaded) {
+                        photo.setGuidimage(imageName);
+                    } }
+               if(i == 0)
+               {
+                   photo.setIsmain("Main");
+               }
+                else
+               {
+                   photo.setIsmain("NotMain");
+               }
+                imageObjectRepository.save(photo);
+            }
+
 
         }
         else
