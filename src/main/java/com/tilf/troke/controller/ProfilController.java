@@ -66,6 +66,7 @@ public class ProfilController {
         boolean imageIsUploaded;
         ImageobjectEntity photo = new ImageobjectEntity();
         int lastID;
+        String firstChar;
         ObjectsEntity object = new ObjectsEntity();
 
 
@@ -104,10 +105,17 @@ public class ProfilController {
                 }
                 if(images[i] != null){
                     // ici on upload l'image sur le serveur avec le bon nom ..
-                    imageIsUploaded = imageService.uploadImage(images[0], imageName, true, session);
+                    imageIsUploaded = imageService.uploadImage(images[i], imageName, true, session);
                     if (imageIsUploaded) {
                         photo.setGuidimage(imageName);
-                    } }
+                    }
+                    else
+                    {
+                        photo.setGuidimage("*"+ imageName);
+
+
+                    }
+                }
                if(i == 0)
                {
                    photo.setIsmain("Main");
@@ -116,6 +124,7 @@ public class ProfilController {
                {
                    photo.setIsmain("NotMain");
                }
+                firstChar = photo.getGuidimage().substring(0,1);
                 imageObjectRepository.save(photo);
             }
 
