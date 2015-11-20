@@ -77,7 +77,7 @@
                             </div>
                  <!-- photo 2 -->
                             <div id="Photo2" src="#" alt="Photo1" class="Photo1"
-                                 th:style="*{session.ObjectToModify ne null and session.ObjectToModify.getPhoto1() ne null} ? 'background-image:url(/uploaded-images/' + ${session.ObjectToModify.getPhoto1()} + ')'">
+                                 th:style="*{session.ObjectToModify ne null } ? 'background-image:url(/uploaded-images/no_avatar.png'  + ')'">
                                 <div class="avatarOverlay" style="">
                                     <div class="avatarPlus">
                                         <input class="fileExplorer" id="fileExplorerP2" name="photo1" type="file" onchange="TestFileType('fileExplorerP2', 'Photo2')"/>
@@ -88,7 +88,7 @@
                 <!-- photo 3 -->
                         <div class="divModalAjoutPhotosDOWN">
                             <div id="Photo3" src="#" alt="Photo1" class="Photo1"
-                                 th:style="*{session.ObjectToModify ne null and session.ObjectToModify.getPhoto2() ne null} ? 'background-image:url(/uploaded-images/' + ${session.ObjectToModify.getPhoto2()} + ')'">
+                                 th:style="*{session.ObjectToModify ne null} ? 'background-image:url(/uploaded-images/no_avatar.png' + ')'">
                                 <div class="avatarOverlay" style="">
                                     <div class="avatarPlus">
 
@@ -98,7 +98,7 @@
                             </div>
                 <!-- photo 4 -->
                             <div id="Photo4" src="#" alt="Photo1" class="Photo1"
-                                 th:style="*{session.ObjectToModify ne null and session.ObjectToModify.getPhoto3() ne null} ? 'background-image:url(/uploaded-images/' + ${session.ObjectToModify.getPhoto3()} + ')'">
+                                 th:style="*{session.ObjectToModify ne null} ? 'background-image:url(/uploaded-images/no_avatar.png'  + ')'">
                                 <div id="avatarOverlay" style="">
                                     <div id="avatarPlus">
                                         <input id="fileExplorerP4" class="fileExplorer" name="photo3" type="file" onchange="TestFileType('fileExplorerP4', 'Photo4')"/>
