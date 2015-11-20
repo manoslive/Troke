@@ -61,7 +61,7 @@
         <h4 th:text="'Zone d\'échange à ' + ${userActif.getIduser()}" class="exchangeZoneHeader ui-widget-header"></h4>
         <div id="UserExchange" class="container-outer">
           <div id="userExchangeItems" class="container-inner ui-state-default">
-            <th:block th:if="${UserTradeItems} ne null">
+            <th:block th:if="${listImageUserTradeZone} ne null">
             <ul class="UserInventory ui-helper-reset">
               <li th:each="userTradeItem : ${listImageUserTradeZone}" class="UserItem ui-widget-content ui-corner-tr" style="display: block; overflow: hidden; width: 80px; height: 80px;">
                 <h5 th:text="${userTradeItem.getNameObject()}" class="ui-widget-header"></h5>
