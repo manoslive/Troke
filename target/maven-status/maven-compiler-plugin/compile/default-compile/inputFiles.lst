@@ -5,11 +5,14 @@ C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\entity\Userrat
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\entity\SubcategoryEntity.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\repository\CustomObjectRepositoryImpl.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\repository\CustomTransactionMoneyRepositoryImpl.java
+C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\repository\CustomImageObjectRepositoryImpl.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\entity\ObjectsEntity.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\repository\CustomChatMessageRepository.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\repository\CustomUserRepository.java
+C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\repository\CustomImageObjectRepository.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\repository\CustomMyTradeRepository.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\repository\CustomObjectRepository.java
+C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\entity\ImageobjectEntityPK.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\repository\ChatRepository.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\repository\CustomUserRepositoryImpl.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\entity\ObjecttransactionEntity.java
@@ -40,6 +43,7 @@ C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\domain\UserSig
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\entity\ChatmessageEntity.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\repository\ObjectRepository.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\controller\ProfilController.java
+C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\repository\ImageObjectRepository.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\controller\SearchController.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\service\SearchService.java
 C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\entity\TransactionmoneyEntityPK.java
