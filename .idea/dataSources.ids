@@ -9,7 +9,7 @@
     <schema name="" catalog="troke"/>
     <table name="category" schema="" catalog="troke" type="TABLE">
       <column name="IDCATEGORY" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="NAME_CATEGORY" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="NAME_CATEGORY" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="IDCATEGORY"/>
       <exported-key name="IDCATEGORY_FK" table="subcategory" schema="" catalog="troke" columns="IDCATEGORY"/>
     </table>
@@ -17,28 +17,27 @@
       <column name="IDCHAT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="IDTRANSACTION" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="IDCHAT"/>
-      <foreign-key name="CHAT_TRANSACTION_FK" columns="IDTRANSACTION" ref-table="transactions" ref-schema="" ref-catalog="troke" ref-columns="IDTRANSACTION" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="CHAT_TRANSACTION_FK" columns="IDTRANSACTION" ref-table="transactions" ref-schema="" ref-catalog="troke" ref-columns="IDTRANSACTION" update-rule="3" delete-rule="0" deferrability="2"/>
       <exported-key name="CHATMESSAGE_CHAT_FK" table="chatmessage" schema="" catalog="troke" columns="IDCHAT"/>
       <index name="CHAT_TRANSACTION_FK" unique="false" columns="IDTRANSACTION"/>
     </table>
     <table name="chatmessage" schema="" catalog="troke" type="TABLE">
       <column name="IDCHATMESSAGE" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="MSG" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
-      <column name="DATE_TIME" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="DATE_TIME" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <column name="IDCHAT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="ISREAD" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
       <primary-key name="PRIMARY" columns="IDCHATMESSAGE"/>
-      <foreign-key name="CHATMESSAGE_CHAT_FK" columns="IDCHAT" ref-table="chat" ref-schema="" ref-catalog="troke" ref-columns="IDCHAT" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="CHATMESSAGE_CHAT_FK" columns="IDCHAT" ref-table="chat" ref-schema="" ref-catalog="troke" ref-columns="IDCHAT" update-rule="3" delete-rule="0" deferrability="2"/>
       <index name="CHATMESSAGE_CHAT_FK" unique="false" columns="IDCHAT"/>
     </table>
     <table name="imageobject" schema="" catalog="troke" type="TABLE">
-      <column name="IDIMAGESOBJECT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="IDOBJECT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="IMAGEPATH" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
-      <column name="ISMAINIMAGE" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
-      <primary-key name="PRIMARY" columns="IDIMAGESOBJECT"/>
-      <foreign-key name="IDOBJECT_FK" columns="IDOBJECT" ref-table="objects" ref-schema="" ref-catalog="troke" ref-columns="IDOBJECT" update-rule="3" delete-rule="3" deferrability="2"/>
-      <index name="IDOBJECT_FK_idx" unique="false" columns="IDOBJECT"/>
+      <column name="GUIDIMAGE" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12" def="J3VwbG9hZGVkLWltYWdlcy9ub19hdmF0YXIucG5nJw=="/>
+      <column name="ISMAIN" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12" def="J05vdE1haW4n"/>
+      <primary-key name="PRIMARY" columns="IDOBJECT,GUIDIMAGE"/>
+      <foreign-key name="FK_IMAGEOBJECT" columns="IDOBJECT" ref-table="objects" ref-schema="" ref-catalog="troke" ref-columns="IDOBJECT" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="GUIDIMAGE_UNIQUE" unique="true" columns="GUIDIMAGE"/>
     </table>
     <table name="objectrating" schema="" catalog="troke" type="TABLE">
       <column name="IDOBJECTRATING" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -52,7 +51,7 @@
       <column name="IDOBJECT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="NAME_OBJECT" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
       <column name="DESC_OBJECT" sqlType="VARCHAR" precision="500" scale="0" nullable="false" jdbcType="12"/>
-      <column name="GUID" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="GUID" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12" def="Jy91cGxvYWRlZC1pbWFnZXMvbm9fYXZhdGFyLnBuZyc="/>
       <column name="IDSUBCATEGORY" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="VALUE_OBJECT" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="QUALITY" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
@@ -63,7 +62,7 @@
       <primary-key name="PRIMARY" columns="IDOBJECT"/>
       <foreign-key name="OBJECT_SUBCATEGORY" columns="IDSUBCATEGORY" ref-table="subcategory" ref-schema="" ref-catalog="troke" ref-columns="IDSUBCATEGORY" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="OBJECT_USERS_FK" columns="IDUSER" ref-table="users" ref-schema="" ref-catalog="troke" ref-columns="IDUSER" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="IDOBJECT_FK" table="imageobject" schema="" catalog="troke" columns="IDOBJECT"/>
+      <exported-key name="FK_IMAGEOBJECT" table="imageobject" schema="" catalog="troke" columns="IDOBJECT"/>
       <exported-key name="OBJECTRATING_OBJECT_FK" table="objectrating" schema="" catalog="troke" columns="IDOBJECT"/>
       <exported-key name="OBJECTTRAN_OBJECT_FK" table="objecttransaction" schema="" catalog="troke" columns="IDOBJECT"/>
       <index name="OBJECT_SUBCATEGORY" unique="false" columns="IDSUBCATEGORY"/>
@@ -73,8 +72,8 @@
       <column name="IDOBJECT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="IDTRANSACTION" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="IDOBJECT,IDTRANSACTION"/>
-      <foreign-key name="OBJECTTRAN_OBJECT_FK" columns="IDOBJECT" ref-table="objects" ref-schema="" ref-catalog="troke" ref-columns="IDOBJECT" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="OBJECTTRA_TRAN_FK" columns="IDTRANSACTION" ref-table="transactions" ref-schema="" ref-catalog="troke" ref-columns="IDTRANSACTION" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="OBJECTTRAN_OBJECT_FK" columns="IDOBJECT" ref-table="objects" ref-schema="" ref-catalog="troke" ref-columns="IDOBJECT" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="OBJECTTRA_TRAN_FK" columns="IDTRANSACTION" ref-table="transactions" ref-schema="" ref-catalog="troke" ref-columns="IDTRANSACTION" update-rule="3" delete-rule="0" deferrability="2"/>
       <index name="OBJECTTRA_TRAN_FK" unique="false" columns="IDTRANSACTION"/>
     </table>
     <table name="subcategory" schema="" catalog="troke" type="TABLE">
@@ -86,11 +85,21 @@
       <exported-key name="OBJECT_SUBCATEGORY" table="objects" schema="" catalog="troke" columns="IDSUBCATEGORY"/>
       <index name="IDCATEGORY_FK_idx" unique="false" columns="IDCATEGORY"/>
     </table>
+    <table name="transactionmoney" schema="" catalog="troke" type="TABLE">
+      <column name="idtransaction" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="value" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="IDUSER" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idtransaction,IDUSER"/>
+      <foreign-key name="FK_IDTRANSACTION" columns="idtransaction" ref-table="transactions" ref-schema="" ref-catalog="troke" ref-columns="IDTRANSACTION" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_IDUSERTRANSACTION" columns="IDUSER" ref-table="users" ref-schema="" ref-catalog="troke" ref-columns="IDUSER" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_IDTRANSACTION_idx" unique="false" columns="idtransaction"/>
+      <index name="FK_IDUSERTRANSACTION_idx" unique="false" columns="IDUSER"/>
+    </table>
     <table name="transactions" schema="" catalog="troke" type="TABLE">
       <column name="IDTRANSACTION" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="IDUSER1" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
       <column name="IDUSER2" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
-      <column name="DATETRANSACTION" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="DATETRANSACTION" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <column name="ISCOMPLETED" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
       <column name="TURN" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="IDTRANSACTION"/>
@@ -98,6 +107,7 @@
       <foreign-key name="TRANSACTION_USER2_FK" columns="IDUSER2" ref-table="users" ref-schema="" ref-catalog="troke" ref-columns="IDUSER" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="CHAT_TRANSACTION_FK" table="chat" schema="" catalog="troke" columns="IDTRANSACTION"/>
       <exported-key name="OBJECTTRA_TRAN_FK" table="objecttransaction" schema="" catalog="troke" columns="IDTRANSACTION"/>
+      <exported-key name="FK_IDTRANSACTION" table="transactionmoney" schema="" catalog="troke" columns="idtransaction"/>
       <index name="TRANSACTION_USER1_FK" unique="false" columns="IDUSER1"/>
       <index name="TRANSACTION_USER2_FK" unique="false" columns="IDUSER2"/>
     </table>
@@ -119,7 +129,7 @@
       <column name="AVATAR" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
       <column name="STATE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
       <column name="ISONLINE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
-      <column name="CREATIONDATE" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="CREATIONDATE" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <column name="EMAIL" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
       <column name="TELEPHONE" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
       <column name="ZIPCODE" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
@@ -127,6 +137,7 @@
       <column name="ISVIP" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
       <primary-key name="PRIMARY" columns="IDUSER"/>
       <exported-key name="OBJECT_USERS_FK" table="objects" schema="" catalog="troke" columns="IDUSER"/>
+      <exported-key name="FK_IDUSERTRANSACTION" table="transactionmoney" schema="" catalog="troke" columns="IDUSER"/>
       <exported-key name="TRANSACTION_USER1_FK" table="transactions" schema="" catalog="troke" columns="IDUSER1"/>
       <exported-key name="TRANSACTION_USER2_FK" table="transactions" schema="" catalog="troke" columns="IDUSER2"/>
       <exported-key name="USERRATING_USERS_FK" table="userrating" schema="" catalog="troke" columns="IDUSER"/>
