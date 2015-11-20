@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.thymeleaf.context.WebContext;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -153,12 +154,13 @@ public class HomeController {
             List<ObjectsEntity> list = customObjectRepository.getListObjectByUserId(authContext.getUser().getIduser());
             model.addAttribute("userInventory", list);
             model.addAttribute("idObjectDelete", null);
-            List<List<ImageobjectEntity>> listImage;
+            List<List<ImageobjectEntity>> listImage = new ArrayList<List<ImageobjectEntity>>();
             List<ImageobjectEntity> listInterne;
 
             for(int i = 0; i < list.size(); i++)
             {
                 listInterne = customImageObjectRepository.getImageObjectbyObjectId(list.get(i).getIdobject());
+                listImage.add(listInterne);
             }
 
             // TODO THYMELEAF HACK

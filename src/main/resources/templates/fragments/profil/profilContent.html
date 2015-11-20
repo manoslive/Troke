@@ -123,28 +123,28 @@
                                                 alt="" class="circularimage" /></div>
 
                                     </h3>
-                                    <th:block th:if="${invent.getPhoto1() ne null}">
+                                    <th:block th:if="${invent ne null}">
                                         <h3 class="icon-container" >
                                             <!--<span class="glyphicon glyphicon-glass"></span>-->
                                             <div class="circular">
-                                                <img th:src="'/uploaded-images/' + ${invent.getPhoto1()}" alt="" class="circularimage" />
+                                                <img th:src="'/uploaded-images/no_avatar.png' " alt="" class="circularimage" />
                                             </div>
 
                                         </h3>
                                     </th:block>
 
-                                    <th:block th:if="${invent.getPhoto2() ne null}">
+                                    <th:block th:if="${invent ne null}">
                                         <h3 class="icon-container" >
                                             <!--<span class="glyphicon glyphicon-glass"></span>-->
-                                            <div class="circular"><img th:src="'/uploaded-images/' +${invent.getPhoto2()}" alt="" class="circularimage" /></div>
+                                            <div class="circular"><img th:src="'/uploaded-images/no_avatar.png'" alt="" class="circularimage" /></div>
 
                                         </h3>
                                     </th:block>
 
-                                    <th:block th:if="${invent.getPhoto3() ne null}">
+                                    <th:block th:if="${invent ne null}">
                                         <h3 class="icon-container" >
                                             <!--<span class="glyphicon glyphicon-glass"></span>-->
-                                            <div class="circular"><img th:src="'/uploaded-images/' +${invent.getPhoto3()}" alt="" class="circularimage" /></div>
+                                            <div class="circular"><img th:src="'/uploaded-images/no_avatar.png'" alt="" class="circularimage" /></div>
 
                                         </h3>
                                     </th:block>
