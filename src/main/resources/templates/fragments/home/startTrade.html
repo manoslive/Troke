@@ -105,7 +105,7 @@
     <th:block th:each="inv : ${inventory}">
         <div th:id="'modal-InfoItem'+${inv.getIdobject()}" name="modal-Item-Info" class="modal-box modal-InfoItem-class">
             <div>
-                <a href="#" title="Fermer" class="js-modal-close close">X</a>
+                <a title="Fermer" class="js-modal-close close">X</a>
                 <h2 th:text="${inv.getNameObject()}" style="text-align:center"></h2>
                 <div class="or-spacer">
                     <div class="mask"></div>
@@ -137,7 +137,7 @@
         <!-- modal current item -->
         <div th:id="'modal-InfoItem'+${currentItemID}" name="modal-Item-Info" class="modal-box modal-InfoItem-class">
             <div>
-                <a href="#" title="Fermer" class="js-modal-close close">X</a>
+                <a title="Fermer" class="js-modal-close close">X</a>
                 <h2 th:text="${currentItem.getNameObject()}" style="text-align:center"></h2>
                 <div class="or-spacer">
                     <div class="mask"></div>

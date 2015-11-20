@@ -3,6 +3,7 @@ package com.tilf.troke.controller;
 import com.tilf.troke.auth.AuthUserContext;
 import com.tilf.troke.filter.SearchFilter;
 import com.tilf.troke.repository.CustomObjectRepository;
+import com.tilf.troke.service.CatSubCatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.thymeleaf.context.WebContext;
 
 import javax.servlet.http.HttpSession;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Manu on 2015-10-19.
@@ -30,31 +30,46 @@ public class SearchController {
     @Autowired
     private SearchFilter searchFilter;
 
+    @Autowired
+    private CatSubCatService catSubCatService;
+
+    public static <String, Boolean> Set<String> getKeysByValue(Map<String, Boolean> map, Boolean value) {
+        Set<String> keys = new HashSet<String>();
+        for (Map.Entry<String, Boolean> entry : map.entrySet()) {
+            if (Objects.equals(value, entry.getValue())) {
+                keys.add(entry.getKey());
+            }
+        }
+        return keys;
+    }
+
     // Test de catégorie
     @RequestMapping(value = "/category", method = RequestMethod.GET)
     public String ListCategoryItems(@RequestParam("categoryName") String categoryName, @RequestParam(value = "catIsChecked", required = false) Boolean catIsChecked, Model model, HttpSession session) {
-        model.addAttribute("objectList", customObjectRepository.getObjectsByCategory(categoryName));
-        model.addAttribute("adrStartTrade", "/startTrade?itemID=");
         if (catIsChecked.equals(null))
             searchFilter.put(categoryName, true);
         else
             searchFilter.put(categoryName, catIsChecked);
+
+        Set<String> catSubCats = getKeysByValue(searchFilter.getFilters(), true);
+        model.addAttribute("objectList", customObjectRepository.getObjectsByCategory(catSubCatService.getCatFromSet(catSubCats)));
+        model.addAttribute("adrStartTrade", "/startTrade?itemID=");
         model.addAttribute("leftMenu", fillLeftCatMenu());
 
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("objectList", customObjectRepository.getObjectsByCategory(categoryName));
+            context.setVariable("objectList", customObjectRepository.getObjectsByCategory(catSubCatService.getCatFromSet(catSubCats)));
             context.setVariable("leftMenu", fillLeftCatMenu());
         }
-        model.addAttribute("objectList", customObjectRepository.getObjectsByCategory(categoryName));
+        model.addAttribute("objectList", customObjectRepository.getObjectsByCategory(catSubCatService.getCatFromSet(catSubCats)));
         return "fragments/home/search";
     }
 
     @RequestMapping(value = "/subcategory", method = RequestMethod.GET)
     public String ListSubCategoryItems(@RequestParam("subCategoryName") String subCategoryName, @RequestParam(value = "subCatIsChecked", required = false) Boolean subCatIsChecked, HttpSession session, Model model) {
-        model.addAttribute("objectList", customObjectRepository.getObjectsBySubCategory(subCategoryName));
         searchFilter.put(subCategoryName, subCatIsChecked);
+        model.addAttribute("objectList", customObjectRepository.getObjectsBySubCategory(subCategoryName));
         model.addAttribute("leftMenu", fillLeftCatMenu());
         model.addAttribute("adrStartTrade", "/startTrade?itemID=");
 
