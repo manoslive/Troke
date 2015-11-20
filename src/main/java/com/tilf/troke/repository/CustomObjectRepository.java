@@ -1,5 +1,6 @@
 package com.tilf.troke.repository;
 
+import com.tilf.troke.entity.CustomObjetImageEntity;
 import com.tilf.troke.entity.ObjectsEntity;
 
 import java.util.List;
@@ -32,8 +33,8 @@ public interface CustomObjectRepository {
     List<ObjectsEntity> getObjectsByUserID(int currentItemID, String userID);
 
     //GetLesItems d'un user qui sont en échange selon le userID(proprio des items) et le ID du trade
-    List<ObjectsEntity> getTradeObjects(int transactionID, String userID);
+    List<CustomObjetImageEntity> getTradeObjects(int transactionID, String userID);
 
     //Get les items de l'inventaire d'un user de la page trade (sans les items en échanges)
-    List<ObjectsEntity> getListObjectTradeInventory(int transactionID,String userId);
+    List<CustomObjetImageEntity> getListObjectTradeInventory(int transactionID,String userId);
 }
