@@ -33,7 +33,6 @@
 
             var imagebanner = document.getElementById("Banniere");
 
-
             $(window).scroll(function () {
                 //if you hard code, then use console
                 //.log to determine when you want the
@@ -466,7 +465,7 @@
                     <ul class="dropdown-menu" role="menu">
                         <li th:each="cat : ${session.categoryList}">
                             <a th:text="${cat}"
-                               th:href="${session.addressCatName} + ${cat} + ${session.addressChecked}"></a>
+                               th:href="${session.addressCatName} + ${cat} + ${session.addressChecked}" style="font-size:13px"></a>
                         </li>
                     </ul>
                     <!-- end dropdown-menu -->

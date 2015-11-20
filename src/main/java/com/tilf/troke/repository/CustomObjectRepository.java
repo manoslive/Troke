@@ -3,6 +3,7 @@ package com.tilf.troke.repository;
 import com.tilf.troke.entity.ObjectsEntity;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Manu on 2015-10-19.
@@ -15,8 +16,9 @@ public interface CustomObjectRepository {
     // Requêtes sur les objets
     List<ObjectsEntity> getRecentItems();
 
-    List<ObjectsEntity> getObjectsByCategory(String categoryName);
+    List<ObjectsEntity> getObjectsByCategory(Set<String> categoryName);
     List<ObjectsEntity> getObjectsBySubCategory(String subCategoryName);
+    List<Integer> getCatIdListFromCatNameSet(Set<String> catNameList);
     List<ObjectsEntity> getListObjectByUserId(String userId);
     ObjectsEntity getObjectEntityByIdObject(int id_object);
 
