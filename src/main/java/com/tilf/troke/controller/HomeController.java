@@ -4,6 +4,7 @@ import com.tilf.troke.auth.AuthUserContext;
 import com.tilf.troke.entity.ImageobjectEntity;
 import com.tilf.troke.entity.ObjectsEntity;
 import com.tilf.troke.entity.UsersEntity;
+import com.tilf.troke.filter.SearchFilter;
 import com.tilf.troke.repository.CustomImageObjectRepository;
 import com.tilf.troke.repository.CustomObjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,11 +35,16 @@ public class HomeController {
     @Autowired
     private CustomImageObjectRepository customImageObjectRepository;
 
+    @Autowired
+    private SearchFilter searchFilter;
+
     @RequestMapping("/")
     public String root(Model model, HttpSession session) {
         FillCategoryMenu(model, session);
         FillCategoryList(model);
         GetRecentItems(model);
+        searchFilter.removeAll();
+
         return "fragments/home/home";
     }
 

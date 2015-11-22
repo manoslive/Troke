@@ -1,6 +1,7 @@
 package com.tilf.troke.controller;
 
 import com.tilf.troke.auth.AuthUserContext;
+import com.tilf.troke.entity.ObjectsEntity;
 import com.tilf.troke.filter.SearchFilter;
 import com.tilf.troke.repository.CustomObjectRepository;
 import com.tilf.troke.service.CatSubCatService;
@@ -46,23 +47,31 @@ public class SearchController {
     // Test de catégorie
     @RequestMapping(value = "/category", method = RequestMethod.GET)
     public String ListCategoryItems(@RequestParam("categoryName") String categoryName, @RequestParam(value = "catIsChecked", required = false) Boolean catIsChecked, Model model, HttpSession session) {
-        if (catIsChecked.equals(null))
+
+        if (catIsChecked == true) {
             searchFilter.put(categoryName, true);
-        else
-            searchFilter.put(categoryName, catIsChecked);
+        } else {
+            searchFilter.remove(categoryName);
+        }
 
         Set<String> catSubCats = getKeysByValue(searchFilter.getFilters(), true);
-        model.addAttribute("objectList", customObjectRepository.getObjectsByCategory(catSubCatService.getCatFromSet(catSubCats)));
+        if (!catSubCats.isEmpty()) {
+            model.addAttribute("objectList", customObjectRepository.getObjectsByCategory(catSubCatService.getCatFromSet(catSubCats)));
+        } else {
+            model.addAttribute("objectList", null);
+            model.addAttribute("objectListEmpty", true);
+        }
+
         model.addAttribute("adrStartTrade", "/startTrade?itemID=");
         model.addAttribute("leftMenu", fillLeftCatMenu());
 
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("objectList", customObjectRepository.getObjectsByCategory(catSubCatService.getCatFromSet(catSubCats)));
+            context.setVariable("objectList", "");
             context.setVariable("leftMenu", fillLeftCatMenu());
+            context.setVariable("objectListEmpty", true);
         }
-        model.addAttribute("objectList", customObjectRepository.getObjectsByCategory(catSubCatService.getCatFromSet(catSubCats)));
         return "fragments/home/search";
     }
 
@@ -78,7 +87,7 @@ public class SearchController {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("objectList", customObjectRepository.getObjectsBySubCategory(subCategoryName));
             context.setVariable("leftMenu", fillLeftCatMenu());
-            context.setVariable("adrStartTrade","/startTrade?itemID=");
+            context.setVariable("adrStartTrade", "/startTrade?itemID=");
         }
         return "fragments/home/search";
     }
@@ -86,6 +95,7 @@ public class SearchController {
     // Test de catégorie
     @RequestMapping(value = "/item", method = RequestMethod.GET)
     public String getItemByIdObject(@RequestParam("idObject") int idobject, Model model) {
+        searchFilter.removeAll();
         model.addAttribute("singleobject", customObjectRepository.getObjectEntityByIdObject(idobject));
         model.addAttribute("adrItem", "/item?idObject=");
         model.addAttribute("adrStartTrade", "/startTrade?itemID=");
@@ -105,6 +115,7 @@ public class SearchController {
 
     @RequestMapping(value = "/searchDB", method = RequestMethod.GET)
     public String searchDB(@RequestParam("keyword") String keyword, Model model) {
+        searchFilter.removeAll();
         model.addAttribute("searchObjectList", customObjectRepository.getObjectListByKeyword(keyword));
         model.addAttribute("adrSearch", "/searchDB?keyword=");
         model.addAttribute("adrStartTrade", "/startTrade?itemID=");
@@ -119,7 +130,7 @@ public class SearchController {
             context.setVariable("searchObjectList", customObjectRepository.getObjectListByKeyword(keyword));
             context.setVariable("adrSearch", "/searchDB?keyword=");
             context.setVariable("leftMenu", fillLeftCatMenu());
-            context.setVariable("adrStartTrade","/startTrade?itemID=" );
+            context.setVariable("adrStartTrade", "/startTrade?itemID=");
         }
         return "fragments/home/search";
     }
@@ -134,7 +145,7 @@ public class SearchController {
             String currentCat = i.next();
             isCatChecked = searchFilter.get(currentCat) == Boolean.TRUE ? "checked" : "";
             html += "<button type=\"button\" class=\"btn btn-info btnBootPerso\" data-toggle=\"collapse\" data-target=\"#" + currentCat.toLowerCase() + "Category\" onclick=\"checkCB('" + currentCat.toLowerCase() + "')\">\n" +
-                    "<input onchange=\"getCheckBoxCatValue('" + currentCat.toLowerCase() + "');\" id=\"" + currentCat.toLowerCase() + "\" class=\"mainCategory catCb\" style=\"float:left;\" type=\"checkbox\"><a onclick=\"getCheckBoxSubCatValue('" + currentCat.toLowerCase() + "');\"" + isCatChecked + "></a>" + currentCat + "</input>\n" +
+                    "<input onchange=\"getCheckBoxCatValue('" + currentCat + "');\" id=\"" + currentCat + "\" class=\"mainCategory catCb\" style=\"float:left;\" type=\"checkbox\"" + isCatChecked + ">" + currentCat + "</input>\n" +
                     "<select style=\"float:right;\" class=\"disappear\" disabled=\"disabled\"></select>\n" +
                     "</button>\n" +
                     "<div id=\"" + currentCat.toLowerCase() + "Category\" class=\"category-Selection collapse\">\n" +
