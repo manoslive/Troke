@@ -1,4 +1,5 @@
 com\tilf\troke\entity\TransactionsEntity.class
+com\tilf\troke\repository\CustomSubcategoryRepositoryImpl.class
 com\tilf\troke\entity\ImageobjectEntity.class
 com\tilf\troke\controller\HomeController.class
 com\tilf\troke\repository\CustomMyTradeRepository.class
@@ -12,6 +13,7 @@ com\tilf\troke\validator\UserValidator.class
 com\tilf\troke\entity\TransactionmoneyEntity.class
 com\tilf\troke\controller\ProfilController.class
 com\tilf\troke\repository\TransactionMoneyRepository.class
+com\tilf\troke\repository\CustomCategoryRepository.class
 com\tilf\troke\controller\myTradesController.class
 com\tilf\troke\entity\ImageobjectEntityPK.class
 com\tilf\troke\entity\ChatEntity.class
@@ -21,6 +23,7 @@ com\tilf\troke\repository\CustomChatMessageRepository.class
 com\tilf\troke\repository\CustomTransactionMoneyRepositoryImpl.class
 com\tilf\troke\service\SearchService.class
 com\tilf\troke\controller\UserController.class
+com\tilf\troke\repository\CustomCategoryRepositoryImpl.class
 com\tilf\troke\entity\CategoryEntity.class
 com\tilf\troke\repository\UserRepository.class
 com\tilf\troke\listener\MyHttpSessionListener.class
@@ -29,6 +32,7 @@ com\tilf\troke\repository\TransactionRepository.class
 com\tilf\troke\entity\ObjecttransactionEntityPK.class
 com\tilf\troke\domain\UserSignupForm.class
 com\tilf\troke\entity\TransactionmoneyEntityPK.class
+com\tilf\troke\repository\CustomSubcategoryRepository.class
 com\tilf\troke\service\ImageService.class
 com\tilf\troke\filter\SearchFilter.class
 com\tilf\troke\repository\CustomTransactionMoneyRepository.class
@@ -44,6 +48,7 @@ com\tilf\troke\conf\FilterConfiguration.class
 com\tilf\troke\repository\ObjectRepository.class
 com\tilf\troke\repository\CustomImageObjectRepositoryImpl.class
 com\tilf\troke\repository\ObjectsTransactionRepository.class
+com\tilf\troke\entity\CustomCategorySubCategoryEntity.class
 com\tilf\troke\repository\CustomObjectRepository.class
 com\tilf\troke\repository\CustomUserRepository.class
 com\tilf\troke\controller\LoginController.class
