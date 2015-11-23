@@ -25,7 +25,7 @@
     <div id="pageTroker" class="ui-widget ui-helper-clearfix col-md-12" data-mcs-theme="3d-thick">
       <!-- Liste qui crée une zone inventaire (User) et contient les items-->
       <ul id="UserInventory" class="UserInventory ui-helper-reset ui-helper-clearfix col-md-3">
-        <h5 th:text="'Inventaire à '+${userActif.getIduser()}" class="UserInventory-header"></h5>
+        <h5 class="UserInventory-header">Votre inventaire</h5>
         <li th:each="invUser : ${listImageUserInventory}" class="UserItem ui-widget-content ui-corner-tr">
           <h5 th:text="${invUser.getNameObject()}" class="ui-widget-header"></h5>
           <img class="item-image" th:src="*{invUser.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${invUser.getImage1()}:'images/LogoWorld_Transparence.png'" alt=""/>
@@ -58,7 +58,7 @@
 
       <!-- Div contenant les modules de zone d'échange et le chat (milieu de la page) -->
       <div id="exchangeZone" class="col-md-6">
-        <h4 th:text="'Zone d\'échange à ' + ${userActif.getIduser()}" class="exchangeZoneHeader ui-widget-header"></h4>
+        <h4 class="exchangeZoneHeader ui-widget-header">Votre zone d'échange</h4>
         <div id="UserExchange" class="container-outer">
           <div id="userExchangeItems" class="container-inner ui-state-default">
             <th:block th:if="${listImageUserTradeZone} ne null">
