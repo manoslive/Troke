@@ -68,7 +68,7 @@
                     <div class="divModalAjoutPhotos">
                         <div class="divModalAjoutPhotosTOP">
                             <div id="Photo1" src="#" alt="Photo1" class="Photo1"
-                                 th:style="*{session.ObjectToModify ne null}? 'background-image:url(/uploaded-images/' + ${session.ObjectToModify.getGuid()} + ')'">
+                                 th:style="*{session.listedimage ne null and session.listedimage.get(0).getGuidimage().substring(0,1)ne '*'}? 'background-image:url(/uploaded-images/' + ${session.listedimage.get(0).getGuidimage()} + ')'">
                                 <div style="" class="avatarOverlay">
                                     <div class="avatarPlus">
                                         <input class="fileExplorer" id="fileExplorerP1" name="photoMain" type="file" onchange="TestFileType('fileExplorerP1', 'Photo1')"/>
@@ -77,7 +77,7 @@
                             </div>
                  <!-- photo 2 -->
                             <div id="Photo2" src="#" alt="Photo1" class="Photo1"
-                                 th:style="*{session.ObjectToModify ne null } ? 'background-image:url(/uploaded-images/no_avatar.png'  + ')'">
+                                 th:style="*{session.listedimage ne null and session.listedimage.get(1).getGuidimage().substring(0,1)ne '*'} ? 'background-image:url(/uploaded-images/'+ ${session.listedimage.get(1).getGuidimage()}  + ')'">
                                 <div class="avatarOverlay" style="">
                                     <div class="avatarPlus">
                                         <input class="fileExplorer" id="fileExplorerP2" name="photo1" type="file" onchange="TestFileType('fileExplorerP2', 'Photo2')"/>
@@ -88,7 +88,7 @@
                 <!-- photo 3 -->
                         <div class="divModalAjoutPhotosDOWN">
                             <div id="Photo3" src="#" alt="Photo1" class="Photo1"
-                                 th:style="*{session.ObjectToModify ne null} ? 'background-image:url(/uploaded-images/no_avatar.png' + ')'">
+                                 th:style="*{session.listedimage ne null and session.listedimage.get(2).getGuidimage().substring(0,1)ne '*'} ? 'background-image:url(/uploaded-images/'+ ${session.listedimage.get(2).getGuidimage()} + ')'">
                                 <div class="avatarOverlay" style="">
                                     <div class="avatarPlus">
 
@@ -98,7 +98,7 @@
                             </div>
                 <!-- photo 4 -->
                             <div id="Photo4" src="#" alt="Photo1" class="Photo1"
-                                 th:style="*{session.ObjectToModify ne null} ? 'background-image:url(/uploaded-images/no_avatar.png'  + ')'">
+                                 th:style="*{session.listedimage ne null and session.listedimage.get(3).getGuidimage().substring(0,1)ne '*'} ? 'background-image:url(/uploaded-images/'+ ${session.listedimage.get(3).getGuidimage()}  + ')'">
                                 <div id="avatarOverlay" style="">
                                     <div id="avatarPlus">
                                         <input id="fileExplorerP4" class="fileExplorer" name="photo3" type="file" onchange="TestFileType('fileExplorerP4', 'Photo4')"/>

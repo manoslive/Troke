@@ -4,6 +4,7 @@ import com.tilf.troke.auth.AuthUserContext;
 import com.tilf.troke.entity.ImageobjectEntity;
 import com.tilf.troke.entity.ObjectsEntity;
 import com.tilf.troke.entity.UsersEntity;
+import com.tilf.troke.filter.SearchFilter;
 import com.tilf.troke.repository.CustomImageObjectRepository;
 import com.tilf.troke.repository.CustomObjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,11 +35,16 @@ public class HomeController {
     @Autowired
     private CustomImageObjectRepository customImageObjectRepository;
 
+    @Autowired
+    private SearchFilter searchFilter;
+
     @RequestMapping("/")
     public String root(Model model, HttpSession session) {
         FillCategoryMenu(model, session);
         FillCategoryList(model);
         GetRecentItems(model);
+        searchFilter.removeAll();
+
         return "fragments/home/home";
     }
 
@@ -154,20 +160,26 @@ public class HomeController {
             List<ObjectsEntity> list = customObjectRepository.getListObjectByUserId(authContext.getUser().getIduser());
             model.addAttribute("userInventory", list);
             model.addAttribute("idObjectDelete", null);
+
+            // Liste
             List<List<ImageobjectEntity>> listImage = new ArrayList<List<ImageobjectEntity>>();
             List<ImageobjectEntity> listInterne;
 
             for(int i = 0; i < list.size(); i++)
             {
                 listInterne = customImageObjectRepository.getImageObjectbyObjectId(list.get(i).getIdobject());
+
                 listImage.add(listInterne);
+
             }
 
+            model.addAttribute("listeImage", listImage);
             // TODO THYMELEAF HACK
             if (false) {
                 WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
                 context.setVariable("userActif", user);
                 context.setVariable("userInventory", list);
+                context.setVariable("listeImage", listImage);
 
             }
             return "fragments/site/profilUser";

@@ -8,6 +8,7 @@ import com.tilf.troke.repository.*;
 import com.tilf.troke.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,7 @@ import org.thymeleaf.context.WebContext;
 import javax.servlet.http.HttpSession;
 import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -45,6 +47,9 @@ public class ProfilController {
     @Autowired
     private ImageObjectRepository imageObjectRepository;
 
+    @Autowired
+    private CustomImageObjectRepository customImageObjectRepository;
+
 
 
 
@@ -66,6 +71,7 @@ public class ProfilController {
         boolean imageIsUploaded;
         ImageobjectEntity photo = new ImageobjectEntity();
         int lastID;
+        String firstChar;
         ObjectsEntity object = new ObjectsEntity();
 
 
@@ -104,10 +110,15 @@ public class ProfilController {
                 }
                 if(images[i] != null){
                     // ici on upload l'image sur le serveur avec le bon nom ..
-                    imageIsUploaded = imageService.uploadImage(images[0], imageName, true, session);
+                    imageIsUploaded = imageService.uploadImage(images[i], imageName, true, session);
                     if (imageIsUploaded) {
                         photo.setGuidimage(imageName);
-                    } }
+                    }
+                    else
+                    {
+                        photo.setGuidimage("*"+ imageName);
+                    }
+                }
                if(i == 0)
                {
                    photo.setIsmain("Main");
@@ -116,6 +127,7 @@ public class ProfilController {
                {
                    photo.setIsmain("NotMain");
                }
+                firstChar = photo.getGuidimage().substring(0,1);
                 imageObjectRepository.save(photo);
             }
 
@@ -131,6 +143,7 @@ public class ProfilController {
             object.setQuality(rating);
             objectRepository.save(object);
             session.removeAttribute("ObjectToModify");
+            session.removeAttribute("listedimage");
 
             // TODO
             // aller chercher les 4 images objects par rapport a l'object et les saver aussi avec les nouveaux parametres ..
@@ -244,7 +257,8 @@ public class ProfilController {
 
     @RequestMapping(value="/openModalModifier", method = RequestMethod.POST)
     public String modalModifierOpen(@RequestParam("idObjectModifier") String id_object,
-                                    HttpSession session)
+                                    HttpSession session,
+                                    Model model)
     {
         // je catch l'id de l'object a modifier par le Request param et ensuite je récupere l'object au complet
         ObjectsEntity objectToModify = customObjectRepository.getObjectEntityByIdObject(Integer.parseInt(id_object));
@@ -252,10 +266,15 @@ public class ProfilController {
         // j'ajoute un objet de session pour le récuperer dans le modal d'ajout et remplir les bon champs.
         session.setAttribute("ObjectToModify", objectToModify);
 
+        List<ImageobjectEntity> listedimage;
+
+        listedimage = customImageObjectRepository.getImageObjectbyObjectId(objectToModify.getIdobject());
+        session.setAttribute("listedimage", listedimage);
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("ObhectToModify", id_object);
+            context.setVariable("listedimage", listedimage);
 
         }
         return "redirect:/profil#openModalAjouter";
@@ -265,6 +284,14 @@ public class ProfilController {
     public String closeModalAjouter(HttpSession session)
     {
         session.removeAttribute("ObjectToModify");
+        session.removeAttribute("listedimage");
         return "redirect:/profil";
+    }
+    @RequestMapping(value="/openModalAjouter", method= RequestMethod.GET)
+    public String openModalAjouter(HttpSession session)
+    {
+        session.removeAttribute("ObjectToModify");
+        session.removeAttribute("listedimage");
+        return "redirect:/profil#openModalAjouter";
     }
 }

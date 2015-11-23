@@ -30,4 +30,21 @@ public class SearchFilter {
     public Map<String, Boolean> getFilters() {
         return filters;
     }
+
+    public boolean remove(String filter){
+        for(Iterator<Map.Entry<String, Boolean>> it = filters.entrySet().iterator(); it.hasNext(); ) {
+            Map.Entry<String, Boolean> entry = it.next();
+            if (entry.getKey().equals(filter)) {
+                it.remove();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void removeAll() {
+        if (!filters.isEmpty()) {
+            filters = new HashMap<>();
+        }
+    }
 }

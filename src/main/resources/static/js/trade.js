@@ -1,6 +1,7 @@
 /**
  * Created by Shaun Cooper on 2015-10-27.
  */
+var bFirstReceive = false;
 function makeIDList(){
     document.getElementById("tradeState").value = "F";
     var x = document.getElementsByClassName("itemID");
@@ -66,36 +67,54 @@ function sendChat(userName){
 //Function qui vérifi si le trade est valid
 function checkValidTrade(){
     var isValid = false;
-    if($('#userExchangeItems ul li').length < 1) {
+    if ($('#userExchangeItems ul li').length < 1) {
         isValid = false;
-    }else {
+    } else {
         isValid = true;
     }
-    if($('#opponentExchangeItems ul li').length < 1) {
+    if ($('#opponentExchangeItems ul li').length < 1) {
         isValid = false;
-    }else {
-        if(!isValid)
+    } else {
+        if (!isValid)
             isValid = false;
         else
             isValid = true;
     }
-    if(isValid){
+    if (isValid) {
         document.getElementById("btn-send-trade").style.pointerEvents = "auto";
-        document.getElementById("btn-send-trade").innerText = "Envoyer l'offre!";
+        document.getElementById("btn-send-trade").innerText = "Envoyer la contre-offre!";
     }
-    else{
+    else {
         document.getElementById("btn-send-trade").style.pointerEvents = "none";
         document.getElementById("btn-send-trade").innerText = "Sélectionnez un item \n pour l'échange"
     }
+
     //Il y a eu changement de l'offre donc l'offre ne peut pas etre accepté
     document.getElementById("btn-accept-trade").innerText = "Réinitialiser l'offre";
     changeAcceptButton();
+
 }
 function changeAcceptButton(){
     document.getElementById('btn-accept-trade').onclick = function () { location.reload() };
 }
 $( init );
 function init() {
+    //Vérifier si c'est la première fois qu'un user reçoit un trade pour enlever le bouton d'accepter l'offre
+    document.getElementById("btn-send-trade").style.pointerEvents = "none";
+    document.getElementById("btn-send-trade").innerText = "Sélectionnez un item \n pour l'échange"
+    if($('#userExchangeItems ul li').length >= 1) {
+        bFirstReceive = true;
+    }
+    if($('#opponentExchangeItems ul li').length < 1) {
+        bFirstReceive = true;
+    }else{
+        bFirstReceive = false;
+    }
+    if(bFirstReceive){
+        //C'est la premiere fois qu'on reçoit une offre
+        document.getElementById("btn-accept-trade").innerText = "Réinitialiser l'offre";
+    }
+
     // mettre les items non selectable (selection de text, highlight bleu ...)
     $( "#UserInventory" ).disableSelection();
     $( "#UserExchange" ).disableSelection();

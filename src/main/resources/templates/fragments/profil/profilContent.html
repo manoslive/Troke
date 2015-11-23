@@ -119,32 +119,37 @@
                                     <h3 class="icon-container">
                                         <!--<span class="glyphicon glyphicon-glass"></span>-->
                                         <div class="circular"><img
-                                                th:src="'/uploaded-images/' + ${invent.getGuid()}"
+                                                th:src="'/uploaded-images/' + ${listeImage.get(inventStat.index).get(0).getGuidimage()}"
                                                 alt="" class="circularimage" /></div>
 
                                     </h3>
-                                    <th:block th:if="${invent ne null}">
+                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(1).getGuidimage().substring(0,1) ne '*'}">
                                         <h3 class="icon-container" >
                                             <!--<span class="glyphicon glyphicon-glass"></span>-->
                                             <div class="circular">
-                                                <img th:src="'/uploaded-images/no_avatar.png' " alt="" class="circularimage" />
+                                                <img th:src="'/uploaded-images/' +${listeImage.get(inventStat.index).get(1).getGuidimage()}"
+                                                     alt="" class="circularimage" />
                                             </div>
 
                                         </h3>
                                     </th:block>
 
-                                    <th:block th:if="${invent ne null}">
+                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(2).getGuidimage().substring(0,1) ne '*'}">
                                         <h3 class="icon-container" >
                                             <!--<span class="glyphicon glyphicon-glass"></span>-->
-                                            <div class="circular"><img th:src="'/uploaded-images/no_avatar.png'" alt="" class="circularimage" /></div>
+                                            <div class="circular">
+                                                <img th:src="'/uploaded-images/' +${listeImage.get(inventStat.index).get(2).getGuidimage()}"
+                                                     alt="" class="circularimage" /></div>
 
                                         </h3>
                                     </th:block>
 
-                                    <th:block th:if="${invent ne null}">
+                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(3).getGuidimage().substring(0,1) ne '*'}">
                                         <h3 class="icon-container" >
                                             <!--<span class="glyphicon glyphicon-glass"></span>-->
-                                            <div class="circular"><img th:src="'/uploaded-images/no_avatar.png'" alt="" class="circularimage" /></div>
+                                            <div class="circular">
+                                                <img th:src="'/uploaded-images/' +${listeImage.get(inventStat.index).get(3).getGuidimage()}"
+                                                     alt="" class="circularimage" /></div>
 
                                         </h3>
                                     </th:block>

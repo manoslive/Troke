@@ -15,6 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
@@ -55,18 +56,17 @@ public class TransactionController {
     @Autowired
     private CustomTransactionMoneyRepository customTransactionMoneyRepository;
 
-
     @PersistenceContext
     private EntityManager entityManager;
 
     //StartTrade - lorsqu'on click sur un item de la recherche et on veut commencer une transaction
     @RequestMapping(value = "/startTrade", method = RequestMethod.GET)
-    public String getUserFromItem(@RequestParam("itemID") int itemID, Model model, HttpSession session) {
+    public String openNewTrade(@RequestParam("itemID") int itemID, Model model, HttpSession session) {
         UsersEntity currentUser = authUserContext.getUser();
         if(currentUser != null) {
             UsersEntity opponentID = customUserRepository.getUserFromItem(itemID);
             model.addAttribute("startTradeOpponent", opponentID);
-            model.addAttribute("currentItem", customObjectRepository.getObjectEntityByIdObject(itemID));
+            model.addAttribute("currentItem", customObjectRepository.getCustomObjectImageEntityByIdObject(itemID));
             model.addAttribute("currentItemID", itemID);
             model.addAttribute("inventory", customObjectRepository.getObjectsByUserID(itemID, customUserRepository.getUserFromItem(itemID).getIduser()));
             model.addAttribute("userActif", currentUser);
@@ -75,7 +75,7 @@ public class TransactionController {
                 WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
                 context.setVariable("currentItemID", itemID);
                 context.setVariable("startTradeOpponent", customUserRepository.getUserFromItem(itemID));
-                context.setVariable("currentItem", customObjectRepository.getObjectEntityByIdObject(itemID));
+                context.setVariable("currentItem", customObjectRepository.getCustomObjectImageEntityByIdObject(itemID));
                 context.setVariable("inventory", customObjectRepository.getObjectsByUserID(itemID, customUserRepository.getUserFromItem(itemID).getIduser()));
                 context.setVariable("userActif", currentUser);
             }
@@ -95,37 +95,37 @@ public class TransactionController {
         model.addAttribute("opponentID", opponentID);
         model.addAttribute("transactionID", tradeID);
 
-        //Get les inventaires des 2 users
-        model.addAttribute("UserInventory", customObjectRepository.getListObjectTradeInventory(tradeID,currentUser.getIduser()));
-        model.addAttribute("OpponentInventory", customObjectRepository.getListObjectTradeInventory(tradeID, opponentID));
-
-        //Get les 2 zones d'échanges
-        model.addAttribute("UserTradeItems", customObjectRepository.getTradeObjects(tradeID, currentUser.getIduser()));
-        model.addAttribute("OpponentTradeItems", customObjectRepository.getTradeObjects(tradeID, opponentID));
-
         //Get les 2 items d'argent
         model.addAttribute("UserMoneyItem", customTransactionMoneyRepository.getTransactionMoney(tradeID, currentUser.getIduser()));
         model.addAttribute("OpponentMoneyItem", customTransactionMoneyRepository.getTransactionMoney(tradeID, opponentID));
 
         //Get les message du Chat
         model.addAttribute("ChatLog", customChatMessageRepository.getChatLogByTransactionID(tradeID));
+
+        //Get les objets+images des items dans l'inventaire du trade des 2 users
+        model.addAttribute("listImageUserInventory", customObjectRepository.getListObjectTradeInventory(tradeID, currentUser.getIduser()));
+        model.addAttribute("listImageOpponentInventory", customObjectRepository.getListObjectTradeInventory(tradeID, opponentID));
+
+        //Get les objets+images des items en trade des 2 users
+        model.addAttribute("listImageUserTradeZone", customObjectRepository.getTradeObjects(tradeID, currentUser.getIduser()));
+        model.addAttribute("listImageOpponentTradeZone", customObjectRepository.getTradeObjects(tradeID, opponentID));
+
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("userActif", currentUser);
-            context.setVariable("UserInventory", customObjectRepository.getListObjectTradeInventory(tradeID, currentUser.getIduser()));
-            context.setVariable("OpponentInventory", customObjectRepository.getListObjectTradeInventory(tradeID, opponentID));
-            context.setVariable("UserTradeItems", customObjectRepository.getTradeObjects(tradeID, currentUser.getIduser()));
-            context.setVariable("OpponentTradeItems", customObjectRepository.getTradeObjects(tradeID, opponentID));
             context.setVariable("ChatLog", customChatMessageRepository.getChatLogByTransactionID(tradeID));
             context.setVariable("UserMoneyItem", customTransactionMoneyRepository.getTransactionMoney(tradeID, currentUser.getIduser()));
             context.setVariable("OpponentMoneyItem", customTransactionMoneyRepository.getTransactionMoney(tradeID, opponentID));
             context.setVariable("opponentID", opponentID);
             context.setVariable("transactionID", tradeID);
+            context.setVariable("listImageUserInventory", customObjectRepository.getListObjectTradeInventory(tradeID, currentUser.getIduser()));
+            context.setVariable("listImageOpponentInventory", customObjectRepository.getListObjectTradeInventory(tradeID, opponentID));
+            context.setVariable("listImageUserTradeZone", customObjectRepository.getTradeObjects(tradeID, currentUser.getIduser()));
+            context.setVariable("listImageOpponentTradeZone", customObjectRepository.getTradeObjects(tradeID, opponentID));
         }
         return "fragments/home/trade";
     }
-
     //addTrade - Ajout d'un trade lorsqu'on envoie un échange de la page startTrade
     //Ajout à Transaction
     //Ajout à Chat
@@ -280,7 +280,4 @@ public class TransactionController {
         }
         return "redirect:/myTrades";
     }
-
-
-
 }

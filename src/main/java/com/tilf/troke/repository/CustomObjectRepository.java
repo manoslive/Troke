@@ -1,5 +1,6 @@
 package com.tilf.troke.repository;
 
+import com.tilf.troke.entity.CustomObjetImageEntity;
 import com.tilf.troke.entity.ObjectsEntity;
 
 import java.util.List;
@@ -17,10 +18,13 @@ public interface CustomObjectRepository {
     List<ObjectsEntity> getRecentItems();
 
     List<ObjectsEntity> getObjectsByCategory(Set<String> categoryName);
-    List<ObjectsEntity> getObjectsBySubCategory(String subCategoryName);
+    List<ObjectsEntity> getObjectsBySubCategory(Set<String> categoryName);
     List<Integer> getCatIdListFromCatNameSet(Set<String> catNameList);
+    List<Integer> getSubCatIdListFromSubCatNameSet(Set<String> catNameList);
     List<ObjectsEntity> getListObjectByUserId(String userId);
     ObjectsEntity getObjectEntityByIdObject(int id_object);
+    CustomObjetImageEntity getCustomObjectImageEntityByIdObject(int id_object);
+    List<ObjectsEntity> ConcatenateObjectsLists(List<ObjectsEntity> cats, List<ObjectsEntity> subCats);
 
     // Recherches
     List<ObjectsEntity> getObjectListByKeyword(String keyword);
@@ -29,11 +33,11 @@ public interface CustomObjectRepository {
     String getObjectNameByItemID(int itemID);
 
     //GetLesItems d'un inventaire selon le UserId
-    List<ObjectsEntity> getObjectsByUserID(int currentItemID, String userID);
+    List<CustomObjetImageEntity> getObjectsByUserID(int currentItemID, String userID);
 
     //GetLesItems d'un user qui sont en échange selon le userID(proprio des items) et le ID du trade
-    List<ObjectsEntity> getTradeObjects(int transactionID, String userID);
+    List<CustomObjetImageEntity> getTradeObjects(int transactionID, String userID);
 
     //Get les items de l'inventaire d'un user de la page trade (sans les items en échanges)
-    List<ObjectsEntity> getListObjectTradeInventory(int transactionID,String userId);
+    List<CustomObjetImageEntity> getListObjectTradeInventory(int transactionID,String userId);
 }

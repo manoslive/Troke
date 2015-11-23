@@ -33,6 +33,7 @@ com\tilf\troke\service\ImageService.class
 com\tilf\troke\filter\SearchFilter.class
 com\tilf\troke\repository\CustomTransactionMoneyRepository.class
 com\tilf\troke\repository\ImageObjectRepository.class
+com\tilf\troke\entity\CustomObjetImageEntity.class
 com\tilf\troke\auth\AuthUserContext.class
 com\tilf\troke\repository\CustomChatMessageRepositoryImpl.class
 com\tilf\troke\repository\ChatRepository.class

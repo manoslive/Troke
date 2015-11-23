@@ -17,7 +17,7 @@ public class CustomImageObjectRepositoryImpl implements CustomImageObjectReposit
     private EntityManager entityManager;
 
     public List<ImageobjectEntity> getImageObjectbyObjectId(int objectID) {
-        String query = "select t from ImageobjectEntity t where t.idobject = :objectID";
+        String query = "select t from ImageobjectEntity t where t.idobject = :objectID order by ismain,guidimage desc";
         Query queryObject = entityManager.createQuery(query);
         queryObject.setParameter("objectID", objectID);
         List<ImageobjectEntity> listObject = (List<ImageobjectEntity>)queryObject.getResultList();

@@ -21,6 +21,7 @@ public class ObjectsEntity {
     private String issignaled;
     private Date creationdate;
 
+    @GeneratedValue
     @Id
     @Column(name = "IDOBJECT")
     public int getIdobject() {
