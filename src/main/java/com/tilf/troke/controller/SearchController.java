@@ -46,15 +46,18 @@ public class SearchController {
 
     // Test de catégorie
     @RequestMapping(value = "/category", method = RequestMethod.GET)
-    public String ListCategoryItems(@RequestParam("categoryName") String categoryName, @RequestParam(value = "catIsChecked", required = false) Boolean catIsChecked, Model model, HttpSession session) {
+    public String ListCategoryItems(@RequestParam("categoryName") String categoryName, @RequestParam(value = "catIsChecked") Boolean catIsChecked, Model model, HttpSession session) {
 
+        // Modification de la liste de Cat/SubCat
         if (catIsChecked == true) {
             searchFilter.put(categoryName, true);
         } else {
             searchFilter.remove(categoryName);
         }
 
+        // On obtient la liste de toutes les cat/subcat qui sont cochées
         Set<String> catSubCats = getKeysByValue(searchFilter.getFilters(), true);
+        // si la liste n'est pas nulle
         if (!catSubCats.isEmpty()) {
             model.addAttribute("objectList", customObjectRepository.getObjectsByCategory(catSubCatService.getCatFromSet(catSubCats)));
         } else {
@@ -76,16 +79,38 @@ public class SearchController {
     }
 
     @RequestMapping(value = "/subcategory", method = RequestMethod.GET)
-    public String ListSubCategoryItems(@RequestParam("subCategoryName") String subCategoryName, @RequestParam(value = "subCatIsChecked", required = false) Boolean subCatIsChecked, HttpSession session, Model model) {
-        searchFilter.put(subCategoryName, subCatIsChecked);
-        model.addAttribute("objectList", customObjectRepository.getObjectsBySubCategory(subCategoryName));
+    public String ListSubCategoryItems(@RequestParam("subCategoryName") String subCategoryName, @RequestParam(value = "subCatIsChecked") Boolean subCatIsChecked, HttpSession session, Model model) {
+        // Modification de la liste de Cat/SubCat
+        if(subCatIsChecked == true){
+            searchFilter.put(subCategoryName, subCatIsChecked);
+        }
+        else{
+            searchFilter.remove(subCategoryName);
+        }
+
+        // On obtient la liste de toutes les cat/subcat qui sont cochées
+        Set<String> catSubCats = getKeysByValue(searchFilter.getFilters(), true);
+        if(!catSubCats.isEmpty() && !catSubCatService.getSubCatFromSet(catSubCats).isEmpty()){
+            if(!catSubCatService.getCatFromSet(catSubCats).isEmpty())
+            {
+                
+            }
+            else{
+                model.addAttribute("objectList", customObjectRepository.getObjectsBySubCategory(catSubCatService.getSubCatFromSet(catSubCats)));
+            }
+        }
+        else{
+            model.addAttribute("objectList", null);
+            model.addAttribute("objectListEmpty", true);
+        }
+
         model.addAttribute("leftMenu", fillLeftCatMenu());
         model.addAttribute("adrStartTrade", "/startTrade?itemID=");
 
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("objectList", customObjectRepository.getObjectsBySubCategory(subCategoryName));
+            context.setVariable("objectList", "");
             context.setVariable("leftMenu", fillLeftCatMenu());
             context.setVariable("adrStartTrade", "/startTrade?itemID=");
         }
@@ -156,8 +181,8 @@ public class SearchController {
                 String currentSubCat = j.next();
                 isSubCatChecked = searchFilter.get(currentSubCat) == Boolean.TRUE ? "checked" : "";
                 html += "<li>" +
-                        "<input onchange=\"getCheckBoxSubCatValue('" + currentSubCat.toLowerCase() + "');\" id=\"" + currentSubCat.toLowerCase() + "\" class=\"mainCategory" + currentSubCat.toLowerCase() + "subCatCb\" type=\"checkbox\"" + isSubCatChecked + ">" +
-                        "<a onclick=\"getCheckBoxSubCatValue('" + currentSubCat.toLowerCase() + "');\">" + currentSubCat.toLowerCase() + "</a>" +
+                        "<input onchange=\"getCheckBoxSubCatValue('" + currentSubCat + "');\" id=\"" + currentSubCat + "\" class=\"mainCategory" + currentSubCat + "subCatCb\" type=\"checkbox\"" + isSubCatChecked + ">" +
+                        "<a onclick=\"getCheckBoxSubCatValueLink('" + currentSubCat + "');\">" + currentSubCat + "</a>" +
                         "</input>" +
                         "</li>\n";
             }

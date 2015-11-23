@@ -18,11 +18,13 @@ public interface CustomObjectRepository {
     List<ObjectsEntity> getRecentItems();
 
     List<ObjectsEntity> getObjectsByCategory(Set<String> categoryName);
-    List<ObjectsEntity> getObjectsBySubCategory(String subCategoryName);
+    List<ObjectsEntity> getObjectsBySubCategory(Set<String> categoryName);
     List<Integer> getCatIdListFromCatNameSet(Set<String> catNameList);
+    List<Integer> getSubCatIdListFromSubCatNameSet(Set<String> catNameList);
     List<ObjectsEntity> getListObjectByUserId(String userId);
     ObjectsEntity getObjectEntityByIdObject(int id_object);
     CustomObjetImageEntity getCustomObjectImageEntityByIdObject(int id_object);
+    List<ObjectsEntity> ConcatenateObjectsLists(List<ObjectsEntity> cats, List<ObjectsEntity> subCats);
 
     // Recherches
     List<ObjectsEntity> getObjectListByKeyword(String keyword);

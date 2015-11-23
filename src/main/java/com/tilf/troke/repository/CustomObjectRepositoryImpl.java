@@ -57,10 +57,19 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
     }
 
     @Override
-    public List<Integer> getCatIdListFromCatNameSet(Set<String> catNameList) {
+         public List<Integer> getCatIdListFromCatNameSet(Set<String> catNameList) {
         List<Integer> catIdList = new ArrayList<>();
         for (String catName : catNameList) {
             catIdList.add(getIdCategoryFromCategoryName(catName));
+        }
+        return catIdList;
+    }
+
+    @Override
+    public List<Integer> getSubCatIdListFromSubCatNameSet(Set<String> subCatNameList) {
+        List<Integer> catIdList = new ArrayList<>();
+        for (String subCatName : subCatNameList) {
+            catIdList.add(getIdSubCategoryFromSubCatName(subCatName));
         }
         return catIdList;
     }
@@ -77,21 +86,14 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
     }
 
     @Override
-    public List<ObjectsEntity> getObjectsBySubCategory(String subCategoryName) {
-        TypedQuery<ObjectsEntity> query = entityManager.createQuery("select o from ObjectsEntity o where o.idsubcategory=:idsubcategory", ObjectsEntity.class);
-        query.setParameter("idsubcategory", getSubCategoryIdBySubCategoryName(subCategoryName));
+    public List<ObjectsEntity> getObjectsBySubCategory(Set<String> subCategoryName) {
+        // TypedQuery<ObjectsEntity> query = entityManager.createQuery("select o from ObjectsEntity as o where exists (select s.idSubcategory from SubcategoryEntity s where o.idsubcategory=s.idSubcategory and s.idcategory in :idlist)", ObjectsEntity.class);
+        Query query = entityManager.createNativeQuery("select IDOBJECT, NAME_OBJECT, DESC_OBJECT, guid, idSUBCATEGORY, VALUE_OBJECT, QUALITY, IDUSER, RATEABLE, ISSIGNALED, CREATIONDATE from objects  where IDSUBCATEGORY in :idlist", ObjectsEntity.class);
+        // query.setParameter("idcategory", getIdCategoryFromCategoryName("à changer"));
+        query.setParameter("idlist", getSubCatIdListFromSubCatNameSet(subCategoryName));
         List<ObjectsEntity> result = query.getResultList();
 
         return result;
-    }
-
-    public int getSubCategoryIdBySubCategoryName(String subCategoryName) {
-        String query = "select IDSUBCATEGORY from subcategory s inner join category c on s.idcategory=c.idcategory where NAME_SUBCATEGORY=:name";
-        Query queryObject = entityManager.createNativeQuery(query);
-        queryObject.setParameter("name", subCategoryName);
-        int idsubcategory = (int) queryObject.getSingleResult();
-
-        return idsubcategory;
     }
 
     public int getIdCategoryFromCategoryName(String categoryName) {
@@ -101,6 +103,15 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
         int idcategory = (int) queryObject.getSingleResult();
         return idcategory;
     }
+
+    public int getIdSubCategoryFromSubCatName(String subCatName){
+        String query = "select distinct s.idSUBCATEGORY from subcategory s where NAME_SUBCATEGORY=:name";
+        Query queryObject = entityManager.createNativeQuery(query);
+        queryObject.setParameter("name", subCatName);
+        int idcategory = (int) queryObject.getSingleResult();
+        return idcategory;
+    }
+
     @Override
     public ObjectsEntity getObjectEntityByIdObject(int id_object) {
         String query = "select o from ObjectsEntity o where o.idobject=:idobject";
@@ -109,6 +120,13 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
         ObjectsEntity obj = (ObjectsEntity) queryObject.getSingleResult();
 
         return obj;
+    }
+
+    @Override
+    public List<ObjectsEntity> ConcatenateObjectsLists(List<ObjectsEntity> cats, List<ObjectsEntity> subCats){
+        List<ObjectsEntity> concatenatedList = new ArrayList<>();
+
+        for()
     }
 
     @Override

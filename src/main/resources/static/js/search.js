@@ -28,7 +28,6 @@ function getCheckBoxCatValue(checkBoxId) {
     }
 
 }
-
 function getCheckBoxSubCatValue(checkBoxId) {
     if ($("#" + checkBoxId).prop('checked')) {
         //$("#" + checkBoxId).checked = false;
@@ -37,5 +36,15 @@ function getCheckBoxSubCatValue(checkBoxId) {
     else{
         //$("#" + checkBoxId).checked = true;
         location.href = "/subcategory?subCategoryName=" + checkBoxId + "&subCatIsChecked=" + false;
+    }
+}
+function getCheckBoxSubCatValueLink(checkBoxId) {
+    if ($("#" + checkBoxId).prop('checked')) {
+        $("#" + checkBoxId).prop('checked', false);
+        location.href = "/subcategory?subCategoryName=" + checkBoxId + "&subCatIsChecked=" + false;
+    }
+    else{
+        $("#" + checkBoxId).prop('checked', true);
+        location.href = "/subcategory?subCategoryName=" + checkBoxId + "&subCatIsChecked=" + true;
     }
 }
