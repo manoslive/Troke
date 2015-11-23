@@ -122,12 +122,12 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
         return obj;
     }
 
-//    @Override
-//    public List<ObjectsEntity> ConcatenateObjectsLists(List<ObjectsEntity> cats, List<ObjectsEntity> subCats){
-//        List<ObjectsEntity> concatenatedList = new ArrayList<>();
-//
-//
-//    }
+    @Override
+   public List<ObjectsEntity> ConcatenateObjectsLists(List<ObjectsEntity> cats, List<ObjectsEntity> subCats){
+        List<ObjectsEntity> concatenatedList = new ArrayList<>();
+
+
+   }
 
     @Override
     public CustomObjetImageEntity getCustomObjectImageEntityByIdObject(int id_object) {
