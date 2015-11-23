@@ -1,5 +1,6 @@
 package com.tilf.troke.service;
 
+import com.tilf.troke.entity.ObjectsEntity;
 import com.tilf.troke.repository.CustomObjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,7 @@ public class CatSubCatService {
     // de la liste mélangée de catégories/sous-catégories
     public Set<String> getSubCatFromSet(Set<String> catSubCatSet) {
         List<String> catList = customObjectRepository.getAllCategories();
-        Set<String> catSet = null;
+        Set<String> catSet = new HashSet<>();
         for(String category : catList) {
             List<String> subCatList = customObjectRepository.getAllSubCategories(category);
             for (String item : subCatList) {

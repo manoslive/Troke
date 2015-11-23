@@ -61,12 +61,12 @@ public class TransactionController {
 
     //StartTrade - lorsqu'on click sur un item de la recherche et on veut commencer une transaction
     @RequestMapping(value = "/startTrade", method = RequestMethod.GET)
-    public String getUserFromItem(@RequestParam("itemID") int itemID, Model model, HttpSession session) {
+    public String openNewTrade(@RequestParam("itemID") int itemID, Model model, HttpSession session) {
         UsersEntity currentUser = authUserContext.getUser();
         if(currentUser != null) {
             UsersEntity opponentID = customUserRepository.getUserFromItem(itemID);
             model.addAttribute("startTradeOpponent", opponentID);
-            model.addAttribute("currentItem", customObjectRepository.getObjectEntityByIdObject(itemID));
+            model.addAttribute("currentItem", customObjectRepository.getCustomObjectImageEntityByIdObject(itemID));
             model.addAttribute("currentItemID", itemID);
             model.addAttribute("inventory", customObjectRepository.getObjectsByUserID(itemID, customUserRepository.getUserFromItem(itemID).getIduser()));
             model.addAttribute("userActif", currentUser);
@@ -75,7 +75,7 @@ public class TransactionController {
                 WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
                 context.setVariable("currentItemID", itemID);
                 context.setVariable("startTradeOpponent", customUserRepository.getUserFromItem(itemID));
-                context.setVariable("currentItem", customObjectRepository.getObjectEntityByIdObject(itemID));
+                context.setVariable("currentItem", customObjectRepository.getCustomObjectImageEntityByIdObject(itemID));
                 context.setVariable("inventory", customObjectRepository.getObjectsByUserID(itemID, customUserRepository.getUserFromItem(itemID).getIduser()));
                 context.setVariable("userActif", currentUser);
             }

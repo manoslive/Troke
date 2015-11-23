@@ -57,10 +57,19 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
     }
 
     @Override
-    public List<Integer> getCatIdListFromCatNameSet(Set<String> catNameList) {
+         public List<Integer> getCatIdListFromCatNameSet(Set<String> catNameList) {
         List<Integer> catIdList = new ArrayList<>();
         for (String catName : catNameList) {
             catIdList.add(getIdCategoryFromCategoryName(catName));
+        }
+        return catIdList;
+    }
+
+    @Override
+    public List<Integer> getSubCatIdListFromSubCatNameSet(Set<String> subCatNameList) {
+        List<Integer> catIdList = new ArrayList<>();
+        for (String subCatName : subCatNameList) {
+            catIdList.add(getIdSubCategoryFromSubCatName(subCatName));
         }
         return catIdList;
     }
@@ -77,27 +86,28 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
     }
 
     @Override
-    public List<ObjectsEntity> getObjectsBySubCategory(String subCategoryName) {
-        TypedQuery<ObjectsEntity> query = entityManager.createQuery("select o from ObjectsEntity o where o.idsubcategory=:idsubcategory", ObjectsEntity.class);
-        query.setParameter("idsubcategory", getSubCategoryIdBySubCategoryName(subCategoryName));
+    public List<ObjectsEntity> getObjectsBySubCategory(Set<String> subCategoryName) {
+        // TypedQuery<ObjectsEntity> query = entityManager.createQuery("select o from ObjectsEntity as o where exists (select s.idSubcategory from SubcategoryEntity s where o.idsubcategory=s.idSubcategory and s.idcategory in :idlist)", ObjectsEntity.class);
+        Query query = entityManager.createNativeQuery("select IDOBJECT, NAME_OBJECT, DESC_OBJECT, guid, idSUBCATEGORY, VALUE_OBJECT, QUALITY, IDUSER, RATEABLE, ISSIGNALED, CREATIONDATE from objects  where IDSUBCATEGORY in :idlist", ObjectsEntity.class);
+        // query.setParameter("idcategory", getIdCategoryFromCategoryName("à changer"));
+        query.setParameter("idlist", getSubCatIdListFromSubCatNameSet(subCategoryName));
         List<ObjectsEntity> result = query.getResultList();
 
         return result;
-    }
-
-    public int getSubCategoryIdBySubCategoryName(String subCategoryName) {
-        String query = "select IDSUBCATEGORY from subcategory s inner join category c on s.idcategory=c.idcategory where NAME_SUBCATEGORY=:name";
-        Query queryObject = entityManager.createNativeQuery(query);
-        queryObject.setParameter("name", subCategoryName);
-        int idsubcategory = (int) queryObject.getSingleResult();
-
-        return idsubcategory;
     }
 
     public int getIdCategoryFromCategoryName(String categoryName) {
         String query = "select distinct c.idcategory from category c inner join subcategory s on c.idcategory=s.idcategory where name_category=:name";
         Query queryObject = entityManager.createNativeQuery(query);
         queryObject.setParameter("name", categoryName);
+        int idcategory = (int) queryObject.getSingleResult();
+        return idcategory;
+    }
+
+    public int getIdSubCategoryFromSubCatName(String subCatName){
+        String query = "select distinct s.idSUBCATEGORY from subcategory s where NAME_SUBCATEGORY=:name";
+        Query queryObject = entityManager.createNativeQuery(query);
+        queryObject.setParameter("name", subCatName);
         int idcategory = (int) queryObject.getSingleResult();
         return idcategory;
     }
@@ -110,6 +120,46 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
         ObjectsEntity obj = (ObjectsEntity) queryObject.getSingleResult();
 
         return obj;
+    }
+
+    @Override
+    public List<ObjectsEntity> ConcatenateObjectsLists(List<ObjectsEntity> cats, List<ObjectsEntity> subCats){
+        List<ObjectsEntity> concatenatedList = new ArrayList<>();
+
+        for()
+    }
+
+    @Override
+    public CustomObjetImageEntity getCustomObjectImageEntityByIdObject(int id_object) {
+        String query = "select o from ObjectsEntity o where o.idobject=:idobject";
+        Query queryObject = entityManager.createQuery(query);
+        queryObject.setParameter("idobject", id_object);
+        ObjectsEntity obj = (ObjectsEntity) queryObject.getSingleResult();
+
+        CustomObjetImageEntity customObjet = new CustomObjetImageEntity();
+        customObjet.setIduser(obj.getIduser());
+        customObjet.setCreationdate(obj.getCreationdate());
+        customObjet.setDescObject(obj.getDescObject());
+        customObjet.setIdobject(obj.getIdobject());
+        customObjet.setIdsubcategory(obj.getIdsubcategory());
+        customObjet.setIssignaled(obj.getIssignaled());
+        customObjet.setNameObject(obj.getNameObject());
+        customObjet.setQuality(obj.getQuality());
+        customObjet.setRateable(obj.getRateable());
+        customObjet.setValueObject(obj.getValueObject());
+
+        //Get tous les images
+        String query2 = "select o from ImageobjectEntity o where o.idobject = :idObject order by ismain, guidimage desc";
+        Query queryObject2 = entityManager.createQuery(query2);
+        queryObject2.setParameter("idObject", id_object);
+        List<ImageobjectEntity> LImages = (List<ImageobjectEntity>) queryObject2.getResultList();
+
+        customObjet.setImage1(LImages.get(0).getGuidimage());
+        customObjet.setImage2(LImages.get(1).getGuidimage());
+        customObjet.setImage3(LImages.get(2).getGuidimage());
+        customObjet.setImage4(LImages.get(3).getGuidimage());
+
+        return customObjet;
     }
 
     // Recherches
@@ -135,13 +185,44 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
 
     //GetLesItems d'un inventaire selon le UserId
     @Override
-    public List<ObjectsEntity> getObjectsByUserID(int currentItemID, String userID) {
+    public List<CustomObjetImageEntity> getObjectsByUserID(int currentItemID, String userID) {
+        List<CustomObjetImageEntity> objets = new ArrayList<>();
+
+        //Get tous les items sauf le current selon le user ID
         String query = "select o from ObjectsEntity o where o.iduser = :userID and o.idobject != :currentItemID";
         Query queryObject = entityManager.createQuery(query);
         queryObject.setParameter("currentItemID", currentItemID);
         queryObject.setParameter("userID", userID);
         List<ObjectsEntity> inventory = (List<ObjectsEntity>) queryObject.getResultList();
-        return inventory;
+
+        //Ajout des objets + images dans un custom Entity
+        for(int i=0; i< inventory.size(); i++){
+            CustomObjetImageEntity customObjet = new CustomObjetImageEntity();
+            customObjet.setIduser(inventory.get(i).getIduser());
+            customObjet.setCreationdate(inventory.get(i).getCreationdate());
+            customObjet.setDescObject(inventory.get(i).getDescObject());
+            customObjet.setIdobject(inventory.get(i).getIdobject());
+            customObjet.setIdsubcategory(inventory.get(i).getIdsubcategory());
+            customObjet.setIssignaled(inventory.get(i).getIssignaled());
+            customObjet.setNameObject(inventory.get(i).getNameObject());
+            customObjet.setQuality(inventory.get(i).getQuality());
+            customObjet.setRateable(inventory.get(i).getRateable());
+            customObjet.setValueObject(inventory.get(i).getValueObject());
+
+            //Get tous les images
+            String query2 = "select o from ImageobjectEntity o where o.idobject = :idObject order by ismain, guidimage desc";
+            Query queryObject2 = entityManager.createQuery(query2);
+            queryObject2.setParameter("idObject", inventory.get(i).getIdobject());
+            List<ImageobjectEntity> LImages = (List<ImageobjectEntity>) queryObject2.getResultList();
+
+            customObjet.setImage1(LImages.get(0).getGuidimage());
+            customObjet.setImage2(LImages.get(1).getGuidimage());
+            customObjet.setImage3(LImages.get(2).getGuidimage());
+            customObjet.setImage4(LImages.get(3).getGuidimage());
+
+            objets.add(customObjet);
+        }
+        return objets;
     }
     // retourne une liste de tout les object pour un User ..
     @Override

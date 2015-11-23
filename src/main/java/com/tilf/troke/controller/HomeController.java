@@ -3,6 +3,10 @@ package com.tilf.troke.controller;
 import com.tilf.troke.auth.AuthUserContext;
 import com.tilf.troke.entity.*;
 import com.tilf.troke.repository.CustomCategoryRepository;
+import com.tilf.troke.entity.ImageobjectEntity;
+import com.tilf.troke.entity.ObjectsEntity;
+import com.tilf.troke.entity.UsersEntity;
+import com.tilf.troke.filter.SearchFilter;
 import com.tilf.troke.repository.CustomImageObjectRepository;
 import com.tilf.troke.repository.CustomObjectRepository;
 import com.tilf.troke.repository.CustomSubcategoryRepository;
@@ -40,11 +44,16 @@ public class HomeController {
     @Autowired
     private CustomCategoryRepository customCategoryRepository;
 
+    @Autowired
+    private SearchFilter searchFilter;
+
     @RequestMapping("/")
     public String root(Model model, HttpSession session) {
         FillCategoryMenu(model, session);
         FillCategoryList(model);
         GetRecentItems(model);
+        searchFilter.removeAll();
+
         return "fragments/home/home";
     }
 
