@@ -228,7 +228,7 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
         }
         return objets;
     }
-
+    // retourne une liste de tout les object pour un User ..
     @Override
     public List<ObjectsEntity> getListObjectByUserId(String userId) {
         String query = "select o from ObjectsEntity o where o.iduser = :userID";

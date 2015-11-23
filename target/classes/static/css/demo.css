@@ -1,0 +1,71 @@
+
+.main-container {
+    padding: 0px 0px;
+    width:100%;
+    margin-right:0px;
+    margin-left:0px;
+}
+.skyblue {
+    background-color: #00455F;
+}
+.deepskyblue {
+    background-color: #00455F;
+}
+.darkerskyblue {
+    background-color: #00455F;
+}
+.carousel-indicators {
+    bottom: 0;
+}
+.carousel-control.right,
+.carousel-control.left {
+    background-image: none;
+}
+.carousel .item {
+    min-height: 350px;
+    height: 100%;
+    width:100%;
+}
+.carousel-caption h3,
+.carousel .icon-container{
+    background-color: #09c;
+}
+.carousel-caption h3 {
+    padding: .5em;
+}
+.carousel .icon-container {
+    display: inline-block;
+    font-size: 25px;
+    line-height: 25px;
+    padding: 1em;
+    text-align: center;
+
+    border-radius: 50%;
+}
+.carousel-caption button {
+
+    background-color:#00455F;
+    margin-top: 1em;
+    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1)0s;
+}
+
+.carousel-caption button:hover
+{
+    color:black;
+    background-color:white;
+
+}
+
+/* Animation delays */
+.carousel-caption h3:first-child {
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+}
+.carousel-caption h3:nth-child(2) {
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+}
+.carousel-caption button {
+    -webkit-animation-delay: 3s;
+    animation-delay: 3s;
+}

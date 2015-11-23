@@ -1,0 +1,135 @@
+<html xmlns:th="http://www.thymeleaf.org" th:include="main_template :: page">
+<head th:fragment="head">
+    <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet' type='text/css'/>
+    <link href="css/style_monContact.css" type="text/css" rel="stylesheet"/>
+    <link href="css/mainbuttons.css" type="text/css" rel="stylesheet"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet"/>
+    <link href="css/animate.min.css" rel="stylesheet"/>
+    <script src="js/about.js" type="text/javascript"></script>
+</head>
+<body>
+<th:block th:fragment="content">
+<div style="background-color:#00455f">
+    <div class="aboutDiv">
+        <div class="HighBanner" style="font-family:'Amaranth'">
+        <h3 style=" padding-top:20px; font-size:18px; color:black; background-color:transparent; text-transform:uppercase;letter-spacing:.2em">
+            TROK-é
+        </h3>
+        </div>
+        <h3 style=" margin-top:50px;font-size:18px;color:white; background-color:transparent; text-transform:uppercase;letter-spacing:.2em">
+            A propos de l'equipe:
+        </h3>
+
+        <h3 style=" margin-top:5px; font-size:10px; color:white; background-color:transparent; text-transform:uppercase; letter-spacing:.08em; font-weight:normal">
+            Cegep Lionel-Groulx - Automne 2015<br/>
+            100 Rue Duquet, Sainte-Thérèse, QC J7E 3G6<br/>
+            Superviseur Nicolas Chourot
+        </h3>
+
+        <div class="main-container" style="margin-top:50px">
+            <div class="item active deepskyblue">
+
+                <div class="carousel-caption" style="position:relative; left:0px;right:0px">
+
+                    <h3 class="icon-container">
+
+                        <div class="circular bigEntrance">
+                            <img src="images/PhotoY.jpg" alt="" class="circularimage" id="ImgYvon" onclick="ImageClick('Y')"/>
+                            <a href="https://ca.linkedin.com/pub/yvon-steinthal/75/665/614" ><img src="images/linkedin.png" class = "LinkedinLogo"/></a>
+
+                        </div>
+
+                        <div id="InfoYvon">
+                            <label style="font-size:18px;color:white; background-color:transparent; text-transform:uppercase;
+					letter-spacing:.2em">Yvon Steinthal</label><br/>
+                            <label style="font-size:14px;color:white; background-color:transparent; text-transform:uppercase;
+					letter-spacing:.08em; font-weight:normal">HTML5 / CSS / Javascript / Jquery</label><br/>
+
+                        </div>
+                    </h3>
+
+                    <h3 class="icon-container">
+                        <div class="circular bigEntrance">
+                            <img src="images/PhotoA.jpg" alt="" class="circularimage" id="ImgAlex" onclick="ImageClick('A')"/>
+                            <a href="https://ca.linkedin.com/pub/alexandre-dubé/a8/45b/a1b" ><img src="images/linkedin.png" class = "LinkedinLogo"/></a>
+                        </div>
+
+                        <div id="InfoAlex">
+                            <label style="font-size:18px;color:white; background-color:transparent; text-transform:uppercase;
+					letter-spacing:.2em">Alexandre Dubé</label><br/>
+                            <label style="font-size:14px;color:white; background-color:transparent; text-transform:uppercase;
+					letter-spacing:.08em; font-weight:normal">Java / Spring / ThymeLeaf / JPA / MySQL</label><br/>
+
+                        </div>
+
+                    </h3>
+
+                    <h3 class="icon-container">
+                        <div class="circular bigEntrance">
+                            <img src="images/PhotoE2.jpg" alt="" class="circularimage" id="ImgManu" onclick="ImageClick('M')"/>
+                            <a href="https://ca.linkedin.com/pub/emmanuel-beloin/99/907/ba0"><img src="images/linkedin.png" class = "LinkedinLogo"/></a>
+                        </div>
+
+                        <div id="InfoManu">
+                            <label style="font-size:18px;color:white; background-color:transparent; text-transform:uppercase;
+					letter-spacing:.2em">Emmanuel Beloin</label><br/>
+                            <label style="font-size:14px;color:white; background-color:transparent; text-transform:uppercase;
+					letter-spacing:.08em; font-weight:normal">Java / Spring / ThymeLeaf / JPA / MySQL</label><br/>
+
+                        </div>
+
+                    </h3>
+
+                    <h3 class="icon-container">
+                        <div class="circular bigEntrance">
+                            <img src="images/PhotoS.jpg" alt="" class="circularimage" id="ImgShaun" onclick="ImageClick('S')"/>
+                            <a href="https://ca.linkedin.com/pub/shaun-cooper/104/989/a4" ><img src="images/linkedin.png" class = "LinkedinLogo"/></a>
+                        </div>
+                        <div id="InfoShaun">
+                            <label style="font-size:18px;color:white; background-color:transparent; text-transform:uppercase;
+					letter-spacing:.2em">Shaun Cooper</label><br/>
+                            <label style="font-size:14px;color:white; background-color:transparent; text-transform:uppercase;
+					letter-spacing:.08em; font-weight:normal">HTML5 / CSS / Javascript / Jquery / Jquery UI</label><br/>
+
+                        </div>
+                    </h3>
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div> <!-- /.item -->
+
+    <div class="LowBanner">
+        <div id="InfoProjet">
+            <h3 id="InfoH" style="color:black; text-transform:uppercase;
+						background-color:transparent; letter-spacing:.2em; font-weight:bold;
+						line-height:14px; font-family:'Amaranth'; line-height:1.5;">
+
+                Notre projet consiste en un site web de troc fait dans le cadre de la technique d'informatique de gestion au Cegep Lionel-Groulx.
+                Dans ce site, l'usager peut remplir un inventaire d'objets ou de services qu'il pourra éventuellement échanger.
+                Par la suite, l'usager peux faire la recherche de biens ou de services avec lesquels il peut débuter un troc.
+                Lors de l'échange, l'interface permet un "Drag and Drop" facilitant la gestion des items.
+                Après plusieurs confirmations entre deux usagers a l'aide d'un clavardage a l'interne, un courriel de confirmation est envoyé à chacun d'entre eux indiquant les items/services en troc.
+                Le but est vraiment de favoriser l'échange et non l'achat, d'où Trok-é pour troc électronique. Cependant un ajustement monétaire lors d'un échange est possible.
+                Nous avons coder le tout en JAVA SpringBoot / HTML / CSS / Javascript / Jquery UI / JPA / JPQL utilisant la philosophie MVC.
+                L'IDE choisi est Intellij IDEA, et la base de données est MYSQL avec l'IDE WorkBench.
+
+                <!--De plus, nous aimerions avoir une version android de l'application web.-->
+            </h3>
+        </div>
+
+    </div>
+
+
+</div>
+</th:block>
+
+</body>
+</html>

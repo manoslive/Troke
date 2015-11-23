@@ -1,0 +1,104 @@
+<html xmlns:th="http://www.thymeleaf.org" th:include="main_template :: page">
+<head>
+    <link href="css/style_home.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<th:block th:fragment="content">
+
+    <div id="home" class="container">
+
+        <!-- Container du carousel -->
+
+        <div id="carouselConatiner" class="bubble">
+            <!--<img src="images/LogoWorld_Transparence2.png" class="Logobanner" id="Logo"/>-->
+            <div class="rectangle">
+                <h2 style="margin-top:10px;font-family:'Amaranth'; font-size:20px; letter-spacing:.2em;">DERNIERS AJOUTS</h2></div>
+            <div class="triangle-l"></div>
+            <div class="triangle-r"></div>
+
+            <!-- Le Carousel -->
+            <div id="myCarousel2" class="carousel slide">
+                <!-- Carousel items -->
+                <div class="carousel-inner" style="padding-top:15px">
+                    <!-- Premier div d'items(8) qui est active -->
+                    <div class="item active" style="top: initial !important;">
+                        <div class="row text-center" style="margin-top: 15px;">
+                            <!-- ITEM-->
+                            <div class="span3" th:each="obj,iter : ${recentobjects}" th:if="${iter.index} lt 8">
+                                <div class="thumbnail product-item">
+                                    <a th:href="${adrItem} + ${obj.getIdobject()}">
+                                        <img class="image-carousel-item img-circle img-responsive" th:src="*{obj.getGuid() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${obj.getGuid()}:'images/LogoWorld_Transparence.png'"/></a>
+                                    <p th:text="${obj.getNameObject()}" style="color:white;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;text-transform:uppercase;font-weight:normal;"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Premier div d'items(8) -->
+
+                    <!-- DeuxiÃ¨me div d'items(8) -->
+                    <div class="item " style="top: initial !important;">
+                        <div class="row text-center" style="margin-top: 15px;">
+                            <!-- ITEM-->
+                            <div class="span3" th:each="obj,iter : ${recentobjects}"
+                                 th:if="${iter.index &gt; 7 and iter.index &lt; 16}">
+                                <div class="thumbnail product-item">
+                                    <a th:href="${adrItem} + ${obj.getIdobject()}"><img class="image-carousel-item img-circle img-responsive" src="images/LogoWorld_Transparence.png"/></a>
+                                    <p th:text="${obj.getNameObject()}" style="color:white;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;text-transform:uppercase;font-weight:normal;"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /DeuxiÃ¨me div d'items(8) -->
+                </div>
+                <!-- /INNER-->
+                <!-- Carousel nav -->
+                <a id="LeftField" class="carousel-control left" href="#myCarousel2" data-slide="prev">
+                    <span id="LeftArrow" class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="top:20%; left:50%;z-index:200"/></a>
+                <a id="RightField" class="carousel-control right" href="#myCarousel2" data-slide="next">
+                    <span id="RightArrow" class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="top:20%; right:50%;z-index:200"/></a>
+            </div>
+            <!-- /Le Carousel -->
+        </div>
+        <!-- /CONTAINER -->
+
+        <!--
+        <div id="categories" class="col-lg-6">
+            <div class="myCategory" th:each="obj : ${catlist}">
+                <header ><a th:text="${obj}" th:href="${adrcat} + ${obj}"/></header>
+                <ul>
+                    <li><a class="lienCategorie" href="">allo</a></li>
+                </ul>
+            </div>
+        </div>
+        -->
+
+        <!-- Div principal des catégories -->
+        <div id="container" style="z-index:-1">
+            <span th:utext="${catsubcatlist}"/>
+        </div>
+    </div>
+</th:block>
+</body>
+<script type="text/javascript">
+    $('#myCarousel').carousel({
+        interval: 40000
+    });
+
+    $('.carousel .item').each(function () {
+        var next = $(this).next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+        next.children(':first-child').clone().appendTo($(this));
+
+        if (next.next().length > 0) {
+
+            next.next().children(':first-child').clone().appendTo($(this)).addClass('rightest');
+        }
+        else {
+            $(this).siblings(':first').children(':first-child').clone().appendTo($(this)).addClass('rightest');
+
+        }
+    });
+</script>
+</html>
