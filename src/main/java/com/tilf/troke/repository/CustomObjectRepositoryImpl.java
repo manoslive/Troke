@@ -113,6 +113,17 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
     }
 
     @Override
+    public List<String> getSubCatListByCategoryName(String categoryname){
+        List<String> subCatList;
+
+        String query = "select NAME_SUBCATEGORY from troke.category c inner join troke.subcategory s on c.idcategory=s.idcategory where c.idcategory=:name";
+        Query queryObject = entityManager.createNativeQuery(query);
+        queryObject.setParameter("name", categoryname);
+        subCatList = (List<String>) queryObject.getResultList();
+        return subCatList;
+    }
+
+    @Override
     public ObjectsEntity getObjectEntityByIdObject(int id_object) {
         String query = "select o from ObjectsEntity o where o.idobject=:idobject";
         Query queryObject = entityManager.createQuery(query);
@@ -121,13 +132,6 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
 
         return obj;
     }
-
-    @Override
-   public List<ObjectsEntity> ConcatenateObjectsLists(List<ObjectsEntity> cats, List<ObjectsEntity> subCats){
-        List<ObjectsEntity> concatenatedList = new ArrayList<>();
-
-
-   }
 
     @Override
     public CustomObjetImageEntity getCustomObjectImageEntityByIdObject(int id_object) {

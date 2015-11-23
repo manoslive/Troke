@@ -49,17 +49,30 @@ public class SearchController {
     public String ListCategoryItems(@RequestParam("categoryName") String categoryName, @RequestParam(value = "catIsChecked") Boolean catIsChecked, Model model, HttpSession session) {
 
         // Modification de la liste de Cat/SubCat
-        if (catIsChecked == true) {
+        if (catIsChecked == true){
             searchFilter.put(categoryName, true);
+            List<String> subCatList = customObjectRepository.getSubCatListByCategoryName(categoryName);
+            for(int i=0;i<subCatList.size();i++){
+                if(!searchFilter.get(subCatList.get(i))){
+                    searchFilter.put(subCatList.get(i), true);
+                }
+            }
         } else {
             searchFilter.remove(categoryName);
+            List<String> subCatList = customObjectRepository.getSubCatListByCategoryName(categoryName);
+            for(int i=0;i<subCatList.size();i++){
+                if(searchFilter.get(subCatList.get(i))){
+                    searchFilter.remove(subCatList.get(i));
+                }
+            }
         }
 
         // On obtient la liste de toutes les cat/subcat qui sont cochées
         Set<String> catSubCats = getKeysByValue(searchFilter.getFilters(), true);
         // si la liste n'est pas nulle
         if (!catSubCats.isEmpty()) {
-            model.addAttribute("objectList", customObjectRepository.getObjectsByCategory(catSubCatService.getCatFromSet(catSubCats)));
+            // Transformer la liste en liste de custom object entity
+            model.addAttribute("objectList", customObjectRepository.getObjectsBySubCategory(catSubCatService.getSubCatFromSet(catSubCats)));
         } else {
             model.addAttribute("objectList", null);
             model.addAttribute("objectListEmpty", true);
