@@ -28,15 +28,16 @@
                     <input class="signup-full" type="number" placeholder="Valeur $$$" name="Valeur" id="valeur" value="0" min="0"
                             th:value="*{session.ObjectToModify ne null}? ${session.ObjectToModify.getValueObject()} : ''"/>
 
-                    <select class="categorieCombo">
+                    <select class="categorieCombo" name="catCombo">
                         <option selected="true" style="display:none;">Selection Categorie</option>
-                        <option disabled="disabled">Electronique</option>
-                        <option disabled="disabled">-------------</option>
-                        <option>Memoire RAM</option>
-                        <option disabled="disabled">Animaux</option>
-                        <option>Elephant</option>
-                        <option>Chien</option>
-                        <option>Manu</option>
+                        <!-- block pour category -->
+                        <th:block th:each="cat : ${itemCombo}">
+                            <option disabled="disabled" th:text="*{itemCombo ne null}? ${cat.getCategory().getNameCategory()}"></option>
+                            <!-- block pour sous category -->
+                            <th:block th:each="subCat : ${cat.getListSubCat()}">
+                                <option th:text="'-' + ${subCat.getNameSubcategory()}" th:value="${subCat.getIdSubcategory()}"></option>
+                            </th:block><!-- fin sous category -->
+                        </th:block>
                     </select>
 
                     <div class="divModalAjoutQualite">
@@ -68,7 +69,8 @@
                     <div class="divModalAjoutPhotos">
                         <div class="divModalAjoutPhotosTOP">
                             <div id="Photo1" src="#" alt="Photo1" class="Photo1"
-                                 th:style="*{session.listedimage ne null and session.listedimage.get(0).getGuidimage().substring(0,1)ne '*'}? 'background-image:url(/uploaded-images/' + ${session.listedimage.get(0).getGuidimage()} + ')'">
+                                 th:style="*{session.listedimage ne null and session.listedimage.get(0).getGuidimage().substring(0,1)ne '*'}?
+                                  'background-image:url(/uploaded-images/' + ${session.listedimage.get(0).getGuidimage()} + ')'">
                                 <div style="" class="avatarOverlay">
                                     <div class="avatarPlus">
                                         <input class="fileExplorer" id="fileExplorerP1" name="photoMain" type="file" onchange="TestFileType('fileExplorerP1', 'Photo1')"/>
@@ -77,7 +79,8 @@
                             </div>
                  <!-- photo 2 -->
                             <div id="Photo2" src="#" alt="Photo1" class="Photo1"
-                                 th:style="*{session.listedimage ne null and session.listedimage.get(1).getGuidimage().substring(0,1)ne '*'} ? 'background-image:url(/uploaded-images/'+ ${session.listedimage.get(1).getGuidimage()}  + ')'">
+                                 th:style="*{session.listedimage ne null and session.listedimage.get(1).getGuidimage().substring(0,1)ne '*'} ?
+                                  'background-image:url(/uploaded-images/'+ ${session.listedimage.get(1).getGuidimage()}  + ')'">
                                 <div class="avatarOverlay" style="">
                                     <div class="avatarPlus">
                                         <input class="fileExplorer" id="fileExplorerP2" name="photo1" type="file" onchange="TestFileType('fileExplorerP2', 'Photo2')"/>
@@ -88,7 +91,8 @@
                 <!-- photo 3 -->
                         <div class="divModalAjoutPhotosDOWN">
                             <div id="Photo3" src="#" alt="Photo1" class="Photo1"
-                                 th:style="*{session.listedimage ne null and session.listedimage.get(2).getGuidimage().substring(0,1)ne '*'} ? 'background-image:url(/uploaded-images/'+ ${session.listedimage.get(2).getGuidimage()} + ')'">
+                                 th:style="*{session.listedimage ne null and session.listedimage.get(2).getGuidimage().substring(0,1)ne '*'} ?
+                                  'background-image:url(/uploaded-images/'+ ${session.listedimage.get(2).getGuidimage()} + ')'">
                                 <div class="avatarOverlay" style="">
                                     <div class="avatarPlus">
 
@@ -98,7 +102,8 @@
                             </div>
                 <!-- photo 4 -->
                             <div id="Photo4" src="#" alt="Photo1" class="Photo1"
-                                 th:style="*{session.listedimage ne null and session.listedimage.get(3).getGuidimage().substring(0,1)ne '*'} ? 'background-image:url(/uploaded-images/'+ ${session.listedimage.get(3).getGuidimage()}  + ')'">
+                                 th:style="*{session.listedimage ne null and session.listedimage.get(3).getGuidimage().substring(0,1)ne '*'} ?
+                                  'background-image:url(/uploaded-images/'+ ${session.listedimage.get(3).getGuidimage()}  + ')'">
                                 <div id="avatarOverlay" style="">
                                     <div id="avatarPlus">
                                         <input id="fileExplorerP4" class="fileExplorer" name="photo3" type="file" onchange="TestFileType('fileExplorerP4', 'Photo4')"/>

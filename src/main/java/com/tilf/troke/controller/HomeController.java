@@ -1,11 +1,11 @@
 package com.tilf.troke.controller;
 
 import com.tilf.troke.auth.AuthUserContext;
-import com.tilf.troke.entity.ImageobjectEntity;
-import com.tilf.troke.entity.ObjectsEntity;
-import com.tilf.troke.entity.UsersEntity;
+import com.tilf.troke.entity.*;
+import com.tilf.troke.repository.CustomCategoryRepository;
 import com.tilf.troke.repository.CustomImageObjectRepository;
 import com.tilf.troke.repository.CustomObjectRepository;
+import com.tilf.troke.repository.CustomSubcategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +33,12 @@ public class HomeController {
 
     @Autowired
     private CustomImageObjectRepository customImageObjectRepository;
+
+    @Autowired
+    private CustomSubcategoryRepository customSubcategoryRepository;
+
+    @Autowired
+    private CustomCategoryRepository customCategoryRepository;
 
     @RequestMapping("/")
     public String root(Model model, HttpSession session) {
@@ -149,20 +155,46 @@ public class HomeController {
         UsersEntity user = authContext.getUser();
 
         if(user != null) {
-
+            // on ajoute a la page le user qui est loggé pour avoir ses informations
             model.addAttribute("userActif", user);
+
+            // on va chercher la liste de tous les items du user et ensuite on l'ajoute a la page..
             List<ObjectsEntity> list = customObjectRepository.getListObjectByUserId(authContext.getUser().getIduser());
             model.addAttribute("userInventory", list);
+
+            // pour cause d'avoir des modal vide ..
             model.addAttribute("idObjectDelete", null);
 
-            // Liste
+            // entity a envoyer a la page pour peupler le combobox
+            List<CustomCategorySubCategoryEntity> itemCombo = new ArrayList<CustomCategorySubCategoryEntity>();
+
+
+
+            // avoir la liste de category pour le comboBox
+            List<CategoryEntity> listCat = customCategoryRepository.getAllCategory(); // liste de tout les category
+            List<SubcategoryEntity> listSubCatInterne ;
+
+            for(int i = 0; i < listCat.size(); i++)
+            {
+                // item interne de la boucle pour peupler les itemCombos.
+                CustomCategorySubCategoryEntity customInterne = new CustomCategorySubCategoryEntity();
+                listSubCatInterne = customSubcategoryRepository.getAllSubCat(listCat.get(i).getIdcategory());
+                customInterne.setCategory(listCat.get(i));
+                customInterne.setListSubCat(listSubCatInterne);
+                itemCombo.add(customInterne);
+
+            }
+
+            // liste pour peupler le comboBox
+            model.addAttribute("itemCombo", itemCombo);
+
+            // Liste des images pour chaque objet ...
             List<List<ImageobjectEntity>> listImage = new ArrayList<List<ImageobjectEntity>>();
             List<ImageobjectEntity> listInterne;
 
             for(int i = 0; i < list.size(); i++)
             {
                 listInterne = customImageObjectRepository.getImageObjectbyObjectId(list.get(i).getIdobject());
-
                 listImage.add(listInterne);
 
             }
@@ -174,6 +206,7 @@ public class HomeController {
                 context.setVariable("userActif", user);
                 context.setVariable("userInventory", list);
                 context.setVariable("listeImage", listImage);
+                context.setVariable("itemCombo", itemCombo);
 
             }
             return "fragments/site/profilUser";
