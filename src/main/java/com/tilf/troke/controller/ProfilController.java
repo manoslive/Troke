@@ -59,6 +59,7 @@ public class ProfilController {
                                      @RequestParam("Description") String Description,
                                      @RequestParam("Valeur") int valeur,
                                      @RequestParam("rating") int rating,
+                                     @RequestParam("catCombo") int categorie,
                                      @RequestParam(value= "photoMain", required=false) MultipartFile mainPhoto,
                                      @RequestParam(value= "photo1", required=false) MultipartFile photo1,
                                      @RequestParam(value= "photo2", required=false) MultipartFile photo2,
@@ -84,10 +85,11 @@ public class ProfilController {
             object.setQuality(rating);
             object.setIduser(authContext.getUser().getIduser());
             object.setCreationdate(now);
+            object.setIdsubcategory(categorie);
 
             // donnée rentrer a la main pour des valeur par defaut ...
             object.setGuid("no_avatar.png");
-            object.setIdsubcategory(1);
+
             object.setRateable("N");
             object.setIssignaled("N");
             
@@ -290,8 +292,13 @@ public class ProfilController {
     @RequestMapping(value="/openModalAjouter", method= RequestMethod.GET)
     public String openModalAjouter(HttpSession session)
     {
+
+
         session.removeAttribute("ObjectToModify");
         session.removeAttribute("listedimage");
+
+
+
         return "redirect:/profil#openModalAjouter";
     }
 }

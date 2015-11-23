@@ -113,6 +113,17 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
     }
 
     @Override
+    public List<String> getSubCatListByCategoryName(String categoryname){
+        List<String> subCatList;
+
+        String query = "select NAME_SUBCATEGORY from troke.category c inner join troke.subcategory s on c.idcategory=s.idcategory where c.idcategory=:name";
+        Query queryObject = entityManager.createNativeQuery(query);
+        queryObject.setParameter("name", categoryname);
+        subCatList = (List<String>) queryObject.getResultList();
+        return subCatList;
+    }
+
+    @Override
     public ObjectsEntity getObjectEntityByIdObject(int id_object) {
         String query = "select o from ObjectsEntity o where o.idobject=:idobject";
         Query queryObject = entityManager.createQuery(query);
@@ -120,13 +131,6 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
         ObjectsEntity obj = (ObjectsEntity) queryObject.getSingleResult();
 
         return obj;
-    }
-
-    @Override
-    public List<ObjectsEntity> ConcatenateObjectsLists(List<ObjectsEntity> cats, List<ObjectsEntity> subCats){
-        List<ObjectsEntity> concatenatedList = new ArrayList<>();
-
-        for()
     }
 
     @Override
@@ -224,7 +228,7 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
         }
         return objets;
     }
-
+    // retourne une liste de tout les object pour un User ..
     @Override
     public List<ObjectsEntity> getListObjectByUserId(String userId) {
         String query = "select o from ObjectsEntity o where o.iduser = :userID";
