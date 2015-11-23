@@ -24,7 +24,7 @@ public interface CustomObjectRepository {
     List<ObjectsEntity> getListObjectByUserId(String userId);
     ObjectsEntity getObjectEntityByIdObject(int id_object);
     CustomObjetImageEntity getCustomObjectImageEntityByIdObject(int id_object);
-    List<ObjectsEntity> ConcatenateObjectsLists(List<ObjectsEntity> cats, List<ObjectsEntity> subCats);
+    List<String> getSubCatListByCategoryName(String categoryname);
 
     // Recherches
     List<ObjectsEntity> getObjectListByKeyword(String keyword);
