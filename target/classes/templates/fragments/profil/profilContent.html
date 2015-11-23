@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="profilContent">
+    <div class="mainDiv" style="font-family:Amaranth">
+
+        <div class="leftDiv">
+            <!-- il faut mettre le enctype pour resquester le param dans le controller -->
+            <!-- form pout modifier le user dans le profil -->
+            <form th:action="@{/UpdateUser}" method="post" id="formUser" enctype="multipart/form-data">
+                <div class= "profilWelcome">
+                    <h3 style="text-align:center;padding-top:1%;" th:text="${userActif.getIduser()}"/>
+                </div>
+
+                <!-- portion de la photo du profil -->
+                <div class="profilDiv">
+                    <div class = "profilPhotoDiv">
+                        <div id="avatarProfil" src="#" alt="avatar" class="avatarProfil"
+                             th:style="*{userActif.getAvatar() ne 'no_avatar.jpg'}? 'background-image:url(/uploaded-images/' + ${userActif.getAvatar()} + ')'">
+                            <div id="avatarOverlay" style="height:100%">
+                                <div id="avatarPlus" disabled="disabled">
+                                    <!--<p id="textFileExplorer2">Changer votre image de profil</p>-->
+                                    <input id="fileExplorer2" type="file" name="avatarProfil" onchange="TestFileType('fileExplorer2','avatarProfil')" value="null"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- input du profil -->
+                    <div class = "profilInfoDiv">
+                        <div class = "profilLeftDiv">
+                            <!--</br>-->
+                            <p name="label-prenom" style="font-weight:normal">Prénom</p>
+                            <input class="signup-full" name="profile-prenom" placeholder="Prénom" type="text" tabindex="2" style="color:black" th:value="${userActif.getFirstname()}"/>
+                            <p name="label-codepostal" style="font-weight:normal" >Code Postal</p>
+                            <input class="signup-full zipcode" name="profile-codepostal" placeholder="Code Postal" type="text" tabindex="3" style="color:black" th:value="${userActif.getZipcode()}"/>
+                        </div>
+
+                        <div class = "profilRightDiv">
+                            <!-- </br>-->
+                            <p name="label-codepostal" style="font-weight:normal" >Nom de famille</p>
+                            <input class="signup-full" name="profile-nomfamille" placeholder="Nom de famille" type="text" tabindex="3" style="color:black" th:value="${userActif.getLastname()}"/>
+                            <p name="label-codepostal" style="font-weight:normal">Téléphone</p>
+                            <input class="signup-full phone_ca" name="profile-telephone" placeholder="Telephone" id="phone" type="text" tabindex="1" style="color:black" th:value="${userActif.getTelephone()}"/>
+                        </div>
+
+                        <div class="emailDiv">
+                            <p name="label-email" style="font-weight:normal">Courriel</p>
+                            <input class="signup-full" name="profile-email" placeholder="Email" type="text" tabindex="3" style="color:black" th:value="${userActif.getEmail()}"/>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class = "profilInfoButtons">
+                    <div class="BTN_Change">
+                        <a href="/openModalPassword" class="btn btn-sm animated-button thar-four" style="font-weight:normal; width:50%">Changement du mot de passe</a>
+                        <a class="btn btn-sm animated-button thar-four" onclick="formsubmit()" style="font-weight:normal; width:50%;
+                        text-transform:uppercase; letter-spacing:0.1em; border-radius:0px">Enregistrer les modifications</a><br/>
+                        <a href="#openModalAjouter" class="btn btn-sm animated-button thar-four" style="width:50%; font-weight:normal;" >Ajouter Un Item / Service </a>
+
+                    </div>
+
+
+                </div>
+            </form>
+            <!-- fin du profil input -->
+
+
+            <div class="coteDiv">
+                <div style="margin: auto; width: 200px; height:60%; text-align:center;">
+                    <div class="innerCote">
+                    <label style="font-weight:normal">Transaction # 23</label>
+                    <label style="font-weight:normal">2015-09-22 10:22:00 PM</label>
+                            <span class="starRating">
+                            <input id="rating5" type="radio" name="rating" value="5"/>
+                            <label style="cursor:pointer;">5</label>
+                            <input id="rating4" type="radio" name="rating" value="4"/>
+                            <label style="cursor:pointer;">4</label>
+                            <input id="rating3" type="radio" name="rating" value="3"/>
+                            <label style="cursor:pointer;">3</label>
+                            <input id="rating2" type="radio" name="rating" value="2"/>
+                            <label style="cursor:pointer;">2</label>
+                            <input id="rating1" type="radio" name="rating" value="1"/>
+                            <label style="cursor:pointer;">1</label>
+                            </span>
+                    </div>
+                </div>
+            </div>
+        </div><!-- fin LeftDiv -->
+
+        <!-- profil section de droite avec photo -->
+        <div class="rightDiv">
+            <div class="container main-container" style="height:100%;">
+
+                <div id="carousel-example-generic" style="height:100%" class="carousel slide">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <th:block th:each="invent : ${userInventory}">
+                            <li data-target="#carousel-example-generic"
+                                th:data-slide-to="${inventStat.index}"
+                                th:class="*{inventStat.index eq 0} ? 'active' : ''"
+                                style="width:60px;height:60px;border-radius:100%;
+					            background-image:url('images/WorldBanner2.jpg');
+					            background-size:cover"></li>
+                        </th:block>
+                    </ol>
+
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" style="height:100%" role="listbox">
+
+                        <th:block th:each="invent : ${userInventory}" th:for="${'invent' + inventStat.index }">
+                            <!-- Second slide -->
+
+                            <div  th:class="*{inventStat.index eq 0} ? 'item active skyblue' : 'item skyblue'">
+                                <div class="carousel-caption" style="top:5%">
+                                    <h3 class="icon-container">
+                                        <!--<span class="glyphicon glyphicon-glass"></span>-->
+                                        <div class="circular"><img
+                                                th:src="'/uploaded-images/' + ${listeImage.get(inventStat.index).get(0).getGuidimage()}"
+                                                alt="" class="circularimage" /></div>
+
+                                    </h3>
+                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(1).getGuidimage().substring(0,1) ne '*'}">
+                                        <h3 class="icon-container" >
+                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
+                                            <div class="circular">
+                                                <img th:src="'/uploaded-images/' +${listeImage.get(inventStat.index).get(1).getGuidimage()}"
+                                                     alt="" class="circularimage" />
+                                            </div>
+
+                                        </h3>
+                                    </th:block>
+
+                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(2).getGuidimage().substring(0,1) ne '*'}">
+                                        <h3 class="icon-container" >
+                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
+                                            <div class="circular">
+                                                <img th:src="'/uploaded-images/' +${listeImage.get(inventStat.index).get(2).getGuidimage()}"
+                                                     alt="" class="circularimage" /></div>
+
+                                        </h3>
+                                    </th:block>
+
+                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(3).getGuidimage().substring(0,1) ne '*'}">
+                                        <h3 class="icon-container" >
+                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
+                                            <div class="circular">
+                                                <img th:src="'/uploaded-images/' +${listeImage.get(inventStat.index).get(3).getGuidimage()}"
+                                                     alt="" class="circularimage" /></div>
+
+                                        </h3>
+                                    </th:block>
+
+                                    <!-- nom de l'objet -->
+                                    <h3 data-animation="animated flipInX" style="font-size:18px; background-color:transparent; text-transform:uppercase;
+							                letter-spacing:.08em" th:text="${invent.getNameObject()}">
+                                    </h3>
+
+                                    <!-- text de l'objet -->
+                                    <h3 data-animation="animated flipInX" style="font-size:14px;" th:text="${invent.getDescObject()}"></h3>
+
+
+                                    <div class="divAMS">
+                                        <a class="btn btn-sm animated-button thar-four"
+                                           style="width:50%; font-weight:normal; text-transform:uppercase;"
+                                           th:onclick="'javascript:modalSubmitModifier(\''+${invent.getIdobject()}+'\')'">Modifier</a>
+
+                                        <a class="btn btn-sm animated-button thar-four"
+                                           style="width:50%; font-weight:normal; text-transform:uppercase;"
+                                           th:onclick="'javascript:modalSubmitDelete(\''+${invent.getIdobject()}+'\')'" >Supprimer</a>
+
+                                    </div>
+
+                                </div>
+                            </div><!-- /.item -->
+
+
+
+                        </th:block>
+                        <!-- form qui call le controller pour deleter l'object en postant le id par javascript -->
+                        <form th:action="@{/openModalDelete}" method="post" id="delete">
+                            <input type="hidden" name="idObjectDelete" id="idObjectDelete"/>
+                        </form>
+
+                        <!-- form qui call le controller pour modifier un object en postant le id par javascript -->
+                        <form th:action="@{/openModalModifier}" method="post" id="modifier" >
+                            <input type="hidden" name="idObjectModifier" id="idObjectModifier"/>
+                        </form>
+
+                    </div><!-- /.carousel-inner -->
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div><!-- /.carousel -->
+            </div><!-- /.container main-container -->
+        </div> <!-- fin RightDiv -->
+
+
+
+    </div><!-- fin mainDiv -->
+</div> <!-- fin Fragment -->
+</body>
+</html>
