@@ -1,59 +1,141 @@
-.myTrades{
-	height: 100%;
-	margin: auto; 
-	overflow: auto;
-	background:#00455F;
+/*.myTrades{*/
+	/*height: 100%;*/
+	/*margin: auto; */
+	/*overflow: auto;*/
+	/*background:#00455F;*/
+/*}*/
+/*.myTrades {*/
+	/*font-weight: normal;*/
+    /*background-color: #30697D;*/
+    /*height: 98%;*/
+    /*list-style: none;*/
+	/*border: 2px solid #003042;*/
+	/*overflow-y: auto;*/
+	/*padding-top: 20px;*/
+/*}*/
+/*.myTrades li {*/
+	/*margin: 6px;*/
+	/*padding: 0px;*/
+	/*height: 85%;*/
+	/*width: 22%;*/
+	/*text-align: center; */
+	/*cursor:pointer;*/
+	/*border-radius: 4px;*/
+	/*z-index: 1000;*/
+	/*border: 1px solid #00374C;*/
+	/*background-color: white;*/
+	/*display: inline-table;*/
+/*}*/
+/*.myTrades li header {*/
+    /*text-align: center;*/
+    /*color: white;*/
+    /*margin: 0;*/
+    /*border: 2px solid #00374C;*/
+    /*background: #00374C;*/
+/*}*/
+/*.myTrades li a {*/
+	/*cursor: pointer;*/
+/*}*/
+/*.loadContent{*/
+  	/*overflow: hidden;*/
+	/*width: 100%;*/
+	/*height: 100%;*/
+/*}*/
+/*.section-Trades{*/
+	/*height:33%;*/
+/*}*/
+/*.titre-Trades{*/
+	/*font-weight: normal;*/
+    /*background-color: #30697D;*/
+    /*height: 40px;*/
+    /*list-style: none;*/
+	/*border: 2px solid #003042;*/
+	/*overflow-y: auto;*/
+	/*padding-top: 8px;*/
+	/*overflow: hidden;*/
+/*}*/
+/*.descriptionTrade-myTrades{*/
+	/*display: block;*/
+/*}*/
+
+.row-centered {
+	text-align: center;
+	font-family:'Amaranth';
+	font-size: 13px;
+	letter-spacing: .2em;
 }
-.myTrades {
-	font-weight: normal;
-    background-color: #30697D;
-    height: 98%;
-    list-style: none;
-	border: 2px solid #003042;
-	overflow-y: auto;
-	padding-top: 20px;
+.col-centered {
+	display:inline-table;
+	float:none;
+	text-align:center;
+	margin-right:-4px;
+
 }
-.myTrades li {
-	margin: 6px;
-	padding: 0px;
-	height: 85%;
-	width: 22%;
-	text-align: center; 
-	cursor:pointer;
-	border-radius: 4px;
-	z-index: 1000;
-	border: 1px solid #00374C;
-	background-color: white;
-	display: inline-table;
+
+#maintrades
+{
+	background-image:url("../images/WorldBanner6.jpg");
+	background-size:cover;
+	background-position-x:25%;
 }
-.myTrades li header {
-    text-align: center;
-    color: white;
-    margin: 0;
-    border: 2px solid #00374C;
-    background: #00374C;
+#col1
+{
+	/*height:100%;
+   background-image:url("../Site Web DEC/images/WorldBanner5.jpg");
+   background-size:cover;*/
+	background:transparent;
+	padding-bottom:20px;
+
+	/*-moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+  -khtml-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);	*/
+
 }
-.myTrades li a {
-	cursor: pointer;
+#col2
+{
+	/*height:100%;
+     background-image:url("../Site Web DEC/images/WorldBanner5.jpg");
+   background-size:cover;*/
+	background:transparent;
+	padding-bottom:20px;
+
+	/*-moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+  -khtml-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);	*/
+
 }
-.loadContent{
-  	overflow: hidden;
-	width: 100%;
-	height: 100%;
+#col3
+{
+	/*height:100%;
+  background-image:url("../Site Web DEC/images/WorldBanner5.jpg");
+  background-size:cover;*/
+
+	background:transparent;
+	padding-bottom:20px;
+
+	/*-moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+  -khtml-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);	*/
 }
-.section-Trades{
-	height:33%;
+
+.DemoBS2
+{
+	margin-top:10px;
+	margin-bottom:10px;
+	margin-right:12px;
 }
-.titre-Trades{
-	font-weight: normal;
-    background-color: #30697D;
-    height: 40px;
-    list-style: none;
-	border: 2px solid #003042;
-	overflow-y: auto;
-	padding-top: 8px;
-	overflow: hidden;
-}
-.descriptionTrade-myTrades{
-	display: block;
+
+.infotrans
+{
+	background-color:white;
+	color:black;
+	margin-top:10px;
+
+
+	-moz-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+	-khtml-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+	-webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
 }
