@@ -103,7 +103,7 @@ function resize(){
         //Mobile
         $("#OpponentInventory").insertAfter("#UserInventory");
     }
-    else if($(window).width() < 1000)
+    else if($(window).width() <= 1006) //Glitch dans le matrix , 1006 affect quand lecran est a 1024
     {
         //Tablet
         $("#OpponentInventory").insertAfter("#UserInventory");
@@ -273,7 +273,7 @@ function init() {
                 .find( ".icon-refresh" )
                 .remove()
                 .end()
-                .css( "width", "44%").css("height", "125px").css("max-width", "120px").css("max-height", "125px")
+                .css( "width", "130px").css("height", "125px").css("max-width", "130px").css("max-height", "125px")
                 .append( exchange_Icon )
                 .find( ".item-image")
                 .css( "width", "100%").css("height", "80px").css("max-width", "100%").css("max-height", "80px")
@@ -294,7 +294,7 @@ function init() {
                 .find( ".icon-refresh" )
                 .remove()
                 .end()
-                .css( "width", "44%").css("height", "125px").css("max-width", "120px").css("max-height", "125px")
+                .css( "width", "130px").css("height", "125px").css("max-width", "130px").css("max-height", "125px")
                 .append( exchange_Icon )
                 .find( ".item-image")
                 .css( "width", "100%").css("height", "80px").css("max-width", "100%").css("max-height", "80px")
