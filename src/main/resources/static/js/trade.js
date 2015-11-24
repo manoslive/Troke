@@ -134,6 +134,7 @@ function init() {
     if(bFirstReceive){
         //C'est la premiere fois qu'on reçoit une offre
         document.getElementById("btn-accept-trade").innerText = "Réinitialiser l'offre";
+        changeAcceptButton();
     }
 
     // mettre les items non selectable (selection de text, highlight bleu ...)
