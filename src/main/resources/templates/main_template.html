@@ -484,7 +484,7 @@
                     </form>
                 </li>
                 <!-- end Search bar + button -->
-                <li><a href="/myTrades" style="color:black; font-size:15px">Mes Échanges</a></li>
+                <li><a href="/myTrades" style="color:black; font-size:15px">Mes Échanges <th:block th:if="${authUser} ne null"><div class="noti_bubble" th:text="${session.notifications}"></div></th:block></a></li>
                 <!-- <li><a href="#contact">Contact</a></li> -->
                 <li class="pull-right"><a href="/profil" style="color:black;font-size:15px">Mon profil</a></li>
             </ul>

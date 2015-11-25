@@ -97,7 +97,28 @@ function checkValidTrade(){
 function changeAcceptButton(){
     document.getElementById('btn-accept-trade').onclick = function () { location.reload() };
 }
+function resize(){
+    if($(window).width() < 480)
+    {
+        //Mobile
+        $("#OpponentInventory").insertAfter("#UserInventory");
+    }
+    else if($(window).width() <= 1006) //Glitch dans le matrix , 1006 affect quand lecran est a 1024
+    {
+        //Tablet
+        $("#OpponentInventory").insertAfter("#UserInventory");
+    }
+    else
+    {
+        //Desktop
+        $("#OpponentInventory").insertAfter("#exchangeZone");
+    }
+}
+$(window).resize(function() {
+    resize();
+});
 $( init );
+resize();
 function init() {
     //Vérifier si c'est la première fois qu'un user reçoit un trade pour enlever le bouton d'accepter l'offre
     document.getElementById("btn-send-trade").style.pointerEvents = "none";
@@ -113,6 +134,7 @@ function init() {
     if(bFirstReceive){
         //C'est la premiere fois qu'on reçoit une offre
         document.getElementById("btn-accept-trade").innerText = "Réinitialiser l'offre";
+        changeAcceptButton();
     }
 
     // mettre les items non selectable (selection de text, highlight bleu ...)
@@ -252,7 +274,7 @@ function init() {
                 .find( ".icon-refresh" )
                 .remove()
                 .end()
-                .css( "width", "44%").css("height", "125px").css("max-width", "120px").css("max-height", "125px")
+                .css( "width", "130px").css("height", "125px").css("max-width", "130px").css("max-height", "125px")
                 .append( exchange_Icon )
                 .find( ".item-image")
                 .css( "width", "100%").css("height", "80px").css("max-width", "100%").css("max-height", "80px")
@@ -273,7 +295,7 @@ function init() {
                 .find( ".icon-refresh" )
                 .remove()
                 .end()
-                .css( "width", "44%").css("height", "125px").css("max-width", "120px").css("max-height", "125px")
+                .css( "width", "130px").css("height", "125px").css("max-width", "130px").css("max-height", "125px")
                 .append( exchange_Icon )
                 .find( ".item-image")
                 .css( "width", "100%").css("height", "80px").css("max-width", "100%").css("max-height", "80px")
