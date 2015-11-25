@@ -116,14 +116,16 @@
 
                             <div  th:class="*{inventStat.index eq 0} ? 'item active skyblue' : 'item skyblue'">
                                 <div class="carousel-caption" style="top:5%">
-                                    <h3 class="icon-container">
-                                        <!--<span class="glyphicon glyphicon-glass"></span>-->
-                                        <div class="circular"><img
-                                                th:src="'/uploaded-images/' + ${listeImage.get(inventStat.index).get(0).getGuidimage()}"
-                                                alt="" class="circularimage" /></div>
+                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(0).getIsmain().substring(0,1) ne '*'}">
+                                        <h3 class="icon-container">
+                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
+                                            <div class="circular"><img
+                                                    th:src="'/uploaded-images/' + ${listeImage.get(inventStat.index).get(0).getGuidimage()}"
+                                                    alt="" class="circularimage" /></div>
+                                        </h3>
+                                    </th:block>
 
-                                    </h3>
-                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(1).getGuidimage().substring(0,1) ne '*'}">
+                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(1).getIsmain().substring(0,1) ne '*'}">
                                         <h3 class="icon-container" >
                                             <!--<span class="glyphicon glyphicon-glass"></span>-->
                                             <div class="circular">
@@ -134,7 +136,7 @@
                                         </h3>
                                     </th:block>
 
-                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(2).getGuidimage().substring(0,1) ne '*'}">
+                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(2).getIsmain().substring(0,1) ne '*'}">
                                         <h3 class="icon-container" >
                                             <!--<span class="glyphicon glyphicon-glass"></span>-->
                                             <div class="circular">
@@ -144,7 +146,7 @@
                                         </h3>
                                     </th:block>
 
-                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(3).getGuidimage().substring(0,1) ne '*'}">
+                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(3).getIsmain().substring(0,1) ne '*'}">
                                         <h3 class="icon-container" >
                                             <!--<span class="glyphicon glyphicon-glass"></span>-->
                                             <div class="circular">
