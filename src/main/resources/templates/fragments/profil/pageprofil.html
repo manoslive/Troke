@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="pageprofil">
+
+    <form th:action="@{/UpdateUser}" method="post" id="formUser" enctype="multipart/form-data">
+    <div id="MyProfil" class="col-md-12">
+        <div id="LeftSpace" class="col-md-3"></div>
+        <div id="MiddleInfo" class="col-md-6">
+            <div id="ProfilBanner" class="col-md-12">
+
+
+
+                <div id="PhotoProfil" class="col-md-3" style="padding:0 0 0 0">
+                    <div id="avatarProfil" src="#" alt="avatar" class="avatarProfil"
+                         th:style="*{userActif.getAvatar() ne 'no_avatar.jpg'}? 'background-image:url(/uploaded-images/' + ${userActif.getAvatar()} + ')'">
+                        <div id="avatarOverlay" style="height:100%">
+                            <div id="avatarPlus" disabled="disabled">
+                                <!--<p id="textFileExplorer2">Changer votre image de profil</p>-->
+                                <input id="fileExplorer2" type="file" name="avatarProfil" onchange="TestFileType('fileExplorer2','avatarProfil')" value="null"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="RectangleName" class="col-md-12 rectangle3">
+                    <span id="UserName" th:text="${userActif.getIduser()}" />
+                </div>
+                <div class="triangle-l" style="position:absolute;"></div>
+                <div class="triangle-r" style="position:absolute; top:65px;"></div>
+
+
+            </div>
+
+            <div id="ProfilInfo" class="col-md-12">
+                <div id="ProfilInfoLeft" class="col-md-6">
+                    <p name="label-prenom" style="font-weight:normal"> Prénom:</p>
+                    <input class="signup-half" style="width:95%" name="profile-prenom" placeholder="Prénom" type="text" tabindex="1" th:value="${userActif.getFirstname()}"/>
+                    <p id="errprenom" style="font-weight:normal;color:red">*Erreur sur le prenom</p>
+                    <p name="label-codepostal" style="font-weight:normal"> Code Postal:</p>
+                    <input class="signup-half zipcode" style="width:95%" name="profile-codepostal" placeholder="Code Postal" type="text" tabindex="2" th:value="${userActif.getZipcode()}"/>
+                    <p id="errcode" style="font-weight:normal;color:red">*Erreur sur le code postal</p>
+                </div>
+                <div id="ProfilInfoRight" class="col-md-6">
+                    <p name="label-nomfamille" style="font-weight:normal"> Nom de famille:</p>
+                    <input class="signup-half" style="width:95%" name="profile-nomfamille" placeholder="Nom de famille" type="text" tabindex="3" th:value="${userActif.getLastname()}"/>
+                    <p id="errnom" style="font-weight:normal;color:red">*Erreur sur le nom de famille</p>
+                    <p name="label-tel" style="font-weight:normal"> Téléphone:</p>
+                    <input class="signup-half phone_ca" style="width:95%" name="profile-telephone" placeholder="Telephone" id="phone" type="text" tabindex="4" th:value="${userActif.getTelephone()}"/>
+                    <p id="errtel" style="font-weight:normal;color:red">*Erreur sur le telephone</p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div id ="ProfilEmail" class="col-md-10">
+                    <p name="label-email" style="font-weight:normal">Courriel:</p>
+                    <input class="signup-full" name="profile-email" placeholder="Email" type="text" tabindex="5" th:value="${userActif.getEmail()}"/>
+                    <p id="erremail" style="font-weight:normal;color:red">*Erreur sur le courriel</p>
+                </div>
+                <div class="col-md-12">
+                    <div id="ProfilButtons" class="col-md-12" >
+
+                        <button type="button" class="btn btn-warning" style="text-transform:uppercase; font-size:12px;display:inline-flex;" onclick="location.href='/openModalPassword'">Changement du mot de passe</button>
+                        <button type="button" class="btn btn-success" style="text-transform:uppercase; font-size:12px;display:inline-flex;" onclick="formsubmit()">Enregistrer les changements</button>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <div id="RightSpace" class = "col-md-3"></div>
+    </div>
+    </form>
+</div>
+
+</body>
+</html>

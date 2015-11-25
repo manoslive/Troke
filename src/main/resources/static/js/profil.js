@@ -1,6 +1,33 @@
 /**
  * Created by Alex on 2015-11-04.
  */
+$(document).ready(function(){
+    $('#RectangleName').width($('#ProfilBanner').width()+30);
+});
+
+
+$(window).resize(function()
+{
+    $('#RectangleName').width($('#ProfilBanner').width()+30);
+    $('#UserName').css('margin-left','40%');
+    //$('#ProfilButtons').css('margin-left','40%');
+
+    if($(window).width() < 993)
+    {
+        $('#MiddleInfo').height(1000);
+        $('#ProfilInfo').height(400);
+        $('#PhotoProfil').css('margin-top', '100px');
+    }
+
+    if($(window).width() > 993)
+    {
+        $('#MiddleInfo').height(600);
+        $('#ProfilInfo').height(35+'%');
+        $('#PhotoProfil').css('margin-top', '5px');
+    }
+
+})
+;
 
 function readURL(idFileExplorer, idAvatarProfil) {
     var file = document.getElementById(idFileExplorer).files[0];

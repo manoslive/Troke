@@ -112,13 +112,13 @@
 								<div th:id="${trade.getIdtransaction()}" class="collapse infotrans">
 
 									<br/>
-									<a th:href="${adrOpenTrade}+${trade.getIdtransaction()}">
+
 
 
 										<span th:text="*{trade.iduser1 eq userActif.getIduser()}? 'ÉCHANGE AVEC '+${trade.iduser2}: 'ÉCHANGE AVEC '+${trade.iduser1}"/><br/>
 
 										<span th:text="'Dernière modification: '+${trade.getDatetransaction()}"/>
-									</a>
+
 									<br/>
 									<br/>
 
@@ -151,13 +151,13 @@
 								<div th:id="${trade.getIdtransaction()}" class="collapse infotrans">
 
 									<br/>
-									<a th:href="${adrOpenTrade}+${trade.getIdtransaction()}">
+
 
 
 										<span th:text="*{trade.iduser1 eq userActif.getIduser()}? 'ÉCHANGE AVEC '+${trade.iduser2}: 'ÉCHANGE AVEC '+${trade.iduser1}"/><br/>
 
 										<span th:text="'Dernière modification: '+${trade.getDatetransaction()}"/>
-									</a>
+
 									<br/>
 									<br/>
 
