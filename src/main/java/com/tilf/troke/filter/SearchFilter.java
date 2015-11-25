@@ -27,6 +27,14 @@ public class SearchFilter {
         return filters.get(filter);
     }
 
+    public Boolean exists(String filter) {
+        Boolean doesExist = false;
+        if(filters.get(filter) != null){
+            doesExist = true;
+        }
+        return doesExist;
+    }
+
     public Map<String, Boolean> getFilters() {
         return filters;
     }

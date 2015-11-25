@@ -91,6 +91,7 @@ public class LoginController {
         else
         {
             authContext.setUser(user);
+
             return "redirect:/";
         }
 
