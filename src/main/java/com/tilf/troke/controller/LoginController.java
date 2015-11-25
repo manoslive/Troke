@@ -87,7 +87,9 @@ public class LoginController {
         else if (user == null) {
             session.setAttribute("error"," * Le nom d'utilisateur ou le mot de passe est invalide !" );
             return "redirect:/connexion";
-        } else {
+        }
+        else
+        {
             authContext.setUser(user);
             return "redirect:/";
         }
