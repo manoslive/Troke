@@ -106,10 +106,10 @@ public class SearchController {
         if(!catSubCats.isEmpty() && !catSubCatService.getSubCatFromSet(catSubCats).isEmpty()){
             if(!catSubCatService.getCatFromSet(catSubCats).isEmpty())
             {
-                
+                model.addAttribute("objectList", customObjectRepository.getObjectsBySubCategory(catSubCatService.getSubCatFromSet(catSubCats)));
             }
             else{
-                model.addAttribute("objectList", customObjectRepository.getObjectsBySubCategory(catSubCatService.getSubCatFromSet(catSubCats)));
+                model.addAttribute("objectList", "");
             }
         }
         else{
