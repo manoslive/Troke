@@ -91,7 +91,7 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
         Query query = entityManager.createNativeQuery("select IDOBJECT, NAME_OBJECT, DESC_OBJECT, guid, idSUBCATEGORY, VALUE_OBJECT, QUALITY, IDUSER, RATEABLE, ISSIGNALED, CREATIONDATE from objects  where IDSUBCATEGORY in :idlist order by CREATIONDATE desc", ObjectsEntity.class);
         // query.setParameter("idcategory", getIdCategoryFromCategoryName("à changer"));
         query.setParameter("idlist", getSubCatIdListFromSubCatNameSet(subCategoryName));
-        List<ObjectsEntity> result = query.getResultList(); //////////////
+        List<ObjectsEntity> result = query.getResultList();
         List<CustomObjetImageEntity> objects = new ArrayList<>();
         //Ajout des objets + images dans un custom Entity
         for(int i=0; i< result.size(); i++){

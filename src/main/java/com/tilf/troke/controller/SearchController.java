@@ -118,10 +118,13 @@ public class SearchController {
 
         // TODO THYMELEAF HACK
         if (false) {
+            ObjectsEntity test = new ObjectsEntity();
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("objectList", "");
+            context.setVariable("objectList", test);
+            context.setVariable("obj", test);
             context.setVariable("leftMenu", fillLeftCatMenu());
             context.setVariable("adrStartTrade", "/startTrade?itemID=");
+
         }
         return "fragments/home/search";
     }
