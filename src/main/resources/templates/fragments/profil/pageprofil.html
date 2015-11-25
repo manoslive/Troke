@@ -35,7 +35,7 @@
                 <div id="ProfilInfoLeft" class="col-md-6">
                     <p name="label-prenom" style="font-weight:normal"> Prénom:</p>
                     <input class="signup-half" style="width:95%" name="profile-prenom" placeholder="Prénom" type="text" tabindex="1" th:value="${userActif.getFirstname()}"/>
-                    <p id="errprenom" style="font-weight:normal;color:red">*Erreur sur le prenom</p>
+                    <p id="errprenom" style="font-weight:normal;color:red">*Erreur sur le prenom</p><!-- display:inline-block  pour faire apparaitre l'erreur -->
                     <p name="label-codepostal" style="font-weight:normal"> Code Postal:</p>
                     <input class="signup-half zipcode" style="width:95%" name="profile-codepostal" placeholder="Code Postal" type="text" tabindex="2" th:value="${userActif.getZipcode()}"/>
                     <p id="errcode" style="font-weight:normal;color:red">*Erreur sur le code postal</p>
