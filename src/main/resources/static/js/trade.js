@@ -82,36 +82,59 @@ function checkValidTrade(){
     }
     if (isValid) {
         document.getElementById("btn-send-trade").style.pointerEvents = "auto";
-        document.getElementById("btn-send-trade").innerText = "Envoyer la contre-offre!";
+        document.getElementById("btn-send-trade").innerText = "Envoyer la \n contre-offre!";
+        $('#btn-send-trade').addClass('btn-success');
+        $('#btn-send-trade').removeClass('btn-warning');
     }
     else {
         document.getElementById("btn-send-trade").style.pointerEvents = "none";
-        document.getElementById("btn-send-trade").innerText = "Sélectionnez un item \n pour l'échange"
+        document.getElementById("btn-send-trade").innerText = "Sélectionnez un item \n pour l'échange";
+        $('#btn-send-trade').addClass('btn-warning');
+        $('#btn-send-trade').removeClass('btn-success');
     }
 
     //Il y a eu changement de l'offre donc l'offre ne peut pas etre accepté
     document.getElementById("btn-accept-trade").innerText = "Réinitialiser l'offre";
+    $('#btn-accept-trade').addClass('btn-danger');
+    $('#btn-accept-trade').removeClass('btn-success');
     changeAcceptButton();
 
 }
 function changeAcceptButton(){
     document.getElementById('btn-accept-trade').onclick = function () { location.reload() };
 }
+function checkAdjustForScrollBar(element){
+    (function($) {
+        $.fn.has_scrollbar = function() {
+            var divnode = this.get(0);
+            if(divnode.scrollHeight > divnode.clientHeight)
+                return true;
+        }
+    })(jQuery);
+    if(element.has_scrollbar()) {
+        element.css("padding-left", "0px");
+    }
+    else{
+        element.css("padding-left", "12px");
+    }
+}
 function resize(){
+    checkAdjustForScrollBar($("#UserInventory"));
+    checkAdjustForScrollBar($("#OpponentInventory"));
     if($(window).width() < 480)
     {
         //Mobile
-        $("#OpponentInventory").insertAfter("#UserInventory");
+        $(".OpponentInventoryContainer").insertAfter(".UserInventoryContainer");
     }
     else if($(window).width() <= 1006) //Glitch dans le matrix , 1006 affect quand lecran est a 1024
     {
         //Tablet
-        $("#OpponentInventory").insertAfter("#UserInventory");
+        $(".OpponentInventoryContainer").insertAfter(".UserInventoryContainer");
     }
     else
     {
         //Desktop
-        $("#OpponentInventory").insertAfter("#exchangeZone");
+        $(".OpponentInventoryContainer").insertAfter("#exchangeZone");
     }
 }
 $(window).resize(function() {
@@ -120,6 +143,15 @@ $(window).resize(function() {
 $( init );
 resize();
 function init() {
+    checkAdjustForScrollBar($("#UserInventory"));
+    checkAdjustForScrollBar($("#OpponentInventory"));
+    $("#UserInventory").bind("DOMSubtreeModified", function() {
+        checkAdjustForScrollBar($("#UserInventory"));
+    });
+    $("#OpponentInventory").bind("DOMSubtreeModified", function() {
+        checkAdjustForScrollBar($("#OpponentInventory"));
+    });
+
     //Vérifier si c'est la première fois qu'un user reçoit un trade pour enlever le bouton d'accepter l'offre
     document.getElementById("btn-send-trade").style.pointerEvents = "none";
     document.getElementById("btn-send-trade").innerText = "Sélectionnez un item \n pour l'échange"
@@ -134,6 +166,8 @@ function init() {
     if(bFirstReceive){
         //C'est la premiere fois qu'on reçoit une offre
         document.getElementById("btn-accept-trade").innerText = "Réinitialiser l'offre";
+        $('#btn-accept-trade').addClass('btn-danger');
+        $('#btn-accept-trade').removeClass('btn-success');
         changeAcceptButton();
     }
 
@@ -205,7 +239,7 @@ function init() {
     });
 
     // item mis en echangeUser function
-    var recycle_icon = "<img src='images/recycle_icon.png' class='icon-refresh'/>";
+    var recycle_icon = "<img/>";
     function insertExchangeUser( $item ) {
         $item.fadeOut(function() {
             var $list = $( "ul", $UserExchange).length ?
@@ -213,23 +247,28 @@ function init() {
                 $( "<ul class='UserInventory ui-helper-reset'/>" ).appendTo( $UserExchange );
             if($item.hasClass("money")){
                 $item.find( ".item-image" ).replaceWith("<div class='divInputMoney'><label class='lb-money'>$</label><input id='userMoneyInput' name='userMoneyInput'  class='inputMoney' style='z-index:1000;' type='number'/></div>");
-                $item.find( ".icon-exchange" ).remove();
                 $item.append( recycle_icon ).appendTo( $list).fadeIn(function() {
                     $item
                         .animate({ width: "80px" , height: "80px" })
                         .find( ".item-image" )
-                        .animate({  width: "80px", height: "60px" , maxWidth: "80px", maxHeight: "60px" });
+                        .animate({  width: "80px", height: "78px" , maxWidth: "80px", maxHeight: "78px" });
+                    $item
+                        .find(".optionsExchangeItem")
+                        .animate({top: "1px"});
                 });
             }else{
-                $item.find( ".icon-exchange" ).remove();
                 $item.append( recycle_icon ).appendTo( $list).fadeIn(function() {
                     $item
                         .animate({ width: "80px" , height: "80px" })
                         .find( ".item-image" )
-                        .animate({  width: "80px", height: "60px" ,maxWidth: "80px", maxHeight: "60px"});
+                        .animate({  width: "80px", height: "78px" ,maxWidth: "80px", maxHeight: "78px"});
                 });
                 $item.find("input").addClass("itemID");
             }
+            $item.find( ".icon-exchange" ).addClass("icon-refresh");
+            $item.find( ".icon-refresh" ).removeClass("icon-exchange");
+            $item.find(".optionsInventoryItem").addClass("optionsExchangeItem");
+            $item.find(".optionsExchangeItem").removeClass("optionsInventoryItem");
             checkValidTrade();
         });
     }
@@ -241,29 +280,34 @@ function init() {
                 $( "<ul class='OpponentInventory ui-helper-reset'/>" ).appendTo( $OpponentExchange );
             if($item.hasClass("money")){
                 $item.find( ".item-image" ).replaceWith("<div class='divInputMoney'><label class='lb-money'>$</label><input id='opponentMoneyInput' name='opponentMoneyInput' class='inputMoney' style='z-index:1000;' type='number'/></div>");
-                $item.find( ".icon-exchange" ).remove();
                 $item.append( recycle_icon ).appendTo( $list).fadeIn(function() {
                     $item
                         .animate({ width: "80px" , height: "80px" })
                         .find( ".item-image" )
-                        .animate({  width: "80px", height: "60px" , maxWidth: "80px", maxHeight: "60px" });
+                        .animate({  width: "80px", height: "78px" , maxWidth: "80px", maxHeight: "78px"});
+                    $item
+                        .find(".optionsExchangeItem")
+                        .animate({top: "1px"});
                 });
             }else{
-                $item.find( ".icon-exchange" ).remove();
                 $item.append( recycle_icon ).appendTo( $list).fadeIn(function() {
                     $item
-                        .animate({ width: "80px" , height: "80px"})
+                        .animate({ width: "80px" , height: "80px" })
                         .find( ".item-image" )
-                        .animate({  width: "80px", height: "60px" , maxWidth: "80px", maxHeight: "60px" });
+                        .animate({  width: "80px", height: "78px" ,maxWidth: "80px", maxHeight: "78px"});
                 });
                 $item.find("input").addClass("itemID");
             }
+            $item.find( ".icon-exchange" ).addClass("icon-refresh");
+            $item.find( ".icon-refresh" ).removeClass("icon-exchange");
+            $item.find(".optionsInventoryItem").addClass("optionsExchangeItem");
+            $item.find(".optionsExchangeItem").removeClass("optionsInventoryItem");
             checkValidTrade();
         });
     }
 
     // item recycle user function
-    var exchange_Icon = "<img src='images/add-button-icon.png' class='icon-exchange'/>";
+    var exchange_Icon = "<img/>";
     function recycleUserItem( $item ) {
         $item.fadeOut(function() {
             $item.find(".divInputMoney").replaceWith("<img class='item-image' src='images/item-dollar-sign.png' alt=''/>");
@@ -271,16 +315,17 @@ function init() {
                 .find("input")
                 .removeClass("itemID")
                 .end()
-                .find( ".icon-refresh" )
-                .remove()
-                .end()
                 .css( "width", "130px").css("height", "125px").css("max-width", "130px").css("max-height", "125px")
                 .append( exchange_Icon )
                 .find( ".item-image")
-                .css( "width", "100%").css("height", "80px").css("max-width", "100%").css("max-height", "80px")
+                .css( "width", "100%").css("height", "80%").css("max-width", "130px").css("max-height", "105px")
                 .end()
                 .appendTo( $UserInventory )
                 .fadeIn();
+            $item.find( ".icon-refresh" ).addClass("icon-exchange");
+            $item.find( ".icon-exchange" ).removeClass("icon-refresh");
+            $item.find(".optionsExchangeItem").addClass("optionsInventoryItem");
+            $item.find(".optionsInventoryItem").removeClass("optionsExchangeItem");
             checkValidTrade();
         });
     }
@@ -292,16 +337,17 @@ function init() {
                 .find("input")
                 .removeClass("itemID")
                 .end()
-                .find( ".icon-refresh" )
-                .remove()
-                .end()
                 .css( "width", "130px").css("height", "125px").css("max-width", "130px").css("max-height", "125px")
                 .append( exchange_Icon )
                 .find( ".item-image")
-                .css( "width", "100%").css("height", "80px").css("max-width", "100%").css("max-height", "80px")
+                .css( "width", "100%").css("height", "80%").css("max-width", "130px").css("max-height", "105px")
                 .end()
                 .appendTo( $OpponentInventory )
                 .fadeIn();
+            $item.find( ".icon-refresh" ).addClass("icon-exchange");
+            $item.find( ".icon-exchange" ).removeClass("icon-refresh");
+            $item.find(".optionsExchangeItem").addClass("optionsInventoryItem");
+            $item.find(".optionsInventoryItem").removeClass("optionsExchangeItem");
             checkValidTrade();
         });
     }
