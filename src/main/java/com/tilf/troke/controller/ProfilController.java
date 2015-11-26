@@ -151,7 +151,7 @@ public class ProfilController {
             // aller chercher les 4 images objects par rapport a l'object et les saver aussi avec les nouveaux parametres ..
         }
 
-        return "redirect:/profil";
+        return "redirect:/profilinv";
     }
 
     // pour changer le password
@@ -239,7 +239,7 @@ public class ProfilController {
         ObjectsEntity objectToDelete = customObjectRepository.getObjectEntityByIdObject(Integer.parseInt(id));
         objectRepository.delete(objectToDelete);
         session.removeAttribute("idObjectDelete");
-        return "redirect:/profil";
+        return "redirect:/profilinv";
     }
 
     @RequestMapping(value="/openModalDelete", method = RequestMethod.POST)
@@ -254,7 +254,7 @@ public class ProfilController {
             context.setVariable("idObjectDelete", id_object);
 
         }
-            return "redirect:/profil#openModalDelete";
+            return "redirect:/profilinv#openModalDelete";
     }
 
     @RequestMapping(value="/openModalModifier", method = RequestMethod.POST)
@@ -275,11 +275,11 @@ public class ProfilController {
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("ObhectToModify", id_object);
+            context.setVariable("ObjectToModify", id_object);
             context.setVariable("listedimage", listedimage);
 
         }
-        return "redirect:/profil#openModalAjouter";
+        return "redirect:/profilinv#openModalAjouter";
     }
 
     @RequestMapping(value="/closeAjouter", method = RequestMethod.GET)
@@ -287,7 +287,7 @@ public class ProfilController {
     {
         session.removeAttribute("ObjectToModify");
         session.removeAttribute("listedimage");
-        return "redirect:/profil";
+        return "redirect:/profilinv";
     }
     @RequestMapping(value="/openModalAjouter", method= RequestMethod.GET)
     public String openModalAjouter(HttpSession session)
@@ -299,6 +299,6 @@ public class ProfilController {
 
 
 
-        return "redirect:/profil#openModalAjouter";
+        return "redirect:/profilinv#openModalAjouter";
     }
 }

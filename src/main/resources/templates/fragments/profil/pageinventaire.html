@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="pageinventaire">
+
+    <form th:action="@{/UpdateUser}" method="post" id="formUser" enctype="multipart/form-data">
+        <div id="MyInventory" class="col-md-12">
+            <div id="LeftSpace" class="col-md-2"></div>
+
+            <div id="MiddleInfo" class="col-md-8">
+                <div id="InventoryBanner" class="col-md-12">
+
+
+
+
+                    <div id="RectangleName2" class="col-md-12 rectangle3">
+                        <span id="UserName">Mon Inventaire</span>
+                    </div>
+                    <div class="triangle-l" style="position:absolute;"></div>
+                    <div class="triangle-r" style="position:absolute; top:65px;"></div>
+
+                </div>
+
+                <div id="InventoryInfo" class="col-md-12">
+
+
+        <div id="InventoryContainer" style="height:90%">
+            <div class="container main-container" style="height:100%;">
+
+                <div id="carousel-example-generic" style="height:100%" class="carousel slide">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <th:block th:each="invent : ${userInventory}">
+                            <li data-target="#carousel-example-generic"
+                                th:data-slide-to="${inventStat.index}"
+                                th:class="*{inventStat.index eq 0} ? 'active' : ''"
+                                style="width:60px;height:60px;border-radius:100%;
+					            background-image:url('images/WorldBanner2.jpg');
+					            background-size:cover"></li>
+                        </th:block>
+                    </ol>
+
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" style="height:100%" role="listbox">
+
+                        <th:block th:each="invent : ${userInventory}" th:for="${'invent' + inventStat.index }">
+                            <!-- Second slide -->
+
+                            <div  id="Innerdiv" th:class="*{inventStat.index eq 0} ? 'item active skyblue' : 'item skyblue'">
+                                <div class="carousel-caption" style="top:5%">
+                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(0).getIsmain().substring(0,1) ne '*'}">
+                                    <h3 class="icon-container bubbleinv">
+                                        <!--<span class="glyphicon glyphicon-glass"></span>-->
+                                        <div class="circular"><img
+                                                th:src="'/uploaded-images/' + ${listeImage.get(inventStat.index).get(0).getGuidimage()}"
+                                                alt="" class="circularimage" /></div>
+
+                                    </h3>
+                                    </th:block>
+                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(1).getIsmain().substring(0,1) ne '*'}">
+                                        <h3 class="icon-container bubbleinv" >
+                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
+                                            <div class="circular">
+                                                <img th:src="'/uploaded-images/' +${listeImage.get(inventStat.index).get(1).getGuidimage()}"
+                                                     alt="" class="circularimage" />
+                                            </div>
+
+                                        </h3>
+                                    </th:block>
+
+                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(2).getIsmain().substring(0,1) ne '*'}">
+                                        <h3 class="icon-container bubbleinv" >
+                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
+                                            <div class="circular">
+                                                <img th:src="'/uploaded-images/' +${listeImage.get(inventStat.index).get(2).getGuidimage()}"
+                                                     alt="" class="circularimage" /></div>
+
+                                        </h3>
+                                    </th:block>
+
+                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(3).getIsmain().substring(0,1) ne '*'}">
+                                        <h3 class="icon-container bubbleinv" >
+                                            <!--<span class="glyphicon glyphicon-glass"></span>-->
+                                            <div class="circular">
+                                                <img th:src="'/uploaded-images/' +${listeImage.get(inventStat.index).get(3).getGuidimage()}"
+                                                     alt="" class="circularimage" /></div>
+
+                                        </h3>
+                                    </th:block>
+
+                                    <!-- nom de l'objet -->
+                                    <h3 data-animation="animated flipInX" style="font-size:18px; background-color:transparent; text-transform:uppercase;
+							                letter-spacing:.08em" th:text="${invent.getNameObject()}">
+                                    </h3>
+
+                                    <!-- text de l'objet -->
+                                    <h3 data-animation="animated flipInX" style="font-size:14px;" th:text="${invent.getDescObject()}"></h3>
+
+
+                                    <div class="divAMS">
+                                        <div id="innerbtn">
+                                        <!--<a class="btn btn-warning bubbleinv"-->
+                                           <!--style="font-weight:normal;margin-right:20px; color:white; border:white"-->
+                                           <!--th:onclick="'javascript:modalSubmitModifier(\''+${invent.getIdobject()}+'\')'">Modifier</a>-->
+
+                                        <!--<a class="btn btn-danger bubbleinv"-->
+                                           <!--style="font-weight:normal; color:white; border:white"-->
+                                           <!--th:onclick="'javascript:modalSubmitDelete(\''+${invent.getIdobject()}+'\')'" >Supprimer</a>-->
+
+                                            <i id="iconAdd" class="icon-plus-sign icon-4x" data-toggle="tooltip"
+                                               data-placement="bottom" title="Ajouter un item/service!" th:onclick="'javascript:modalSubmitAjouter()'"/>
+                                            <i id="iconMod" class="icon-edit-sign icon-4x" data-toggle="tooltip"
+                                               data-placement="bottom" title="Modifier un item/service!" th:onclick="'javascript:modalSubmitModifier(\''+${invent.getIdobject()}+'\')'"/>
+                                            <i id="iconDel" class="icon-remove-sign icon-4x" data-toggle="tooltip"
+                                               data-placement="bottom" title="Effacer un item/service!" th:onclick="'javascript:modalSubmitDelete(\''+${invent.getIdobject()}+'\')'"/>
+
+
+                                    </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                        </th:block>
+
+                        <form th:action="'profilinv#openModalAjouter'" method="get" id="ajouter">
+                        </form>
+                        <form th:action="@{/openModalModifier}" method="post" id="modifier" >
+                            <input type="hidden" name="idObjectModifier" id="idObjectModifier"/>
+                        </form>
+                        <form th:action="@{/openModalDelete}" method="post" id="deleter" >
+                            <input type="hidden" name="idObjectDelete" id="idObjectDelete"/>
+                        </form>
+
+                    </div><!-- /.carousel-inner -->
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div><!-- /.carousel -->
+            </div><!-- /.container main-container -->
+        </div> <!-- fin RightDiv -->
+                </div>
+
+
+
+
+            </div>
+
+            <div id="RightSpace" class = "col-md-2"></div>
+        </div>
+    </form>
+    </div>
+</body>
+</html>

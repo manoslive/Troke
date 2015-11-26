@@ -391,6 +391,14 @@
     margin-bottom:50px;
 }
 
+#MyInventory
+{
+
+    height:600px;
+    margin-top:10px;
+    margin-bottom:50px;
+}
+
 #LeftSpace
 {
 
@@ -433,6 +441,21 @@
 
 }
 
+#InventoryBanner
+{
+    clear: both;
+    margin: 0px auto;
+
+    background-image:url("../images/WorldBanner6.jpg") ;
+    background-size:cover;
+    height:20%;
+
+    -moz-border-radius: 10px 10px 0px 0px;
+    -khtml-border-radius: 10px 10px 0px 0px;
+    -webkit-border-radius: 10px 10px 0px 0px;
+
+
+}
 #PhotoProfil
 {
     margin-top:5px;
@@ -474,11 +497,25 @@
     padding-top:8px;
     z-index:5;
 }
+#RectangleName2
+{
+    position:absolute;
+    padding-top:8px;
+    z-index:5;
+}
 
 #ProfilInfo
 {
     margin-top:15px;
     height:35%;
+    font-family:'Amaranth';
+}
+
+#InventoryInfo
+{
+
+    padding:0 0 0 0;
+    height:100%;
     font-family:'Amaranth';
 }
 
@@ -518,4 +555,61 @@
 #erremail
 {
     display:none;
+}
+
+#InventoryContainer
+{
+    background-image:url("../images/WorldBanner6.jpg") ;
+    -moz-border-radius: 0 0 10px 10px;
+    -khtml-border-radius: 0 0 10px 10px;
+    -webkit-border-radius: 0 0 10px 10px;
+}
+
+.bubbleinv
+{
+    background-image:url("../images/WorldBanner6.jpg") ;
+    background-size:cover;
+}
+
+#Innerdiv
+{
+    background-color:#00374C;
+    background-size: 400%;
+    -moz-border-radius: 0 0 10px 10px;
+    -khtml-border-radius: 0 0 10px 10px;
+    -webkit-border-radius: 0 0 10px 10px;
+}
+
+#innerbtn
+{
+    margin: 0 auto;
+}
+
+#iconMod
+{
+    margin-right:5px;
+    margin-left:5px;
+}
+
+#iconMod:hover
+{
+   cursor:pointer;
+}
+#iconDel
+{
+    margin-right:5px;
+    margin-left:5px;
+}
+#iconDel:hover
+{
+    cursor:pointer;
+}
+#iconAdd
+{
+    margin-right:5px;
+    margin-left:5px;
+}
+#iconAdd:hover
+{
+    cursor:pointer;
 }

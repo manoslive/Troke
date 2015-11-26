@@ -3,12 +3,17 @@
  */
 $(document).ready(function(){
     $('#RectangleName').width($('#ProfilBanner').width()+30);
+    $('#RectangleName2').width($('#InventoryBanner').width()+30);
 });
 
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
 
 $(window).resize(function()
 {
     $('#RectangleName').width($('#ProfilBanner').width()+30);
+    $('#RectangleName2').width($('#InventoryBanner').width()+30);
     $('#UserName').css('margin-left','40%');
     //$('#ProfilButtons').css('margin-left','40%');
 
@@ -86,11 +91,21 @@ function deleteSubmit()
 function modalSubmitDelete(id)
 {
     document.getElementById('idObjectDelete').value = id;
-    $('#delete').submit();
+    alert("Delete");
+    $('#deleter').submit();
+    alert("Delete2");
 }
 
 function modalSubmitModifier(id)
 {
     document.getElementById('idObjectModifier').value = id;
+    alert("Modifier");
     $('#modifier').submit();
 }
+
+function modalSubmitAjouter()
+{
+
+    $('#ajouter').submit();
+}
+
