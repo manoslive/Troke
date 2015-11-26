@@ -60,14 +60,22 @@
                 <div class="searchItem">
                     <!-- L'image de l'item -->
                     <div class="searchItemImage">
-                        <img th:if="${singleobject.getGuid()} ne null"/>
-                        <img th:if="${singleobject.getGuid()} eq null" src="images/UnknownUser.png"/>
+                        <img th:if="${singleobject.getImage1()} ne null" th:src="'/uploaded-images/' + ${singleobject.getImage1()}"/>
+                        <img th:if="${singleobject.getImage1()} eq null" src="images/UnknownUser.png"/>
                     </div>
                     <!-- Description de l'item -->
                     <div class="searchItemDescription">
-                        <h4 class="searchItemName" th:text="${singleobject.getNameObject()}"/>
 
-                        <p th:text="${singleobject.getDescObject()}"/>
+                        <p th:text="${singleobject.getNameObject()}" style="text-decoration: underline;"/>
+                        <th:block th:if="${singleobject.getDescObject().length() lt 30}">
+                            <span th:text="'Description: '  + ${singleobject.getDescObject()}"/><br/>
+                        </th:block>
+                        <th:block th:if="${singleobject.getDescObject().length() ge 30}">
+                            <span th:text="'Description: '  + ${singleobject.getDescObject().substring(0,38)} + '  ...'"/><br/>
+                        </th:block>
+                        <span th:text="'Publié le: '  + ${singleobject.getCreationdate()}"/><br/>
+                        <span th:text="'Sous-catégorie: '  + ${singleobject.getSubCategoryName()}"></span><br/>
+                        <span th:text="'Utilisateur: '  + ${singleobject.getIduser()}"/>
                     </div>
                     <!-- Bar vertical de séparation -->
                     <div class="searchVerticalBar right">
@@ -125,22 +133,22 @@
                 <div th:each="obj : ${objectList}" class="searchItem">
                     <!-- L'image de l'item -->
                     <div class="searchItemImage">
-                        <img th:if="${obj.getGuid()} ne null"/>
-                        <img th:if="${obj.getGuid()} eq null" src="images/UnknownUser.png"/>
+                        <img th:if="${obj.getImage1()} ne null" th:src="'/uploaded-images/' + ${obj.getImage1()}"/>
+                        <img th:if="${obj.getImage1()} eq null" src="images/UnknownUser.png"/>
                     </div>
                     <!-- Description de l'item -->
                     <div class="searchItemDescription">
 
-                        <h4 th:text="${obj.getNameObject()}" style="text-decoration: underline;"/>
+                        <p th:text="'Nom: '  + ${obj.getNameObject()}" style="text-decoration: underline;"/>
                         <th:block th:if="${obj.getDescObject().length() lt 30}">
-                            <p th:text="${obj.getDescObject()}"/>
+                            <span th:text="'Description: '  + ${obj.getDescObject()}"/><br/>
                         </th:block>
                         <th:block th:if="${obj.getDescObject().length() ge 30}">
-                            <span th:text="${obj.getDescObject().substring(0,38)} + '  ...'"/>
+                            <span th:text="'Description: '  + ${obj.getDescObject().substring(0,30)} + '  ...'"/><br/>
                         </th:block>
-                        <p th:text="${obj.getCreationdate()}"/>
-
-                        <p th:text="${obj.getIduser()}"/>
+                        <span th:text="'Publié le: '  + ${obj.getCreationdate()}"/><br/>
+                        <span th:text="'Sous-catégorie: '  + ${obj.getSubCategoryName()}"></span><br/>
+                        <span th:text="'Utilisateur: '  + ${obj.getIduser()}"/>
                     </div>
                     <!-- Bar vertical de séparation -->
                     <div class="searchVerticalBar right">
@@ -198,14 +206,22 @@
                 <div th:each="obj : ${searchObjectList}" class="searchItem">
                     <!-- L'image de l'item -->
                     <div class="searchItemImage">
-                        <img th:if="${obj.getGuid()} ne null"/>
-                        <img th:if="${obj.getGuid()} eq null" src="images/UnknownUser.png"/>
+                        <img th:if="${obj.getImage1()} ne null" th:src="'/uploaded-images/' + ${obj.getImage1()}"/>
+                        <img th:if="${obj.getImage1()} eq null" src="images/UnknownUser.png"/>
                     </div>
                     <!-- Description de l'item -->
                     <div class="searchItemDescription">
-                        <h4 th:text="${obj.getNameObject()}"/>
 
-                        <p th:text="${obj.getDescObject()}"/>
+                        <p th:text="'Nom: '  + ${obj.getNameObject()}" style="text-decoration: underline;"/>
+                        <th:block th:if="${obj.getDescObject().length() lt 30}">
+                            <span th:text="'Description: '  + ${obj.getDescObject()}"/><br/>
+                        </th:block>
+                        <th:block th:if="${obj.getDescObject().length() ge 30}">
+                            <span th:text="'Description: '  + ${obj.getDescObject().substring(0,38)} + '  ...'"/><br/>
+                        </th:block>
+                        <span th:text="'Publié le: '  + ${obj.getCreationdate()}"/><br/>
+                        <span th:text="'Sous-catégorie: '  + ${obj.getSubCategoryName()}"></span><br/>
+                        <span th:text="'Utilisateur: '  + ${obj.getIduser()}"/>
                     </div>
                     <!-- Bar vertical de séparation -->
                     <div class="searchVerticalBar right">

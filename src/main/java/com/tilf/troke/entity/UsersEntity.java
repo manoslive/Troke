@@ -3,10 +3,14 @@ package com.tilf.troke.entity;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
-import javax.validation.constraints.AssertTrue;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.sql.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Manu on 2015-10-02.
@@ -16,7 +20,10 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "users", schema = "", catalog = "troke")
-public class UsersEntity {
+public class UsersEntity implements HttpSessionBindingListener {
+    // All logins.
+    private static Map<UsersEntity, HttpSession> logins = new HashMap<UsersEntity, HttpSession>();
+
     @NotNull(message = "Le nom d'usager ne doit pas être nul")
     @Size(min = 4, max = 20, message = "Le nom d'usager doit comporter de 4 à 20 caractères")
     @Id
@@ -223,5 +230,19 @@ public class UsersEntity {
         result = 31 * result + (permissionlevel != null ? permissionlevel.hashCode() : 0);
         result = 31 * result + (isvip != null ? isvip.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public void valueBound(HttpSessionBindingEvent httpSessionBindingEvent) {
+        HttpSession session = logins.remove(this);
+        if (session != null) {
+            session.invalidate();
+        }
+        logins.put(this, httpSessionBindingEvent.getSession());
+    }
+
+    @Override
+    public void valueUnbound(HttpSessionBindingEvent httpSessionBindingEvent) {
+        logins.remove(this);
     }
 }

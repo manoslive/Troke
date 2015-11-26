@@ -1,7 +1,6 @@
 package com.tilf.troke.domain;
 
 import org.hibernate.validator.constraints.Email;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;

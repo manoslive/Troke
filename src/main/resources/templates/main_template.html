@@ -13,6 +13,8 @@
     <link href="css/style.css" type="text/css" rel="stylesheet"/>
     <link href="css/mainbuttons.css" type="text/css" rel="stylesheet"/>
     <link href="css/style_ribbon.css" type="text/css" rel="stylesheet"/>
+
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"/>
     <!--<link href="bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet"/>-->
     <!-- <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>-->
     <!--<link href="bootstrap/js/bootstrap.js" type="text/javascript"/>-->
@@ -485,8 +487,9 @@
                 </li>
                 <!-- end Search bar + button -->
                 <li><a href="/myTrades" style="color:black; font-size:15px">Mes Échanges <th:block th:if="${authUser} ne null"><div class="noti_bubble" th:text="${session.notifications}"></div></th:block></a></li>
-                <!-- <li><a href="#contact">Contact</a></li> -->
-                <li class="pull-right"><a href="/profil" style="color:black;font-size:15px">Mon profil</a></li>
+                <li><a href="/profilinv" style="color:black; font-size:15px">Mon Inventaire</a></li>
+                    <!-- <li><a href="#contact">Contact</a></li> -->
+                <li class="pull-right"><a href="/profil" style="color:black;font-size:15px">Mon Profil</a></li>
             </ul>
             <!-- nav navbar-nav -->
         </div>
