@@ -1,10 +1,11 @@
 package com.tilf.troke.controller;
 
 import com.tilf.troke.auth.AuthUserContext;
-import com.tilf.troke.entity.ObjectsEntity;
+import com.tilf.troke.entity.CustomSearchObjectEntity;
 import com.tilf.troke.filter.SearchFilter;
 import com.tilf.troke.repository.CustomObjectRepository;
 import com.tilf.troke.service.CatSubCatService;
+import com.tilf.troke.service.ObjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +29,9 @@ public class SearchController {
     @Autowired
     private CustomObjectRepository customObjectRepository;
 
+/*    @Autowired
+    private ObjectService objectService;*/
+
     @Autowired
     private SearchFilter searchFilter;
 
@@ -47,21 +51,21 @@ public class SearchController {
     // Test de catégorie
     @RequestMapping(value = "/category", method = RequestMethod.GET)
     public String ListCategoryItems(@RequestParam("categoryName") String categoryName, @RequestParam(value = "catIsChecked") Boolean catIsChecked, Model model, HttpSession session) {
-
+        List<CustomSearchObjectEntity> list = new ArrayList<>();
         // Modification de la liste de Cat/SubCat
-        if (catIsChecked == true){
+        if (catIsChecked == true) {
             searchFilter.put(categoryName, true);
             List<String> subCatList = customObjectRepository.getSubCatListByCategoryName(categoryName);
-            for(int i=0;i<subCatList.size();i++){
-                if(!searchFilter.get(subCatList.get(i))){
+            for (int i = 0; i < subCatList.size(); i++) {
+                if (!searchFilter.exists(subCatList.get(i))) {
                     searchFilter.put(subCatList.get(i), true);
                 }
             }
         } else {
             searchFilter.remove(categoryName);
             List<String> subCatList = customObjectRepository.getSubCatListByCategoryName(categoryName);
-            for(int i=0;i<subCatList.size();i++){
-                if(searchFilter.get(subCatList.get(i))){
+            for (int i = 0; i < subCatList.size(); i++) {
+                if (searchFilter.exists(subCatList.get(i))) {
                     searchFilter.remove(subCatList.get(i));
                 }
             }
@@ -72,7 +76,8 @@ public class SearchController {
         // si la liste n'est pas nulle
         if (!catSubCats.isEmpty()) {
             // Transformer la liste en liste de custom object entity
-            model.addAttribute("objectList", customObjectRepository.getObjectsBySubCategory(catSubCatService.getSubCatFromSet(catSubCats)));
+            list = customObjectRepository.getObjectsBySubCategory(catSubCatService.getSubCatFromSet(catSubCats));
+            model.addAttribute("objectList", list);
         } else {
             model.addAttribute("objectList", null);
             model.addAttribute("objectListEmpty", true);
@@ -84,7 +89,8 @@ public class SearchController {
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("objectList", "");
+            context.setVariable("objectList", list);
+            // context.setVariable("obj", test);
             context.setVariable("leftMenu", fillLeftCatMenu());
             context.setVariable("objectListEmpty", true);
         }
@@ -93,26 +99,25 @@ public class SearchController {
 
     @RequestMapping(value = "/subcategory", method = RequestMethod.GET)
     public String ListSubCategoryItems(@RequestParam("subCategoryName") String subCategoryName, @RequestParam(value = "subCatIsChecked") Boolean subCatIsChecked, HttpSession session, Model model) {
+        List<CustomSearchObjectEntity> list = new ArrayList<>();
         // Modification de la liste de Cat/SubCat
-        if(subCatIsChecked == true){
+        if (subCatIsChecked == true) {
             searchFilter.put(subCategoryName, subCatIsChecked);
-        }
-        else{
+        } else {
             searchFilter.remove(subCategoryName);
         }
 
         // On obtient la liste de toutes les cat/subcat qui sont cochées
         Set<String> catSubCats = getKeysByValue(searchFilter.getFilters(), true);
-        if(!catSubCats.isEmpty() && !catSubCatService.getSubCatFromSet(catSubCats).isEmpty()){
-            if(!catSubCatService.getCatFromSet(catSubCats).isEmpty())
-            {
-                
+        if (!catSubCats.isEmpty() && !catSubCatService.getSubCatFromSet(catSubCats).isEmpty()) {
+            if (!catSubCatService.getSubCatFromSet(catSubCats).isEmpty()) {
+                list = customObjectRepository.getObjectsBySubCategory(catSubCatService.getSubCatFromSet(catSubCats));
+                model.addAttribute("objectList", list);
+
+            } else {
+                model.addAttribute("objectList", "");
             }
-            else{
-                model.addAttribute("objectList", customObjectRepository.getObjectsBySubCategory(catSubCatService.getSubCatFromSet(catSubCats)));
-            }
-        }
-        else{
+        } else {
             model.addAttribute("objectList", null);
             model.addAttribute("objectListEmpty", true);
         }
@@ -123,9 +128,11 @@ public class SearchController {
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("objectList", "");
+            context.setVariable("objectList", list);
+            //context.setVariable("obj", test);
             context.setVariable("leftMenu", fillLeftCatMenu());
             context.setVariable("adrStartTrade", "/startTrade?itemID=");
+
         }
         return "fragments/home/search";
     }
@@ -133,8 +140,10 @@ public class SearchController {
     // Test de catégorie
     @RequestMapping(value = "/item", method = RequestMethod.GET)
     public String getItemByIdObject(@RequestParam("idObject") int idobject, Model model) {
+        // Vide la liste concaténée d'objets
         searchFilter.removeAll();
-        model.addAttribute("singleobject", customObjectRepository.getObjectEntityByIdObject(idobject));
+        CustomSearchObjectEntity objet = customObjectRepository.getCustomsearchobjectentityByIdObject(idobject);
+        model.addAttribute("singleobject", objet);
         model.addAttribute("adrItem", "/item?idObject=");
         model.addAttribute("adrStartTrade", "/startTrade?itemID=");
         model.addAttribute("leftMenu", fillLeftCatMenu());
@@ -142,7 +151,7 @@ public class SearchController {
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("singleobject", customObjectRepository.getObjectEntityByIdObject(idobject));
+            context.setVariable("singleobject", objet);
             context.setVariable("adrItem", "/item?objectName=");
             context.setVariable("leftMenu", fillLeftCatMenu());
             context.setVariable("adrStartTrade", "/startTrade?itemID=");
@@ -154,7 +163,8 @@ public class SearchController {
     @RequestMapping(value = "/searchDB", method = RequestMethod.GET)
     public String searchDB(@RequestParam("keyword") String keyword, Model model) {
         searchFilter.removeAll();
-        model.addAttribute("searchObjectList", customObjectRepository.getObjectListByKeyword(keyword));
+        List<CustomSearchObjectEntity> list = customObjectRepository.getObjectListByKeyword(keyword);
+        model.addAttribute("searchObjectList", list);
         model.addAttribute("adrSearch", "/searchDB?keyword=");
         model.addAttribute("adrStartTrade", "/startTrade?itemID=");
         model.addAttribute("leftMenu", fillLeftCatMenu());
@@ -165,7 +175,7 @@ public class SearchController {
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("searchObjectList", customObjectRepository.getObjectListByKeyword(keyword));
+            context.setVariable("searchObjectList", list);
             context.setVariable("adrSearch", "/searchDB?keyword=");
             context.setVariable("leftMenu", fillLeftCatMenu());
             context.setVariable("adrStartTrade", "/startTrade?itemID=");

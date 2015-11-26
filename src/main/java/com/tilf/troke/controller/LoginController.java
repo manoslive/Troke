@@ -24,6 +24,7 @@ public class LoginController {
     @Autowired
     private AuthUserContext authContext;
 
+
     @RequestMapping("/login")
     public String login() {
         return "profilUser";
@@ -35,8 +36,12 @@ public class LoginController {
     }
 
     @RequestMapping("/logout")
-    public String logout() {
+    public String logout(HttpSession session) {
+        authContext.getUser().setIsonline("N");
+        userRepository.save(authContext.getUser());
         authContext.setUser(null);
+        session.removeAttribute("user");
+
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
@@ -68,6 +73,7 @@ public class LoginController {
     public String login(@RequestParam("iduser") String idUser, @RequestParam("pass") String pass, Model model, HttpSession session) {
         UsersEntity user = userRepository.findUsersEntityByIduserAndPass(idUser, pass);
         session.setAttribute("user", user);
+
         if(idUser.isEmpty())
         {
             session.setAttribute("error", "* Veuillez entrer un nom d'utilisateur");
@@ -82,13 +88,30 @@ public class LoginController {
         else if(pass.isEmpty())
         {
             session.setAttribute("error", "* Veuillez entrer un mot de passe");
+            // TODO THYMELEAF HACK
+            if (false) {
+                WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+                context.setVariable("user", user);
+                context.setVariable("error", "* Veuillez entrer un nom d'utilisateur");
+            }
             return "redirect:/connexion";
         }
         else if (user == null) {
             session.setAttribute("error"," * Le nom d'utilisateur ou le mot de passe est invalide !" );
+            // TODO THYMELEAF HACK
+            if (false) {
+                WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+                context.setVariable("user", user);
+                context.setVariable("error", "* Veuillez entrer un nom d'utilisateur");
+            }
             return "redirect:/connexion";
-        } else {
+        }
+
+        else
+        {
+            userRepository.save(user);
             authContext.setUser(user);
+            session.setAttribute("user", user);
 
             return "redirect:/";
         }

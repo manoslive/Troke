@@ -17,6 +17,7 @@ import org.thymeleaf.context.WebContext;
 
 import javax.servlet.http.HttpSession;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
@@ -72,20 +73,21 @@ public class ProfilController {
         boolean imageIsUploaded;
         ImageobjectEntity photo = new ImageobjectEntity();
         int lastID;
-        String firstChar;
         ObjectsEntity object = new ObjectsEntity();
+        List<ImageobjectEntity> listeImage = new ArrayList<>();
+        String firstChar;
 
 
         if(session.getAttribute("ObjectToModify") == null)
         {
             // donnée qui vien du formulaire ...
-            object.setNameObject(Name);
-            object.setDescObject(Description);
-            object.setValueObject(valeur);
-            object.setQuality(rating);
-            object.setIduser(authContext.getUser().getIduser());
-            object.setCreationdate(now);
-            object.setIdsubcategory(categorie);
+            object.setNameObject(Name); // nom de l'objet recu du formulaire ..
+            object.setDescObject(Description);// description de l'objet ou service ..
+            object.setValueObject(valeur); // valeur de l'objet décidé par le user recu du formulaire ..
+            object.setQuality(rating); // on set le rating recu de formulaire avec les étoiles ..
+            object.setIduser(authContext.getUser().getIduser()); // on set le id du user a celui qui est loggé dans la session ..
+            object.setCreationdate(now); // on met la date de création à maintenant ..
+            object.setIdsubcategory(categorie); // on set le id de la category sur l'objet recu du formulaire
 
             // donnée rentrer a la main pour des valeur par defaut ...
             object.setGuid("no_avatar.png");
@@ -115,21 +117,30 @@ public class ProfilController {
                     imageIsUploaded = imageService.uploadImage(images[i], imageName, true, session);
                     if (imageIsUploaded) {
                         photo.setGuidimage(imageName);
+                        if(i == 0)
+                        {
+                            photo.setIsmain("Main");
+                        }
+                        else
+                        {
+                            photo.setIsmain("NotMain");
+                        }
                     }
                     else
                     {
-                        photo.setGuidimage("*"+ imageName);
+                        photo.setGuidimage(imageName);
+                        if(i == 0)
+                        {
+                            photo.setIsmain("*Main");
+                        }
+                        else
+                        {
+                            photo.setIsmain("*NotMain");
+                        }
                     }
                 }
-               if(i == 0)
-               {
-                   photo.setIsmain("Main");
-               }
-                else
-               {
-                   photo.setIsmain("NotMain");
-               }
-                firstChar = photo.getGuidimage().substring(0,1);
+
+                // firstChar = photo.getGuidimage().substring(0,1); // avoir le premier char de la string de l'image ..
                 imageObjectRepository.save(photo);
             }
 
@@ -138,11 +149,34 @@ public class ProfilController {
         else
         {
             object = (ObjectsEntity)session.getAttribute("ObjectToModify");
+            listeImage = (List<ImageobjectEntity>)session.getAttribute("listedimage");
 
-            object.setNameObject(Name);
-            object.setDescObject(Description);
-            object.setValueObject(valeur);
-            object.setQuality(rating);
+            object.setNameObject(Name); // on reset le nom du service ou objet en cas que le user l'aie modifié
+            object.setDescObject(Description);// on reset la description en cas que le user l'aie modifié ..
+            object.setValueObject(valeur); // on re set la value ..
+            object.setQuality(rating); // on re set la quality
+            object.setIdsubcategory(categorie); // on re set la category ..
+
+            // on ajoute ensuite les 4 photo dans la table ImageObject
+            for(int i = 0; i < 4; i++)
+            {
+
+                photo.setGuidimage(listeImage.get(i).getGuidimage());
+                String ImageName = images[i].getOriginalFilename();
+                if(!images[i].isEmpty())
+                {
+                    // ici on upload l'image sur le serveur avec le bon nom ..
+                    imageIsUploaded = imageService.uploadImage(images[i],listeImage.get(i).getGuidimage() , true, session);
+                    firstChar = listeImage.get(i).getIsmain().substring(1,listeImage.get(i).getIsmain().length());
+                    if (imageIsUploaded && listeImage.get(i).getIsmain().substring(0,1).equals("*")) {
+                        photo.setIsmain(firstChar);
+                        photo.setIdobject(listeImage.get(i).getIdobject());
+                        imageObjectRepository.save(photo);
+                    }
+                }
+
+            }
+
             objectRepository.save(object);
             session.removeAttribute("ObjectToModify");
             session.removeAttribute("listedimage");
@@ -190,15 +224,6 @@ public class ProfilController {
                              @RequestParam("profile-email") String email,
                              @RequestParam(value= "avatarProfil", required=false) MultipartFile avatar)
     {
-        // valeur par defaut d'une image vide ..
-        String defaultImage = "no_avatar.jpg";
-
-        // On génère le nom unique de l'image et on vérifie qu'il
-        // n'existe pas déjà.
-        String imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
-        while (customUserRepository.checkAvatarName(imageName) == BigInteger.ONE) {
-            imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
-        }
 
         // instantiation du user avec le user loggé..
         UsersEntity userActif = authContext.getUser();
@@ -212,15 +237,26 @@ public class ProfilController {
             userActif.setTelephone(telephone);
             userActif.setZipcode(codepostal);
 
-            // ici on upload l'image sur le serveur avec le bon nom ..
-            boolean imageIsUploaded = imageService.uploadImage(avatar, imageName, true, session);
-
-            if (imageIsUploaded) {
-                userActif.setAvatar(imageName);
-                session.setAttribute("avatarpathProfil", imageName);
-            } else {
-                userActif.setAvatar(defaultImage);
-                session.setAttribute("avatarpathProfil", defaultImage);
+            if(!avatar.isEmpty()) {
+                // ici on upload l'image sur le serveur avec le bon nom ..
+                // On génère le nom unique de l'image et on vérifie qu'il
+                // n'existe pas déjà.
+                if(userActif.getAvatar().equals("no_avatar.jpg"))
+                {
+                    String imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
+                    while (customUserRepository.checkAvatarName(imageName) == BigInteger.ONE)
+                        {
+                            imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
+                        }
+                    boolean imageIsUploaded = imageService.uploadImage(avatar, imageName, true, session);
+                    userActif.setAvatar(imageName);
+                    session.setAttribute("avatarpathProfil", imageName);
+                }
+                else
+                {
+                    boolean imageIsUploaded = imageService.uploadImage(avatar, userActif.getAvatar(), true, session);
+                    session.setAttribute("avatarpathProfil", userActif.getAvatar());
+                }
             }
             // on save le user dans la BD..
             userRepository.save(userActif);

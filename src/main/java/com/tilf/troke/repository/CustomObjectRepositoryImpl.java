@@ -1,14 +1,19 @@
 package com.tilf.troke.repository;
 
 import com.tilf.troke.entity.CustomObjetImageEntity;
+import com.tilf.troke.entity.CustomSearchObjectEntity;
 import com.tilf.troke.entity.ImageobjectEntity;
 import com.tilf.troke.entity.ObjectsEntity;
+import com.tilf.troke.service.ObjectService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -20,6 +25,9 @@ import java.util.Set;
 public class CustomObjectRepositoryImpl implements CustomObjectRepository {
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Autowired
+    private ObjectService objectService;
 
 
     // Requêtes sur les catégories
@@ -86,14 +94,46 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
     }
 
     @Override
-    public List<ObjectsEntity> getObjectsBySubCategory(Set<String> subCategoryName) {
+    public List<CustomSearchObjectEntity> getObjectsBySubCategory(Set<String> subCategoryName) {
         // TypedQuery<ObjectsEntity> query = entityManager.createQuery("select o from ObjectsEntity as o where exists (select s.idSubcategory from SubcategoryEntity s where o.idsubcategory=s.idSubcategory and s.idcategory in :idlist)", ObjectsEntity.class);
-        Query query = entityManager.createNativeQuery("select IDOBJECT, NAME_OBJECT, DESC_OBJECT, guid, idSUBCATEGORY, VALUE_OBJECT, QUALITY, IDUSER, RATEABLE, ISSIGNALED, CREATIONDATE from objects  where IDSUBCATEGORY in :idlist", ObjectsEntity.class);
+        Query query = entityManager.createNativeQuery("select IDOBJECT, NAME_OBJECT, DESC_OBJECT, guid, idSUBCATEGORY, VALUE_OBJECT, QUALITY, IDUSER, RATEABLE, ISSIGNALED, CREATIONDATE from objects  where IDSUBCATEGORY in :idlist order by CREATIONDATE desc", ObjectsEntity.class);
         // query.setParameter("idcategory", getIdCategoryFromCategoryName("à changer"));
         query.setParameter("idlist", getSubCatIdListFromSubCatNameSet(subCategoryName));
         List<ObjectsEntity> result = query.getResultList();
+        List<CustomSearchObjectEntity> objects = new ArrayList<>();
+        //Ajout des objets + images dans un custom Entity
+        for(int i=0; i< result.size(); i++){
+            CustomSearchObjectEntity customObjet = new CustomSearchObjectEntity();
+            customObjet.setIduser(result.get(i).getIduser());
+            customObjet.setCreationdate(result.get(i).getCreationdate());
+            customObjet.setDescObject(result.get(i).getDescObject());
+            customObjet.setIdobject(result.get(i).getIdobject());
+            customObjet.setIdsubcategory(result.get(i).getIdsubcategory());
+            customObjet.setIssignaled(result.get(i).getIssignaled());
+            customObjet.setNameObject(result.get(i).getNameObject());
+            customObjet.setQuality(result.get(i).getQuality());
+            customObjet.setRateable(result.get(i).getRateable());
+            customObjet.setValueObject(result.get(i).getValueObject());
 
-        return result;
+            //Get tous les images
+            String query2 = "select o from ImageobjectEntity o where o.idobject = :idObject order by ismain, guidimage desc";
+            Query queryObject2 = entityManager.createQuery(query2);
+            queryObject2.setParameter("idObject", result.get(i).getIdobject());
+            List<ImageobjectEntity> LImages = (List<ImageobjectEntity>) queryObject2.getResultList();
+
+            // Ajout de chacune des images dans l'objet
+            customObjet.setImage1(LImages.get(0).getGuidimage());
+            customObjet.setImage2(LImages.get(1).getGuidimage());
+            customObjet.setImage3(LImages.get(2).getGuidimage());
+            customObjet.setImage4(LImages.get(3).getGuidimage());
+
+            // Ajout du nom de sous-catégorie
+            customObjet.setSubCategoryName(getSubCatNameBySubCatId(result.get(i).getIdsubcategory()));
+
+            objects.add(customObjet);
+        }
+
+        return objects;
     }
 
     public int getIdCategoryFromCategoryName(String categoryName) {
@@ -116,11 +156,21 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
     public List<String> getSubCatListByCategoryName(String categoryname){
         List<String> subCatList;
 
-        String query = "select NAME_SUBCATEGORY from troke.category c inner join troke.subcategory s on c.idcategory=s.idcategory where c.idcategory=:name";
+        String query = "select s.NAME_SUBCATEGORY from category c inner join subcategory s on c.idcategory=s.idcategory where c.NAME_CATEGORY=:name";
         Query queryObject = entityManager.createNativeQuery(query);
         queryObject.setParameter("name", categoryname);
         subCatList = (List<String>) queryObject.getResultList();
         return subCatList;
+    }
+
+    @Override
+    public String getSubCatNameBySubCatId(int subCatId){
+        String query = "select s.nameSubcategory from SubcategoryEntity s where s.idSubcategory=:idSubCat";
+        Query queryObject = entityManager.createQuery(query);
+        queryObject.setParameter("idSubCat", subCatId);
+        String subCatName = (String)queryObject.getSingleResult();
+
+        return subCatName;
     }
 
     @Override
@@ -130,6 +180,13 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
         queryObject.setParameter("idobject", id_object);
         ObjectsEntity obj = (ObjectsEntity) queryObject.getSingleResult();
 
+        return obj;
+    }
+
+    @Override
+    public CustomSearchObjectEntity getCustomsearchobjectentityByIdObject(int idObject){
+        CustomSearchObjectEntity obj = objectService.convertObjectEntityInCustomSearchObjectEntity(getObjectEntityByIdObject(idObject), getObjectImageListByIdobject(idObject));
+        obj.setSubCategoryName(getSubCatNameBySubCatId(obj.getIdsubcategory()));
         return obj;
     }
 
@@ -152,11 +209,7 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
         customObjet.setRateable(obj.getRateable());
         customObjet.setValueObject(obj.getValueObject());
 
-        //Get tous les images
-        String query2 = "select o from ImageobjectEntity o where o.idobject = :idObject order by ismain, guidimage desc";
-        Query queryObject2 = entityManager.createQuery(query2);
-        queryObject2.setParameter("idObject", id_object);
-        List<ImageobjectEntity> LImages = (List<ImageobjectEntity>) queryObject2.getResultList();
+        List<ImageobjectEntity> LImages = (List<ImageobjectEntity>)getObjectEntityByIdObject(id_object);
 
         customObjet.setImage1(LImages.get(0).getGuidimage());
         customObjet.setImage2(LImages.get(1).getGuidimage());
@@ -166,15 +219,32 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
         return customObjet;
     }
 
+    // Obtenir les images pour un ObjectEntity donné
+    @Override
+    public List<ImageobjectEntity> getObjectImageListByIdobject(int Idobject){
+        String query2 = "select o from ImageobjectEntity o where o.idobject = :idObject order by ismain, guidimage desc";
+        Query queryObject2 = entityManager.createQuery(query2);
+        queryObject2.setParameter("idObject", Idobject);
+        List<ImageobjectEntity> imageList = (List<ImageobjectEntity>) queryObject2.getResultList();
+
+        return imageList;
+    }
+
     // Recherches
     @Override
-    public List<ObjectsEntity> getObjectListByKeyword(String keyword) {
+    public List<CustomSearchObjectEntity> getObjectListByKeyword(String keyword) {
         String query = "select o from ObjectsEntity o where UPPER(o.nameObject) like UPPER(:keyword)";
         Query queryObject = entityManager.createQuery(query);
         queryObject.setParameter("keyword", "%" + keyword + "%");
         List<ObjectsEntity> objList = (List<ObjectsEntity>) queryObject.getResultList();
+        List<CustomSearchObjectEntity> newObjList = new ArrayList<>();
+        for(ObjectsEntity obj : objList) {
+            CustomSearchObjectEntity newObj = objectService.convertObjectEntityInCustomSearchObjectEntity(obj, getObjectImageListByIdobject(obj.getIdobject()));
+            newObj.setSubCategoryName(getSubCatNameBySubCatId(newObj.getIdsubcategory()));
+            newObjList.add(newObj);
+        }
 
-        return objList;
+        return newObjList;
     }
 
     //GetItemNameByID
