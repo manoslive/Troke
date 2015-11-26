@@ -225,9 +225,55 @@ public class ProfilController {
                              @RequestParam(value= "avatarProfil", required=false) MultipartFile avatar)
     {
 
+//        if(!bindingResult.hasErrors())
+//        {
+//            // instantiation du user avec le user loggé..
+//            UsersEntity userActif = authContext.getUser();
+//
+//            if(!avatar.isEmpty())
+//            {
+//                //ici on upload l'image sur le serveur avec le bon nom ..
+//                // On génère le nom unique de l'image et on vérifie qu'il
+//                // n'existe pas déjà.
+//              if(userActif.getAvatar().equals("no_avatar.jpg"))
+//                {
+//                   String imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
+//                   while (customUserRepository.checkAvatarName(imageName) == BigInteger.ONE)
+//                       {
+//                           imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
+//                       }
+//                    imageService.uploadImage(avatar, imageName, true, session);
+//                    userActif.setAvatar(imageName);
+//                    session.setAttribute("avatarpathProfil", imageName);
+//                }
+//                else
+//                {
+//                    imageService.uploadImage(avatar, userActif.getAvatar(), true, session);
+//                    session.setAttribute("avatarpathProfil", userActif.getAvatar());
+//                }
+//            }
+//
+//            userActif.setFirstname(userProfil.getFirstname());
+//            userActif.setLastname(userProfil.getLastname());
+//            userActif.setTelephone(userProfil.getTelephone());
+//            userActif.setEmail(userProfil.getEmail());
+//
+//            // on save le user qui a pas d error
+//            userRepository.save(userActif);
+//            // on re set le user loggé avec celui modifié ..
+//            authContext.setUser(userActif);
+//
+//            return "redirect:/profil";
+//        }
+//
+//        redirectAttributes.addFlashAttribute("fields", bindingResult);
+//        redirectAttributes.addFlashAttribute("userProfil", userProfil);
+//
+//        return "redirect:/profil";
+//
+//
         // instantiation du user avec le user loggé..
-        UsersEntity userActif = authContext.getUser();
-
+          UsersEntity userActif = authContext.getUser();
         // Vérification du courriel (1 si existe, 0 sinon)
         if(email.equals(authContext.getUser().getEmail()) || customUserRepository.checkEmailExistance(email) == BigInteger.ZERO ) {
             userActif.setEmail(email);
@@ -258,13 +304,10 @@ public class ProfilController {
                     session.setAttribute("avatarpathProfil", userActif.getAvatar());
                 }
             }
-            // on save le user dans la BD..
-            userRepository.save(userActif);
-        }
 
-        // on re set le user loggé avec celui modifié ..
-        authContext.setUser(userActif);
+        }
         return "redirect:/profil";
+
     }
 
     @RequestMapping(value="/deleteObject", method = RequestMethod.POST)
