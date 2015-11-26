@@ -1,6 +1,8 @@
 package com.tilf.troke.repository;
 
 import com.tilf.troke.entity.CustomObjetImageEntity;
+import com.tilf.troke.entity.CustomSearchObjectEntity;
+import com.tilf.troke.entity.ImageobjectEntity;
 import com.tilf.troke.entity.ObjectsEntity;
 
 import java.util.List;
@@ -18,16 +20,21 @@ public interface CustomObjectRepository {
     List<ObjectsEntity> getRecentItems();
 
     List<ObjectsEntity> getObjectsByCategory(Set<String> categoryName);
-    List<ObjectsEntity> getObjectsBySubCategory(Set<String> categoryName);
+    List<CustomSearchObjectEntity> getObjectsBySubCategory(Set<String> categoryName);
+    String getSubCatNameBySubCatId(int subCatId);
     List<Integer> getCatIdListFromCatNameSet(Set<String> catNameList);
     List<Integer> getSubCatIdListFromSubCatNameSet(Set<String> catNameList);
     List<ObjectsEntity> getListObjectByUserId(String userId);
     ObjectsEntity getObjectEntityByIdObject(int id_object);
     CustomObjetImageEntity getCustomObjectImageEntityByIdObject(int id_object);
     List<String> getSubCatListByCategoryName(String categoryname);
+    CustomSearchObjectEntity getCustomsearchobjectentityByIdObject(int idObject);
+
+    // Image
+    List<ImageobjectEntity> getObjectImageListByIdobject(int Idobject);
 
     // Recherches
-    List<ObjectsEntity> getObjectListByKeyword(String keyword);
+    List<CustomSearchObjectEntity> getObjectListByKeyword(String keyword);
 
     //GetItemNameByID
     String getObjectNameByItemID(int itemID);
