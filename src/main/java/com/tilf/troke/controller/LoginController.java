@@ -36,10 +36,12 @@ public class LoginController {
     }
 
     @RequestMapping("/logout")
-    public String logout() {
+    public String logout(HttpSession session) {
         authContext.getUser().setIsonline("N");
         userRepository.save(authContext.getUser());
         authContext.setUser(null);
+        session.removeAttribute("user");
+
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
@@ -71,18 +73,8 @@ public class LoginController {
     public String login(@RequestParam("iduser") String idUser, @RequestParam("pass") String pass, Model model, HttpSession session) {
         UsersEntity user = userRepository.findUsersEntityByIduserAndPass(idUser, pass);
         session.setAttribute("user", user);
-        if(user.getIsonline().equals("O"))
-        {
-            session.setAttribute("error", " * Cet utilisateur est deja connecté ..");
-            // TODO THYMELEAF HACK
-            if (false) {
-                WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-                context.setVariable("user", user);
-                context.setVariable("error", "* Veuillez entrer un nom d'utilisateur");
-            }
-            return "redirect:/connexion";
-        }
-        else if(idUser.isEmpty())
+
+        if(idUser.isEmpty())
         {
             session.setAttribute("error", "* Veuillez entrer un nom d'utilisateur");
             // TODO THYMELEAF HACK
@@ -117,9 +109,9 @@ public class LoginController {
 
         else
         {
-            user.setIsonline("O");
             userRepository.save(user);
             authContext.setUser(user);
+            session.setAttribute("user", user);
 
             return "redirect:/";
         }
