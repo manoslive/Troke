@@ -2,14 +2,11 @@ package com.tilf.troke.controller;
 
 import com.tilf.troke.auth.AuthUserContext;
 import com.tilf.troke.entity.*;
-import com.tilf.troke.repository.CustomCategoryRepository;
+import com.tilf.troke.repository.*;
 import com.tilf.troke.entity.ImageobjectEntity;
 import com.tilf.troke.entity.ObjectsEntity;
 import com.tilf.troke.entity.UsersEntity;
 import com.tilf.troke.filter.SearchFilter;
-import com.tilf.troke.repository.CustomImageObjectRepository;
-import com.tilf.troke.repository.CustomObjectRepository;
-import com.tilf.troke.repository.CustomSubcategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.thymeleaf.context.WebContext;
+
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -47,12 +45,23 @@ public class HomeController {
     @Autowired
     private SearchFilter searchFilter;
 
+    @Autowired
+    private CustomMyTradeRepository customMyTradeRepository;
+
     @RequestMapping("/")
     public String root(Model model, HttpSession session) {
         FillCategoryMenu(model, session);
         FillCategoryList(model);
         GetRecentItems(model);
         searchFilter.removeAll();
+        List<TransactionsEntity> CountPending = new ArrayList<TransactionsEntity>();
+
+
+        if(authContext.getUser() != null)
+        {
+           CountPending = customMyTradeRepository.getPendingTransactionsByUserID(authContext.getUser().getIduser());
+            session.setAttribute("notifications", CountPending.size());
+        }
 
         return "fragments/home/home";
     }

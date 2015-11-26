@@ -49,19 +49,19 @@ public class SearchController {
     public String ListCategoryItems(@RequestParam("categoryName") String categoryName, @RequestParam(value = "catIsChecked") Boolean catIsChecked, Model model, HttpSession session) {
 
         // Modification de la liste de Cat/SubCat
-        if (catIsChecked == true){
+        if (catIsChecked == true) {
             searchFilter.put(categoryName, true);
             List<String> subCatList = customObjectRepository.getSubCatListByCategoryName(categoryName);
-            for(int i=0;i<subCatList.size();i++){
-                if(!searchFilter.get(subCatList.get(i))){
+            for (int i = 0; i < subCatList.size(); i++) {
+                if (!searchFilter.exists(subCatList.get(i))) {
                     searchFilter.put(subCatList.get(i), true);
                 }
             }
         } else {
             searchFilter.remove(categoryName);
             List<String> subCatList = customObjectRepository.getSubCatListByCategoryName(categoryName);
-            for(int i=0;i<subCatList.size();i++){
-                if(searchFilter.get(subCatList.get(i))){
+            for (int i = 0; i < subCatList.size(); i++) {
+                if (searchFilter.exists(subCatList.get(i))) {
                     searchFilter.remove(subCatList.get(i));
                 }
             }
@@ -94,25 +94,21 @@ public class SearchController {
     @RequestMapping(value = "/subcategory", method = RequestMethod.GET)
     public String ListSubCategoryItems(@RequestParam("subCategoryName") String subCategoryName, @RequestParam(value = "subCatIsChecked") Boolean subCatIsChecked, HttpSession session, Model model) {
         // Modification de la liste de Cat/SubCat
-        if(subCatIsChecked == true){
+        if (subCatIsChecked == true) {
             searchFilter.put(subCategoryName, subCatIsChecked);
-        }
-        else{
+        } else {
             searchFilter.remove(subCategoryName);
         }
 
         // On obtient la liste de toutes les cat/subcat qui sont cochées
         Set<String> catSubCats = getKeysByValue(searchFilter.getFilters(), true);
-        if(!catSubCats.isEmpty() && !catSubCatService.getSubCatFromSet(catSubCats).isEmpty()){
-            if(!catSubCatService.getCatFromSet(catSubCats).isEmpty())
-            {
-                
-            }
-            else{
+        if (!catSubCats.isEmpty() && !catSubCatService.getSubCatFromSet(catSubCats).isEmpty()) {
+            if (!catSubCatService.getCatFromSet(catSubCats).isEmpty()) {
                 model.addAttribute("objectList", customObjectRepository.getObjectsBySubCategory(catSubCatService.getSubCatFromSet(catSubCats)));
+            } else {
+                model.addAttribute("objectList", "");
             }
-        }
-        else{
+        } else {
             model.addAttribute("objectList", null);
             model.addAttribute("objectListEmpty", true);
         }
@@ -122,10 +118,13 @@ public class SearchController {
 
         // TODO THYMELEAF HACK
         if (false) {
+            ObjectsEntity test = new ObjectsEntity();
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-            context.setVariable("objectList", "");
+            context.setVariable("objectList", test);
+            context.setVariable("obj", test);
             context.setVariable("leftMenu", fillLeftCatMenu());
             context.setVariable("adrStartTrade", "/startTrade?itemID=");
+
         }
         return "fragments/home/search";
     }

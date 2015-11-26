@@ -382,3 +382,140 @@
 .carousel-indicators > li.active {
     border: 2px solid black;
 }
+
+#MyProfil
+{
+
+    height:600px;
+    margin-top:10px;
+    margin-bottom:50px;
+}
+
+#LeftSpace
+{
+
+
+
+}
+
+#RightSpace
+{
+
+
+
+}
+
+#MiddleInfo
+{
+    padding-right:0px;
+    padding-left:0px;
+    background-color:white;
+    height:600px;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+
+}
+
+#ProfilBanner
+{
+    clear: both;
+    margin: 0px auto;
+
+    background-image:url("../images/WorldBanner6.jpg") ;
+    background-size:cover;
+    height:35%;
+
+    -moz-border-radius: 10px 10px 0px 0px;
+    -khtml-border-radius: 10px 10px 0px 0px;
+    -webkit-border-radius: 10px 10px 0px 0px;
+
+
+}
+
+#PhotoProfil
+{
+    margin-top:5px;
+    margin-bottom:5px;
+    display:inline-flex;
+
+    border: 2px solid white;
+    background-color:#00374C;
+
+    z-index:10;
+
+    height:200px;
+    width:200px;
+
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+#NameBanner
+{
+    padding:0 0 0 0;
+    height:100%;
+}
+
+#UserName
+{
+    color:white;
+    font-family:'Amaranth';
+    font-size:22px;
+
+    margin-left:60%;
+
+}
+
+#RectangleName
+{
+    position:absolute;
+    padding-top:8px;
+    z-index:5;
+}
+
+#ProfilInfo
+{
+    margin-top:15px;
+    height:35%;
+    font-family:'Amaranth';
+}
+
+#ProfilButtons
+{
+    height:10%;
+    font-family:'Amaranth';
+    margin-top:10px;
+
+
+}
+
+#ProfilEmail
+{
+    height:15%;
+    margin-left:0px;
+    margin-right:0px;
+    font-family:'Amaranth';
+}
+
+#errprenom
+{
+    display:none;
+}
+#errnom
+{
+    display:none;
+}
+#errcode
+{
+    display:none;
+}
+#errtel
+{
+    display:none;
+}
+#erremail
+{
+    display:none;
+}
