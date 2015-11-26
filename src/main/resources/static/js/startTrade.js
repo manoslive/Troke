@@ -49,13 +49,54 @@ function checkValidTrade(){
     if($('#opponentExchangeItemsStart ul li').length < 1) {
         document.getElementById("btn-send-trade").style.pointerEvents = "none";
         document.getElementById("btn-send-trade").innerText = "Sélectionnez un item \n pour l'échange"
+        $('#btn-send-trade').addClass('btn-warning');
+        $('#btn-send-trade').removeClass('btn-success');
     }else {
         document.getElementById("btn-send-trade").style.pointerEvents = "auto";
         document.getElementById("btn-send-trade").innerText = "Envoyer l'offre!";
+        $('#btn-send-trade').addClass('btn-success');
+        $('#btn-send-trade').removeClass('btn-warning');
     }
 }
+function checkAdjustForScrollBar(element){
+    (function($) {
+        $.fn.has_scrollbar = function() {
+            var divnode = this.get(0);
+            if(divnode.scrollHeight > divnode.clientHeight)
+                return true;
+        }
+    })(jQuery);
+    if(element.has_scrollbar()) {
+        element.css("padding-left", "0px");
+    }
+    else{
+        element.css("padding-left", "12px");
+    }
+}
+$(window).resize(function() {
+    checkAdjustForScrollBar($("#OpponentInventory"));
+    if($(window).width() < 480)
+    {
+        //Mobile
+        $(".startTrade-OpponentInventoryContainer").insertBefore("#exchangeZone");
+    }
+    else if($(window).width() <= 1024) //Glitch dans le matrix , 1006 affect quand lecran est a 1024
+    {
+        //Tablet
+        $(".startTrade-OpponentInventoryContainer").insertBefore("#exchangeZone");
+    }
+    else
+    {
+        //Desktop
+        $(".startTrade-OpponentInventoryContainer").insertAfter("#exchangeZone");
+    }
+});
 $(init);
 function init() {
+    checkAdjustForScrollBar($("#OpponentInventory"));
+    $("#OpponentInventory").bind("DOMSubtreeModified", function() {
+        checkAdjustForScrollBar($("#OpponentInventory"));
+    });
     // mettre les items non selectable (selection de text, highlight bleu ...)
     $("#OpponentInventory").disableSelection();
     $("#opponentExchangeItemsStart").disableSelection();
@@ -91,7 +132,7 @@ function init() {
         }
     });
     // item mis en echangeOpposant function
-    var recycle_icon = "<img src='images/recycle_icon.png' class='icon-refresh'/>";
+    var recycle_icon = "<img/>";
     function insertExchangeOpponent( $item ) {
         $item.fadeOut(function() {
             var $list = $( "ul", $OpponentExchange).length ?
@@ -99,28 +140,33 @@ function init() {
                 $( "<ul class='OpponentInventory ui-helper-reset'/>" ).appendTo( $OpponentExchange );
             if($item.hasClass("money")){
                 $item.find( ".item-image" ).replaceWith("<div class='divInputMoney'><label class='lb-money'>$</label><input id='newTradeMoneyInput' name='newTradeMoneyInput'  class='inputMoney' style='z-index:1000;' type='number'/></div>");
-                $item.find( ".icon-exchange" ).remove();
                 $item.append( recycle_icon ).appendTo( $list).fadeIn(function() {
                     $item
                         .animate({ width: "80px" , height: "80px"})
                         .find( ".item-image" )
-                        .animate({  width: "80px", height: "60px" , maxWidth: "80px", maxHeight: "60px" });
+                        .animate({  width: "80px", height: "78px" , maxWidth: "80px", maxHeight: "78px" });
+                    $item
+                        .find(".optionsExchangeItem")
+                        .animate({top: "1px"});
                 });
             }else{
-                $item.find( ".icon-exchange" ).remove();
                 $item.append( recycle_icon ).appendTo( $list).fadeIn(function() {
                     $item
                         .animate({ width: "80px" , height: "80px"})
                         .find( ".item-image" )
-                        .animate({  width: "80px", height: "60px" , maxWidth: "80px", maxHeight: "60px" });
+                        .animate({  width: "80px", height: "78px" , maxWidth: "80px", maxHeight: "78px" });
                 });
                 $item.find("input").addClass("itemID");
             }
+            $item.find( ".icon-exchange" ).addClass("icon-refresh");
+            $item.find( ".icon-refresh" ).removeClass("icon-exchange");
+            $item.find(".optionsInventoryItem").addClass("optionsExchangeItem");
+            $item.find(".optionsExchangeItem").removeClass("optionsInventoryItem");
             checkValidTrade();
         });
     }
     // item recycle Opposant function
-    var zoneEchange_icon = "<img src='images/add-button-icon.png' class='icon-exchange'/>";
+    var zoneEchange_icon = "<img/>";
     function recycleOpponentItem( $item ) {
         $item.fadeOut(function() {
             $item.find(".divInputMoney").replaceWith("<img class='item-image' src='images/item-dollar-sign.png' alt=''>");
@@ -128,16 +174,17 @@ function init() {
                 .find("input")
                 .removeClass("itemID")
                 .end()
-                .find( ".icon-refresh" )
-                .remove()
-                .end()
-                .css( "width", "120").css("height", "125px").css("max-width", "120px").css("max-height", "125px")
+                .css( "width", "130").css("height", "125px").css("max-width", "130px").css("max-height", "125px")
                 .append( zoneEchange_icon )
                 .find( ".item-image")
-                .css( "width", "100px").css("height", "80px").css("max-width", "100px").css("max-height", "80px")
+                .css( "width", "100%").css("height", "80%").css("max-width", "130px").css("max-height", "105px")
                 .end()
                 .appendTo( $OpponentInventory )
                 .fadeIn();
+            $item.find( ".icon-refresh" ).addClass("icon-exchange");
+            $item.find( ".icon-exchange" ).removeClass("icon-refresh");
+            $item.find(".optionsExchangeItem").addClass("optionsInventoryItem");
+            $item.find(".optionsInventoryItem").removeClass("optionsExchangeItem");
             checkValidTrade();
         });
     }

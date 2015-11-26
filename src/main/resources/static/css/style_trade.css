@@ -80,6 +80,15 @@
 	position: static;
 	border: 2px solid #003042;
 }
+.startTrade-OpponentInventoryContainer{
+	width: 435px;
+	height: 542px;
+	background-color: #00374C;
+	overflow: visible;
+	float:left;
+	position: static;
+	border: 2px solid #003042;
+}
 /* Zone UserInventory */
 #UserInventory {
 	font-family: "Amaranth";
@@ -179,8 +188,10 @@
 	width: 296px;
 }
 
-.OpponentInventoryStartTrade {
-	max-height: 83.5% !important;
+.startTrade-OpponentInventory {
+	max-height: 90% !important;
+	height: 480px !important;
+	width: 430px !important;
 }
 .OpponentInventory-header{
 	text-align: center;
@@ -234,12 +245,24 @@
 }
 #OpponentInventory li img {
 	width: 100%;
-	max-width: 100px;
+	max-width: 130px;
 	height: 80%;
 	cursor: move;
 }
 /* éléments qui englobe les 2 zones d'échanges' */
 #exchangeZone{
+	height: 600px;
+	width: 46%;
+	float:left;
+	padding-right: 15px;
+	padding-left: 15px;
+	position: static;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	font-family: "Amaranth";
+	font-weight: normal;
+}
+#startTrade-exchangeZone{
 	height: 600px;
 	width: 46%;
 	float:left;
@@ -317,7 +340,7 @@
 }
 /* Zone Echange Opposant Pour la page démarer trok*/
 #opponentExchangeItemsStart{
-	background: #30697D;
+	background: #00374C;
 	width: 100%;
 	display: inline-block;
 	height: 210px;
@@ -325,6 +348,7 @@
 	overflow-y: auto;
 	overflow-x: hidden;
 	border: 2px solid #003042;
+	margin-bottom: 2%;
 }
 #opponentExchangeItemsStart h4 .ui-icon {
 	float: left;
@@ -617,6 +641,9 @@
 	#exchangeZone{
 		width:35% ;
 	}
+	.startTrade-exchangeZone{
+		width: 46% !important;
+	}
 }
 /* Tablets */
 @media screen and (max-width : 1024px) {/*(min-device-width : 768px) and */
@@ -673,6 +700,26 @@
 	}
 	#zoneChat{
 		height:30%;
+	}
+	.startTrade-exchangeZone{
+		width: 80% !important;
+		height: 70% !important;
+		margin: 0% 0% 1% 10% !important;
+	}
+	.startTrade-OpponentInventoryContainer{
+		width: 80% !important;
+		height: 33% !important;
+		margin: 1% 0 1% 10% !important;
+	}
+	.startTrade-OpponentInventory{
+		width: 98% !important;
+		height: 70% !important;
+	}
+	#opponentExchangeItemsStart{
+		height: 94px !important;
+	}
+	#chatBoxStartExchange{
+		height: 100px !important;
 	}
 }
 @media screen and (max-width: 992px){
@@ -782,6 +829,12 @@
 		margin-top: -2px;
 		width: 12px;
 		height: 12px;
+	}
+	.startTrade-OpponentInventory li{
+		height: 90px !important;
+	}
+	.startTrade-OpponentInventory li img{
+		height: 63% !important;
 	}
 	#OpponentExchange{
 		width: 49.2%;
