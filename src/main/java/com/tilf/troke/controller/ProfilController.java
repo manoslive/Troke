@@ -287,7 +287,7 @@ public class ProfilController {
                 // ici on upload l'image sur le serveur avec le bon nom ..
                 // On génère le nom unique de l'image et on vérifie qu'il
                 // n'existe pas déjà.
-                if(userActif.getAvatar().equals("no_avatar.jpg"))
+                if(userActif.getAvatar() == null || userActif.getAvatar().equals("no_avatar.jpg"))
                 {
                     String imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
                     while (customUserRepository.checkAvatarName(imageName) == BigInteger.ONE)
