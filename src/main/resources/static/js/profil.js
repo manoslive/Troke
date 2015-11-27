@@ -91,15 +91,13 @@ function deleteSubmit()
 function modalSubmitDelete(id)
 {
     document.getElementById('idObjectDelete').value = id;
-    alert("Delete");
     $('#deleter').submit();
-    alert("Delete2");
+
 }
 
 function modalSubmitModifier(id)
 {
     document.getElementById('idObjectModifier').value = id;
-    alert("Modifier");
     $('#modifier').submit();
 }
 

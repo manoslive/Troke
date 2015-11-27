@@ -262,17 +262,8 @@
 	font-family: "Amaranth";
 	font-weight: normal;
 }
-#startTrade-exchangeZone{
-	height: 600px;
-	width: 46%;
-	float:left;
-	padding-right: 15px;
-	padding-left: 15px;
-	position: static;
-	overflow-x: hidden;
-	overflow-y: hidden;
-	font-family: "Amaranth";
-	font-weight: normal;
+.startTrade-exchangeZone{
+	margin-left: 5% !important;
 }
 .btn-offre{
 	margin: 0 0 5px 0 !important;
