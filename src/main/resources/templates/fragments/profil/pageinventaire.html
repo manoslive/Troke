@@ -10,21 +10,43 @@
             <div id="MiddleInfo" class="col-md-8">
                 <div id="InventoryBanner" class="col-md-12">
 
+                    <div id="topAdd" th:style="*{userInventory.size() eq 0}? 'display:none;':''">
 
+
+                            <a id="iconAdd2" class="icon-plus-sign icon-6x" href="/openModalAjouter"
+                               data-toggle="tooltip" data-placement="bottom" title="Aouter un nouvel item / service!"
+                               style="text-decoration:none; color:white; font-size:80px;"></a><br/>
+
+                    </div>
 
 
                     <div id="RectangleName2" class="col-md-12 rectangle3">
+                        <div style="text-align:center">
                         <span id="UserName">Mon Inventaire</span>
+                        </div>
                     </div>
                     <div class="triangle-l" style="position:absolute;"></div>
                     <div class="triangle-r" style="position:absolute; top:65px;"></div>
+
 
                 </div>
 
                 <div id="InventoryInfo" class="col-md-12">
 
 
-        <div id="InventoryContainer" style="height:90%">
+        <div id="InventoryContainer" style="height:100%; margin-bottom:60px;">
+
+
+            <div id="AddButton" th:style="*{userInventory.size() eq 0}? '':'display:none;'">
+                <div style="margin-top:20%">
+                    <span th:text="'Debutez votre trok en ajoutant'" style="font-size:25px; z-index:91"></span><br/>
+                    <span th:text="'votre premier item / service!'" style="font-size:25px; z-index:91"></span><br/>
+                    <a id="iconAdd" class="icon-plus-sign icon-6x" href="/openModalAjouter"
+                       style="text-decoration:none; color:white; font-size:80px;"></a><br/>
+                </div>
+            </div>
+
+
             <div class="container main-container" style="height:100%;">
 
                 <div id="carousel-example-generic" style="height:100%" class="carousel slide">
@@ -34,9 +56,8 @@
                             <li data-target="#carousel-example-generic"
                                 th:data-slide-to="${inventStat.index}"
                                 th:class="*{inventStat.index eq 0} ? 'active' : ''"
-                                style="width:60px;height:60px;border-radius:100%;
-					            background-image:url('uploaded-images/');
-					            background-size:cover"></li>
+                                th:style="'background-image:url(/uploaded-images/'+ ${listeImage.get(inventStat.index).get(0).getGuidimage()}
+                                +');width:60px;height:60px;border-radius:100%;background-size:cover'"></li>
                         </th:block>
                     </ol>
 
@@ -49,7 +70,7 @@
 
                             <div  id="Innerdiv" th:class="*{inventStat.index eq 0} ? 'item active skyblue' : 'item skyblue'">
                                 <div class="carousel-caption" style="top:5%">
-                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(0).getIsmain().substring(0,1) ne '*'}">
+                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(0).getIsmain().length()eq 1}">
                                     <h3 class="icon-container bubbleinv">
                                         <!--<span class="glyphicon glyphicon-glass"></span>-->
                                         <div class="circular"><img
@@ -58,7 +79,7 @@
 
                                     </h3>
                                     </th:block>
-                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(1).getIsmain().substring(0,1) ne '*'}">
+                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(1).getIsmain().length()eq 1}">
                                         <h3 class="icon-container bubbleinv" >
                                             <!--<span class="glyphicon glyphicon-glass"></span>-->
                                             <div class="circular">
@@ -69,7 +90,7 @@
                                         </h3>
                                     </th:block>
 
-                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(2).getIsmain().substring(0,1) ne '*'}">
+                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(2).getIsmain().length()eq 1}">
                                         <h3 class="icon-container bubbleinv" >
                                             <!--<span class="glyphicon glyphicon-glass"></span>-->
                                             <div class="circular">
@@ -79,7 +100,7 @@
                                         </h3>
                                     </th:block>
 
-                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(3).getIsmain().substring(0,1) ne '*'}">
+                                    <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(3).getIsmain().length()eq 1}">
                                         <h3 class="icon-container bubbleinv" >
                                             <!--<span class="glyphicon glyphicon-glass"></span>-->
                                             <div class="circular">
@@ -108,8 +129,7 @@
                                            <!--style="font-weight:normal; color:white; border:white"-->
                                            <!--th:onclick="'javascript:modalSubmitDelete(\''+${invent.getIdobject()}+'\')'" >Supprimer</a>-->
 
-                                            <a id="iconAdd" class="icon-plus-sign icon-4x" data-toggle="tooltip"
-                                               data-placement="bottom" title="Ajouter un item/service!" href="/openModalAjouter"></a>
+
                                             <i id="iconMod" class="icon-edit-sign icon-4x" data-toggle="tooltip"
                                                data-placement="bottom" title="Modifier un item/service!" th:onclick="'javascript:modalSubmitModifier(\''+${invent.getIdobject()}+'\')'"/>
                                             <i id="iconDel" class="icon-remove-sign icon-4x" data-toggle="tooltip"

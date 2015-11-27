@@ -119,11 +119,11 @@ public class ProfilController {
                         photo.setGuidimage(imageName);
                         if(i == 0)
                         {
-                            photo.setIsmain("Main");
+                            photo.setIsmain("Y");
                         }
                         else
                         {
-                            photo.setIsmain("NotMain");
+                            photo.setIsmain("N");
                         }
                     }
                     else
@@ -131,11 +131,11 @@ public class ProfilController {
                         photo.setGuidimage(imageName);
                         if(i == 0)
                         {
-                            photo.setIsmain("*Main");
+                            photo.setIsmain("Y*");
                         }
                         else
                         {
-                            photo.setIsmain("*NotMain");
+                            photo.setIsmain("N*");
                         }
                     }
                 }
