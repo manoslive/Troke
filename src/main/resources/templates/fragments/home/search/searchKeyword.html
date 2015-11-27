@@ -7,21 +7,36 @@
 
     <!-- Section control de page (#, previous/next) -->
     <div class="paginationControl">
-        <ul class="pagination">
-            <li class="previous"><a href="#">Previous</a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li class="next"><a href="#">Next</a></li>
-        </ul>
-        <ul class="items-per-page nav nav-tabs">
-            <li class="disabledTab"><a>Par page: </a></li>
-            <li class="active"><a data-toggle="tab" href="#">10</a></li>
-            <li><a data-toggle="tab" href="#">20</a></li>
-            <li><a data-toggle="tab" href="#">30</a></li>
-        </ul>
+        <th:block th:if="${searchObjectList.size()} gt 1">
+            <ul class="pagination">
+                <li class="previous"><a href="#">Previous</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li class="next"><a href="#">Next</a></li>
+            </ul>
+            <ul class="items-per-page nav nav-tabs">
+                <li class="disabledTab"><a>Par page: </a></li>
+                <li class="active"><a data-toggle="tab" href="#">10</a></li>
+                <li><a data-toggle="tab" href="#">20</a></li>
+                <li><a data-toggle="tab" href="#">30</a></li>
+            </ul>
+        </th:block>
+        <th:block th:if="${searchObjectList.size()} le 1">
+            <ul class="pagination">
+                <li class="previous"><a href="#">Previous</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li class="next"><a href="#">Next</a></li>
+            </ul>
+            <ul class="items-per-page nav nav-tabs">
+                <li class="disabledTab"><a>Par page: </a></li>
+                <li class="active"><a data-toggle="tab" href="#">10</a></li>
+                <li><a data-toggle="tab" href="#">20</a></li>
+                <li><a data-toggle="tab" href="#">30</a></li>
+            </ul>
+        </th:block>
     </div>
 
     <!-- /Fin control Page -->
@@ -35,10 +50,12 @@
         <div class="span8 offset2">
             <th:block th:if="${searchObjectList.size()} gt 1">
                 <div style="color:white;"
-                     th:text="${searchObjectList.size()} + ' sur ' + ${searchObjectList.size()} + ' résultats affichés.'" class="col-xs-6 col-centered col-min"></div>
+                     th:text="${searchObjectList.size()} + ' sur ' + ${searchObjectList.size()} + ' résultats affichés.'"
+                     class="col-xs-6 col-centered col-min"></div>
             </th:block>
             <th:block th:if="${searchObjectList.size()} eq 1">
-                <div style="color:white;" th:text="'1 sur 1 résultat affiché.'" class="col-xs-6 col-centered col-min"></div>
+                <div style="color:white;" th:text="'1 sur 1 résultat affiché.'"
+                     class="col-xs-6 col-centered col-min"></div>
             </th:block>
         </div>
     </div>
@@ -107,31 +124,46 @@
                 </a>
             </button>
         </div>
-    </div>
-    <!-- Ligne/Spacer -->
-    <div class="or-spacer">
-        <div class="mask"></div>
+        <!-- Ligne/Spacer -->
+        <div class="or-spacer">
+            <div class="mask"></div>
+        </div>
     </div>
 
     <!-- /Div un item -->
 
     <!-- Section control de page (#, previous/next) -->
     <div class="paginationControl">
-        <ul class="pagination">
-            <li class="previous"><a href="#">Previous</a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li class="next"><a href="#">Next</a></li>
-        </ul>
-        <ul class="items-per-page nav nav-tabs">
-            <li class="disabledTab"><a>Par page: </a></li>
-            <li class="active"><a data-toggle="tab" href="#">10</a></li>
-            <li><a data-toggle="tab" href="#">20</a></li>
-            <li><a data-toggle="tab" href="#">30</a></li>
-        </ul>
+        <th:block th:if="${searchObjectList.size()} gt 1">
+            <ul class="pagination">
+                <li class="previous"><a href="#">Previous</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li class="next"><a href="#">Next</a></li>
+            </ul>
+            <ul class="items-per-page nav nav-tabs">
+                <li class="disabledTab"><a>Par page: </a></li>
+                <li class="active"><a data-toggle="tab" href="#">10</a></li>
+                <li><a data-toggle="tab" href="#">20</a></li>
+                <li><a data-toggle="tab" href="#">30</a></li>
+            </ul>
+        </th:block>
+        <th:block th:if="${searchObjectList.size()} le 1">
+            <ul class="pagination">
+                <li class="previous"><a href="#">Previous</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li class="next"><a href="#">Next</a></li>
+            </ul>
+            <ul class="items-per-page nav nav-tabs">
+                <li class="disabledTab"><a>Par page: </a></li>
+                <li class="active"><a data-toggle="tab" href="#">10</a></li>
+                <li><a data-toggle="tab" href="#">20</a></li>
+                <li><a data-toggle="tab" href="#">30</a></li>
+            </ul>
+        </th:block>
     </div>
     <!-- /Fin control Page -->
 </div>

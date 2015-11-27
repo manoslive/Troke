@@ -5,7 +5,6 @@ import com.tilf.troke.entity.CustomSearchObjectEntity;
 import com.tilf.troke.filter.SearchFilter;
 import com.tilf.troke.repository.CustomObjectRepository;
 import com.tilf.troke.service.CatSubCatService;
-import com.tilf.troke.service.ObjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -161,10 +160,55 @@ public class SearchController {
     }
 
     @RequestMapping(value = "/searchDB", method = RequestMethod.GET)
-    public String searchDB(@RequestParam("keyword") String keyword, Model model) {
+    public String searchDB(@RequestParam("keyword") String keyword, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "number", required = false) Integer number, Model model, HttpSession session) {
         searchFilter.removeAll();
         List<CustomSearchObjectEntity> list = customObjectRepository.getObjectListByKeyword(keyword);
-        model.addAttribute("searchObjectList", list);
+        List<List<CustomSearchObjectEntity>> pageList = new ArrayList<>();
+
+        // Si number est nul, on lui met 10 par défaut
+        if (number == null) {
+            number = 10;
+        }
+
+        // Création des pages (liste de liste de customsearchobjectentity)
+        if (list.size() > number) {
+            Double numberDouble = Double.parseDouble(number.toString());
+            // Nombre de pages de résultats
+            int pageNumber = (int) Math.ceil((list.size() / numberDouble));
+            for (int i = 0; i < pageNumber; i++) {
+                List<CustomSearchObjectEntity> internalList = new ArrayList<>();
+                if (i < pageNumber - 1) {
+                    for (int j = 0; j < number; j++) {
+                        if (i == 0) {
+                            internalList.add(list.get(j));
+                        } else {
+                            internalList.add(list.get((i * number) + j));
+                        }
+
+                    }
+                    pageList.add(internalList);
+                } else {
+                    for (int j = 0; j < list.size() % number; j++) {
+                        internalList.add(list.get((i * number) + j));
+                    }
+                    pageList.add(internalList);
+                }
+            }
+            if(page == null){
+                model.addAttribute("searchObjectList", pageList.get(0));
+            }
+            else{
+                model.addAttribute("searchObjectList", pageList.get(page - 1));
+            }
+        } else {
+            model.addAttribute("searchObjectList", list);
+        }
+
+        // Attribut de modèle pour les pages
+        model.addAttribute("currentpage", page);
+        model.addAttribute("numberperpage", number);
+        model.addAttribute("numberofpage", list.size() / number);
+
         model.addAttribute("adrSearch", "/searchDB?keyword=");
         model.addAttribute("adrStartTrade", "/startTrade?itemID=");
         model.addAttribute("leftMenu", fillLeftCatMenu());
