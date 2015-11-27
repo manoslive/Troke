@@ -90,7 +90,7 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
     // Get Opponent User d'un transaction
     //Recoit le ID de transaction et le current user pour déterminer le user Opposé
     @Override
-    public String findOpponentUserID(int transactionID, String currentUserID){
+    public UsersEntity findOpponentUser(int transactionID, String currentUserID){
         String query1 = "select t.iduser1 from TransactionsEntity t where t.idtransaction = :idTransaction";
         String query2 = "select t.iduser2 from TransactionsEntity t where t.idtransaction = :idTransaction";
         Query queryObject1 = entityManager.createQuery(query1);
@@ -99,10 +99,16 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
         queryObject2.setParameter("idTransaction", transactionID);
         String userID1 = (String)queryObject1.getSingleResult();
         String userID2 = (String)queryObject2.getSingleResult();
-
+        String Opponent="";
         if(currentUserID.equals(userID1))
-            return userID2;
+            Opponent = userID2;
         else
-            return userID1;
+            Opponent = userID1;
+
+        String query = "select u from UsersEntity u where u.iduser = :idUser";
+        Query queryObject = entityManager.createQuery(query);
+        queryObject.setParameter("idUser",Opponent);
+        UsersEntity user = (UsersEntity) queryObject.getSingleResult();
+        return user;
     }
 }

@@ -90,9 +90,10 @@ public class TransactionController {
     @RequestMapping(value = "/openTrade", method = RequestMethod.GET)
     public String openTrade(@RequestParam("transactionID") int tradeID, Model model) {
         UsersEntity currentUser = authUserContext.getUser();
-        String opponentID = customUserRepository.findOpponentUserID(tradeID, currentUser.getIduser());
+        UsersEntity opponent = customUserRepository.findOpponentUser(tradeID, currentUser.getIduser());
+        String opponentID = opponent.getIduser();
         model.addAttribute("userActif", currentUser);
-        model.addAttribute("opponentID", opponentID);
+        model.addAttribute("opponent", opponent);
         model.addAttribute("transactionID", tradeID);
 
         //Get les 2 items d'argent
@@ -117,7 +118,7 @@ public class TransactionController {
             context.setVariable("ChatLog", customChatMessageRepository.getChatLogByTransactionID(tradeID));
             context.setVariable("UserMoneyItem", customTransactionMoneyRepository.getTransactionMoney(tradeID, currentUser.getIduser()));
             context.setVariable("OpponentMoneyItem", customTransactionMoneyRepository.getTransactionMoney(tradeID, opponentID));
-            context.setVariable("opponentID", opponentID);
+            context.setVariable("opponent", opponent);
             context.setVariable("transactionID", tradeID);
             context.setVariable("listImageUserInventory", customObjectRepository.getListObjectTradeInventory(tradeID, currentUser.getIduser()));
             context.setVariable("listImageOpponentInventory", customObjectRepository.getListObjectTradeInventory(tradeID, opponentID));

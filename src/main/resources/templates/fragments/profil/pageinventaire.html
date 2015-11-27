@@ -108,8 +108,8 @@
                                            <!--style="font-weight:normal; color:white; border:white"-->
                                            <!--th:onclick="'javascript:modalSubmitDelete(\''+${invent.getIdobject()}+'\')'" >Supprimer</a>-->
 
-                                            <i id="iconAdd" class="icon-plus-sign icon-4x" data-toggle="tooltip"
-                                               data-placement="bottom" title="Ajouter un item/service!" th:onclick="'javascript:modalSubmitAjouter()'"/>
+                                            <a id="iconAdd" class="icon-plus-sign icon-4x" data-toggle="tooltip"
+                                               data-placement="bottom" title="Ajouter un item/service!" href="/openModalAjouter"></a>
                                             <i id="iconMod" class="icon-edit-sign icon-4x" data-toggle="tooltip"
                                                data-placement="bottom" title="Modifier un item/service!" th:onclick="'javascript:modalSubmitModifier(\''+${invent.getIdobject()}+'\')'"/>
                                             <i id="iconDel" class="icon-remove-sign icon-4x" data-toggle="tooltip"

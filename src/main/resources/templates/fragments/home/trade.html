@@ -14,7 +14,7 @@
   <input id="tradeState" type="hidden" style="position:absolute" name="tradeState"/>
   <input th:value="${transactionID}" id="TransactionID" type="hidden" style="position:absolute" name="idTransaction"/>
   <input th:value="${userActif.getIduser()}" name="currentUser" type="hidden" style="position:absolute" />
-  <input th:value="${opponentID}" name="iduser2" type="hidden" style="position:absolute" />
+  <input th:value="${opponent.getIduser()}" name="iduser2" type="hidden" style="position:absolute" />
   <input th:value="${ChatLog.getIdchat()}" name="chatID" type="hidden" style="position:absolute" />
   <input id="tradeObjectsID" type="hidden" style="position:absolute" name="tradeObjects"/>
   <input id="userMoneyValue" type="hidden" style="position:absolute" name="userMoneyValue"/>
@@ -23,39 +23,34 @@
   <div class="container tradePage">
     <!-- Page qui conteint tous le modules d'échanges' -->
     <div id="pageTroker" class="ui-widget ui-helper-clearfix col-md-12" data-mcs-theme="3d-thick">
-      <!-- Liste qui crxée une zone inventaire (User) et contient les items-->
-      <ul id="UserInventory" class="UserInventory ui-helper-reset ui-helper-clearfix col-md-3">
+      <div class="UserInventoryContainer">
+        <div class="userInventoryAvatar" th:background="${userActif.getAvatar()}"></div>
         <h5 class="UserInventory-header">Votre inventaire</h5>
-        <li th:each="invUser : ${listImageUserInventory}" class="UserItem ui-widget-content ui-corner-tr">
-          <h5 th:text="${invUser.getNameObject()}" class="ui-widget-header"></h5>
-          <img class="item-image" th:src="*{invUser.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${invUser.getImage1()}:'images/LogoWorld_Transparence.png'" alt=""/>
-          <div class="optionsItem">
-            <div class="btn-zoom">
-              <img src="images/zoom_icon.png" class="icon-zoom" />
-              <div class="follower">
-                <a class="js-open-modal link-zoom info-icon "
-                   href="#" data-modal-id="modal-InfoItem"
-                   th:onclick="'javascript:showModalInfoItem(\''+ ${invUser.getIdobject()} +'\')'">Info Item</a>
+        <!-- Liste qui crée une zone inventaire (User) et contient les items-->
+        <ul id="UserInventory" class="UserInventory ui-helper-reset ui-helper-clearfix col-md-3">
+            <li th:each="invUser : ${listImageUserInventory}" class="UserItem ui-widget-content ui-corner-tr">
+              <h5 th:text="${invUser.getNameObject()}" class="ui-widget-header"></h5>
+              <img class="item-image" th:src="*{invUser.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${invUser.getImage1()}:'images/LogoWorld_Transparence.png'" alt=""/>
+              <div class="optionsInventoryItem">
+                <a class="js-open-modal link-zoom info-icon btn-option-item" href="#" data-modal-id="modal-InfoItem"
+                   th:onclick="'javascript:showModalInfoItem(\''+ ${invUser.getIdobject()} +'\')'"></a>
+                <a class="icon-exchange btn-option-item"/>
               </div>
-            </div>
-            <img src="images/add-button-icon.png" class="ui-icon icon-exchange" />
-          </div>
-          <input type="hidden" th:value="${invUser.getIdobject()}" class=""/>
-        </li>
-        <!-- Item Argent -->
-        <th:block th:if="${UserMoneyItem.getValue()} le 0">
-        <li class="money UserItem ui-widget-content ui-corner-tr">
-          <h5 class="ui-widget-header">Argent</h5>
-          <img class="item-image" src="images/item-dollar-sign.png" alt=""/>
-          <div class="optionsItem">
-            <div class="btn-zoom">
-            </div>
-            <img src="images/add-button-icon.png" class="info-icon icon-exchange" />
-          </div>
-        </li>
-        </th:block>
-      </ul>
-
+              <input type="hidden" th:value="${invUser.getIdobject()}" class=""/>
+            </li>
+            <!-- Item Argent -->
+            <th:block th:if="${UserMoneyItem.getValue()} le 0">
+            <li class="money UserItem ui-widget-content ui-corner-tr">
+              <h5 class="ui-widget-header">Argent</h5>
+              <img class="item-image" src="images/item-dollar-sign.png" alt=""/>
+              <div class="optionsInventoryItem">
+                <a></a>
+                <a class="icon-exchange btn-option-item"/>
+              </div>
+            </li>
+            </th:block>
+        </ul>
+      </div>
       <!-- Div contenant les modules de zone d'échange et le chat (milieu de la page) -->
       <div id="exchangeZone">
         <div id="UserExchange" class="container-outer">
@@ -65,18 +60,11 @@
             <ul class="UserInventory ui-helper-reset">
               <li th:each="userTradeItem : ${listImageUserTradeZone}" class="UserItem ui-widget-content ui-corner-tr" style="display: block; overflow: hidden; width: 80px; height: 80px;">
                 <h5 th:text="${userTradeItem.getNameObject()}" class="ui-widget-header"></h5>
-                <img class="item-image" th:src="*{userTradeItem.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${userTradeItem.getImage1()}:'images/LogoWorld_Transparence.png'" alt="" style="display: inline-block; overflow: hidden; width: 80px; height: 60px; max-width: 80px; max-height: 60px;"/>
-                <div class="optionsItem">
-                  <div class="btn-zoom">
-                    <img src="images/zoom_icon.png" class="icon-zoom"/>
-                    <div class="follower">
-                      <a class="js-open-modal link-zoom info-icon"
-                         href="#" data-modal-id="modal-InfoItem"
-                         th:onclick="'javascript:showModalInfoItem(\''+ ${userTradeItem.getIdobject()} +'\')'">Info Item</a>
-                    </div>
-                  </div>
+                <img class="item-image" th:src="*{userTradeItem.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${userTradeItem.getImage1()}:'images/LogoWorld_Transparence.png'" alt="" style="display: inline-block; overflow: hidden; width: 80px; height: 78px; max-width: 80px; max-height: 78px;"/>
+                <div class="optionsExchangeItem">
+                  <a class="js-open-modal link-zoom info-icon btn-option-item" href="#" data-modal-id="modal-InfoItem" th:onclick="'javascript:showModalInfoItem(\''+ ${userTradeItem.getIdobject()} +'\')'"></a>
+                  <a class="btn-option-item icon-refresh"></a>
                 </div>
-                <img src="images/recycle_icon.png" class="icon-refresh"/>
                 <input type="hidden" th:value="${userTradeItem.getIdobject()}" class="itemID"/>
               </li>
               <!--Objet argent s'il a de l'argent plus que 0-->
@@ -87,10 +75,9 @@
                     <label class='lb-money'>$</label>
                     <input id='userMoneyInput' name='userMoneyInput' th:value="${UserMoneyItem.getValue()}" class='inputMoney' style='z-index:1000;' type='number'/>
                   </div>
-                  <div class="optionsItem">
-                    <div class="btn-zoom">
-                    </div>
-                    <img src="images/recycle_icon.png" class="icon-refresh"/>
+                  <div class="optionsExchangeItem" style="top: 1px !important;">
+                    <a></a>
+                    <a class="icon-exchange btn-option-item"/>
                   </div>
                 </li>
               </th:block>
@@ -99,23 +86,16 @@
           </div>
         </div>
         <div id="OpponentExchange" class="container-outer">
-          <h4 th:text="'Zone d\'échange à ' + ${opponentID}" class="exchangeZoneHeader ui-widget-header"></h4>
+          <h4 th:text="'Zone d\'échange à ' + ${opponent.getIduser()}" class="exchangeZoneHeader ui-widget-header"></h4>
           <div id="opponentExchangeItems" class="container-inner ui-state-default">
             <ul class="OpponentInventory ui-helper-reset">
               <li th:each="opponentTradeItem : ${listImageOpponentTradeZone}" class="OpponentItem ui-widget-content ui-corner-tr ui-draggable" style="display: block; overflow: hidden; width: 80px; height: 80px;">
                 <h5 th:text="${opponentTradeItem.getNameObject()}" class="ui-widget-header"></h5>
-                <img class="item-image" th:src="*{opponentTradeItem.getImage1().substring(0,1) ne '*'} ? '/uploaded-images/'+${opponentTradeItem.getImage1()}:'images/LogoWorld_Transparence.png'" alt="" style="display: inline-block; overflow: hidden; width: 80px; height: 60px; max-width: 80px; max-height: 60px;" />
-                <div class="optionsItem">
-                  <div class="btn-zoom">
-                    <img src="images/zoom_icon.png" class="icon-zoom"/>
-                    <div class="follower">
-                      <a class="js-open-modal link-zoom info-icon "
-                         href="#" data-modal-id="modal-InfoItem"
-                         th:onclick="'javascript:showModalInfoItem(\''+ ${opponentTradeItem.getIdobject()} +'\')'">Info Item</a>
-                    </div>
-                  </div>
+                <img class="item-image" th:src="*{opponentTradeItem.getImage1().substring(0,1) ne '*'} ? '/uploaded-images/'+${opponentTradeItem.getImage1()}:'images/LogoWorld_Transparence.png'" alt="" style="display: inline-block; overflow: hidden; width: 80px; height: 78px; max-width: 80px; max-height: 78px;" />
+                <div class="optionsExchangeItem">
+                  <a class="js-open-modal link-zoom info-icon btn-option-item" href="#" data-modal-id="modal-InfoItem" th:onclick="'javascript:showModalInfoItem(\''+ ${opponentTradeItem.getIdobject()} +'\')'"></a>
+                  <a class="btn-option-item icon-refresh"></a>
                 </div>
-                <img src="images/recycle_icon.png" class="icon-refresh"/>
                 <input type="hidden" th:value="${opponentTradeItem.getIdobject()}" class="itemID"/>
               </li>
               <!--Objet argent s'il a de l'argent plus que 0-->
@@ -126,19 +106,18 @@
                     <label class="lb-money">$</label>
                     <input id="opponentMoneyInput" name="opponentMoneyInput" th:value="${OpponentMoneyItem.getValue()}" class="inputMoney" style="z-index:1000;" type="number"/>
                   </div>
-                  <div class="optionsItem">
-                    <div class="btn-zoom">
-                    </div>
+                  <div class="optionsExchangeItem" style="top: 1px !important;">
+                    <a></a>
+                    <a class="icon-exchange btn-option-item"/>
                   </div>
-                  <img src="images/recycle_icon.png" class="icon-refresh"/>
                 </li>
               </th:block>
             </ul>
           </div>
         </div>
         <span class="dd animated fadeInDown">
-              <a id="btn-send-trade" style="float:left;" class="btn-offre btn btn-sm animated-button thar-two" onclick="makeIDList()">Envoyer la contre-offre!</a>
-              <a id="btn-accept-trade" style="float:right;" class="btn-offre btn btn-sm animated-button thar-two" onclick="CompleteTransaction()">Accepter l'offre!</a>
+              <a id="btn-send-trade" style="float:left;" class="btn-offre btn btn-sm btn-warning" onclick="makeIDList()">Envoyer la contre-offre!</a>
+              <a id="btn-accept-trade" style="float:right;" class="btn-offre btn btn-sm btn-success" onclick="CompleteTransaction()">Accepter l'offre!</a>
         </span>
         <div id="zoneChat" class="row-md-3">
           <textarea th:text="${ChatLog.getMsg()}" name="chatLog" id="chatBoxStartExchange"></textarea>
@@ -147,39 +126,34 @@
         </div>
       </div>
 
-
-      <!-- Liste qui crée une zone inventaire (Opposant) et contient les items-->
-      <ul id="OpponentInventory" class="OpponentInventory ui-helper-reset ui-helper-clearfix col-md-3">
-        <h5 th:text="'Inventaire à '+ ${opponentID}" class="OpponentInventory-header"></h5>
-        <li th:each="invOpponent : ${listImageOpponentInventory}" class="OpponentItem ui-widget-content ui-corner-tr">
-          <h5 th:text="${invOpponent.getNameObject()}"  class="ui-widget-header"></h5>
-          <img class="item-image" th:src="*{invOpponent.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${invOpponent.getImage1()}:'images/LogoWorld_Transparence.png'" alt=""/>
-          <div class="optionsItem">
-            <div class="btn-zoom">
-              <img src="images/zoom_icon.png" class="icon-zoom" />
-              <div class="follower">
-                <a class="js-open-modal link-zoom info-icon "
-                   href="#" data-modal-id="modal-InfoItem"
-                   th:onclick="'javascript:showModalInfoItem(\''+ ${invOpponent.getIdobject()} +'\')'">Info Item</a>
+      <div class="OpponentInventoryContainer">
+        <div class="opponentInventoryAvatar" th:background="${opponent.getAvatar()}"></div>
+        <h5 th:text="'Inventaire à '+ ${opponent.getIduser()}" class="OpponentInventory-header"></h5>
+        <!-- Liste qui crée une zone inventaire (Opposant) et contient les items-->
+        <ul id="OpponentInventory" class="OpponentInventory ui-helper-reset ui-helper-clearfix col-md-3">
+            <li th:each="invOpponent : ${listImageOpponentInventory}" class="OpponentItem ui-widget-content ui-corner-tr">
+              <h5 th:text="${invOpponent.getNameObject()}"  class="ui-widget-header"></h5>
+              <img class="item-image" th:src="*{invOpponent.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${invOpponent.getImage1()}:'images/LogoWorld_Transparence.png'" alt=""/>
+              <div class="optionsInventoryItem">
+                <a class="js-open-modal link-zoom info-icon btn-option-item" href="#" data-modal-id="modal-InfoItem"
+                   th:onclick="'javascript:showModalInfoItem(\''+ ${invOpponent.getIdobject()} +'\')'"></a>
+                <a class="icon-exchange btn-option-item"/>
               </div>
-            </div>
-            <img src="images/add-button-icon.png" class="info-icon icon-exchange" />
-          </div>
-          <input type="hidden" th:value="${invOpponent.getIdobject()}" class=""/>
-        </li>
-        <!-- Item Argent -->
-        <th:block th:if="${OpponentMoneyItem.getValue()} le 0">
-        <li class="money OpponentItem ui-widget-content ui-corner-tr">
-          <h5 class="ui-widget-header">Argent</h5>
-          <img class="item-image" src="images/item-dollar-sign.png" alt=""/>
-          <div class="optionsItem">
-            <div class="btn-zoom">
-            </div>
-            <img src="images/add-button-icon.png" class="info-icon icon-exchange" />
-          </div>
-        </li>
-        </th:block>
-      </ul>
+              <input type="hidden" th:value="${invOpponent.getIdobject()}" class=""/>
+            </li>
+            <!-- Item Argent -->
+            <th:block th:if="${OpponentMoneyItem.getValue()} le 0">
+            <li class="money OpponentItem ui-widget-content ui-corner-tr">
+              <h5 class="ui-widget-header">Argent</h5>
+              <img class="item-image" src="images/item-dollar-sign.png" alt=""/>
+              <div class="optionsInventoryItem">
+                <a></a>
+                <a class="icon-exchange btn-option-item"/>
+              </div>
+            </li>
+            </th:block>
+        </ul>
+      </div>
     </div>
 
     <!-- Open modal pour l'info d'un item avec les photos (gallery)-->

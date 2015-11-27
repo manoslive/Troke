@@ -3,32 +3,118 @@
 	cursor: default;
 	position: static;
 	padding: 0;
+	font-family: "Amaranth",sans-serif;
+	font-size: 100%;
 }
 .tradePage{
 	margin-top: 1%;
 	height: 100%;
 }
+/* Options Item */
+.icon-exchange:before{
+	content:"";
+}
+.icon-refresh:before{
+	content:"";
+}
+.btn-option-item{
+	width: 30% !important;
+	height: 100% !important;
+}
+.optionsInventoryItem{
+	background: url("../images/inventory_item_overlay.png") no-repeat center center !important;
+	background-size: 100% !important;
+	width:100%;
+	height:25px;
+	top: -24px;
+	position: relative;
+}
+.optionsExchangeItem{
+	background: url("../images/exchange_item_overlay.png") no-repeat center center !important;
+	background-size: 100% !important;
+	width:100%;
+	height:25px;
+	top: -20px;
+	position: relative;
+}
+/* Avatars des Inventaires */
+.userInventoryAvatar{
+	width: 50px;
+	height: 50px;
+	position: relative;
+	top: -10px;
+	left: -15px;
+	background: url('../images/UnknownUser.png') no-repeat center center !important;
+	background-size: 100% !important;
+	float: left;
+	border-radius: 100%;
+	border: 2px solid #DBDBDB;
+}
+.opponentInventoryAvatar{
+	width: 50px;
+	height: 50px;
+	position: relative;
+	top: -10px;
+	left: 15px;
+	background: url('../images/UnknownUser.png') no-repeat center center !important;
+	background-size: 100% !important;
+	float: right;
+	border-radius: 100%;
+	border: 2px solid #DBDBDB;
+}
+/* Inventory Containers */
+.UserInventoryContainer{
+	width: 300px;
+	height: 650px;
+	background-color: #00374C;
+	overflow: visible;
+	float:left;
+	border: 2px solid #003042;
+}
+.OpponentInventoryContainer{
+	width: 300px;
+	height: 650px;
+	background-color: #00374C;
+	overflow: visible;
+	float:left;
+	position: static;
+	border: 2px solid #003042;
+}
+.startTrade-OpponentInventoryContainer{
+	width: 435px;
+	height: 542px;
+	background-color: #00374C;
+	overflow: visible;
+	float:left;
+	position: static;
+	border: 2px solid #003042;
+}
 /* Zone UserInventory */
 #UserInventory {
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: "Amaranth";
 	font-weight: normal;
-	background-color: #30697D;
+	background-color: #00374C;
 	float: left;
 	height: 600px;
 	max-height: 600px;
 	list-style: none;
-	overflow-x: hidden;
+	overflow-x: visible;
 	overflow-y: auto;
 	position: static;
-	border: 2px solid #003042;
-	width: 277px;
+	width: 296px;
 }
 .UserInventory-header{
 	text-align: center;
 	color: white;
-	margin: 0;
-	border: 2px solid #00374C;
-	background: #00374C;
+	margin: 4px 0 4px 0 !important;
+	padding: 2px;
+	background: #00374C url('../images/Trade-Header-Fade.png') no-repeat center center !important;
+	background-size: 100% !important;
+	border-right:none !important;
+	border-left:none !important;
+	border-top: 1px solid #DBDBDB !important;
+	border-bottom: 1px solid #DBDBDB !important;
+	height: 24px;
 	font-size: 100% !important;
 }
 #UserInventory.custom-state-active {
@@ -46,7 +132,7 @@
 	z-index: 1000;
 	display: list-item;
 	overflow: hidden;
-	border: 1px solid #00374C;
+	border: 1px solid #DBDBDB !important;
 }
 #UserInventory li h5 {
 	text-align: center;
@@ -70,12 +156,10 @@
 #UserInventory li img {
 	width: 100%;
 	cursor: move;
-	height: 80px;
+	height: 80%;
 }
 .UserItem .OpponentItem{
-	border: 2px solid #19586F;
 	background-color: #ccc;
-	border-style: ridge;
 	-webkit-box-shadow: inset 0 0 3px #000;
 	-ms-box-shadow: inset 0 0 3px #000;
 	box-shadow: inset 0 0 3px #000;
@@ -92,28 +176,35 @@
 }
 /* Zone OpponentInventory */
 #OpponentInventory {
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: "Amaranth";
 	font-weight: normal;
-	background-color: #30697D;
+	background-color: #00374C;
 	height: 600px;
 	max-height: 600px;
 	list-style: none;
-	overflow-x: hidden;
-	overflow-y: auto;
+	overflow-x:hidden;
+	overflow: auto;
 	position: static;
-	border: 2px solid #003042;
-	width: 277px;
+	width: 296px;
 }
 
-.OpponentInventoryStartTrade {
-	max-height: 83.5% !important;
+.startTrade-OpponentInventory {
+	max-height: 90% !important;
+	height: 480px !important;
+	width: 430px !important;
 }
 .OpponentInventory-header{
 	text-align: center;
 	color: white;
-	margin: 0;
-	border: 2px solid #00374C;
-	background: #00374C;
+	margin: 4px 0 4px 0 !important;
+	padding: 2px;
+	background: #00374C url('../images/Trade-Header-Fade.png') no-repeat center center !important;
+	background-size: 100% !important;
+	border-right:none !important;
+	border-left:none !important;
+	border-top: 1px solid #DBDBDB !important;
+	border-bottom: 1px solid #DBDBDB !important;
+	height: 24px;
 	font-size: 100% !important;
 }
 #OpponentInventory.custom-state-active {
@@ -131,7 +222,7 @@
 	display: list-item;
 	overflow: hidden;
 	border-radius: 3px;
-	border: 1px solid #00374C;
+	border: 1px solid #DBDBDB !important;
 }
 #OpponentInventory li h5 {
 	text-align: center;
@@ -154,21 +245,33 @@
 }
 #OpponentInventory li img {
 	width: 100%;
-	max-width: 100px;
-	height: 80px;
+	max-width: 130px;
+	height: 80%;
 	cursor: move;
 }
 /* éléments qui englobe les 2 zones d'échanges' */
 #exchangeZone{
 	height: 600px;
-	width: 50%;
+	width: 46%;
 	float:left;
 	padding-right: 15px;
 	padding-left: 15px;
 	position: static;
 	overflow-x: hidden;
 	overflow-y: hidden;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: "Amaranth";
+	font-weight: normal;
+}
+#startTrade-exchangeZone{
+	height: 600px;
+	width: 46%;
+	float:left;
+	padding-right: 15px;
+	padding-left: 15px;
+	position: static;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	font-family: "Amaranth";
 	font-weight: normal;
 }
 .btn-offre{
@@ -184,14 +287,20 @@
 .exchangeZoneHeader{
 	text-align: center !important;
 	color: white !important;
-	margin: 0 !important;
-	border: 2px solid #00374C !important;
-	background: #00374C !important;
+	margin: 4px 0 4px 0 !important;
+	padding: 2px;
+	background: #00374C url('../images/Trade-Header-Fade.png') no-repeat center center !important;
+	background-size: 100% !important;
+	border-right:none !important;
+	border-left:none !important;
+	border-top: 1px solid #DBDBDB !important;
+	border-bottom: 1px solid #DBDBDB !important;
+	height: 24px;
 	font-size: 100% !important;
 }
 /* Zone Echange User */
 #UserExchange {
-	background: #30697D;
+	background: #00374C;
 	width: 100%;
 	display: inline-block;
 	height: 150px;
@@ -212,7 +321,7 @@
 	width: 96px;
 	height:115px;
 	max-height: 115px;
-	margin: 0.8em 0.4em 0.4em 0.4em;
+	margin: 6px;
 	text-align: center;
 	cursor:move;
 	display: list-item;
@@ -226,9 +335,12 @@
 	height:20px;
 	cursor: pointer;
 }
+#userExchangeItems{
+	background: #00374C;
+}
 /* Zone Echange Opposant Pour la page démarer trok*/
 #opponentExchangeItemsStart{
-	background: #30697D;
+	background: #00374C;
 	width: 100%;
 	display: inline-block;
 	height: 210px;
@@ -236,6 +348,7 @@
 	overflow-y: auto;
 	overflow-x: hidden;
 	border: 2px solid #003042;
+	margin-bottom: 2%;
 }
 #opponentExchangeItemsStart h4 .ui-icon {
 	float: left;
@@ -247,7 +360,7 @@
 	float: left;
 	width: 96px;
 	height:115px;
-	margin: 0.8em 0.4em 0.4em 0.4em;
+	margin: 6px;
 	text-align: center;
 	cursor:move;
 	display: list-item;
@@ -263,7 +376,7 @@
 }
 /* Zone Echange Opposant */
 #OpponentExchange {
-	background: #30697D;
+	background: #00374C;
 	width: 100%;
 	display: inline-block;
 	height: 150px;
@@ -272,6 +385,9 @@
 	overflow-y: hidden;
 	overflow-x: auto;
 	border: 2px solid #003042;
+}
+#opponentExchangeItems{
+	background: #00374C;
 }
 #OpponentExchange h4 {
 	text-align: center;
@@ -290,7 +406,7 @@
 	float: left;
 	width: 96px;
 	height:115px;
-	margin: 0.8em 0.4em 0.4em 0.4em;
+	margin: 6px;
 	text-align: center;
 	cursor:move;
 	display: list-item;
@@ -340,12 +456,10 @@
 	display: block;
 }
 .link-zoom{
-	width: inherit;
+	width: 40%;
 	height: inherit;
 	cursor: pointer;
-	position: relative;
-	display: block;
-	z-index: 1;
+	float: left;
 }
 .btn-zoom{
 	background-image:url('../images/zoom_icon.png');
@@ -371,7 +485,7 @@
 /*Open Modal Info Item Overlay*/
 .modal-box {
 	position: fixed;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: "Amaranth";
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -464,7 +578,6 @@
 }
 .divSubImages {
 	float:left;
-	border: 2px groove black;
 	background-color: darkgray !important;
 	border: 1px solid dimgray !important;
 	padding-top: 5px;
@@ -503,6 +616,11 @@
 }
 .ui-widget-header{
 	font-weight:normal !important;
+	padding: 2px;
+	background: #00374C url('../images/Trade-Header-Fade.png') no-repeat center center !important;
+	background-size: 100% !important;
+	height: 24px;
+	font-size: 100% !important;
 }
 /* Container pour les divs échanges qui permet le scroll horizontal */
 .container-outer {
@@ -513,7 +631,7 @@
 }
 .container-inner {
 	width: 1020px !important;
-	height: 150px;
+	height: 90px;
 	max-height: 150px !important;
 	background: #30697D;
 	border:none !important;
@@ -523,34 +641,57 @@
 	#exchangeZone{
 		width:35% ;
 	}
+	.startTrade-exchangeZone{
+		width: 46% !important;
+	}
 }
 /* Tablets */
 @media screen and (max-width : 1024px) {/*(min-device-width : 768px) and */
-	#UserInventory{
-		width: 42.5%;
+	.UserInventoryContainer{
+		width: 44.5%;
 		height: 35%;
 		display: inline-block;
-		margin-left: 6.6%;
+		margin-left: 5%;
+		margin-right: 0.4%;
+		margin-bottom: 0.4%;
+	}
+	#UserInventory{
+		width: 100%;
+		height: 77%;
+		display: inline-block;
 		margin-right: 0.6%;
 	}
+	#UserInventory li{
+		width: 30%;
+	}
 	#UserExchange{
-		width:49%;
+		width:49.5%;
 		height: 35%;
 		display: inline-block;
+	}
+	.OpponentInventoryContainer{
+		width: 44.5%;
+		height: 35%;
+		display: inline-block;
+		margin-bottom: 0.4%;
 	}
 	#OpponentInventory{
-		width: 42.5%;
-		height: 35%;
+		width: 100%;
+		height: 77%;
 		display: inline-block;
 	}
+	#OpponentInventory li{
+		width: 30%;
+	}
 	#OpponentExchange{
-		width:49%;
+		width:49.5%;
 		height: 35%;
 		display: inline-block;
 	}
 	#exchangeZone{
 		width:90%;
 		margin: 0 5% 0 5%;
+		padding: 0 !important;
 	}
 	#pageTroker {
 		height: 100%;
@@ -560,8 +701,39 @@
 	#zoneChat{
 		height:30%;
 	}
+	.startTrade-exchangeZone{
+		width: 80% !important;
+		height: 70% !important;
+		margin: 0% 0% 1% 10% !important;
+	}
+	.startTrade-OpponentInventoryContainer{
+		width: 80% !important;
+		height: 33% !important;
+		margin: 1% 0 1% 10% !important;
+	}
+	.startTrade-OpponentInventory{
+		width: 98% !important;
+		height: 70% !important;
+	}
+	#opponentExchangeItemsStart{
+		height: 94px !important;
+	}
+	#chatBoxStartExchange{
+		height: 100px !important;
+	}
+}
+@media screen and (max-width: 992px){
+	.OpponentInventoryContainer{
+		margin-left: 0.12%
+	}
 }
 @media screen and (max-width : 650px){
+	#UserInventory li{
+		width: 47%;
+	}
+	#OpponentInventory li{
+		width: 47%;
+	}
 	.modal-box > div{
 		width:80%;
 	}
@@ -579,15 +751,26 @@
 }
 /* Mobile */
 @media screen and (max-width : 480px){ /*(min-device-width : 320px) and */
-	#UserInventory{
+	.optionsInventoryItem{
+		top:-14px;
+	}
+	.UserInventoryContainer{
 		width: 44.4%;
 		height: 35%;
 		display: inline-block;
 		margin-left: 7.5%;
 		margin-right: 1%;
 	}
+	#UserInventory{
+		width: 100%;
+		height: 76%;
+		display: inline-block;
+		/*margin-left: 7.5%;
+		margin-right: 1%;*/
+	}
 	.UserInventory-header{
 		font-size: 60% !important;
+		background-image: url('../images/Trade-Header-Fade.png');
 	}
 	#UserInventory li{
 		width: 45%;
@@ -609,17 +792,23 @@
 		height: 12px;
 	}
 	#UserExchange{
-		width: 49%;
+		width: 49.2%;
 		height: 35%;
 		display: inline-block;
 	}
-	#OpponentInventory{
+	.OpponentInventoryContainer{
 		width: 44.4%;
 		height: 35%;
 		display: inline-block;
 	}
+	#OpponentInventory{
+		width: 100%;
+		height: 76%;
+		display: inline-block;
+	}
 	.OpponentInventory-header{
 		font-size: 60% !important;
+		background-image: url('../images/Trade-Header-Fade.png');
 	}
 	#OpponentInventory li{
 		width: 45%;
@@ -641,13 +830,20 @@
 		width: 12px;
 		height: 12px;
 	}
+	.startTrade-OpponentInventory li{
+		height: 90px !important;
+	}
+	.startTrade-OpponentInventory li img{
+		height: 63% !important;
+	}
 	#OpponentExchange{
-		width: 49%;
+		width: 49.2%;
 		height: 35%;
 		display: inline-block;
 	}
 	.ui-widget-header{
 		font-size: 60% !important;
+		background-image: url('../images/Trade-Header-Fade.png');
 	}
 	#exchangeZone{
 		width:90%;

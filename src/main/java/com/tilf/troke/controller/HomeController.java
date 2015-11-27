@@ -1,6 +1,7 @@
 package com.tilf.troke.controller;
 
 import com.tilf.troke.auth.AuthUserContext;
+import com.tilf.troke.domain.UserProfil;
 import com.tilf.troke.entity.*;
 import com.tilf.troke.repository.*;
 import com.tilf.troke.entity.ImageobjectEntity;
@@ -170,11 +171,19 @@ public class HomeController {
     @RequestMapping(value = "/profil", method = RequestMethod.GET)
     public String Profil(Model model,
                          HttpSession session) {
+        UserProfil userProfil = new UserProfil();
         UsersEntity user = authContext.getUser();
+//        userProfil.setFirstname(authContext.getUser().getFirstname());
+//        userProfil.setLastname(authContext.getUser().getLastname());
+//        userProfil.setTelephone(authContext.getUser().getTelephone());
+//        userProfil.setEmail(authContext.getUser().getEmail());
+//        userProfil.setZipcode(authContext.getUser().getZipcode());
+
 
         if (user != null) {
             // on ajoute a la page le user qui est loggé pour avoir ses informations
             model.addAttribute("userActif", user);
+            model.addAttribute("userProfil", userProfil);
 
             // on va chercher la liste de tous les items du user et ensuite on l'ajoute a la page..
             List<ObjectsEntity> list = customObjectRepository.getListObjectByUserId(authContext.getUser().getIduser());
@@ -219,11 +228,14 @@ public class HomeController {
             if (false) {
                 WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
                 context.setVariable("userActif", user);
+                //context.setVariable("userProfil", userProfil);
                 context.setVariable("userInventory", list);
                 context.setVariable("listeImage", listImage);
                 context.setVariable("itemCombo", itemCombo);
 
             }
+            model.addAttribute("errNom", 0);
+            model.addAttribute("errPrenom", 0);
             return "fragments/site/profilUser";
 
         } else {

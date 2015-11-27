@@ -209,7 +209,7 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
         customObjet.setRateable(obj.getRateable());
         customObjet.setValueObject(obj.getValueObject());
 
-        List<ImageobjectEntity> LImages = (List<ImageobjectEntity>)getObjectEntityByIdObject(id_object);
+        List<ImageobjectEntity> LImages = getObjectImageListByIdobject(id_object);
 
         customObjet.setImage1(LImages.get(0).getGuidimage());
         customObjet.setImage2(LImages.get(1).getGuidimage());
