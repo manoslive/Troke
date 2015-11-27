@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<div th:fragment="searchMultipleObjects">
+
+    <!-- Section control de page (#, previous/next) -->
+    <div class="paginationControl">
+        <ul class="pagination">
+            <li class="previous"><a href="#">Previous</a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li class="next"><a href="#">Next</a></li>
+        </ul>
+        <ul class="items-per-page nav nav-tabs">
+            <li class="disabledTab"><a>Par page: </a></li>
+            <li class="active"><a data-toggle="tab" href="#">10</a></li>
+            <li><a data-toggle="tab" href="#">20</a></li>
+            <li><a data-toggle="tab" href="#">30</a></li>
+        </ul>
+    </div>
+    <!-- /Fin control Page -->
+
+    <!-- Ligne/Spacer -->
+    <div class="or-spacer">
+        <div class="mask"></div>
+    </div>
+
+    <!-- Div un item -->
+    <div th:each="obj : ${objectList}" class="searchItem">
+        <!-- L'image de l'item -->
+        <div class="searchItemImage">
+            <img th:if="${obj.getImage1()} ne null" th:src="'/uploaded-images/' + ${obj.getImage1()}"/>
+            <img th:if="${obj.getImage1()} eq null" src="images/UnknownUser.png"/>
+        </div>
+        <!-- Description de l'item -->
+        <div class="searchItemDescription">
+
+            <p th:text="'Nom: '  + ${obj.getNameObject()}" style="text-decoration: underline;"/>
+            <th:block th:if="${obj.getDescObject().length() lt 30}">
+                <span th:text="'Description: '  + ${obj.getDescObject()}"/><br/>
+            </th:block>
+            <th:block th:if="${obj.getDescObject().length() ge 30}">
+                <span th:text="'Description: '  + ${obj.getDescObject().substring(0,30)} + '  ...'"/><br/>
+            </th:block>
+            <span th:text="'Publié le: '  + ${obj.getCreationdate()}"/><br/>
+            <span th:text="'Sous-catégorie: '  + ${obj.getSubCategoryName()}"></span><br/>
+            <span th:text="'Utilisateur: '  + ${obj.getIduser()}"/>
+        </div>
+        <!-- Bar vertical de séparation -->
+        <div class="searchVerticalBar right">
+            <div class="barMask"></div>
+        </div>
+        <!-- Section côte de l'item -->
+        <div class="searchItemQuality">
+            <!-- QualitÃ© en Ã©toiles -->
+
+                                           <span class="starRating">
+                                            <input th:if="${obj.getQuality()} eq 5" type="checkbox"
+                                                   name="rating" value="5" checked="checked"/>
+                                            <input th:unless="${obj.getQuality()}" type="checkbox"
+                                                   name="rating" value="5"/>
+                                            <label style="cursor:pointer;">5</label>
+                                            <input th:if="${obj.getQuality()} eq 4" type="checkbox"
+                                                   name="rating" value="4" checked="checked"/>
+                                               <input th:unless="${obj.getQuality()}" type="checkbox"
+                                                      name="rating" value="4"/>
+                                            <label style="cursor:pointer;">4</label>
+                                            <input th:if="${obj.getQuality()} eq 3" type="checkbox"
+                                                   name="rating" value="3" checked="checked"/>
+                                               <input th:unless="${obj.getQuality()}" type="checkbox"
+                                                      name="rating" value="3"/>
+                                            <label style="cursor:pointer;">3</label>
+                                            <input th:if="${obj.getQuality()} eq 2" type="checkbox"
+                                                   name="rating" value="2" checked="checked"/>
+                                                <input th:unless="${obj.getQuality()}" type="checkbox"
+                                                       name="rating" value="2"/>
+                                            <label style="cursor:pointer;">2</label>
+                                            <input th:if="${obj.getQuality()} eq 1" type="checkbox"
+                                                   name="rating" value="1" checked="checked"/>
+                                               <input th:unless="${obj.getQuality()}" type="checkbox"
+                                                      name="rating" value="1"/>
+                                            <label style="cursor:pointer;">1</label>
+                                            </span>
+
+            <!-- Bouton lancer une Ã©change -->
+            <button type="button" class="btn btn-info btn-troke btnBootPerso">
+                <a th:href="${adrStartTrade + obj.getIdobject()}">
+                    <img class="searchItem-img-troke" src="images/Logo-transparent.png"/>
+                </a>
+            </button>
+        </div>
+    </div>
+    <!-- Ligne/Spacer -->
+    <div class="or-spacer">
+        <div class="mask"></div>
+    </div>
+
+    <!-- /Div un item -->
+
+    <!-- Section control de page (#, previous/next) -->
+    <div class="paginationControl">
+        <ul class="pagination">
+            <li class="previous"><a href="#">Previous</a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li class="next"><a href="#">Next</a></li>
+        </ul>
+        <ul class="items-per-page nav nav-tabs">
+            <li class="disabledTab"><a>Par page: </a></li>
+            <li class="active"><a data-toggle="tab" href="#">10</a></li>
+            <li><a data-toggle="tab" href="#">20</a></li>
+            <li><a data-toggle="tab" href="#">30</a></li>
+        </ul>
+    </div>
+    <!-- /Fin control Page -->
+</div>
+</body>
+</html>
