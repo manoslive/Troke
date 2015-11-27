@@ -58,7 +58,7 @@
             </div>
             <!-- Liste qui crée une zone inventaire (Opposant) et contient les items-->
             <div class="startTrade-OpponentInventoryContainer">
-                <div class="opponentInventoryAvatar" th:background="${startTradeOpponent.getAvatar()}"></div>
+                <div class="opponentInventoryAvatar" th:style="*{startTradeOpponent.getAvatar() ne 'no_avatar.jpg'}? 'background-image:url(/uploaded-images/' + ${startTradeOpponent.getAvatar()} + ')'"></div>
                 <h5 th:text="'Inventaire à '+ ${startTradeOpponent.getIduser()}" class="OpponentInventory-header"></h5>
                 <ul id="OpponentInventory" class="startTrade-OpponentInventory OpponentInventory ui-helper-reset ui-helper-clearfix col-md-6">
                     <li th:each="inv : ${inventory}" class="OpponentItem ui-widget-content ui-corner-tr">

@@ -24,7 +24,7 @@
     <!-- Page qui conteint tous le modules d'échanges' -->
     <div id="pageTroker" class="ui-widget ui-helper-clearfix col-md-12" data-mcs-theme="3d-thick">
       <div class="UserInventoryContainer">
-        <div class="userInventoryAvatar" th:background="${userActif.getAvatar()}"></div>
+        <div class="userInventoryAvatar" th:style="*{userActif.getAvatar() ne 'no_avatar.jpg'}? 'background-image:url(/uploaded-images/' + ${userActif.getAvatar()} + ')'"></div>
         <h5 class="UserInventory-header">Votre inventaire</h5>
         <!-- Liste qui crée une zone inventaire (User) et contient les items-->
         <ul id="UserInventory" class="UserInventory ui-helper-reset ui-helper-clearfix col-md-3">
@@ -127,7 +127,7 @@
       </div>
 
       <div class="OpponentInventoryContainer">
-        <div class="opponentInventoryAvatar" th:background="${opponent.getAvatar()}"></div>
+        <div class="opponentInventoryAvatar" th:style="*{opponent.getAvatar() ne 'no_avatar.jpg'}? 'background-image:url(/uploaded-images/' + ${opponent.getAvatar()} + ')'"></div>
         <h5 th:text="'Inventaire à '+ ${opponent.getIduser()}" class="OpponentInventory-header"></h5>
         <!-- Liste qui crée une zone inventaire (Opposant) et contient les items-->
         <ul id="OpponentInventory" class="OpponentInventory ui-helper-reset ui-helper-clearfix col-md-3">

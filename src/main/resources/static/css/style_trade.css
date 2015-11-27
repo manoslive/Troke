@@ -44,8 +44,8 @@
 	position: relative;
 	top: -10px;
 	left: -15px;
-	background: url('../images/UnknownUser.png') no-repeat center center !important;
-	background-size: 100% !important;
+	background:no-repeat center center ;
+	background-size: 160% !important;
 	float: left;
 	border-radius: 100%;
 	border: 2px solid #DBDBDB;
@@ -56,8 +56,8 @@
 	position: relative;
 	top: -10px;
 	left: 15px;
-	background: url('../images/UnknownUser.png') no-repeat center center !important;
-	background-size: 100% !important;
+	background: no-repeat center center;
+	background-size: 160% !important;
 	float: right;
 	border-radius: 100%;
 	border: 2px solid #DBDBDB;
