@@ -7,17 +7,6 @@ function checkCB(mainCat) {
         document.getElementById(mainCat + 'Category').className = "category-Selection collapse in";
     }
 }
-
-/*function getCheckBoxCatValue(checkBoxId) {
-    if ($("#" + checkBoxId).prop('checked')) {
-        $("#" + checkBoxId).checked = true;
-        location.href = "/category?categoryName=" + checkBoxId + "&catIsChecked=" + false;
-    }
-    else{
-        $("#" + checkBoxId).checked = false;
-        location.href = "/category?categoryName=" + checkBoxId + "&catIsChecked=" + true;
-    }
-}*/
 function getCheckBoxCatValue(checkBoxId) {
     if(document.getElementById(checkBoxId).checked)
     {
@@ -47,4 +36,7 @@ function getCheckBoxSubCatValueLink(checkBoxId) {
         $("#" + checkBoxId).prop('checked', true);
         location.href = "/subcategory?subCategoryName=" + checkBoxId + "&subCatIsChecked=" + true;
     }
+}
+function changePageResults(){
+
 }
