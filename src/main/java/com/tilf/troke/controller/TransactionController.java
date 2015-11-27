@@ -261,11 +261,17 @@ public class TransactionController {
             objectsTransactionRepository.save(updateTransactionsObjects);
         }
 
+        if(userMoney.equals("")){
+            userMoney = "0";
+        }
+        if(opponentMoney.equals("")){
+            opponentMoney = "0";
+        }
         //Ajout de l'item d'Argent du User
         TransactionmoneyEntity updateTransactionMoneyUser = new TransactionmoneyEntity();
         updateTransactionMoneyUser.setIdtransaction(transactionID);
         updateTransactionMoneyUser.setIduser(currentUser);
-        updateTransactionMoneyUser.setValue(Integer.parseInt(opponentMoney));
+        updateTransactionMoneyUser.setValue(Integer.parseInt(userMoney));
         transactionMoneyRepository.save(updateTransactionMoneyUser);
 
         //Ajout de l'item d'Argent de l'Opposant

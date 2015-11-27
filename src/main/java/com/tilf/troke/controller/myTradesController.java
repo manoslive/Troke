@@ -74,6 +74,6 @@ public class myTradesController {
         queryObject.setParameter("idTrade", tradeID);
         TransactionsEntity deleteTrade = (TransactionsEntity)queryObject.getSingleResult();
         transactionRepository.delete(deleteTrade);
-        return "fragments/home/myTrades";
+        return "redirect:/myTrades";
     }
 }
