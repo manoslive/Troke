@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f947bb62-d6ad-4da4-b5ae-73659883da55" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Manu\Documents\GitHub\troke\target\classes\static\uploaded-images\3b82a0ea899c401096b609f21d8571f8.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomObjectRepositoryImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomObjectRepositoryImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/ProfilController.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/ProfilController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/SearchController.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/SearchController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java" afterPath="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/TransactionController.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/TransactionController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/myTradesController.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/myTradesController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchKeyword.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchKeyword.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchMultipleObjects.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchMultipleObjects.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchSingleObject.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchSingleObject.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="troke_springboot.iws" />
@@ -69,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="searchKeyword.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="searchKeyword.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchKeyword.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.576923">
-              <caret line="49" column="75" selection-start-line="49" selection-start-column="75" selection-end-line="49" selection-end-column="75" />
+            <state vertical-scroll-proportion="0.34">
+              <caret line="54" column="158" selection-start-line="54" selection-start-column="158" selection-end-line="54" selection-end-column="158" />
               <folding>
                 <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#li#0;n#th:block#0;n#th:block#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -122,10 +115,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="searchSingleObject.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="searchSingleObject.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchSingleObject.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5254545">
+            <state vertical-scroll-proportion="-11.115385">
               <caret line="32" column="61" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="61" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -207,8 +200,8 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchMultipleObjects.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchKeyword.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchSingleObject.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchKeyword.html" />
       </list>
     </option>
   </component>
@@ -1234,13 +1227,7 @@
       <workItem from="1448496559647" duration="27900000" />
       <workItem from="1448577925128" duration="22833000" />
       <workItem from="1448650177777" duration="13571000" />
-      <workItem from="1448669874746" duration="25805000" />
-    </task>
-    <task id="LOCAL-00009" summary="VERIF de l'existance du username dans l'inscription fonctionne">
-      <created>1443256617085</created>
-      <option name="number" value="00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1443256617085</updated>
+      <workItem from="1448669874746" duration="27748000" />
     </task>
     <task id="LOCAL-00010" summary="VERIF de l'existance du username dans l'inscription fonctionne part#2">
       <created>1443302178559</created>
@@ -1530,11 +1517,17 @@
       <option name="project" value="LOCAL" />
       <updated>1448691740759</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Pagination terminée pour toutes les pages">
+      <created>1448696613548</created>
+      <option name="number" value="00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1448696613548</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="429828000" />
+    <option name="totallyTimeSpent" value="431771000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1595,7 +1588,6 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="debut recherche" />
     <MESSAGE value="login marche" />
     <MESSAGE value="ajout search" />
     <MESSAGE value="Mise à jour de TransactionEntity pour suivre l'update de la BD" />
@@ -1620,7 +1612,8 @@
     <MESSAGE value="Image++" />
     <MESSAGE value="Pagination de la recherche backend" />
     <MESSAGE value="Pagination terminée pour /item, /searchDB et aucun résultat" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pagination terminée pour /item, /searchDB et aucun résultat" />
+    <MESSAGE value="Pagination terminée pour toutes les pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pagination terminée pour toutes les pages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2022,10 +2015,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.576923">
+          <caret line="59" column="41" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchSingleObject.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.115385">
+          <caret line="32" column="61" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="61" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchKeyword.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.576923">
-          <caret line="49" column="75" selection-start-line="49" selection-start-column="75" selection-end-line="49" selection-end-column="75" />
+        <state vertical-scroll-proportion="0.34">
+          <caret line="54" column="158" selection-start-line="54" selection-start-column="158" selection-end-line="54" selection-end-column="158" />
           <folding>
             <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#li#0;n#th:block#0;n#th:block#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -2044,24 +2055,6 @@
             <element signature="n#style#0;n#a#0;n#li#1;n#ul#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#li#2;n#ul#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#li#3;n#ul#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.576923">
-          <caret line="59" column="41" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchSingleObject.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5254545">
-          <caret line="32" column="61" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="61" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

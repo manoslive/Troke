@@ -52,11 +52,12 @@
         <div class="span8 offset2">
             <th:block th:if="${searchObjectList.size()} gt 1">
                 <div style="color:white;"
-                     th:text="${searchObjectList.size()} + ' sur ' + ${totalobjetnumber.size()} + ' résultats affichés.'"
+                     th:text="${searchObjectList.size()} + ' sur ' + ${totalobjetnumber.size()} + ' résultats affichés pour la recherche « ' + ${keyword} + ' »'"
                      class="col-xs-6 col-centered col-min"></div>
             </th:block>
             <th:block th:if="${searchObjectList.size()} eq 1">
-                <div style="color:white;" th:text="'1 sur 1 résultat affiché.'"
+                <div style="color:white;"
+                     th:text="${searchObjectList.size()} + ' sur ' + ${totalobjetnumber.size()} + ' résultat affiché pour la recherche « ' + ${keyword} + ' »'"
                      class="col-xs-6 col-centered col-min"></div>
             </th:block>
         </div>
