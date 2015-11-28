@@ -24,7 +24,6 @@ function modalClose() {
 }
 
 function deleteTrade(){
-    alert(deleteTradeID);
     document.getElementById("tradeID").value = deleteTradeID;
     document.getElementById("deleteTradeForm").submit();
 }

@@ -88,29 +88,33 @@ public class TransactionController {
 
     //OpenTrade - Lorsqu'on click sur un échange de la page myTrades pour y répondre
     @RequestMapping(value = "/openTrade", method = RequestMethod.GET)
-    public String openTrade(@RequestParam("transactionID") int tradeID, Model model) {
+    public String openTrade(@RequestParam("transactionID") int tradeID, Model model, HttpSession session) {
         UsersEntity currentUser = authUserContext.getUser();
         UsersEntity opponent = customUserRepository.findOpponentUser(tradeID, currentUser.getIduser());
         String opponentID = opponent.getIduser();
-        model.addAttribute("userActif", currentUser);
-        model.addAttribute("opponent", opponent);
-        model.addAttribute("transactionID", tradeID);
+        if (currentUser != null) {
+            model.addAttribute("userActif", currentUser);
+            model.addAttribute("opponent", opponent);
+            model.addAttribute("transactionID", tradeID);
 
-        //Get les 2 items d'argent
-        model.addAttribute("UserMoneyItem", customTransactionMoneyRepository.getTransactionMoney(tradeID, currentUser.getIduser()));
-        model.addAttribute("OpponentMoneyItem", customTransactionMoneyRepository.getTransactionMoney(tradeID, opponentID));
+            //Get les 2 items d'argent
+            model.addAttribute("UserMoneyItem", customTransactionMoneyRepository.getTransactionMoney(tradeID, currentUser.getIduser()));
+            model.addAttribute("OpponentMoneyItem", customTransactionMoneyRepository.getTransactionMoney(tradeID, opponentID));
 
-        //Get les message du Chat
-        model.addAttribute("ChatLog", customChatMessageRepository.getChatLogByTransactionID(tradeID));
+            //Get les message du Chat
+            model.addAttribute("ChatLog", customChatMessageRepository.getChatLogByTransactionID(tradeID));
 
-        //Get les objets+images des items dans l'inventaire du trade des 2 users
-        model.addAttribute("listImageUserInventory", customObjectRepository.getListObjectTradeInventory(tradeID, currentUser.getIduser()));
-        model.addAttribute("listImageOpponentInventory", customObjectRepository.getListObjectTradeInventory(tradeID, opponentID));
+            //Get les objets+images des items dans l'inventaire du trade des 2 users
+            model.addAttribute("listImageUserInventory", customObjectRepository.getListObjectTradeInventory(tradeID, currentUser.getIduser()));
+            model.addAttribute("listImageOpponentInventory", customObjectRepository.getListObjectTradeInventory(tradeID, opponentID));
 
-        //Get les objets+images des items en trade des 2 users
-        model.addAttribute("listImageUserTradeZone", customObjectRepository.getTradeObjects(tradeID, currentUser.getIduser()));
-        model.addAttribute("listImageOpponentTradeZone", customObjectRepository.getTradeObjects(tradeID, opponentID));
-
+            //Get les objets+images des items en trade des 2 users
+            model.addAttribute("listImageUserTradeZone", customObjectRepository.getTradeObjects(tradeID, currentUser.getIduser()));
+            model.addAttribute("listImageOpponentTradeZone", customObjectRepository.getTradeObjects(tradeID, opponentID));
+        } else {
+            session.removeAttribute("error");
+            return "redirect:#openModalConnexion";
+        }
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
@@ -138,66 +142,73 @@ public class TransactionController {
                               @RequestParam("iduser2")String idUser2,
                               @RequestParam("chatLog")String chatLog,
                               @RequestParam("tradeObjects")String tradeObjects,
-                              @RequestParam("newTradeMoneyValue")String opponentMoney)
+                              @RequestParam("newTradeMoneyValue")String opponentMoney,
+                              HttpSession session)
     {
-        //Set une nouvelle transaction avec ses informations
-        TransactionsEntity newTransaction = new TransactionsEntity();
-        newTransaction.setIduser1(idUser1);
-        newTransaction.setIduser2(idUser2);
-        newTransaction.setDatetransaction(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
-        newTransaction.setTurn(idUser2);
-        newTransaction.setIscompleted("F");
-        transactionRepository.save(newTransaction);
 
-        //Get le id de la transaction créée ^^
-        String queryIdTransaction = "select t.idtransaction from TransactionsEntity t ORDER  BY t.idtransaction Desc";
-        Query queryObject = entityManager.createQuery(queryIdTransaction).setMaxResults(1);
-        int idTransaction = (Integer)queryObject.getSingleResult();
+        UsersEntity currentUser = authUserContext.getUser();
+        if (currentUser != null) {
+            //Set une nouvelle transaction avec ses informations
+            TransactionsEntity newTransaction = new TransactionsEntity();
+            newTransaction.setIduser1(idUser1);
+            newTransaction.setIduser2(idUser2);
+            newTransaction.setDatetransaction(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+            newTransaction.setTurn(idUser2);
+            newTransaction.setIscompleted("F");
+            transactionRepository.save(newTransaction);
 
-        //Nouveau chat
-        ChatEntity newChat = new ChatEntity();
-        newChat.setIdtransaction(idTransaction);
-        chatRepository.save(newChat);
+            //Get le id de la transaction créée ^^
+            String queryIdTransaction = "select t.idtransaction from TransactionsEntity t ORDER  BY t.idtransaction Desc";
+            Query queryObject = entityManager.createQuery(queryIdTransaction).setMaxResults(1);
+            int idTransaction = (Integer)queryObject.getSingleResult();
 
-        //Get le id du chat créée ^^
-        String queryIdChat = "select c.idchat from ChatEntity c ORDER  BY c.idchat Desc";
-        Query queryObject2 = entityManager.createQuery(queryIdChat).setMaxResults(1);
-        int idChat = (Integer)queryObject2.getSingleResult();
+            //Nouveau chat
+            ChatEntity newChat = new ChatEntity();
+            newChat.setIdtransaction(idTransaction);
+            chatRepository.save(newChat);
 
-        //Set les messages du Chat dans le chat créée^^
-        ChatmessageEntity newChatMessage = new ChatmessageEntity();
-        newChatMessage.setIdchat(idChat);
-        newChatMessage.setDateTime(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
-        newChatMessage.setMsg(chatLog);
-        newChatMessage.setIsread("T");
-        chatmessageRepository.save(newChatMessage);
+            //Get le id du chat créée ^^
+            String queryIdChat = "select c.idchat from ChatEntity c ORDER  BY c.idchat Desc";
+            Query queryObject2 = entityManager.createQuery(queryIdChat).setMaxResults(1);
+            int idChat = (Integer)queryObject2.getSingleResult();
 
-        //Met les objets recu dans une liste, les objets sont reçu concaténé séparé pas des ';'
-        ObjecttransactionEntity addTransactionsObjects = new ObjecttransactionEntity();
-        String[] objectIDs = tradeObjects.split(";");
+            //Set les messages du Chat dans le chat créée^^
+            ChatmessageEntity newChatMessage = new ChatmessageEntity();
+            newChatMessage.setIdchat(idChat);
+            newChatMessage.setDateTime(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+            newChatMessage.setMsg(chatLog);
+            newChatMessage.setIsread("T");
+            chatmessageRepository.save(newChatMessage);
 
-        //Ajout de chacun des items dans la bd
-        for(int i = 0; i < objectIDs.length; i++)
-        {
-            addTransactionsObjects.setIdobject(Integer.parseInt(objectIDs[i]));
-            addTransactionsObjects.setIdtransaction(idTransaction);
-            objectsTransactionRepository.save(addTransactionsObjects);
+            //Met les objets recu dans une liste, les objets sont reçu concaténé séparé pas des ';'
+            ObjecttransactionEntity addTransactionsObjects = new ObjecttransactionEntity();
+            String[] objectIDs = tradeObjects.split(";");
+
+            //Ajout de chacun des items dans la bd
+            for(int i = 0; i < objectIDs.length; i++)
+            {
+                addTransactionsObjects.setIdobject(Integer.parseInt(objectIDs[i]));
+                addTransactionsObjects.setIdtransaction(idTransaction);
+                objectsTransactionRepository.save(addTransactionsObjects);
+            }
+
+            //Ajout de l'item d'Argent de l'opposant
+            TransactionmoneyEntity addTransactionMoney = new TransactionmoneyEntity();
+            addTransactionMoney.setIdtransaction(idTransaction);
+            addTransactionMoney.setIduser(idUser2);
+            addTransactionMoney.setValue(Integer.parseInt(opponentMoney));
+            transactionMoneyRepository.save(addTransactionMoney);
+
+            //Ajout de l'item d'Argent du User à 0
+            TransactionmoneyEntity addUserTransactionMoney = new TransactionmoneyEntity();
+            addUserTransactionMoney.setIdtransaction(idTransaction);
+            addUserTransactionMoney.setIduser(idUser1);
+            addUserTransactionMoney.setValue(0);
+            transactionMoneyRepository.save(addUserTransactionMoney);
+        } else {
+            session.removeAttribute("error");
+            return "redirect:#openModalConnexion";
         }
-
-        //Ajout de l'item d'Argent de l'opposant
-        TransactionmoneyEntity addTransactionMoney = new TransactionmoneyEntity();
-        addTransactionMoney.setIdtransaction(idTransaction);
-        addTransactionMoney.setIduser(idUser2);
-        addTransactionMoney.setValue(Integer.parseInt(opponentMoney));
-        transactionMoneyRepository.save(addTransactionMoney);
-
-        //Ajout de l'item d'Argent du User à 0
-        TransactionmoneyEntity addUserTransactionMoney = new TransactionmoneyEntity();
-        addUserTransactionMoney.setIdtransaction(idTransaction);
-        addUserTransactionMoney.setIduser(idUser1);
-        addUserTransactionMoney.setValue(0);
-        transactionMoneyRepository.save(addUserTransactionMoney);
-
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
@@ -219,68 +230,75 @@ public class TransactionController {
                                 @RequestParam("tradeObjects")String tradeObjects,
                                 @RequestParam("tradeState")String tradeState,
                                 @RequestParam("userMoneyValue")String userMoney,
-                                @RequestParam("opponentMoneyValue")String opponentMoney)
+                                @RequestParam("opponentMoneyValue")String opponentMoney,
+                                HttpSession session)
     {
-        TransactionsEntity updateTransaction = new TransactionsEntity();
-        updateTransaction.setIdtransaction(transactionID);
-        updateTransaction.setIduser1(currentUser);
-        updateTransaction.setIduser2(idUser2);
-        updateTransaction.setDatetransaction(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
-        updateTransaction.setTurn(idUser2);
-        updateTransaction.setIscompleted(tradeState);
-        transactionRepository.save(updateTransaction);
 
-        String queryIdChat = "select c.idchatmessage from ChatmessageEntity c where c.idchat = :idChat";
-        Query queryObject = entityManager.createQuery(queryIdChat);
-        queryObject.setParameter("idChat", chatID);
-        int idChatMessage = (Integer)queryObject.getSingleResult();
+        UsersEntity currentLoggedUser = authUserContext.getUser();
+        if (currentLoggedUser != null) {
+            TransactionsEntity updateTransaction = new TransactionsEntity();
+            updateTransaction.setIdtransaction(transactionID);
+            updateTransaction.setIduser1(currentUser);
+            updateTransaction.setIduser2(idUser2);
+            updateTransaction.setDatetransaction(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+            updateTransaction.setTurn(idUser2);
+            updateTransaction.setIscompleted(tradeState);
+            transactionRepository.save(updateTransaction);
 
-        ChatmessageEntity updateChatMessage = new ChatmessageEntity();
-        updateChatMessage.setIdchatmessage(idChatMessage);
-        updateChatMessage.setIdchat(chatID);
-        updateChatMessage.setDateTime(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
-        updateChatMessage.setMsg(chatLog);
-        updateChatMessage.setIsread("T");
-        chatmessageRepository.save(updateChatMessage);
+            String queryIdChat = "select c.idchatmessage from ChatmessageEntity c where c.idchat = :idChat";
+            Query queryObject = entityManager.createQuery(queryIdChat);
+            queryObject.setParameter("idChat", chatID);
+            int idChatMessage = (Integer)queryObject.getSingleResult();
 
-        Query queryObject2 = entityManager.createQuery("select o from ObjecttransactionEntity o where o.idtransaction = :idTransaction");
-        queryObject2.setParameter("idTransaction",transactionID);
-        List<ObjecttransactionEntity> listObjets = queryObject2.getResultList();
+            ChatmessageEntity updateChatMessage = new ChatmessageEntity();
+            updateChatMessage.setIdchatmessage(idChatMessage);
+            updateChatMessage.setIdchat(chatID);
+            updateChatMessage.setDateTime(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+            updateChatMessage.setMsg(chatLog);
+            updateChatMessage.setIsread("T");
+            chatmessageRepository.save(updateChatMessage);
 
-        for(Iterator<ObjecttransactionEntity> i = listObjets.iterator(); i.hasNext(); ) {
-            objectsTransactionRepository.delete(i.next());
+            Query queryObject2 = entityManager.createQuery("select o from ObjecttransactionEntity o where o.idtransaction = :idTransaction");
+            queryObject2.setParameter("idTransaction",transactionID);
+            List<ObjecttransactionEntity> listObjets = queryObject2.getResultList();
+
+            for(Iterator<ObjecttransactionEntity> i = listObjets.iterator(); i.hasNext(); ) {
+                objectsTransactionRepository.delete(i.next());
+            }
+
+            ObjecttransactionEntity updateTransactionsObjects = new ObjecttransactionEntity();
+            String[] objectIDs = tradeObjects.split(";");
+
+            for(int i = 0; i < objectIDs.length; i++)
+            {
+                updateTransactionsObjects.setIdobject(Integer.parseInt(objectIDs[i]));
+                updateTransactionsObjects.setIdtransaction(transactionID);
+                objectsTransactionRepository.save(updateTransactionsObjects);
+            }
+
+            if(userMoney.equals("")){
+                userMoney = "0";
+            }
+            if(opponentMoney.equals("")){
+                opponentMoney = "0";
+            }
+            //Ajout de l'item d'Argent du User
+            TransactionmoneyEntity updateTransactionMoneyUser = new TransactionmoneyEntity();
+            updateTransactionMoneyUser.setIdtransaction(transactionID);
+            updateTransactionMoneyUser.setIduser(currentUser);
+            updateTransactionMoneyUser.setValue(Integer.parseInt(userMoney));
+            transactionMoneyRepository.save(updateTransactionMoneyUser);
+
+            //Ajout de l'item d'Argent de l'Opposant
+            TransactionmoneyEntity updateTransactionMoneyOpposant = new TransactionmoneyEntity();
+            updateTransactionMoneyOpposant.setIdtransaction(transactionID);
+            updateTransactionMoneyOpposant.setIduser(idUser2);
+            updateTransactionMoneyOpposant.setValue(Integer.parseInt(opponentMoney));
+            transactionMoneyRepository.save(updateTransactionMoneyOpposant);
+        } else {
+            session.removeAttribute("error");
+            return "redirect:#openModalConnexion";
         }
-
-        ObjecttransactionEntity updateTransactionsObjects = new ObjecttransactionEntity();
-        String[] objectIDs = tradeObjects.split(";");
-
-        for(int i = 0; i < objectIDs.length; i++)
-        {
-            updateTransactionsObjects.setIdobject(Integer.parseInt(objectIDs[i]));
-            updateTransactionsObjects.setIdtransaction(transactionID);
-            objectsTransactionRepository.save(updateTransactionsObjects);
-        }
-
-        if(userMoney.equals("")){
-            userMoney = "0";
-        }
-        if(opponentMoney.equals("")){
-            opponentMoney = "0";
-        }
-        //Ajout de l'item d'Argent du User
-        TransactionmoneyEntity updateTransactionMoneyUser = new TransactionmoneyEntity();
-        updateTransactionMoneyUser.setIdtransaction(transactionID);
-        updateTransactionMoneyUser.setIduser(currentUser);
-        updateTransactionMoneyUser.setValue(Integer.parseInt(userMoney));
-        transactionMoneyRepository.save(updateTransactionMoneyUser);
-
-        //Ajout de l'item d'Argent de l'Opposant
-        TransactionmoneyEntity updateTransactionMoneyOpposant = new TransactionmoneyEntity();
-        updateTransactionMoneyOpposant.setIdtransaction(transactionID);
-        updateTransactionMoneyOpposant.setIduser(idUser2);
-        updateTransactionMoneyOpposant.setValue(Integer.parseInt(opponentMoney));
-        transactionMoneyRepository.save(updateTransactionMoneyOpposant);
-
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
