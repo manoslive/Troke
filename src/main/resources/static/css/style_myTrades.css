@@ -1,63 +1,3 @@
-/*.myTrades{*/
-	/*height: 100%;*/
-	/*margin: auto; */
-	/*overflow: auto;*/
-	/*background:#00455F;*/
-/*}*/
-/*.myTrades {*/
-	/*font-weight: normal;*/
-    /*background-color: #30697D;*/
-    /*height: 98%;*/
-    /*list-style: none;*/
-	/*border: 2px solid #003042;*/
-	/*overflow-y: auto;*/
-	/*padding-top: 20px;*/
-/*}*/
-/*.myTrades li {*/
-	/*margin: 6px;*/
-	/*padding: 0px;*/
-	/*height: 85%;*/
-	/*width: 22%;*/
-	/*text-align: center; */
-	/*cursor:pointer;*/
-	/*border-radius: 4px;*/
-	/*z-index: 1000;*/
-	/*border: 1px solid #00374C;*/
-	/*background-color: white;*/
-	/*display: inline-table;*/
-/*}*/
-/*.myTrades li header {*/
-    /*text-align: center;*/
-    /*color: white;*/
-    /*margin: 0;*/
-    /*border: 2px solid #00374C;*/
-    /*background: #00374C;*/
-/*}*/
-/*.myTrades li a {*/
-	/*cursor: pointer;*/
-/*}*/
-/*.loadContent{*/
-  	/*overflow: hidden;*/
-	/*width: 100%;*/
-	/*height: 100%;*/
-/*}*/
-/*.section-Trades{*/
-	/*height:33%;*/
-/*}*/
-/*.titre-Trades{*/
-	/*font-weight: normal;*/
-    /*background-color: #30697D;*/
-    /*height: 40px;*/
-    /*list-style: none;*/
-	/*border: 2px solid #003042;*/
-	/*overflow-y: auto;*/
-	/*padding-top: 8px;*/
-	/*overflow: hidden;*/
-/*}*/
-/*.descriptionTrade-myTrades{*/
-	/*display: block;*/
-/*}*/
-
 .row-centered {
 	text-align: center;
 	font-family:'Amaranth';
@@ -138,4 +78,40 @@
 	-moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
 	-khtml-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
 	-webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+}
+
+.modalDialogDelete {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.3);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+.modalDialogDelete:target {
+	opacity:1;
+	pointer-events: auto;
+}
+.modalDialogDelete> div {
+	width: 400px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #999);
+	background: -webkit-linear-gradient(#fff, #999);
+	background: -o-linear-gradient(#fff, #999);
+}
+.modal-box-show {
+	opacity:1;
+	pointer-events: auto;
+	display: block !important;
 }

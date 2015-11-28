@@ -5,47 +5,6 @@
 <script src="js/mytrades.js" type="text/javascript"></script>
 </head>
 <th:block th:fragment="content">
-	<!--<div id="myExchanges" class="col-lg-12 container">-->
-		<!--<div class="titre-Trades">-->
-			<!--<p th:text="'Échanges en attente :'+ ${pendingTransactions.size()}"></p>-->
-		<!--</div>-->
-		<!--<div id="pendingTrades" class="section-Trades">-->
-			<!--<ul class="myTrades">-->
-				<!--<li th:each="trade : ${pendingTransactions}" class="exchange" onClick="">-->
-					<!--<a th:href="${adrOpenTrade}+${trade.getIdtransaction()}">-->
-						<!--<header th:text="'ID: '+${trade.getIdtransaction()}"></header>-->
-						<!--<span class="descriptionTrade-myTrades" th:text="'Échange entre '+${trade.iduser1}+ ' et '+${trade.iduser2}"/>-->
-						<!--<span class="descriptionTrade-myTrades" th:text="'Dernière modification: '+${trade.getDatetransaction()}"/>-->
-					<!--</a>-->
-				<!--</li>-->
-			<!--</ul>-->
-		<!--</div>-->
-		<!--<div class="titre-Trades">-->
-			<!--<p th:text="'Échanges envoyés :'+ ${sentTransactions.size()}"></p>-->
-		<!--</div>-->
-		<!--<div id="sentTrades" class="section-Trades">-->
-			<!--<ul class="myTrades">-->
-				<!--<li th:each="trade : ${sentTransactions}" class="exchange" onClick="">-->
-					<!--<header th:text="'ID: '+${trade.getIdtransaction()}"></header>-->
-					<!--<span class="descriptionTrade-myTrades" th:text="'Échange entre '+${trade.iduser1}+ ' et '+${trade.iduser2}"/>-->
-					<!--<span class="descriptionTrade-myTrades" th:text="'Dernière modification: '+${trade.getDatetransaction()}"/>-->
-				<!--</li>-->
-			<!--</ul>-->
-		<!--</div>-->
-		<!--<div class="titre-Trades">-->
-			<!--<p th:text="'Échanges complétés :'+ ${completedTransactions.size()}"></p>-->
-		<!--</div>-->
-		<!--<div id="completedTrades" class="section-Trades">-->
-			<!--<ul class="myTrades">-->
-				<!--<li th:each="trade : ${completedTransactions}" class="exchange" onClick="">-->
-					<!--<header th:text="'ID: '+${trade.getIdtransaction()}"></header>-->
-					<!--<span class="descriptionTrade-myTrades" th:text="'Échange entre '+${trade.iduser1}+ ' et '+${trade.iduser2}"/>-->
-					<!--<span class="descriptionTrade-myTrades" th:text="'Dernière modification: '+${trade.getDatetransaction()}"/>-->
-				<!--</li>-->
-			<!--</ul>-->
-		<!--</div>-->
-	<!--</div>-->
-
 	<form id="deleteTradeForm" name="deleteTradeForm" th:action="@{/deleteTrade}" method="post">
 		<input id="tradeID" name="tradeID" type="hidden" style="position:absolute" />
 	</form>
@@ -71,7 +30,7 @@
 							<!-- Toogle Buttons -->
 							<button type="button" class="btn btn-danger"
 									data-toggle="collapse" th:attr="data-target='#'+${trade.getIdtransaction()}" th:text="'Transaction #'+${trade.getIdtransaction()}"></button>
-							<button type="button" class="btn btn-danger" th:onclick="'javascript:deleteTrade(\''+${trade.getIdtransaction()}+'\')'">X</button>
+							<button type="button" class="btn btn-danger" th:onclick="'javascript:showDeleteConfirmation(\''+${trade.getIdtransaction()}+'\')'">X</button>
 
 							<div th:id="${trade.getIdtransaction()}" class="collapse infotrans">
 
@@ -112,7 +71,7 @@
 								<!-- Toogle Buttons -->
 								<button type="button" class="btn btn-warning"
 										data-toggle="collapse" th:attr="data-target='#'+${trade.getIdtransaction()}" th:text="'Transaction #'+${trade.getIdtransaction()}"></button>
-								<button type="button" class="btn btn-warning"  th:onclick="'javascript:deleteTrade(\''+${trade.getIdtransaction()}+'\')'">X</button>
+								<button type="button" class="btn btn-warning"  th:onclick="'javascript:showDeleteConfirmation(\''+${trade.getIdtransaction()}+'\')'">X</button>
 
 								<div th:id="${trade.getIdtransaction()}" class="collapse infotrans">
 
@@ -152,7 +111,7 @@
 								<!-- Toogle Buttons -->
 								<button type="button" class="btn btn-success"
 										data-toggle="collapse" th:attr="data-target='#'+${trade.getIdtransaction()}" th:text="'Transaction #'+${trade.getIdtransaction()}"></button>
-								<button type="button" class="btn btn-success"  th:onclick="'javascript:deleteTrade(\''+${trade.getIdtransaction()}+'\')'">X</button>
+								<button type="button" class="btn btn-success"  th:onclick="'javascript:showDeleteConfirmation(\''+${trade.getIdtransaction()}+'\')'">X</button>
 								<div th:id="${trade.getIdtransaction()}" class="collapse infotrans">
 
 									<br/>
@@ -176,5 +135,29 @@
 		</div>
 
 	</div> <!--Fermeture du div des colonnes-->
+
+	<!-- Open Modal Delete Trade -->
+	<div id="openModalDelete" class="modalDialogDelete modal-box">
+		<div style="font-family:Amaranth">
+
+			<a href="#close" title="Fermer" class="close js-modal-close">X</a>
+			<h2 style="text-align:center">Suppression d'un Échange</h2>
+
+			<div class="or-spacer"><div class="mask"></div></div>
+
+			<div style="text-align:center;margin-top:20px; margin-bottom:20px">
+				<span>Voulez-vous vraiment supprimer cette échange de votre liste?</span>
+			</div>
+
+
+			<div class="or-spacer"><div class="mask"></div></div>
+
+			<div>
+				<a style="text-align:center;font-size:16px;width:100px" title="Valider" class="valid" onclick="deleteTrade()">Supprimer</a>
+			</div>
+			<a href="#close" style="text-align:center;font-size:16px;width:100px;text-decoration: none;"
+			   title="Fermer" class="cancel">Annuler</a>
+		</div>
+	</div>
 </th:block>
 </html>
