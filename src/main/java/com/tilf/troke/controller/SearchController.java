@@ -51,6 +51,7 @@ public class SearchController {
     @RequestMapping(value = "/category", method = RequestMethod.GET)
     public String ListCategoryItems(@RequestParam("categoryName") String categoryName, @RequestParam(value = "catIsChecked") Boolean catIsChecked, @RequestParam(value = "page", required = false) String page, @RequestParam(value = "number", required = false) Integer number, Model model, HttpSession session) {
         List<CustomSearchObjectEntity> list = new ArrayList<>();
+        Integer totalPageNumber = null;
         // Modification de la liste de Cat/SubCat
         if (catIsChecked == true) {
             searchFilter.put(categoryName, true);
@@ -90,72 +91,74 @@ public class SearchController {
         if (number == null) {
             number = 10;
         }
-
         // Nombre total de pages de résultats
-        Double numberDouble = Double.parseDouble(number.toString());
-        int totalPageNumber = (int) Math.ceil((list.size() / numberDouble));
+        if (list != null) {
+            Double numberDouble = Double.parseDouble(number.toString());
+            totalPageNumber = (int) Math.ceil((list.size() / numberDouble));
 
-        // On vérifie si suivant ou précédent est reçu
-        // Notons que la première page est à 0
-        if (page != null) {
-            if (!isInteger(page)) {
-                if (page.contains("plus")) {// Suivant
-                    pageNumber = Integer.parseInt(page.replace("plus", "").trim()); // On enlève le char qui indentifiait la direction
-                    if (pageNumber < totalPageNumber) {
-                        pageNumber++;
-                    } else {
-                        pageNumber = totalPageNumber;
-                    }
-                } else if (page.contains("minus")) { // Précédent
-                    pageNumber = Integer.parseInt(page.replace("minus", "").trim()); // On enlève le char qui indentifiait la direction
-                    if (pageNumber > 1) {
-                        pageNumber--;
-                    } else {
-                        pageNumber = 1; // la première page dans le tableau
-                    }
-                }
-            } else {
-                pageNumber = Integer.parseInt(page);
-                if (pageNumber < 0) {
-                    pageNumber = 1;
-                } else if (pageNumber > totalPageNumber) {
-                    pageNumber = totalPageNumber;
-                }
-            }
-        } else { // Si page est nulle, on lui affecte 1 pour la première page
-            pageNumber = 1;
-        }
-
-        // Création des pages (liste de liste de customsearchobjectentity)
-        if (list.size() > number) {
-            for (int i = 0; i < totalPageNumber; i++) {
-                List<CustomSearchObjectEntity> internalList = new ArrayList<>();
-                if (i < totalPageNumber - 1) {
-                    for (int j = 0; j < number; j++) {
-                        if (i == 0) {
-                            internalList.add(list.get(j));
+            // On vérifie si suivant ou précédent est reçu
+            // Notons que la première page est à 0
+            if (page != null) {
+                if (!isInteger(page)) {
+                    if (page.contains("plus")) {// Suivant
+                        pageNumber = Integer.parseInt(page.replace("plus", "").trim()); // On enlève le char qui indentifiait la direction
+                        if (pageNumber < totalPageNumber) {
+                            pageNumber++;
                         } else {
-                            internalList.add(list.get((i * number) + j));
+                            pageNumber = totalPageNumber;
+                        }
+                    } else if (page.contains("minus")) { // Précédent
+                        pageNumber = Integer.parseInt(page.replace("minus", "").trim()); // On enlève le char qui indentifiait la direction
+                        if (pageNumber > 1) {
+                            pageNumber--;
+                        } else {
+                            pageNumber = 1; // la première page dans le tableau
                         }
                     }
-                    pageList.add(internalList);
                 } else {
-                    for (int j = 0; j < list.size() % number; j++) {
-                        internalList.add(list.get((i * number) + j));
+                    pageNumber = Integer.parseInt(page);
+                    if (pageNumber < 0) {
+                        pageNumber = 1;
+                    } else if (pageNumber > totalPageNumber) {
+                        pageNumber = totalPageNumber;
                     }
-                    pageList.add(internalList);
                 }
+            } else { // Si page est nulle, on lui affecte 1 pour la première page
+                pageNumber = 1;
             }
-            model.addAttribute("objectList", pageList.get(pageNumber - 1)); // On transforme pageNumber en index
-        } else {
-            model.addAttribute("objectList", list);
+
+            // Création des pages (liste de liste de customsearchobjectentity)
+            if (list.size() > number) {
+                for (int i = 0; i < totalPageNumber; i++) {
+                    List<CustomSearchObjectEntity> internalList = new ArrayList<>();
+                    if (i < totalPageNumber - 1) {
+                        for (int j = 0; j < number; j++) {
+                            if (i == 0) {
+                                internalList.add(list.get(j));
+                            } else {
+                                internalList.add(list.get((i * number) + j));
+                            }
+                        }
+                        pageList.add(internalList);
+                    } else {
+                        for (int j = 0; j < list.size() % number; j++) {
+                            internalList.add(list.get((i * number) + j));
+                        }
+                        pageList.add(internalList);
+                    }
+                }
+                model.addAttribute("objectList", pageList.get(pageNumber - 1)); // On transforme pageNumber en index
+            } else {
+                model.addAttribute("objectList", list);
+            }
+            model.addAttribute("totalobjetnumber", list);
         }
 
         // Attribut de modèle pour les pages
         model.addAttribute("currentpage", pageNumber); // On transforme ici l'index du tableau en page
         model.addAttribute("numberperpage", number);
         model.addAttribute("numberofpage", totalPageNumber);
-        model.addAttribute("totalobjetnumber", list);
+
 
         // fin
 
@@ -177,6 +180,7 @@ public class SearchController {
     @RequestMapping(value = "/subcategory", method = RequestMethod.GET)
     public String ListSubCategoryItems(@RequestParam("subCategoryName") String subCategoryName, @RequestParam(value = "subCatIsChecked") Boolean subCatIsChecked, @RequestParam(value = "page", required = false) String page, @RequestParam(value = "number", required = false) Integer number, HttpSession session, Model model) {
         List<CustomSearchObjectEntity> list = new ArrayList<>();
+        Integer totalPageNumber = null;
         // Modification de la liste de Cat/SubCat
         if (subCatIsChecked == true) {
             searchFilter.put(subCategoryName, subCatIsChecked);
@@ -210,70 +214,74 @@ public class SearchController {
         }
 
         // Nombre total de pages de résultats
-        Double numberDouble = Double.parseDouble(number.toString());
-        int totalPageNumber = (int) Math.ceil((list.size() / numberDouble));
+        if (list != null) {
+            Double numberDouble = Double.parseDouble(number.toString());
+            totalPageNumber = (int) Math.ceil((list.size() / numberDouble));
 
-        // On vérifie si suivant ou précédent est reçu
-        // Notons que la première page est à 0
-        if (page != null) {
-            if (!isInteger(page)) {
-                if (page.contains("plus")) {// Suivant
-                    pageNumber = Integer.parseInt(page.replace("plus", "").trim()); // On enlève le char qui indentifiait la direction
-                    if (pageNumber < totalPageNumber) {
-                        pageNumber++;
-                    } else {
-                        pageNumber = totalPageNumber;
-                    }
-                } else if (page.contains("minus")) { // Précédent
-                    pageNumber = Integer.parseInt(page.replace("minus", "").trim()); // On enlève le char qui indentifiait la direction
-                    if (pageNumber > 1) {
-                        pageNumber--;
-                    } else {
-                        pageNumber = 1; // la première page dans le tableau
-                    }
-                }
-            } else {
-                pageNumber = Integer.parseInt(page);
-                if (pageNumber < 0) {
-                    pageNumber = 1;
-                } else if (pageNumber > totalPageNumber) {
-                    pageNumber = totalPageNumber;
-                }
-            }
-        } else { // Si page est nulle, on lui affecte 0 pour la première page
-            pageNumber = 1;
-        }
 
-        // Création des pages (liste de liste de customsearchobjectentity)
-        if (list.size() > number) {
-            for (int i = 0; i < totalPageNumber; i++) {
-                List<CustomSearchObjectEntity> internalList = new ArrayList<>();
-                if (i < totalPageNumber - 1) {
-                    for (int j = 0; j < number; j++) {
-                        if (i == 0) {
-                            internalList.add(list.get(j));
+            // On vérifie si suivant ou précédent est reçu
+            // Notons que la première page est à 0
+            if (page != null) {
+                if (!isInteger(page)) {
+                    if (page.contains("plus")) {// Suivant
+                        pageNumber = Integer.parseInt(page.replace("plus", "").trim()); // On enlève le char qui indentifiait la direction
+                        if (pageNumber < totalPageNumber) {
+                            pageNumber++;
                         } else {
-                            internalList.add(list.get((i * number) + j));
+                            pageNumber = totalPageNumber;
+                        }
+                    } else if (page.contains("minus")) { // Précédent
+                        pageNumber = Integer.parseInt(page.replace("minus", "").trim()); // On enlève le char qui indentifiait la direction
+                        if (pageNumber > 1) {
+                            pageNumber--;
+                        } else {
+                            pageNumber = 1; // la première page dans le tableau
                         }
                     }
-                    pageList.add(internalList);
                 } else {
-                    for (int j = 0; j < list.size() % number; j++) {
-                        internalList.add(list.get((i * number) + j));
+                    pageNumber = Integer.parseInt(page);
+                    if (pageNumber < 0) {
+                        pageNumber = 1;
+                    } else if (pageNumber > totalPageNumber) {
+                        pageNumber = totalPageNumber;
                     }
-                    pageList.add(internalList);
                 }
+            } else { // Si page est nulle, on lui affecte 0 pour la première page
+                pageNumber = 1;
             }
-            model.addAttribute("objectList", pageList.get(pageNumber - 1)); // On transforme pageNumber en index
-        } else {
-            model.addAttribute("objectList", list);
+
+            // Création des pages (liste de liste de customsearchobjectentity)
+            if (list.size() > number) {
+                for (int i = 0; i < totalPageNumber; i++) {
+                    List<CustomSearchObjectEntity> internalList = new ArrayList<>();
+                    if (i < totalPageNumber - 1) {
+                        for (int j = 0; j < number; j++) {
+                            if (i == 0) {
+                                internalList.add(list.get(j));
+                            } else {
+                                internalList.add(list.get((i * number) + j));
+                            }
+                        }
+                        pageList.add(internalList);
+                    } else {
+                        for (int j = 0; j < list.size() % number; j++) {
+                            internalList.add(list.get((i * number) + j));
+                        }
+                        pageList.add(internalList);
+                    }
+                }
+                model.addAttribute("objectList", pageList.get(pageNumber - 1)); // On transforme pageNumber en index
+            } else {
+                model.addAttribute("objectList", list);
+            }
+            model.addAttribute("totalobjetnumber", list);
         }
 
         // Attribut de modèle pour les pages
         model.addAttribute("currentpage", pageNumber); // On transforme ici l'index du tableau en page
         model.addAttribute("numberperpage", number);
         model.addAttribute("numberofpage", totalPageNumber);
-        model.addAttribute("totalobjetnumber", list);
+
 
         // fin
         model.addAttribute("adrGetRequest", "/subcategory?subCategoryName=" + subCategoryName + "&amp;subCatIsChecked=" + subCatIsChecked);
