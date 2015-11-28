@@ -12,3 +12,8 @@ $(window).resize(function(){
 
     }
 });
+
+function deleteTrade(tradeID){
+    document.getElementById("tradeID").value = tradeID;
+    document.getElementById("deleteTradeForm").submit();
+}

@@ -46,6 +46,9 @@
 		<!--</div>-->
 	<!--</div>-->
 
+	<form id="deleteTradeForm" name="deleteTradeForm" th:action="@{/deleteTrade}" method="post">
+		<input id="tradeID" name="tradeID" type="hidden" style="position:absolute" />
+	</form>
 	<div id="maintrades" style="width:100%; height:100%; color:white">
 		<div class="row row-centered" style="margin-left:0px;margin-right:0px;">
 
@@ -64,10 +67,11 @@
 
 						<th:block th:each="trade : ${pendingTransactions}">
 						<div class="DemoBS2">
+
 							<!-- Toogle Buttons -->
 							<button type="button" class="btn btn-danger"
 									data-toggle="collapse" th:attr="data-target='#'+${trade.getIdtransaction()}" th:text="'Transaction #'+${trade.getIdtransaction()}"></button>
-							<button type="button" class="btn btn-danger">X</button>
+							<button type="button" class="btn btn-danger" th:onclick="'javascript:deleteTrade(\''+${trade.getIdtransaction()}+'\')'">X</button>
 
 							<div th:id="${trade.getIdtransaction()}" class="collapse infotrans">
 
@@ -104,10 +108,11 @@
     							padding:0 0 0 0; margin-left:0px; margin-right:0px">
 						<th:block th:each="trade : ${sentTransactions}">
 							<div class="DemoBS2">
+
 								<!-- Toogle Buttons -->
 								<button type="button" class="btn btn-warning"
 										data-toggle="collapse" th:attr="data-target='#'+${trade.getIdtransaction()}" th:text="'Transaction #'+${trade.getIdtransaction()}"></button>
-								<button type="button" class="btn btn-warning">X</button>
+								<button type="button" class="btn btn-warning"  th:onclick="'javascript:deleteTrade(\''+${trade.getIdtransaction()}+'\')'">X</button>
 
 								<div th:id="${trade.getIdtransaction()}" class="collapse infotrans">
 
@@ -143,11 +148,11 @@
 
 						<th:block th:each="trade : ${completedTransactions}">
 							<div class="DemoBS2">
+
 								<!-- Toogle Buttons -->
 								<button type="button" class="btn btn-success"
 										data-toggle="collapse" th:attr="data-target='#'+${trade.getIdtransaction()}" th:text="'Transaction #'+${trade.getIdtransaction()}"></button>
-								<button type="button" class="btn btn-success">X</button>
-
+								<button type="button" class="btn btn-success"  th:onclick="'javascript:deleteTrade(\''+${trade.getIdtransaction()}+'\')'">X</button>
 								<div th:id="${trade.getIdtransaction()}" class="collapse infotrans">
 
 									<br/>

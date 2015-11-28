@@ -4,13 +4,18 @@ import com.tilf.troke.auth.AuthUserContext;
 import com.tilf.troke.entity.TransactionsEntity;
 import com.tilf.troke.entity.UsersEntity;
 import com.tilf.troke.repository.CustomMyTradeRepository;
+import com.tilf.troke.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.thymeleaf.context.WebContext;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -24,6 +29,12 @@ public class myTradesController {
 
     @Autowired
     private CustomMyTradeRepository customMyTradeRepository;
+
+    @Autowired
+    private TransactionRepository transactionRepository;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @RequestMapping(value = "/myTrades", method = RequestMethod.GET)
     public String getMyTrades(Model model,
@@ -56,5 +67,13 @@ public class myTradesController {
             return "redirect:#openModalConnexion";
         }
     }
-
+    @RequestMapping(value = "/deleteTrade", method = RequestMethod.POST)
+    public String deleteTrade(@RequestParam("tradeID")Integer tradeID) {
+        String queryTrade = "select t from TransactionsEntity t where t.idtransaction = :idTrade";
+        Query queryObject = entityManager.createQuery(queryTrade);
+        queryObject.setParameter("idTrade", tradeID);
+        TransactionsEntity deleteTrade = (TransactionsEntity)queryObject.getSingleResult();
+        transactionRepository.delete(deleteTrade);
+        return "redirect:/myTrades";
+    }
 }
