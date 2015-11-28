@@ -14,7 +14,7 @@ $(window).resize(function()
 {
     $('#RectangleName').width($('#ProfilBanner').width()+30);
     $('#RectangleName2').width($('#InventoryBanner').width()+30);
-    $('#UserName').css('margin-left','40%');
+    //$('#UserName').css('margin-left','40%');
     //$('#ProfilButtons').css('margin-left','40%');
 
     if($(window).width() < 993)
