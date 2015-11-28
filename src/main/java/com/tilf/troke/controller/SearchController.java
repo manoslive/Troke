@@ -121,6 +121,12 @@ public class SearchController {
             model.addAttribute("objectListEmpty", true);
         }
 
+        // debut
+
+
+
+        // fin
+
         model.addAttribute("leftMenu", fillLeftCatMenu());
         model.addAttribute("adrStartTrade", "/startTrade?itemID=");
 
@@ -160,31 +166,63 @@ public class SearchController {
     }
 
     @RequestMapping(value = "/searchDB", method = RequestMethod.GET)
-    public String searchDB(@RequestParam("keyword") String keyword, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "number", required = false) Integer number, Model model, HttpSession session) {
+    public String searchDB(@RequestParam("keyword") String keyword, @RequestParam(value = "page", required = false) String page, @RequestParam(value = "number", required = false) Integer number, Model model, HttpSession session) {
         searchFilter.removeAll();
         List<CustomSearchObjectEntity> list = customObjectRepository.getObjectListByKeyword(keyword);
         List<List<CustomSearchObjectEntity>> pageList = new ArrayList<>();
+        Integer pageNumber = null;
 
         // Si number est nul, on lui met 10 par défaut
         if (number == null) {
             number = 10;
         }
 
+        // Nombre total de pages de résultats
+        Double numberDouble = Double.parseDouble(number.toString());
+        int totalPageNumber = (int) Math.ceil((list.size() / numberDouble));
+
+        // On vérifie si suivant ou précédent est reçu
+        // Notons que la première page est à 0
+        if (page != null) {
+            if (!isInteger(page)) {
+                if (page.contains("plus")) {// Suivant
+                    pageNumber = Integer.parseInt(page.replace("plus", "").trim()); // On enlève le char qui indentifiait la direction
+                    if (pageNumber < totalPageNumber) {
+                        pageNumber++;
+                    } else {
+                        pageNumber = totalPageNumber;
+                    }
+                } else if (page.contains("minus")) { // Précédent
+                    pageNumber = Integer.parseInt(page.replace("minus", "").trim()); // On enlève le char qui indentifiait la direction
+                    if (pageNumber > 1) {
+                        pageNumber--;
+                    } else {
+                        pageNumber = 1; // la première page dans le tableau
+                    }
+                }
+            } else {
+                pageNumber = Integer.parseInt(page);
+                if (pageNumber < 0) {
+                    pageNumber = 1;
+                } else if (pageNumber > totalPageNumber) {
+                    pageNumber = totalPageNumber;
+                }
+            }
+        } else { // Si page est nulle, on lui affecte 0 pour la première page
+            pageNumber = 1;
+        }
+
         // Création des pages (liste de liste de customsearchobjectentity)
         if (list.size() > number) {
-            Double numberDouble = Double.parseDouble(number.toString());
-            // Nombre de pages de résultats
-            int pageNumber = (int) Math.ceil((list.size() / numberDouble));
-            for (int i = 0; i < pageNumber; i++) {
+            for (int i = 0; i < totalPageNumber; i++) {
                 List<CustomSearchObjectEntity> internalList = new ArrayList<>();
-                if (i < pageNumber - 1) {
+                if (i < totalPageNumber - 1) {
                     for (int j = 0; j < number; j++) {
                         if (i == 0) {
                             internalList.add(list.get(j));
                         } else {
                             internalList.add(list.get((i * number) + j));
                         }
-
                     }
                     pageList.add(internalList);
                 } else {
@@ -194,25 +232,23 @@ public class SearchController {
                     pageList.add(internalList);
                 }
             }
-            if(page == null){
-                model.addAttribute("searchObjectList", pageList.get(0));
-            }
-            else{
-                model.addAttribute("searchObjectList", pageList.get(page - 1));
-            }
+            model.addAttribute("searchObjectList", pageList.get(pageNumber - 1)); // On transforme pageNumber en index
         } else {
             model.addAttribute("searchObjectList", list);
         }
 
         // Attribut de modèle pour les pages
-        model.addAttribute("currentpage", page);
+        model.addAttribute("currentpage", pageNumber); // On transforme ici l'index du tableau en page
         model.addAttribute("numberperpage", number);
-        model.addAttribute("numberofpage", list.size() / number);
+        model.addAttribute("numberofpage", totalPageNumber);
+        model.addAttribute("keyword", keyword);
 
+        // Autres attributs de modèle
         model.addAttribute("adrSearch", "/searchDB?keyword=");
         model.addAttribute("adrStartTrade", "/startTrade?itemID=");
         model.addAttribute("leftMenu", fillLeftCatMenu());
         model.addAttribute("adrStartTrade", "/startTrade?itemID=");
+
         // On vide les checkbox
         searchFilter.getFilters().clear();
 
@@ -223,6 +259,10 @@ public class SearchController {
             context.setVariable("adrSearch", "/searchDB?keyword=");
             context.setVariable("leftMenu", fillLeftCatMenu());
             context.setVariable("adrStartTrade", "/startTrade?itemID=");
+            context.setVariable("currentpage", page);
+            context.setVariable("numberperpage", number);
+            context.setVariable("numberofpage", list.size() / number);
+            context.setVariable("keyword", keyword);
         }
         return "fragments/home/search";
     }
@@ -256,5 +296,30 @@ public class SearchController {
             html += "</ul></div>\n";
         }
         return html;
+    }
+
+    // Méthode qui vérifie si le String est un Integer possible
+    public static boolean isInteger(String str) {
+        if (str == null) {
+            return false;
+        }
+        int length = str.length();
+        if (length == 0) {
+            return false;
+        }
+        int i = 0;
+        if (str.charAt(0) == '-') {
+            if (length == 1) {
+                return false;
+            }
+            i = 1;
+        }
+        for (; i < length; i++) {
+            char c = str.charAt(i);
+            if (c < '0' || c > '9') {
+                return false;
+            }
+        }
+        return true;
     }
 }

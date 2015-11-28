@@ -7,38 +7,39 @@
 
     <!-- Section control de page (#, previous/next) -->
     <div class="paginationControl">
-        <th:block th:if="${searchObjectList.size()} gt 1">
-            <ul class="pagination">
-                <li class="previous"><a href="#">Previous</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li class="next"><a href="#">Next</a></li>
-            </ul>
-            <ul class="items-per-page nav nav-tabs">
-                <li class="disabledTab"><a>Par page: </a></li>
-                <li class="active"><a data-toggle="tab" href="#">10</a></li>
-                <li><a data-toggle="tab" href="#">20</a></li>
-                <li><a data-toggle="tab" href="#">30</a></li>
-            </ul>
-        </th:block>
-        <th:block th:if="${searchObjectList.size()} le 1">
-            <ul class="pagination">
-                <li class="previous"><a href="#">Previous</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li class="next"><a href="#">Next</a></li>
-            </ul>
-            <ul class="items-per-page nav nav-tabs">
-                <li class="disabledTab"><a>Par page: </a></li>
-                <li class="active"><a data-toggle="tab" href="#">10</a></li>
-                <li><a data-toggle="tab" href="#">20</a></li>
-                <li><a data-toggle="tab" href="#">30</a></li>
-            </ul>
-        </th:block>
+        <ul class="pagination">
+            <li class="previous"><a style="cursor:pointer;"
+                                    th:onclick="'javascript:changePage(\'minus1\',\''+ ${keyword} + '\');'">Précédente</a>
+            </li>
+            <th:block th:each="i : ${#numbers.sequence(1, numberofpage, 1)}">
+                <th:block th:if="${keyword.equals('')}">
+                    <li th:class="'page' + ${i}"><a
+                            th:onclick="'javascript:changePage(\'' + ${i} + '\',\'' + ${keyword} + '\')'"
+                            style="cursor:pointer;" th:text="${i.intValue()}"></a></li>
+                </th:block>
+                <th:block th:if="!${keyword.equals('')}">
+                    <li th:class="'page' + ${i}"><a
+                            th:onclick="'javascript:changePage(\'' + ${i} + '\',\'' + ${keyword} + '\')'"
+                            style="cursor:pointer;" th:text="${i.intValue()}"></a></li>
+                </th:block>
+            </th:block>
+            <li class="next"><a style="cursor:pointer;"
+                                th:onclick="'javascript:changePage(\'plus1\',\''+ ${keyword} + '\');'">Suivante</a>
+            </li>
+        </ul>
+        <ul class="items-per-page nav nav-tabs">
+            <li class="disabledTab"><a>Par page: </a></li>
+            <li class="npp10"><a data-toggle="tab" style="cursor:pointer;"
+                                 th:onclick="'javascript:changePageResultsNumber(\'' + '' + '\',\'' + ${keyword} + '\',\'' + '10' + '\')'">10</a>
+            </li>
+            <li class="npp20"><a data-toggle="tab" style="cursor:pointer;"
+                                 th:onclick="'javascript:changePageResultsNumber(\'' + '' + '\',\'' + ${keyword} + '\',\'' + '20' + '\')'">20</a>
+            </li>
+            <li class="npp30"><a data-toggle="tab" style="cursor:pointer;"
+                                 th:onclick="'javascript:changePageResultsNumber(\'' + '' + '\',\'' + ${keyword} + '\',\'' + '30' + '\')'">30</a>
+            </li>
+        </ul>
     </div>
-
     <!-- /Fin control Page -->
 
     <!-- Ligne/Spacer -->
@@ -134,38 +135,57 @@
 
     <!-- Section control de page (#, previous/next) -->
     <div class="paginationControl">
-        <th:block th:if="${searchObjectList.size()} gt 1">
-            <ul class="pagination">
-                <li class="previous"><a href="#">Previous</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li class="next"><a href="#">Next</a></li>
-            </ul>
-            <ul class="items-per-page nav nav-tabs">
-                <li class="disabledTab"><a>Par page: </a></li>
-                <li class="active"><a data-toggle="tab" href="#">10</a></li>
-                <li><a data-toggle="tab" href="#">20</a></li>
-                <li><a data-toggle="tab" href="#">30</a></li>
-            </ul>
-        </th:block>
-        <th:block th:if="${searchObjectList.size()} le 1">
-            <ul class="pagination">
-                <li class="previous"><a href="#">Previous</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li class="next"><a href="#">Next</a></li>
-            </ul>
-            <ul class="items-per-page nav nav-tabs">
-                <li class="disabledTab"><a>Par page: </a></li>
-                <li class="active"><a data-toggle="tab" href="#">10</a></li>
-                <li><a data-toggle="tab" href="#">20</a></li>
-                <li><a data-toggle="tab" href="#">30</a></li>
-            </ul>
-        </th:block>
+        <ul class="pagination">
+            <li class="previous"><a style="cursor:pointer;"
+                                    th:onclick="'javascript:changePage(\'minus1\',\''+ ${keyword} + '\');'">Précédente</a>
+            </li>
+            <th:block th:each="i : ${#numbers.sequence(1, numberofpage, 1)}">
+                <th:block th:if="${keyword.equals('')}">
+                    <li th:class="'page' + ${i}"><a
+                            th:onclick="'javascript:changePage(\'' + ${i} + '\',\'' + ${keyword} + '\')'"
+                            style="cursor:pointer;" th:text="${i.intValue()}"></a></li>
+                </th:block>
+                <th:block th:if="!${keyword.equals('')}">
+                    <li th:class="'page' + ${i}"><a
+                            th:onclick="'javascript:changePage(\'' + ${i} + '\',\'' + ${keyword} + '\')'"
+                            style="cursor:pointer;" th:text="${i.intValue()}"></a></li>
+                </th:block>
+            </th:block>
+            <li class="next"><a style="cursor:pointer;"
+                                th:onclick="'javascript:changePage(\'plus1\',\''+ ${keyword} + '\');'">Suivante</a>
+            </li>
+        </ul>
+        <ul class="items-per-page nav nav-tabs">
+            <li class="disabledTab"><a>Par page: </a></li>
+            <li class="npp10"><a data-toggle="tab" style="cursor:pointer;"
+                                 th:onclick="'javascript:changePageResultsNumber(\'' + '' + '\',\'' + ${keyword} + '\',\'' + '10' + '\')'">10</a>
+            </li>
+            <li class="npp20"><a data-toggle="tab" style="cursor:pointer;"
+                                 th:onclick="'javascript:changePageResultsNumber(\'' + '' + '\',\'' + ${keyword} + '\',\'' + '20' + '\')'">20</a>
+            </li>
+            <li class="npp30"><a data-toggle="tab" style="cursor:pointer;"
+                                 th:onclick="'javascript:changePageResultsNumber(\'' + '' + '\',\'' + ${keyword} + '\',\'' + '30' + '\')'">30</a>
+            </li>
+        </ul>
     </div>
     <!-- /Fin control Page -->
+
+    <script type="text/javascript" th:inline="javascript">
+        // Quand la page est chargée on met les elements de pagination
+        // reçus à actifs
+        $(document).ready(function () {
+            if ([[${currentpage}]] == null) {
+                var currentpageStart = 1;
+                var numberperpageStart = 10;
+            }
+            else {
+                var currentpageStart = [[${currentpage}]];
+                var numberperpageStart = [[${numberperpage}]];
+            }
+            $('li.page' + currentpageStart).addClass('active');
+            $('li.npp' + numberperpageStart).addClass('active');
+        });
+    </script>
 </div>
 </body>
 </html>
