@@ -37,6 +37,3 @@ function getCheckBoxSubCatValueLink(checkBoxId) {
         location.href = "/subcategory?subCategoryName=" + checkBoxId + "&subCatIsChecked=" + true;
     }
 }
-function changePageResults(){
-
-}

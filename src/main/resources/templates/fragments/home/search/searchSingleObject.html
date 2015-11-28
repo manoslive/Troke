@@ -10,10 +10,6 @@
         <ul class="pagination">
             <li class="previous"><a href="#">Previous</a></li>
             <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
             <li class="next"><a href="#">Next</a></li>
         </ul>
         <ul class="items-per-page nav nav-tabs">
@@ -28,6 +24,14 @@
     <!-- Ligne/Spacer -->
     <div class="or-spacer">
         <div class="mask"></div>
+    </div>
+
+    <!-- Affiche le nombre de résultats sur le nombre total de résultat -->
+    <div class="row" id="login-container">
+        <div class="span8 offset2">
+            <div style="color:white;" th:text="'1 sur 1 résultat affiché.'"
+                 class="col-xs-6 col-centered col-min"></div>
+        </div>
     </div>
 
     <!-- Div un item -->
@@ -107,10 +111,6 @@
         <ul class="pagination">
             <li class="previous"><a href="#">Previous</a></li>
             <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
             <li class="next"><a href="#">Next</a></li>
         </ul>
         <ul class="items-per-page nav nav-tabs">

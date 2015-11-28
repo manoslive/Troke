@@ -1,4 +1,5 @@
-<html xmlns:th="http://www.thymeleaf.org" th:include="main_template :: page">
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      th:include="main_template :: page">
 <head th:fragment="head">
     <meta charset="utf-8"/>
     <link href="css/style_search.css" type="text/css" rel="stylesheet"/>
@@ -39,7 +40,7 @@
             <!-- Si objectList n'est pas null -->
             <th:block th:if="${objectList} ne null">
                 <th:block th:if="${objectList.size()} ge 1">
-                   <th:block th:replace="fragments/home/search/searchMultipleObjects :: searchMultipleObjects"/>
+                    <th:block th:replace="fragments/home/search/searchMultipleObjects :: searchMultipleObjects"/>
                 </th:block>
             </th:block>
 
