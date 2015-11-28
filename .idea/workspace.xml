@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f947bb62-d6ad-4da4-b5ae-73659883da55" name="Default" comment="Pagination de la recherche backend">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepositoryImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepositoryImpl.java" />
+    <list default="true" id="f947bb62-d6ad-4da4-b5ae-73659883da55" name="Default" comment="">
+      <change type="DELETED" beforePath="C:\Users\Manu\Documents\GitHub\troke\target\classes\static\uploaded-images\3b82a0ea899c401096b609f21d8571f8.jpg" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomObjectRepositoryImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomObjectRepositoryImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/ProfilController.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/ProfilController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/SearchController.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/SearchController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java" afterPath="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/search.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/search.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchKeyword.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchKeyword.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchMultipleObjects.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchMultipleObjects.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchSingleObject.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchSingleObject.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="troke_springboot.iws" />
@@ -45,28 +50,10 @@
       <file leaf-file-name="SearchController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="198" column="13" selection-start-line="198" selection-start-column="13" selection-end-line="198" selection-end-column="13" />
+            <state vertical-scroll-proportion="-14.448276">
+              <caret line="394" column="44" selection-start-line="394" selection-start-column="28" selection-end-line="394" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomObjectRepositoryImpl.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepositoryImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6287582">
-              <caret line="118" column="112" selection-start-line="118" selection-start-column="108" selection-end-line="118" selection-end-column="112" />
-              <folding>
-                <marker date="1448640946302" expanded="true" signature="1052:1086" placeholder="select NAME_..category..." />
-                <marker date="1448640946302" expanded="true" signature="1459:1525" placeholder="select NAME_..subcategory..." />
-                <marker date="1448640946302" expanded="true" signature="3230:3521" placeholder="select IDOBJ..objects..." />
-                <marker date="1448640946302" expanded="true" signature="4230:4431" placeholder="select IDOBJ..objects..." />
-                <marker date="1448640946302" expanded="true" signature="6693:6817" placeholder="select disti..category..." />
-                <marker date="1448640946302" expanded="true" signature="7130:7209" placeholder="select disti..subcategory..." />
-                <marker date="1448640946302" expanded="true" signature="7576:7699" placeholder="select s.NAM..category..." />
               </folding>
             </state>
           </provider>
@@ -75,8 +62,8 @@
       <file leaf-file-name="search.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.884615">
-              <caret line="35" column="48" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
+            <state vertical-scroll-proportion="-16.576923">
+              <caret line="59" column="41" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -85,23 +72,64 @@
       <file leaf-file-name="searchKeyword.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchKeyword.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.461538">
-              <caret line="130" column="10" selection-start-line="130" selection-start-column="10" selection-end-line="130" selection-end-column="10" />
+            <state vertical-scroll-proportion="-4.576923">
+              <caret line="49" column="75" selection-start-line="49" selection-start-column="75" selection-end-line="49" selection-end-column="75" />
               <folding>
+                <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#0;n#th:block#0;n#th:block#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#0;n#th:block#1;n#th:block#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#1;n#ul#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#2;n#ul#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#3;n#ul#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#th:block#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#th:block#1;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#div#1;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#0;n#th:block#0;n#th:block#0;n#ul#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#0;n#th:block#1;n#th:block#0;n#ul#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#1;n#ul#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#2;n#ul#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#3;n#ul#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/search.js">
+      <file leaf-file-name="searchMultipleObjects.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchMultipleObjects.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="-4.1538463">
+              <caret line="42" column="75" selection-start-line="42" selection-start-column="75" selection-end-line="42" selection-end-column="75" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#0;n#th:block#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#1;n#ul#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#2;n#ul#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#3;n#ul#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#th:block#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#th:block#1;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#0;n#th:block#0;n#ul#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#1;n#ul#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#2;n#ul#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#3;n#ul#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="searchSingleObject.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchSingleObject.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5254545">
+              <caret line="32" column="61" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="61" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -164,23 +192,23 @@
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/TransactionController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/filter/SearchFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/main_template.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/ObjectsEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/service/CatSubCatService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/CustomObjetImageEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/CustomSearchObjectEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/service/ObjectService.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchSingleObject.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchNull.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchMultipleObjects.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/style_search.css" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/search.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/main_template.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepositoryImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchKeyword.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/search.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchNull.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchMultipleObjects.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchKeyword.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchSingleObject.html" />
       </list>
     </option>
   </component>
@@ -298,7 +326,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -681,8 +708,9 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1204,19 +1232,9 @@
       <workItem from="1448398683804" duration="6307000" />
       <workItem from="1448474227467" duration="3458000" />
       <workItem from="1448496559647" duration="27900000" />
-      <workItem from="1448577925128" duration="21272000" />
-    </task>
-    <task id="LOCAL-00007" summary="ajouter un ignore">
-      <created>1443202454042</created>
-      <option name="number" value="00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1443202454042</updated>
-    </task>
-    <task id="LOCAL-00008" summary="vérif sur inscription">
-      <created>1443208811068</created>
-      <option name="number" value="00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1443208811068</updated>
+      <workItem from="1448577925128" duration="22833000" />
+      <workItem from="1448650177777" duration="13571000" />
+      <workItem from="1448669874746" duration="25805000" />
     </task>
     <task id="LOCAL-00009" summary="VERIF de l'existance du username dans l'inscription fonctionne">
       <created>1443256617085</created>
@@ -1500,11 +1518,23 @@
       <option name="project" value="LOCAL" />
       <updated>1448604730744</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Pagination de la recherche backend">
+      <created>1448648574115</created>
+      <option name="number" value="00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1448648574115</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Pagination terminée pour /item, /searchDB et aucun résultat">
+      <created>1448691740755</created>
+      <option name="number" value="00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1448691740759</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="388891000" />
+    <option name="totallyTimeSpent" value="429828000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1521,7 +1551,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25278395" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="2" y="714" width="1920" height="312" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2521645" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="2" y="714" width="1920" height="312" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32946146" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1529,26 +1559,26 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15884861" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3917749" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1417749" sideWeight="0.5053305" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34632036" sideWeight="0.5053305" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17967914" sideWeight="0.526971" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15405117" sideWeight="0.48037678" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19989339" sideWeight="0.48037678" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29114583" sideWeight="0.5055118" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20788912" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32724902" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2468017" sideWeight="0.5196232" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49458873" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4047619" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39957264" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32724902" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1565,7 +1595,6 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="home page done" />
     <MESSAGE value="debut recherche" />
     <MESSAGE value="login marche" />
     <MESSAGE value="ajout search" />
@@ -1590,52 +1619,25 @@
     <MESSAGE value="Update de search.html" />
     <MESSAGE value="Image++" />
     <MESSAGE value="Pagination de la recherche backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pagination de la recherche backend" />
+    <MESSAGE value="Pagination terminée pour /item, /searchDB et aucun résultat" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pagination terminée pour /item, /searchDB et aucun résultat" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tilf/troke/service/CatSubCatService.java</url>
-          <line>37</line>
-          <properties />
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepositoryImpl.java</url>
-          <line>135</line>
-          <properties />
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java</url>
-          <line>109</line>
+          <line>52</line>
           <properties />
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java</url>
-          <line>173</line>
-          <properties />
-          <option name="timeStamp" value="52" />
+          <option name="timeStamp" value="65" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="53" />
+      <option name="time" value="66" />
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="MavenRunConfiguration">
-        <watch expression="i == pageNumber &amp;&amp; j == list.size() % number" />
-        <watch expression="((i * number) + j) - 1" language="JAVA" custom="" />
-        <watch expression="list.size() % number" />
-        <watch expression="i == pageNumber" />
-        <watch expression="pageNumber" />
-        <watch expression="i" />
-        <watch expression="internalList.size()" language="JAVA" custom="" />
-      </configuration>
-    </watches-manager>
+    <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1747,13 +1749,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.1.7.RELEASE/spring-webmvc-4.1.7.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="474" column="0" selection-start-line="474" selection-start-column="0" selection-end-line="474" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/TransactionsEntity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.49721295">
@@ -1828,7 +1823,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.26842105">
           <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1836,7 +1830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="26" selection-start-line="0" selection-start-column="0" selection-end-line="135" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1844,9 +1837,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.74561405">
           <caret line="102" column="28" selection-start-line="102" selection-start-column="28" selection-end-line="102" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1876,9 +1866,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.46596858">
           <caret line="22" column="61" selection-start-line="22" selection-start-column="61" selection-end-line="22" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1896,69 +1883,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/main_template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.158621">
-          <caret line="173" column="0" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#h2#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#input#2;n#div#0;n#form#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#form#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#p#1;n#div#2;n#form#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#input#0;n#div#3;n#form#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#h2#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#th:block#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#input#0;n#div#1;n#th:block#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#input#1;n#div#1;n#th:block#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#2;n#th:block#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#th:block#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#input#0;n#th:block#0;n#div#1;n#th:block#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#input#0;n#th:block#1;n#div#1;n#th:block#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#input#0;n#th:block#2;n#div#1;n#th:block#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#input#0;n#th:block#3;n#div#1;n#th:block#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#2;n#th:block#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#h2#0;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#h2#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#h2#2;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#input#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#input#2;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#2;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#2;n#ul#0;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#3;n#ul#0;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#4;n#ul#0;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/profil/pageprofil.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.807693">
           <caret line="15" column="91" selection-start-line="15" selection-start-column="81" selection-end-line="15" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/profil/pageinventaire.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1976,46 +1904,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchSingleObject.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="101" column="32" selection-start-line="101" selection-start-column="32" selection-end-line="101" selection-end-column="32" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#label#0;n#span#0;n#div#3;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#label#1;n#span#0;n#div#3;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#label#2;n#span#0;n#div#3;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#label#3;n#span#0;n#div#3;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#label#4;n#span#0;n#div#3;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchMultipleObjects.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="96" selection-start-line="42" selection-start-column="96" selection-end-line="42" selection-end-column="96" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchNull.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="70" column="6" selection-start-line="70" selection-start-column="6" selection-end-line="70" selection-end-column="6" />
-          <folding>
-            <element signature="n#style#0;n#h1#1;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/style_search.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.03683036">
           <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2023,7 +1915,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="44" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2035,64 +1926,142 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/search.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/profil/pageinventaire.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6891892">
+          <caret line="133" column="183" selection-start-line="133" selection-start-column="104" selection-end-line="133" selection-end-column="183" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/main_template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.26923">
+          <caret line="482" column="50" selection-start-line="482" selection-start-column="50" selection-end-line="482" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.1.7.RELEASE/spring-webmvc-4.1.7.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.884615">
-          <caret line="35" column="48" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
+        <state vertical-scroll-proportion="0.35151514">
+          <caret line="470" column="0" selection-start-line="470" selection-start-column="0" selection-end-line="470" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchKeyword.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.461538">
-          <caret line="130" column="10" selection-start-line="130" selection-start-column="10" selection-end-line="130" selection-end-column="10" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#th:block#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#th:block#1;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#1;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.1.7.RELEASE/spring-web-4.1.7.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19783197">
-          <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.35151514">
+          <caret line="140" column="0" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchNull.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21755028">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="0" selection-end-line="23" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepositoryImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.8888888">
+          <caret line="118" column="112" selection-start-line="118" selection-start-column="112" selection-end-line="118" selection-end-column="112" />
+          <folding>
+            <marker date="1448669996477" expanded="true" signature="-1:-1" placeholder="select NAME_..category..." />
+            <marker date="1448669996477" expanded="true" signature="-1:-1" placeholder="select NAME_..subcategory..." />
+            <marker date="1448669996477" expanded="true" signature="-1:-1" placeholder="select IDOBJ..objects..." />
+            <marker date="1448669996477" expanded="true" signature="-1:-1" placeholder="select IDOBJ..objects..." />
+            <marker date="1448669996477" expanded="true" signature="-1:-1" placeholder="select disti..category..." />
+            <marker date="1448669996477" expanded="true" signature="-1:-1" placeholder="select disti..subcategory..." />
+            <marker date="1448669996477" expanded="true" signature="-1:-1" placeholder="select s.NAM..category..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8229167">
+          <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="198" column="13" selection-start-line="198" selection-start-column="13" selection-end-line="198" selection-end-column="13" />
+        <state vertical-scroll-proportion="-14.448276">
+          <caret line="394" column="44" selection-start-line="394" selection-start-column="28" selection-end-line="394" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepositoryImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchMultipleObjects.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6287582">
-          <caret line="118" column="112" selection-start-line="118" selection-start-column="108" selection-end-line="118" selection-end-column="112" />
+        <state vertical-scroll-proportion="-4.1538463">
+          <caret line="42" column="75" selection-start-line="42" selection-start-column="75" selection-end-line="42" selection-end-column="75" />
           <folding>
-            <marker date="1448640946302" expanded="true" signature="1052:1086" placeholder="select NAME_..category..." />
-            <marker date="1448640946302" expanded="true" signature="1459:1525" placeholder="select NAME_..subcategory..." />
-            <marker date="1448640946302" expanded="true" signature="3230:3521" placeholder="select IDOBJ..objects..." />
-            <marker date="1448640946302" expanded="true" signature="4230:4431" placeholder="select IDOBJ..objects..." />
-            <marker date="1448640946302" expanded="true" signature="6693:6817" placeholder="select disti..category..." />
-            <marker date="1448640946302" expanded="true" signature="7130:7209" placeholder="select disti..subcategory..." />
-            <marker date="1448640946302" expanded="true" signature="7576:7699" placeholder="select s.NAM..category..." />
+            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#0;n#th:block#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#1;n#ul#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#2;n#ul#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#3;n#ul#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#th:block#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#th:block#1;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#0;n#th:block#0;n#ul#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#1;n#ul#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#2;n#ul#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#3;n#ul#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchKeyword.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.576923">
+          <caret line="49" column="75" selection-start-line="49" selection-start-column="75" selection-end-line="49" selection-end-column="75" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#0;n#th:block#0;n#th:block#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#0;n#th:block#1;n#th:block#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#1;n#ul#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#2;n#ul#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#3;n#ul#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#th:block#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#th:block#1;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#1;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#0;n#th:block#0;n#th:block#0;n#ul#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#0;n#th:block#1;n#th:block#0;n#ul#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#1;n#ul#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#2;n#ul#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#3;n#ul#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.576923">
+          <caret line="59" column="41" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchSingleObject.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5254545">
+          <caret line="32" column="61" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="61" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

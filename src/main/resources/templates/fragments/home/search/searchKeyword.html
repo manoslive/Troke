@@ -47,11 +47,12 @@
         <div class="mask"></div>
     </div>
 
+    <!-- Affiche le nombre de résultats sur le nombre total de résultat -->
     <div class="row" id="login-container">
         <div class="span8 offset2">
             <th:block th:if="${searchObjectList.size()} gt 1">
                 <div style="color:white;"
-                     th:text="${searchObjectList.size()} + ' sur ' + ${searchObjectList.size()} + ' résultats affichés.'"
+                     th:text="${searchObjectList.size()} + ' sur ' + ${totalobjetnumber.size()} + ' résultats affichés.'"
                      class="col-xs-6 col-centered col-min"></div>
             </th:block>
             <th:block th:if="${searchObjectList.size()} eq 1">
@@ -185,6 +186,38 @@
             $('li.page' + currentpageStart).addClass('active');
             $('li.npp' + numberperpageStart).addClass('active');
         });
+        // Lors d'un clique sur le nombre de résultats par page
+        function changePageResultsNumber(requestedpage, keyword, resultsperpage) {
+            if (keyword == null) {
+                keyword = "";
+            }
+            requestedpage = [[${currentpage}]];
+
+            var getRequest = "/searchDB?keyword=" + keyword + '&amp;page=' + requestedpage + '&amp;number=' + resultsperpage;
+            location.href = decodeURIComponent(getRequest.split('&amp;').join('%26').trim());
+        }
+
+        // Lors d'un clique sur la barre de pagination
+        function changePage(requestedpage, keyword) {
+            if (keyword == null) {
+                keyword = "";
+            }
+            if (requestedpage == null) {
+                requestedpage = 1;
+            }
+            else if (requestedpage == 'plus1') {
+                requestedpage = "plus" + $('ul.pagination li.active a').first().text();
+            }
+            else if (requestedpage == 'minus1') {
+                requestedpage = "minus" + $('ul.pagination li.active a').first().text();
+            }
+
+
+            var resultsperpage = $('ul.items-per-page li.active a').first().text();
+
+            var getRequest = "/searchDB?keyword=" + keyword + '&amp;page=' + requestedpage + '&amp;number=' + resultsperpage;
+            location.href = decodeURIComponent(getRequest.split('&amp;').join('%26').trim());
+        }
     </script>
 </div>
 </body>
