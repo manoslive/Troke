@@ -14,5 +14,7 @@ public interface UserRepository extends JpaRepository<UsersEntity, String> {
 
     UsersEntity save(UsersEntity user);
 
+    UsersEntity findUsersEntityByIduser(String i);
+
     //void addUsersEntity(String iduser, String lastname, String firstname, String pass, String avatar, char isbanned, char isonline, Date creationdate, String email, String telephone, String zipcode, char permissionlevel, char isvip);
 }

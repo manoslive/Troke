@@ -27,7 +27,7 @@
                             <div class="span3" th:each="obj,iter : ${recentobjects}" th:if="${iter.index} lt 8">
                                 <div class="thumbnail product-item">
                                     <a th:href="${adrItem} + ${obj.getIdobject()}">
-                                        <img class="image-carousel-item img-circle img-responsive" th:src="*{obj.getGuid() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${obj.getGuid()}:'images/LogoWorld_Transparence.png'"/></a>
+                                        <img class="image-carousel-item img-circle img-responsive" th:src="*{obj.getImage1() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${obj.getImage1()}:'images/LogoWorld_Transparence.png'"/></a>
                                     <p th:text="${obj.getNameObject()}" style="color:white;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;text-transform:uppercase;font-weight:normal;"></p>
                                 </div>
                             </div>
@@ -42,7 +42,8 @@
                             <div class="span3" th:each="obj,iter : ${recentobjects}"
                                  th:if="${iter.index &gt; 7 and iter.index &lt; 16}">
                                 <div class="thumbnail product-item">
-                                    <a th:href="${adrItem} + ${obj.getIdobject()}"><img class="image-carousel-item img-circle img-responsive" src="images/LogoWorld_Transparence.png"/></a>
+                                    <a th:href="${adrItem} + ${obj.getIdobject()}">
+                                        <img class="image-carousel-item img-circle img-responsive" th:src="*{obj.getImage1() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${obj.getImage1()}:'images/LogoWorld_Transparence.png'"/></a>
                                     <p th:text="${obj.getNameObject()}" style="color:white;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;text-transform:uppercase;font-weight:normal;"></p>
                                 </div>
                             </div>

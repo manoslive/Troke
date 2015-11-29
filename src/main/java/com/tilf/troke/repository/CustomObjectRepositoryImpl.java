@@ -55,9 +55,43 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
 
     // Requêtes sur les objects
     @Override
-    public List<ObjectsEntity> getRecentItems() {
+    public List<CustomSearchObjectEntity> getRecentItems() {
         TypedQuery<ObjectsEntity> query = entityManager.createQuery("select o from ObjectsEntity as o order by o.creationdate desc", ObjectsEntity.class);
-        List<ObjectsEntity> objects = query.setMaxResults(36).getResultList();
+        List<ObjectsEntity> result = query.setMaxResults(36).getResultList();
+
+        List<CustomSearchObjectEntity> objects = new ArrayList<>();
+
+        //Ajout des objets + images dans un custom Entity
+        for(int i=0; i< result.size(); i++) {
+            CustomSearchObjectEntity customObjet = new CustomSearchObjectEntity();
+            customObjet.setIduser(result.get(i).getIduser());
+            customObjet.setCreationdate(result.get(i).getCreationdate());
+            customObjet.setDescObject(result.get(i).getDescObject());
+            customObjet.setIdobject(result.get(i).getIdobject());
+            customObjet.setIdsubcategory(result.get(i).getIdsubcategory());
+            customObjet.setIssignaled(result.get(i).getIssignaled());
+            customObjet.setNameObject(result.get(i).getNameObject());
+            customObjet.setQuality(result.get(i).getQuality());
+            customObjet.setRateable(result.get(i).getRateable());
+            customObjet.setValueObject(result.get(i).getValueObject());
+
+            //Get tous les images
+            String query2 = "select o from ImageobjectEntity o where o.idobject = :idObject order by ismain desc, guidimage";
+            Query queryObject2 = entityManager.createQuery(query2);
+            queryObject2.setParameter("idObject", result.get(i).getIdobject());
+            List<ImageobjectEntity> LImages = (List<ImageobjectEntity>) queryObject2.getResultList();
+
+            // Ajout de chacune des images dans l'objet
+            customObjet.setImage1(LImages.get(0).getGuidimage());
+            customObjet.setImage2(LImages.get(1).getGuidimage());
+            customObjet.setImage3(LImages.get(2).getGuidimage());
+            customObjet.setImage4(LImages.get(3).getGuidimage());
+
+            // Ajout du nom de sous-catégorie
+            customObjet.setSubCategoryName(getSubCatNameBySubCatId(result.get(i).getIdsubcategory()));
+
+            objects.add(customObjet);
+        }
 
         return objects;
     }
