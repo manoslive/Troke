@@ -148,7 +148,7 @@ public class HomeController {
     }
 
     public String GetRecentItems(Model model) {
-        List<ObjectsEntity> objects = customObjectRepository.getRecentItems();
+        List<CustomSearchObjectEntity> objects = customObjectRepository.getRecentItems();
         model.addAttribute("recentobjects", objects);
         model.addAttribute("adrItem", "/item?idObject=");
 

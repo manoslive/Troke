@@ -17,7 +17,7 @@ public interface CustomObjectRepository {
     List<String> getAllSubCategories(String categoryName);
 
     // Requêtes sur les objets
-    List<ObjectsEntity> getRecentItems();
+    List<CustomSearchObjectEntity> getRecentItems();
 
     List<ObjectsEntity> getObjectsByCategory(Set<String> categoryName);
     List<CustomSearchObjectEntity> getObjectsBySubCategory(Set<String> categoryName);
