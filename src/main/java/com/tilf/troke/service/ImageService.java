@@ -95,7 +95,7 @@ public class ImageService {
             }
         } else if (avatar.isEmpty() && session.getAttribute("avatarfile") != null) {
 
-            File tempDirectory = new File("C:\\Users\\Manu\\Documents\\GitHub\\troke\\src\\main\\resources\\static\\uploaded-images\\temp");
+            File tempDirectory = new File("src/main/resources/static/uploaded-images/temp/");
             try {
                 String path = new File(".").getCanonicalPath();
                 FileUtils.cleanDirectory(tempDirectory);

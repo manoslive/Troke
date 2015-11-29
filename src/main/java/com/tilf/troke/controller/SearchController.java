@@ -28,9 +28,6 @@ public class SearchController {
     @Autowired
     private CustomObjectRepository customObjectRepository;
 
-/*    @Autowired
-    private ObjectService objectService;*/
-
     @Autowired
     private SearchFilter searchFilter;
 
