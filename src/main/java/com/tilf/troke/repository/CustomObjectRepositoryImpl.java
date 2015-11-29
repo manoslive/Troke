@@ -12,8 +12,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -222,7 +220,7 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
     // Obtenir les images pour un ObjectEntity donné
     @Override
     public List<ImageobjectEntity> getObjectImageListByIdobject(int Idobject){
-        String query2 = "select o from ImageobjectEntity o where o.idobject = :idObject order by ismain, guidimage desc";
+        String query2 = "select o from ImageobjectEntity o where o.idobject = :idObject order by ismain desc, guidimage";
         Query queryObject2 = entityManager.createQuery(query2);
         queryObject2.setParameter("idObject", Idobject);
         List<ImageobjectEntity> imageList = (List<ImageobjectEntity>) queryObject2.getResultList();
