@@ -75,10 +75,12 @@ public class UserController {
             boolean imageIsUploaded = imageService.uploadImage(avatar, imageName, true, session);
 
             if (imageIsUploaded) {
+                if(session.getAttribute("tempimage") != null){
+                    imageName = session.getAttribute("tempimage").toString();
+                }
                 user.setAvatar(imageName);
                 session.setAttribute("avatarpath", imageName);
             } else {
-
                 user.setAvatar(defaultImage);
                 session.setAttribute("avatarpath", defaultImage);
             }

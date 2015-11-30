@@ -2,7 +2,6 @@ package com.tilf.troke.service;
 
 import com.tilf.troke.auth.AuthUserContext;
 import com.tilf.troke.repository.CustomUserRepository;
-import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,6 +11,8 @@ import javax.servlet.http.HttpSession;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.nio.file.*;
+
 /**
  * Created by Manu on 2015-10-25.
  */
@@ -96,12 +97,18 @@ public class ImageService {
         } else if (avatar.isEmpty() && session.getAttribute("avatarfile") != null) {
 
             File tempDirectory = new File("src/main/resources/static/uploaded-images/temp/");
+            Path tempImageLocation = FileSystems.getDefault().getPath("src/main/resources/static/uploaded-images/temp/" + session.getAttribute("tempimage"));
+            Path imageLocation = FileSystems.getDefault().getPath("src/main/resources/static/uploaded-images/" + session.getAttribute("tempimage"));
             try {
                 String path = new File(".").getCanonicalPath();
-                FileUtils.cleanDirectory(tempDirectory);
+                Path result = Files.move(tempImageLocation, imageLocation, StandardCopyOption.REPLACE_EXISTING);
+                // FileUtils.cleanDirectory(tempDirectory);
+                System.out.println(result);
                 System.out.println(path);
             }
             catch(IOException e){
+                e.getMessage();
+                e.printStackTrace();
             }
             return true;
         }
