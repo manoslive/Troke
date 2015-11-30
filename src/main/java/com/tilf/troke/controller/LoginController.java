@@ -66,8 +66,16 @@ public class LoginController {
     }
 
     @RequestMapping("/connexion")
-    public String connexion(HttpSession session)
+    public String connexion(HttpSession session,
+                            @CookieValue(value="Connect", defaultValue = "empty") String userCookie)
     {
+        if(!userCookie.equals("empty"))
+        {
+            UsersEntity user = userRepository.findUsersEntityByIduser(userCookie);
+            session.setAttribute("user", user);
+            authContext.setUser(user);
+            return "redirect:/";
+        }
         return "redirect:#openModalConnexion";
     }
 
@@ -86,9 +94,12 @@ public class LoginController {
         {
             UsersEntity user = userRepository.findUsersEntityByIduser(userCookie);
             session.setAttribute("user", user);
-            authContext.setUser(user);
-            return "redirect:/";
+            if (false) {
+                WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+                context.setVariable("user", user);
+            }
         }
+
         return "redirect:#openModalConnexion"; // FIXME la page refresh au moment du click
     }
 

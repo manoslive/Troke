@@ -143,8 +143,6 @@ public class ProfilController {
                 // firstChar = photo.getGuidimage().substring(0,1); // avoir le premier char de la string de l'image ..
                 imageObjectRepository.save(photo);
             }
-
-
         }
         else
         {

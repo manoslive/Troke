@@ -424,4 +424,13 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
         }
         return objets;
     }
+
+    @Override
+    public long getNumberOfItemByIDitem() {
+        String query = "select count(o.idobject) from ObjectsEntity o";
+        Query queryObject = entityManager.createQuery(query);
+
+        long itemcount = (long)queryObject.getSingleResult();
+        return itemcount;
+    }
 }

@@ -47,4 +47,6 @@ public interface CustomObjectRepository {
 
     //Get les items de l'inventaire d'un user de la page trade (sans les items en échanges)
     List<CustomObjetImageEntity> getListObjectTradeInventory(int transactionID,String userId);
+
+    long getNumberOfItemByIDitem();
 }
