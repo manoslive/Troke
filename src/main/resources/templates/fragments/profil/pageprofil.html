@@ -1,19 +1,68 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<body>
-<div th:fragment="pageprofil">
+<html xmlns:th="http://www.thymeleaf.org" th:include="main_template :: page">
+<head th:fragment="head">
+    <link href="css/style_monProfil.css" type="text/css" rel="stylesheet"/>
+    <link href="css/style_ribbon.css" type="text/css" rel="stylesheet"/>
+    <link href="css/demo.css" type="text/css" rel="stylesheet"/>
+    <link href="css/style_funradio.css" type="text/css" rel="stylesheet"/>
+    <script src="js/home.js" type="text/javascript"></script>
+    <script src="js/profil.js" type="text/javascript"></script>
+    <script>
+        //Pour la navbar dans le scroll...
+        /*<![CDATA[*/
+        $(document).ready(function () {
 
-    <form th:action="@{/UpdateUser}" method="post" id="formUser" enctype="multipart/form-data">
+            var imagebanner = document.getElementById("Banniere");
+
+
+            $(window).scroll(function () {
+                //if you hard code, then use console
+                //.log to determine when you want the
+                //nav bar to stick.
+                console.log($(window).scrollTop())
+                var height = imagebanner.clientHeight;
+
+
+                if ($(window).scrollTop() > imagebanner.clientHeight) {
+                    $('#nav_bar').addClass('navbar-fixed');
+                    $('#nav_bar').removeClass('navbar');
+
+                    $('#cont').addClass('padbot');
+                    //$('#nav_bar').css('top', 0);
+                    //$('#nav_bar').toggleClass('navbar navbar-fixed');
+                }
+
+
+                if ($(window).scrollTop() < imagebanner.clientHeight) {
+
+                    $('#nav_bar').removeClass('navbar-fixed');
+                    $('#nav_bar').addClass('navbar');
+                    //$('#nav_bar').toggleClass('navbar-fixed navbar');
+                    $('#cont').removeClass('padbot');
+                    //$('#nav_bar').addClass('navbar-fixed');
+                }
+            });
+        });
+
+        /*]]>*/
+    </script>
+</head>
+<body>
+<div th:fragment="content">
+
+    <div th:id="home_content" th:replace="fragments/profil/openModalPassword :: openModalPassword"></div>
+
+    <form th:action="@{/profil}" th:object="${userProfil}" method="post" id="formUser" enctype="multipart/form-data">
     <div id="MyProfil" class="col-md-12">
         <div id="LeftSpace" class="col-md-3"></div>
         <div id="MiddleInfo" class="col-md-6">
             <div id="ProfilBanner" class="col-md-12">
 
 
-
+            <th:block th:if="${UserActif.getAvatar() ne 'no_avatar.jpg'}">
                 <div id="PhotoProfil" class="col-md-3" style="padding:0 0 0 0">
                     <div id="avatarProfil" src="#" alt="avatar" class="avatarProfil"
-                         th:style="*{userActif.getAvatar() ne 'no_avatar.jpg'}? 'background-image:url(/uploaded-images/' + ${userActif.getAvatar()} + ')'">
+                         th:style="'background-image:url(/uploaded-images/' + ${UserActif.getAvatar()} + ')'">
                         <div id="avatarOverlay" style="height:100%">
                             <div id="avatarPlus" disabled="disabled">
                                 <!--<p id="textFileExplorer2">Changer votre image de profil</p>-->
@@ -22,40 +71,78 @@
                         </div>
                     </div>
                 </div>
+            </th:block>
+
+                <th:block th:if="${UserActif.getAvatar() eq 'no_avatar.jpg'}">
+                <div id="PhotoProfil" class="col-md-3" style="padding:0 0 0 0">
+                    <div id="avatarProfil" src="#" alt="avatar" class="avatarProfil"
+                         th:style=" 'background-image:url(/uploaded-images/no_avatar.jpg)'">
+                        <div id="avatarOverlay" style="height:100%">
+                            <div id="avatarPlus" disabled="disabled">
+                                <!--<p id="textFileExplorer2">Changer votre image de profil</p>-->
+                                <input id="fileExplorer2" type="file" name="avatarProfil" onchange="TestFileType('fileExplorer2','avatarProfil')" value="null"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </th:block>
+
                 <div id="RectangleName" class="col-md-12 rectangle3">
                     <div style="text-align:center">
-                    <span id="UserName" th:text="${userActif.getIduser()}" />
+                    <span id="UserName" th:text="${UserActif.getIduser()}" />
                     </div>
                 </div>
                 <div class="triangle-l" style="position:absolute;"></div>
                 <div class="triangle-r" style="position:absolute; top:65px;"></div>
 
-
             </div>
 
             <div id="ProfilInfo" class="col-md-12">
                 <div id="ProfilInfoLeft" class="col-md-6">
+                    <!-- first name -->
                     <p name="label-prenom" style="font-weight:normal"> Prénom:</p>
-                    <input class="signup-half" style="width:95%" name="profile-prenom" placeholder="Prénom" type="text" tabindex="1" th:value="${userActif.getFirstname()}"/>
-                    <p id="errprenom" style="font-weight:normal;color:red">*Erreur sur le prenom</p><!-- display:inline-block  pour faire apparaitre l'erreur -->
+                    <input th:field="*{firstname}" class="signup-half" style="width:95%" placeholder="Prénom" type="text" tabindex="1"/>
+                    <div style="height:30px">
+                        <p th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" style="font-weight:normal;color:red">*</p>
+                    </div>
+                    <!-- end firstname -->
+
+                    <!-- zipcode -->
                     <p name="label-codepostal" style="font-weight:normal"> Code Postal:</p>
-                    <input class="signup-half zipcode" style="width:95%" name="profile-codepostal" placeholder="Code Postal" type="text" tabindex="2" th:value="${userActif.getZipcode()}"/>
-                    <p id="errcode" style="font-weight:normal;color:red">*Erreur sur le code postal</p>
+                    <input th:field="*{zipcode}" class="signup-half zipcode" style="width:95%" placeholder="Code Postal" type="text"/>
+                    <div style="height:30px">
+                    <p th:if="${#fields.hasErrors('zipcode')}" th:errors="*{zipcode}" style="font-weight:normal;color:red">*Erreur sur le code postal</p>
+                        </div>
+                    <!-- end zipcode -->
+
                 </div>
                 <div id="ProfilInfoRight" class="col-md-6">
+                    <!-- lastname -->
                     <p name="label-nomfamille" style="font-weight:normal"> Nom de famille:</p>
-                    <input class="signup-half" style="width:95%" name="profile-nomfamille" placeholder="Nom de famille" type="text" tabindex="3" th:value="${userActif.getLastname()}"/>
-                    <p id="errnom" style="font-weight:normal;color:red">*Erreur sur le nom de famille</p>
+                    <input th:field="*{lastname}" class="signup-half" style="width:95%" placeholder="Nom de famille" type="text" tabindex="3"/>
+                    <div style="height:30px">
+                    <p th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" style="font-weight:normal;color:red">*Erreur sur le nom de famille</p>
+                        </div>
+                    <!-- end lastname -->
+
+                    <!-- telephone -->
                     <p name="label-tel" style="font-weight:normal"> Téléphone:</p>
-                    <input class="signup-half phone_ca" style="width:95%" name="profile-telephone" placeholder="Telephone" id="phone" type="text" tabindex="4" th:value="${userActif.getTelephone()}"/>
-                    <p id="errtel" style="font-weight:normal;color:red">*Erreur sur le telephone</p>
+                    <input th:field="*{telephone}" class="signup-half phone_ca" style="width:95%" placeholder="Telephone" id="phone" type="text" tabindex="4"/>
+                    <div style="height:30px">
+                    <p th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}" style="font-weight:normal;color:red">*Erreur sur le telephone</p>
+                        </div>
+                    <!-- end telephone -->
+
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-12" style="margin-top:40px">
                 <div id ="ProfilEmail" class="col-md-10">
+                    <!-- email -->
                     <p name="label-email" style="font-weight:normal">Courriel:</p>
-                    <input class="signup-full" name="profile-email" placeholder="Email" type="text" tabindex="5" th:value="${userActif.getEmail()}"/>
-                    <p id="erremail" style="font-weight:normal;color:red">*Erreur sur le courriel</p>
+                    <input th:field="*{email}" class="signup-full" placeholder="Email" type="text" tabindex="5"/>
+                    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="font-weight:normal;color:red">*Erreur sur le courriel</p>
+                    <!-- end email -->
+
                 </div>
                 <div class="col-md-12">
                     <div id="ProfilButtons" class="col-md-12" >

@@ -98,6 +98,14 @@
     color: white;
     padding: 4px;
 }
+.searchItemDescription2 {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    overflow: hidden;
+    color: white;
+    padding: 4px;
+}
 
 .searchVerticalBar {
     width: 10px;
@@ -129,6 +137,15 @@
 }
 
 .searchItemQuality span {
+    pointer-events: none;
+}
+.searchStars
+{
+    width:50%;
+    position:absolute;
+    text-align:right;
+}
+.searchStars span{
     pointer-events: none;
 }
 
@@ -296,4 +313,12 @@
 .starRating:not(old) > label:hover ~ label:before,
 .starRating:not(:hover) > :checked ~ label:before {
     opacity: 1;
+}
+
+#TrokButton
+{
+    margin-top:10px;
+    width:100%;
+    height:100px;
+
 }

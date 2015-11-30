@@ -160,6 +160,7 @@ function init() {
             }
             $item.find( ".icon-exchange" ).addClass("icon-refresh");
             $item.find( ".icon-refresh" ).removeClass("icon-exchange");
+            $item.find(".icon-refresh").attr('title', "Enlever l'item/service du troc");
             $item.find(".optionsInventoryItem").addClass("optionsExchangeItem");
             $item.find(".optionsExchangeItem").removeClass("optionsInventoryItem");
             checkValidTrade();
@@ -183,6 +184,7 @@ function init() {
                 .fadeIn();
             $item.find( ".icon-refresh" ).addClass("icon-exchange");
             $item.find( ".icon-exchange" ).removeClass("icon-refresh");
+            $item.find(".icon-exchange").attr('title', "Ajouter l'item/service au troc");
             $item.find(".optionsExchangeItem").addClass("optionsInventoryItem");
             $item.find(".optionsInventoryItem").removeClass("optionsExchangeItem");
             checkValidTrade();

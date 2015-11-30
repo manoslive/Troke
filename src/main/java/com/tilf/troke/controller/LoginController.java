@@ -49,7 +49,7 @@ public class LoginController {
     }
 
     @RequestMapping("/logout")
-    public String logout(HttpSession session, HttpServletRequest req, HttpServletResponse resp) {
+    public String logout(HttpSession session, HttpServletRequest req,HttpServletResponse resp) {
         authContext.getUser().setIsonline("N");
         userRepository.save(authContext.getUser());
         authContext.setUser(null);
@@ -75,7 +75,16 @@ public class LoginController {
     }
 
     @RequestMapping("/connexion")
-    public String connexion(HttpSession session) {
+    public String connexion(HttpSession session,
+                            @CookieValue(value="Connect", defaultValue = "empty") String userCookie)
+    {
+        if(!userCookie.equals("empty"))
+        {
+            UsersEntity user = userRepository.findUsersEntityByIduser(userCookie);
+            session.setAttribute("user", user);
+            authContext.setUser(user);
+            return "redirect:/";
+        }
         return "redirect:#openModalConnexion";
     }
 
@@ -111,13 +120,19 @@ public class LoginController {
         if (!userCookie.equals("empty")) {
             UsersEntity user = userRepository.findUsersEntityByIduser(userCookie);
             session.setAttribute("user", user);
+
+            if (false) {
+                WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+                context.setVariable("user", user);
+            }
             authContext.setUser(user);
             return "redirect:/";
         }
+
         return "redirect:#openModalConnexion"; // FIXME la page refresh au moment du click
     }
 
-    @RequestMapping(value = "/auth", method = RequestMethod.POST)
+    @RequestMapping(value="/auth", method= RequestMethod.POST)
     public String login(@RequestParam("iduser") String idUser,
                         @RequestParam("pass") String pass,
                         @RequestParam(value = "StayConnected", defaultValue = "notStay") String stay,
@@ -127,41 +142,49 @@ public class LoginController {
         //session.setAttribute("user", user);
 
         // si l'utilisateur coche il restera logué a son retour ..
-        if (stay.equals("Stay")) {
+        if(stay.equals("Stay")) {
             response.addCookie(new Cookie("Connect", user.getIduser()));
         }
 
-        if (idUser.isEmpty()) {
+        if(idUser.isEmpty())
+        {
             session.setAttribute("error", "* Veuillez entrer un nom d'utilisateur");
             // TODO THYMELEAF HACK
             if (false) {
-                WebContext context = new WebContext(null, null, null);
+                WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
                 context.setVariable("user", user);
                 context.setVariable("error", "* Veuillez entrer un nom d'utilisateur");
             }
             return "redirect:/connexion";
-        } else if (pass.isEmpty()) {
+        }
+        else if(pass.isEmpty())
+        {
             session.setAttribute("error", "* Veuillez entrer un mot de passe");
             // TODO THYMELEAF HACK
             if (false) {
-                WebContext context = new WebContext(null, null, null);
+                WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
                 context.setVariable("user", user);
                 context.setVariable("error", "* Veuillez entrer un nom d'utilisateur");
             }
             return "redirect:/connexion";
-        } else if (user == null) {
-            session.setAttribute("error", " * Le nom d'utilisateur ou le mot de passe est invalide !");
+        }
+        else if (user == null) {
+            session.setAttribute("error"," * Le nom d'utilisateur ou le mot de passe est invalide !" );
             // TODO THYMELEAF HACK
             if (false) {
-                WebContext context = new WebContext(null, null, null);
+                WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
                 context.setVariable("user", user);
                 context.setVariable("error", "* Veuillez entrer un nom d'utilisateur");
             }
             return "redirect:/connexion";
-        } else {
+        }
+
+        else
+        {
             //userRepository.save(user);
             authContext.setUser(user);
             session.setAttribute("user", user);
+
             return "redirect:/";
         }
 

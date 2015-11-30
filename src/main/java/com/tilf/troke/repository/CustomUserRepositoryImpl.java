@@ -126,4 +126,6 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
         UsersEntity user = (UsersEntity) queryObject.getSingleResult();
         return user;
     }
+
+
 }

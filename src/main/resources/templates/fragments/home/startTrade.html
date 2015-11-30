@@ -1,13 +1,6 @@
 <html xmlns:th="http://www.thymeleaf.org" th:include="main_template :: page">
 <head th:fragment="head">
     <link href="css/style_trade.css" type="text/css" rel="stylesheet"/>
-    <!--TODO mettre les bootstraps local included dans template-->
-    <!--  A mettre dans le template !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     <link href="bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet">
-     <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-     <link href="bootstrap/js/bootstrap.js" type="text/javascript" rel="stylesheet">
-     <link href="bootstrap/js/bootstrap.min.js" type="text/javascript" rel="stylesheet">-->
-    <!--FIXME probem d'animation fade out à cause du fichier animate de template-->
     <link href="jquery-ui-1.11.4/jquery-ui.css" type="text/javascript" rel="stylesheet"/>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
@@ -37,8 +30,10 @@
                             <img class="item-image" th:src="*{currentItem.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${currentItem.getImage1()}:'images/LogoWorld_Transparence.png'" alt=""
                                  style="display: inline-block; overflow: hidden; width: 80px; height: 100%; max-width: 80px; max-height: 80px;"/>
                             <div class="optionsExchangeItem">
-                                <a class="js-open-modal link-zoom info-icon btn-option-item" href="#" data-modal-id="modal-InfoItem" th:onclick="'javascript:showModalInfoItem(\''+ ${currentItem.getIdobject()} +'\')'"></a>
-                                <a class="btn-option-item icon-refresh"></a>
+                                <a class="js-open-modal link-zoom info-icon btn-option-item tooltip"
+                                   title="Plus d'information sur l'item/service"
+                                   href="#" data-modal-id="modal-InfoItem" th:onclick="'javascript:showModalInfoItem(\''+ ${currentItem.getIdobject()} +'\')'"></a>
+                                <a class="btn-option-item icon-refresh tooltip" title="Enlever l'item/service du troc"></a>
                             </div>
                             <input type="hidden" th:value="${currentItemID}" class="itemID"/>
                         </li>
@@ -51,7 +46,7 @@
 
                 <div id="zoneChat" class="row-md-3">
                     <textarea name="chatLog" id="chatBoxStartExchange"></textarea>
-                    <input id="chatEnter" type="text"/>
+                    <input id="chatEnter" type="text" placeholder="Envoyer un message"/>
                     <input id="btn-enter" type="button" value="Envoyer"
                            th:onclick="'javascript:sendChat(\''+${userActif.getIduser()}+'\')'"/>
                 </div>
@@ -65,20 +60,12 @@
                         <h5 th:text="${inv.getNameObject()}" class="ui-widget-header"></h5>
                         <img class="item-image" th:src="*{inv.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${inv.getImage1()}:'images/LogoWorld_Transparence.png'" alt=""/>
                         <div class="optionsInventoryItem">
-                            <a class="js-open-modal link-zoom info-icon btn-option-item" href="#" data-modal-id="modal-InfoItem"
+                            <a class="js-open-modal link-zoom info-icon btn-option-item tooltip" href="#" data-modal-id="modal-InfoItem"
+                               title="Plus d'information sur l'item/service"
                                th:onclick="'javascript:showModalInfoItem(\''+ ${inv.getIdobject()} +'\')'"></a>
-                            <a class="icon-exchange btn-option-item"/>
+                            <a class="icon-exchange btn-option-item tooltip" title="Ajouter l'item/service au troc"/>
                         </div>
                         <input type="hidden" th:value="${inv.getIdobject()}" class=""/>
-                    </li>
-                    <!-- Item Argent -->
-                    <li class="money OpponentItem ui-widget-content ui-corner-tr">
-                        <h5 class="ui-widget-header">Argent</h5>
-                        <img class="item-image" src="images/item-dollar-sign.png" alt=""/>
-                        <div class="optionsInventoryItem">
-                            <a></a>
-                            <a class="icon-exchange btn-option-item"/>
-                        </div>
                     </li>
                 </ul>
             </div>

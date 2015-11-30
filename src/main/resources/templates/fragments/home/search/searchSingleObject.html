@@ -44,26 +44,8 @@
         </div>
         <!-- Description de l'item -->
         <div class="searchItemDescription">
-
-            <p th:text="${singleobject.getNameObject()}" style="text-decoration: underline;"/>
-            <th:block th:if="${singleobject.getDescObject().length() lt 30}">
-                <span th:text="'Description: '  + ${singleobject.getDescObject()}"/><br/>
-            </th:block>
-            <th:block th:if="${singleobject.getDescObject().length() ge 30}">
-                <span th:text="'Description: '  + ${singleobject.getDescObject().substring(0,30)} + '  ...'"/><br/>
-            </th:block>
-            <span th:text="'Publié le: '  + ${singleobject.getCreationdate()}"/><br/>
-            <span th:text="'Sous-catégorie: '  + ${singleobject.getSubCategoryName()}"></span><br/>
-            <span th:text="'Utilisateur: '  + ${singleobject.getIduser()}"/>
-        </div>
-        <!-- Bar vertical de séparation -->
-        <div class="searchVerticalBar right">
-            <div class="barMask"></div>
-        </div>
-        <!-- Section côte de l'item -->
-        <div class="searchItemQuality">
-            <!-- QualitÃ© en Ã©toiles -->
-                                           <span class="starRating">
+            <div class="searchStars">
+                <span class="starRating">
                                             <input th:if="${singleobject.getQuality()} eq 5" type="checkbox"
                                                    name="rating" value="5" checked="checked"/>
                                             <input th:unless="${singleobject.getQuality()}" type="checkbox"
@@ -90,13 +72,37 @@
                                                       name="rating" value="1"/>
                                             <label style="cursor:pointer;">1</label>
                                             </span>
+            </div>
+            <p th:text="${singleobject.getNameObject()}" style="text-decoration: underline;"/>
+            <th:block th:if="${singleobject.getDescObject().length() lt 30}">
+                <span th:text="'Description: '  + ${singleobject.getDescObject()}"/><br/>
+            </th:block>
+            <th:block th:if="${singleobject.getDescObject().length() ge 30}">
+                <span th:text="'Description: '  + ${singleobject.getDescObject().substring(0,30)} + '  ...'"/><br/>
+            </th:block>
+            <span th:text="'Publié le: '  + ${singleobject.getCreationdate()}"/><br/>
+            <span th:text="'Sous-catégorie: '  + ${singleobject.getSubCategoryName()}"></span><br/>
+            <span th:text="'Utilisateur: '  + ${singleobject.getIduser()}"/>
+        </div>
+        <!-- Bar vertical de séparation -->
+        <div class="searchVerticalBar right">
+            <div class="barMask"></div>
+        </div>
+        <!-- Section côte de l'item -->
+        <div class="searchItemQuality">
+            <!-- QualitÃ© en Ã©toiles -->
+
 
             <!-- Bouton lancer une Ã©change -->
-            <button type="button" class="btn btn-info btn-troke btnBootPerso">
-                <a th:href="${adrStartTrade + singleobject.getIdobject()}">
-                    <img class="searchItem-img-troke" src="images/Logo-transparent.png"/>
-                </a>
-            </button>
+            <a th:href="${adrStartTrade + singleobject.getIdobject()}" data-toggle="tooltip"
+               data-placement="bottom" title="Cliquez pour Troké cet item/service!">
+                <button id="TrokButton" type="button" class="btn btn-success" style="font-size:40px">
+
+
+                    <i class="icon-shopping-cart icon-5"></i>
+
+                </button>
+            </a>
         </div>
     </div>
 
