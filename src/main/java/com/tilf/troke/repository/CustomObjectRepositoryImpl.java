@@ -426,7 +426,7 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
     }
 
     @Override
-    public long getNumberOfItemByIDitem() {
+    public long getNumberOfItem() {
         String query = "select count(o.idobject) from ObjectsEntity o";
         Query queryObject = entityManager.createQuery(query);
 

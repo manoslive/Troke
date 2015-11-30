@@ -54,13 +54,6 @@ public class ProfilController {
     @Autowired
     private CustomImageObjectRepository customImageObjectRepository;
 
-    @Autowired
-    private CustomCategoryRepository customCategoryRepository;
-
-    @Autowired
-    private CustomSubcategoryRepository customSubcategoryRepository;
-
-
 
 
 
