@@ -150,13 +150,7 @@
         </div>
         <form th:action="@{/auth}" method="post" th:object="${post}">
             <div style="text-align:center">
-                <th:block th:if="${session.user} ne null">
-                    <input class="signup-full" type="text" placeholder="Nom d'usager" name="iduser" th:text="${session.user.getIduser()}" />
-                </th:block>
-                <th:block th:if="${session.user} eq null">
-                    <input class="signup-full" type="text" placeholder="Nom d'usager" name="iduser" />
-                </th:block>
-
+                <input class="signup-full" type="text" placeholder="Nom d'usager" name="iduser" />
                 <input class="signup-full" type="password" placeholder="Mot de Passe" name="pass"/>
                 <input style="float:left" type="checkbox" name="StayConnected" value="Stay">Rester Connecter</input>
                 <a href="mailto:ysteinthal@yahoo.com?Subject=Test Trok-E" target="_top" style="float:right">Mot de
