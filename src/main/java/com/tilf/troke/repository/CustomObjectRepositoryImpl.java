@@ -433,4 +433,17 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
         long itemcount = (long)queryObject.getSingleResult();
         return itemcount;
     }
+
+    @Override
+    public String findUsersEntityByIdObjects(int IdObject) {
+
+        String query = "select c.descObject from ObjectsEntity c where idobject=:obj";
+        Query queryObject = entityManager.createQuery(query);
+        queryObject.setParameter("obj", IdObject);
+
+
+        String nameObject = (String)queryObject.getSingleResult();
+
+        return nameObject;
+    }
 }

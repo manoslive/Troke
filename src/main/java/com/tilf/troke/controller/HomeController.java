@@ -68,7 +68,7 @@ public class HomeController {
            CountPending = customMyTradeRepository.getPendingTransactionsByUserID(authContext.getUser().getIduser());
             session.setAttribute("notifications", CountPending.size());
         }
-        model.addAttribute("itemCount", result);
+        session.setAttribute("itemCount", result);
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("itemCount", result);
@@ -79,6 +79,8 @@ public class HomeController {
 
     @RequestMapping("/home")
     public String redirectHome(Model model, HttpSession session) {
+
+
         FillCategoryMenu(model, session);
         FillCategoryList(model);
         GetRecentItems(model);

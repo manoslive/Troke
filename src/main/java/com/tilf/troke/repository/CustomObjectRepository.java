@@ -49,4 +49,6 @@ public interface CustomObjectRepository {
     List<CustomObjetImageEntity> getListObjectTradeInventory(int transactionID,String userId);
 
     long getNumberOfItemByIDitem();
+
+    String findUsersEntityByIdObjects(int IdObject);
 }
