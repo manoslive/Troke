@@ -5,6 +5,7 @@ com\tilf\troke\entity\SubcategoryEntity.class
 com\tilf\troke\service\ObjectService.class
 com\tilf\troke\controller\GlobalController.class
 com\tilf\troke\entity\TransactionmoneyEntity.class
+com\tilf\troke\service\SmtpMailSender.class
 com\tilf\troke\entity\CustomSearchObjectEntity.class
 com\tilf\troke\controller\myTradesController.class
 com\tilf\troke\entity\ImageobjectEntityPK.class

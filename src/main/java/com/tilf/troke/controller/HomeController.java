@@ -8,6 +8,7 @@ import com.tilf.troke.entity.ImageobjectEntity;
 import com.tilf.troke.entity.ObjectsEntity;
 import com.tilf.troke.entity.UsersEntity;
 import com.tilf.troke.filter.SearchFilter;
+import com.tilf.troke.service.SmtpMailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.thymeleaf.context.WebContext;
 
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -49,15 +51,16 @@ public class HomeController {
     @Autowired
     private CustomMyTradeRepository customMyTradeRepository;
 
+    @Autowired
+    private SmtpMailSender smtpMailSender;
+
     @RequestMapping("/")
-    public String root(Model model, HttpSession session) {
+    public String root(Model model, HttpSession session) throws MessagingException {
         FillCategoryMenu(model, session);
         FillCategoryList(model);
         GetRecentItems(model);
         searchFilter.removeAll();
         List<TransactionsEntity> CountPending = new ArrayList<TransactionsEntity>();
-
-
         if(authContext.getUser() != null)
         {
            CountPending = customMyTradeRepository.getPendingTransactionsByUserID(authContext.getUser().getIduser());

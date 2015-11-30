@@ -3,6 +3,7 @@ package com.tilf.troke.controller;
 import com.tilf.troke.auth.AuthUserContext;
 import com.tilf.troke.entity.*;
 import com.tilf.troke.repository.*;
+import com.tilf.troke.service.SmtpMailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.thymeleaf.context.WebContext;
 
+import javax.mail.MessagingException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
@@ -55,6 +56,9 @@ public class TransactionController {
 
     @Autowired
     private CustomTransactionMoneyRepository customTransactionMoneyRepository;
+
+    @Autowired
+    private SmtpMailSender smtpMailSender;
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -231,7 +235,7 @@ public class TransactionController {
                                 @RequestParam("tradeState")String tradeState,
                                 @RequestParam("userMoneyValue")String userMoney,
                                 @RequestParam("opponentMoneyValue")String opponentMoney,
-                                HttpSession session)
+                                HttpSession session) throws MessagingException
     {
 
         UsersEntity currentLoggedUser = authUserContext.getUser();
@@ -295,6 +299,22 @@ public class TransactionController {
             updateTransactionMoneyOpposant.setIduser(idUser2);
             updateTransactionMoneyOpposant.setValue(Integer.parseInt(opponentMoney));
             transactionMoneyRepository.save(updateTransactionMoneyOpposant);
+
+            if(tradeState.equals('T')){
+                //
+                UsersEntity user1 = customUserRepository.findUserById(currentUser);
+                UsersEntity user2 = customUserRepository.findUserById(idUser2);
+                List<CustomObjetImageEntity> listUser1 = customObjectRepository.getTradeObjects(transactionID, currentUser);
+                List<CustomObjetImageEntity> listUser2 = customObjectRepository.getTradeObjects(transactionID, idUser2);
+                smtpMailSender.send(user1.getEmail(), "Troc #" + transactionID + "complété.", "Bonjour " + user1.getFirstname() + " " + user1.getLastname() +
+                        ", <br/>" +
+                        " Votre échange est maintenant prête à être complétée.<br/> " +
+                        " Vous devez contacter " + user2.getFirstname() + " " + user2.getFirstname() + " au " + user2.getTelephone() + " ou au " + user2.getEmail() + ". <br/>"+
+                        " <a href='http://www.google.ca'>Allez sur troké</a>");
+                smtpMailSender.send(user2.getEmail(), "Bienvenue chez Troké", "Bonjour " + "prénom" + " " + "nom de famille" + ", <br/>" +
+                        " Vous êtes maintenant inscrit sur Troké.<br/> " +
+                        " <a href='http://www.google.ca'>Allez sur troké</a>");
+            }
         } else {
             session.removeAttribute("error");
             return "redirect:#openModalConnexion";

@@ -137,4 +137,8 @@ function SubmitImage(){
 function openMesEchanges() {
     document.getElementById("content").innerHTML = '<object class="loadContent" type="text/html" data="myTrades.html"></object>';
 }
+function forgottenPasswordForm(){
+    var data = $( "input[name=iduser]" ).val();
+    $.post( "/resetpassword", {iduser:data});
+}
 

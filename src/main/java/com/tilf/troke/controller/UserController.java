@@ -5,6 +5,7 @@ import com.tilf.troke.entity.UsersEntity;
 import com.tilf.troke.repository.CustomUserRepository;
 import com.tilf.troke.repository.UserRepository;
 import com.tilf.troke.service.ImageService;
+import com.tilf.troke.service.SmtpMailSender;
 import com.tilf.troke.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.thymeleaf.context.WebContext;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.math.BigInteger;
@@ -40,6 +42,9 @@ public class UserController {
     @Autowired
     private ImageService imageService;
 
+    @Autowired
+    private SmtpMailSender smtpMailSender;
+
     @ExceptionHandler(Throwable.class)
     @RequestMapping(value = "/adduser", method = RequestMethod.POST)
     public String adduser(@ModelAttribute("userSignupForm") @Valid UserSignupForm userSignupForm,
@@ -47,7 +52,7 @@ public class UserController {
                           @RequestParam(value = "avatar", required = false) @Valid MultipartFile avatar,
                           BindingResult result2,
                           RedirectAttributes redirectAttributes,
-                          Model model, HttpSession session) {
+                          Model model, HttpSession session) throws MessagingException{
         // On valide le model userSignupForm
         userValidator.validate(userSignupForm, result);
         // La date d'aujourd'hui pour la création de l'utilisateur
@@ -75,7 +80,7 @@ public class UserController {
             boolean imageIsUploaded = imageService.uploadImage(avatar, imageName, true, session);
 
             if (imageIsUploaded) {
-                if(session.getAttribute("tempimage") != null){
+                if (session.getAttribute("tempimage") != null) {
                     imageName = session.getAttribute("tempimage").toString();
                 }
                 user.setAvatar(imageName);
@@ -100,6 +105,10 @@ public class UserController {
             user.setIsvip("N");
             // On insert dans la BD
             userRepository.save(user);
+            // Envoie de courriel pour avertir l'utilisateur du nouveau compte créé
+            smtpMailSender.send("ebeloin@hotmail.com", "Bienvenue chez Troké", "Bonjour " + userSignupForm.getFirstname() + " " + userSignupForm.getLastname() + ", <br/>" +
+                    " Vous êtes maintenant inscrit sur Troké.<br/> " +
+                    " <a href='http://www.troke.me'>Comment à faire du troc</a>");
             // On retour à la page home
             return "forward:/";
         }
