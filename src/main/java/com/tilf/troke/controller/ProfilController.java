@@ -316,19 +316,24 @@ public class ProfilController {
         ObjectsEntity objectToDelete = customObjectRepository.getObjectEntityByIdObject(Integer.parseInt(id));
         objectRepository.delete(objectToDelete);
         session.removeAttribute("idObjectDelete");
+        session.removeAttribute("NameObject");
         return "redirect:/profilinv";
     }
 
     @RequestMapping(value="/openModalDelete", method = RequestMethod.POST)
     public String modalDeleteOpen(@RequestParam("idObjectDelete")String id_object,
-                                  HttpSession session)
+                                  HttpSession session,
+                                  Model model)
     {
         session.setAttribute("idObjectDelete", id_object);
+        String NameObject = customObjectRepository.getObjectNameByItemID(Integer.parseInt(id_object));
+        session.setAttribute("NameObject", NameObject);
 
         // TODO THYMELEAF HACK
         if (false) {
             WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
             context.setVariable("idObjectDelete", id_object);
+            context.setVariable("NameObject", NameObject);
 
         }
             return "redirect:/profilinv#openModalDelete";

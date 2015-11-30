@@ -94,10 +94,13 @@ public class LoginController {
         {
             UsersEntity user = userRepository.findUsersEntityByIduser(userCookie);
             session.setAttribute("user", user);
+
             if (false) {
                 WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
                 context.setVariable("user", user);
             }
+            authContext.setUser(user);
+            return "redirect:/";
         }
 
         return "redirect:#openModalConnexion"; // FIXME la page refresh au moment du click
