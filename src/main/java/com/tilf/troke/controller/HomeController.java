@@ -11,6 +11,7 @@ import com.tilf.troke.filter.SearchFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,6 +50,9 @@ public class HomeController {
     @Autowired
     private CustomMyTradeRepository customMyTradeRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @RequestMapping("/")
     public String root(Model model, HttpSession session) {
         FillCategoryMenu(model, session);
@@ -57,18 +61,26 @@ public class HomeController {
         searchFilter.removeAll();
         List<TransactionsEntity> CountPending = new ArrayList<TransactionsEntity>();
 
+        long result = customObjectRepository.getNumberOfItemByIDitem();
 
         if(authContext.getUser() != null)
         {
            CountPending = customMyTradeRepository.getPendingTransactionsByUserID(authContext.getUser().getIduser());
             session.setAttribute("notifications", CountPending.size());
         }
+        session.setAttribute("itemCount", result);
+        if (false) {
+            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+            context.setVariable("itemCount", result);
 
+        }
         return "fragments/home/home";
     }
 
     @RequestMapping("/home")
     public String redirectHome(Model model, HttpSession session) {
+
+
         FillCategoryMenu(model, session);
         FillCategoryList(model);
         GetRecentItems(model);
@@ -143,8 +155,6 @@ public class HomeController {
             context.setVariable("catlist", cats);
             context.setVariable("adrcat", "/category?categoryName=");
         }
-
-
     }
 
     public String GetRecentItems(Model model) {
@@ -170,14 +180,10 @@ public class HomeController {
     // appel de profil
     @RequestMapping(value = "/profil", method = RequestMethod.GET)
     public String Profil(Model model,
-                         HttpSession session) {
+                         HttpSession session,
+                         @CookieValue(value="Connect", defaultValue = "empty") String userCookie) {
         UserProfil userProfil = new UserProfil();
         UsersEntity user = authContext.getUser();
-//        userProfil.setFirstname(authContext.getUser().getFirstname());
-//        userProfil.setLastname(authContext.getUser().getLastname());
-//        userProfil.setTelephone(authContext.getUser().getTelephone());
-//        userProfil.setEmail(authContext.getUser().getEmail());
-//        userProfil.setZipcode(authContext.getUser().getZipcode());
 
 
         if (user != null) {
@@ -239,16 +245,18 @@ public class HomeController {
             return "fragments/site/profilUser";
 
         } else {
-            session.removeAttribute("error");
-            return "redirect:#openModalConnexion";
-        }
 
+            session.removeAttribute("error");
+            return "redirect:/openModalConnexion";
+        }
     }
 
     @RequestMapping(value = "/profilinv", method = RequestMethod.GET)
     public String Inventaire(Model model,
-                         HttpSession session){
+                         HttpSession session,
+                             @CookieValue(value="Connect", defaultValue = "empty") String userCookie){
             UsersEntity user = authContext.getUser();
+
 
             if (user != null) {
                 // on ajoute a la page le user qui est loggé pour avoir ses informations
@@ -306,7 +314,7 @@ public class HomeController {
 
             } else {
                 session.removeAttribute("error");
-                return "redirect:#openModalConnexion";
+                return "redirect:/openModalConnexion";
             }
         }
 }

@@ -18,7 +18,8 @@
                 <div class="or-spacer"><div class="mask"></div></div>
 
                 <div style="text-align:center;margin-top:20px; margin-bottom:20px">
-                    <span>Voulez vous vraiment supprimer bob de votre liste</span>
+                    <span th:text="'Voulez vous vraiment supprimer '"></span><span style="font-weight: bold" th:text="${session.NameObject}"></span>
+                    <span > de votre liste ?</span>
                 </div>
 
 

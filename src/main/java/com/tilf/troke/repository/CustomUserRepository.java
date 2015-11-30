@@ -26,4 +26,5 @@ public interface CustomUserRepository{
     // Get Opponent User d'un transaction
     //Recoit le ID de transaction et le current user pour déterminer le user Opposé
     UsersEntity findOpponentUser(int transactionID, String currentUserID);
+
 }

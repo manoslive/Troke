@@ -34,7 +34,7 @@
                 //if you hard code, then use console
                 //.log to determine when you want the
                 //nav bar to stick.
-                console.log($(window).scrollTop())
+                //console.log($(window).scrollTop())
                 var height = imagebanner.clientHeight;
 
 
@@ -112,9 +112,16 @@
 
 <!-- START Header -->
 <div class="page-header" style="display:inline" id="mainBanner">
+
+    <div id="NbTrok">
+        <div class="hoja" th:text="${session.itemCount}"></div>
+        <div style="margin-top: 3%; width:100%;height:30px;text-align:center;font-weight:bold;">Items/Services Disponibles</div>
+    </div>
+
     <img src="images/WorldBanner2.jpg" class="img-responsive animated fadeIn" id="Banniere"/>
     <a th:href="@{/}"><img src="images/LogoWorld_Transparence.png" class="img-responsive animated Logo" id="Logo"/></a>
 		        <span class="dd animated fadeInDown">
+
                     <div class="BTN_Creds">
                         <span th:if="${authUser} eq null">
                             <a href="/openModalConnexion" class="btn btn-sm animated-button thar-two">Connexion</a>
@@ -125,7 +132,9 @@
                                class="btn btn-sm animated-button thar-two"></a>
                         </span>
                     </div>
+
                 </span>
+
 </div>
 <!-- END Header -->
 
@@ -141,7 +150,7 @@
         </div>
         <form th:action="@{/auth}" method="post" th:object="${post}">
             <div style="text-align:center">
-                <input class="signup-full" type="text" placeholder="Nom d'usager" name="iduser"/>
+                <input class="signup-full" type="text" placeholder="Nom d'usager" name="iduser" />
                 <input class="signup-full" type="password" placeholder="Mot de Passe" name="pass"/>
                 <input style="float:left" type="checkbox" name="StayConnected" value="Stay">Rester Connecter</input>
                 <a href="mailto:ysteinthal@yahoo.com?Subject=Test Trok-E" target="_top" style="float:right">Mot de
@@ -443,7 +452,7 @@
         <!-- div navbar-header -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar" onclick="Choix()">
+                    aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
             </button>
 
@@ -482,7 +491,9 @@
                 <li><a href="/myTrades" style="color:black; font-size:15px">Mes Échanges <th:block th:if="${authUser} ne null"><div class="noti_bubble" th:text="${session.notifications}"></div></th:block></a></li>
                 <li><a href="/profilinv" style="color:black; font-size:15px">Mon Inventaire</a></li>
                     <!-- <li><a href="#contact">Contact</a></li> -->
-                <li class="pull-right"><a href="/profil" style="color:black;font-size:15px">Mon Profil</a></li>
+                <li class="pull-left"><a href="/profil" style="color:black;font-size:15px">Mon Profil</a></li><!--pull-right-->
+
+
             </ul>
             <!-- nav navbar-nav -->
         </div>
