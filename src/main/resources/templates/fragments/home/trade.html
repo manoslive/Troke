@@ -32,9 +32,10 @@
               <h5 th:text="${invUser.getNameObject()}" class="ui-widget-header"></h5>
               <img class="item-image" th:src="*{invUser.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${invUser.getImage1()}:'images/LogoWorld_Transparence.png'" alt=""/>
               <div class="optionsInventoryItem">
-                <a class="js-open-modal link-zoom info-icon btn-option-item" href="#" data-modal-id="modal-InfoItem"
+                <a class="js-open-modal link-zoom info-icon btn-option-item tooltip" href="#" data-modal-id="modal-InfoItem"
+                   title="Plus d'information sur l'item/service"
                    th:onclick="'javascript:showModalInfoItem(\''+ ${invUser.getIdobject()} +'\')'"></a>
-                <a class="icon-exchange btn-option-item"/>
+                <a class="icon-exchange btn-option-item tooltip" title="Ajouter l'item/service au troc"/>
               </div>
               <input type="hidden" th:value="${invUser.getIdobject()}" class=""/>
             </li>
@@ -43,9 +44,9 @@
             <li class="money UserItem ui-widget-content ui-corner-tr">
               <h5 class="ui-widget-header">Argent</h5>
               <img class="item-image" src="images/item-dollar-sign.png" alt=""/>
-              <div class="optionsInventoryItem">
+              <div class="optionsInventoryMoney">
                 <a></a>
-                <a class="icon-exchange btn-option-item"/>
+                <a class="icon-exchange btn-option-item tooltip" title="Ajout d'argent supplémentaire"/>
               </div>
             </li>
             </th:block>
@@ -55,64 +56,72 @@
       <div id="exchangeZone">
         <div id="UserExchange" class="container-outer">
           <h4 class="exchangeZoneHeader ui-widget-header">Votre zone d'échange</h4>
-          <div id="userExchangeItems" class="container-inner ui-state-default">
-            <th:block th:if="${listImageUserTradeZone} ne null">
-            <ul class="UserInventory ui-helper-reset">
-              <li th:each="userTradeItem : ${listImageUserTradeZone}" class="UserItem ui-widget-content ui-corner-tr" style="display: block; overflow: hidden; width: 80px; height: 80px;">
-                <h5 th:text="${userTradeItem.getNameObject()}" class="ui-widget-header"></h5>
-                <img class="item-image" th:src="*{userTradeItem.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${userTradeItem.getImage1()}:'images/LogoWorld_Transparence.png'" alt="" style="display: inline-block; overflow: hidden; width: 80px; height: 78px; max-width: 80px; max-height: 78px;"/>
-                <div class="optionsExchangeItem">
-                  <a class="js-open-modal link-zoom info-icon btn-option-item" href="#" data-modal-id="modal-InfoItem" th:onclick="'javascript:showModalInfoItem(\''+ ${userTradeItem.getIdobject()} +'\')'"></a>
-                  <a class="btn-option-item icon-refresh"></a>
-                </div>
-                <input type="hidden" th:value="${userTradeItem.getIdobject()}" class="itemID"/>
-              </li>
-              <!--Objet argent s'il a de l'argent plus que 0-->
-              <th:block th:if="${UserMoneyItem.getValue()} gt 0">
-                <li class="money UserItem ui-widget-content ui-corner-tr ui-draggable" style="display: block; overflow: hidden; width: 80px; height: 80px;">
-                  <h5 class="ui-widget-header">Argent</h5>
-                  <div class='divInputMoney'>
-                    <label class='lb-money'>$</label>
-                    <input id='userMoneyInput' name='userMoneyInput' th:value="${UserMoneyItem.getValue()}" class='inputMoney' style='z-index:1000;' type='number'/>
+          <div class="container-mid">
+            <div id="userExchangeItems" class="container-inner ui-state-default">
+              <th:block th:if="${listImageUserTradeZone} ne null">
+              <ul class="UserInventory ui-helper-reset">
+                <li th:each="userTradeItem : ${listImageUserTradeZone}" class="UserItem ui-widget-content ui-corner-tr" style="display: block; overflow: hidden; width: 80px; height: 80px;">
+                  <h5 th:text="${userTradeItem.getNameObject()}" class="ui-widget-header"></h5>
+                  <img class="item-image" th:src="*{userTradeItem.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${userTradeItem.getImage1()}:'images/LogoWorld_Transparence.png'" alt="" style="display: inline-block; overflow: hidden; width: 80px; height: 78px; max-width: 80px; max-height: 78px;"/>
+                  <div class="optionsExchangeItem">
+                    <a class="js-open-modal link-zoom info-icon btn-option-item tooltip"
+                       title="Plus d'information sur l'item/service"
+                       href="#" data-modal-id="modal-InfoItem" th:onclick="'javascript:showModalInfoItem(\''+ ${userTradeItem.getIdobject()} +'\')'"></a>
+                    <a class="btn-option-item icon-refresh tooltip" title="Enlever l'item/service du troc"></a>
                   </div>
-                  <div class="optionsExchangeItem" style="top: 1px !important;">
-                    <a></a>
-                    <a class="icon-exchange btn-option-item"/>
-                  </div>
+                  <input type="hidden" th:value="${userTradeItem.getIdobject()}" class="itemID"/>
                 </li>
+                <!--Objet argent s'il a de l'argent plus que 0-->
+                <th:block th:if="${UserMoneyItem.getValue()} gt 0">
+                  <li class="money UserItem ui-widget-content ui-corner-tr ui-draggable" style="display: block; overflow: hidden; width: 80px; height: 80px;">
+                    <h5 class="ui-widget-header">Argent</h5>
+                    <div class='divInputMoney'>
+                      <label class='lb-money'>$</label>
+                      <input id='userMoneyInput' name='userMoneyInput' th:value="${UserMoneyItem.getValue()}" class='inputMoney' style='z-index:1000;' type='number'/>
+                    </div>
+                    <div class="optionsExchangeMoney" style="top: 1px !important;">
+                      <a></a>
+                      <a class="icon-exchange btn-option-item tooltip" title="Ajout d'argent supplémentaire"/>
+                    </div>
+                  </li>
+                </th:block>
+              </ul>
               </th:block>
-            </ul>
-            </th:block>
+            </div>
           </div>
         </div>
         <div id="OpponentExchange" class="container-outer">
           <h4 th:text="'Zone d\'échange à ' + ${opponent.getIduser()}" class="exchangeZoneHeader ui-widget-header"></h4>
-          <div id="opponentExchangeItems" class="container-inner ui-state-default">
-            <ul class="OpponentInventory ui-helper-reset">
-              <li th:each="opponentTradeItem : ${listImageOpponentTradeZone}" class="OpponentItem ui-widget-content ui-corner-tr ui-draggable" style="display: block; overflow: hidden; width: 80px; height: 80px;">
-                <h5 th:text="${opponentTradeItem.getNameObject()}" class="ui-widget-header"></h5>
-                <img class="item-image" th:src="*{opponentTradeItem.getImage1().substring(0,1) ne '*'} ? '/uploaded-images/'+${opponentTradeItem.getImage1()}:'images/LogoWorld_Transparence.png'" alt="" style="display: inline-block; overflow: hidden; width: 80px; height: 78px; max-width: 80px; max-height: 78px;" />
-                <div class="optionsExchangeItem">
-                  <a class="js-open-modal link-zoom info-icon btn-option-item" href="#" data-modal-id="modal-InfoItem" th:onclick="'javascript:showModalInfoItem(\''+ ${opponentTradeItem.getIdobject()} +'\')'"></a>
-                  <a class="btn-option-item icon-refresh"></a>
-                </div>
-                <input type="hidden" th:value="${opponentTradeItem.getIdobject()}" class="itemID"/>
-              </li>
-              <!--Objet argent s'il a de l'argent plus que 0-->
-              <th:block th:if="${OpponentMoneyItem.getValue()} gt 0">
-                <li class="money OpponentItem ui-widget-content ui-corner-tr ui-draggable" style="display: block; overflow: hidden; width: 80px; height: 80px;">
-                  <h5 class="ui-widget-header">Argent</h5>
-                  <div class="divInputMoney">
-                    <label class="lb-money">$</label>
-                    <input id="opponentMoneyInput" name="opponentMoneyInput" th:value="${OpponentMoneyItem.getValue()}" class="inputMoney" style="z-index:1000;" type="number"/>
+          <div class="container-mid">
+            <div id="opponentExchangeItems" class="container-inner ui-state-default">
+              <ul class="OpponentInventory ui-helper-reset">
+                <li th:each="opponentTradeItem : ${listImageOpponentTradeZone}" class="OpponentItem ui-widget-content ui-corner-tr ui-draggable" style="display: block; overflow: hidden; width: 80px; height: 80px;">
+                  <h5 th:text="${opponentTradeItem.getNameObject()}" class="ui-widget-header"></h5>
+                  <img class="item-image" th:src="*{opponentTradeItem.getImage1().substring(0,1) ne '*'} ? '/uploaded-images/'+${opponentTradeItem.getImage1()}:'images/LogoWorld_Transparence.png'" alt="" style="display: inline-block; overflow: hidden; width: 80px; height: 78px; max-width: 80px; max-height: 78px;" />
+                  <div class="optionsExchangeItem">
+                    <a class="js-open-modal link-zoom info-icon btn-option-item tooltip"
+                       title="Plus d'information sur l'item/service"
+                       href="#" data-modal-id="modal-InfoItem" th:onclick="'javascript:showModalInfoItem(\''+ ${opponentTradeItem.getIdobject()} +'\')'"></a>
+                    <a class="btn-option-item icon-refresh tooltip" title="Enlever l'item/service du troc"></a>
                   </div>
-                  <div class="optionsExchangeItem" style="top: 1px !important;">
-                    <a></a>
-                    <a class="icon-exchange btn-option-item"/>
-                  </div>
+                  <input type="hidden" th:value="${opponentTradeItem.getIdobject()}" class="itemID"/>
                 </li>
-              </th:block>
-            </ul>
+                <!--Objet argent s'il a de l'argent plus que 0-->
+                <th:block th:if="${OpponentMoneyItem.getValue()} gt 0">
+                  <li class="money OpponentItem ui-widget-content ui-corner-tr ui-draggable" style="display: block; overflow: hidden; width: 80px; height: 80px;">
+                    <h5 class="ui-widget-header">Argent</h5>
+                    <div class="divInputMoney">
+                      <label class="lb-money">$</label>
+                      <input id="opponentMoneyInput" name="opponentMoneyInput" th:value="${OpponentMoneyItem.getValue()}" class="inputMoney" style="z-index:1000;" type="number"/>
+                    </div>
+                    <div class="optionsExchangeMoney" style="top: 1px !important;">
+                      <a></a>
+                      <a class="icon-exchange btn-option-item tooltip" title="Ajout d'argent supplémentaire"/>
+                    </div>
+                  </li>
+                </th:block>
+              </ul>
+            </div>
           </div>
         </div>
         <span class="dd animated fadeInDown">
@@ -121,7 +130,7 @@
         </span>
         <div id="zoneChat" class="row-md-3">
           <textarea th:text="${ChatLog.getMsg()}" name="chatLog" id="chatBoxStartExchange"></textarea>
-          <input id="chatEnter" type="text"/>
+          <input id="chatEnter" type="text" placeholder="Envoyer un message"/>
           <input th:onclick="'javascript:sendChat(\''+${userActif.getIduser()}+'\')'" id="btn-enter" type="button" value="Envoyer" />
         </div>
       </div>
@@ -135,9 +144,10 @@
               <h5 th:text="${invOpponent.getNameObject()}"  class="ui-widget-header"></h5>
               <img class="item-image" th:src="*{invOpponent.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${invOpponent.getImage1()}:'images/LogoWorld_Transparence.png'" alt=""/>
               <div class="optionsInventoryItem">
-                <a class="js-open-modal link-zoom info-icon btn-option-item" href="#" data-modal-id="modal-InfoItem"
+                <a class="js-open-modal link-zoom info-icon btn-option-item tooltip" href="#" data-modal-id="modal-InfoItem"
+                   title="Plus d'information sur l'item/service"
                    th:onclick="'javascript:showModalInfoItem(\''+ ${invOpponent.getIdobject()} +'\')'"></a>
-                <a class="icon-exchange btn-option-item"/>
+                <a class="icon-exchange btn-option-item tooltip" title="Ajouter l'item/service au troc"/>
               </div>
               <input type="hidden" th:value="${invOpponent.getIdobject()}" class=""/>
             </li>
@@ -146,9 +156,9 @@
             <li class="money OpponentItem ui-widget-content ui-corner-tr">
               <h5 class="ui-widget-header">Argent</h5>
               <img class="item-image" src="images/item-dollar-sign.png" alt=""/>
-              <div class="optionsInventoryItem">
+              <div class="optionsInventoryMoney">
                 <a></a>
-                <a class="icon-exchange btn-option-item"/>
+                <a class="icon-exchange btn-option-item tooltip" title="Ajout d'argent supplémentaire"/>
               </div>
             </li>
             </th:block>
