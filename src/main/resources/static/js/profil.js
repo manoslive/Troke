@@ -106,4 +106,8 @@ function modalSubmitAjouter()
 
     $('#ajouter').submit();
 }
+$(document).ready(function () {
+    $('.phone_ca').mask('(000) 000-0000');
+    $('.zipcode').mask('S0S-0S0');
+});
 
