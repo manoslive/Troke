@@ -1,13 +1,9 @@
 package com.tilf.troke.controller;
 
 import com.tilf.troke.auth.AuthUserContext;
-import com.tilf.troke.domain.UserProfil;
 import com.tilf.troke.entity.*;
-import com.tilf.troke.repository.*;
-import com.tilf.troke.entity.ImageobjectEntity;
-import com.tilf.troke.entity.ObjectsEntity;
-import com.tilf.troke.entity.UsersEntity;
 import com.tilf.troke.filter.SearchFilter;
+import com.tilf.troke.repository.*;
 import com.tilf.troke.service.SmtpMailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.thymeleaf.context.WebContext;
-
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
@@ -60,6 +55,9 @@ public class HomeController {
         FillCategoryList(model);
         GetRecentItems(model);
         searchFilter.removeAll();
+        long itemcount = customObjectRepository.getNumberOfItem();
+
+        session.setAttribute("ItemCount", itemcount);
         List<TransactionsEntity> CountPending = new ArrayList<TransactionsEntity>();
         if(authContext.getUser() != null)
         {
@@ -170,83 +168,6 @@ public class HomeController {
         return "fragments/home/about";
     }
 
-    // appel de profil
-    @RequestMapping(value = "/profil", method = RequestMethod.GET)
-    public String Profil(Model model,
-                         HttpSession session) {
-        UserProfil userProfil = new UserProfil();
-        UsersEntity user = authContext.getUser();
-//        userProfil.setFirstname(authContext.getUser().getFirstname());
-//        userProfil.setLastname(authContext.getUser().getLastname());
-//        userProfil.setTelephone(authContext.getUser().getTelephone());
-//        userProfil.setEmail(authContext.getUser().getEmail());
-//        userProfil.setZipcode(authContext.getUser().getZipcode());
-
-
-        if (user != null) {
-            // on ajoute a la page le user qui est loggé pour avoir ses informations
-            model.addAttribute("userActif", user);
-            model.addAttribute("userProfil", userProfil);
-
-            // on va chercher la liste de tous les items du user et ensuite on l'ajoute a la page..
-            List<ObjectsEntity> list = customObjectRepository.getListObjectByUserId(authContext.getUser().getIduser());
-            model.addAttribute("userInventory", list);
-
-            // pour cause d'avoir des modal vide ..
-            model.addAttribute("idObjectDelete", null);
-
-            // entity a envoyer a la page pour peupler le combobox
-            List<CustomCategorySubCategoryEntity> itemCombo = new ArrayList<CustomCategorySubCategoryEntity>();
-
-
-            // avoir la liste de category pour le comboBox
-            List<CategoryEntity> listCat = customCategoryRepository.getAllCategory(); // liste de tout les category
-            List<SubcategoryEntity> listSubCatInterne;
-
-            for (int i = 0; i < listCat.size(); i++) {
-                // item interne de la boucle pour peupler les itemCombos.
-                CustomCategorySubCategoryEntity customInterne = new CustomCategorySubCategoryEntity();
-                listSubCatInterne = customSubcategoryRepository.getAllSubCat(listCat.get(i).getIdcategory());
-                customInterne.setCategory(listCat.get(i));
-                customInterne.setListSubCat(listSubCatInterne);
-                itemCombo.add(customInterne);
-
-            }
-
-            // liste pour peupler le comboBox
-            model.addAttribute("itemCombo", itemCombo);
-
-            // Liste des images pour chaque objet ...
-            List<List<ImageobjectEntity>> listImage = new ArrayList<List<ImageobjectEntity>>();
-            List<ImageobjectEntity> listInterne;
-
-            for (int i = 0; i < list.size(); i++) {
-                listInterne = customImageObjectRepository.getImageObjectbyObjectId(list.get(i).getIdobject());
-                listImage.add(listInterne);
-
-            }
-
-            model.addAttribute("listeImage", listImage);
-            // TODO THYMELEAF HACK
-            if (false) {
-                WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-                context.setVariable("userActif", user);
-                //context.setVariable("userProfil", userProfil);
-                context.setVariable("userInventory", list);
-                context.setVariable("listeImage", listImage);
-                context.setVariable("itemCombo", itemCombo);
-
-            }
-            model.addAttribute("errNom", 0);
-            model.addAttribute("errPrenom", 0);
-            return "fragments/site/profilUser";
-
-        } else {
-            session.removeAttribute("error");
-            return "redirect:#openModalConnexion";
-        }
-
-    }
 
     @RequestMapping(value = "/profilinv", method = RequestMethod.GET)
     public String Inventaire(Model model,
