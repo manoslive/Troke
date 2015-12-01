@@ -8,6 +8,7 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomTransactionMoneyRepository.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomTransactionMoneyRepositoryImpl.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/TransactionMoneyRepository.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/service/SmtpMailSender.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/resources/static/bootstrap" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/resources/static/css/mainbuttons.css" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/resources/static/css/style.css" charset="windows-1252" />

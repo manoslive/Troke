@@ -2,7 +2,9 @@ package com.tilf.troke.controller;
 
 import com.tilf.troke.auth.AuthUserContext;
 import com.tilf.troke.entity.UsersEntity;
+import com.tilf.troke.repository.CustomUserRepository;
 import com.tilf.troke.repository.UserRepository;
+import com.tilf.troke.service.SmtpMailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.thymeleaf.context.WebContext;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.math.BigInteger;
 
 /**
  * Created by Emmanuel on 2015-09-21.
@@ -26,8 +30,13 @@ public class LoginController {
     private UserRepository userRepository;
 
     @Autowired
+    private CustomUserRepository customUserRepository;
+
+    @Autowired
     private AuthUserContext authContext;
 
+    @Autowired
+    private SmtpMailSender smtpMailSender;
 
     @RequestMapping("/login")
     public String login() {
@@ -79,19 +88,36 @@ public class LoginController {
         return "redirect:#openModalConnexion";
     }
 
-    @RequestMapping(value="/connexionNew", method = RequestMethod.GET)
-    public String connexionNew()
-    {
+    @RequestMapping(value = "/connexionNew", method = RequestMethod.GET)
+    public String connexionNew() {
         return "/#openModalConnexion";
+    }
+
+    @RequestMapping("/resetpassword")
+    public String resetpassword(@RequestParam("iduser") String iduser) throws MessagingException {
+        if (customUserRepository.checkUserExistance(iduser) == BigInteger.ONE) { // On vérifie si l'utilisateur existe
+            System.out.println("L'utilisateur " + iduser + " existe!");
+            UsersEntity user = customUserRepository.findUserById(iduser); // On trouve le user par iduser
+            customUserRepository.updateUserPassword(user); // On met un mot de passe temporaire à l'utilisateur
+            // On envoit un message lui disant son nouveau mot de passe
+            smtpMailSender.send(user.getEmail(), "Troké : Changement de mot de passe",
+                    "Bonjour " + user.getFirstname() + " " + user.getLastname() + ",<br/>" +
+                            "Vous mot de passe a été réinitialisé.<br/>" +
+                            "Votre nouveau mot de passe est: " + user.getPass() + "<br/>" +
+                            "<a href='http://troke.me'>Retour à Troké!</a>"
+            );
+
+        } else {
+            System.out.println("L'utilisateur " + iduser + " n'existe pas!");
+        }
+        return "redirect:#openModalConnexion";
     }
 
     @RequestMapping("/openModalConnexion")
     public String openModalConnexion(HttpSession session,
-                                     @CookieValue(value="Connect", defaultValue = "empty") String userCookie)
-    {
+                                     @CookieValue(value = "Connect", defaultValue = "empty") String userCookie) {
         session.removeAttribute("error");
-        if(!userCookie.equals("empty"))
-        {
+        if (!userCookie.equals("empty")) {
             UsersEntity user = userRepository.findUsersEntityByIduser(userCookie);
             session.setAttribute("user", user);
 

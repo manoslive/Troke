@@ -1,46 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-<<<<<<< Updated upstream
     <list default="true" id="f947bb62-d6ad-4da4-b5ae-73659883da55" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/uploaded-images/11cda09d55a144f19bace7c8fb1caa7c.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/uploaded-images/temp/3d28e32404dc4683a1fadbe951932bc1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/uploaded-images/6c9d8d742b2443f0a37b8775e27900b0.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/uploaded-images/83d0f574639a40c9886193b73d664e70.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/uploaded-images/temp/89a76d77dd744e9e977a5c5d79d5d7ba.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/uploaded-images/temp/9270fef663c844fa9f2328938d75f8a9.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/uploaded-images/temp/abea26d986f14ee18fcb2207fed29cf3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/uploaded-images/temp/b6ce6b8a7e1a47168cfd60da199dfbec.jpg" />
-      <change type="DELETED" beforePath="C:\Users\Manu\Documents\GitHub\troke\src\main\resources\static\uploaded-images\temp\df1b4cc16f894e188a2a777fb8aeedde.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomObjectRepository.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomObjectRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomObjectRepositoryImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomObjectRepositoryImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/HomeController.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/HomeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/service/ImageService.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/service/ImageService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/LoginController.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/LoginController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/repository/UserRepository.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/repository/UserRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tilf/troke/service/ImageService.java" afterPath="$PROJECT_DIR$/src/main/java/com/tilf/troke/service/ImageService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/UserController.java" />
-=======
-    <list default="true" id="f947bb62-d6ad-4da4-b5ae-73659883da55" name="Default" comment="une connexion a la fois">
-      <change type="MODIFICATION" beforePath="C:\Users\Alex\Documents\GitHub\troke\target\classes\com\tilf\troke\repository\CustomObjectRepository.class" afterPath="C:\Users\Alex\Documents\GitHub\troke\target\classes\com\tilf\troke\repository\CustomObjectRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomObjectRepositoryImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomObjectRepositoryImpl.class" />
-      <change type="MODIFICATION" beforePath="C:\Users\Alex\Documents\GitHub\troke\target\classes\com\tilf\troke\controller\HomeController.class" afterPath="C:\Users\Alex\Documents\GitHub\troke\target\classes\com\tilf\troke\controller\HomeController.class" />
-      <change type="MODIFICATION" beforePath="C:\Users\Alex\Documents\GitHub\troke\target\classes\com\tilf\troke\controller\LoginController.class" afterPath="C:\Users\Alex\Documents\GitHub\troke\target\classes\com\tilf\troke\controller\LoginController.class" />
-      <change type="MODIFICATION" beforePath="C:\Users\Alex\Documents\GitHub\troke\target\classes\com\tilf\troke\controller\ProfilController.class" afterPath="C:\Users\Alex\Documents\GitHub\troke\target\classes\com\tilf\troke\controller\ProfilController.class" />
-      <change type="MODIFICATION" beforePath="C:\Users\Alex\Documents\GitHub\troke\target\classes\com\tilf\troke\controller\SearchController.class" afterPath="C:\Users\Alex\Documents\GitHub\troke\target\classes\com\tilf\troke\controller\SearchController.class" />
-      <change type="MODIFICATION" beforePath="C:\Users\Alex\Documents\GitHub\troke\target\classes\com\tilf\troke\controller\TransactionController.class" afterPath="C:\Users\Alex\Documents\GitHub\troke\target\classes\com\tilf\troke\controller\TransactionController.class" />
-      <change type="MODIFICATION" beforePath="C:\Users\Alex\Documents\GitHub\troke\target\classes\com\tilf\troke\repository\UserRepository.class" afterPath="C:\Users\Alex\Documents\GitHub\troke\target\classes\com\tilf\troke\repository\UserRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepositoryImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepositoryImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java" afterPath="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/LoginController.java" afterPath="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/LoginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/ProfilController.java" afterPath="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/ProfilController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/main_template.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_template.html" />
->>>>>>> Stashed changes
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="troke_springboot.iws" />
@@ -68,14 +30,6 @@
         <option name="myItemId" />
         <option name="myItemType" value="com.intellij.database.view.DbRootNodeDescriptor" />
       </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="localhost" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="troke" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
     </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
@@ -84,158 +38,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-<<<<<<< Updated upstream
-      <file leaf-file-name="main_template.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/main_template.html">
+      <file leaf-file-name="CustomUserRepositoryImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomUserRepositoryImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-107.76923">
-              <caret line="430" column="46" selection-start-line="430" selection-start-column="46" selection-end-line="430" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="73" column="18" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="18" />
               <folding>
-                <marker date="1448769372261" expanded="true" signature="3668:3677" placeholder="..." />
-                <marker date="1448769372261" expanded="true" signature="4460:4469" placeholder="..." />
-                <marker date="1448769372261" expanded="true" signature="4788:4797" placeholder="..." />
+                <marker date="1448915472644" expanded="true" signature="776:835" placeholder="select * fro..users..." />
+                <marker date="1448915472644" expanded="true" signature="1232:1274" placeholder="select * fro..users..." />
+                <marker date="1448915472644" expanded="true" signature="1614:1633" placeholder="select * fro..users..." />
+                <marker date="1448915472644" expanded="true" signature="1933:1982" placeholder="select count..users..." />
+                <marker date="1448915472644" expanded="true" signature="2616:2663" placeholder="select count..users..." />
+                <marker date="1448915472644" expanded="true" signature="3440:3493" placeholder="select count..users..." />
               </folding>
-=======
-      <file leaf-file-name="HomeController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3328823">
-              <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-              <folding />
->>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< Updated upstream
+      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/LoginController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="141" column="27" selection-start-line="141" selection-start-column="27" selection-end-line="141" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TransactionController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/TransactionController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="309" column="35" selection-start-line="309" selection-start-column="35" selection-end-line="310" selection-end-column="87" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46006945">
-              <caret line="78" column="76" selection-start-line="78" selection-start-column="76" selection-end-line="78" selection-end-column="76" />
-=======
-      <file leaf-file-name="InvocableHandlerMethod.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.1.7.RELEASE/spring-web-4.1.7.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.0">
-              <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
->>>>>>> Stashed changes
+            <state vertical-scroll-proportion="0.77693146">
+              <caret line="108" column="57" selection-start-line="108" selection-start-column="57" selection-end-line="108" selection-end-column="57" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< Updated upstream
-      <file leaf-file-name="ImageService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/service/ImageService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="113" column="9" selection-start-line="113" selection-start-column="9" selection-end-line="113" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-=======
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/UserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="125" column="51" selection-start-line="125" selection-start-column="51" selection-end-line="125" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ObjectRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/ObjectRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomObjectRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main_template.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/main_template.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-32.76923">
-              <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
-              <folding>
-                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h2#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#1;n#div#0;n#form#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#form#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#1;n#div#2;n#form#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#3;n#form#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h2#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#th:block#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#1;n#th:block#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#1;n#div#1;n#th:block#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#th:block#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#th:block#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#th:block#0;n#div#1;n#th:block#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#th:block#1;n#div#1;n#th:block#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#th:block#2;n#div#1;n#th:block#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#th:block#3;n#div#1;n#th:block#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#th:block#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h2#0;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h2#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h2#2;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#2;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#2;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#li#2;n#ul#0;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#li#3;n#ul#0;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#li#4;n#ul#0;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1448838867937" expanded="true" signature="4101:4110" placeholder="..." />
-                <marker date="1448838867937" expanded="true" signature="5000:5009" placeholder="..." />
-                <marker date="1448838867937" expanded="true" signature="5328:5337" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomObjectRepositoryImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepositoryImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="432" column="30" selection-start-line="432" selection-start-column="30" selection-end-line="432" selection-end-column="30" />
-              <folding>
-                <marker date="1448891276571" expanded="true" signature="995:1029" placeholder="select NAME_..category..." />
-                <marker date="1448891276571" expanded="true" signature="1402:1468" placeholder="select NAME_..subcategory..." />
-                <marker date="1448891276571" expanded="true" signature="5061:5352" placeholder="select IDOBJ..objects..." />
-                <marker date="1448891276571" expanded="true" signature="6061:6262" placeholder="select IDOBJ..objects..." />
-                <marker date="1448891276571" expanded="true" signature="8524:8648" placeholder="select disti..category..." />
-                <marker date="1448891276571" expanded="true" signature="8961:9040" placeholder="select disti..subcategory..." />
-                <marker date="1448891276571" expanded="true" signature="9407:9530" placeholder="select s.NAM..category..." />
->>>>>>> Stashed changes
-              </folding>
             </state>
           </provider>
         </entry>
@@ -245,10 +92,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
         <option value="JavaScript File" />
         <option value="Html5" />
-        <option value="CSS File" />
-        <option value="AnnotationType" />
+        <option value="spring-beans.schema" />
         <option value="Class" />
       </list>
     </option>
@@ -256,11 +103,6 @@
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
-    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -270,91 +112,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-<<<<<<< Updated upstream
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/login.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/template.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/navbar.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/footer.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/LoginController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/interceptor/MenuListInterceptor.java" />
-=======
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/domain/FieldMatch.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/annotation/FieldMatch.java" />
->>>>>>> Stashed changes
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/GlobalController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/validator/UserValidator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomUserRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomUserRepositoryImpl.java" />
-<<<<<<< Updated upstream
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/startTrade.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/css/style_troker.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/about.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/objectInfo.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/startTrade.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/profil/openModalAjouter.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/UsersEntity.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/domain/boneCP.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/domain/ObjectEntityWithImages.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/profil/openModalPassword.html" />
-=======
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/UserController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/home.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/css/style_search.css" />
-        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/profil/openModalSupprimer.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/css/mainbuttons.css" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/profil/openModalDelete.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/site/profilUser.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/css/style_monContact.css" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/about.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/about.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/css/style.css" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/css/style_ribbon.css" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/css/style_home.css" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/ImageobjectEntity.java" />
->>>>>>> Stashed changes
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/ImageObjectRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomImageObjectRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/PersistanceContext.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/ObjectRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/ObjectsEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomChatMessageRepositoryImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomCategoryRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomCategoryRepositoryImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomSubcategoryEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomSubcategoryEntityImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/CustomCategorySubCategoryEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/ObjectratingEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/site/profilUser.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/profil/profilContent.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomImageObjectRepositoryImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/profil/openModalAjouter.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/UsersEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/domain/UserSignupForm.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/domain/UserProfil.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/profil/pageprofil.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/css/style_monProfil.css" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/profil/pageinventaire.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/home.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/UserRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/LoginController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/main_template.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/profil/openModalDelete.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/ProfilController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-<<<<<<< Updated upstream
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/filter/SearchFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/ObjectsEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/service/CatSubCatService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/CustomObjetImageEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/CustomSearchObjectEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/service/ObjectService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/css/style_search.css" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepositoryImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/search.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchNull.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchMultipleObjects.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchSingleObject.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchKeyword.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/main_template.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/service/ImageService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/UserController.java" />
-=======
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepositoryImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchNull.html" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/domain/TestEmail.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/service/EmailAPI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/service/TestEmail.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/javamail.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/TrokeApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/service/SmtpMailSender.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java" />
->>>>>>> Stashed changes
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/TransactionController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/main_template.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/home.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomUserRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomUserRepositoryImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/UserController.java" />
       </list>
     </option>
   </component>
@@ -378,6 +186,16 @@
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="troke" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+      </PATH>
       <PATH>
         <PATH_ELEMENT>
           <option name="myItemId" value="" />
@@ -414,8 +232,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1616" />
-    <option name="height" value="876" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -462,7 +280,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -613,12 +432,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-<<<<<<< Updated upstream
             <PATH_ELEMENT>
-              <option name="myItemId" value="uploaded-images" />
+              <option name="myItemId" value="fragments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="home" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -645,14 +467,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uploaded-images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="temp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -685,8 +499,6 @@
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-=======
->>>>>>> Stashed changes
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -711,36 +523,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="troke" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="troke_springboot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="troke" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="troke" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -774,28 +556,53 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="troke_springboot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="troke" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="troke" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-<<<<<<< Updated upstream
-=======
-      <pane id="Scope" />
       <pane id="Scratches" />
->>>>>>> Stashed changes
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/troke_springboot-master/troke_springboot-master" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="dynamic.classpath" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.34367815" />
     <property name="FullScreen" value="false" />
@@ -808,151 +615,21 @@
     <property name="DefaultHtmlFileTemplate" value="Html5" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.tilf.troke.repository" />
-      <recent name="com.tilf.troke.domain" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Manu\Documents\GitHub\troke\src\main\java\com\tilf\troke\service" />
+      <recent name="C:\Users\Manu\Documents\GitHub\troke\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Alex\Documents\GitHub\troke\src\main\resources\templates\fragments\home" />
-      <recent name="C:\Users\Alex\Documents\GitHub\troke\src\main\resources\static\js" />
-      <recent name="C:\Users\Alex\Documents\GitHub\troke\src\main\java\com\tilf\troke\controller" />
-      <recent name="C:\Users\Alex\Documents\GitHub\troke\src\main\java\com\tilf\troke\entity" />
-      <recent name="C:\Users\Alex\Documents\GitHub\troke\src\main\java\com\tilf\troke\repository" />
+      <recent name="C:\Users\Emmanuel\Documents\GitHub\troke\src\main\resources\static" />
+      <recent name="C:\Users\Emmanuel\Documents\GitHub\troke\src\main\resources\static\images" />
+      <recent name="C:\Users\Emmanuel\Documents\GitHub\troke\src\main\resources\templates\fragments\site" />
+      <recent name="C:\Users\Manu\Documents\GitHub\troke\src\main\resources\static\css" />
+      <recent name="C:\Users\Manu\Documents\GitHub\troke\src\main\resources\templates\fragments\home" />
     </key>
     <key name="ImportMappingsDialog.RecentPackages">
       <recent name="com.tilf.troke.entity" />
       <recent name="" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/dataSources.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/TransactionController.java</PATH>
-<<<<<<< Updated upstream
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepositoryImpl.java</PATH>
-=======
->>>>>>> Stashed changes
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/static/css/style_myTrades.css</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/static/js/mytrades.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/static/js/profil.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/templates/fragments/home/myTrades.html</PATH>
-<<<<<<< Updated upstream
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/templates/fragments/profil/pageinventaire.html</PATH>
-=======
->>>>>>> Stashed changes
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/templates/fragments/profil/pageprofil.html</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/static/uploaded-images/4024fb33ad614de881f2a8f90d1353aa.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/static/uploaded-images/999710b156a240fc8548fd4d6070c95e.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/static/uploaded-images/cd7103011c304516886f66e02c3e72e2.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/static/uploaded-images/ce86655be07f4cf9b6ec20ff39ff779d.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/static/uploaded-images/e56ea33e33f94d04854c2ea9c366b912.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/static/uploaded-images/f8e9851bea254cd898003d5371bd5c6e.jpg</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunManager" selected="Maven.troke [spring-boot:run]">
     <configuration default="false" name="troke [spring-boot:run]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
@@ -1414,7 +1091,6 @@
       <workItem from="1444858878776" duration="25000" />
       <workItem from="1444858924358" duration="10636000" />
       <workItem from="1444932172223" duration="30738000" />
-<<<<<<< Updated upstream
       <workItem from="1445318672652" duration="19357000" />
       <workItem from="1445429396880" duration="5570000" />
       <workItem from="1445435248111" duration="6920000" />
@@ -1441,25 +1117,15 @@
       <workItem from="1448577925128" duration="22833000" />
       <workItem from="1448650177777" duration="13571000" />
       <workItem from="1448669874746" duration="28542000" />
-      <workItem from="1448731884120" duration="18549000" />
-    </task>
-    <task id="LOCAL-00013" summary="nouvelle classe pour subcategory entity. debout des catégories dans content. part 2">
-      <created>1443705976690</created>
-      <option name="number" value="00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1443705976690</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Catégories et sous catégories dynamiques dans le div content terminé.">
-      <created>1443724742719</created>
-      <option name="number" value="00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1443724742719</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Catégories et sous catégories dynamiques dans le div content terminé. part2">
-      <created>1443724895006</created>
-      <option name="number" value="00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1443724895006</updated>
+      <workItem from="1448731884120" duration="19621000" />
+      <workItem from="1448889229465" duration="1802000" />
+      <workItem from="1448891173547" duration="5284000" />
+      <workItem from="1448897184907" duration="1133000" />
+      <workItem from="1448899217081" duration="87000" />
+      <workItem from="1448902772728" duration="2762000" />
+      <workItem from="1448905591405" duration="11867000" />
+      <workItem from="1448924049359" duration="339000" />
+      <workItem from="1448928560930" duration="661000" />
     </task>
     <task id="LOCAL-00016" summary="10 objects les plus récents">
       <created>1443735942844</created>
@@ -1496,36 +1162,6 @@
       <option name="number" value="00021" />
       <option name="project" value="LOCAL" />
       <updated>1443814079512</updated>
-=======
-      <workItem from="1445318672652" duration="19458000" />
-      <workItem from="1445445025942" duration="31547000" />
-      <workItem from="1445550524399" duration="3820000" />
-      <workItem from="1445554729250" duration="2165000" />
-      <workItem from="1445617407230" duration="1078000" />
-      <workItem from="1445619891688" duration="10387000" />
-      <workItem from="1445886708617" duration="2810000" />
-      <workItem from="1445889538242" duration="21960000" />
-      <workItem from="1445962970899" duration="4795000" />
-      <workItem from="1446034574940" duration="5021000" />
-      <workItem from="1446059812194" duration="3606000" />
-      <workItem from="1446646494347" duration="516000" />
-      <workItem from="1446647050243" duration="20850000" />
-      <workItem from="1447427861758" duration="2756000" />
-      <workItem from="1447776747886" duration="673000" />
-      <workItem from="1447852229098" duration="9482000" />
-      <workItem from="1447878417099" duration="326000" />
-      <workItem from="1447882321664" duration="3512000" />
-      <workItem from="1447971736269" duration="6465000" />
-      <workItem from="1447983620457" duration="14374000" />
-      <workItem from="1448049896179" duration="16000" />
-      <workItem from="1448072624971" duration="20239000" />
-      <workItem from="1448380104432" duration="1988000" />
-      <workItem from="1448457206711" duration="15357000" />
-      <workItem from="1448513763236" duration="16832000" />
-      <workItem from="1448637835732" duration="6690000" />
-      <workItem from="1448658712085" duration="1923000" />
-      <workItem from="1448766256823" duration="17093000" />
->>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00022" summary="les liens de catégories fonctionnent. le drop down menu aussi!">
       <created>1443837552770</created>
@@ -1641,163 +1277,120 @@
       <option name="project" value="LOCAL" />
       <updated>1444964191351</updated>
     </task>
-    <task id="LOCAL-00041" summary="Problème de la liste de la navbar réglé. Inscription presque terminée (Il manque juste à afficher les bons messages d'erreurs).">
-      <created>1445395056392</created>
+    <task id="LOCAL-00041" summary="Failsafe">
+      <created>1445433862435</created>
       <option name="number" value="00041" />
       <option name="project" value="LOCAL" />
-      <updated>1445395056392</updated>
+      <updated>1445433862435</updated>
     </task>
-    <task id="LOCAL-00042" summary="Problème de la liste de la navbar réglé. Inscription presque terminée (Il manque juste à afficher les bons messages d'erreurs).">
-      <created>1445629960586</created>
+    <task id="LOCAL-00042" summary="Intégration de startTrade">
+      <created>1445439854057</created>
       <option name="number" value="00042" />
       <option name="project" value="LOCAL" />
-      <updated>1445629960586</updated>
+      <updated>1445439854057</updated>
     </task>
-    <task id="LOCAL-00043" summary="Problème de la liste de la navbar réglé. Inscription presque terminée (Il manque juste à afficher les bons messages d'erreurs).">
-      <created>1445952264576</created>
+    <task id="LOCAL-00043" summary="Profil + Ajout d'item">
+      <created>1445629149349</created>
       <option name="number" value="00043" />
       <option name="project" value="LOCAL" />
-      <updated>1445952264576</updated>
+      <updated>1445629149349</updated>
     </task>
-    <task id="LOCAL-00044" summary="Modal de confirmation de suppresion + CSS">
-      <created>1445959124527</created>
+    <task id="LOCAL-00044" summary="Changement de mot de passe Fonctionnel">
+      <created>1445869890306</created>
       <option name="number" value="00044" />
       <option name="project" value="LOCAL" />
-      <updated>1445959124527</updated>
+      <updated>1445869890306</updated>
     </task>
-    <task id="LOCAL-00045" summary="Coherence Logo">
-      <created>1445959924891</created>
+    <task id="LOCAL-00045" summary="Update du User Fonctionnel">
+      <created>1445888866924</created>
       <option name="number" value="00045" />
       <option name="project" value="LOCAL" />
-      <updated>1445959924891</updated>
+      <updated>1445888866924</updated>
     </task>
-    <task id="LOCAL-00046" summary="Changements css et fonctionnement">
-      <created>1446034739358</created>
+    <task id="LOCAL-00046" summary="POUR YVON">
+      <created>1445889452624</created>
       <option name="number" value="00046" />
       <option name="project" value="LOCAL" />
-      <updated>1446034739358</updated>
+      <updated>1445889452624</updated>
     </task>
-    <task id="LOCAL-00047" summary="bar hr en moins">
-      <created>1446036016629</created>
+    <task id="LOCAL-00047" summary="retour fonctionnel apres l'ajout de l'item">
+      <created>1445952899853</created>
       <option name="number" value="00047" />
       <option name="project" value="LOCAL" />
-      <updated>1446036016629</updated>
+      <updated>1445952899853</updated>
     </task>
-    <task id="LOCAL-00048" summary="bar hr en moins">
-      <created>1446067177218</created>
+    <task id="LOCAL-00048" summary="eaffafae">
+      <created>1447982402223</created>
       <option name="number" value="00048" />
       <option name="project" value="LOCAL" />
-      <updated>1446067177218</updated>
+      <updated>1447982402223</updated>
     </task>
-    <task id="LOCAL-00049" summary="essai push">
-      <created>1446647545016</created>
+    <task id="LOCAL-00049" summary="Update ObjectEntity">
+      <created>1447982624724</created>
       <option name="number" value="00049" />
       <option name="project" value="LOCAL" />
-      <updated>1446647545017</updated>
+      <updated>1447982624724</updated>
     </task>
-    <task id="LOCAL-00050" summary="Rajout">
-      <created>1446649161033</created>
+    <task id="LOCAL-00050" summary="Première partie de la recherche terminée">
+      <created>1448234662273</created>
       <option name="number" value="00050" />
       <option name="project" value="LOCAL" />
-      <updated>1446649161034</updated>
+      <updated>1448234662273</updated>
     </task>
-    <task id="LOCAL-00051" summary="Rajout Combobox Ajout d'item">
-      <created>1446649846500</created>
+    <task id="LOCAL-00051" summary="2e partie concaténation terminée">
+      <created>1448287462400</created>
       <option name="number" value="00051" />
       <option name="project" value="LOCAL" />
-      <updated>1446649846500</updated>
+      <updated>1448287462402</updated>
     </task>
-    <task id="LOCAL-00052" summary="Partie 1 du changement d'interface d'accueil (categories)">
-      <created>1447862162104</created>
+    <task id="LOCAL-00052" summary="ehthtrthaj">
+      <created>1448474340537</created>
       <option name="number" value="00052" />
       <option name="project" value="LOCAL" />
-      <updated>1447862162105</updated>
+      <updated>1448474340538</updated>
     </task>
-    <task id="LOCAL-00053" summary="changement de Shaun">
-      <created>1447878744282</created>
+    <task id="LOCAL-00053" summary="Vive la vie. Vive la fantaisie!">
+      <created>1448562900575</created>
       <option name="number" value="00053" />
       <option name="project" value="LOCAL" />
-      <updated>1447878744283</updated>
+      <updated>1448562900576</updated>
     </task>
-    <task id="LOCAL-00054" summary="Ajout D'image Part 2 !!">
-      <created>1447979022317</created>
+    <task id="LOCAL-00054" summary="Update de search.html">
+      <created>1448598284401</created>
       <option name="number" value="00054" />
       <option name="project" value="LOCAL" />
-      <updated>1447979022317</updated>
+      <updated>1448598284401</updated>
     </task>
-    <task id="LOCAL-00055" summary="images">
-      <created>1447979046303</created>
+    <task id="LOCAL-00055" summary="Image++">
+      <created>1448604730744</created>
       <option name="number" value="00055" />
       <option name="project" value="LOCAL" />
-      <updated>1447979046303</updated>
+      <updated>1448604730744</updated>
     </task>
-    <task id="LOCAL-00056" summary="ok good now new entity">
-      <created>1447983264469</created>
+    <task id="LOCAL-00056" summary="Pagination de la recherche backend">
+      <created>1448648574115</created>
       <option name="number" value="00056" />
       <option name="project" value="LOCAL" />
-      <updated>1447983264470</updated>
+      <updated>1448648574115</updated>
     </task>
-    <task id="LOCAL-00057" summary="profil qui refonctionne avec les items">
-      <created>1447984781111</created>
+    <task id="LOCAL-00057" summary="Pagination terminée pour /item, /searchDB et aucun résultat">
+      <created>1448691740755</created>
       <option name="number" value="00057" />
       <option name="project" value="LOCAL" />
-      <updated>1447984781112</updated>
+      <updated>1448691740759</updated>
     </task>
-    <task id="LOCAL-00058" summary="Partie 1 du changement d'interface d'accueil (categories)">
-      <created>1447984814139</created>
+    <task id="LOCAL-00058" summary="Pagination terminée pour toutes les pages">
+      <created>1448696613548</created>
       <option name="number" value="00058" />
       <option name="project" value="LOCAL" />
-      <updated>1447984814139</updated>
+      <updated>1448696613548</updated>
     </task>
-    <task id="LOCAL-00059" summary="Petit bug ajout d'image fonctionnel">
-      <created>1448031013420</created>
+    <task id="LOCAL-00059" summary="Pagination terminée pour toutes les pages avec affichage de la string de recherche">
+      <created>1448700917074</created>
       <option name="number" value="00059" />
       <option name="project" value="LOCAL" />
-      <updated>1448031013420</updated>
+      <updated>1448700917074</updated>
     </task>
-    <task id="LOCAL-00060" summary="Ajout d'image">
-      <created>1448036859682</created>
-      <option name="number" value="00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1448036859682</updated>
-    </task>
-    <task id="LOCAL-00061" summary="Partie 1 du changement d'interface d'accueil (categories)">
-      <created>1448036897295</created>
-      <option name="number" value="00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1448036897295</updated>
-    </task>
-    <task id="LOCAL-00062" summary="image dans ModalModifierObjet">
-      <created>1448042218192</created>
-      <option name="number" value="00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1448042218192</updated>
-    </task>
-    <task id="LOCAL-00063" summary="Add avec la bonne Category">
-      <created>1448298942734</created>
-      <option name="number" value="00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1448298942735</updated>
-    </task>
-    <task id="LOCAL-00064" summary="image dans ModalModifierObjet">
-      <created>1448469042215</created>
-      <option name="number" value="00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1448469042216</updated>
-    </task>
-    <task id="LOCAL-00065" summary="une connexion a la fois">
-      <created>1448471403845</created>
-      <option name="number" value="00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1448471403846</updated>
-    </task>
-    <task id="LOCAL-00066" summary="une connexion a la fois">
-      <created>1448566709447</created>
-      <option name="number" value="00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1448566709449</updated>
-    </task>
-<<<<<<< Updated upstream
     <task id="LOCAL-00060" summary="Petit bug réglé dans la recherche">
       <created>1448701440164</created>
       <option name="number" value="00060" />
@@ -1810,42 +1403,29 @@
       <option name="project" value="LOCAL" />
       <updated>1448838522762</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="bug de l'inscription réglé">
+      <created>1448848197981</created>
+      <option name="number" value="00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1448848197981</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Effacé quelques images temp">
+      <created>1448848456850</created>
+      <option name="number" value="00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1448848456850</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Réinitialisation du mot de passe fonctionnel. Il manque juste un message.">
+      <created>1448915464046</created>
+      <option name="number" value="00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1448915464046</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="451114000" />
-=======
-    <task id="LOCAL-00067" summary="bug d'image profil reglé">
-      <created>1448639587791</created>
-      <option name="number" value="00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1448639587792</updated>
-    </task>
-    <task id="LOCAL-00068" summary="image dans search ok">
-      <created>1448768691267</created>
-      <option name="number" value="00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1448768691268</updated>
-    </task>
-    <task id="LOCAL-00069" summary="image caroussel">
-      <created>1448815332390</created>
-      <option name="number" value="00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1448815332391</updated>
-    </task>
-    <task id="LOCAL-00070" summary="Cookie au login ..">
-      <created>1448823182952</created>
-      <option name="number" value="00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1448823182952</updated>
-    </task>
-    <option name="localTasksCounter" value="71" />
-    <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="447513000" />
->>>>>>> Stashed changes
+    <option name="totallyTimeSpent" value="476121000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1858,37 +1438,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-<<<<<<< Updated upstream
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-=======
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
->>>>>>> Stashed changes
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2534319" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="2" y="714" width="1920" height="312" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32849604" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2521645" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="2" y="714" width="1920" height="312" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32946146" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-<<<<<<< Updated upstream
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4047619" sideWeight="0.5021322" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15884861" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3917749" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34632036" sideWeight="0.50319827" order="2" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37288135" sideWeight="0.5025" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2671875" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42661035" sideWeight="0.4975" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2594524" sideWeight="0.495625" order="2" side_tool="false" content_ui="tabs" />
->>>>>>> Stashed changes
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18229167" sideWeight="0.53061223" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17967914" sideWeight="0.526971" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-<<<<<<< Updated upstream
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19989339" sideWeight="0.48037678" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18958333" sideWeight="0.48037678" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29114583" sideWeight="0.5055118" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20788912" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1896,24 +1461,14 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2468017" sideWeight="0.5196232" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39718616" sideWeight="0.4978678" order="3" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27125" sideWeight="0.46938777" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29114583" sideWeight="0.5055118" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16875" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14255545" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43546283" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
->>>>>>> Stashed changes
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39718616" sideWeight="0.4978678" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39957264" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34530094" sideWeight="0.50319827" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32724902" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1931,10 +1486,6 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
     <confirmMoveToFailedCommit value="1" />
-<<<<<<< Updated upstream
-    <MESSAGE value="Ajout de plusieurs fichiers" />
-    <MESSAGE value="Ajout de plusieurs fichiers part 2" />
-    <MESSAGE value="Footer réparé. 1ère partie de la recherche terminée." />
     <MESSAGE value="Recherche terminée. Résultat nul pris en compte. Problème avec l'item catégorie du navbar." />
     <MESSAGE value="Failsafe" />
     <MESSAGE value="Intégration de startTrade" />
@@ -1957,93 +1508,24 @@
     <MESSAGE value="Pagination terminée pour toutes les pages avec affichage de la string de recherche" />
     <MESSAGE value="Petit bug réglé dans la recherche" />
     <MESSAGE value="aegrgrea" />
-    <option name="LAST_COMMIT_MESSAGE" value="aegrgrea" />
-=======
-    <MESSAGE value="Footer réparé. 1ère partie de la recherche terminée." />
-    <MESSAGE value="Recherche terminée. Résultat nul pris en compte. Problème avec l'item catégorie du navbar." />
-    <MESSAGE value="Problème de la liste de la navbar réglé. Inscription presque terminée (Il manque juste à afficher les bons messages d'erreurs)." />
-    <MESSAGE value="Modal de confirmation de suppresion + CSS" />
-    <MESSAGE value="Coherence Logo" />
-    <MESSAGE value="Changements css et fonctionnement" />
-    <MESSAGE value="bar hr en moins" />
-    <MESSAGE value="essai push" />
-    <MESSAGE value="Rajout" />
-    <MESSAGE value="Rajout Combobox Ajout d'item" />
-    <MESSAGE value="changement de Shaun" />
-    <MESSAGE value="Ajout D'image Part 2 !!" />
-    <MESSAGE value="images" />
-    <MESSAGE value="ok good now new entity" />
-    <MESSAGE value="profil qui refonctionne avec les items" />
-    <MESSAGE value="Petit bug ajout d'image fonctionnel" />
-    <MESSAGE value="Ajout d'image" />
-    <MESSAGE value="Partie 1 du changement d'interface d'accueil (categories)" />
-    <MESSAGE value="Add avec la bonne Category" />
-    <MESSAGE value="image dans ModalModifierObjet" />
-    <MESSAGE value="bug d'image profil reglé" />
-    <MESSAGE value="image dans search ok" />
-    <MESSAGE value="une connexion a la fois" />
-    <MESSAGE value="image caroussel" />
-    <MESSAGE value="Cookie au login .." />
-    <option name="LAST_COMMIT_MESSAGE" value="Cookie au login .." />
->>>>>>> Stashed changes
+    <MESSAGE value="bug de l'inscription réglé" />
+    <MESSAGE value="Effacé quelques images temp" />
+    <MESSAGE value="Réinitialisation du mot de passe fonctionnel. Il manque juste un message." />
+    <option name="LAST_COMMIT_MESSAGE" value="Réinitialisation du mot de passe fonctionnel. Il manque juste un message." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-<<<<<<< Updated upstream
           <url>file://$PROJECT_DIR$/src/main/java/com/tilf/troke/service/ImageService.java</url>
           <line>98</line>
           <properties />
           <option name="timeStamp" value="69" />
-=======
-          <url>file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/UserController.java</url>
-          <line>75</line>
-          <properties />
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/ProfilController.java</url>
-          <line>330</line>
-          <properties />
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/ProfilController.java</url>
-          <line>283</line>
-          <properties />
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java</url>
-          <line>327</line>
-          <properties />
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java</url>
-          <line>306</line>
-          <properties />
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java</url>
-          <line>181</line>
-          <properties />
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java</url>
-          <line>52</line>
-          <properties />
-          <option name="timeStamp" value="45" />
->>>>>>> Stashed changes
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-<<<<<<< Updated upstream
       <option name="time" value="70" />
     </breakpoint-manager>
     <watches-manager>
@@ -2053,16 +1535,6 @@
         <watch expression="e" />
         <watch expression="result" />
         <watch expression="session.getAttribute(&quot;tempimage&quot;)" language="JAVA" custom="" />
-=======
-      <option name="time" value="55" />
-    </breakpoint-manager>
-    <watches-manager>
-      <configuration name="MavenRunConfiguration">
-        <watch expression="customUserRepository.getObjectListByKeyword(keyword)" />
-        <watch expression="homeController.fillLeftCatMenu()" />
-        <watch expression="userSignupForm" />
-        <watch expression="result" />
->>>>>>> Stashed changes
       </configuration>
     </watches-manager>
   </component>
@@ -2071,99 +1543,269 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-<<<<<<< Updated upstream
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.1.7.RELEASE/spring-aop-4.1.7.RELEASE.jar!/org/springframework/aop/target/SimpleBeanTargetSource.class">
-=======
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomSubcategoryRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/profil/openModalPassword.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="55" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
+          <caret line="38" column="73" selection-start-line="38" selection-start-column="73" selection-end-line="38" selection-end-column="73" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomCategoryRepositoryImpl.java">
->>>>>>> Stashed changes
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/TransactionsEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+        <state vertical-scroll-proportion="-0.49721295">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomChatMessageRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/GlobalController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomCategoryRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/ObjectsEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.034068137">
-          <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/CategoryEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/CustomCategorySubCategoryEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="52" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
+        <state vertical-scroll-proportion="0.2688928">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/myTradesController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2357019">
+        <state vertical-scroll-proportion="0.23901582">
           <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomMyTradeRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/filter/SearchFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="75" selection-start-line="11" selection-start-column="75" selection-end-line="11" selection-end-column="75" />
+        <state vertical-scroll-proportion="0.55829227">
+          <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/ObjectsEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26842105">
+          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/CustomObjetImageEntity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <caret line="22" column="26" selection-start-line="0" selection-start-column="0" selection-end-line="135" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/CustomSearchObjectEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.74561405">
+          <caret line="102" column="28" selection-start-line="102" selection-start-column="28" selection-end-line="102" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/validator/UserValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23859648">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/service/CatSubCatService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="1" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/service/ObjectService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46596858">
+          <caret line="22" column="61" selection-start-line="22" selection-start-column="61" selection-end-line="22" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37347296">
+          <caret line="30" column="81" selection-start-line="30" selection-start-column="81" selection-end-line="30" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/profil/openModalDelete.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="37" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/profil/pageprofil.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.807693">
+          <caret line="15" column="91" selection-start-line="15" selection-start-column="81" selection-end-line="15" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/profil/profilContent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.127273">
+          <caret line="206" column="32" selection-start-line="206" selection-start-column="30" selection-end-line="206" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/site/profilUser.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7021898">
+          <caret line="52" column="44" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/style_search.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.03683036">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/ProfilController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33206832">
+          <caret line="289" column="0" selection-start-line="289" selection-start-column="0" selection-end-line="289" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/profil/pageinventaire.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6891892">
+          <caret line="133" column="183" selection-start-line="133" selection-start-column="104" selection-end-line="133" selection-end-column="183" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.1.7.RELEASE/spring-webmvc-4.1.7.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9375">
+        <state vertical-scroll-proportion="0.35151514">
           <caret line="470" column="0" selection-start-line="470" selection-start-column="0" selection-end-line="470" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomImageObjectRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/search.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.8229167">
+          <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomImageObjectRepositoryImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchMultipleObjects.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="107" selection-start-line="19" selection-start-column="107" selection-end-line="19" selection-end-column="107" />
+          <caret line="42" column="75" selection-start-line="42" selection-start-column="75" selection-end-line="42" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchSingleObject.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="61" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.1.7.RELEASE/spring-web-4.1.7.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35151514">
+          <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/uploaded-images/00d16295c31949edac29f19ee6565022.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/service/ImageService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="113" column="9" selection-start-line="113" selection-start-column="9" selection-end-line="113" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="77" column="32" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="339" column="9" selection-start-line="339" selection-start-column="9" selection-end-line="339" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchNull.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="11" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchKeyword.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="57" column="62" selection-start-line="57" selection-start-column="62" selection-end-line="57" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18545455">
+          <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.1802427">
+          <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/TrokeApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2357019">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/service/SmtpMailSender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22972973">
+          <caret line="69" column="35" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="141" column="45" selection-start-line="141" selection-start-column="45" selection-end-line="141" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/main_template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.0384617">
+          <caret line="143" column="73" selection-start-line="143" selection-start-column="73" selection-end-line="143" selection-end-column="73" />
         </state>
       </provider>
     </entry>
@@ -2174,538 +1816,99 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/TransactionRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomTransactionMoneyRepositoryImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.6896553">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomSubcategoryRepositoryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomMyTradeRepositoryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09375">
-          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Updated upstream
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/GlobalController.java">
-=======
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/ImageobjectEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="29" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="29" />
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/style.css">
->>>>>>> Stashed changes
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Updated upstream
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/myTradesController.java">
-=======
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/auth/AuthUserContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/service/CatSubCatService.java">
->>>>>>> Stashed changes
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/conf/FilterConfiguration.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomImageObjectRepositoryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-<<<<<<< Updated upstream
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/filter/SearchFilter.java">
-=======
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/UsersEntity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepositoryImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.448276">
+          <caret line="267" column="62" selection-start-line="267" selection-start-column="60" selection-end-line="267" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomCategoryRepositoryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="23" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/site/profilUser.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.9230769">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/domain/UserSignupForm.java">
->>>>>>> Stashed changes
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7151052">
-          <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/profil.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6749522">
-          <caret line="89" column="1" selection-start-line="89" selection-start-column="1" selection-end-line="89" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/profil/openModalAjouter.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="118" column="115" selection-start-line="118" selection-start-column="115" selection-end-line="118" selection-end-column="115" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/validator/UserValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34285715">
-          <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Updated upstream
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/validator/UserValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23859648">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-=======
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/GlobalController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22857143">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/uploaded-images/a370c28817da470e9df5b89a113dfa54.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
->>>>>>> Stashed changes
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/domain/UserProfil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-<<<<<<< Updated upstream
-          <caret line="51" column="1" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
-=======
-          <caret line="55" column="62" selection-start-line="55" selection-start-column="62" selection-end-line="55" selection-end-column="62" />
->>>>>>> Stashed changes
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/profil/pageprofil.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#input#1;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#p#3;n#div#1;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/style_monProfil.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1481482">
-          <caret line="618" column="25" selection-start-line="618" selection-start-column="25" selection-end-line="618" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/profil/profilContent.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="62" column="26" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/profil/pageinventaire.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="38" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#3;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#th:block#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#th:block#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#h3#1;n#div#0;n#div#0;n#th:block#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/CustomSearchObjectEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54464287">
-          <caret line="116" column="18" selection-start-line="116" selection-start-column="18" selection-end-line="116" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/service/ObjectService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-29.423077">
-          <caret line="45" column="240" selection-start-line="45" selection-start-column="240" selection-end-line="45" selection-end-column="240" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="99" column="13" selection-start-line="99" selection-start-column="13" selection-end-line="99" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/UserRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Updated upstream
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.1.7.RELEASE/spring-webmvc-4.1.7.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35151514">
-          <caret line="470" column="0" selection-start-line="470" selection-start-column="0" selection-end-line="470" selection-end-column="0" />
-=======
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/service/ImageService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="111" selection-start-line="52" selection-start-column="111" selection-end-line="52" selection-end-column="111" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.9130435">
-          <caret line="360" column="20" selection-start-line="360" selection-start-column="20" selection-end-line="360" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/ProfilController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding />
->>>>>>> Stashed changes
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="47" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/ObjectRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Updated upstream
-        <state vertical-scroll-proportion="1.8888888">
-          <caret line="118" column="112" selection-start-line="118" selection-start-column="112" selection-end-line="118" selection-end-column="112" />
-=======
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.22972973">
           <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding />
->>>>>>> Stashed changes
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/UserController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomUserRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Updated upstream
-        <state vertical-scroll-proportion="0.8229167">
-          <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.3733108">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.2743053">
-          <caret line="453" column="20" selection-start-line="453" selection-start-column="20" selection-end-line="453" selection-end-column="20" />
-=======
-        <state vertical-scroll-proportion="0.0">
-          <caret line="125" column="51" selection-start-line="125" selection-start-column="51" selection-end-line="125" selection-end-column="51" />
->>>>>>> Stashed changes
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Updated upstream
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32">
-          <caret line="59" column="41" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchKeyword.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomUserRepositoryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="158" selection-start-line="54" selection-start-column="158" selection-end-line="54" selection-end-column="158" />
+          <caret line="73" column="18" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="18" />
           <folding>
-            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#0;n#th:block#0;n#th:block#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#0;n#th:block#1;n#th:block#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#1;n#ul#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#2;n#ul#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#3;n#ul#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#th:block#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#th:block#1;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#p#0;n#div#1;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#0;n#th:block#0;n#th:block#0;n#ul#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#0;n#th:block#1;n#th:block#0;n#ul#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#1;n#ul#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#2;n#ul#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#3;n#ul#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchMultipleObjects.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="75" selection-start-line="42" selection-start-column="75" selection-end-line="42" selection-end-column="75" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#0;n#th:block#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#1;n#ul#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#2;n#ul#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#3;n#ul#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#th:block#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#th:block#1;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#0;n#th:block#0;n#ul#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#1;n#ul#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#2;n#ul#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#3;n#ul#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchSingleObject.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="61" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="61" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <marker date="1448915472644" expanded="true" signature="776:835" placeholder="select * fro..users..." />
+            <marker date="1448915472644" expanded="true" signature="1232:1274" placeholder="select * fro..users..." />
+            <marker date="1448915472644" expanded="true" signature="1614:1633" placeholder="select * fro..users..." />
+            <marker date="1448915472644" expanded="true" signature="1933:1982" placeholder="select count..users..." />
+            <marker date="1448915472644" expanded="true" signature="2616:2663" placeholder="select count..users..." />
+            <marker date="1448915472644" expanded="true" signature="3440:3493" placeholder="select count..users..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.5208333">
-          <caret line="71" column="9" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
-=======
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.1.7.RELEASE/spring-web-4.1.7.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0">
-          <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
->>>>>>> Stashed changes
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Updated upstream
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.796875">
-          <caret line="63" column="60" selection-start-line="63" selection-start-column="60" selection-end-line="63" selection-end-column="60" />
-          <folding>
-            <element signature="e#1752#1772#0" expanded="false" />
-=======
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepositoryImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="432" column="30" selection-start-line="432" selection-start-column="30" selection-end-line="432" selection-end-column="30" />
-          <folding>
-            <marker date="1448891276571" expanded="true" signature="995:1029" placeholder="select NAME_..category..." />
-            <marker date="1448891276571" expanded="true" signature="1402:1468" placeholder="select NAME_..subcategory..." />
-            <marker date="1448891276571" expanded="true" signature="5061:5352" placeholder="select IDOBJ..objects..." />
-            <marker date="1448891276571" expanded="true" signature="6061:6262" placeholder="select IDOBJ..objects..." />
-            <marker date="1448891276571" expanded="true" signature="8524:8648" placeholder="select disti..category..." />
-            <marker date="1448891276571" expanded="true" signature="8961:9040" placeholder="select disti..subcategory..." />
-            <marker date="1448891276571" expanded="true" signature="9407:9530" placeholder="select s.NAM..category..." />
->>>>>>> Stashed changes
-          </folding>
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Updated upstream
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.1.7.RELEASE/spring-web-4.1.7.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35151514">
-          <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/uploaded-images/00d16295c31949edac29f19ee6565022.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="45" selection-start-line="63" selection-start-column="45" selection-end-line="63" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/main_template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-107.76923">
-          <caret line="430" column="46" selection-start-line="430" selection-start-column="46" selection-end-line="430" selection-end-column="46" />
-          <folding>
-            <marker date="1448769372261" expanded="true" signature="3668:3677" placeholder="..." />
-            <marker date="1448769372261" expanded="true" signature="4460:4469" placeholder="..." />
-            <marker date="1448769372261" expanded="true" signature="4788:4797" placeholder="..." />
-=======
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/main_template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-32.76923">
-          <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h2#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#div#0;n#form#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#form#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#1;n#div#2;n#form#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#3;n#form#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h2#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#th:block#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#1;n#th:block#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#div#1;n#th:block#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#th:block#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#th:block#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#th:block#0;n#div#1;n#th:block#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#th:block#1;n#div#1;n#th:block#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#th:block#2;n#div#1;n#th:block#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#th:block#3;n#div#1;n#th:block#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#th:block#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h2#0;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h2#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h2#2;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#2;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#2;n#div#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#li#2;n#ul#0;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#li#3;n#ul#0;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#li#4;n#ul#0;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1448838867937" expanded="true" signature="4101:4110" placeholder="..." />
-            <marker date="1448838867937" expanded="true" signature="5000:5009" placeholder="..." />
-            <marker date="1448838867937" expanded="true" signature="5328:5337" placeholder="..." />
->>>>>>> Stashed changes
-          </folding>
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Updated upstream
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/service/ImageService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="113" column="9" selection-start-line="113" selection-start-column="9" selection-end-line="113" selection-end-column="9" />
+          <caret line="141" column="27" selection-start-line="141" selection-start-column="27" selection-end-line="141" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-=======
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java">
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/TransactionController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3328823">
-          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="309" column="35" selection-start-line="309" selection-start-column="35" selection-end-line="310" selection-end-column="87" />
           <folding />
->>>>>>> Stashed changes
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46006945">
-          <caret line="78" column="76" selection-start-line="78" selection-start-column="76" selection-end-line="78" selection-end-column="76" />
+        <state vertical-scroll-proportion="0.77693146">
+          <caret line="108" column="57" selection-start-line="108" selection-start-column="57" selection-end-line="108" selection-end-column="57" />
           <folding />
         </state>
       </provider>
@@ -2741,6 +1944,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
+          <last-edited>jquery</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -2769,7 +1973,6 @@
             <option name="proportions">
               <list>
                 <option value="0.34367815" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

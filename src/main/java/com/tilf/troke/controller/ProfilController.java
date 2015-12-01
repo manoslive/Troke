@@ -1,6 +1,7 @@
 package com.tilf.troke.controller;
 
 import com.tilf.troke.auth.AuthUserContext;
+import com.tilf.troke.domain.UserProfil;
 import com.tilf.troke.entity.ImageobjectEntity;
 import com.tilf.troke.entity.ObjectsEntity;
 import com.tilf.troke.entity.UsersEntity;
@@ -9,6 +10,7 @@ import com.tilf.troke.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.thymeleaf.context.WebContext;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -50,7 +53,6 @@ public class ProfilController {
 
     @Autowired
     private CustomImageObjectRepository customImageObjectRepository;
-
 
 
 
@@ -213,100 +215,108 @@ public class ProfilController {
         return "redirect:/profil#openModalPassword";
     }
 
-    @RequestMapping(value="/UpdateUser" ,method = RequestMethod.POST)
-    public String UserUpdate(HttpSession session,
-                             @RequestParam("profile-prenom") String username,
-                             @RequestParam("profile-nomfamille") String lastname,
-                             @RequestParam("profile-telephone") String telephone,
-                             @RequestParam("profile-codepostal") String codepostal,
-                             @RequestParam("profile-email") String email,
-                             @RequestParam(value= "avatarProfil", required=false) MultipartFile avatar)
+
+
+    @RequestMapping(value="/profil", method= RequestMethod.GET)
+    public String GetProfil(UserProfil userProfil, HttpSession session, Model model)
+    {
+        // on get le user actif pour voir s'il est logué ..
+        UsersEntity user = authContext.getUser();
+
+        // si le user est logué on remplit le userprofil avec les bonne infos
+        if(user != null) {
+            userProfil.setFirstname(user.getFirstname());
+            userProfil.setTelephone(user.getTelephone());
+            userProfil.setEmail(user.getEmail());
+            userProfil.setZipcode(user.getZipcode());
+            userProfil.setLastname(user.getLastname());
+            userProfil.setAvatar(user.getAvatar());
+
+            model.addAttribute("UserActif", user);
+
+            // TODO THYMELEAF HACK
+            if (false) {
+                WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+                context.setVariable("UserActif", user);
+
+
+            }
+            return "fragments/profil/pageprofil";
+        }
+        // sinon on le renvoit a la connexion ..
+        else
+        {
+            session.removeAttribute("error");
+            return "redirect:/openModalConnexion";
+        }
+    }
+
+    @RequestMapping(value="/profil" , method = RequestMethod.POST)
+    public String UpdateProfil(@Valid UserProfil userProfil,BindingResult bindingResult,
+                               @RequestParam(value= "avatarProfil", required=false) MultipartFile avatar,
+                               Model model,HttpSession session
+                               )
     {
 
-//        if(!bindingResult.hasErrors())
-//        {
-//            // instantiation du user avec le user loggé..
-//            UsersEntity userActif = authContext.getUser();
-//
-//            if(!avatar.isEmpty())
-//            {
-//                //ici on upload l'image sur le serveur avec le bon nom ..
-//                // On génère le nom unique de l'image et on vérifie qu'il
-//                // n'existe pas déjà.
-//              if(userActif.getAvatar().equals("no_avatar.jpg"))
-//                {
-//                   String imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
-//                   while (customUserRepository.checkAvatarName(imageName) == BigInteger.ONE)
-//                       {
-//                           imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
-//                       }
-//                    imageService.uploadImage(avatar, imageName, true, session);
-//                    userActif.setAvatar(imageName);
-//                    session.setAttribute("avatarpathProfil", imageName);
-//                }
-//                else
-//                {
-//                    imageService.uploadImage(avatar, userActif.getAvatar(), true, session);
-//                    session.setAttribute("avatarpathProfil", userActif.getAvatar());
-//                }
-//            }
-//
-//            userActif.setFirstname(userProfil.getFirstname());
-//            userActif.setLastname(userProfil.getLastname());
-//            userActif.setTelephone(userProfil.getTelephone());
-//            userActif.setEmail(userProfil.getEmail());
-//
-//            // on save le user qui a pas d error
-//            userRepository.save(userActif);
-//            // on re set le user loggé avec celui modifié ..
-//            authContext.setUser(userActif);
-//
-//            return "redirect:/profil";
-//        }
-//
-//        redirectAttributes.addFlashAttribute("fields", bindingResult);
-//        redirectAttributes.addFlashAttribute("userProfil", userProfil);
-//
-//        return "redirect:/profil";
-//
-//
-        // instantiation du user avec le user loggé..
-          UsersEntity userActif = authContext.getUser();
-        // Vérification du courriel (1 si existe, 0 sinon)
-        if(email.equals(authContext.getUser().getEmail()) || customUserRepository.checkEmailExistance(email) == BigInteger.ZERO ) {
-            userActif.setEmail(email);
-            // on set les nouveaux parametre modifier dans le profil ..
-            userActif.setFirstname(username);
-            userActif.setLastname(lastname);
-            userActif.setTelephone(telephone);
-            userActif.setZipcode(codepostal);
+        // s'il y a des erreurs dans le profil ..
+        if(bindingResult.hasErrors())
+        {
+            UsersEntity userActif = authContext.getUser();
+            model.addAttribute("UserActif", userActif);
+            return "fragments/profil/pageprofil";
 
-            if(!avatar.isEmpty()) {
-                // ici on upload l'image sur le serveur avec le bon nom ..
-                // On génère le nom unique de l'image et on vérifie qu'il
-                // n'existe pas déjà.
-                if(userActif.getAvatar() == null || userActif.getAvatar().equals("no_avatar.jpg"))
-                {
-                    String imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
-                    while (customUserRepository.checkAvatarName(imageName) == BigInteger.ONE)
+        }
+        // si aucune erreur on commence le processus d'update du user ..
+        else
+        {
+            // on get une instance du useractif pour le modifier
+            UsersEntity userActif = authContext.getUser();
+
+
+            if(userProfil.getEmail().equals(authContext.getUser().getEmail()) ||
+                    customUserRepository.checkEmailExistance(userProfil.getEmail()) == BigInteger.ZERO )
+            {
+                // on modifie l'instance du user avec les modification ..
+                userActif.setFirstname(userProfil.getFirstname());
+                userActif.setLastname(userProfil.getLastname());
+                userActif.setTelephone(userProfil.getTelephone());
+                userActif.setZipcode(userProfil.getZipcode());
+                userActif.setEmail(userProfil.getEmail());
+
+                // on verifie si l'avatar a été modifié
+                if(!avatar.isEmpty()) {
+                    // ici on upload l'image sur le serveur avec le bon nom ..
+                    // On génère le nom unique de l'image et on vérifie qu'il
+                    // n'existe pas déjà.
+                    if(userActif.getAvatar() == null || userActif.getAvatar().equals("no_avatar.jpg"))
+                    {
+                        String imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
+                        while (customUserRepository.checkAvatarName(imageName) == BigInteger.ONE)
                         {
                             imageName = UUID.randomUUID().toString().replaceAll("-", "") + ".jpg";
                         }
-                    boolean imageIsUploaded = imageService.uploadImage(avatar, imageName, true, session);
-                    userActif.setAvatar(imageName);
-                    session.setAttribute("avatarpathProfil", imageName);
+                        boolean imageIsUploaded = imageService.uploadImage(avatar, imageName, true, session);
+                        userActif.setAvatar(imageName);
+                        session.setAttribute("avatarpathProfil", imageName);
+                    }
+                    // aussi non on remplace l'image sur le serveur par la nouvelle
+                    else
+                    {
+                        boolean imageIsUploaded = imageService.uploadImage(avatar, userActif.getAvatar(), true, session);
+                        session.setAttribute("avatarpathProfil", userActif.getAvatar());
+                    }
                 }
-                else
-                {
-                    boolean imageIsUploaded = imageService.uploadImage(avatar, userActif.getAvatar(), true, session);
-                    session.setAttribute("avatarpathProfil", userActif.getAvatar());
-                }
-            }
+                // update du context ..
+                authContext.setUser(userActif);
 
+                // on save dans la BD
+                userRepository.save(userActif);
+
+            }
         }
         return "redirect:/profil";
-
     }
+
 
     @RequestMapping(value="/deleteObject", method = RequestMethod.POST)
     public String Objectdelete(HttpSession session)

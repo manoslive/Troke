@@ -14,6 +14,7 @@ public interface CustomUserRepository{
     UsersEntity findUserById(String pass);
     BigInteger checkEmailExistance(String email);
     BigInteger checkUserExistance(String iduser);
+    void updateUserPassword(UsersEntity user);
     List<UsersEntity> getAllUsers();
     // int addUsersEntity(String iduser, String firstname, String lastname, String pass, String email, String telephone, String zipcode);
 

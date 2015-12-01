@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot and Thymeleaf example</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h3>Spring Boot and Thymeleaf, part 2 - forms</h3>
+<form action="#" th:action="@{/profil}" th:object="${userProfil}" method="post">
+    <table>
+        <tr>
+            <td>firstname:</td>
+            <td><input type="text" th:field="*{firstname}" /></td>
+            <td th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">Title error message</td>
+        </tr>
+        <tr>
+            <td>lastname:</td>
+            <td><input type="text" th:field="*{lastname}" /></td>
+            <td th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Content error message</td>
+        </tr>
+        <tr>
+            <td>telephone:</td>
+            <td><input type="text" th:field="*{telephone}" /></td>
+            <td th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}">Content error message</td>
+        </tr>
+        <tr>
+            <td>zipcode:</td>
+            <td><input type="text" th:field="*{zipcode}" /></td>
+            <td th:if="${#fields.hasErrors('zipcode')}" th:errors="*{zipcode}">Content error message</td>
+        </tr>
+        <tr>
+            <td>email:</td>
+            <td><input type="text" th:field="*{email}" /></td>
+            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Content error message</td>
+        </tr>
+        <tr>
+            <td><button type="submit">Submit post</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
