@@ -27,7 +27,7 @@
                         <li name="Trade-Items" class="OpponentItem ui-widget-content ui-corner-tr ui-draggable TradeItems"
                             style="display: list-item; overflow: hidden; width: 80px; height: 78px;">
                             <h5 th:text="${currentItem.getNameObject()}" class="ui-widget-header"></h5>
-                            <img class="item-image" th:src="*{currentItem.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${currentItem.getImage1()}:'images/LogoWorld_Transparence.png'" alt=""
+                            <img class="item-image" th:src="'/uploaded-images/'+${currentItem.getImage1()}" alt=""
                                  style="display: inline-block; overflow: hidden; width: 80px; height: 100%; max-width: 80px; max-height: 80px;"/>
                             <div class="optionsExchangeItem">
                                 <a class="js-open-modal link-zoom info-icon btn-option-item tooltip"
@@ -58,7 +58,7 @@
                 <ul id="OpponentInventory" class="startTrade-OpponentInventory OpponentInventory ui-helper-reset ui-helper-clearfix col-md-6">
                     <li th:each="inv : ${inventory}" class="OpponentItem ui-widget-content ui-corner-tr">
                         <h5 th:text="${inv.getNameObject()}" class="ui-widget-header"></h5>
-                        <img class="item-image" th:src="*{inv.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${inv.getImage1()}:'images/LogoWorld_Transparence.png'" alt=""/>
+                        <img class="item-image" th:src="'/uploaded-images/'+${inv.getImage1()}" alt=""/>
                         <div class="optionsInventoryItem">
                             <a class="js-open-modal link-zoom info-icon btn-option-item tooltip" href="#" data-modal-id="modal-InfoItem"
                                title="Plus d'information sur l'item/service"

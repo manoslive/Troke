@@ -21,26 +21,26 @@
     </div>
     <!-- /Fin control Page -->
 
-    <!-- Ligne/Spacer -->
-    <div class="or-spacer">
-        <div class="mask"></div>
-    </div>
-
     <!-- Affiche le nombre de résultats sur le nombre total de résultat -->
-    <div class="row" id="login-container">
+    <div class="row" id="login-container" style="padding-top: 5px;padding-bottom: 5px;">
         <div class="span8 offset2">
             <div style="color:white;" th:text="'1 sur 1 résultat affiché.'"
                  class="col-xs-6 col-centered col-min"></div>
         </div>
     </div>
 
+    <!-- Ligne/Spacer -->
+    <div class="or-spacer">
+        <div class="mask"></div>
+    </div>
+
     <!-- Div un item -->
     <div class="searchItem">
         <!-- L'image de l'item -->
-        <div class="searchItemImage">
-            <img th:if="${singleobject.getImage1()} ne null"
-                 th:src="'/uploaded-images/' + ${singleobject.getImage1()}"/>
-            <img th:if="${singleobject.getImage1()} eq null" src="images/UnknownUser.png"/>
+        <div class="searchItemImage"
+             th:style="*{singleobject.getImage1() ne null} ? 'background-image:url(/uploaded-images/'+${singleobject.getImage1()} +')' : 'background-image:url(images/UnknownUser.png)'"
+             th:onclick="'javascript:showModalInfoItem(\''+ ${singleobject.getIdobject()} +'\')'">
+            <img class="searchItemImageOverlay"/>
         </div>
         <!-- Description de l'item -->
         <div class="searchItemDescription">
@@ -92,17 +92,35 @@
         <div class="searchItemQuality">
             <!-- QualitÃ© en Ã©toiles -->
 
-
-            <!-- Bouton lancer une Ã©change -->
-            <a th:href="${adrStartTrade + singleobject.getIdobject()}" data-toggle="tooltip"
-               data-placement="bottom" title="Cliquez pour Troké cet item/service!">
-                <button id="TrokButton" type="button" class="btn btn-success" style="font-size:40px">
-
-
-                    <i class="icon-shopping-cart icon-5"></i>
-
-                </button>
-            </a>
+            <th:block th:if="${authUser} ne null">
+                <th:block th:if="${singleobject.getIduser()} eq ${authUser.getIduser()}">
+                    <!-- Bouton lancer une Ã©change -->
+                    <a data-toggle="tooltip"
+                       data-placement="bottom" title="Ceci est votre item/service!">
+                        <button id="TrokButton" type="button" class="btn btn-warning" style="font-size:100%">
+                            Cet item/service <br/> est le votre
+                        </button>
+                    </a>
+                </th:block>
+                <th:block th:if="${singleobject.getIduser()} ne ${authUser.getIduser()}">
+                    <!-- Bouton lancer une Ã©change -->
+                    <a th:href="${adrStartTrade + singleobject.getIdobject()}" data-toggle="tooltip"
+                       data-placement="bottom" title="Cliquez pour Troké cet item/service!">
+                        <button id="TrokButton" type="button" class="btn btn-success" style="font-size:40px">
+                            <i class="icon-shopping-cart icon-5"></i>
+                        </button>
+                    </a>
+                </th:block>
+            </th:block>
+            <th:block th:if="${authUser} eq null">
+                <!-- Bouton lancer une Ã©change -->
+                <a th:href="${adrStartTrade + singleobject.getIdobject()}" data-toggle="tooltip"
+                   data-placement="bottom" title="Cliquez pour Troké cet item/service!">
+                    <button id="TrokButton" type="button" class="btn btn-success" style="font-size:40px">
+                        <i class="icon-shopping-cart icon-5"></i>
+                    </button>
+                </a>
+            </th:block>
         </div>
     </div>
 
@@ -128,6 +146,37 @@
     </div>
     <!-- /Fin control Page -->
 
+    <!-- Modal d'information pour chaque item de la recherche -->
+    <div th:id="'modal-InfoItem'+${singleobject.getIdobject()}" name="modal-Item-Info" class="modal-box modal-InfoItem-class">
+        <div>
+            <a href="#" title="Fermer" class="js-modal-close close">X</a>
+            <h2 th:text="${singleobject.getNameObject()}" style="text-align:center"></h2>
+            <div class="or-spacer">
+                <div class="mask"></div>
+            </div>
+            <div class="gallery">
+                <div class="panel">
+                    <img th:id="'mainImage'+${singleobject.getIdobject()}" class="mainImage" th:src="*{singleobject.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${singleobject.getImage1()}:'images/LogoWorld_Transparence.png'"/>
+                </div>
+                <div th:id="'divSubImages'+${singleobject.getIdobject()}" class="divSubImages">
+                    <img class="subImage" th:src="*{singleobject.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${singleobject.getImage1()}:'images/LogoWorld_Transparence.png'" alt="Image 1" onmouseover="hover(this);"/>
+                    <img class="subImage" th:src="*{singleobject.getImage2().substring(0,1) ne '*'}? '/uploaded-images/'+${singleobject.getImage2()}:'images/LogoWorld_Transparence.png'" alt="Image 2" onmouseover="hover(this);"/>
+                    <img class="subImage" th:src="*{singleobject.getImage3().substring(0,1) ne '*'}? '/uploaded-images/'+${singleobject.getImage3()}:'images/LogoWorld_Transparence.png'" alt="Image 3" onmouseover="hover(this);"/>
+                    <img class="subImage" th:src="*{singleobject.getImage4().substring(0,1) ne '*'}? '/uploaded-images/'+${singleobject.getImage4()}:'images/LogoWorld_Transparence.png'" alt="Image 4" onmouseover="hover(this);"/>
+                </div>
+            </div>
+            <div class="description">
+                <h5 th:text="'Propriétaire: ' + ${singleobject.getIduser()}"></h5>
+                <h5 th:text="'Date de création: ' + ${singleobject.getCreationdate()}"></h5>
+                <span th:text="${singleobject.getDescObject()}"></span>
+            </div>
+            <br/>
+            <div class="or-spacer">
+                <div class="mask"></div>
+            </div>
+        </div>
+    </div>
 </div>
+
 </body>
 </html>

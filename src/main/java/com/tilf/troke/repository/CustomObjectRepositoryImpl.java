@@ -244,9 +244,14 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
         List<ImageobjectEntity> LImages = getObjectImageListByIdobject(id_object);
 
         customObjet.setImage1(LImages.get(0).getGuidimage());
-        customObjet.setImage2(LImages.get(1).getGuidimage());
-        customObjet.setImage3(LImages.get(2).getGuidimage());
-        customObjet.setImage4(LImages.get(3).getGuidimage());
+        if(LImages.get(1).getIsmain().length() > 1) {customObjet.setImage2("LogoWorld_Transparence.png");}
+        else {customObjet.setImage2(LImages.get(1).getGuidimage());}
+
+        if(LImages.get(2).getIsmain().length() > 1){customObjet.setImage3("LogoWorld_Transparence.png");}
+        else {customObjet.setImage3(LImages.get(2).getGuidimage());}
+
+        if(LImages.get(3).getIsmain().length() > 1) {customObjet.setImage4("LogoWorld_Transparence.png");}
+        else {customObjet.setImage4(LImages.get(3).getGuidimage());}
 
         return customObjet;
     }
@@ -316,15 +321,20 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
             customObjet.setValueObject(inventory.get(i).getValueObject());
 
             //Get tous les images
-            String query2 = "select o from ImageobjectEntity o where o.idobject = :idObject order by ismain, guidimage desc";
+            String query2 = "select o from ImageobjectEntity o where o.idobject = :idObject order by ismain desc, guidimage";
             Query queryObject2 = entityManager.createQuery(query2);
             queryObject2.setParameter("idObject", inventory.get(i).getIdobject());
             List<ImageobjectEntity> LImages = (List<ImageobjectEntity>) queryObject2.getResultList();
 
             customObjet.setImage1(LImages.get(0).getGuidimage());
-            customObjet.setImage2(LImages.get(1).getGuidimage());
-            customObjet.setImage3(LImages.get(2).getGuidimage());
-            customObjet.setImage4(LImages.get(3).getGuidimage());
+            if(LImages.get(1).getIsmain().length() > 1) {customObjet.setImage2("LogoWorld_Transparence.png");}
+            else {customObjet.setImage2(LImages.get(1).getGuidimage());}
+
+            if(LImages.get(2).getIsmain().length() > 1){customObjet.setImage3("LogoWorld_Transparence.png");}
+            else {customObjet.setImage3(LImages.get(2).getGuidimage());}
+
+            if(LImages.get(3).getIsmain().length() > 1) {customObjet.setImage4("LogoWorld_Transparence.png");}
+            else {customObjet.setImage4(LImages.get(3).getGuidimage());}
 
             objets.add(customObjet);
         }
@@ -368,15 +378,21 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
             customObjet.setValueObject(LObject.get(i).getValueObject());
 
             //Get tous les images
-            String query2 = "select o from ImageobjectEntity o where o.idobject = :idObject order by ismain, guidimage desc";
+            String query2 = "select o from ImageobjectEntity o where o.idobject = :idObject order by ismain desc, guidimage";
             Query queryObject2 = entityManager.createQuery(query2);
             queryObject2.setParameter("idObject", LObject.get(i).getIdobject());
             List<ImageobjectEntity> LImages = (List<ImageobjectEntity>) queryObject2.getResultList();
 
             customObjet.setImage1(LImages.get(0).getGuidimage());
-            customObjet.setImage2(LImages.get(1).getGuidimage());
-            customObjet.setImage3(LImages.get(2).getGuidimage());
-            customObjet.setImage4(LImages.get(3).getGuidimage());
+
+            if(LImages.get(1).getIsmain().length() > 1) {customObjet.setImage2("LogoWorld_Transparence.png");}
+            else {customObjet.setImage2(LImages.get(1).getGuidimage());}
+
+            if(LImages.get(2).getIsmain().length() > 1){customObjet.setImage3("LogoWorld_Transparence.png");}
+            else {customObjet.setImage3(LImages.get(2).getGuidimage());}
+
+            if(LImages.get(3).getIsmain().length() > 1) {customObjet.setImage4("LogoWorld_Transparence.png");}
+            else {customObjet.setImage4(LImages.get(3).getGuidimage());}
 
             objets.add(customObjet);
         }
@@ -416,9 +432,15 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
             List<ImageobjectEntity> LImages = (List<ImageobjectEntity>) queryObject2.getResultList();
 
             customObjet.setImage1(LImages.get(0).getGuidimage());
-            customObjet.setImage2(LImages.get(1).getGuidimage());
-            customObjet.setImage3(LImages.get(2).getGuidimage());
-            customObjet.setImage4(LImages.get(3).getGuidimage());
+            if(LImages.get(1).getIsmain().length() > 1) {customObjet.setImage2("LogoWorld_Transparence.png");}
+            else {customObjet.setImage2(LImages.get(1).getGuidimage());}
+
+            if(LImages.get(2).getIsmain().length() > 1){customObjet.setImage3("LogoWorld_Transparence.png");}
+            else {customObjet.setImage3(LImages.get(2).getGuidimage());}
+
+            if(LImages.get(3).getIsmain().length() > 1) {customObjet.setImage4("LogoWorld_Transparence.png");}
+            else {customObjet.setImage4(LImages.get(3).getGuidimage());}
+
 
             objets.add(customObjet);
         }

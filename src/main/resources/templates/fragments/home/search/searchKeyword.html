@@ -42,13 +42,8 @@
     </div>
     <!-- /Fin control Page -->
 
-    <!-- Ligne/Spacer -->
-    <div class="or-spacer">
-        <div class="mask"></div>
-    </div>
-
     <!-- Affiche le nombre de résultats sur le nombre total de résultat -->
-    <div class="row" id="login-container">
+    <div class="row" id="login-container" style="padding-top: 5px;padding-bottom: 5px;">
         <div class="span8 offset2">
             <th:block th:if="${searchObjectList.size()} gt 1">
                 <div style="color:white;"
@@ -63,80 +58,107 @@
         </div>
     </div>
 
+    <!-- Ligne/Spacer -->
+    <div class="or-spacer">
+        <div class="mask"></div>
+    </div>
+
     <!-- Div un item -->
-    <div th:each="obj : ${searchObjectList}" class="searchItem">
-        <!-- L'image de l'item -->
-        <div class="searchItemImage">
-            <img th:if="${obj.getImage1()} ne null" th:src="'/uploaded-images/' + ${obj.getImage1()}"/>
-            <img th:if="${obj.getImage1()} eq null" src="images/UnknownUser.png"/>
-        </div>
-        <!-- Description de l'item -->
-        <div class="searchItemDescription">
-            <div class="searchStars">
-                <span class="starRating">
-                                            <input th:if="${obj.getQuality()} eq 5" type="checkbox"
-                                                   name="rating" value="5" checked="checked"/>
-                                            <input th:unless="${obj.getQuality()}" type="checkbox"
-                                                   name="rating" value="5"/>
-                                            <label style="cursor:pointer;">5</label>
-                                            <input th:if="${obj.getQuality()} eq 4" type="checkbox"
-                                                   name="rating" value="4" checked="checked"/>
-                                               <input th:unless="${obj.getQuality()}" type="checkbox"
-                                                      name="rating" value="4"/>
-                                            <label style="cursor:pointer;">4</label>
-                                            <input th:if="${obj.getQuality()} eq 3" type="checkbox"
-                                                   name="rating" value="3" checked="checked"/>
-                                               <input th:unless="${obj.getQuality()}" type="checkbox"
-                                                      name="rating" value="3"/>
-                                            <label style="cursor:pointer;">3</label>
-                                            <input th:if="${obj.getQuality()} eq 2" type="checkbox"
-                                                   name="rating" value="2" checked="checked"/>
-                                                <input th:unless="${obj.getQuality()}" type="checkbox"
-                                                       name="rating" value="2"/>
-                                            <label style="cursor:pointer;">2</label>
-                                            <input th:if="${obj.getQuality()} eq 1" type="checkbox"
-                                                   name="rating" value="1" checked="checked"/>
-                                               <input th:unless="${obj.getQuality()}" type="checkbox"
-                                                      name="rating" value="1"/>
-                                            <label style="cursor:pointer;">1</label>
-                                            </span>
+    <th:block th:each="obj : ${searchObjectList}">
+        <div class="searchItem">
+            <!-- L'image de l'item -->
+            <div class="searchItemImage"
+                 th:style="*{obj.getImage1() ne null} ? 'background-image:url(/uploaded-images/'+${obj.getImage1()} +')' : 'background-image:url(images/UnknownUser.png)'"
+                 th:onclick="'javascript:showModalInfoItem(\''+ ${obj.getIdobject()} +'\')'">
+                <img class="searchItemImageOverlay"/>
             </div>
+            <!-- Description de l'item -->
+            <div class="searchItemDescription">
+                <div class="searchStars">
+                    <span class="starRating">
+                                                <input th:if="${obj.getQuality()} eq 5" type="checkbox"
+                                                       name="rating" value="5" checked="checked"/>
+                                                <input th:unless="${obj.getQuality()}" type="checkbox"
+                                                       name="rating" value="5"/>
+                                                <label style="cursor:pointer;">5</label>
+                                                <input th:if="${obj.getQuality()} eq 4" type="checkbox"
+                                                       name="rating" value="4" checked="checked"/>
+                                                   <input th:unless="${obj.getQuality()}" type="checkbox"
+                                                          name="rating" value="4"/>
+                                                <label style="cursor:pointer;">4</label>
+                                                <input th:if="${obj.getQuality()} eq 3" type="checkbox"
+                                                       name="rating" value="3" checked="checked"/>
+                                                   <input th:unless="${obj.getQuality()}" type="checkbox"
+                                                          name="rating" value="3"/>
+                                                <label style="cursor:pointer;">3</label>
+                                                <input th:if="${obj.getQuality()} eq 2" type="checkbox"
+                                                       name="rating" value="2" checked="checked"/>
+                                                    <input th:unless="${obj.getQuality()}" type="checkbox"
+                                                           name="rating" value="2"/>
+                                                <label style="cursor:pointer;">2</label>
+                                                <input th:if="${obj.getQuality()} eq 1" type="checkbox"
+                                                       name="rating" value="1" checked="checked"/>
+                                                   <input th:unless="${obj.getQuality()}" type="checkbox"
+                                                          name="rating" value="1"/>
+                                                <label style="cursor:pointer;">1</label>
+                                                </span>
+                </div>
 
-            <p th:text="'Nom: '  + ${obj.getNameObject()}" style="text-decoration: underline; width:50%;"/>
-            <th:block th:if="${obj.getDescObject().length() lt 30}">
-                <span th:text="'Description: '  + ${obj.getDescObject()}"/><br/>
-            </th:block>
-            <th:block th:if="${obj.getDescObject().length() ge 30}">
-                <span th:text="'Description: '  + ${obj.getDescObject().substring(0,30)} + '  ...'"/><br/>
-            </th:block>
-            <span th:text="'Publié le: '  + ${obj.getCreationdate()}"/><br/>
-            <span th:text="'Sous-catégorie: '  + ${obj.getSubCategoryName()}"></span><br/>
-            <span th:text="'Utilisateur: '  + ${obj.getIduser()}"/>
-        </div>
-        <!-- Bar vertical de séparation -->
-        <div class="searchVerticalBar right">
-            <div class="barMask"></div>
-        </div>
-        <!-- Section côte de l'item -->
-        <div class="searchItemQuality">
-            <!-- QualitÃ© en Ã©toiles -->
+                <p th:text="'Nom: '  + ${obj.getNameObject()}" style="text-decoration: underline; width:50%;"/>
+                <th:block th:if="${obj.getDescObject().length() lt 30}">
+                    <span th:text="'Description: '  + ${obj.getDescObject()}"/><br/>
+                </th:block>
+                <th:block th:if="${obj.getDescObject().length() ge 30}">
+                    <span th:text="'Description: '  + ${obj.getDescObject().substring(0,30)} + '  ...'"/><br/>
+                </th:block>
+                <span th:text="'Publié le: '  + ${obj.getCreationdate()}"/><br/>
+                <span th:text="'Sous-catégorie: '  + ${obj.getSubCategoryName()}"></span><br/>
+                <span th:text="'Utilisateur: '  + ${obj.getIduser()}"/>
+            </div>
+            <!-- Bar vertical de séparation -->
+            <div class="searchVerticalBar right">
+                <div class="barMask"></div>
+            </div>
+            <!-- Section côte de l'item -->
+            <div class="searchItemQuality">
+                <!-- QualitÃ© en Ã©toiles -->
 
-            <!-- Bouton lancer une Ã©change -->
-            <a th:href="${adrStartTrade + obj.getIdobject()}" data-toggle="tooltip"
-               data-placement="bottom" title="Cliquez pour Troké cet item/service!">
-            <button id="TrokButton" type="button" class="btn btn-success" style="font-size:40px">
-
-
-                    <i class="icon-shopping-cart icon-5"></i>
-
-            </button>
-            </a>
+                <th:block th:if="${authUser} ne null">
+                    <th:block th:if="${obj.getIduser()} eq ${authUser.getIduser()}">
+                        <!-- Bouton lancer une Ã©change -->
+                        <a data-toggle="tooltip"
+                           data-placement="bottom" title="Ceci est votre item/service!">
+                            <button id="TrokButton" type="button" class="btn btn-warning" style="font-size:100%">
+                                Cet item/service <br/> est le votre
+                            </button>
+                        </a>
+                    </th:block>
+                    <th:block th:if="${obj.getIduser()} ne ${authUser.getIduser()}">
+                        <!-- Bouton lancer une Ã©change -->
+                        <a th:href="${adrStartTrade + obj.getIdobject()}" data-toggle="tooltip"
+                           data-placement="bottom" title="Cliquez pour Troké cet item/service!">
+                            <button id="TrokButton" type="button" class="btn btn-success" style="font-size:40px">
+                                <i class="icon-shopping-cart icon-5"></i>
+                            </button>
+                        </a>
+                    </th:block>
+                </th:block>
+                <th:block th:if="${authUser} eq null">
+                    <!-- Bouton lancer une Ã©change -->
+                    <a th:href="${adrStartTrade + obj.getIdobject()}" data-toggle="tooltip"
+                       data-placement="bottom" title="Cliquez pour Troké cet item/service!">
+                        <button id="TrokButton" type="button" class="btn btn-success" style="font-size:40px">
+                            <i class="icon-shopping-cart icon-5"></i>
+                        </button>
+                    </a>
+                </th:block>
+            </div>
         </div>
         <!-- Ligne/Spacer -->
         <div class="or-spacer">
             <div class="mask"></div>
         </div>
-    </div>
+    </th:block>
 
     <!-- /Div un item -->
 
@@ -176,7 +198,38 @@
         </ul>
     </div>
     <!-- /Fin control Page -->
-
+    <!-- Modal d'information pour chaque item de la recherche -->
+    <th:block th:each="obj : ${searchObjectList}">
+        <div th:id="'modal-InfoItem'+${obj.getIdobject()}" name="modal-Item-Info" class="modal-box modal-InfoItem-class">
+            <div>
+                <a href="#" title="Fermer" class="js-modal-close close">X</a>
+                <h2 th:text="${obj.getNameObject()}" style="text-align:center"></h2>
+                <div class="or-spacer">
+                    <div class="mask"></div>
+                </div>
+                <div class="gallery">
+                    <div class="panel">
+                        <img th:id="'mainImage'+${obj.getIdobject()}" class="mainImage" th:src="*{obj.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${obj.getImage1()}:'images/LogoWorld_Transparence.png'"/>
+                    </div>
+                    <div th:id="'divSubImages'+${obj.getIdobject()}" class="divSubImages">
+                        <img class="subImage" th:src="*{obj.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${obj.getImage1()}:'images/LogoWorld_Transparence.png'" alt="Image 1" onmouseover="hover(this);"/>
+                        <img class="subImage" th:src="*{obj.getImage2().substring(0,1) ne '*'}? '/uploaded-images/'+${obj.getImage2()}:'images/LogoWorld_Transparence.png'" alt="Image 2" onmouseover="hover(this);"/>
+                        <img class="subImage" th:src="*{obj.getImage3().substring(0,1) ne '*'}? '/uploaded-images/'+${obj.getImage3()}:'images/LogoWorld_Transparence.png'" alt="Image 3" onmouseover="hover(this);"/>
+                        <img class="subImage" th:src="*{obj.getImage4().substring(0,1) ne '*'}? '/uploaded-images/'+${obj.getImage4()}:'images/LogoWorld_Transparence.png'" alt="Image 4" onmouseover="hover(this);"/>
+                    </div>
+                </div>
+                <div class="description">
+                    <h5 th:text="'Propriétaire: ' + ${obj.getIduser()}"></h5>
+                    <h5 th:text="'Date de création: ' + ${obj.getCreationdate()}"></h5>
+                    <span th:text="${obj.getDescObject()}"></span>
+                </div>
+                <br/>
+                <div class="or-spacer">
+                    <div class="mask"></div>
+                </div>
+            </div>
+        </div>
+    </th:block>
     <script type="text/javascript" th:inline="javascript">
         // Quand la page est chargée on met les elements de pagination
         // reçus à actifs

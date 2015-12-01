@@ -22,10 +22,10 @@
                 </div>
 
                 <div class="divModalAjoutTop">
-                    <input class="signup-full" type="text" placeholder="Nom de l'item / service" name="Name" id="name"
+                    <input class="signup-full"  type="text" placeholder="Nom de l'item" name="Name" id="name"
                            th:value="*{session.ObjectToModify ne null}? ${session.ObjectToModify.getNameObject()} : ''"/>
 
-                    <input class="signup-full" type="number" placeholder="Valeur $$$" name="Valeur" id="valeur" value="0" min="0"
+                    <input class="signup-full" pattern="[0-9]" type="number" placeholder="Valeur $$$" name="Valeur" id="valeur" value="0" min="0"
                             th:value="*{session.ObjectToModify ne null}? ${session.ObjectToModify.getValueObject()} : ''"/>
 
                     <select class="categorieCombo" name="catCombo">
@@ -130,10 +130,10 @@
 
                 <div class="basdeModal">
 
-                        <input style="text-align:center;font-size:16px;margin-top:10px" type="checkbox" name="Evaluable"
-                               value="Evaluable" checked="checked"/>Faire evaluer le prix de cet item / service<br/> par
-                        d'autre utilisateur
-                    <br/>
+                        <!--<input style="text-align:center;font-size:16px;margin-top:10px" type="checkbox" name="Evaluable"-->
+                               <!--value="Evaluable" checked="checked"/>Faire evaluer le prix de cet item / service<br/> par-->
+                        <!--d'autre utilisateur-->
+                    <!--<br/>-->
 
                     <div class="basdeModalButtons">
                         <label class="buttonbob">
@@ -143,6 +143,10 @@
                         <label class="buttonbob" for="Service">
                             <input id="Service" name="flat" type="radio"/>Service
                         </label>
+                    </div>
+
+                    <div class="errorAjout">
+                        <p> *Erreur icite</p>
                     </div>
 
                 </div>
