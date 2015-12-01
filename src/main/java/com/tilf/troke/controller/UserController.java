@@ -106,7 +106,7 @@ public class UserController {
             // On insert dans la BD
             userRepository.save(user);
             // Envoie de courriel pour avertir l'utilisateur du nouveau compte créé
-            smtpMailSender.send("ebeloin@hotmail.com", "Bienvenue chez Troké", "Bonjour " + userSignupForm.getFirstname() + " " + userSignupForm.getLastname() + ", <br/>" +
+            smtpMailSender.send(userSignupForm.getEmail(), "Bienvenue chez Troké", "Bonjour " + userSignupForm.getFirstname() + " " + userSignupForm.getLastname() + ", <br/>" +
                     " Vous êtes maintenant inscrit sur Troké.<br/> " +
                     " <a href='http://www.troke.me'>Comment à faire du troc</a>");
             // On retour à la page home
