@@ -19,16 +19,18 @@ $(window).resize(function()
 
     if($(window).width() < 993)
     {
-        $('#MiddleInfo').height(1000);
+        $('#MiddleInfo').height(1100);
         $('#ProfilInfo').height(400);
         $('#PhotoProfil').css('margin-top', '100px');
+        $('#ProfilEmail').css('margin-top', '60px');
     }
 
     if($(window).width() > 993)
     {
-        $('#MiddleInfo').height(600);
+        $('#MiddleInfo').height(750);
         $('#ProfilInfo').height(35+'%');
         $('#PhotoProfil').css('margin-top', '5px');
+        $('#ProfilEmail').css('margin-top', '0px');
     }
 
 })

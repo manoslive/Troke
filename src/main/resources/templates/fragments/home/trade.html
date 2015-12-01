@@ -30,7 +30,7 @@
         <ul id="UserInventory" class="UserInventory ui-helper-reset ui-helper-clearfix col-md-3">
             <li th:each="invUser : ${listImageUserInventory}" class="UserItem ui-widget-content ui-corner-tr">
               <h5 th:text="${invUser.getNameObject()}" class="ui-widget-header"></h5>
-              <img class="item-image" th:src="*{invUser.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${invUser.getImage1()}:'images/LogoWorld_Transparence.png'" alt=""/>
+              <img class="item-image" th:src="'/uploaded-images/'+${invUser.getImage1()}" alt=""/>
               <div class="optionsInventoryItem">
                 <a class="js-open-modal link-zoom info-icon btn-option-item tooltip" href="#" data-modal-id="modal-InfoItem"
                    title="Plus d'information sur l'item/service"
@@ -62,7 +62,7 @@
               <ul class="UserInventory ui-helper-reset">
                 <li th:each="userTradeItem : ${listImageUserTradeZone}" class="UserItem ui-widget-content ui-corner-tr" style="display: block; overflow: hidden; width: 80px; height: 80px;">
                   <h5 th:text="${userTradeItem.getNameObject()}" class="ui-widget-header"></h5>
-                  <img class="item-image" th:src="*{userTradeItem.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${userTradeItem.getImage1()}:'images/LogoWorld_Transparence.png'" alt="" style="display: inline-block; overflow: hidden; width: 80px; height: 78px; max-width: 80px; max-height: 78px;"/>
+                  <img class="item-image" th:src="'/uploaded-images/'+${userTradeItem.getImage1()}" alt="" style="display: inline-block; overflow: hidden; width: 80px; height: 78px; max-width: 80px; max-height: 78px;"/>
                   <div class="optionsExchangeItem">
                     <a class="js-open-modal link-zoom info-icon btn-option-item tooltip"
                        title="Plus d'information sur l'item/service"
@@ -97,7 +97,7 @@
               <ul class="OpponentInventory ui-helper-reset">
                 <li th:each="opponentTradeItem : ${listImageOpponentTradeZone}" class="OpponentItem ui-widget-content ui-corner-tr ui-draggable" style="display: block; overflow: hidden; width: 80px; height: 80px;">
                   <h5 th:text="${opponentTradeItem.getNameObject()}" class="ui-widget-header"></h5>
-                  <img class="item-image" th:src="*{opponentTradeItem.getImage1().substring(0,1) ne '*'} ? '/uploaded-images/'+${opponentTradeItem.getImage1()}:'images/LogoWorld_Transparence.png'" alt="" style="display: inline-block; overflow: hidden; width: 80px; height: 78px; max-width: 80px; max-height: 78px;" />
+                  <img class="item-image" th:src="'/uploaded-images/'+${opponentTradeItem.getImage1()}" alt="" style="display: inline-block; overflow: hidden; width: 80px; height: 78px; max-width: 80px; max-height: 78px;" />
                   <div class="optionsExchangeItem">
                     <a class="js-open-modal link-zoom info-icon btn-option-item tooltip"
                        title="Plus d'information sur l'item/service"
@@ -142,7 +142,7 @@
         <ul id="OpponentInventory" class="OpponentInventory ui-helper-reset ui-helper-clearfix col-md-3">
             <li th:each="invOpponent : ${listImageOpponentInventory}" class="OpponentItem ui-widget-content ui-corner-tr">
               <h5 th:text="${invOpponent.getNameObject()}"  class="ui-widget-header"></h5>
-              <img class="item-image" th:src="*{invOpponent.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${invOpponent.getImage1()}:'images/LogoWorld_Transparence.png'" alt=""/>
+              <img class="item-image" th:src="'/uploaded-images/'+${invOpponent.getImage1()}" alt=""/>
               <div class="optionsInventoryItem">
                 <a class="js-open-modal link-zoom info-icon btn-option-item tooltip" href="#" data-modal-id="modal-InfoItem"
                    title="Plus d'information sur l'item/service"
@@ -181,10 +181,10 @@
               <img th:id="'mainImage'+${inv.getIdobject()}" class="mainImage" th:src="*{inv.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${inv.getImage1()}:'images/LogoWorld_Transparence.png'"/>
             </div>
             <div th:id="'divSubImages'+${inv.getIdobject()}" class="divSubImages">
-              <img class="subImage" th:src="*{inv.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${inv.getImage1()}:'images/LogoWorld_Transparence.png'" alt="Image 1" onmouseover="hover(this);"/>
-              <img class="subImage" th:src="*{inv.getImage2().substring(0,1) ne '*'}? '/uploaded-images/'+${inv.getImage2()}:'images/LogoWorld_Transparence.png'" alt="Image 2" onmouseover="hover(this);"/>
-              <img class="subImage" th:src="*{inv.getImage3().substring(0,1) ne '*'}? '/uploaded-images/'+${inv.getImage3()}:'images/LogoWorld_Transparence.png'" alt="Image 3" onmouseover="hover(this);"/>
-              <img class="subImage" th:src="*{inv.getImage4().substring(0,1) ne '*'}? '/uploaded-images/'+${inv.getImage4()}:'images/LogoWorld_Transparence.png'" alt="Image 4" onmouseover="hover(this);"/>
+              <img class="subImage" th:src="'/uploaded-images/'+${inv.getImage1()}" alt="Image 1" onmouseover="hover(this);"/>
+              <img class="subImage" th:src="'/uploaded-images/'+${inv.getImage2()}" alt="Image 2" onmouseover="hover(this);"/>
+              <img class="subImage" th:src="'/uploaded-images/'+${inv.getImage3()}" alt="Image 3" onmouseover="hover(this);"/>
+              <img class="subImage" th:src="'/uploaded-images/'+${inv.getImage4()}" alt="Image 4" onmouseover="hover(this);"/>
             </div>
           </div>
           <div class="description">
@@ -213,10 +213,10 @@
               <img th:id="'mainImage'+${inv.getIdobject()}" class="mainImage" th:src="*{inv.getImage1().substring(0,1) ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${inv.getImage1()}:'images/LogoWorld_Transparence.png'"/>
             </div>
             <div th:id="'divSubImages'+${inv.getIdobject()}" class="divSubImages">
-              <img class="subImage" th:src="*{inv.getImage1().substring(0,1) ne '*'} ? '/uploaded-images/'+${inv.getImage1()}:'images/LogoWorld_Transparence.png'" alt="Image 1" onmouseover="hover(this);"/>
-              <img class="subImage" th:src="*{inv.getImage2().substring(0,1) ne '*'} ? '/uploaded-images/'+${inv.getImage2()}:'images/LogoWorld_Transparence.png'" alt="Image 2" onmouseover="hover(this);"/>
-              <img class="subImage" th:src="*{inv.getImage3().substring(0,1) ne '*'} ? '/uploaded-images/'+${inv.getImage3()}:'images/LogoWorld_Transparence.png'" alt="Image 3" onmouseover="hover(this);"/>
-              <img class="subImage" th:src="*{inv.getImage4().substring(0,1) ne '*'} ? '/uploaded-images/'+${inv.getImage4()}:'images/LogoWorld_Transparence.png'" alt="Image 4" onmouseover="hover(this);"/>
+              <img class="subImage" th:src="'/uploaded-images/'+${inv.getImage1()}" alt="Image 1" onmouseover="hover(this);"/>
+              <img class="subImage" th:src="'/uploaded-images/'+${inv.getImage2()}" alt="Image 2" onmouseover="hover(this);"/>
+              <img class="subImage" th:src="'/uploaded-images/'+${inv.getImage3()}" alt="Image 3" onmouseover="hover(this);"/>
+              <img class="subImage" th:src="'/uploaded-images/'+${inv.getImage4()}" alt="Image 4" onmouseover="hover(this);"/>
             </div>
           </div>
           <div class="description">
@@ -245,10 +245,10 @@
               <img th:id="'mainImage'+${tradeItem.getIdobject()}" class="mainImage" th:src="*{tradeItem.getImage1().substring(0,1) ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${tradeItem.getImage1()}:'images/LogoWorld_Transparence.png'"/>
             </div>
             <div th:id="'divSubImages'+${tradeItem.getIdobject()}" class="divSubImages">
-              <img class="subImage" th:src="*{tradeItem.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${tradeItem.getImage1()}:'images/LogoWorld_Transparence.png'" alt="Image 1" onmouseover="hover(this);"/>
-              <img class="subImage" th:src="*{tradeItem.getImage2().substring(0,1) ne '*'}? '/uploaded-images/'+${tradeItem.getImage2()}:'images/LogoWorld_Transparence.png'" alt="Image 2" onmouseover="hover(this);"/>
-              <img class="subImage" th:src="*{tradeItem.getImage3().substring(0,1) ne '*'}? '/uploaded-images/'+${tradeItem.getImage3()}:'images/LogoWorld_Transparence.png'" alt="Image 3" onmouseover="hover(this);"/>
-              <img class="subImage" th:src="*{tradeItem.getImage4().substring(0,1) ne '*'}? '/uploaded-images/'+${tradeItem.getImage4()}:'images/LogoWorld_Transparence.png'" alt="Image 4" onmouseover="hover(this);"/>
+              <img class="subImage" th:src="'/uploaded-images/'+${tradeItem.getImage1()}" alt="Image 1" onmouseover="hover(this);"/>
+              <img class="subImage" th:src="'/uploaded-images/'+${tradeItem.getImage2()}" alt="Image 2" onmouseover="hover(this);"/>
+              <img class="subImage" th:src="'/uploaded-images/'+${tradeItem.getImage3()}" alt="Image 3" onmouseover="hover(this);"/>
+              <img class="subImage" th:src="'/uploaded-images/'+${tradeItem.getImage4()}" alt="Image 4" onmouseover="hover(this);"/>
             </div>
           </div>
           <div class="description">
@@ -277,10 +277,10 @@
               <img th:id="'mainImage'+${tradeItem.getIdobject()}" class="mainImage" th:src="*{tradeItem.getImage1().substring(0,1) ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${tradeItem.getImage1()}:'images/LogoWorld_Transparence.png'"/>
             </div>
             <div th:id="'divSubImages'+${tradeItem.getIdobject()}" class="divSubImages">
-              <img class="subImage" th:src="*{tradeItem.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${tradeItem.getImage1()}:'images/LogoWorld_Transparence.png'" alt="Image 1" onmouseover="hover(this);"/>
-              <img class="subImage" th:src="*{tradeItem.getImage2().substring(0,1) ne '*'}? '/uploaded-images/'+${tradeItem.getImage2()}:'images/LogoWorld_Transparence.png'" alt="Image 2" onmouseover="hover(this);"/>
-              <img class="subImage" th:src="*{tradeItem.getImage3().substring(0,1) ne '*'}? '/uploaded-images/'+${tradeItem.getImage3()}:'images/LogoWorld_Transparence.png'" alt="Image 3" onmouseover="hover(this);"/>
-              <img class="subImage" th:src="*{tradeItem.getImage4().substring(0,1) ne '*'}? '/uploaded-images/'+${tradeItem.getImage4()}:'images/LogoWorld_Transparence.png'" alt="Image 4" onmouseover="hover(this);"/>
+              <img class="subImage" th:src="'/uploaded-images/'+${tradeItem.getImage1()}" alt="Image 1" onmouseover="hover(this);"/>
+              <img class="subImage" th:src="'/uploaded-images/'+${tradeItem.getImage2()}" alt="Image 2" onmouseover="hover(this);"/>
+              <img class="subImage" th:src="'/uploaded-images/'+${tradeItem.getImage3()}" alt="Image 3" onmouseover="hover(this);"/>
+              <img class="subImage" th:src="'/uploaded-images/'+${tradeItem.getImage4()}" alt="Image 4" onmouseover="hover(this);"/>
             </div>
           </div>
           <div class="description">

@@ -23,6 +23,14 @@ public class CustomSearchObjectEntity {
     private String image2;
     private String image3;
     private String image4;
+    private String ismain;
+
+
+    public String getIsmain() {return ismain;}
+
+    public void setIsmain(String ismain) {this.ismain = ismain;}
+
+
 
     public int getIdobject() {
         return idobject;
