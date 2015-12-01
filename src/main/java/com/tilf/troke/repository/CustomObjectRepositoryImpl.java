@@ -83,9 +83,14 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
 
             // Ajout de chacune des images dans l'objet
             customObjet.setImage1(LImages.get(0).getGuidimage());
-            customObjet.setImage2(LImages.get(1).getGuidimage());
-            customObjet.setImage3(LImages.get(2).getGuidimage());
-            customObjet.setImage4(LImages.get(3).getGuidimage());
+            if(LImages.get(1).getIsmain().length() > 1) {customObjet.setImage2("LogoWorld_Transparence.png");}
+            else {customObjet.setImage2(LImages.get(1).getGuidimage());}
+
+            if(LImages.get(2).getIsmain().length() > 1){customObjet.setImage3("LogoWorld_Transparence.png");}
+            else {customObjet.setImage3(LImages.get(2).getGuidimage());}
+
+            if(LImages.get(3).getIsmain().length() > 1) {customObjet.setImage4("LogoWorld_Transparence.png");}
+            else {customObjet.setImage4(LImages.get(3).getGuidimage());}
 
             // Ajout du nom de sous-catégorie
             customObjet.setSubCategoryName(getSubCatNameBySubCatId(result.get(i).getIdsubcategory()));
@@ -155,9 +160,14 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
 
             // Ajout de chacune des images dans l'objet
             customObjet.setImage1(LImages.get(0).getGuidimage());
-            customObjet.setImage2(LImages.get(1).getGuidimage());
-            customObjet.setImage3(LImages.get(2).getGuidimage());
-            customObjet.setImage4(LImages.get(3).getGuidimage());
+            if(LImages.get(1).getIsmain().length() > 1) {customObjet.setImage2("LogoWorld_Transparence.png");}
+            else {customObjet.setImage2(LImages.get(1).getGuidimage());}
+
+            if(LImages.get(2).getIsmain().length() > 1){customObjet.setImage3("LogoWorld_Transparence.png");}
+            else {customObjet.setImage3(LImages.get(2).getGuidimage());}
+
+            if(LImages.get(3).getIsmain().length() > 1) {customObjet.setImage4("LogoWorld_Transparence.png");}
+            else {customObjet.setImage4(LImages.get(3).getGuidimage());}
 
             // Ajout du nom de sous-catégorie
             customObjet.setSubCategoryName(getSubCatNameBySubCatId(result.get(i).getIdsubcategory()));
@@ -244,6 +254,7 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
         List<ImageobjectEntity> LImages = getObjectImageListByIdobject(id_object);
 
         customObjet.setImage1(LImages.get(0).getGuidimage());
+
         if(LImages.get(1).getIsmain().length() > 1) {customObjet.setImage2("LogoWorld_Transparence.png");}
         else {customObjet.setImage2(LImages.get(1).getGuidimage());}
 

@@ -209,13 +209,13 @@
                 </div>
                 <div class="gallery">
                     <div class="panel">
-                        <img th:id="'mainImage'+${obj.getIdobject()}" class="mainImage" th:src="*{obj.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${obj.getImage1()}:'images/LogoWorld_Transparence.png'"/>
+                        <img th:id="'mainImage'+${obj.getIdobject()}" class="mainImage" th:src="'/uploaded-images/'+${obj.getImage1()}"/>
                     </div>
                     <div th:id="'divSubImages'+${obj.getIdobject()}" class="divSubImages">
-                        <img class="subImage" th:src="*{obj.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${obj.getImage1()}:'images/LogoWorld_Transparence.png'" alt="Image 1" onmouseover="hover(this);"/>
-                        <img class="subImage" th:src="*{obj.getImage2().substring(0,1) ne '*'}? '/uploaded-images/'+${obj.getImage2()}:'images/LogoWorld_Transparence.png'" alt="Image 2" onmouseover="hover(this);"/>
-                        <img class="subImage" th:src="*{obj.getImage3().substring(0,1) ne '*'}? '/uploaded-images/'+${obj.getImage3()}:'images/LogoWorld_Transparence.png'" alt="Image 3" onmouseover="hover(this);"/>
-                        <img class="subImage" th:src="*{obj.getImage4().substring(0,1) ne '*'}? '/uploaded-images/'+${obj.getImage4()}:'images/LogoWorld_Transparence.png'" alt="Image 4" onmouseover="hover(this);"/>
+                        <img class="subImage" th:src="'/uploaded-images/'+${obj.getImage1()}" alt="Image 1" onmouseover="hover(this);"/>
+                        <img class="subImage" th:src="'/uploaded-images/'+${obj.getImage2()}" alt="Image 2" onmouseover="hover(this);"/>
+                        <img class="subImage" th:src="'/uploaded-images/'+${obj.getImage3()}" alt="Image 3" onmouseover="hover(this);"/>
+                        <img class="subImage" th:src="'/uploaded-images/'+${obj.getImage4()}" alt="Image 4" onmouseover="hover(this);"/>
                     </div>
                 </div>
                 <div class="description">
