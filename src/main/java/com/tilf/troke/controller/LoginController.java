@@ -50,8 +50,6 @@ public class LoginController {
 
     @RequestMapping("/logout")
     public String logout(HttpSession session, HttpServletRequest req,HttpServletResponse resp) {
-        authContext.getUser().setIsonline("N");
-        userRepository.save(authContext.getUser());
         authContext.setUser(null);
         session.removeAttribute("user");
 

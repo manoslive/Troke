@@ -300,20 +300,190 @@ public class TransactionController {
             updateTransactionMoneyOpposant.setValue(Integer.parseInt(opponentMoney));
             transactionMoneyRepository.save(updateTransactionMoneyOpposant);
 
-            if(tradeState.equals('T')){
+            if(updateTransaction.getIscompleted().equals("T")){
                 //
                 UsersEntity user1 = customUserRepository.findUserById(currentUser);
                 UsersEntity user2 = customUserRepository.findUserById(idUser2);
                 List<CustomObjetImageEntity> listUser1 = customObjectRepository.getTradeObjects(transactionID, currentUser);
                 List<CustomObjetImageEntity> listUser2 = customObjectRepository.getTradeObjects(transactionID, idUser2);
-                smtpMailSender.send(user1.getEmail(), "Troc #" + transactionID + "complété.", "Bonjour " + user1.getFirstname() + " " + user1.getLastname() +
-                        ", <br/>" +
-                        " Votre échange est maintenant prête à être complétée.<br/> " +
-                        " Vous devez contacter " + user2.getFirstname() + " " + user2.getFirstname() + " au " + user2.getTelephone() + " ou au " + user2.getEmail() + ". <br/>"+
-                        " <a href='http://www.google.ca'>Allez sur troké</a>");
-                smtpMailSender.send(user2.getEmail(), "Bienvenue chez Troké", "Bonjour " + "prénom" + " " + "nom de famille" + ", <br/>" +
-                        " Vous êtes maintenant inscrit sur Troké.<br/> " +
-                        " <a href='http://www.google.ca'>Allez sur troké</a>");
+                smtpMailSender.send(user1.getEmail(), "Troc #" + transactionID + "complété.", "<!doctype html>\n" +
+                        "<html>\n" +
+                        "<head>\n" +
+                        "<meta charset=\"utf-8\">\n" +
+                        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
+                        "<meta name=\"description\" content=\"Trok-é\">\n" +
+                        "<meta name=\"keywords\" content=\"Trok, barter, troke, troc\">\n" +
+                        "<meta name=\"author\" content=\"Yvon Steinthal, Alexandre Dubé, Emmanuel Beloin, Shaun Cooper\">\n" +
+                        "<title>\n" +
+                        "Trok-é\n" +
+                        "</title>\n" +
+                        "<link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet' type='text/css'>\n" +
+                        "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css\">\n" +
+                        "<body style=\"font-family:'Amaranth';margin:0;background-size:cover\">\n" +
+                        "\t<div id=\"main\" style=\"width:100%;height:100%;\">\n" +
+                        "\t\t<div id=\"banner\" style=\"height:200px; background-image:url('http://s27.postimg.org/6c1kwzur7/World_Banner5.jpg');width:100%;position:absolute;\">\n" +
+                        "\t\t<div id=\"logo\" style=\"height:60px;width:60px;background-image:url('http://i.imgur.com/rwi8gGF.png');background-size:cover;position:absolute;top:35px;left:50px;z-index:3;\">\n" +
+                        "\t\t</div>\n" +
+                        "\t\t<div id=\"rectangle\" style=\"width:100%;height:40px;margin-bottom:40px;background-color:#00374C;top:40px;position:absolute;z-index:1\">\n" +
+                        "\t\t</div>\n" +
+                        "\t\t<div id=\"title\" style=\"color:white;height:40px;text-align:center;width:100%;font-family:'Amaranth';\n" +
+                        "\t\ttop:50px;z-index:5;position:absolute\">CONFIRMATION DE VOTRE TROK\n" +
+                        "\t\t</div>\n" +
+                        "\t\t\n" +
+                        "\t\n" +
+                        "\t<div style=\"position:absolute;width:100%;text-align:center;z-index:100;top:400px;background-color:transparent;\">\n" +
+                        "\t\t\t\t\t\t<i class=\"fa fa-retweet fa-4\" style=\"margin:5px;font-size:25px;padding:1%;background-image:url('http://s27.postimg.org/6c1kwzur7/World_Banner5.jpg');background-size:400%; margin-right:20px\"></i>\n" +
+                        "\t\t\t\t\t\t</div>\n" +
+                        "\t\n" +
+                        "\t\t<div id=\"infos\" style=\"height:500px;width:100%;background-color:#00374C;position:absolute;top:200px;\" class=\"col-md-12\">\n" +
+                        "\t\t\t\n" +
+                        "\t\t\t\n" +
+                        "\t\t\t\t<div style=\"color:white; font-size:26px; text-align:center; margin-top:20px;margin-bottom:20px\">Votre Trok a été accepté!</div>\n" +
+                        "\t\t\t\t<div id=\"transaction\" style=\"width:100%;height:310px\">\n" +
+                        "\t\t\t\t\t<div id=\"myitems\" style=\"width:45%;height:300px;margin-left:4%;display:inline-table;border-right:1px solid white;\">\n" +
+                        "\t\t\t\t\t\t\n" +
+                        "\t\t\t\t\t\t\n" +
+                        "\t\t\t\t\t\t\n" +
+                        "\t\t\t\t\t\t<div style=\"width:100%;height:30px;text-align:right;font-size:16px; color:white;\">\n" +
+                        "\t\t\t\t\t\t\t<u>Vos Items/Services -</u>\n" +
+                        "\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t<div style=\"width:100%; height:100%;text-align:right;font-size:16px\">\t\t\t\t\n" +
+                        "\t\t\t\t\t\t\t<ul id=\"listme\" style=\"color:white;text-align:right;list-style-type: none;padding-right:40px\">\n" +
+                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
+                        "  \t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
+                        "  \t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
+                        "\t\t\t\t\t\t\t</ul>\n" +
+                        "\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t<div id=\"vsitems\" style=\"width:45%;height:300px;display:inline-table; border-left:1px solid white;\">\n" +
+                        "\t\t\t\t\t\t<div style=\"width:100%;height:30px;text-align:left; font-size:16px; color:white;\">\n" +
+                        "\t\t\t\t\t\t\t<u>- Items/Services de l'autre utilisateur</u>\n" +
+                        "\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t<div style=\"width:100%; height:100%;text-align:left;font-size:16px\">\t\t\t\t\n" +
+                        "\t\t\t\t\t\t\t<ul id=\"listme\" style=\"color:white;list-style-type: none;\">\n" +
+                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
+                        "  \t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
+                        "\t\t\t\t\t\t\t</ul>\n" +
+                        "\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t\n" +
+                        "\t\t\t<div id=\"infooter\" style=\"height:80px;width:100%;background-color:#00374C;text-align:center;color:white\">\n" +
+                        "\t\t\t\tPour compléter l'echange veuillez contacter NOM<br/>\n" +
+                        "\t\t\t\tau 555-555-5555 ou sur son courriel bob@guacamole.mex\n" +
+                        "\t\t\t</div>\n" +
+                        "\t\t\t<div id=\"footer\" style=\"height:80px;width:100%;background-color:#00374C;text-align:center;color:white;background-image: url('http://s27.postimg.org/6c1kwzur7/World_Banner5.jpg');display: block;position: absolute;width: 100%;height: 107%;background-size: cover;\">\n" +
+                        "\t\t\t\tL'Équipe Trok-é vous remercie d'avoir utilisé nos services!\n" +
+                        "\t\t\t</div>\t\t\n" +
+                        "\t\t</div>\n" +
+                        "\t</div>\n" +
+                        "\t<div id=\"bg-footer\"/>\n" +
+                        "</body>\n" +
+                        "</html>");
+                smtpMailSender.send(user2.getEmail(), "Troc #" + transactionID + "complété.", "<!doctype html>\n" +
+                        "<html>\n" +
+                        "<head>\n" +
+                        "<meta charset=\"utf-8\">\n" +
+                        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
+                        "<meta name=\"description\" content=\"Trok-é\">\n" +
+                        "<meta name=\"keywords\" content=\"Trok, barter, troke, troc\">\n" +
+                        "<meta name=\"author\" content=\"Yvon Steinthal, Alexandre Dubé, Emmanuel Beloin, Shaun Cooper\">\n" +
+                        "<title>\n" +
+                        "Trok-é\n" +
+                        "</title>\n" +
+                        "<link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet' type='text/css'>\n" +
+                        "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css\">\n" +
+                        "<body style=\"font-family:'Amaranth';margin:0;background-size:cover\">\n" +
+                        "\t<div id=\"main\" style=\"width:100%;height:100%;\">\n" +
+                        "\t\t<div id=\"banner\" style=\"height:200px; background-image:url('http://s27.postimg.org/6c1kwzur7/World_Banner5.jpg');width:100%;position:absolute;\">\n" +
+                        "\t\t<div id=\"logo\" style=\"height:60px;width:60px;background-image:url('http://i.imgur.com/rwi8gGF.png');background-size:cover;position:absolute;top:35px;left:50px;z-index:3;\">\n" +
+                        "\t\t</div>\n" +
+                        "\t\t<div id=\"rectangle\" style=\"width:100%;height:40px;margin-bottom:40px;background-color:#00374C;top:40px;position:absolute;z-index:1\">\n" +
+                        "\t\t</div>\n" +
+                        "\t\t<div id=\"title\" style=\"color:white;height:40px;text-align:center;width:100%;font-family:'Amaranth';\n" +
+                        "\t\ttop:50px;z-index:5;position:absolute\">CONFIRMATION DE VOTRE TROK\n" +
+                        "\t\t</div>\n" +
+                        "\t\t\n" +
+                        "\t\n" +
+                        "\t<div style=\"position:absolute;width:100%;text-align:center;z-index:100;top:400px;background-color:transparent;\">\n" +
+                        "\t\t\t\t\t\t<i class=\"fa fa-retweet fa-4\" style=\"margin:5px;font-size:25px;padding:1%;background-image:url('http://s27.postimg.org/6c1kwzur7/World_Banner5.jpg');background-size:400%; margin-right:20px\"></i>\n" +
+                        "\t\t\t\t\t\t</div>\n" +
+                        "\t\n" +
+                        "\t\t<div id=\"infos\" style=\"height:500px;width:100%;background-color:#00374C;position:absolute;top:200px;\" class=\"col-md-12\">\n" +
+                        "\t\t\t\n" +
+                        "\t\t\t\n" +
+                        "\t\t\t\t<div style=\"color:white; font-size:26px; text-align:center; margin-top:20px;margin-bottom:20px\">Votre Trok a été accepté!</div>\n" +
+                        "\t\t\t\t<div id=\"transaction\" style=\"width:100%;height:310px\">\n" +
+                        "\t\t\t\t\t<div id=\"myitems\" style=\"width:45%;height:300px;margin-left:4%;display:inline-table;border-right:1px solid white;\">\n" +
+                        "\t\t\t\t\t\t\n" +
+                        "\t\t\t\t\t\t\n" +
+                        "\t\t\t\t\t\t\n" +
+                        "\t\t\t\t\t\t<div style=\"width:100%;height:30px;text-align:right;font-size:16px; color:white;\">\n" +
+                        "\t\t\t\t\t\t\t<u>Vos Items/Services -</u>\n" +
+                        "\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t<div style=\"width:100%; height:100%;text-align:right;font-size:16px\">\t\t\t\t\n" +
+                        "\t\t\t\t\t\t\t<ul id=\"listme\" style=\"color:white;text-align:right;list-style-type: none;padding-right:40px\">\n" +
+                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
+                        "  \t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
+                        "  \t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
+                        "\t\t\t\t\t\t\t</ul>\n" +
+                        "\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t<div id=\"vsitems\" style=\"width:45%;height:300px;display:inline-table; border-left:1px solid white;\">\n" +
+                        "\t\t\t\t\t\t<div style=\"width:100%;height:30px;text-align:left; font-size:16px; color:white;\">\n" +
+                        "\t\t\t\t\t\t\t<u>- Items/Services de l'autre utilisateur</u>\n" +
+                        "\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t<div style=\"width:100%; height:100%;text-align:left;font-size:16px\">\t\t\t\t\n" +
+                        "\t\t\t\t\t\t\t<ul id=\"listme\" style=\"color:white;list-style-type: none;\">\n" +
+                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
+                        "  \t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
+                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
+                        "\t\t\t\t\t\t\t</ul>\n" +
+                        "\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t\n" +
+                        "\t\t\t<div id=\"infooter\" style=\"height:80px;width:100%;background-color:#00374C;text-align:center;color:white\">\n" +
+                        "\t\t\t\tPour compléter l'echange veuillez contacter NOM<br/>\n" +
+                        "\t\t\t\tau 555-555-5555 ou sur son courriel bob@guacamole.mex\n" +
+                        "\t\t\t</div>\n" +
+                        "\t\t\t<div id=\"footer\" style=\"height:80px;width:100%;background-color:#00374C;text-align:center;color:white;background-image: url('http://s27.postimg.org/6c1kwzur7/World_Banner5.jpg');display: block;position: absolute;width: 100%;height: 107%;background-size: cover;\">\n" +
+                        "\t\t\t\tL'Équipe Trok-é vous remercie d'avoir utilisé nos services!\n" +
+                        "\t\t\t</div>\t\t\n" +
+                        "\t\t</div>\n" +
+                        "\t</div>\n" +
+                        "\t<div id=\"bg-footer\"/>\n" +
+                        "</body>\n" +
+                        "</html>");
             }
         } else {
             session.removeAttribute("error");
