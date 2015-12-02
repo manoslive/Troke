@@ -102,7 +102,7 @@
                     <!-- first name -->
                     <p name="label-prenom" style="font-weight:normal"> Prénom:</p>
                     <input th:field="*{firstname}" class="signup-half" style="width:95%" placeholder="Prénom" type="text" tabindex="1"/>
-                    <div style="height:30px">
+                    <div style="height:35px">
                         <p th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" style="font-weight:normal;color:red">*</p>
                     </div>
                     <!-- end firstname -->
@@ -110,7 +110,7 @@
                     <!-- zipcode -->
                     <p name="label-codepostal" style="font-weight:normal"> Code Postal:</p>
                     <input th:field="*{zipcode}" class="signup-half zipcode" style="width:95%" placeholder="Code Postal" type="text"/>
-                    <div style="height:30px">
+                    <div style="height:35px">
                     <p th:if="${#fields.hasErrors('zipcode')}" th:errors="*{zipcode}" style="font-weight:normal;color:red">*Erreur sur le code postal</p>
                         </div>
                     <!-- end zipcode -->
@@ -135,12 +135,14 @@
 
                 </div>
             </div>
-            <div class="col-md-12" style="margin-top:40px">
+            <div class="col-md-12">
                 <div id ="ProfilEmail" class="col-md-10">
                     <!-- email -->
                     <p name="label-email" style="font-weight:normal">Courriel:</p>
                     <input th:field="*{email}" class="signup-full" placeholder="Email" type="text" tabindex="5"/>
+                    <div style="height:30px">
                     <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="font-weight:normal;color:red">*Erreur sur le courriel</p>
+                    </div>
                     <!-- end email -->
 
                 </div>

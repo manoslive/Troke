@@ -46,6 +46,8 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
         return usersEntity;
     }
 
+
+
     @Override
     public List<UsersEntity> getAllUsers() {
         String query = "select * from users";
@@ -125,6 +127,17 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
         queryObject.setParameter("idUser", Opponent);
         UsersEntity user = (UsersEntity) queryObject.getSingleResult();
         return user;
+    }
+
+    @Override
+    public String getZipCodeByUserId(String IdUser) {
+        String query = "select o.zipcode from users o where IDUSER =:iduser";
+        Query queryObject = entityManager.createNativeQuery(query);
+        queryObject.setParameter("iduser", IdUser);
+
+        String zipcode = (String)queryObject.getSingleResult();
+
+        return zipcode;
     }
 
 

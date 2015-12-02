@@ -5,6 +5,20 @@
 <body>
 <div th:fragment="searchSingleObject">
 
+    <script th:async="async" th:defer="defer" th:src="'//maps.googleapis.com/maps/api/js?key=AIzaSyCt0t5-kYJ9BF1-r9h1FCSuHynCdeESEjY&amp;callback=initMap'"></script>
+    <!--//MAP SNIPPET FOR GEOLOCALISATION-->
+    <div id="MapSnippet" style="display:none;z-index:1000">
+        <div id="closegoogle" th:onclick="'closegoogle()'">X</div>
+        <div id="floating-panel" style="display:none">
+            <input id="address" type="hidden"  value="NSW"/>
+            <input id="submit" type="hidden" value="Geocode"/>
+
+        </div>
+        <div id="smallmap" style="height:200px;width:200px; border:1px solid black;">
+            <div id="map"></div>
+        </div>
+    </div>
+
     <!-- Section control de page (#, previous/next) -->
     <div class="paginationControl">
         <ul class="pagination">
@@ -21,26 +35,26 @@
     </div>
     <!-- /Fin control Page -->
 
-    <!-- Ligne/Spacer -->
-    <div class="or-spacer">
-        <div class="mask"></div>
-    </div>
-
     <!-- Affiche le nombre de résultats sur le nombre total de résultat -->
-    <div class="row" id="login-container">
+    <div class="row" id="login-container" style="padding-top: 5px;padding-bottom: 5px;">
         <div class="span8 offset2">
             <div style="color:white;" th:text="'1 sur 1 résultat affiché.'"
                  class="col-xs-6 col-centered col-min"></div>
         </div>
     </div>
 
+    <!-- Ligne/Spacer -->
+    <div class="or-spacer">
+        <div class="mask"></div>
+    </div>
+
     <!-- Div un item -->
     <div class="searchItem">
         <!-- L'image de l'item -->
-        <div class="searchItemImage">
-            <img th:if="${singleobject.getImage1()} ne null"
-                 th:src="'/uploaded-images/' + ${singleobject.getImage1()}"/>
-            <img th:if="${singleobject.getImage1()} eq null" src="images/UnknownUser.png"/>
+        <div class="searchItemImage"
+             th:style="*{singleobject.getImage1() ne null} ? 'background-image:url(/uploaded-images/'+${singleobject.getImage1()} +')' : 'background-image:url(images/UnknownUser.png)'"
+             th:onclick="'javascript:showModalInfoItem(\''+ ${singleobject.getIdobject()} +'\')'">
+            <img class="searchItemImageOverlay"/>
         </div>
         <!-- Description de l'item -->
         <div class="searchItemDescription">
@@ -83,6 +97,7 @@
             <span th:text="'Publié le: '  + ${singleobject.getCreationdate()}"/><br/>
             <span th:text="'Sous-catégorie: '  + ${singleobject.getSubCategoryName()}"></span><br/>
             <span th:text="'Utilisateur: '  + ${singleobject.getIduser()}"/>
+            <a th:onclick="'SendCoor(event,\''+${singleobject.getZipcode()}+'\')'" style="color:white;text-decoration:none;cursor:pointer;"><i class="fa fa-map-marker fa-4"></i></a>
         </div>
         <!-- Bar vertical de séparation -->
         <div class="searchVerticalBar right">
@@ -92,17 +107,35 @@
         <div class="searchItemQuality">
             <!-- QualitÃ© en Ã©toiles -->
 
-
-            <!-- Bouton lancer une Ã©change -->
-            <a th:href="${adrStartTrade + singleobject.getIdobject()}" data-toggle="tooltip"
-               data-placement="bottom" title="Cliquez pour Troké cet item/service!">
-                <button id="TrokButton" type="button" class="btn btn-success" style="font-size:40px">
-
-
-                    <i class="icon-shopping-cart icon-5"></i>
-
-                </button>
-            </a>
+            <th:block th:if="${authUser} ne null">
+                <th:block th:if="${singleobject.getIduser()} eq ${authUser.getIduser()}">
+                    <!-- Bouton lancer une Ã©change -->
+                    <a data-toggle="tooltip"
+                       data-placement="bottom" title="Ceci est votre item/service!">
+                        <button id="TrokButton" type="button" class="btn btn-warning" style="font-size:100%">
+                            Cet item/service <br/> est le votre
+                        </button>
+                    </a>
+                </th:block>
+                <th:block th:if="${singleobject.getIduser()} ne ${authUser.getIduser()}">
+                    <!-- Bouton lancer une Ã©change -->
+                    <a th:href="${adrStartTrade + singleobject.getIdobject()}" data-toggle="tooltip"
+                       data-placement="bottom" title="Cliquez pour Troké cet item/service!">
+                        <button id="TrokButton" type="button" class="btn btn-success" style="font-size:40px">
+                            <i class="icon-shopping-cart icon-5"></i>
+                        </button>
+                    </a>
+                </th:block>
+            </th:block>
+            <th:block th:if="${authUser} eq null">
+                <!-- Bouton lancer une Ã©change -->
+                <a th:href="${adrStartTrade + singleobject.getIdobject()}" data-toggle="tooltip"
+                   data-placement="bottom" title="Cliquez pour Troké cet item/service!">
+                    <button id="TrokButton" type="button" class="btn btn-success" style="font-size:40px">
+                        <i class="icon-shopping-cart icon-5"></i>
+                    </button>
+                </a>
+            </th:block>
         </div>
     </div>
 
@@ -128,6 +161,37 @@
     </div>
     <!-- /Fin control Page -->
 
+    <!-- Modal d'information pour chaque item de la recherche -->
+    <div th:id="'modal-InfoItem'+${singleobject.getIdobject()}" name="modal-Item-Info" class="modal-box modal-InfoItem-class">
+        <div>
+            <a href="#" title="Fermer" class="js-modal-close close">X</a>
+            <h2 th:text="${singleobject.getNameObject()}" style="text-align:center"></h2>
+            <div class="or-spacer">
+                <div class="mask"></div>
+            </div>
+            <div class="gallery">
+                <div class="panel">
+                    <img th:id="'mainImage'+${singleobject.getIdobject()}" class="mainImage" th:src="*{singleobject.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${singleobject.getImage1()}:'images/LogoWorld_Transparence.png'"/>
+                </div>
+                <div th:id="'divSubImages'+${singleobject.getIdobject()}" class="divSubImages">
+                    <img class="subImage" th:src="'/uploaded-images/'+${singleobject.getImage1()}" alt="Image 1" onmouseover="hover(this);"/>
+                    <img class="subImage" th:src="'/uploaded-images/'+${singleobject.getImage2()}" alt="Image 2" onmouseover="hover(this);"/>
+                    <img class="subImage" th:src="'/uploaded-images/'+${singleobject.getImage3()}" alt="Image 3" onmouseover="hover(this);"/>
+                    <img class="subImage" th:src="'/uploaded-images/'+${singleobject.getImage4()}" alt="Image 4" onmouseover="hover(this);"/>
+                </div>
+            </div>
+            <div class="description">
+                <h5 th:text="'Propriétaire: ' + ${singleobject.getIduser()}"></h5>
+                <h5 th:text="'Date de création: ' + ${singleobject.getCreationdate()}"></h5>
+                <span th:text="${singleobject.getDescObject()}"></span>
+            </div>
+            <br/>
+            <div class="or-spacer">
+                <div class="mask"></div>
+            </div>
+        </div>
+    </div>
 </div>
+
 </body>
 </html>

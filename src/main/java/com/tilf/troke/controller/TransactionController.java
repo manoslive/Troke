@@ -300,59 +300,20 @@ public class TransactionController {
             updateTransactionMoneyOpposant.setValue(Integer.parseInt(opponentMoney));
             transactionMoneyRepository.save(updateTransactionMoneyOpposant);
 
-            if(updateTransaction.getIscompleted().equals("T")){
+            if(tradeState.equals('T')){
                 //
                 UsersEntity user1 = customUserRepository.findUserById(currentUser);
                 UsersEntity user2 = customUserRepository.findUserById(idUser2);
                 List<CustomObjetImageEntity> listUser1 = customObjectRepository.getTradeObjects(transactionID, currentUser);
                 List<CustomObjetImageEntity> listUser2 = customObjectRepository.getTradeObjects(transactionID, idUser2);
-                // Message body du user1
-                String bodyUser1 = "";
-                bodyUser1 += "<a href=\"http://troke.me\"><img src=\"http://imgh.us/trok_fini.jpg\"/></a><br/>" +
-                        "Bonjour " + user1.getFirstname() + " " + user1.getLastname() +
+                smtpMailSender.send(user1.getEmail(), "Troc #" + transactionID + "complété.", "Bonjour " + user1.getFirstname() + " " + user1.getLastname() +
                         ", <br/>" +
                         " Votre échange est maintenant prête à être complétée.<br/> " +
-                        "Voici la liste de vos items mis en échange: <br/>" +
-                        "<ul>";
-                for(CustomObjetImageEntity obj : listUser1){
-                    bodyUser1 += "<li>" + obj.getNameObject() + "</li>";
-                }
-                bodyUser1 += "</ul>" +
-                "Contre :<br/><ul>";
-                for(CustomObjetImageEntity obj : listUser2){
-                    bodyUser1 += "<li>" + obj.getNameObject() + "</li>";
-                }
-                bodyUser1 += "</ul><br/>" +
-                        " Vous devez contacter " + user2.getFirstname() + " " + user2.getFirstname() + "<br/>" +
-                        " au " + user2.getTelephone() +  "<br/>" +
-                        " ou au " + user2.getEmail() + ". <br/>"+
-                        " <a href='http://www.troke.me'>Allez sur troké</a>";
-
-                smtpMailSender.send(user1.getEmail(), "Trok-é : Trok #" + transactionID + "complété.",bodyUser1); // Envoie du courriel au user1
-
-                // Message body du user2
-                String bodyUser2 = "";
-                bodyUser2 += "<a href=\"http://troke.me\"><img src=\"http://imgh.us/trok_fini.jpg\"/></a><br/>" +
-                        "Bonjour " + user2.getFirstname() + " " + user2.getLastname() +
-                        ", <br/>" +
-                        " Votre échange est maintenant prête à être complétée.<br/> " +
-                        "Voici la liste de vos items mis en échange: <br/>" +
-                        "<ul>";
-                for(CustomObjetImageEntity obj : listUser2){
-                    bodyUser2 += "<li>" + obj.getNameObject() + "</li>";
-                }
-                bodyUser2 += "</ul><br/>" +
-                        "Contre :<br/><ul>";
-                for(CustomObjetImageEntity obj : listUser1){
-                    bodyUser2 += "<li>" + obj.getNameObject() + "</li>";
-                }
-                bodyUser2 += "</ul>" +
-                        " Vous devez contacter " + user1.getFirstname() + " " + user1.getFirstname() +  "<br/>" +
-                        " au " + user1.getTelephone() +  "<br/>" +
-                        " ou au " + user1.getEmail() + ". <br/>"+
-                        " <a href='http://www.troke.me'>Allez sur troké</a>";
-
-                smtpMailSender.send(user2.getEmail(), "Trok-é : Trok #" + transactionID + "complété.", bodyUser2);
+                        " Vous devez contacter " + user2.getFirstname() + " " + user2.getFirstname() + " au " + user2.getTelephone() + " ou au " + user2.getEmail() + ". <br/>"+
+                        " <a href='http://www.google.ca'>Allez sur troké</a>");
+                smtpMailSender.send(user2.getEmail(), "Bienvenue chez Troké", "Bonjour " + "prénom" + " " + "nom de famille" + ", <br/>" +
+                        " Vous êtes maintenant inscrit sur Troké.<br/> " +
+                        " <a href='http://www.google.ca'>Allez sur troké</a>");
             }
         } else {
             session.removeAttribute("error");

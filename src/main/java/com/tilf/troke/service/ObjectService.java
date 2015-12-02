@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class ObjectService {
 
-    public CustomSearchObjectEntity convertObjectEntityInCustomSearchObjectEntity(ObjectsEntity obj, List<ImageobjectEntity> imageList){
+    public CustomSearchObjectEntity convertObjectEntityInCustomSearchObjectEntity(ObjectsEntity obj, List<ImageobjectEntity> imageList, String zipcode){
         CustomSearchObjectEntity customObjet = new CustomSearchObjectEntity();
         customObjet.setIduser(obj.getIduser());
         customObjet.setCreationdate(obj.getCreationdate());
@@ -27,9 +27,16 @@ public class ObjectService {
         customObjet.setRateable(obj.getRateable());
         customObjet.setValueObject(obj.getValueObject());
         customObjet.setImage1(imageList.get(0).getGuidimage());
-        customObjet.setImage2(imageList.get(1).getGuidimage());
-        customObjet.setImage3(imageList.get(2).getGuidimage());
-        customObjet.setImage4(imageList.get(3).getGuidimage());
+        customObjet.setZipcode(zipcode);
+
+        if(imageList.get(1).getIsmain().length() > 1) {customObjet.setImage2("LogoWorld_Transparence.png");}
+        else {customObjet.setImage2(imageList.get(1).getGuidimage());}
+
+        if(imageList.get(2).getIsmain().length() > 1){customObjet.setImage3("LogoWorld_Transparence.png");}
+        else {customObjet.setImage3(imageList.get(2).getGuidimage());}
+
+        if(imageList.get(3).getIsmain().length() > 1) {customObjet.setImage4("LogoWorld_Transparence.png");}
+        else {customObjet.setImage4(imageList.get(3).getGuidimage());}
         return customObjet;
     }
 }

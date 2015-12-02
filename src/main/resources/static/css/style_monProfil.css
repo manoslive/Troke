@@ -356,12 +356,14 @@
 {
     display:inline-flex;
     width:100%
+    float:right;
 }
 
 .basdeModalButtons
 {
-    margin-left:110px;
+    /*margin-left:110px;*/
     display:inline-flex;
+    float:right;
 
 }
 
@@ -386,7 +388,7 @@
 #MyProfil
 {
 
-    height:600px;
+    height:800px;
     margin-top:10px;
     margin-bottom:50px;
 }
@@ -418,7 +420,7 @@
     padding-right:0px;
     padding-left:0px;
     background-color:white;
-    height:600px;
+    height:750px;
     -moz-border-radius: 10px;
     -khtml-border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -559,12 +561,13 @@
 
 #InventoryContainer
 {
-    background-image:url("../images/WorldBanner6.jpg") ;
+    background-color:#00374C;
     -moz-border-radius: 0 0 10px 10px;
     -khtml-border-radius: 0 0 10px 10px;
     -webkit-border-radius: 0 0 10px 10px;
+
     height:100%;
-    margin-bottom:50px;
+
 }
 
 .bubbleinv
@@ -576,15 +579,20 @@
 #Innerdiv
 {
     background-color:#00374C;
-    background-size: 400%;
     -moz-border-radius: 0 0 10px 10px;
     -khtml-border-radius: 0 0 10px 10px;
     -webkit-border-radius: 0 0 10px 10px;
+    height:100%;
+    overflow:auto;
+
 }
 
 #innerbtn
 {
     margin: 0 auto;
+    margin-bottom:50px;
+    margin-top:20px;
+
 }
 
 #iconMod
@@ -652,4 +660,19 @@ a{
     -moz-border-radius: 0 0 10px 10px;
     -khtml-border-radius: 0 0 10px 10px;
     -webkit-border-radius: 0 0 10px 10px;
+}
+
+.DescTextArea
+{
+    height:auto;
+    width:80%;
+    color:white;
+    overflow:hidden;
+    /*border: 3px double #CCCCCC;*/
+    background-color:#00ADEE;
+    word-wrap: normal;
+}
+
+textarea.form-control {
+    height: 100%;
 }

@@ -1,5 +1,7 @@
 package com.tilf.troke.entity;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.sql.Date;
 
 /**
@@ -8,9 +10,18 @@ import java.sql.Date;
 
 public class CustomObjetImageEntity {
     private int idobject;
+
+    @NotNull(message = "* Veuillez entrer un nom pour l'item ..")
     private String nameObject;
+
+    @NotNull(message = "* Veuillez entrer une description a l'item")
+    @Size(min = 1, max = 500, message = "* Veuillez entrer une description entre 1 et 500 lettres..")
     private String descObject;
+
+    @NotNull( message = "*Veuillez choisir une categorie ..")
     private int idsubcategory;
+
+    @NotNull(message = "* Veuillez évalué votre item ..")
     private Integer valueObject;
     private int quality;
     private String iduser;
@@ -21,6 +32,12 @@ public class CustomObjetImageEntity {
     private String image2;
     private String image3;
     private String image4;
+
+    public String getIsmain() {return ismain;}
+
+    public void setIsmain(String ismain) {this.ismain = ismain;}
+
+    private String ismain;
 
     public int getIdobject() {
         return idobject;
