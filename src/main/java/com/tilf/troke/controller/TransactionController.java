@@ -58,6 +58,9 @@ public class TransactionController {
     private CustomTransactionMoneyRepository customTransactionMoneyRepository;
 
     @Autowired
+    private ObjectRepository objectRepository;
+
+    @Autowired
     private SmtpMailSender smtpMailSender;
 
     @PersistenceContext
@@ -314,6 +317,15 @@ public class TransactionController {
                 smtpMailSender.send(user2.getEmail(), "Bienvenue chez Troké", "Bonjour " + "prénom" + " " + "nom de famille" + ", <br/>" +
                         " Vous êtes maintenant inscrit sur Troké.<br/> " +
                         " <a href='http://www.google.ca'>Allez sur troké</a>");
+
+                //Delete les items qui ont étés échangés
+                Query queryObject3 = entityManager.createQuery("select ob from ObjectsEntity ob where idobject in (select o.idobject from ObjecttransactionEntity o where o.idtransaction = :idTransaction)");
+                queryObject3.setParameter("idTransaction",transactionID);
+                List<ObjectsEntity> listObjectsToDelete = queryObject3.getResultList();
+
+                for(Iterator<ObjectsEntity> i = listObjectsToDelete.iterator(); i.hasNext(); ) {
+                    objectRepository.delete(i.next());
+                }
             }
         } else {
             session.removeAttribute("error");
