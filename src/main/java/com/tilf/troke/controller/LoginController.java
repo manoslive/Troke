@@ -100,11 +100,12 @@ public class LoginController {
             UsersEntity user = customUserRepository.findUserById(iduser); // On trouve le user par iduser
             customUserRepository.updateUserPassword(user); // On met un mot de passe temporaire à l'utilisateur
             // On envoit un message lui disant son nouveau mot de passe
-            smtpMailSender.send(user.getEmail(), "Troké : Changement de mot de passe",
+            smtpMailSender.send(user.getEmail(), "Trok-é : Réinitialisation du mot de passe",
+                    "<a href=\"http://troke.me\"><img src=\"http://imgh.us/pwd.jpg\"/></a><br/>" +
                     "Bonjour " + user.getFirstname() + " " + user.getLastname() + ",<br/>" +
                             "Vous mot de passe a été réinitialisé.<br/>" +
                             "Votre nouveau mot de passe est: " + user.getPass() + "<br/>" +
-                            "<a href='http://troke.me'>Retour à Troké!</a>"
+                            "<a href='http://troke.me'>Retour à Troké!</a></p>"
             );
 
         } else {

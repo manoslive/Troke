@@ -27,8 +27,6 @@ public class SmtpMailSender {
 		helper.setText(body, true); // true indicates html
 		// continue using helper object for more functionalities like adding attachments, etc.
 		javaMailSender.send(message);
-		
-		
 	}
 
 }
