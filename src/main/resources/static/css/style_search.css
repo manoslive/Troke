@@ -79,7 +79,7 @@
     border: 1px solid black;
     display: inline-block;
     overflow: hidden;
-    background-size: 100%;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
