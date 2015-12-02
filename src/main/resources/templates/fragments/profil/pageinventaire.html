@@ -51,19 +51,27 @@
 
                 <div id="carousel-example-generic" style="height:100%" class="carousel slide">
                     <!-- Indicators -->
-                    <ol class="carousel-indicators">
+                    <!--<ol class="carousel-indicators">-->
+                        <!--<th:block th:each="invent : ${userInventory}">-->
+                            <!--<li data-target="#carousel-example-generic"-->
+                                <!--th:data-slide-to="${inventStat.index}"-->
+                                <!--th:class="*{inventStat.index eq 0} ? 'active' : ''"-->
+                                <!--th:style="'background-image:url(/uploaded-images/'+ ${listeImage.get(inventStat.index).get(0).getGuidimage()}-->
+                                <!--+');width:60px;height:60px;border-radius:100%;background-size:cover'"></li>-->
+                        <!--</th:block>-->
+                    <!--</ol>-->
+                    <ol class="carousel-indicators" style="position:absolute;">
                         <th:block th:each="invent : ${userInventory}">
                             <li data-target="#carousel-example-generic"
                                 th:data-slide-to="${inventStat.index}"
                                 th:class="*{inventStat.index eq 0} ? 'active' : ''"
-                                th:style="'background-image:url(/uploaded-images/'+ ${listeImage.get(inventStat.index).get(0).getGuidimage()}
-                                +');width:60px;height:60px;border-radius:100%;background-size:cover'"></li>
+                                th:style="'background-image:url(/uploaded-images/'+ ${listeImage.get(inventStat.index).get(0).getGuidimage()}+');width:40px;height:40px;border-radius:100%;background-size:cover'"></li>
                         </th:block>
                     </ol>
 
 
                     <!-- Wrapper for slides -->
-                    <div class="carousel-inner" style="height:100%" role="listbox">
+                    <div class="carousel-inner" style="height:100%;overflow:auto;overflow: hidden;" role="listbox">
 
                         <th:block th:each="invent : ${userInventory}" th:for="${'invent' + inventStat.index }">
                             <!-- Second slide -->
@@ -116,8 +124,12 @@
                                     </h3>
 
                                     <!-- text de l'objet -->
-                                    <h3 data-animation="animated flipInX" style="font-size:14px;" th:text="${invent.getDescObject()}"></h3>
+                                    <div style="height:auto">
+                                    <textarea  th:readonly="readonly" id="DescTextArea" data-animation="animated flipInX"
+                                               style="font-size:14px;" th:text="${invent.getDescObject()}">
 
+                                    </textarea>
+                                    </div>
 
                                     <div class="divAMS">
                                         <div id="innerbtn">
@@ -137,10 +149,14 @@
 
 
                                     </div>
+
                                     </div>
 
+
                                 </div>
+
                             </div>
+
 
 
 

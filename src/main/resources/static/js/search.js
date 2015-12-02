@@ -37,6 +37,83 @@ function getCheckBoxSubCatValueLink(checkBoxId) {
         location.href = "/subcategory?subCategoryName=" + checkBoxId + "&subCatIsChecked=" + true;
     }
 }
+
+
+//GEOLOCALISATION
+//$(window).scroll(function(){
+//    if ($(window).scrollTop() > 140) {
+//        var scroll = $(this).scrollTop()-140;
+//        $('#MapSnippet').css('top', scroll);
+//        console.log($(this).scrollTop());
+//    }
+//
+//
+//});
+
+
+function closegoogle()
+{
+    document.getElementById('MapSnippet').setAttribute("style", "display:none");
+}
+
+function SendCoor(event,add)
+{
+
+    var offset = $('#searchResults').offset();
+    var bobby = event.pageY - offset.top;
+    var bobby2 = event.pageX - offset.left;
+
+    var div = document.getElementById('MapSnippet');
+
+    div.style.top=bobby;
+    div.style.left=bobby2 + 10;
+    div.style.display = "";
+
+    document.getElementById('address').value=add;
+    document.getElementById('submit').click();
+    google.maps.event.trigger(map, 'resize');
+    map.setZoom( map.getZoom() );
+
+}
+
+
+function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12,
+        center: {lat: -34.397, lng: 150.644}
+    });
+    var geocoder = new google.maps.Geocoder();
+
+    document.getElementById('submit').addEventListener('click', function() {
+        geocodeAddress(geocoder, map);
+    });
+
+    google.maps.event.trigger(map, 'resize');
+    map.setZoom( map.getZoom() );
+
+}
+
+function geocodeAddress(geocoder, resultsMap) {
+    var address = document.getElementById('address').value;
+    geocoder.geocode({'address': address}, function(results, status) {
+        if (status === google.maps.GeocoderStatus.OK) {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: resultsMap,
+                position: results[0].geometry.location
+
+            });
+
+        } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+        }
+
+        google.maps.event.trigger(map, 'resize');
+        map.setZoom( map.getZoom() );
+    });
+
+
+}
 /* Modal Info Item */
 var currentModalID;
 var currentInfoID;
@@ -81,9 +158,7 @@ function init() {
             modalClose();
         }
     });
-    document.getElementById('tradeForm').onsubmit = function () {
-        return false;
-    }
+
     var modal, modalInfoItem = document.getElementsByName("modal-Item-Info");
     for (modal in modalInfoItem) {
         modalInfoItem[modal].addEventListener('click', function (e) {

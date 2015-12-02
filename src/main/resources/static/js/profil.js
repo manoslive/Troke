@@ -33,8 +33,37 @@ $(window).resize(function()
         $('#ProfilEmail').css('margin-top', '0px');
     }
 
+    var tah = document.getElementById("DescTextArea").clientHeight;
+    var mdin = document.getElementById("MiddleInfo").clientHeight;
+    document.getElementById("MiddleInfo").style.height = (tah+mdin)+"px";
 })
 ;
+$(document).ready(function(){
+    $('#DescTextArea').height( $('#DescTextArea')[0].scrollHeight );
+    //var tah = document.getElementById("DescTextArea").clientHeight;
+
+
+
+});
+
+$(document).ready(function(){
+   // $("#Innerdiv").height( 800 );
+   // var doh = document.getElementById("Innerdiv").height;
+
+    //alert(doh);
+
+});
+
+$(init);
+function init()
+{
+    //var tah = document.getElementByClassName("DescTextArea").clientHeight;
+    //var mdin = document.getElementById("MiddleInfo").clientHeight;
+    //document.getElementById("MiddleInfo").style.height = (tah+mdin)+"px";
+
+
+
+}
 
 function readURL(idFileExplorer, idAvatarProfil) {
     var file = document.getElementById(idFileExplorer).files[0];
