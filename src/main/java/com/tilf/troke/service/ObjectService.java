@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class ObjectService {
 
-    public CustomSearchObjectEntity convertObjectEntityInCustomSearchObjectEntity(ObjectsEntity obj, List<ImageobjectEntity> imageList){
+    public CustomSearchObjectEntity convertObjectEntityInCustomSearchObjectEntity(ObjectsEntity obj, List<ImageobjectEntity> imageList, String zipcode){
         CustomSearchObjectEntity customObjet = new CustomSearchObjectEntity();
         customObjet.setIduser(obj.getIduser());
         customObjet.setCreationdate(obj.getCreationdate());
@@ -27,6 +27,8 @@ public class ObjectService {
         customObjet.setRateable(obj.getRateable());
         customObjet.setValueObject(obj.getValueObject());
         customObjet.setImage1(imageList.get(0).getGuidimage());
+        customObjet.setZipcode(zipcode);
+
         if(imageList.get(1).getIsmain().length() > 1) {customObjet.setImage2("LogoWorld_Transparence.png");}
         else {customObjet.setImage2(imageList.get(1).getGuidimage());}
 

@@ -17,7 +17,11 @@ public class CustomObjetImageEntity {
     @NotNull(message = "* Veuillez entrer une description a l'item")
     @Size(min = 1, max = 500, message = "* Veuillez entrer une description entre 1 et 500 lettres..")
     private String descObject;
+
+    @NotNull( message = "*Veuillez choisir une categorie ..")
     private int idsubcategory;
+
+    @NotNull(message = "* Veuillez évalué votre item ..")
     private Integer valueObject;
     private int quality;
     private String iduser;

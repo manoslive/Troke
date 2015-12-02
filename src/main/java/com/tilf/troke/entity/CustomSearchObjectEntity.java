@@ -26,6 +26,10 @@ public class CustomSearchObjectEntity {
     private String ismain;
 
 
+
+    private String zipcode;
+
+
     public String getIsmain() {return ismain;}
 
     public void setIsmain(String ismain) {this.ismain = ismain;}
@@ -153,4 +157,8 @@ public class CustomSearchObjectEntity {
     public void setImage4(String image4) {
         this.image4 = image4;
     }
+
+    public String getZipcode() {return zipcode;}
+
+    public void setZipcode(String zipcode) {this.zipcode = zipcode;}
 }

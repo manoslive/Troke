@@ -28,4 +28,6 @@ public interface CustomUserRepository{
     //Recoit le ID de transaction et le current user pour déterminer le user Opposé
     UsersEntity findOpponentUser(int transactionID, String currentUserID);
 
+    String getZipCodeByUserId(String IdUser);
+
 }

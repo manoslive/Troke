@@ -51,4 +51,5 @@ public interface CustomObjectRepository {
     long getNumberOfItem();
 
     String findUsersEntityByIdObjects(int IdObject);
+
 }

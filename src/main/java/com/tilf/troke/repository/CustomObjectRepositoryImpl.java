@@ -27,6 +27,9 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
     @Autowired
     private ObjectService objectService;
 
+    @Autowired
+    private CustomUserRepository customUserRepository;
+
 
     // Requêtes sur les catégories
     @Override
@@ -227,7 +230,8 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
 
     @Override
     public CustomSearchObjectEntity getCustomsearchobjectentityByIdObject(int idObject){
-        CustomSearchObjectEntity obj = objectService.convertObjectEntityInCustomSearchObjectEntity(getObjectEntityByIdObject(idObject), getObjectImageListByIdobject(idObject));
+        ObjectsEntity object = getObjectEntityByIdObject(idObject);
+        CustomSearchObjectEntity obj = objectService.convertObjectEntityInCustomSearchObjectEntity(object, getObjectImageListByIdobject(idObject),customUserRepository.getZipCodeByUserId(object.getIduser()));
         obj.setSubCategoryName(getSubCatNameBySubCatId(obj.getIdsubcategory()));
         return obj;
     }
@@ -286,8 +290,10 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
         queryObject.setParameter("keyword", "%" + keyword + "%");
         List<ObjectsEntity> objList = (List<ObjectsEntity>) queryObject.getResultList();
         List<CustomSearchObjectEntity> newObjList = new ArrayList<>();
+
         for(ObjectsEntity obj : objList) {
-            CustomSearchObjectEntity newObj = objectService.convertObjectEntityInCustomSearchObjectEntity(obj, getObjectImageListByIdobject(obj.getIdobject()));
+
+            CustomSearchObjectEntity newObj = objectService.convertObjectEntityInCustomSearchObjectEntity(obj, getObjectImageListByIdobject(obj.getIdobject()),customUserRepository.getZipCodeByUserId(obj.getIduser()));
             newObj.setSubCategoryName(getSubCatNameBySubCatId(newObj.getIdsubcategory()));
             newObjList.add(newObj);
         }
@@ -479,4 +485,6 @@ public class CustomObjectRepositoryImpl implements CustomObjectRepository {
 
         return nameObject;
     }
+
+
 }
