@@ -303,7 +303,7 @@ public class TransactionController {
             updateTransactionMoneyOpposant.setValue(Integer.parseInt(opponentMoney));
             transactionMoneyRepository.save(updateTransactionMoneyOpposant);
 
-            if(tradeState.equals('T')){
+            if(tradeState.equals("T")){
                 //
                 UsersEntity user1 = customUserRepository.findUserById(currentUser);
                 UsersEntity user2 = customUserRepository.findUserById(idUser2);
