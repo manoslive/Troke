@@ -70,7 +70,7 @@ public class TransactionController {
     @RequestMapping(value = "/startTrade", method = RequestMethod.GET)
     public String openNewTrade(@RequestParam("itemID") int itemID, Model model, HttpSession session) {
         UsersEntity currentUser = authUserContext.getUser();
-        if(currentUser != null) {
+        if (currentUser != null) {
             UsersEntity opponentID = customUserRepository.getUserFromItem(itemID);
             model.addAttribute("startTradeOpponent", opponentID);
             model.addAttribute("currentItem", customObjectRepository.getCustomObjectImageEntityByIdObject(itemID));
@@ -87,7 +87,7 @@ public class TransactionController {
                 context.setVariable("userActif", currentUser);
             }
             return "fragments/home/startTrade";
-        }else{
+        } else {
             session.removeAttribute("error");
             return "redirect:#openModalConnexion";
         }
@@ -138,6 +138,7 @@ public class TransactionController {
         }
         return "fragments/home/trade";
     }
+
     //addTrade - Ajout d'un trade lorsqu'on envoie un échange de la page startTrade
     //Ajout à Transaction
     //Ajout à Chat
@@ -145,13 +146,12 @@ public class TransactionController {
     //Ajout à ObjectTransaction
     //Ajout à transactionMoney
     @RequestMapping(value = "/addTrade", method = RequestMethod.POST)
-    public String addNewTrade(@RequestParam("iduser1")String idUser1,
-                              @RequestParam("iduser2")String idUser2,
-                              @RequestParam("chatLog")String chatLog,
-                              @RequestParam("tradeObjects")String tradeObjects,
-                              @RequestParam("newTradeMoneyValue")String opponentMoney,
-                              HttpSession session)
-    {
+    public String addNewTrade(@RequestParam("iduser1") String idUser1,
+                              @RequestParam("iduser2") String idUser2,
+                              @RequestParam("chatLog") String chatLog,
+                              @RequestParam("tradeObjects") String tradeObjects,
+                              @RequestParam("newTradeMoneyValue") String opponentMoney,
+                              HttpSession session) {
 
         UsersEntity currentUser = authUserContext.getUser();
         if (currentUser != null) {
@@ -167,7 +167,7 @@ public class TransactionController {
             //Get le id de la transaction créée ^^
             String queryIdTransaction = "select t.idtransaction from TransactionsEntity t ORDER  BY t.idtransaction Desc";
             Query queryObject = entityManager.createQuery(queryIdTransaction).setMaxResults(1);
-            int idTransaction = (Integer)queryObject.getSingleResult();
+            int idTransaction = (Integer) queryObject.getSingleResult();
 
             //Nouveau chat
             ChatEntity newChat = new ChatEntity();
@@ -177,7 +177,7 @@ public class TransactionController {
             //Get le id du chat créée ^^
             String queryIdChat = "select c.idchat from ChatEntity c ORDER  BY c.idchat Desc";
             Query queryObject2 = entityManager.createQuery(queryIdChat).setMaxResults(1);
-            int idChat = (Integer)queryObject2.getSingleResult();
+            int idChat = (Integer) queryObject2.getSingleResult();
 
             //Set les messages du Chat dans le chat créée^^
             ChatmessageEntity newChatMessage = new ChatmessageEntity();
@@ -192,8 +192,7 @@ public class TransactionController {
             String[] objectIDs = tradeObjects.split(";");
 
             //Ajout de chacun des items dans la bd
-            for(int i = 0; i < objectIDs.length; i++)
-            {
+            for (int i = 0; i < objectIDs.length; i++) {
                 addTransactionsObjects.setIdobject(Integer.parseInt(objectIDs[i]));
                 addTransactionsObjects.setIdtransaction(idTransaction);
                 objectsTransactionRepository.save(addTransactionsObjects);
@@ -229,17 +228,16 @@ public class TransactionController {
     //update à ObjectTransaction
     //update à transactionMoney
     @RequestMapping(value = "/updateTrade", method = RequestMethod.POST)
-    public String updateTrade(@RequestParam("idTransaction")int transactionID,
-                                @RequestParam("currentUser")String currentUser,
-                                @RequestParam("iduser2")String idUser2,
-                                @RequestParam("chatID")int chatID,
-                                @RequestParam("chatLog")String chatLog,
-                                @RequestParam("tradeObjects")String tradeObjects,
-                                @RequestParam("tradeState")String tradeState,
-                                @RequestParam("userMoneyValue")String userMoney,
-                                @RequestParam("opponentMoneyValue")String opponentMoney,
-                                HttpSession session) throws MessagingException
-    {
+    public String updateTrade(@RequestParam("idTransaction") int transactionID,
+                              @RequestParam("currentUser") String currentUser,
+                              @RequestParam("iduser2") String idUser2,
+                              @RequestParam("chatID") int chatID,
+                              @RequestParam("chatLog") String chatLog,
+                              @RequestParam("tradeObjects") String tradeObjects,
+                              @RequestParam("tradeState") String tradeState,
+                              @RequestParam("userMoneyValue") String userMoney,
+                              @RequestParam("opponentMoneyValue") String opponentMoney,
+                              HttpSession session) throws MessagingException {
 
         UsersEntity currentLoggedUser = authUserContext.getUser();
         if (currentLoggedUser != null) {
@@ -255,7 +253,7 @@ public class TransactionController {
             String queryIdChat = "select c.idchatmessage from ChatmessageEntity c where c.idchat = :idChat";
             Query queryObject = entityManager.createQuery(queryIdChat);
             queryObject.setParameter("idChat", chatID);
-            int idChatMessage = (Integer)queryObject.getSingleResult();
+            int idChatMessage = (Integer) queryObject.getSingleResult();
 
             ChatmessageEntity updateChatMessage = new ChatmessageEntity();
             updateChatMessage.setIdchatmessage(idChatMessage);
@@ -266,27 +264,26 @@ public class TransactionController {
             chatmessageRepository.save(updateChatMessage);
 
             Query queryObject2 = entityManager.createQuery("select o from ObjecttransactionEntity o where o.idtransaction = :idTransaction");
-            queryObject2.setParameter("idTransaction",transactionID);
+            queryObject2.setParameter("idTransaction", transactionID);
             List<ObjecttransactionEntity> listObjets = queryObject2.getResultList();
 
-            for(Iterator<ObjecttransactionEntity> i = listObjets.iterator(); i.hasNext(); ) {
+            for (Iterator<ObjecttransactionEntity> i = listObjets.iterator(); i.hasNext(); ) {
                 objectsTransactionRepository.delete(i.next());
             }
 
             ObjecttransactionEntity updateTransactionsObjects = new ObjecttransactionEntity();
             String[] objectIDs = tradeObjects.split(";");
 
-            for(int i = 0; i < objectIDs.length; i++)
-            {
+            for (int i = 0; i < objectIDs.length; i++) {
                 updateTransactionsObjects.setIdobject(Integer.parseInt(objectIDs[i]));
                 updateTransactionsObjects.setIdtransaction(transactionID);
                 objectsTransactionRepository.save(updateTransactionsObjects);
             }
 
-            if(userMoney.equals("")){
+            if (userMoney.equals("")) {
                 userMoney = "0";
             }
-            if(opponentMoney.equals("")){
+            if (opponentMoney.equals("")) {
                 opponentMoney = "0";
             }
             //Ajout de l'item d'Argent du User
@@ -303,27 +300,65 @@ public class TransactionController {
             updateTransactionMoneyOpposant.setValue(Integer.parseInt(opponentMoney));
             transactionMoneyRepository.save(updateTransactionMoneyOpposant);
 
-            if(tradeState.equals("T")){
+            if(updateTransaction.getIscompleted().equals("T")){
                 //
                 UsersEntity user1 = customUserRepository.findUserById(currentUser);
                 UsersEntity user2 = customUserRepository.findUserById(idUser2);
                 List<CustomObjetImageEntity> listUser1 = customObjectRepository.getTradeObjects(transactionID, currentUser);
                 List<CustomObjetImageEntity> listUser2 = customObjectRepository.getTradeObjects(transactionID, idUser2);
-                smtpMailSender.send(user1.getEmail(), "Troc #" + transactionID + "complété.", "Bonjour " + user1.getFirstname() + " " + user1.getLastname() +
+                // Message body du user1
+                String bodyUser1 = "";
+                bodyUser1 += "<a href=\"http://troke.me\"><img src=\"http://imgh.us/trok_fini.jpg\"/></a><br/>" +
+                        "Bonjour " + user1.getFirstname() + " " + user1.getLastname() +
                         ", <br/>" +
                         " Votre échange est maintenant prête à être complétée.<br/> " +
-                        " Vous devez contacter " + user2.getFirstname() + " " + user2.getFirstname() + " au " + user2.getTelephone() + " ou au " + user2.getEmail() + ". <br/>"+
-                        " <a href='http://www.google.ca'>Allez sur troké</a>");
-                smtpMailSender.send(user2.getEmail(), "Bienvenue chez Troké", "Bonjour " + "prénom" + " " + "nom de famille" + ", <br/>" +
-                        " Vous êtes maintenant inscrit sur Troké.<br/> " +
-                        " <a href='http://www.google.ca'>Allez sur troké</a>");
+                        "Voici la liste de vos items mis en échange: <br/>" +
+                        "<ul>";
+                for(CustomObjetImageEntity obj : listUser1){
+                    bodyUser1 += "<li>" + obj.getNameObject() + "</li>";
+                }
+                bodyUser1 += "</ul>" +
+                        "Contre :<br/><ul>";
+                for(CustomObjetImageEntity obj : listUser2){
+                    bodyUser1 += "<li>" + obj.getNameObject() + "</li>";
+                }
+                bodyUser1 += "</ul><br/>" +
+                        " Vous devez contacter " + user2.getFirstname() + " " + user2.getFirstname() + "<br/>" +
+                        " au " + user2.getTelephone() +  "<br/>" +
+                        " ou au " + user2.getEmail() + ". <br/>"+
+                        " <a href='http://www.troke.me'>Allez sur troké</a>";
 
+                smtpMailSender.send(user1.getEmail(), "Trok-é : Trok #" + transactionID + "complété.",bodyUser1); // Envoie du courriel au user1
+
+                // Message body du user2
+                String bodyUser2 = "";
+                bodyUser2 += "<a href=\"http://troke.me\"><img src=\"http://imgh.us/trok_fini.jpg\"/></a><br/>" +
+                        "Bonjour " + user2.getFirstname() + " " + user2.getLastname() +
+                        ", <br/>" +
+                        " Votre échange est maintenant prête à être complétée.<br/> " +
+                        "Voici la liste de vos items mis en échange: <br/>" +
+                        "<ul>";
+                for(CustomObjetImageEntity obj : listUser2){
+                    bodyUser2 += "<li>" + obj.getNameObject() + "</li>";
+                }
+                bodyUser2 += "</ul><br/>" +
+                        "Contre :<br/><ul>";
+                for(CustomObjetImageEntity obj : listUser1){
+                    bodyUser2 += "<li>" + obj.getNameObject() + "</li>";
+                }
+                bodyUser2 += "</ul>" +
+                        " Vous devez contacter " + user1.getFirstname() + " " + user1.getFirstname() +  "<br/>" +
+                        " au " + user1.getTelephone() +  "<br/>" +
+                        " ou au " + user1.getEmail() + ". <br/>"+
+                        " <a href='http://www.troke.me'>Allez sur troké</a>";
+
+                smtpMailSender.send(user2.getEmail(), "Trok-é : Trok #" + transactionID + "complété.", bodyUser2);
                 //Delete les items qui ont étés échangés
                 Query queryObject3 = entityManager.createQuery("select ob from ObjectsEntity ob where idobject in (select o.idobject from ObjecttransactionEntity o where o.idtransaction = :idTransaction)");
-                queryObject3.setParameter("idTransaction",transactionID);
+                queryObject3.setParameter("idTransaction", transactionID);
                 List<ObjectsEntity> listObjectsToDelete = queryObject3.getResultList();
 
-                for(Iterator<ObjectsEntity> i = listObjectsToDelete.iterator(); i.hasNext(); ) {
+                for (Iterator<ObjectsEntity> i = listObjectsToDelete.iterator(); i.hasNext(); ) {
                     objectRepository.delete(i.next());
                 }
             }
