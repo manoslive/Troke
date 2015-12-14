@@ -5,6 +5,8 @@
         function Ajout(){
             document.getElementsByName("AjoutItem").submit();
         }
+
+
     </script>
 </head>
 <body>
@@ -72,9 +74,10 @@
                 </div>
 
                 <div class="divModalAjoutDescriptionPhoto">
+
                     <div class="divModalAjoutDescription">
-                                <textarea class="signup-full" type="text" rows="13" placeholder="Description"
-                                          name="Description" id="description" style="resize:none"
+                                <textarea class="signup-full" type="text" rows="12" cols="30" placeholder="Description"
+                                          name="Description" id="description" style="resize:none" wrap="hard" maxlength="340"
                                           th:text="*{session.ObjectToModify ne null}? ${session.ObjectToModify.getDescObject()} : ''">
                                     </textarea>
                     </div>
@@ -146,7 +149,7 @@
                     </div>
 
                     <div class="errorAjout">
-                        <p> *Erreur icite</p>
+                        <p> </p>
                     </div>
 
                 </div>

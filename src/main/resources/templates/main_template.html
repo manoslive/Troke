@@ -151,7 +151,7 @@
             <div class="mask"></div>
         </div>
         <form th:action="@{/auth}" method="post" th:object="${post}">
-            <div style="text-align:center">
+            <div style="text-align:left">
                 <input class="signup-full" type="text" placeholder="Nom d'usager" name="iduser" />
                 <input class="signup-full" type="password" placeholder="Mot de Passe" name="pass"/>
                 <input style="float:left" type="checkbox" name="StayConnected" value="Stay">Rester Connecter</input>
@@ -518,7 +518,7 @@
     <div class="basdepage">
         <!-- <p style="text-align:center;font-size:12px;">&copy; <a href="#about">Trok-é</a> - Création <a href="mailto:YSTEINTHAL@GMAIL.COM">Yvon Steinthal</a> / <a href="mailto:BUBA_DUDE_16@HOTMAIL.COM">Alexandre Dubé</a> / <a href="mailto:ebeloin@hotmail.com">Emmanuel Beloin</a> / <a href="mailto:SHAUN.11.COOPER@GMAIL.COM">Shaun Cooper</a></p> -->
         <p style="text-align:center;font-size:12px;color:black;">Copyright © Trok-é 2015 | <a th:href="@{/about}">À
-            propos</a><!-- | <a
+            propos</a> | <a>FAQ</a><!-- | <a
                 th:href="@{/}">Équipe Trok-é</a>--></p>
     </div>
 </footer>
