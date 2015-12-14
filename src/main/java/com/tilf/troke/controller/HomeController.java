@@ -240,5 +240,5 @@ public class HomeController {
                 session.removeAttribute("error");
                 return "redirect:#openModalConnexion";
             }
-        }
+    }
 }

@@ -339,10 +339,16 @@
 
                     <div id="topAdd" th:style="*{userInventory.size() eq 0}? 'display:none;':''">
 
-
+                        <th:block th:if="*{userInventory.size() lt 10}">
                             <a id="iconAdd2" class="icon-plus-sign icon-6x" href="/openModalAjouter"
                                data-toggle="tooltip" data-placement="bottom" title="Ajouter un nouvel item / service!"
                                style="text-decoration:none; color:white; font-size:80px;"></a><br/>
+                        </th:block>
+                        <th:block th:if="*{userInventory.size() ge 10}">
+                            <a id="iconAdd2" class="icon-plus-sign icon-6x"
+                               data-toggle="tooltip" data-placement="bottom" title="Votre inventaire est plein! (10)"
+                               style="text-decoration:none; color:gray; font-size:80px;"></a><br/>
+                        </th:block>
 
                     </div>
 
