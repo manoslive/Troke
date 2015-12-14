@@ -2,21 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f947bb62-d6ad-4da4-b5ae-73659883da55" name="Default" comment="ayy">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/User_manual.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/manual.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomObjectRepositoryImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomObjectRepositoryImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomUserRepository.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomUserRepository.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomUserRepositoryImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomUserRepositoryImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/HomeController.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/HomeController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/LoginController.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/LoginController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/SearchController.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/SearchController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/uploaded-images/Thumbs.db" afterPath="$PROJECT_DIR$/src/main/resources/static/uploaded-images/Thumbs.db" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/TransactionController.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/TransactionController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/com/tilf/troke/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/search.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/search.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java" afterPath="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/main_template.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_template.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="troke_springboot.iws" />
@@ -60,64 +58,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="search.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html">
+      <file leaf-file-name="HomeController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.5161295">
-              <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="244" column="37" selection-start-line="244" selection-start-column="37" selection-end-line="244" selection-end-column="37" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#th:block#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#10093#10094#0" expanded="true" />
+                <element signature="e#10139#10140#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="searchKeyword.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchKeyword.html">
+      <file leaf-file-name="manual.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/manual.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.419354">
-              <caret line="247" column="30" selection-start-line="247" selection-start-column="30" selection-end-line="247" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.1563055">
+              <caret line="4" column="84" selection-start-line="4" selection-start-column="84" selection-end-line="4" selection-end-column="84" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TransactionController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/TransactionController.java">
+      <file leaf-file-name="main_template.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/main_template.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.851852">
-              <caret line="229" column="72" selection-start-line="229" selection-start-column="72" selection-end-line="229" selection-end-column="72" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/LoginController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="52" column="34" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="searchMultipleObjects.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchMultipleObjects.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="155.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/search.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="170" column="0" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="2" />
-              <folding />
+            <state vertical-scroll-proportion="-10.645162">
+              <caret line="521" column="44" selection-start-line="521" selection-start-column="44" selection-end-line="521" selection-end-column="44" />
+              <folding>
+                <marker date="1450114457463" expanded="true" signature="3782:3791" placeholder="..." />
+                <marker date="1450114457463" expanded="true" signature="4574:4583" placeholder="..." />
+                <marker date="1450114457463" expanded="true" signature="4902:4911" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -128,10 +101,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="Html5" />
         <option value="CSS File" />
         <option value="AnnotationType" />
         <option value="Class" />
+        <option value="Html5" />
       </list>
     </option>
   </component>
@@ -152,6 +125,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/UsersEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/validator/FieldMatchValidator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/domain/FieldMatch.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/annotation/FieldMatch.java" />
@@ -170,7 +144,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/css/style_monContact.css" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/about.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/about.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/main_template.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/style.css" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/style_ribbon.css" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/style_home.css" />
@@ -183,7 +156,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/ObjectRepository.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/profil/openModalAjouter.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/ObjectsEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomChatMessageRepositoryImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomImageObjectRepositoryImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/ProfilController.java" />
@@ -196,13 +168,14 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/trade.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/filter/SearchFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepositoryImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/TransactionController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchKeyword.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/search.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/main_template.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/home/manual.html" />
       </list>
     </option>
   </component>
@@ -278,64 +251,10 @@
             <id />
           </State>
           <State>
-            <id>Android Lint</id>
-          </State>
-          <State>
-            <id>Assignment issuesGroovy</id>
-          </State>
-          <State>
-            <id>Assignment issuesJava</id>
-          </State>
-          <State>
-            <id>Bitwise operation issuesJavaScript</id>
-          </State>
-          <State>
-            <id>Control flow issuesJava</id>
-          </State>
-          <State>
-            <id>GeneralJavaScript</id>
-          </State>
-          <State>
-            <id>Groovy</id>
-          </State>
-          <State>
-            <id>Java</id>
-          </State>
-          <State>
-            <id>JavaScript</id>
-          </State>
-          <State>
-            <id>Potentially confusing code constructsGroovy</id>
-          </State>
-          <State>
-            <id>Potentially confusing code constructsJavaScript</id>
-          </State>
-          <State>
-            <id>Probable bugsGroovy</id>
-          </State>
-          <State>
-            <id>Probable bugsJava</id>
-          </State>
-          <State>
-            <id>Probable bugsJavaScript</id>
-          </State>
-          <State>
-            <id>Spelling</id>
-          </State>
-          <State>
             <id>Spring</id>
           </State>
           <State>
             <id>Spring MVCSpring</id>
-          </State>
-          <State>
-            <id>Threading issuesGroovy</id>
-          </State>
-          <State>
-            <id>Threading issuesJava</id>
-          </State>
-          <State>
-            <id>XPath</id>
           </State>
         </expanded-state>
         <selected-state>
@@ -369,8 +288,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -593,135 +512,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fragments" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="search" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="troke_springboot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="troke" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="troke_springboot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="troke" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="troke_springboot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="troke" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="troke_springboot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="troke" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -797,14 +588,14 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/troke_springboot-master/troke_springboot-master" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="dynamic.classpath" value="false" />
@@ -830,165 +621,16 @@
       <recent name="com.tilf.troke.domain" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Emmanuel\Documents\GitHub\troke\src\main\resources\static" />
+      <recent name="C:\Users\Emmanuel\Documents\GitHub\troke\src\main\resources" />
       <recent name="C:\Users\Shaun Cooper\Documents\Trok-é\Site Web DEC\troke\src\main\resources\static\images" />
       <recent name="C:\Users\Alex\Documents\GitHub\troke\src\main\resources\templates\fragments\home" />
       <recent name="C:\Users\Alex\Documents\GitHub\troke\src\main\resources\static\js" />
-      <recent name="C:\Users\Alex\Documents\GitHub\troke\src\main\java\com\tilf\troke\controller" />
-      <recent name="C:\Users\Alex\Documents\GitHub\troke\src\main\java\com\tilf\troke\entity" />
     </key>
     <key name="ImportMappingsDialog.RecentPackages">
       <recent name="com.tilf.troke.entity" />
       <recent name="" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/LoginController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/TransactionController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/UserController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/CustomObjetImageEntity.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/tilf/troke/entity/CustomSearchObjectEntity.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepository.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepositoryImpl.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomUserRepository.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomUserRepositoryImpl.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/tilf/troke/service/ObjectService.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/tilf/troke/service/SmtpMailSender.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/static/css/style_home.css</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/static/css/style_monProfil.css</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/static/css/style_search.css</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/static/css/style_trade.css</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/static/js/home.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/static/js/profil.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/static/js/search.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/templates/fragments/home/home.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/templates/fragments/home/myTrades.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchKeyword.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchMultipleObjects.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchNull.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchSingleObject.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/templates/fragments/profil/pageinventaire.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/templates/fragments/site/inventoryUser.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/templates/main_template.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/com/tilf/troke/controller/HomeController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/com/tilf/troke/controller/LoginController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/com/tilf/troke/controller/ProfilController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/com/tilf/troke/controller/TransactionController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/com/tilf/troke/controller/UserController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/com/tilf/troke/entity/CustomObjetImageEntity.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomObjectRepository.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomObjectRepositoryImpl.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomUserRepository.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/com/tilf/troke/repository/CustomUserRepositoryImpl.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunManager" selected="Maven.troke [spring-boot:run]">
     <configuration default="false" name="troke [spring-boot:run]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
@@ -1478,7 +1120,8 @@
       <workItem from="1448457423716" duration="3209000" />
       <workItem from="1448460757152" duration="11745000" />
       <workItem from="1448978216286" duration="5065000" />
-      <workItem from="1450102743457" duration="6147000" />
+      <workItem from="1450102743457" duration="10000" />
+      <workItem from="1450108929860" duration="5602000" />
     </task>
     <task id="LOCAL-00019" summary="menu catégorie lien fonctionnel">
       <created>1443767136144</created>
@@ -1778,7 +1421,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="413622000" />
+    <option name="totallyTimeSpent" value="413087000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1805,9 +1448,9 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30178174" sideWeight="0.49572194" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850778" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18229167" sideWeight="0.53061223" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18716578" sideWeight="0.53588516" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18716578" sideWeight="0.46938777" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18716578" sideWeight="0.46411484" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29114583" sideWeight="0.5055118" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16837482" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -2033,7 +1676,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3153014">
           <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2126,6 +1768,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/trade.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.026378896">
+          <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/4.1.7.RELEASE/spring-core-4.1.7.RELEASE.jar!/org/springframework/cglib/proxy/MethodProxy.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3515901">
@@ -2140,19 +1789,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/filter/SearchFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="40" selection-start-line="31" selection-start-column="40" selection-end-line="31" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.10138249">
           <caret line="86" column="55" selection-start-line="86" selection-start-column="55" selection-end-line="86" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2163,6 +1803,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="291" column="36" selection-start-line="291" selection-start-column="36" selection-end-line="291" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#th:block#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.10138249">
@@ -2170,96 +1828,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepositoryImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/TransactionController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="188" column="26" selection-start-line="188" selection-start-column="26" selection-end-line="188" selection-end-column="26" />
+          <caret line="310" column="93" selection-start-line="310" selection-start-column="84" selection-end-line="310" selection-end-column="93" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/trade.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/repository/CustomObjectRepositoryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.741936">
-          <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/main_template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.884892">
-          <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="219" column="0" selection-start-line="219" selection-start-column="0" selection-end-line="219" selection-end-column="0" />
           <folding>
-            <marker date="1450102763900" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1450102763900" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1450102763900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1450102763772" expanded="true" signature="-1:-1" placeholder="select NAME_..category..." />
+            <marker date="1450102763772" expanded="true" signature="-1:-1" placeholder="select NAME_..subcategory..." />
+            <marker date="1450102763772" expanded="true" signature="-1:-1" placeholder="select IDOBJ..objects..." />
+            <marker date="1450102763772" expanded="true" signature="-1:-1" placeholder="select IDOBJ..objects..." />
+            <marker date="1450102763772" expanded="true" signature="-1:-1" placeholder="select disti..category..." />
+            <marker date="1450102763772" expanded="true" signature="-1:-1" placeholder="select disti..subcategory..." />
+            <marker date="1450102763772" expanded="true" signature="-1:-1" placeholder="select s.NAM..category..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/SearchController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/filter/SearchFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4814815">
-          <caret line="156" column="60" selection-start-line="156" selection-start-column="60" selection-end-line="156" selection-end-column="60" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="40" selection-start-line="31" selection-start-column="40" selection-end-line="31" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchKeyword.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.419354">
-          <caret line="247" column="30" selection-start-line="247" selection-start-column="30" selection-end-line="247" selection-end-column="30" />
+        <state vertical-scroll-proportion="1.037037">
+          <caret line="51" column="96" selection-start-line="51" selection-start-column="96" selection-end-line="51" selection-end-column="96" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search/searchMultipleObjects.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/myTrades.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="155.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/myTradesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.2222222">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/HomeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33214286">
-          <caret line="191" column="62" selection-start-line="191" selection-start-column="61" selection-end-line="191" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5161295">
-          <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="244" column="37" selection-start-line="244" selection-start-column="37" selection-end-line="244" selection-end-column="37" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#th:block#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#10093#10094#0" expanded="true" />
+            <element signature="e#10139#10140#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/LoginController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/main_template.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="34" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
-          <folding />
+        <state vertical-scroll-proportion="-10.645162">
+          <caret line="521" column="44" selection-start-line="521" selection-start-column="44" selection-end-line="521" selection-end-column="44" />
+          <folding>
+            <marker date="1450114457463" expanded="true" signature="3782:3791" placeholder="..." />
+            <marker date="1450114457463" expanded="true" signature="4574:4583" placeholder="..." />
+            <marker date="1450114457463" expanded="true" signature="4902:4911" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/search.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/home/manual.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="170" column="0" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tilf/troke/controller/TransactionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.851852">
-          <caret line="229" column="72" selection-start-line="229" selection-start-column="72" selection-end-line="229" selection-end-column="72" />
+        <state vertical-scroll-proportion="0.1563055">
+          <caret line="4" column="84" selection-start-line="4" selection-start-column="84" selection-end-line="4" selection-end-column="84" />
           <folding />
         </state>
       </provider>
