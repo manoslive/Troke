@@ -251,6 +251,7 @@ function init() {
     document.getElementById('startTradeForm').onsubmit = function() {
             return false;
     }
+
     var modal, modalInfoItem = document.getElementsByName("modal-Item-Info");
     for(modal in modalInfoItem){
         modalInfoItem[modal].addEventListener('click', function (e) {
@@ -261,6 +262,7 @@ function init() {
             e.stopPropagation();
         }, false);
     }
+
     /* Width ajustable du div échange qui est horizontaly scrollable */
     $(document).ready(function () {
         var container_width = 0 * $(".container-inner").length;
