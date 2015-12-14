@@ -240,7 +240,7 @@
             </th:block>
 
             <!-- Dans le cas où un ou plusieurs champs avaient des erreurs -->
-            <th:block th:if="${fields != null and fields.hasErrors()}">
+            <th:block th:if="${fields != null and fields.hasErrors() and session.inventaire eq null}">
                 <div>
                     <div style="float: left; width: 48.5%">
                         <!-- START iduser -->

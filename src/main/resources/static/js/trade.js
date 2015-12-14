@@ -143,6 +143,35 @@ $(window).resize(function() {
 $( init );
 resize();
 function init() {
+    var imagebanner = document.getElementById("Banniere");
+    $(window).scroll(function () {
+        //if you hard code, then use console
+        //.log to determine when you want the
+        //nav bar to stick.
+        //console.log($(window).scrollTop())
+        var height = imagebanner.clientHeight;
+
+
+        if ($(window).scrollTop() > imagebanner.clientHeight) {
+            $('#nav_bar').addClass('navbar-fixed');
+            $('#nav_bar').removeClass('navbar');
+
+            $('#cont').addClass('padbot');
+            //$('#nav_bar').css('top', 0);
+            //$('#nav_bar').toggleClass('navbar navbar-fixed');
+        }
+
+
+        if ($(window).scrollTop() < imagebanner.clientHeight) {
+
+            $('#nav_bar').removeClass('navbar-fixed');
+            $('#nav_bar').addClass('navbar');
+            //$('#nav_bar').toggleClass('navbar-fixed navbar');
+            $('#cont').removeClass('padbot');
+            //$('#nav_bar').addClass('navbar-fixed');
+        }
+    });
+
     checkAdjustForScrollBar($("#UserInventory"));
     checkAdjustForScrollBar($("#OpponentInventory"));
     $("#UserInventory").bind("DOMSubtreeModified", function() {

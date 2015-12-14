@@ -679,7 +679,7 @@ a{
 {
     position:absolute;
     height:240px;
-    width:60%;
+    width:240px;
     color:white;
     overflow:hidden;
     border:none;
@@ -687,7 +687,7 @@ a{
     word-wrap: normal;
     resize: none;
     top: 25px;
-    left: 50px;
+    left: 150px;
 }
 
 textarea.form-control {

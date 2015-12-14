@@ -1,6 +1,7 @@
 package com.tilf.troke.controller;
 
 import com.tilf.troke.auth.AuthUserContext;
+import com.tilf.troke.domain.Add;
 import com.tilf.troke.entity.*;
 import com.tilf.troke.filter.SearchFilter;
 import com.tilf.troke.repository.*;
@@ -193,6 +194,7 @@ public class HomeController {
 
             // entity a envoyer a la page pour peupler le combobox
             List<CustomCategorySubCategoryEntity> itemCombo = new ArrayList<CustomCategorySubCategoryEntity>();
+
 
             // avoir la liste de category pour le comboBox
             List<CategoryEntity> listCat = customCategoryRepository.getAllCategory(); // liste de tout les category

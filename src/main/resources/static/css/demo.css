@@ -80,11 +80,11 @@
     -webkit-transform-style: preserve-3d;
     background: url("../images/WorldBanner6.jpg") repeat-x;
     background-size: auto 100%;
-    -webkit-animation: move-map 30s infinite linear;
-    -moz-animation: move-map 30s infinite linear;
-    -o-animation: move-map 30s infinite linear;
-    -ms-animation: move-map 30s infinite linear;
-    animation: move-map 30s infinite linear;
+    -webkit-animation: move-map 60s infinite linear;
+    -moz-animation: move-map 60s infinite linear;
+    -o-animation: move-map 60s infinite linear;
+    -ms-animation: move-map 60s infinite linear;
+    animation: move-map 60s infinite linear;
 }
 
 .ball:before {
@@ -127,15 +127,15 @@
 
 
 .stage {
-    width: 275px;
+    width: 500px;
     height: 275px;
     display: inline-block;
     margin: 20px;
-    -webkit-perspective: 1200px;
-    -moz-perspective: 1200px;
-    -ms-perspective: 1200px;
-    -o-perspective: 1200px;
-    perspective: 1200px;
+    -webkit-perspective: 2000px;
+    -moz-perspective: 2000px;
+    -ms-perspective: 2000px;
+    -o-perspective: 2000px;
+    perspective: 2000px;
     -webkit-perspective-origin: 50% 50%;
     -moz-perspective-origin: 50% 50%;
     -ms-perspective-origin: 50% 50%;
@@ -145,7 +145,7 @@
 
 @-moz-keyframes move-map {
     0% {
-        background-position: -849px 0; }
+        background-position: -2000px 0; }
 
     100% {
         background-position: 0 0; } }
@@ -154,27 +154,27 @@
     0% {
         background-position: 0 0; }
     100% {
-        background-position: -849px 0; }
+        background-position: -2000px 0; }
 }
 
 
 @-o-keyframes move-map {
     0% {
-        background-position: -849px 0; }
+        background-position: -2000px 0; }
 
     100% {
         background-position: 0 0; } }
 
 @-ms-keyframes move-map {
     0% {
-        background-position: -849px 0; }
+        background-position: -2000px 0; }
 
     100% {
         background-position: 0 0; } }
 
 @keyframes move-map {
     0% {
-        background-position: -849px 0; }
+        background-position: -2000px 0; }
 
     100% {
         background-position: 0 0; } }
