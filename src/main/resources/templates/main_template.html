@@ -126,12 +126,12 @@
 
                     <div class="BTN_Creds">
                         <span th:if="${authUser} eq null">
-                            <a href="/openModalConnexion" class="btn btn-sm animated-button thar-two">Connexion</a>
+                            <a id="signup" href="/openModalConnexion" class="btn btn-sm animated-button thar-two">Connexion</a>
                             <a href="#openModalInscription" class="btn btn-sm animated-button thar-two">Inscription</a>
                         </span>
                         <span th:if="${authUser} ne null">
-                            <a th:href="@{/logout}" th:text="'Bienvenue ' + ${authUser.firstname}"
-                               class="btn btn-sm animated-button thar-two"></a>
+                            <a id="signup" th:href="@{/logout}" th:text="'Bienvenue ' + ${authUser.firstname}"
+                               class="btn btn-sm animated-button thar-two"  th:onmouseover="'javascript:logoutButton(\''+ ${authUser.firstname} +'\')'"></a>
                         </span>
                     </div>
 

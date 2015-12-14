@@ -141,5 +141,11 @@ function forgottenPasswordForm(){
     var data = $( "input[name=iduser]" ).val();
     $.post( "/resetpassword", {iduser:data});
 }
+function logoutButtonMouseenter() {
+    $("#signup").text("Déconnexion");
+}
+function logoutButtonMouseLeave(oldValue){
+    $("#signup").text(oldValue);
+}
 
 
