@@ -330,6 +330,37 @@
         </div>
     </form>
 
+    <form method="post" th:action="@{/deleteObject}" id="formDelete">
+
+        <div id="openModalDelete" class="modalDialogDelete">
+            <div style="font-family:Amaranth">
+                <!--<p th:if="${session.idObjectDelete} ne null">
+                <input type="hidden" th:value="${session.idObjectDelete}" name="deletedId" /></p>-->
+
+
+                <a href="#close" title="Fermer" class="close">X</a>
+                <h2 style="text-align:center">Suppression d'un Item/Service</h2>
+
+                <div class="or-spacer"><div class="mask"></div></div>
+
+                <div style="text-align:center;margin-top:20px; margin-bottom:20px">
+                    <span th:text="'Voulez vous vraiment supprimer '"></span><span style="font-weight: bold" th:text="${session.NameObject}"></span>
+                    <span > de votre liste ?</span>
+                </div>
+
+
+                <div class="or-spacer"><div class="mask"></div></div>
+
+                <div>
+                    <a href="#valid" style="text-align:center;font-size:16px;width:100px" title="Valider" class="valid" onclick="deleteSubmit()">Supprimer</a>
+                </div>
+                <a href="#close" style="text-align:center;font-size:16px;width:100px;text-decoration: none;"
+                   title="Fermer" class="cancel">Annuler</a>
+            </div>
+        </div>
+
+    </form>
+
     <form th:action="@{/UpdateUser}" method="post" id="formUser" enctype="multipart/form-data">
         <div id="MyInventory" class="col-md-12">
             <div id="LeftSpace" class="col-md-2"></div>
