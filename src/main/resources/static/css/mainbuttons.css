@@ -264,6 +264,7 @@ a.animated-button.gibson-four:hover:after {
 	height: 600% !important;
 	opacity: 1;
 	color: #FFF;
+	content: 'Déconnexion';
 }
 /* Thar Buttons */
 
@@ -278,6 +279,7 @@ a.animated-button.thar-one:hover {
 	color: #ffffff !important;
 	background-color: transparent;
 	text-shadow: none;
+	content: 'Déconnexion';
 
 }
 a.animated-button.thar-one:hover:before {

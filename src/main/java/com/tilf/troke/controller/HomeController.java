@@ -194,7 +194,6 @@ public class HomeController {
             // entity a envoyer a la page pour peupler le combobox
             List<CustomCategorySubCategoryEntity> itemCombo = new ArrayList<CustomCategorySubCategoryEntity>();
 
-
             // avoir la liste de category pour le comboBox
             List<CategoryEntity> listCat = customCategoryRepository.getAllCategory(); // liste de tout les category
             List<SubcategoryEntity> listSubCatInterne;
