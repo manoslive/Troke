@@ -561,12 +561,13 @@
 
 #InventoryContainer
 {
-    background-image:url("../images/WorldBanner6.jpg") ;
+    background-color:#00374C;
     -moz-border-radius: 0 0 10px 10px;
     -khtml-border-radius: 0 0 10px 10px;
     -webkit-border-radius: 0 0 10px 10px;
+
     height:100%;
-    margin-bottom:50px;
+
 }
 
 .bubbleinv
@@ -575,18 +576,36 @@
     background-size:cover;
 }
 
-#Innerdiv
+.Innerdiv
 {
     background-color:#00374C;
-    background-size: 400%;
     -moz-border-radius: 0 0 10px 10px;
     -khtml-border-radius: 0 0 10px 10px;
     -webkit-border-radius: 0 0 10px 10px;
+    height:100%;
+    overflow:auto;
+
+
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 15px;
+
+
+
+
 }
+
 
 #innerbtn
 {
     margin: 0 auto;
+    margin-bottom:50px;
+    margin-top:20px;
+
 }
 
 #iconMod
@@ -654,4 +673,23 @@ a{
     -moz-border-radius: 0 0 10px 10px;
     -khtml-border-radius: 0 0 10px 10px;
     -webkit-border-radius: 0 0 10px 10px;
+}
+
+.DescTextArea
+{
+    position:absolute;
+    height:240px;
+    width:60%;
+    color:white;
+    overflow:hidden;
+    border:none;
+    background-color:transparent;
+    word-wrap: normal;
+    resize: none;
+    top: 25px;
+    left: 50px;
+}
+
+textarea.form-control {
+    height: 100%;
 }

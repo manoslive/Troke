@@ -263,6 +263,10 @@
 
 }
 
+.categoriess{
+    font-size: 13px;
+}
+
 #thumbnaileffect {
 
     display: inline-block;
@@ -390,6 +394,7 @@
     -moz-box-shadow: 1px 1px 3px #000;
     -webkit-box-shadow: 1px 1px 3px #000;
     box-shadow: 1px 1px 3px #000;
+    cursor:pointer;
 }
 
 .valid:hover {

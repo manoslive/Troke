@@ -58,6 +58,9 @@ public class TransactionController {
     private CustomTransactionMoneyRepository customTransactionMoneyRepository;
 
     @Autowired
+    private ObjectRepository objectRepository;
+
+    @Autowired
     private SmtpMailSender smtpMailSender;
 
     @PersistenceContext
@@ -67,7 +70,7 @@ public class TransactionController {
     @RequestMapping(value = "/startTrade", method = RequestMethod.GET)
     public String openNewTrade(@RequestParam("itemID") int itemID, Model model, HttpSession session) {
         UsersEntity currentUser = authUserContext.getUser();
-        if(currentUser != null) {
+        if (currentUser != null) {
             UsersEntity opponentID = customUserRepository.getUserFromItem(itemID);
             model.addAttribute("startTradeOpponent", opponentID);
             model.addAttribute("currentItem", customObjectRepository.getCustomObjectImageEntityByIdObject(itemID));
@@ -84,7 +87,7 @@ public class TransactionController {
                 context.setVariable("userActif", currentUser);
             }
             return "fragments/home/startTrade";
-        }else{
+        } else {
             session.removeAttribute("error");
             return "redirect:#openModalConnexion";
         }
@@ -135,6 +138,7 @@ public class TransactionController {
         }
         return "fragments/home/trade";
     }
+
     //addTrade - Ajout d'un trade lorsqu'on envoie un échange de la page startTrade
     //Ajout à Transaction
     //Ajout à Chat
@@ -142,13 +146,12 @@ public class TransactionController {
     //Ajout à ObjectTransaction
     //Ajout à transactionMoney
     @RequestMapping(value = "/addTrade", method = RequestMethod.POST)
-    public String addNewTrade(@RequestParam("iduser1")String idUser1,
-                              @RequestParam("iduser2")String idUser2,
-                              @RequestParam("chatLog")String chatLog,
-                              @RequestParam("tradeObjects")String tradeObjects,
-                              @RequestParam("newTradeMoneyValue")String opponentMoney,
-                              HttpSession session)
-    {
+    public String addNewTrade(@RequestParam("iduser1") String idUser1,
+                              @RequestParam("iduser2") String idUser2,
+                              @RequestParam("chatLog") String chatLog,
+                              @RequestParam("tradeObjects") String tradeObjects,
+                              @RequestParam("newTradeMoneyValue") String opponentMoney,
+                              HttpSession session) {
 
         UsersEntity currentUser = authUserContext.getUser();
         if (currentUser != null) {
@@ -164,7 +167,7 @@ public class TransactionController {
             //Get le id de la transaction créée ^^
             String queryIdTransaction = "select t.idtransaction from TransactionsEntity t ORDER  BY t.idtransaction Desc";
             Query queryObject = entityManager.createQuery(queryIdTransaction).setMaxResults(1);
-            int idTransaction = (Integer)queryObject.getSingleResult();
+            int idTransaction = (Integer) queryObject.getSingleResult();
 
             //Nouveau chat
             ChatEntity newChat = new ChatEntity();
@@ -174,7 +177,7 @@ public class TransactionController {
             //Get le id du chat créée ^^
             String queryIdChat = "select c.idchat from ChatEntity c ORDER  BY c.idchat Desc";
             Query queryObject2 = entityManager.createQuery(queryIdChat).setMaxResults(1);
-            int idChat = (Integer)queryObject2.getSingleResult();
+            int idChat = (Integer) queryObject2.getSingleResult();
 
             //Set les messages du Chat dans le chat créée^^
             ChatmessageEntity newChatMessage = new ChatmessageEntity();
@@ -189,8 +192,7 @@ public class TransactionController {
             String[] objectIDs = tradeObjects.split(";");
 
             //Ajout de chacun des items dans la bd
-            for(int i = 0; i < objectIDs.length; i++)
-            {
+            for (int i = 0; i < objectIDs.length; i++) {
                 addTransactionsObjects.setIdobject(Integer.parseInt(objectIDs[i]));
                 addTransactionsObjects.setIdtransaction(idTransaction);
                 objectsTransactionRepository.save(addTransactionsObjects);
@@ -226,17 +228,16 @@ public class TransactionController {
     //update à ObjectTransaction
     //update à transactionMoney
     @RequestMapping(value = "/updateTrade", method = RequestMethod.POST)
-    public String updateTrade(@RequestParam("idTransaction")int transactionID,
-                                @RequestParam("currentUser")String currentUser,
-                                @RequestParam("iduser2")String idUser2,
-                                @RequestParam("chatID")int chatID,
-                                @RequestParam("chatLog")String chatLog,
-                                @RequestParam("tradeObjects")String tradeObjects,
-                                @RequestParam("tradeState")String tradeState,
-                                @RequestParam("userMoneyValue")String userMoney,
-                                @RequestParam("opponentMoneyValue")String opponentMoney,
-                                HttpSession session) throws MessagingException
-    {
+    public String updateTrade(@RequestParam("idTransaction") int transactionID,
+                              @RequestParam("currentUser") String currentUser,
+                              @RequestParam("iduser2") String idUser2,
+                              @RequestParam("chatID") int chatID,
+                              @RequestParam("chatLog") String chatLog,
+                              @RequestParam("tradeObjects") String tradeObjects,
+                              @RequestParam("tradeState") String tradeState,
+                              @RequestParam("userMoneyValue") String userMoney,
+                              @RequestParam("opponentMoneyValue") String opponentMoney,
+                              HttpSession session) throws MessagingException {
 
         UsersEntity currentLoggedUser = authUserContext.getUser();
         if (currentLoggedUser != null) {
@@ -252,7 +253,7 @@ public class TransactionController {
             String queryIdChat = "select c.idchatmessage from ChatmessageEntity c where c.idchat = :idChat";
             Query queryObject = entityManager.createQuery(queryIdChat);
             queryObject.setParameter("idChat", chatID);
-            int idChatMessage = (Integer)queryObject.getSingleResult();
+            int idChatMessage = (Integer) queryObject.getSingleResult();
 
             ChatmessageEntity updateChatMessage = new ChatmessageEntity();
             updateChatMessage.setIdchatmessage(idChatMessage);
@@ -263,27 +264,26 @@ public class TransactionController {
             chatmessageRepository.save(updateChatMessage);
 
             Query queryObject2 = entityManager.createQuery("select o from ObjecttransactionEntity o where o.idtransaction = :idTransaction");
-            queryObject2.setParameter("idTransaction",transactionID);
+            queryObject2.setParameter("idTransaction", transactionID);
             List<ObjecttransactionEntity> listObjets = queryObject2.getResultList();
 
-            for(Iterator<ObjecttransactionEntity> i = listObjets.iterator(); i.hasNext(); ) {
+            for (Iterator<ObjecttransactionEntity> i = listObjets.iterator(); i.hasNext(); ) {
                 objectsTransactionRepository.delete(i.next());
             }
 
             ObjecttransactionEntity updateTransactionsObjects = new ObjecttransactionEntity();
             String[] objectIDs = tradeObjects.split(";");
 
-            for(int i = 0; i < objectIDs.length; i++)
-            {
+            for (int i = 0; i < objectIDs.length; i++) {
                 updateTransactionsObjects.setIdobject(Integer.parseInt(objectIDs[i]));
                 updateTransactionsObjects.setIdtransaction(transactionID);
                 objectsTransactionRepository.save(updateTransactionsObjects);
             }
 
-            if(userMoney.equals("")){
+            if (userMoney.equals("")) {
                 userMoney = "0";
             }
-            if(opponentMoney.equals("")){
+            if (opponentMoney.equals("")) {
                 opponentMoney = "0";
             }
             //Ajout de l'item d'Argent du User
@@ -306,184 +306,61 @@ public class TransactionController {
                 UsersEntity user2 = customUserRepository.findUserById(idUser2);
                 List<CustomObjetImageEntity> listUser1 = customObjectRepository.getTradeObjects(transactionID, currentUser);
                 List<CustomObjetImageEntity> listUser2 = customObjectRepository.getTradeObjects(transactionID, idUser2);
-                smtpMailSender.send(user1.getEmail(), "Troc #" + transactionID + "complété.", "<!doctype html>\n" +
-                        "<html>\n" +
-                        "<head>\n" +
-                        "<meta charset=\"utf-8\">\n" +
-                        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-                        "<meta name=\"description\" content=\"Trok-é\">\n" +
-                        "<meta name=\"keywords\" content=\"Trok, barter, troke, troc\">\n" +
-                        "<meta name=\"author\" content=\"Yvon Steinthal, Alexandre Dubé, Emmanuel Beloin, Shaun Cooper\">\n" +
-                        "<title>\n" +
-                        "Trok-é\n" +
-                        "</title>\n" +
-                        "<link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet' type='text/css'>\n" +
-                        "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css\">\n" +
-                        "<body style=\"font-family:'Amaranth';margin:0;background-size:cover\">\n" +
-                        "\t<div id=\"main\" style=\"width:100%;height:100%;\">\n" +
-                        "\t\t<div id=\"banner\" style=\"height:200px; background-image:url('http://s27.postimg.org/6c1kwzur7/World_Banner5.jpg');width:100%;position:absolute;\">\n" +
-                        "\t\t<div id=\"logo\" style=\"height:60px;width:60px;background-image:url('http://i.imgur.com/rwi8gGF.png');background-size:cover;position:absolute;top:35px;left:50px;z-index:3;\">\n" +
-                        "\t\t</div>\n" +
-                        "\t\t<div id=\"rectangle\" style=\"width:100%;height:40px;margin-bottom:40px;background-color:#00374C;top:40px;position:absolute;z-index:1\">\n" +
-                        "\t\t</div>\n" +
-                        "\t\t<div id=\"title\" style=\"color:white;height:40px;text-align:center;width:100%;font-family:'Amaranth';\n" +
-                        "\t\ttop:50px;z-index:5;position:absolute\">CONFIRMATION DE VOTRE TROK\n" +
-                        "\t\t</div>\n" +
-                        "\t\t\n" +
-                        "\t\n" +
-                        "\t<div style=\"position:absolute;width:100%;text-align:center;z-index:100;top:400px;background-color:transparent;\">\n" +
-                        "\t\t\t\t\t\t<i class=\"fa fa-retweet fa-4\" style=\"margin:5px;font-size:25px;padding:1%;background-image:url('http://s27.postimg.org/6c1kwzur7/World_Banner5.jpg');background-size:400%; margin-right:20px\"></i>\n" +
-                        "\t\t\t\t\t\t</div>\n" +
-                        "\t\n" +
-                        "\t\t<div id=\"infos\" style=\"height:500px;width:100%;background-color:#00374C;position:absolute;top:200px;\" class=\"col-md-12\">\n" +
-                        "\t\t\t\n" +
-                        "\t\t\t\n" +
-                        "\t\t\t\t<div style=\"color:white; font-size:26px; text-align:center; margin-top:20px;margin-bottom:20px\">Votre Trok a été accepté!</div>\n" +
-                        "\t\t\t\t<div id=\"transaction\" style=\"width:100%;height:310px\">\n" +
-                        "\t\t\t\t\t<div id=\"myitems\" style=\"width:45%;height:300px;margin-left:4%;display:inline-table;border-right:1px solid white;\">\n" +
-                        "\t\t\t\t\t\t\n" +
-                        "\t\t\t\t\t\t\n" +
-                        "\t\t\t\t\t\t\n" +
-                        "\t\t\t\t\t\t<div style=\"width:100%;height:30px;text-align:right;font-size:16px; color:white;\">\n" +
-                        "\t\t\t\t\t\t\t<u>Vos Items/Services -</u>\n" +
-                        "\t\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t\t<div style=\"width:100%; height:100%;text-align:right;font-size:16px\">\t\t\t\t\n" +
-                        "\t\t\t\t\t\t\t<ul id=\"listme\" style=\"color:white;text-align:right;list-style-type: none;padding-right:40px\">\n" +
-                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
-                        "  \t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
-                        "  \t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
-                        "\t\t\t\t\t\t\t</ul>\n" +
-                        "\t\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t\t\n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t<div id=\"vsitems\" style=\"width:45%;height:300px;display:inline-table; border-left:1px solid white;\">\n" +
-                        "\t\t\t\t\t\t<div style=\"width:100%;height:30px;text-align:left; font-size:16px; color:white;\">\n" +
-                        "\t\t\t\t\t\t\t<u>- Items/Services de l'autre utilisateur</u>\n" +
-                        "\t\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t\t<div style=\"width:100%; height:100%;text-align:left;font-size:16px\">\t\t\t\t\n" +
-                        "\t\t\t\t\t\t\t<ul id=\"listme\" style=\"color:white;list-style-type: none;\">\n" +
-                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
-                        "  \t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
-                        "\t\t\t\t\t\t\t</ul>\n" +
-                        "\t\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t</div>\n" +
-                        "\t\t\t\n" +
-                        "\t\t\t<div id=\"infooter\" style=\"height:80px;width:100%;background-color:#00374C;text-align:center;color:white\">\n" +
-                        "\t\t\t\tPour compléter l'echange veuillez contacter NOM<br/>\n" +
-                        "\t\t\t\tau 555-555-5555 ou sur son courriel bob@guacamole.mex\n" +
-                        "\t\t\t</div>\n" +
-                        "\t\t\t<div id=\"footer\" style=\"height:80px;width:100%;background-color:#00374C;text-align:center;color:white;background-image: url('http://s27.postimg.org/6c1kwzur7/World_Banner5.jpg');display: block;position: absolute;width: 100%;height: 107%;background-size: cover;\">\n" +
-                        "\t\t\t\tL'Équipe Trok-é vous remercie d'avoir utilisé nos services!\n" +
-                        "\t\t\t</div>\t\t\n" +
-                        "\t\t</div>\n" +
-                        "\t</div>\n" +
-                        "\t<div id=\"bg-footer\"/>\n" +
-                        "</body>\n" +
-                        "</html>");
-                smtpMailSender.send(user2.getEmail(), "Troc #" + transactionID + "complété.", "<!doctype html>\n" +
-                        "<html>\n" +
-                        "<head>\n" +
-                        "<meta charset=\"utf-8\">\n" +
-                        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-                        "<meta name=\"description\" content=\"Trok-é\">\n" +
-                        "<meta name=\"keywords\" content=\"Trok, barter, troke, troc\">\n" +
-                        "<meta name=\"author\" content=\"Yvon Steinthal, Alexandre Dubé, Emmanuel Beloin, Shaun Cooper\">\n" +
-                        "<title>\n" +
-                        "Trok-é\n" +
-                        "</title>\n" +
-                        "<link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet' type='text/css'>\n" +
-                        "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css\">\n" +
-                        "<body style=\"font-family:'Amaranth';margin:0;background-size:cover\">\n" +
-                        "\t<div id=\"main\" style=\"width:100%;height:100%;\">\n" +
-                        "\t\t<div id=\"banner\" style=\"height:200px; background-image:url('http://s27.postimg.org/6c1kwzur7/World_Banner5.jpg');width:100%;position:absolute;\">\n" +
-                        "\t\t<div id=\"logo\" style=\"height:60px;width:60px;background-image:url('http://i.imgur.com/rwi8gGF.png');background-size:cover;position:absolute;top:35px;left:50px;z-index:3;\">\n" +
-                        "\t\t</div>\n" +
-                        "\t\t<div id=\"rectangle\" style=\"width:100%;height:40px;margin-bottom:40px;background-color:#00374C;top:40px;position:absolute;z-index:1\">\n" +
-                        "\t\t</div>\n" +
-                        "\t\t<div id=\"title\" style=\"color:white;height:40px;text-align:center;width:100%;font-family:'Amaranth';\n" +
-                        "\t\ttop:50px;z-index:5;position:absolute\">CONFIRMATION DE VOTRE TROK\n" +
-                        "\t\t</div>\n" +
-                        "\t\t\n" +
-                        "\t\n" +
-                        "\t<div style=\"position:absolute;width:100%;text-align:center;z-index:100;top:400px;background-color:transparent;\">\n" +
-                        "\t\t\t\t\t\t<i class=\"fa fa-retweet fa-4\" style=\"margin:5px;font-size:25px;padding:1%;background-image:url('http://s27.postimg.org/6c1kwzur7/World_Banner5.jpg');background-size:400%; margin-right:20px\"></i>\n" +
-                        "\t\t\t\t\t\t</div>\n" +
-                        "\t\n" +
-                        "\t\t<div id=\"infos\" style=\"height:500px;width:100%;background-color:#00374C;position:absolute;top:200px;\" class=\"col-md-12\">\n" +
-                        "\t\t\t\n" +
-                        "\t\t\t\n" +
-                        "\t\t\t\t<div style=\"color:white; font-size:26px; text-align:center; margin-top:20px;margin-bottom:20px\">Votre Trok a été accepté!</div>\n" +
-                        "\t\t\t\t<div id=\"transaction\" style=\"width:100%;height:310px\">\n" +
-                        "\t\t\t\t\t<div id=\"myitems\" style=\"width:45%;height:300px;margin-left:4%;display:inline-table;border-right:1px solid white;\">\n" +
-                        "\t\t\t\t\t\t\n" +
-                        "\t\t\t\t\t\t\n" +
-                        "\t\t\t\t\t\t\n" +
-                        "\t\t\t\t\t\t<div style=\"width:100%;height:30px;text-align:right;font-size:16px; color:white;\">\n" +
-                        "\t\t\t\t\t\t\t<u>Vos Items/Services -</u>\n" +
-                        "\t\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t\t<div style=\"width:100%; height:100%;text-align:right;font-size:16px\">\t\t\t\t\n" +
-                        "\t\t\t\t\t\t\t<ul id=\"listme\" style=\"color:white;text-align:right;list-style-type: none;padding-right:40px\">\n" +
-                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
-                        "  \t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
-                        "  \t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Fuego en los pantalones</li>\n" +
-                        "\t\t\t\t\t\t\t</ul>\n" +
-                        "\t\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t\t\n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t<div id=\"vsitems\" style=\"width:45%;height:300px;display:inline-table; border-left:1px solid white;\">\n" +
-                        "\t\t\t\t\t\t<div style=\"width:100%;height:30px;text-align:left; font-size:16px; color:white;\">\n" +
-                        "\t\t\t\t\t\t\t<u>- Items/Services de l'autre utilisateur</u>\n" +
-                        "\t\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t\t<div style=\"width:100%; height:100%;text-align:left;font-size:16px\">\t\t\t\t\n" +
-                        "\t\t\t\t\t\t\t<ul id=\"listme\" style=\"color:white;list-style-type: none;\">\n" +
-                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
-                        "  \t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
-                        "\t\t\t\t\t\t\t<li>Ich bin ein berliner</li>\n" +
-                        "\t\t\t\t\t\t\t</ul>\n" +
-                        "\t\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t</div>\n" +
-                        "\t\t\t\n" +
-                        "\t\t\t<div id=\"infooter\" style=\"height:80px;width:100%;background-color:#00374C;text-align:center;color:white\">\n" +
-                        "\t\t\t\tPour compléter l'echange veuillez contacter NOM<br/>\n" +
-                        "\t\t\t\tau 555-555-5555 ou sur son courriel bob@guacamole.mex\n" +
-                        "\t\t\t</div>\n" +
-                        "\t\t\t<div id=\"footer\" style=\"height:80px;width:100%;background-color:#00374C;text-align:center;color:white;background-image: url('http://s27.postimg.org/6c1kwzur7/World_Banner5.jpg');display: block;position: absolute;width: 100%;height: 107%;background-size: cover;\">\n" +
-                        "\t\t\t\tL'Équipe Trok-é vous remercie d'avoir utilisé nos services!\n" +
-                        "\t\t\t</div>\t\t\n" +
-                        "\t\t</div>\n" +
-                        "\t</div>\n" +
-                        "\t<div id=\"bg-footer\"/>\n" +
-                        "</body>\n" +
-                        "</html>");
+                // Message body du user1
+                String bodyUser1 = "";
+                bodyUser1 += "<a href=\"http://troke.me\"><img src=\"http://imgh.us/trok_fini.jpg\"/></a><br/>" +
+                        "Bonjour " + user1.getFirstname() + " " + user1.getLastname() +
+                        ", <br/>" +
+                        " Votre échange est maintenant prête à être complétée.<br/> " +
+                        "Voici la liste de vos items mis en échange: <br/>" +
+                        "<ul>";
+                for(CustomObjetImageEntity obj : listUser1){
+                    bodyUser1 += "<li>" + obj.getNameObject() + "</li>";
+                }
+                bodyUser1 += "</ul>" +
+                        "Contre :<br/><ul>";
+                for(CustomObjetImageEntity obj : listUser2){
+                    bodyUser1 += "<li>" + obj.getNameObject() + "</li>";
+                }
+                bodyUser1 += "</ul><br/>" +
+                        " Vous devez contacter " + user2.getFirstname() + " " + user2.getFirstname() + "<br/>" +
+                        " au " + user2.getTelephone() +  "<br/>" +
+                        " ou au " + user2.getEmail() + ". <br/>"+
+                        " <a href='http://www.troke.me'>Allez sur troké</a>";
+
+                smtpMailSender.send(user1.getEmail(), "Trok-é : Trok #" + transactionID + "complété.",bodyUser1); // Envoie du courriel au user1
+
+                // Message body du user2
+                String bodyUser2 = "";
+                bodyUser2 += "<a href=\"http://troke.me\"><img src=\"http://imgh.us/trok_fini.jpg\"/></a><br/>" +
+                        "Bonjour " + user2.getFirstname() + " " + user2.getLastname() +
+                        ", <br/>" +
+                        " Votre échange est maintenant prête à être complétée.<br/> " +
+                        "Voici la liste de vos items mis en échange: <br/>" +
+                        "<ul>";
+                for(CustomObjetImageEntity obj : listUser2){
+                    bodyUser2 += "<li>" + obj.getNameObject() + "</li>";
+                }
+                bodyUser2 += "</ul><br/>" +
+                        "Contre :<br/><ul>";
+                for(CustomObjetImageEntity obj : listUser1){
+                    bodyUser2 += "<li>" + obj.getNameObject() + "</li>";
+                }
+                bodyUser2 += "</ul>" +
+                        " Vous devez contacter " + user1.getFirstname() + " " + user1.getFirstname() +  "<br/>" +
+                        " au " + user1.getTelephone() +  "<br/>" +
+                        " ou au " + user1.getEmail() + ". <br/>"+
+                        " <a href='http://www.troke.me'>Allez sur troké</a>";
+
+                smtpMailSender.send(user2.getEmail(), "Trok-é : Trok #" + transactionID + "complété.", bodyUser2);
+                //Delete les items qui ont étés échangés
+                Query queryObject3 = entityManager.createQuery("select ob from ObjectsEntity ob where idobject in (select o.idobject from ObjecttransactionEntity o where o.idtransaction = :idTransaction)");
+                queryObject3.setParameter("idTransaction", transactionID);
+                List<ObjectsEntity> listObjectsToDelete = queryObject3.getResultList();
+
+                for (Iterator<ObjectsEntity> i = listObjectsToDelete.iterator(); i.hasNext(); ) {
+                    objectRepository.delete(i.next());
+                }
             }
         } else {
             session.removeAttribute("error");

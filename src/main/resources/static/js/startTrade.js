@@ -93,6 +93,34 @@ $(window).resize(function() {
 });
 $(init);
 function init() {
+    var imagebanner = document.getElementById("Banniere");
+    $(window).scroll(function () {
+        //if you hard code, then use console
+        //.log to determine when you want the
+        //nav bar to stick.
+        //console.log($(window).scrollTop())
+        var height = imagebanner.clientHeight;
+
+
+        if ($(window).scrollTop() > imagebanner.clientHeight) {
+            $('#nav_bar').addClass('navbar-fixed');
+            $('#nav_bar').removeClass('navbar');
+
+            $('#cont').addClass('padbot');
+            //$('#nav_bar').css('top', 0);
+            //$('#nav_bar').toggleClass('navbar navbar-fixed');
+        }
+
+
+        if ($(window).scrollTop() < imagebanner.clientHeight) {
+
+            $('#nav_bar').removeClass('navbar-fixed');
+            $('#nav_bar').addClass('navbar');
+            //$('#nav_bar').toggleClass('navbar-fixed navbar');
+            $('#cont').removeClass('padbot');
+            //$('#nav_bar').addClass('navbar-fixed');
+        }
+    });
     checkAdjustForScrollBar($("#OpponentInventory"));
     $("#OpponentInventory").bind("DOMSubtreeModified", function() {
         checkAdjustForScrollBar($("#OpponentInventory"));
@@ -251,6 +279,7 @@ function init() {
     document.getElementById('startTradeForm').onsubmit = function() {
             return false;
     }
+
     var modal, modalInfoItem = document.getElementsByName("modal-Item-Info");
     for(modal in modalInfoItem){
         modalInfoItem[modal].addEventListener('click', function (e) {
@@ -261,6 +290,7 @@ function init() {
             e.stopPropagation();
         }, false);
     }
+
     /* Width ajustable du div échange qui est horizontaly scrollable */
     $(document).ready(function () {
         var container_width = 0 * $(".container-inner").length;

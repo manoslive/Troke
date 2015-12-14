@@ -5,6 +5,20 @@
 <body>
 <div th:fragment="searchSingleObject">
 
+    <script th:async="async" th:defer="defer" th:src="'//maps.googleapis.com/maps/api/js?key=AIzaSyCt0t5-kYJ9BF1-r9h1FCSuHynCdeESEjY&amp;callback=initMap'"></script>
+    <!--//MAP SNIPPET FOR GEOLOCALISATION-->
+    <div id="MapSnippet" style="display:none;z-index:1000">
+        <div id="closegoogle" th:onclick="'closegoogle()'">X</div>
+        <div id="floating-panel" style="display:none">
+            <input id="address" type="hidden"  value="NSW"/>
+            <input id="submit" type="hidden" value="Geocode"/>
+
+        </div>
+        <div id="smallmap" style="height:200px;width:200px; border:1px solid black;">
+            <div id="map"></div>
+        </div>
+    </div>
+
     <!-- Section control de page (#, previous/next) -->
     <div class="paginationControl">
         <ul class="pagination">
@@ -83,6 +97,7 @@
             <span th:text="'Publié le: '  + ${singleobject.getCreationdate()}"/><br/>
             <span th:text="'Sous-catégorie: '  + ${singleobject.getSubCategoryName()}"></span><br/>
             <span th:text="'Utilisateur: '  + ${singleobject.getIduser()}"/>
+            <a th:onclick="'SendCoor(event,\''+${singleobject.getZipcode()}+'\')'" style="color:white;text-decoration:none;cursor:pointer;"><i class="fa fa-map-marker fa-4"></i></a>
         </div>
         <!-- Bar vertical de séparation -->
         <div class="searchVerticalBar right">

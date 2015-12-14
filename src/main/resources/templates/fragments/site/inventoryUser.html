@@ -19,7 +19,7 @@
                 //if you hard code, then use console
                 //.log to determine when you want the
                 //nav bar to stick.
-                console.log($(window).scrollTop())
+                //console.log($(window).scrollTop())
                 var height = imagebanner.clientHeight;
 
 
@@ -42,6 +42,35 @@
                     //$('#nav_bar').addClass('navbar-fixed');
                 }
             });
+
+
+
+                var lines = 12;
+                var cols = 30;
+                var limit = 10;
+                var linesUsed = $('#linesUsed');
+
+                $('#description').keydown(function(e) {
+
+                    newLines = $(this).val().split("\n").length;
+                    newCols = $(this).val().length;
+
+                    //alert(newCols);
+                    linesUsed.text(newLines);
+
+                    if(newLines.length > limit) {
+                        newLines = newLines.substr(0,limit);
+                    }
+
+                    if(e.keyCode == 13 && newLines >= lines) {
+                        linesUsed.css('color', 'red');
+                        return false;
+                    }
+                    else {
+                        linesUsed.css('color', '');
+                    }
+                });
+
         });
 
         /*]]>*/

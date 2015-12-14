@@ -167,7 +167,7 @@
 }
 #UserInventory li {
 	float: left;
-	width: 130px;
+	width: 47%;
 	max-width: 130px;
 	height:125px;
 	margin: 3px;
@@ -178,6 +178,7 @@
 	display: list-item;
 	overflow: hidden;
 	border: 1px solid #DBDBDB !important;
+	background-color: white;
 }
 #UserInventory li h5 {
 	text-align: center;
@@ -257,7 +258,7 @@
 }
 #OpponentInventory li {
 	float: left;
-	width: 130px;
+	width: 47%;
 	max-width: 130px;
 	height:125px;
 	margin: 3px;
@@ -268,6 +269,7 @@
 	overflow: hidden;
 	border-radius: 3px;
 	border: 1px solid #DBDBDB !important;
+	background-color: white;
 }
 #OpponentInventory li h5 {
 	text-align: center;
@@ -364,6 +366,7 @@
 	overflow: hidden;
 	border-radius: 4px;
 	border: 1px solid #00374C;
+	background-color: white;
 }
 #UserExchange li .icon-refresh{
 	float: right;
@@ -449,6 +452,7 @@
 	overflow: hidden;
 	border-radius: 4px;
 	border: 1px solid #00374C;
+	background-color: white;
 }
 #OpponentExchange li .icon-refresh{
 	float: right;

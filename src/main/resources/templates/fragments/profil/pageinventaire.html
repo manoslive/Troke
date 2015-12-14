@@ -341,7 +341,7 @@
 
 
                             <a id="iconAdd2" class="icon-plus-sign icon-6x" href="/openModalAjouter"
-                               data-toggle="tooltip" data-placement="bottom" title="Aouter un nouvel item / service!"
+                               data-toggle="tooltip" data-placement="bottom" title="Ajouter un nouvel item / service!"
                                style="text-decoration:none; color:white; font-size:80px;"></a><br/>
 
                     </div>
@@ -377,25 +377,24 @@
             <div class="container main-container" style="height:100%;">
 
                 <div id="carousel-example-generic" style="height:100%" class="carousel slide">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
+
+                    <ol class="carousel-indicators" style="position:absolute;">
                         <th:block th:each="invent : ${userInventory}">
                             <li data-target="#carousel-example-generic"
                                 th:data-slide-to="${inventStat.index}"
                                 th:class="*{inventStat.index eq 0} ? 'active' : ''"
-                                th:style="'background-image:url(/uploaded-images/'+ ${listeImage.get(inventStat.index).get(0).getGuidimage()}
-                                +');width:60px;height:60px;border-radius:100%;background-size:cover'"></li>
+                                th:style="'background-image:url(/uploaded-images/'+ ${listeImage.get(inventStat.index).get(0).getGuidimage()}+');width:40px;height:40px;border-radius:100%;background-size:cover'"></li>
                         </th:block>
                     </ol>
 
 
                     <!-- Wrapper for slides -->
-                    <div class="carousel-inner" style="height:100%" role="listbox">
+                    <div class="carousel-inner" style="height:100%;overflow:auto;overflow: hidden;" role="listbox">
 
                         <th:block th:each="invent : ${userInventory}" th:for="${'invent' + inventStat.index }">
                             <!-- Second slide -->
 
-                            <div  id="Innerdiv" th:class="*{inventStat.index eq 0} ? 'item active skyblue' : 'item skyblue'">
+                            <div th:class="*{inventStat.index eq 0} ? 'Innerdiv item active skyblue' : 'Innerdiv item skyblue'">
                                 <div class="carousel-caption" style="top:5%">
                                     <th:block th:if="${invent ne null and listeImage.get(inventStat.index).get(0).getIsmain().length()eq 1}">
                                     <h3 class="icon-container bubbleinv">
@@ -443,8 +442,17 @@
                                     </h3>
 
                                     <!-- text de l'objet -->
-                                    <h3 data-animation="animated flipInX" style="font-size:14px;" th:text="${invent.getDescObject()}"></h3>
+                                    <div>
+                                        <div class="stage">
+                                            <figure class="ball"><span class="shadow"></span></figure>
 
+                                    <textarea  th:readonly="readonly" class="DescTextArea" data-animation="animated flipInX"
+                                               style="font-size:14px;" th:text="${invent.getDescObject()}">
+
+                                    </textarea>
+                                            </div>
+
+                                    </div>
 
                                     <div class="divAMS">
                                         <div id="innerbtn">
@@ -458,16 +466,20 @@
 
 
                                                 <i id="iconMod" class="icon-edit-sign icon-4x" data-toggle="tooltip"
-                                               data-placement="bottom" title="Modifier un item/service!" th:onclick="'javascript:modalSubmitModifier(\''+${invent.getIdobject()}+'\')'"/>
+                                               data-placement="top" title="Modifier un item/service!" th:onclick="'javascript:modalSubmitModifier(\''+${invent.getIdobject()}+'\')'"/>
                                             <i id="iconDel" class="icon-remove-sign icon-4x" data-toggle="tooltip"
-                                               data-placement="bottom" title="Effacer un item/service!" th:onclick="'javascript:modalSubmitDelete(\''+${invent.getIdobject()}+'\')'"/>
+                                               data-placement="top" title="Effacer un item/service!" th:onclick="'javascript:modalSubmitDelete(\''+${invent.getIdobject()}+'\')'"/>
 
 
                                     </div>
+
                                     </div>
+
 
                                 </div>
+
                             </div>
+
 
 
 
@@ -485,11 +497,11 @@
                     </div><!-- /.carousel-inner -->
 
                     <!-- Controls -->
-                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev" >
                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next" >
                         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>

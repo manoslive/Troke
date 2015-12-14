@@ -17,46 +17,46 @@
             <div class="triangle-r"></div>
 
             <!-- Le Carousel -->
-            <div id="myCarousel2" class="carousel slide">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Carousel items -->
-                <div class="carousel-inner" style="padding-top:15px">
+                <div class="carousel-inner" role="listbox" style="top:30px">
                     <!-- Premier div d'items(8) qui est active -->
-                    <div class="item active" style="top: initial !important;">
-                        <div class="row text-center" style="margin-top: 15px;">
+                    <div class="item active">
+                        <div class="row text-center">
                             <!-- ITEM-->
                             <div class="span3" th:each="obj,iter : ${recentobjects}" th:if="${iter.index} lt 8">
                                 <div class="thumbnail product-item">
                                     <a th:href="${adrItem} + ${obj.getIdobject()}">
-                                        <img class="image-carousel-item img-circle img-responsive" th:src="*{obj.getImage1() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${obj.getImage1()}:'images/LogoWorld_Transparence.png'"/></a>
-                                    <p th:text="${obj.getNameObject()}" style="color:white;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;text-transform:uppercase;font-weight:normal;"></p>
+                                        <img class="image-carousel-item img-circle img-responsive" th:src="*{obj.getImage1() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${obj.getImage1()}:'images/LogoWorld_Transparence.png'"/>
+                                    </a>
                                 </div>
+                                <p th:text="${obj.getNameObject()}" style="padding-top:10px;color:white;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;text-transform:uppercase;font-weight:normal;"></p>
                             </div>
                         </div>
                     </div>
                     <!-- /Premier div d'items(8) -->
-
                     <!-- DeuxiÃ¨me div d'items(8) -->
-                    <div class="item " style="top: initial !important;">
-                        <div class="row text-center" style="margin-top: 15px;">
+                    <div class="item">
+                        <div class="row text-center">
                             <!-- ITEM-->
-                            <div class="span3" th:each="obj,iter : ${recentobjects}"
-                                 th:if="${iter.index &gt; 7 and iter.index &lt; 16}">
+                            <div class="span3" th:each="obj,iter : ${recentobjects}" th:if="${iter.index &gt; 7 and iter.index &lt; 16}">
                                 <div class="thumbnail product-item">
                                     <a th:href="${adrItem} + ${obj.getIdobject()}">
-                                        <img class="image-carousel-item img-circle img-responsive" th:src="*{obj.getImage1() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${obj.getImage1()}:'images/LogoWorld_Transparence.png'"/></a>
-                                    <p th:text="${obj.getNameObject()}" style="color:white;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;text-transform:uppercase;font-weight:normal;"></p>
+                                        <img class="image-carousel-item img-circle img-responsive" th:src="*{obj.getImage1() ne '/uploaded-images/no_avatar.png'}?'/uploaded-images/' +${obj.getImage1()}:'images/LogoWorld_Transparence.png'"/>
+                                    </a>
                                 </div>
+                                <p th:text="${obj.getNameObject()}" style="padding-top:10px;color:white;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;text-transform:uppercase;font-weight:normal;"></p>
                             </div>
                         </div>
                     </div>
                     <!-- /DeuxiÃ¨me div d'items(8) -->
                 </div>
-                <!-- /INNER-->
-                <!-- Carousel nav -->
-                <a id="LeftField" class="carousel-control left" href="#myCarousel2" data-slide="prev">
+                <!-- Carousel nav-->
+                <a id="LeftField" class="carousel-control left" href="#myCarousel" data-slide="prev" role="button">
                     <span id="LeftArrow" class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="top:20%; left:50%;z-index:200"/></a>
-                <a id="RightField" class="carousel-control right" href="#myCarousel2" data-slide="next">
+                <a id="RightField" class="carousel-control right" href="#myCarousel" data-slide="next" role="button">
                     <span id="RightArrow" class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="top:20%; right:50%;z-index:200"/></a>
+                <!-- /INNER-->
             </div>
             <!-- /Le Carousel -->
         </div>
