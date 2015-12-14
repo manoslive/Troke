@@ -1,6 +1,7 @@
 package com.tilf.troke.controller;
 
 import com.tilf.troke.auth.AuthUserContext;
+import com.tilf.troke.domain.Add;
 import com.tilf.troke.entity.*;
 import com.tilf.troke.filter.SearchFilter;
 import com.tilf.troke.repository.*;
@@ -171,7 +172,7 @@ public class HomeController {
 
     @RequestMapping(value = "/profilinv", method = RequestMethod.GET)
     public String Inventaire(Model model,
-                         HttpSession session){
+                         HttpSession session,Add add){
             UsersEntity user = authContext.getUser();
 
             if (user != null) {
@@ -226,7 +227,7 @@ public class HomeController {
                     context.setVariable("itemCombo", itemCombo);
 
                 }
-                return "fragments/site/inventoryUser";
+                return "fragments/profil/pageinventaire";
 
             } else {
                 session.removeAttribute("error");

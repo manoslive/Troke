@@ -9,7 +9,7 @@
 </head>
 <body>
 <div th:fragment="openModalAjouter">
-    <form th:action="@{/addObject}" method="post" name="AjoutItem" enctype="multipart/form-data">
+    <form th:action="@{/addObject}"  th:object="${add}" method="post" enctype="multipart/form-data">
         <div id="openModalAjouter" class="modalDialogAjouter">
             <div style="font-family:Amaranth">
 
@@ -22,11 +22,9 @@
                 </div>
 
                 <div class="divModalAjoutTop">
-                    <input class="signup-full"  type="text" placeholder="Nom de l'item" name="Name" id="name"
-                           th:value="*{session.ObjectToModify ne null}? ${session.ObjectToModify.getNameObject()} : ''"/>
+                    <input th:field="*{nameobject}" class="signup-full"  type="text" placeholder="Nom de l'item"  id="name"/>
 
-                    <input class="signup-full" pattern="[0-9]" type="number" placeholder="Valeur $$$" name="Valeur" id="valeur" value="0" min="0"
-                            th:value="*{session.ObjectToModify ne null}? ${session.ObjectToModify.getValueObject()} : ''"/>
+                    <input th:field="*{valueobject}" class="signup-full" pattern="[0-9]" type="number" placeholder="Valeur $$$" id="valeur" value="0" min="0"/>
 
                     <select class="categorieCombo" name="catCombo">
                         <option th:selected="*{session.ObjectToModify eq null}?'true'" style="display:none;">Selection Categorie</option>
@@ -42,44 +40,38 @@
                     </select>
 
 
-                        <div class="divModalAjoutQualite">
-                            <label style="font-weight:normal">Etat de l'item</label>
+                    <div class="divModalAjoutQualite">
+                        <label style="font-weight:normal">Etat de l'item</label>
                             <span class="starRating">
 
-                                <input id="rating5" type="radio" name="rating" value="5"
-                                       th:checked="*{session.ObjectToModify ne null and session.ObjectToModify.getQuality() eq 5}? 'checked'"/>
+                                <input id="rating5" type="radio" th:field="*{quality}"  value="5"/>
                                 <label style="cursor:pointer;" for="rating5">5</label>
 
-                                <input id="rating4" type="radio" name="rating" value="4"
-                                       th:checked="*{session.ObjectToModify ne null and session.ObjectToModify.getQuality() eq 4}? 'checked'"/>
+                                <input id="rating4" type="radio" th:field="*{quality}" value="4"/>
                                 <label style="cursor:pointer;" for="rating4">4</label>
 
-                                <input id="rating3" type="radio" name="rating" value="3"
-                                       th:checked="*{session.ObjectToModify ne null and session.ObjectToModify.getQuality() eq 3}? 'checked'"/>
+                                <input id="rating3" type="radio" th:field="*{quality}" value="3"/>
                                 <label style="cursor:pointer;" for="rating3">3</label>
 
-                                <input id="rating2" type="radio" name="rating" value="2"
-                                       th:checked="*{session.ObjectToModify ne null and session.ObjectToModify.getQuality() eq 2}? 'checked'"/>
+                                <input id="rating2" type="radio" th:field="*{quality}" value="2"/>
                                 <label style="cursor:pointer;" for="rating2">2</label>
 
-                                <input id="rating1" type="radio" name="rating" value="1"
-                                       th:checked="*{session.ObjectToModify ne null and session.ObjectToModify.getQuality() eq 1}? 'checked'"/>
+                                <input id="rating1" type="radio" th:field="*{quality}" value="1"/>
                                 <label style="cursor:pointer;" for="rating1">1</label>
 
                             </span>
-                        </div>
+                    </div>
 
                 </div>
 
                 <div class="divModalAjoutDescriptionPhoto">
                     <div class="divModalAjoutDescription">
                                 <textarea class="signup-full" type="text" rows="13" placeholder="Description"
-                                          name="Description" id="description" style="resize:none"
-                                          th:text="*{session.ObjectToModify ne null}? ${session.ObjectToModify.getDescObject()} : ''">
+                                          th:field="*{descobject}" id="description" style="resize:none">
                                     </textarea>
                     </div>
 
-                <!-- photo1 MAIN -->
+                     <!-- photo1 MAIN  -->
                     <div class="divModalAjoutPhotos">
                         <div class="divModalAjoutPhotosTOP">
                             <div id="Photo1" src="#" alt="Photo1" class="Photo1"
@@ -91,7 +83,7 @@
                                     </div>
                                 </div>
                             </div>
-                 <!-- photo 2 -->
+                            <!-- photo 2 -->
                             <div id="Photo2" src="#" alt="Photo1" class="Photo1"
                                  th:style="*{session.listedimage ne null and session.listedimage.get(1).getIsmain().substring(0,1)ne '*'} ?
                                   'background-image:url(/uploaded-images/'+ ${session.listedimage.get(1).getGuidimage()}  + ')'">
@@ -102,7 +94,7 @@
                                 </div>
                             </div>
                         </div>
-                <!-- photo 3 -->
+                        <!-- photo 3 -->
                         <div class="divModalAjoutPhotosDOWN">
                             <div id="Photo3" src="#" alt="Photo1" class="Photo1"
                                  th:style="*{session.listedimage ne null and session.listedimage.get(2).getIsmain().substring(0,1)ne '*'} ?
@@ -114,7 +106,7 @@
                                     </div>
                                 </div>
                             </div>
-                <!-- photo 4 -->
+                            <!-- photo 4 -->
                             <div id="Photo4" src="#" alt="Photo1" class="Photo1"
                                  th:style="*{session.listedimage ne null and session.listedimage.get(3).getIsmain().substring(0,1)ne '*'} ?
                                   'background-image:url(/uploaded-images/'+ ${session.listedimage.get(3).getGuidimage()}  + ')'">
@@ -130,10 +122,10 @@
 
                 <div class="basdeModal">
 
-                        <!--<input style="text-align:center;font-size:16px;margin-top:10px" type="checkbox" name="Evaluable"-->
-                               <!--value="Evaluable" checked="checked"/>Faire evaluer le prix de cet item / service<br/> par-->
-                        <!--d'autre utilisateur-->
-                    <!--<br/>-->
+                    <input style="text-align:center;font-size:16px;margin-top:10px" type="checkbox" name="Evaluable"
+                    value="Evaluable" checked="checked"/>Faire evaluer le prix de cet item / service<br/> par
+                    d'autre utilisateur
+                    <br/>
 
                     <div class="basdeModalButtons">
                         <label class="buttonbob">
@@ -146,7 +138,10 @@
                     </div>
 
                     <div class="errorAjout">
-                        <p> *Erreur icite</p>
+                        <p th:if="${#fields.hasErrors('nameobject')}" th:errors="*{nameobject}">Title error message</p>
+                        <p th:if="${#fields.hasErrors('valueobject')}" th:errors="*{valueobject}">Content error message</p>
+                        <p th:if="${#fields.hasErrors('quality')}" th:errors="*{quality}">Content error message</p>
+                        <p th:if="${#fields.hasErrors('descobject')}" th:errors="*{descobject}">Content error message</p>
                     </div>
 
                 </div>

@@ -1,42 +1,171 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Spring Boot and Thymeleaf example</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script>
+        function Ajout(){
+            document.getElementsByName("AjoutItem").submit();
+        }
+    </script>
 </head>
 <body>
-<h3>Spring Boot and Thymeleaf, part 2 - forms</h3>
-<form action="#" th:action="@{/profil}" th:object="${userProfil}" method="post">
-    <table>
-        <tr>
-            <td>firstname:</td>
-            <td><input type="text" th:field="*{firstname}" /></td>
-            <td th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">Title error message</td>
-        </tr>
-        <tr>
-            <td>lastname:</td>
-            <td><input type="text" th:field="*{lastname}" /></td>
-            <td th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Content error message</td>
-        </tr>
-        <tr>
-            <td>telephone:</td>
-            <td><input type="text" th:field="*{telephone}" /></td>
-            <td th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}">Content error message</td>
-        </tr>
-        <tr>
-            <td>zipcode:</td>
-            <td><input type="text" th:field="*{zipcode}" /></td>
-            <td th:if="${#fields.hasErrors('zipcode')}" th:errors="*{zipcode}">Content error message</td>
-        </tr>
-        <tr>
-            <td>email:</td>
-            <td><input type="text" th:field="*{email}" /></td>
-            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Content error message</td>
-        </tr>
-        <tr>
-            <td><button type="submit">Submit post</button></td>
-        </tr>
-    </table>
-</form>
+<div th:fragment="openModalAjouter">
+    <form th:action="@{/addObject}" method="post" name="AjoutItem" enctype="multipart/form-data">
+        <div id="openModalAjouter" class="modalDialogAjouter">
+            <div style="font-family:Amaranth">
+
+                <a th:href="@{/closeAjouter}" title="Fermer" class="close">X</a>
+
+                <h2 style="text-align:center">Ajout d'un Item / Service</h2>
+
+                <div class="or-spacer2">
+                    <div class="mask"></div>
+                </div>
+
+                <div class="divModalAjoutTop">
+                    <input class="signup-full"  type="text" placeholder="Nom de l'item" name="Name" id="name"
+                           th:value="*{session.ObjectToModify ne null}? ${session.ObjectToModify.getNameObject()} : ''"/>
+
+                    <input class="signup-full" pattern="[0-9]" type="number" placeholder="Valeur $$$" name="Valeur" id="valeur" value="0" min="0"
+                           th:value="*{session.ObjectToModify ne null}? ${session.ObjectToModify.getValueObject()} : ''"/>
+
+                    <select class="categorieCombo" name="catCombo">
+                        <option th:selected="*{session.ObjectToModify eq null}?'true'" style="display:none;">Selection Categorie</option>
+                        <!-- block pour category -->
+                        <th:block th:each="cat : ${itemCombo}">
+                            <option disabled="disabled" th:text="*{itemCombo ne null}? ${cat.getCategory().getNameCategory()}"></option>
+                            <!-- block pour sous category -->
+                            <th:block th:each="subCat : ${cat.getListSubCat()}">
+                                <option th:text="'-' + ${subCat.getNameSubcategory()}" th:value="${subCat.getIdSubcategory()}"
+                                        th:selected="*{session.ObjectToModify ne null and session.ObjectToModify.getIdsubcategory() eq subCat.getIdSubcategory()}? 'true'"></option>
+                            </th:block><!-- fin sous category -->
+                        </th:block>
+                    </select>
+
+
+                    <div class="divModalAjoutQualite">
+                        <label style="font-weight:normal">Etat de l'item</label>
+                            <span class="starRating">
+
+                                <input id="rating5" type="radio" name="rating" value="5"
+                                       th:checked="*{session.ObjectToModify ne null and session.ObjectToModify.getQuality() eq 5}? 'checked'"/>
+                                <label style="cursor:pointer;" for="rating5">5</label>
+
+                                <input id="rating4" type="radio" name="rating" value="4"
+                                       th:checked="*{session.ObjectToModify ne null and session.ObjectToModify.getQuality() eq 4}? 'checked'"/>
+                                <label style="cursor:pointer;" for="rating4">4</label>
+
+                                <input id="rating3" type="radio" name="rating" value="3"
+                                       th:checked="*{session.ObjectToModify ne null and session.ObjectToModify.getQuality() eq 3}? 'checked'"/>
+                                <label style="cursor:pointer;" for="rating3">3</label>
+
+                                <input id="rating2" type="radio" name="rating" value="2"
+                                       th:checked="*{session.ObjectToModify ne null and session.ObjectToModify.getQuality() eq 2}? 'checked'"/>
+                                <label style="cursor:pointer;" for="rating2">2</label>
+
+                                <input id="rating1" type="radio" name="rating" value="1"
+                                       th:checked="*{session.ObjectToModify ne null and session.ObjectToModify.getQuality() eq 1}? 'checked'"/>
+                                <label style="cursor:pointer;" for="rating1">1</label>
+
+                            </span>
+                    </div>
+
+                </div>
+
+                <div class="divModalAjoutDescriptionPhoto">
+                    <div class="divModalAjoutDescription">
+                                <textarea class="signup-full" type="text" rows="13" placeholder="Description"
+                                          name="Description" id="description" style="resize:none"
+                                          th:text="*{session.ObjectToModify ne null}? ${session.ObjectToModify.getDescObject()} : ''">
+                                    </textarea>
+                    </div>
+
+                    <!-- photo1 MAIN -->
+                    <div class="divModalAjoutPhotos">
+                        <div class="divModalAjoutPhotosTOP">
+                            <div id="Photo1" src="#" alt="Photo1" class="Photo1"
+                                 th:style="*{session.listedimage ne null and session.listedimage.get(0).getIsmain().substring(0,1)ne '*'}?
+                                  'background-image:url(/uploaded-images/' + ${session.listedimage.get(0).getGuidimage()} + ')'">
+                                <div style="" class="avatarOverlay">
+                                    <div class="avatarPlus">
+                                        <input class="fileExplorer" id="fileExplorerP1" name="photoMain" type="file" onchange="TestFileType('fileExplorerP1', 'Photo1')"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- photo 2 -->
+                            <div id="Photo2" src="#" alt="Photo1" class="Photo1"
+                                 th:style="*{session.listedimage ne null and session.listedimage.get(1).getIsmain().substring(0,1)ne '*'} ?
+                                  'background-image:url(/uploaded-images/'+ ${session.listedimage.get(1).getGuidimage()}  + ')'">
+                                <div class="avatarOverlay" style="">
+                                    <div class="avatarPlus">
+                                        <input class="fileExplorer" id="fileExplorerP2" name="photo1" type="file" onchange="TestFileType('fileExplorerP2', 'Photo2')"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- photo 3 -->
+                        <div class="divModalAjoutPhotosDOWN">
+                            <div id="Photo3" src="#" alt="Photo1" class="Photo1"
+                                 th:style="*{session.listedimage ne null and session.listedimage.get(2).getIsmain().substring(0,1)ne '*'} ?
+                                  'background-image:url(/uploaded-images/'+ ${session.listedimage.get(2).getGuidimage()} + ')'">
+                                <div class="avatarOverlay" style="">
+                                    <div class="avatarPlus">
+
+                                        <input class="fileExplorer" id="fileExplorerP3" name="photo2" type="file" onchange="TestFileType('fileExplorerP3', 'Photo3')"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- photo 4 -->
+                            <div id="Photo4" src="#" alt="Photo1" class="Photo1"
+                                 th:style="*{session.listedimage ne null and session.listedimage.get(3).getIsmain().substring(0,1)ne '*'} ?
+                                  'background-image:url(/uploaded-images/'+ ${session.listedimage.get(3).getGuidimage()}  + ')'">
+                                <div id="avatarOverlay" style="">
+                                    <div id="avatarPlus">
+                                        <input id="fileExplorerP4" class="fileExplorer" name="photo3" type="file" onchange="TestFileType('fileExplorerP4', 'Photo4')"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="basdeModal">
+
+                    <!--<input style="text-align:center;font-size:16px;margin-top:10px" type="checkbox" name="Evaluable"-->
+                    <!--value="Evaluable" checked="checked"/>Faire evaluer le prix de cet item / service<br/> par-->
+                    <!--d'autre utilisateur-->
+                    <!--<br/>-->
+
+                    <div class="basdeModalButtons">
+                        <label class="buttonbob">
+                            <input id="Item" name="flat" type="radio" checked="checked"/>Item
+                        </label>
+                        <div style="width:20px;"></div>
+                        <label class="buttonbob" for="Service">
+                            <input id="Service" name="flat" type="radio"/>Service
+                        </label>
+                    </div>
+
+                    <div class="errorAjout">
+                        <p> *Erreur icite</p>
+                    </div>
+
+                </div>
+                <br/>
+                <br/>
+                <br/>
+
+                <div class="or-spacer2">
+                    <div class="mask"></div>
+                </div>
+
+                <div>
+                    <!--<a href="#valid" style="text-align:center;font-size:16px" title="Ajout" class="valid" onclick="Ajout()">Ajouter</a>-->
+                    <input type="submit" class="valid" title="Valider" style="text-align: center; font-size:16px;"/>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
 </body>
 </html>
