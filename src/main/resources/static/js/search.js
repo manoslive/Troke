@@ -39,6 +39,7 @@ function getCheckBoxSubCatValueLink(checkBoxId) {
 }
 
 
+
 //GEOLOCALISATION
 //$(window).scroll(function(){
 //    if ($(window).scrollTop() > 140) {
@@ -111,8 +112,6 @@ function geocodeAddress(geocoder, resultsMap) {
         google.maps.event.trigger(map, 'resize');
         map.setZoom( map.getZoom() );
     });
-
-
 }
 /* Modal Info Item */
 var currentModalID;
@@ -159,17 +158,17 @@ function init() {
         }
     });
 
-    var modal, modalInfoItem = document.getElementsByName("modal-Item-Info");
+/*    var modal, modalInfoItem = document.getElementsByName("modal-Item-Info");
     for (modal in modalInfoItem) {
         modalInfoItem[modal].addEventListener('click', function (e) {
             modalClose();
         }, false);
         //Prevent event bubbling if click occurred within modal content body
         modalInfoItem[modal].children[0].addEventListener('click', function (e) {
-            e.stopPropagation();
-        }, false);
+         e.stopPropagation();
+         }, false);
     }
-
+*/
     /* Delegate Scroll images InfoItem */
     $('#divSubImages').delegate('img', 'click', function () {
         $('#mainImage').attr('src', $(this).attr('src').replace('sub', 'main'));
