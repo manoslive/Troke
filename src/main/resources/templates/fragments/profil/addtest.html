@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<form action="#" th:action="@{/addObject}" th:object="${add}" method="post">
+    <table>
+        <tr>
+            <td>Title:</td>
+            <td><input type="text" th:field="*{nameobject}" /></td>
+            <td th:if="${#fields.hasErrors('nameobject')}" th:errors="*{nameobject}">Title error message</td>
+        </tr>
+        <tr>
+            <td>Content:</td>
+            <td><input type="number" pattern="[0-9]" th:field="*{valueobject}" /></td>
+            <td th:if="${#fields.hasErrors('valueobject')}" th:errors="*{valueobject}">Content error message</td>
+        </tr>
+        <tr>
+            <td><input type="radio" th:field="*{quality}" value = "5" /></td>
+            <td><input type="radio" th:field="*{quality}" value = "4" /></td>
+            <td><input type="radio" th:field="*{quality}" value = "3" /></td>
+            <td><input type="radio" th:field="*{quality}" value = "2" /></td>
+            <td><input type="radio" th:field="*{quality}" value = "1" /></td>
+        </tr>
+        <tr>
+            <td th:if="${#fields.hasErrors('quality')}" th:errors="*{quality}">Content error message</td>
+        </tr>
+        <tr>
+            <td><textarea th:field="*{descobject}"></textarea></td>
+            <td th:if="${#fields.hasErrors('descobject')}" th:errors="*{descobject}">Content error message</td>
+        </tr>
+        <tr>
+            <td><button type="submit">Submit</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

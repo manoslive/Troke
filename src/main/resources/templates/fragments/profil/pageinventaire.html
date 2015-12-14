@@ -1,7 +1,334 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:include="main_template :: page">
+<head th:fragment="head">
+    <link href="css/style_monProfil.css" type="text/css" rel="stylesheet"/>
+    <link href="css/style_ribbon.css" type="text/css" rel="stylesheet"/>
+    <link href="css/demo.css" type="text/css" rel="stylesheet"/>
+    <link href="css/style_funradio.css" type="text/css" rel="stylesheet"/>
+    <script src="js/home.js" type="text/javascript"></script>
+    <script src="js/profil.js" type="text/javascript"></script>
+    <script>
+
+        $("iserror").change(function(){
+
+        });
+
+        //Pour la navbar dans le scroll...
+        /*<![CDATA[*/
+        $(document).ready(function () {
+            document.onreadystatechange = function(){
+                if(document.readyState === 'complete'){
+                    var iserror = $("#iserror").val();
+                    var modif = $("#modif").val();
+                    if(iserror === '1'){
+                        document.getElementById('openModalAjouter').style.opacity = 1;
+                        document.getElementById('openModalAjouter').style.pointerEvents = 'auto';
+                    }
+                    if(modif === '1')
+                    {
+                        document.getElementById('openModalAjouter').style.opacity = 1;
+                        document.getElementById('openModalAjouter').style.pointerEvents = 'auto';
+                    }
+                }
+            }
+            var imagebanner = document.getElementById("Banniere");
+
+
+            $(window).scroll(function () {
+                //if you hard code, then use console
+                //.log to determine when you want the
+                //nav bar to stick.
+                console.log($(window).scrollTop())
+                var height = imagebanner.clientHeight;
+
+
+                if ($(window).scrollTop() > imagebanner.clientHeight) {
+                    $('#nav_bar').addClass('navbar-fixed');
+                    $('#nav_bar').removeClass('navbar');
+
+                    $('#cont').addClass('padbot');
+                    //$('#nav_bar').css('top', 0);
+                    //$('#nav_bar').toggleClass('navbar navbar-fixed');
+                }
+
+
+                if ($(window).scrollTop() < imagebanner.clientHeight) {
+
+                    $('#nav_bar').removeClass('navbar-fixed');
+                    $('#nav_bar').addClass('navbar');
+                    //$('#nav_bar').toggleClass('navbar-fixed navbar');
+                    $('#cont').removeClass('padbot');
+                    //$('#nav_bar').addClass('navbar-fixed');
+                }
+            });
+        });
+
+        /*]]>*/
+    </script>
+</head>
 <body>
-<div th:fragment="pageinventaire">
+
+<div th:fragment="content">
+    <input type="hidden" id="iserror" th:value="${iserror}"/>
+    <input type="hidden" id="modif" th:value="${modif}" />
+    <form th:action="@{/addObject}"  th:object="${add}" method="post" enctype="multipart/form-data">
+
+        <div id="openModalAjouter" class="modalDialogAjouter" >
+            <div style="font-family:Amaranth">
+
+                <a th:href="@{/closeAjouter}" title="Fermer" class="close">X</a>
+
+                <h2 style="text-align:center">Ajout d'un Item / Service</h2>
+
+                <div class="or-spacer2">
+                    <div class="mask"></div>
+                </div>
+
+                <div class="divModalAjoutTop">
+                    <th:block th:if="${session.ObjectToModify ne null}">
+                        <input th:field="*{nameobject}"  class="signup-full"  type="text" placeholder="Nom de l'item"  id="name"/>
+                    </th:block>
+                    <th:block th:if="${session.ObjectToModify eq null}">
+                        <input th:field="*{nameobject}" class="signup-full"  type="text" placeholder="Nom de l'item"  id="name"/>
+                    </th:block>
+
+
+                    <input th:field="*{valueobject}" class="signup-full" pattern="[0-9]" type="number" placeholder="Valeur $$$" id="valeur" value="0" min="0"/>
+
+                    <select class="categorieCombo" name="catCombo">
+                        <th:block th:if="${session.ObjectToModify eq null}">
+                            <option value="0" selected="selected" style="display:none;">Selection Categorie</option>
+                        </th:block>
+                        <th:block th:if="${session.ObjectToModify ne null}">
+                            <option  value="0" style="display:none;">Selection Categorie</option>
+                        </th:block>
+                    <!-- block pour category -->
+                    <th:block th:each="cat : ${itemCombo}">
+                    <option disabled="disabled" th:text="${cat.getCategory().getNameCategory()}"></option>
+                    <!-- block pour sous category -->
+                    <th:block th:each="subCat : ${cat.getListSubCat()}">
+                        <th:block th:if="${session.ObjectToModify ne null and session.ObjectToModify.getIdsubcategory() eq subCat.getIdSubcategory()}">
+                            <option th:text="'-' + ${subCat.getNameSubcategory()}" th:value="${subCat.getIdSubcategory()}" selected="selected"></option>
+                        </th:block>
+                        <th:block th:if="${session.ObjectToModify ne null and session.ObjectToModify.getIdsubcategory() ne subCat.getIdSubcategory() }">
+                            <option th:text="'-' + ${subCat.getNameSubcategory()}" th:value="${subCat.getIdSubcategory()}"></option>
+                        </th:block >
+                            <th:block th:if="${session.ObjectToModify eq null}">
+                                <option th:text="'-' + ${subCat.getNameSubcategory()}" th:value="${subCat.getIdSubcategory()}"></option>
+                        </th:block>
+                    <!--<option th:text="'-' + ${subCat.getNameSubcategory()}" th:value="${subCat.getIdSubcategory()}"-->
+                    <!--th:selected="*{session.ObjectToModify ne null and session.ObjectToModify.getIdsubcategory() eq subCat.getIdSubcategory()}? 'true'"></option>-->
+                    </th:block><!-- fin sous category -->
+                    </th:block>
+                    </select>
+
+
+                    <div class="divModalAjoutQualite">
+                        <label style="font-weight:normal">Etat de l'item</label>
+                            <span class="starRating">
+
+                                <input id="rating5" type="radio" th:field="*{quality}"  value="5"/>
+                                <label style="cursor:pointer;" for="rating5">5</label>
+
+                                <input id="rating4" type="radio" th:field="*{quality}" value="4"/>
+                                <label style="cursor:pointer;" for="rating4">4</label>
+
+                                <input id="rating3" type="radio" th:field="*{quality}" value="3"/>
+                                <label style="cursor:pointer;" for="rating3">3</label>
+
+                                <input id="rating2" type="radio" th:field="*{quality}" value="2"/>
+                                <label style="cursor:pointer;" for="rating2">2</label>
+
+                                <input id="rating1" type="radio" th:field="*{quality}" value="1"/>
+                                <label style="cursor:pointer;" for="rating1">1</label>
+
+                            </span>
+                    </div>
+
+                </div>
+
+                <div class="divModalAjoutDescriptionPhoto">
+                    <div class="divModalAjoutDescription">
+                                <textarea class="signup-full" type="text" rows="13" placeholder="Description"
+                                          th:field="*{descobject}" id="description" style="resize:none">
+                                    </textarea>
+                    </div>
+
+
+                    <div class="divModalAjoutPhotos">
+                        <div class="divModalAjoutPhotosTOP">
+                            <!-- photo1 MAIN -->
+                            <th:block th:if="${session.listedimage ne null and session.listedimage.get(0).getIsmain().length() eq 1}">
+                                <div id="Photo1" src="#" alt="Photo1" class="Photo1"
+                                     th:style="'background-image:url(/uploaded-images/' + ${session.listedimage.get(0).getGuidimage()} + ')'">
+                                    <div style="" class="avatarOverlay">
+                                        <div class="avatarPlus">
+                                            <input class="fileExplorer" id="fileExplorerP1" name="photoMain" type="file" onchange="TestFileType('fileExplorerP1', 'Photo1')"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th:block>
+                            <th:block th:if="${session.listedimage eq null}">
+                                <div id="Photo1" src="#" alt="Photo1" class="Photo1">
+                                    <div style="" class="avatarOverlay">
+                                        <div class="avatarPlus">
+                                            <input class="fileExplorer" id="fileExplorerP1" name="photoMain" type="file" onchange="TestFileType('fileExplorerP1', 'Photo1')"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th:block>
+                            <th:block th:if="${session.listedimage ne null and session.listedimage.get(0).getIsmain().length() gt 1}">
+                                <div id="Photo1" src="#" alt="Photo1" class="Photo1">
+                                    <div style="" class="avatarOverlay"
+                                         th:style="'background-image:url(/uploaded-images/LogoWorld_Transparence.png'">
+                                        <div class="avatarPlus">
+                                            <input class="fileExplorer" id="fileExplorerP1" name="photoMain" type="file" onchange="TestFileType('fileExplorerP1', 'Photo1')"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th:block>
+
+                    <!-- photo 2 -->
+                            <th:block th:if="${session.listedimage ne null and session.listedimage.get(1).getIsmain().length() eq 1}">
+                                <div id="Photo2" src="#" alt="Photo1" class="Photo2"
+                                     th:style="'background-image:url(/uploaded-images/'+ ${session.listedimage.get(1).getGuidimage()}  + ')'">
+                                    <div class="avatarOverlay" style="">
+                                        <div class="avatarPlus">
+                                            <input class="fileExplorer" id="fileExplorerP2" name="photo1" type="file" onchange="TestFileType('fileExplorerP2', 'Photo2')"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th:block>
+                            <th:block th:if="${session.listedimage eq null}">
+                                <div id="Photo2" src="#" alt="Photo1" class="Photo2">
+                                    <div class="avatarOverlay" style="">
+                                        <div class="avatarPlus">
+                                            <input class="fileExplorer" id="fileExplorerP2" name="photo1" type="file" onchange="TestFileType('fileExplorerP2', 'Photo2')"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th:block>
+                            <th:block th:if="${session.listedimage ne null and session.listedimage.get(1).getIsmain().length() gt 1}">
+                                <div id="Photo2" src="#" alt="Photo1" class="Photo2">
+                                    <div style="" class="avatarOverlay"
+                                         th:style="'background-image:url(/uploaded-images/LogoWorld_Transparence.png'">
+                                        <div class="avatarPlus">
+                                            <input class="fileExplorer" id="fileExplorerP2" name="photo1" type="file" onchange="TestFileType('fileExplorerP2', 'Photo2')"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th:block>
+                        </div>
+                    <!-- photo 3 -->
+                        <div class="divModalAjoutPhotosDOWN">
+                            <th:block th:if="${session.listedimage ne null and session.listedimage.get(2).getIsmain().length() eq 1}">
+                                <div id="Photo3" src="#" alt="Photo1" class="Photo3"
+                                     th:style="'background-image:url(/uploaded-images/'+ ${session.listedimage.get(2).getGuidimage()} + ')'">
+                                    <div class="avatarOverlay" style="">
+                                        <div class="avatarPlus">
+                                            <input class="fileExplorer" id="fileExplorerP3" name="photo2" type="file" onchange="TestFileType('fileExplorerP3', 'Photo3')"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th:block>
+                            <th:block th:if="${session.listedimage eq null}">
+                                <div id="Photo3" src="#" alt="Photo1" class="Photo3">
+                                    <div class="avatarOverlay" style="">
+                                        <div class="avatarPlus">
+                                            <input class="fileExplorer" id="fileExplorerP3" name="photo2" type="file" onchange="TestFileType('fileExplorerP3', 'Photo3')"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th:block>
+                            <th:block th:if="${session.listedimage ne null and session.listedimage.get(2).getIsmain().length() gt 1}">
+                                <div id="Photo3" src="#" alt="Photo1" class="Photo3">
+                                    <div style="" class="avatarOverlay"
+                                         th:style="'background-image:url(/uploaded-images/LogoWorld_Transparence.png'">
+                                        <div class="avatarPlus">
+                                            <input class="fileExplorer" id="fileExplorerP3" name="photo2" type="file" onchange="TestFileType('fileExplorerP3', 'Photo3')"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th:block>
+
+                    <!-- photo 4 -->
+                            <th:block th:if="${session.listedimage ne null and session.listedimage.get(3).getIsmain().length() eq 1}">
+                                <div id="Photo4" src="#" alt="Photo1" class="Photo4"
+                                     th:style="'background-image:url(/uploaded-images/'+ ${session.listedimage.get(3).getGuidimage()}  + ')'">
+                                    <div id="avatarOverlay" style="">
+                                        <div id="avatarPlus">
+                                            <input id="fileExplorerP4" class="fileExplorer" name="photo3" type="file" onchange="TestFileType('fileExplorerP4', 'Photo4')"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th:block>
+                            <th:block th:if="${session.listedimage eq null}">
+                                <div id="Photo4" src="#" alt="Photo1" class="Photo4">
+                                    <div id="avatarOverlay" style="">
+                                        <div id="avatarPlus">
+                                            <input id="fileExplorerP4" class="fileExplorer" name="photo3" type="file" onchange="TestFileType('fileExplorerP4', 'Photo4')"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th:block>
+                            <th:block th:if="${session.listedimage ne null and session.listedimage.get(3).getIsmain().length() gt 1}">
+                                <div id="Photo4" src="#" alt="Photo1" class="Photo4">
+                                    <div style="" class="avatarOverlay"
+                                         th:style="'background-image:url(/uploaded-images/LogoWorld_Transparence.png'">
+                                        <div class="avatarPlus">
+                                            <input class="fileExplorer" id="fileExplorerP4" name="photo3" type="file" onchange="TestFileType('fileExplorerP4', 'Photo4')"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th:block>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="basdeModal">
+
+                    <!--<input style="text-align:center;font-size:16px;margin-top:10px" type="checkbox" name="Evaluable"-->
+                           <!--value="Evaluable" checked="checked"/>Faire evaluer le prix de cet item / service<br/> par-->
+                    <!--d'autre utilisateur-->
+                    <!--<br/>-->
+
+                    <!--<div class="basdeModalButtons">-->
+                        <!--<label class="buttonbob">-->
+                            <!--<input id="Item" name="flat" type="radio" checked="checked"/>Item-->
+                        <!--</label>-->
+                        <!--<div style="width:20px;"></div>-->
+                        <!--<label class="buttonbob" for="Service">-->
+                            <!--<input id="Service" name="flat" type="radio"/>Service-->
+                        <!--</label>-->
+                    <!--</div>-->
+
+                    <div class="errorAjout">
+                        <p th:if="${#fields.hasErrors('nameobject')}" th:errors="*{nameobject}">Title error message</p>
+                        <p th:if="${#fields.hasErrors('valueobject')}" th:errors="*{valueobject}">Content error message</p>
+                        <p th:if="${#fields.hasErrors('quality')}" th:errors="*{quality}">Content error message</p>
+                        <p th:if="${#fields.hasErrors('descobject')}" th:errors="*{descobject}">Content error message</p>
+                        <th:block th:if="${errCategory ne null}">
+                            <p> *Choisissez une categorie ....</p>
+                        </th:block>
+                    </div>
+
+                </div>
+                <br/>
+                <br/>
+                <br/>
+
+                <div class="or-spacer2">
+                    <div class="mask"></div>
+                </div>
+
+                <div>
+                    <!--<a href="#valid" style="text-align:center;font-size:16px" title="Ajout" class="valid" onclick="Ajout()">Ajouter</a>-->
+                    <input type="submit" class="valid" title="Valider" style="text-align: center; font-size:16px;"/>
+                </div>
+
+            </div>
+        </div>
+    </form>
 
     <form th:action="@{/UpdateUser}" method="post" id="formUser" enctype="multipart/form-data">
         <div id="MyInventory" class="col-md-12">
@@ -158,7 +485,7 @@
 
                         </th:block>
 
-                        <form th:action="'profilinv#openModalAjouter'" method="get" id="ajouter">
+                        <form th:action="'#openModalAjouter'" method="get" id="ajouter">
                         </form>
                         <form th:action="@{/openModalModifier}" method="post" id="modifier" >
                             <input type="hidden" name="idObjectModifier" id="idObjectModifier"/>
@@ -182,8 +509,6 @@
             </div><!-- /.container main-container -->
         </div> <!-- fin RightDiv -->
                 </div>
-
-
 
 
             </div>
