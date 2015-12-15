@@ -10,19 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.thymeleaf.context.WebContext;
 
 import javax.mail.MessagingException;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.URLConnection;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -178,7 +171,7 @@ public class HomeController {
 
     @RequestMapping(value = "/profilinv", method = RequestMethod.GET)
     public String Inventaire(Model model,
-                             HttpSession session) {
+                             HttpSession session,Add add){
         UsersEntity user = authContext.getUser();
 
         if (user != null) {
@@ -220,6 +213,7 @@ public class HomeController {
             for (int i = 0; i < list.size(); i++) {
                 listInterne = customImageObjectRepository.getImageObjectbyObjectId(list.get(i).getIdobject());
                 listImage.add(listInterne);
+
             }
 
             model.addAttribute("listeImage", listImage);
@@ -232,7 +226,7 @@ public class HomeController {
                 context.setVariable("itemCombo", itemCombo);
 
             }
-            return "fragments/site/inventoryUser";
+            return "fragments/profil/pageinventaire";
 
         } else {
             session.removeAttribute("error");
