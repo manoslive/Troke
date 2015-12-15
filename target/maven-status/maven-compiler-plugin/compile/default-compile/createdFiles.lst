@@ -3,6 +3,7 @@ com\tilf\troke\entity\ImageobjectEntity.class
 com\tilf\troke\repository\CustomMyTradeRepository.class
 com\tilf\troke\entity\SubcategoryEntity.class
 com\tilf\troke\service\ObjectService.class
+com\tilf\troke\domain\Add.class
 com\tilf\troke\controller\GlobalController.class
 com\tilf\troke\entity\TransactionmoneyEntity.class
 com\tilf\troke\service\SmtpMailSender.class
