@@ -67,9 +67,8 @@ public class HomeController {
 
         session.setAttribute("ItemCount", itemcount);
         List<TransactionsEntity> CountPending = new ArrayList<TransactionsEntity>();
-        if(authContext.getUser() != null)
-        {
-           CountPending = customMyTradeRepository.getPendingTransactionsByUserID(authContext.getUser().getIduser());
+        if (authContext.getUser() != null) {
+            CountPending = customMyTradeRepository.getPendingTransactionsByUserID(authContext.getUser().getIduser());
             session.setAttribute("notifications", CountPending.size());
         }
 
@@ -179,66 +178,69 @@ public class HomeController {
 
     @RequestMapping(value = "/profilinv", method = RequestMethod.GET)
     public String Inventaire(Model model,
-                         HttpSession session,Add add){
-            UsersEntity user = authContext.getUser();
+                             HttpSession session) {
+        UsersEntity user = authContext.getUser();
 
-            if (user != null) {
-                // on ajoute a la page le user qui est loggé pour avoir ses informations
-                model.addAttribute("userActif", user);
+        if (user != null) {
+            // on ajoute a la page le user qui est loggé pour avoir ses informations
+            model.addAttribute("userActif", user);
 
-                // on va chercher la liste de tous les items du user et ensuite on l'ajoute a la page..
-                List<ObjectsEntity> list = customObjectRepository.getListObjectByUserId(authContext.getUser().getIduser());
-                model.addAttribute("userInventory", list);
+            // on va chercher la liste de tous les items du user et ensuite on l'ajoute a la page..
+            List<ObjectsEntity> list = customObjectRepository.getListObjectByUserId(authContext.getUser().getIduser());
+            model.addAttribute("userInventory", list);
 
-                // pour cause d'avoir des modal vide ..
-                model.addAttribute("idObjectDelete", null);
+            // pour cause d'avoir des modal vide ..
+            model.addAttribute("idObjectDelete", null);
 
-                // entity a envoyer a la page pour peupler le combobox
-                List<CustomCategorySubCategoryEntity> itemCombo = new ArrayList<CustomCategorySubCategoryEntity>();
+            // entity a envoyer a la page pour peupler le combobox
+            List<CustomCategorySubCategoryEntity> itemCombo = new ArrayList<CustomCategorySubCategoryEntity>();
 
 
-                // avoir la liste de category pour le comboBox
-                List<CategoryEntity> listCat = customCategoryRepository.getAllCategory(); // liste de tout les category
-                List<SubcategoryEntity> listSubCatInterne;
+            // avoir la liste de category pour le comboBox
+            List<CategoryEntity> listCat = customCategoryRepository.getAllCategory(); // liste de tout les category
+            List<SubcategoryEntity> listSubCatInterne;
 
-                for (int i = 0; i < listCat.size(); i++) {
-                    // item interne de la boucle pour peupler les itemCombos.
-                    CustomCategorySubCategoryEntity customInterne = new CustomCategorySubCategoryEntity();
-                    listSubCatInterne = customSubcategoryRepository.getAllSubCat(listCat.get(i).getIdcategory());
-                    customInterne.setCategory(listCat.get(i));
-                    customInterne.setListSubCat(listSubCatInterne);
-                    itemCombo.add(customInterne);
+            for (int i = 0; i < listCat.size(); i++) {
+                // item interne de la boucle pour peupler les itemCombos.
+                CustomCategorySubCategoryEntity customInterne = new CustomCategorySubCategoryEntity();
+                listSubCatInterne = customSubcategoryRepository.getAllSubCat(listCat.get(i).getIdcategory());
+                customInterne.setCategory(listCat.get(i));
+                customInterne.setListSubCat(listSubCatInterne);
+                itemCombo.add(customInterne);
 
-                }
-
-                // liste pour peupler le comboBox
-                model.addAttribute("itemCombo", itemCombo);
-
-                // Liste des images pour chaque objet ...
-                List<List<ImageobjectEntity>> listImage = new ArrayList<List<ImageobjectEntity>>();
-                List<ImageobjectEntity> listInterne;
-
-                for (int i = 0; i < list.size(); i++) {
-                    listInterne = customImageObjectRepository.getImageObjectbyObjectId(list.get(i).getIdobject());
-                    listImage.add(listInterne);
-
-                }
-
-                model.addAttribute("listeImage", listImage);
-                // TODO THYMELEAF HACK
-                if (false) {
-                    WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-                    context.setVariable("userActif", user);
-                    context.setVariable("userInventory", list);
-                    context.setVariable("listeImage", listImage);
-                    context.setVariable("itemCombo", itemCombo);
-
-                }
-                return "fragments/profil/pageinventaire";
-
-            } else {
-                session.removeAttribute("error");
-                return "redirect:#openModalConnexion";
             }
+
+            // liste pour peupler le comboBox
+            model.addAttribute("itemCombo", itemCombo);
+
+            // Liste des images pour chaque objet ...
+            List<List<ImageobjectEntity>> listImage = new ArrayList<List<ImageobjectEntity>>();
+            List<ImageobjectEntity> listInterne;
+
+            for (int i = 0; i < list.size(); i++) {
+                listInterne = customImageObjectRepository.getImageObjectbyObjectId(list.get(i).getIdobject());
+                listImage.add(listInterne);
+            }
+
+            model.addAttribute("listeImage", listImage);
+            // TODO THYMELEAF HACK
+            if (false) {
+                WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+                context.setVariable("userActif", user);
+                context.setVariable("userInventory", list);
+                context.setVariable("listeImage", listImage);
+                context.setVariable("itemCombo", itemCombo);
+
+            }
+            return "fragments/site/inventoryUser";
+
+        } else {
+            session.removeAttribute("error");
+            return "redirect:#openModalConnexion";
+        }
+    }
+    @RequestMapping(value = "/openmanual", method = RequestMethod.GET)
+    public String openManual(){
+        return "fragments/home/manual";
     }
 }
