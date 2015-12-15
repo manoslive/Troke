@@ -347,7 +347,7 @@ public class TransactionController {
                     bodyUser2 += "<li>" + obj.getNameObject() + "</li>";
                 }
                 bodyUser2 += "</ul>" +
-                        " Vous devez contacter " + user1.getFirstname() + " " + user1.getFirstname() +  "<br/>" +
+                        " Vous devez contacter " + user1.getFirstname() + " " + user1.getLastname() +  "<br/>" +
                         " au " + user1.getTelephone() +  "<br/>" +
                         " ou au " + user1.getEmail() + ". <br/>"+
                         " <a href='http://www.troke.me'>Allez sur troké</a>";
