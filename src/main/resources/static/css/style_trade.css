@@ -179,6 +179,7 @@
 	overflow: hidden;
 	border: 1px solid #DBDBDB !important;
 	background-color: white;
+	z-index:100;
 }
 #UserInventory li h5 {
 	text-align: center;
@@ -367,6 +368,7 @@
 	border-radius: 4px;
 	border: 1px solid #00374C;
 	background-color: white;
+	z-index:100;
 }
 #UserExchange li .icon-refresh{
 	float: right;
@@ -406,6 +408,7 @@
 	overflow: hidden;
 	border-radius: 4px;
 	border: 1px solid #00374C;
+	z-index:100;
 }
 #opponentExchangeItemsStart li .icon-refresh{
 	float: right;
@@ -453,6 +456,7 @@
 	border-radius: 4px;
 	border: 1px solid #00374C;
 	background-color: white;
+	z-index:100;
 }
 #OpponentExchange li .icon-refresh{
 	float: right;

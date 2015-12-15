@@ -87,9 +87,9 @@
                     </div>
                     <div th:id="'divSubImages'+${inv.getIdobject()}" class="divSubImages">
                         <img class="subImage" th:src="*{inv.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${inv.getImage1()}:'images/LogoWorld_Transparence.png'" alt="Image 1" onmouseover="hover(this);"/>
-                        <img class="subImage" th:src="*{inv.getImage2().substring(0,1) ne '*'}? '/uploaded-images/'+${inv.getImage2()}:'images/LogoWorld_Transparence.png'" alt="Image 2" onmouseover="hover(this);"/>
+                        <img class="subImage" th:src="*{inv.getImage4().substring(0,1) ne '*'}? '/uploaded-images/'+${inv.getImage2()}:'images/LogoWorld_Transparence.png'" alt="Image 2" onmouseover="hover(this);"/>
                         <img class="subImage" th:src="*{inv.getImage3().substring(0,1) ne '*'}? '/uploaded-images/'+${inv.getImage3()}:'images/LogoWorld_Transparence.png'" alt="Image 3" onmouseover="hover(this);"/>
-                        <img class="subImage" th:src="*{inv.getImage4().substring(0,1) ne '*'}? '/uploaded-images/'+${inv.getImage4()}:'images/LogoWorld_Transparence.png'" alt="Image 4" onmouseover="hover(this);"/>
+                        <img class="subImage" th:src="*{inv.getImage2().substring(0,1) ne '*'}? '/uploaded-images/'+${inv.getImage4()}:'images/LogoWorld_Transparence.png'" alt="Image 4" onmouseover="hover(this);"/>
                     </div>
                 </div>
                 <div class="description">
@@ -119,9 +119,9 @@
                     </div>
                     <div th:id="'divSubImages'+${currentItem.getIdobject()}" class="divSubImages">
                         <img class="subImage" th:src="*{currentItem.getImage1().substring(0,1) ne '*'}? '/uploaded-images/'+${currentItem.getImage1()}:'images/LogoWorld_Transparence.png'" alt="Image 1" onmouseover="hover(this);"/>
-                        <img class="subImage" th:src="*{currentItem.getImage2().substring(0,1) ne '*'}? '/uploaded-images/'+${currentItem.getImage2()}:'images/LogoWorld_Transparence.png'" alt="Image 2" onmouseover="hover(this);"/>
+                        <img class="subImage" th:src="*{currentItem.getImage4().substring(0,1) ne '*'}? '/uploaded-images/'+${currentItem.getImage2()}:'images/LogoWorld_Transparence.png'" alt="Image 2" onmouseover="hover(this);"/>
                         <img class="subImage" th:src="*{currentItem.getImage3().substring(0,1) ne '*'}? '/uploaded-images/'+${currentItem.getImage3()}:'images/LogoWorld_Transparence.png'" alt="Image 3" onmouseover="hover(this);"/>
-                        <img class="subImage" th:src="*{currentItem.getImage4().substring(0,1) ne '*'}? '/uploaded-images/'+${currentItem.getImage4()}:'images/LogoWorld_Transparence.png'" alt="Image 4" onmouseover="hover(this);"/>
+                        <img class="subImage" th:src="*{currentItem.getImage2().substring(0,1) ne '*'}? '/uploaded-images/'+${currentItem.getImage4()}:'images/LogoWorld_Transparence.png'" alt="Image 4" onmouseover="hover(this);"/>
                     </div>
                 </div>
                 <div class="description">
