@@ -264,6 +264,7 @@
             if (keyword == null) {
                 keyword = "";
             }
+
             requestedpage = [[${currentpage}]];
             var getRequest = "/searchDB?keyword=" + keyword + '&amp;page=' + requestedpage + '&amp;number=' + resultsperpage;
             location.href = decodeURIComponent(getRequest.split('&amp;').join('%26').trim());
