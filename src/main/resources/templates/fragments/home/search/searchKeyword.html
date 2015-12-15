@@ -265,7 +265,6 @@
                 keyword = "";
             }
             requestedpage = [[${currentpage}]];
-
             var getRequest = "/searchDB?keyword=" + keyword + '&amp;page=' + requestedpage + '&amp;number=' + resultsperpage;
             location.href = decodeURIComponent(getRequest.split('&amp;').join('%26').trim());
         }
@@ -275,7 +274,7 @@
             if (keyword == null) {
                 keyword = "";
             }
-            if (requestedpage == null) {
+            if (requestedpage == null || requestedpage == '') {
                 requestedpage = 1;
             }
             else if (requestedpage == 'plus1') {

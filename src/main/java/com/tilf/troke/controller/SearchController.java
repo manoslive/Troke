@@ -381,8 +381,14 @@ public class SearchController {
                     }
                     pageList.add(internalList);
                 } else {
-                    for (int j = 0; j < list.size() % number; j++) {
-                        internalList.add(list.get((i * number) + j));
+                    if ((list.size() % number) == 0) {
+                        for (int j = 0; j < number; j++) {
+                            internalList.add(list.get((i * number) + j));
+                        }
+                    } else {
+                        for (int j = 0; j < list.size() % number; j++) {
+                            internalList.add(list.get((i * number) + j));
+                        }
                     }
                     pageList.add(internalList);
                 }
