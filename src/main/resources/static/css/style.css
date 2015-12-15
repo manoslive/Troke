@@ -241,12 +241,15 @@
 }
 
 .BTN_Creds {
-
+    width: 16%;
     position: absolute;
     top: -32px;
     right: 0%;
     z-index: 10;
+}
 
+.btn-signup{
+    width: 100%;
 }
 
 .BTN_Change {

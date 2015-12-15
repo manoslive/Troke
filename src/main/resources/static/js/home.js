@@ -142,10 +142,10 @@ function forgottenPasswordForm(){
     $.post( "/resetpassword", {iduser:data});
 }
 function logoutButtonMouseenter() {
-    $("#signup").text("Déconnexion");
+    $("#signup").text("Deconnexion");
 }
 function logoutButtonMouseLeave(oldValue){
-    $("#signup").text(oldValue);
+    $("#signup").text('Bienvenue ' + oldValue);
 }
 
 

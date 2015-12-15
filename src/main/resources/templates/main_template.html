@@ -117,7 +117,9 @@
 
     <div id="NbTrok">
         <div class="hoja" th:text="${session.ItemCount}"></div>
-        <div style="margin-top: 3%; width:100%;height:30px;text-align:center;font-weight:bold;">Items/Services Disponibles</div>
+        <div style="margin-top: 3%; width:100%;height:30px;text-align:center;font-weight:bold;">Items/Services
+            Disponibles
+        </div>
     </div>
 
     <img src="images/WorldBanner2.jpg" class="img-responsive animated fadeIn" id="Banniere"/>
@@ -126,17 +128,20 @@
 
                     <div class="BTN_Creds">
                         <span th:if="${authUser} eq null">
-                            <a id="signup" href="/openModalConnexion" class="btn btn-sm animated-button thar-two">Connexion</a>
-                            <a href="#openModalInscription" class="btn btn-sm animated-button thar-two">Inscription</a>
+                            <a id="signup" href="/openModalConnexion" class="btn btn-sm animated-button thar-two" style="width: 49%">Connexion</a>
+                            <a href="#openModalInscription" class="btn btn-sm animated-button thar-two" style="width:49%">Inscription</a>
                         </span>
                         <span th:if="${authUser} ne null">
+
                             <a id="signup" th:href="@{/logout}" th:text="'Bienvenue ' + ${authUser.firstname}"
-                               class="btn btn-sm animated-button thar-two"  th:onmouseover="'javascript:logoutButton(\''+ ${authUser.firstname} +'\')'"></a>
+                               class="btn btn-sm animated-button thar-two btn-signup"
+                               onmouseover="logoutButtonMouseenter();"
+                               th:onmouseout="'javascript:logoutButtonMouseLeave(\''+ ${authUser.firstname} +'\')'">
+                                <span class="glyphicon glyphicon-triangle-bottom"></span>
+                            </a>
                         </span>
                     </div>
-
                 </span>
-
 </div>
 <!-- END Header -->
 
@@ -152,7 +157,7 @@
         </div>
         <form th:action="@{/auth}" method="post" th:object="${post}">
             <div style="text-align:left">
-                <input class="signup-full" type="text" placeholder="Nom d'usager" name="iduser" />
+                <input class="signup-full" type="text" placeholder="Nom d'usager" name="iduser"/>
                 <input class="signup-full" type="password" placeholder="Mot de Passe" name="pass"/>
                 <input style="float:left" type="checkbox" name="StayConnected" value="Stay">Rester Connecter</input>
                 <a onclick="forgottenPasswordForm();" target="_top" style="float:right">Mot de
@@ -482,18 +487,23 @@
                 <li><!-- Search bar + button -->
                     <form th:action="@{/searchDB}" method="get" class="navbar-form navbar-left">
                         <div class="form-group">
-                                <input type="text" id="keyword" name="keyword" class="form-control"
-                                       placeholder="Item ou Service"
-                                       size="45"/>
+                            <input type="text" id="keyword" name="keyword" class="form-control"
+                                   placeholder="Item ou Service"
+                                   size="45"/>
                         </div>
                         <button type="submit" class="btn btn-default">Recherche</button>
                     </form>
                 </li>
                 <!-- end Search bar + button -->
-                <li><a href="/myTrades" style="color:black; font-size:15px">Mes Échanges <th:block th:if="${authUser} ne null"><div class="noti_bubble" th:text="${session.notifications}"></div></th:block></a></li>
+                <li><a href="/myTrades" style="color:black; font-size:15px">Mes Échanges
+                    <th:block th:if="${authUser} ne null">
+                        <div class="noti_bubble" th:text="${session.notifications}"></div>
+                    </th:block>
+                </a></li>
                 <li><a href="/profilinv" style="color:black; font-size:15px">Mon Inventaire</a></li>
-                    <!-- <li><a href="#contact">Contact</a></li> -->
-                <li class="pull-left"><a href="/profil" style="color:black;font-size:15px">Mon Profil</a></li><!--pull-right-->
+                <!-- <li><a href="#contact">Contact</a></li> -->
+                <li class="pull-left"><a href="/profil" style="color:black;font-size:15px">Mon Profil</a></li>
+                <!--pull-right-->
 
 
             </ul>

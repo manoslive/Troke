@@ -220,7 +220,6 @@ public class HomeController {
             for (int i = 0; i < list.size(); i++) {
                 listInterne = customImageObjectRepository.getImageObjectbyObjectId(list.get(i).getIdobject());
                 listImage.add(listInterne);
-
             }
 
             model.addAttribute("listeImage", listImage);
@@ -240,7 +239,6 @@ public class HomeController {
             return "redirect:#openModalConnexion";
         }
     }
-
     @RequestMapping(value = "/openmanual", method = RequestMethod.GET)
     public String openManual(){
         return "fragments/home/manual";
