@@ -394,7 +394,9 @@ public class ProfilController {
             session.setAttribute("inventaire", "no");
 
             return "fragments/profil/pageinventaire";
-        } else {
+        }
+        else
+        {
             java.sql.Date now = new java.sql.Date(Calendar.getInstance().getTime().getTime());
             MultipartFile[] images = {mainPhoto, photo1, photo2, photo3};
 
